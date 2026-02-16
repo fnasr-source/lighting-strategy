@@ -2,6 +2,10 @@
 
 This folder is now organized as a numbered proposal package for easy reference.
 
+- Proposal Number: `AWP-EG-2026-0001`
+- Country Profile: `Egypt`
+- Status: `Ready To Send`
+
 ## Core Sequence
 - `01-Transcript-Insights.md`
 - `02-Research-Report.md`
@@ -23,4 +27,3 @@ This folder is now organized as a numbered proposal package for easy reference.
 ## Legacy Aliases
 - `proposal.html` mirrors the one-page proposal.
 - `Master_Presentation.html` mirrors the final presentation.
-

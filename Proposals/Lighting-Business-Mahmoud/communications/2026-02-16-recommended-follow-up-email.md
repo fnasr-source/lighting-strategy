@@ -1,7 +1,7 @@
-# Recommended Follow-Up Email (Operations Coordinator)
+# Client Email (Egypt) - Operations Coordinator
 
 ## Subject
-Updated Proposal + Two Fixed Options + Start Recommendation
+Proposal AWP-EG-2026-0001 | Two Fixed Options + Kickoff
 
 ## Email Header
 - From: Operations Coordinator (Admireworks)
@@ -9,36 +9,45 @@ Updated Proposal + Two Fixed Options + Start Recommendation
 - CC: Fouad Nasseredin
 
 ## Email Body
-Hi Mahmoud,
+Dear Mr. Mahmoud,
 
-Thank you for today’s meeting.
+Greetings. We hope this message finds you well.
 
-As discussed, we updated the proposal based on your exact direction:
-- Two fixed options only (no revenue sharing)
-- Strategy is included in both options
-- Higher option includes full management and media buying management
-- Channel plan aligned to ROI and project-buyer targeting
+Thank you for the meeting. Based on our discussion, please find the finalized proposal package below.
 
-### Option 1 - Fixed Build + Monthly Support
-- **45,000 EGP** setup
-- **7,500 EGP/month** support
-- Includes strategy, funnel/build setup, and monthly updates
+### Proposal Number
+AWP-EG-2026-0001
 
-### Option 2 - Managed Growth + Media Buying (Higher Option)
-- **35,000 EGP** setup
-- **17,500 EGP/month** (minimum 3 months)
-- Includes everything in Option 1 plus Google Ads management, Apollo-based lead workflows, follow-up management, and weekly optimization/reporting
+### Commercial Options
+1. **Option 1 - Fixed Build + Monthly Support**
+   - 45,000 EGP setup
+   - 7,500 EGP/month
+2. **Option 2 - Managed Growth + Media Buying (Higher Option)**
+   - 35,000 EGP setup
+   - 17,500 EGP/month (minimum 3 months)
+   - Includes management and media buying management
 
-### Recommended start
-We recommend **Option 2** so we can actively manage acquisition channels and optimize ROI from the start.
+Strategy is included in both options.
 
 ### Proposal Links
 - Presentation: https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Proposals/Lighting-Business-Mahmoud/11-Final-Presentation.html
-- One-page proposal: https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Proposals/Lighting-Business-Mahmoud/10-One-Page-Proposal.html
+- One-page Proposal: https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Proposals/Lighting-Business-Mahmoud/10-One-Page-Proposal.html
 
-If approved, we can schedule kickoff immediately and start execution.
+### Payment Details (Egypt Clients)
+Initial setup and monthly management fees can be transferred using:
 
-Best regards,  
-Operations Coordinator  
+Instapay Information:
+- Account Name: Fouad Nasseredin
+- Instapay Account: admireworks@instapay
+
+If you approve, please share confirmation on the selected option and transfer receipt so we can schedule kickoff immediately.
+
+Thank you for choosing our services.
+
+All the best,
+Operations Coordinator
 Admireworks
+
+## International Client Rule
+For clients outside Egypt, replace the payment section with a direct payment link in the same email.
 

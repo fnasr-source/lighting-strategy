@@ -17,7 +17,7 @@ Recommended: **Option 2** for initial 3 months.
 Why:
 - Matches request for active management and channel execution.
 - Supports fast testing and optimization across Apollo + Google Ads + follow-up workflows.
-- Keeps ownership 100% with client (no equity transfer, no revenue sharing).
+- Keeps ownership 100% with client and no revenue sharing.
 
 ## Baseline GTM (First 90 Days)
 1. Apollo lead extraction and targeted outreach.
@@ -36,4 +36,3 @@ Why:
 - Send revised proposal with explicit recommendation for Option 2.
 - Confirm selected option and kickoff date.
 - Start strategy/build activation in Week 1.
-

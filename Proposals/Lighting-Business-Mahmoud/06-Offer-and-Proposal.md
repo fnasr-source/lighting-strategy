@@ -1,5 +1,6 @@
 # 06-Offer-and-Proposal: Lighting Business - Mahmoud
 
+**PROPOSAL NO:** AWP-EG-2026-0001  
 **FROM:** Admireworks  
 **TO:** Mahmoud  
 **DATE:** February 16, 2026
@@ -67,7 +68,7 @@ Both options include strategy. The difference is the level of ongoing management
 
 ### Notes
 - Ad spend is billed directly to client ad accounts.
-- No equity transfer. No revenue sharing.
+- No revenue sharing.
 
 ---
 
@@ -101,4 +102,3 @@ Reason: it matches the stated need for active management, media buying execution
 1. Confirm Option 1 or Option 2.
 2. Process initial payment based on selected option.
 3. Schedule kickoff and start execution.
-

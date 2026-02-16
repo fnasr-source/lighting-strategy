@@ -246,6 +246,78 @@ function buildHomeHtml(ctx) {
 </html>`;
 }
 
+function buildSystemHtml(ctx) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal OS System Manual</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --line: #dce3ef;
+      --text: #1f2738;
+      --muted: #67738d;
+      --navy: #102558;
+      --blue: #2a4ba8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 18px; background: var(--bg); font-family: "Akkurat Pro", "Helvetica Neue", Arial, sans-serif; color: var(--text); }
+    .wrap { max-width: 980px; margin: 0 auto; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--card); }
+    .hero { padding: 22px; color: #fff; background: linear-gradient(140deg, var(--navy), var(--blue)); }
+    .hero h1 { margin: 0 0 6px; font-size: 1.5rem; }
+    .hero p { margin: 2px 0; opacity: 0.93; font-size: 0.9rem; }
+    .body { padding: 18px 22px; }
+    h2 { margin: 0 0 10px; font-size: 1rem; color: var(--navy); }
+    .panel { border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin-bottom: 12px; background: #fff; }
+    .panel p { margin: 6px 0; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+    .links a { display: inline-block; margin: 0 8px 8px 0; text-decoration: none; color: #21439d; border: 1px solid #d7e0ff; background: #f3f6ff; border-radius: 8px; padding: 6px 9px; font-size: 0.84rem; }
+    .foot { border-top: 1px solid var(--line); padding: 11px 22px; color: var(--muted); font-size: 0.82rem; background: #fbfcff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Internal OS System Manual</h1>
+      <p>Operational guide for proposal workflows, CRM visibility, and dashboard generation.</p>
+      <p>Generated: ${escapeHtml(ctx.generatedAt)} | Repo: ${escapeHtml(ctx.repoSlug)}</p>
+    </div>
+    <div class="body">
+      <div class="panel">
+        <h2>Core Dashboards</h2>
+        <div class="links">
+          <a href="${ctx.links.internal_home}" target="_blank" rel="noopener noreferrer">Open Internal Home</a>
+          <a href="${ctx.links.proposals_hub}" target="_blank" rel="noopener noreferrer">Open Proposals CRM Hub</a>
+          <a href="${ctx.links.strategies_hub}" target="_blank" rel="noopener noreferrer">Open Strategies Hub</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Core Data Files</h2>
+        <div class="links">
+          <a href="${ctx.links.proposal_registry}" target="_blank" rel="noopener noreferrer">Proposal Registry</a>
+          <a href="${ctx.links.proposal_crm}" target="_blank" rel="noopener noreferrer">Proposal CRM Metadata</a>
+          <a href="${ctx.links.link_map}" target="_blank" rel="noopener noreferrer">System Link Map</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Rules and Standards</h2>
+        <div class="links">
+          <a href="${ctx.links.numbering_system}" target="_blank" rel="noopener noreferrer">Numbering System</a>
+          <a href="${ctx.links.workflow_checklist}" target="_blank" rel="noopener noreferrer">Workflow Checklist</a>
+          <a href="${ctx.links.payment_rules}" target="_blank" rel="noopener noreferrer">Payment Rules</a>
+          <a href="${ctx.links.link_standards}" target="_blank" rel="noopener noreferrer">Link Standards</a>
+          <a href="${ctx.links.system_manual_md}" target="_blank" rel="noopener noreferrer">Manual (Markdown)</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot">Internal use only</div>
+  </div>
+</body>
+</html>`;
+}
+
 function main() {
   const args = parseArgs(process.argv);
   const root = path.resolve(args.root || process.cwd());
@@ -282,14 +354,16 @@ function main() {
       proposals_hub: urls.preview('Proposals/_Outgoing/_internal-crm/index.html'),
       proposals_hub_mirror: urls.preview('Internal-OS/proposals/index.html'),
       strategies_hub: urls.preview('Internal-OS/strategies/index.html'),
-      system_manual: urls.blob('Internal-OS/system/INDEX.md'),
+      system_manual: urls.preview('Internal-OS/system/index.html'),
+      system_manual_md: urls.blob('Internal-OS/system/INDEX.md'),
       proposal_registry: urls.blob('Proposals/_Proposal-System/proposal-registry.csv'),
       proposal_crm: urls.blob('Proposals/_Proposal-System/proposal-crm.csv'),
       numbering_system: urls.blob('Proposals/_Proposal-System/NUMBERING-SYSTEM.md'),
       workflow_checklist: urls.blob('Proposals/_Proposal-System/WORKFLOW-CHECKLIST.md'),
       payment_rules: urls.blob('Proposals/_Proposal-System/PAYMENT-RULES.md'),
       link_standards: urls.blob('Proposals/_Proposal-System/LINK-STANDARDS.md'),
-      strategies_root: urls.blob('Strategies')
+      strategies_root: urls.blob('Strategies'),
+      link_map: urls.blob('Internal-OS/system/link-map.json')
     }
   };
 
@@ -307,21 +381,25 @@ function main() {
       strategiesHub: linkMap.links.strategies_hub,
       strategiesRoot: linkMap.links.strategies_root,
       systemManual: linkMap.links.system_manual,
-      linkMap: urls.blob('Internal-OS/system/link-map.json')
+      linkMap: linkMap.links.link_map
     }
   };
 
   const homeHtml = buildHomeHtml(homeCtx);
+  const systemHtml = buildSystemHtml({ generatedAt, repoSlug, links: linkMap.links });
   const homePath = path.join(root, 'Internal-OS', 'index.html');
+  const systemPagePath = path.join(root, 'Internal-OS', 'system', 'index.html');
   const linkMapPath = path.join(root, 'Internal-OS', 'system', 'link-map.json');
   ensureDir(path.dirname(homePath));
+  ensureDir(path.dirname(systemPagePath));
   ensureDir(path.dirname(linkMapPath));
   fs.writeFileSync(homePath, homeHtml, 'utf8');
+  fs.writeFileSync(systemPagePath, systemHtml, 'utf8');
   fs.writeFileSync(linkMapPath, JSON.stringify(linkMap, null, 2) + '\n', 'utf8');
 
   console.log(JSON.stringify({
     generated_at: generatedAt,
-    output_files: [path.relative(root, homePath), path.relative(root, linkMapPath)],
+    output_files: [path.relative(root, homePath), path.relative(root, systemPagePath), path.relative(root, linkMapPath)],
     totals: {
       total_proposals: totalProposals,
       ready_to_send: readyToSend,

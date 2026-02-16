@@ -21,7 +21,8 @@ Internal operating system for managing proposals, strategy assets, and CRM-style
 - Proposals CRM Hub: `Proposals/_Outgoing/_internal-crm/index.html`
 - Proposals Hub Mirror: `Internal-OS/proposals/index.html`
 - Strategies Hub: `Internal-OS/strategies/index.html`
-- System Manual: `Internal-OS/system/INDEX.md`
+- System Manual (page): `Internal-OS/system/index.html`
+- System Manual (markdown): `Internal-OS/system/INDEX.md`
 
 ## Build Commands
 

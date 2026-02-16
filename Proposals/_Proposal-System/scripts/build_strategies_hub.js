@@ -73,7 +73,7 @@ function linkFor(filePath, urls) {
 }
 
 function renderHtml(records, generatedAt, repoSlug) {
-  const json = JSON.stringify(records);
+  const json = JSON.stringify(records).replace(/</g, '\\u003c');
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,7 +130,7 @@ function renderHtml(records, generatedAt, repoSlug) {
     <div class="empty" id="empty" style="display:none;">No files match the selected filters.</div>
     <div class="footer">Internal use only</div>
   </div>
-  <script id="strategy-data" type="application/json">${escapeHtml(json)}</script>
+  <script id="strategy-data" type="application/json">${json}</script>
   <script>
     const rows = JSON.parse(document.getElementById('strategy-data').textContent);
     const listEl = document.getElementById('list');

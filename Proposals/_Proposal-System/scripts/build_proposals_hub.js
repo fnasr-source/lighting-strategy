@@ -121,7 +121,7 @@ function toDateValue(input) {
 }
 
 function createDashboardHtml(data, generatedAtIso, repoSlug) {
-  const payload = JSON.stringify(data);
+  const payload = JSON.stringify(data).replace(/</g, '\\u003c');
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -324,7 +324,7 @@ function createDashboardHtml(data, generatedAtIso, repoSlug) {
     </div>
   </div>
 
-  <script id="crm-data" type="application/json">${escapeHtml(payload)}</script>
+  <script id="crm-data" type="application/json">${payload}</script>
   <script>
     const records = JSON.parse(document.getElementById('crm-data').textContent);
     const rowsEl = document.getElementById('rows');

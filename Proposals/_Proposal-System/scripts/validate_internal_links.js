@@ -43,6 +43,7 @@ function main() {
     'Internal-OS/index.html',
     'Internal-OS/proposals/index.html',
     'Internal-OS/strategies/index.html',
+    'Internal-OS/system/index.html',
     'Internal-OS/system/INDEX.md',
     'Internal-OS/system/link-map.json',
     'Proposals/_Outgoing/_internal-crm/index.html',

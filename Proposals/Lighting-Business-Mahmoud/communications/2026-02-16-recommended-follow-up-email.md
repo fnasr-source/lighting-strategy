@@ -16,6 +16,7 @@ Valid Until: February 23, 2026
 To proceed, kindly confirm your selected option (Option 1 or Option 2) and complete the transfer via Instapay:
 - Account Name: Fouad Nasseredin
 - Instapay Account: admireworks@instapay
+- 👉 [Pay via Instapay](https://ipn.eg/S/admireworks/instapay/5A1jri)
 
 Once the transfer is completed, please share the receipt and we will schedule kickoff immediately.
 

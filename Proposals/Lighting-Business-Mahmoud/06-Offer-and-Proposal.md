@@ -112,3 +112,4 @@ Reason: it matches the stated need for active management, media buying execution
 
 - Account Name: Fouad Nasseredin
 - Instapay Account: admireworks@instapay
+- Instapay Link: [👉 Pay via Instapay](https://ipn.eg/S/admireworks/instapay/5A1jri)

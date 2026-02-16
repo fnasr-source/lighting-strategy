@@ -10,7 +10,7 @@
    - client email in `communications/`
 5. Add validity period (default: 7 days from sending date).
 6. Confirm payment section by region in both proposal and email:
-   - Egypt: Instapay details (include subtle footer section in one-page proposal)
+   - Egypt: Instapay account details + Instapay payment URL (include subtle footer section in one-page proposal)
    - International: payment link (include subtle note in one-page proposal)
 7. Keep client email short, with one-page proposal link and payment details.
 8. Write emails in normal sender-to-recipient format (greeting, clear CTA, concise close), not internal note format.

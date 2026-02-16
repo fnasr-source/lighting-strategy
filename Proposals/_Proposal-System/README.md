@@ -8,6 +8,7 @@ Master internal framework for creating, numbering, publishing, and sending propo
 - Keep one source of truth registry for issued proposal IDs.
 - Keep payment and email rules standardized by region.
 - Keep payment details present in both the client email and one-page proposal footer.
+- For Egypt clients, always include the live Instapay payment URL with account details.
 - Keep client contact email and phone stored in the registry and package index.
 - Use action-style hyperlink formatting in client emails.
 

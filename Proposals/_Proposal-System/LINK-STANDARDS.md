@@ -9,6 +9,7 @@ Email subject should follow:
 Use action text with emoji and hyperlink format:
 - `👉 [View Proposal](URL)`
 - `👉 [Open Payment Link](URL)`
+- `👉 [Pay via Instapay](https://ipn.eg/S/admireworks/instapay/5A1jri)`
 - `👉 [View Agreement](URL)`
 
 ## Why

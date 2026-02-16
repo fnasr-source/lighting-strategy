@@ -1,26 +1,28 @@
 # Client Email Template (Egypt)
 
-Subject:
-{{AGENCY_NAME}} x {{PROJECT_NAME}}
+Subject: {{AGENCY_NAME}} x {{PROJECT_NAME}}
 
-Body:
+To: {{CLIENT_EMAIL}}
+CC: {{CC_EMAIL}}
+
 Dear {{CLIENT_NAME}},
 
+Greetings. We hope you are doing well.
+
+Please find your one-page proposal at the link below:
 👉 [View Proposal]({{ONE_PAGER_URL}})
 
-Proposal Number: {{PROPOSAL_NUMBER}}
+Proposal Number: {{PROPOSAL_NUMBER}}  
 Valid Until: {{VALID_UNTIL}}
-Client Email: {{CLIENT_EMAIL}}
-Client Phone: {{CLIENT_PHONE}}
 
-Selected option and payment can be confirmed using:
-
-Instapay Information:
+To proceed, kindly confirm your selected option and complete the transfer via Instapay:
 - Account Name: Fouad Nasseredin
 - Instapay Account: admireworks@instapay
 
-Kindly share the transfer receipt and selected option to schedule kickoff.
+Once the transfer is completed, please share the receipt and we will schedule kickoff immediately.
 
-All the best,
-Operations Coordinator
+If you have any questions or need any clarification, please let us know.
+
+All the best,  
+Operations Coordinator  
 Admireworks

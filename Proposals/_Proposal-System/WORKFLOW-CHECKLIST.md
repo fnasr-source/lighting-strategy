@@ -13,9 +13,10 @@
    - Egypt: Instapay details (include subtle footer section in one-page proposal)
    - International: payment link (include subtle note in one-page proposal)
 7. Keep client email short, with one-page proposal link and payment details.
-8. Format email links as action hyperlinks:
+8. Write emails in normal sender-to-recipient format (greeting, clear CTA, concise close), not internal note format.
+9. Format email links as action hyperlinks:
    - `👉 [View Proposal](URL)`
    - `👉 [Open Payment Link](URL)` when needed.
-9. Use email subject format: `{Agency Name} x {Project/Business Name}`.
-10. Use outgoing URL format: `Proposals/_Outgoing/{PROPOSAL_NUMBER}/one-page.html`.
-11. Push and share final outgoing URL.
+10. Use email subject format: `{Agency Name} x {Project/Business Name}`.
+11. Use outgoing URL format: `Proposals/_Outgoing/{PROPOSAL_NUMBER}/one-page.html`.
+12. Push and share final outgoing URL.

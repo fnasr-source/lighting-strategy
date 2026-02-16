@@ -1,32 +1,26 @@
-# Client Email (Egypt) - Operations Coordinator
+Subject: Admirework x Lighting Business
 
-## Subject
-Admirework x Lighting Business
+To: Mahmoudmselim95@gmail.com
+CC: Fouad Nasseredin
 
-## Email Header
-- From: Operations Coordinator (Admireworks)
-- To: Mahmoudmselim95@gmail.com
-- CC: Fouad Nasseredin
-
-## Email Body
 Dear Mr. Mahmoud Selim,
 
+Greetings. We hope you are doing well.
+
+Please find your one-page proposal at the link below:
 👉 [View Proposal](https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Proposals/_Outgoing/AWP-EG-0MKC-SLK/one-page.html)
 
 Proposal Number: AWP-EG-0MKC-SLK  
-Valid Until: February 23, 2026  
-Client Contact: Mahmoudmselim95@gmail.com | +201022267297
+Valid Until: February 23, 2026
 
-Payment for setup and monthly fees can be transferred via Instapay:
+To proceed, kindly confirm your selected option (Option 1 or Option 2) and complete the transfer via Instapay:
 - Account Name: Fouad Nasseredin
 - Instapay Account: admireworks@instapay
 
-Kindly confirm the selected option and share the transfer receipt so we can schedule kickoff immediately.
+Once the transfer is completed, please share the receipt and we will schedule kickoff immediately.
 
-All the best,
-Operations Coordinator
+If you have any questions or need any clarification, please let us know.
+
+All the best,  
+Operations Coordinator  
 Admireworks
-
-## International Client Rule
-For non-Egypt clients, replace Instapay details with:
-👉 [Open Payment Link](PAYMENT_URL)

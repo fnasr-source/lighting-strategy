@@ -1,9 +1,10 @@
 # 06-Offer-and-Proposal: Lighting Business - Mahmoud
 
-**PROPOSAL NO:** AWP-EG-2026-0001  
+**PROPOSAL NO:** AWP-EG-0MKC-SLK  
 **FROM:** Admireworks  
 **TO:** Mahmoud  
 **DATE:** February 16, 2026
+**VALID UNTIL:** February 23, 2026
 
 ---
 

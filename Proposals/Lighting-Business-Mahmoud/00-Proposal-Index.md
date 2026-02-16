@@ -2,9 +2,11 @@
 
 This folder is now organized as a numbered proposal package for easy reference.
 
-- Proposal Number: `AWP-EG-2026-0001`
+- Proposal Number: `AWP-EG-0MKC-SLK`
 - Country Profile: `Egypt`
 - Status: `Ready To Send`
+- Valid Until: `February 23, 2026`
+- Outgoing URL Path: `Proposals/_Outgoing/AWP-EG-0MKC-SLK/one-page.html`
 
 ## Core Sequence
 - `01-Transcript-Insights.md`

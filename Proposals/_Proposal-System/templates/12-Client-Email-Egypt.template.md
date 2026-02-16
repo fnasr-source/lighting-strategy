@@ -1,34 +1,24 @@
 # Client Email Template (Egypt)
 
 Subject:
-Proposal {{PROPOSAL_NUMBER}} | Two Fixed Options + Kickoff
+Proposal {{PROPOSAL_NUMBER}} | Ready to Start
 
 Body:
 Dear {{CLIENT_NAME}},
 
-Greetings. We hope this message finds you well.
+Please find your one-page proposal here:
+{{ONE_PAGER_URL}}
 
-Please find the finalized proposal package below.
+Proposal Number: {{PROPOSAL_NUMBER}}
+Valid Until: {{VALID_UNTIL}}
 
-Proposal Number:
-{{PROPOSAL_NUMBER}}
+Selected option and payment can be confirmed using:
 
-Commercial Options:
-1. Option 1 - {{OPTION_1_SUMMARY}}
-2. Option 2 - {{OPTION_2_SUMMARY}}
-
-Strategy is included in both options.
-
-Proposal Links:
-- Presentation: {{PRESENTATION_URL}}
-- One-page Proposal: {{ONE_PAGER_URL}}
-
-Payment Details (Egypt Clients):
 Instapay Information:
 - Account Name: Fouad Nasseredin
 - Instapay Account: admireworks@instapay
 
-Please confirm the selected option and share transfer receipt to schedule kickoff.
+Kindly share the transfer receipt and selected option to schedule kickoff.
 
 All the best,
 Operations Coordinator

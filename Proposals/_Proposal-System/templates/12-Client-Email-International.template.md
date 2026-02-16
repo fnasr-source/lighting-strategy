@@ -1,33 +1,21 @@
 # Client Email Template (International)
 
 Subject:
-Proposal {{PROPOSAL_NUMBER}} | Two Fixed Options + Kickoff
+Proposal {{PROPOSAL_NUMBER}} | Ready to Start
 
 Body:
 Dear {{CLIENT_NAME}},
 
-Greetings. We hope this message finds you well.
+Please find your one-page proposal here:
+{{ONE_PAGER_URL}}
 
-Please find the finalized proposal package below.
+Proposal Number: {{PROPOSAL_NUMBER}}
+Valid Until: {{VALID_UNTIL}}
 
-Proposal Number:
-{{PROPOSAL_NUMBER}}
-
-Commercial Options:
-1. Option 1 - {{OPTION_1_SUMMARY}}
-2. Option 2 - {{OPTION_2_SUMMARY}}
-
-Strategy is included in both options.
-
-Proposal Links:
-- Presentation: {{PRESENTATION_URL}}
-- One-page Proposal: {{ONE_PAGER_URL}}
-
-Payment:
-Please use this payment link for setup and monthly fees:
+To proceed, please use this payment link:
 {{PAYMENT_LINK}}
 
-Please confirm the selected option and transfer completion to schedule kickoff.
+Kindly share payment confirmation and selected option to schedule kickoff.
 
 All the best,
 Operations Coordinator

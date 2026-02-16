@@ -8,124 +8,76 @@
 
 ## Executive Offer
 
-We are offering one unified execution scope (12-week Launchpad sprint, 15 deliverables) with **two commercial options**:
+Based on the February 16 meeting, we are moving forward with **two fixed non-partnership options only**.
 
-1. **Option A: Partnership Model (With Sharing)**
-2. **Option B/C: Fixed Models (No Sharing)**
-
-Both options include the same build and launch scope. The difference is only in the commercial structure.
+Both options include strategy. The difference is the level of ongoing management and channel execution.
 
 ---
 
-## Scope (Included in Both Options)
+## Scope Foundation (Included in Both Options)
 
-### Phase 1 (Weeks 1-4): Foundation
-- Brand identity and positioning
-- Quiz funnel logic and UX flow
-- Supplier vetting
-- Content plan and ad account setup
+### Phase 1: Strategy and Positioning
+- Segment focus: mosque and project chandelier buyers
+- ICP mapping and messaging architecture
+- Funnel and offer structure
 
-### Phase 2 (Weeks 5-8): Build
-- Website and quiz implementation
-- Room visualizer MVP
-- Payment integrations
-- CRM and consultation flow setup
+### Phase 2: Build and Launch Foundation
+- Website/funnel pages
+- Lead capture and routing logic
+- Tracking and reporting baseline
 
-### Phase 3 (Weeks 9-12): Launch
-- Performance campaign launch
-- Projects KSA landing page (EN/AR)
-- B2B outreach setup
-- KPI dashboard and reporting loop
+### Phase 3: Pipeline Activation
+- Lead qualification flow
+- Follow-up workflow framework
+- Performance visibility by channel
 
 ---
 
-## Option A: Partnership Model (With Sharing)
+## Option 1: Fixed Build + Monthly Support
 
-### Commercial Terms
-- **Phase 1 (Months 1-3):**
-  - Setup Fee: **32,000 EGP** (one-time)
-  - Management Fee: **8,000 EGP/month**
-  - Ad Testing Budget: **10,000 EGP/month** (directly billed to client)
+### Commercial
+- **Setup:** 45,000 EGP (one-time)
+- **Monthly:** 7,500 EGP/month
 
-- **Phase 2 (Months 4-6):**
-  - Management Fee: **8,000 EGP/month**
-  - Operating Budget: **15,000 EGP/month**
-  - Equity Activation: **15% to Admireworks** (after Phase 1 milestones)
+### Includes
+- Strategy + funnel build + launch handover
+- Monthly platform updates and adjustments
+- KPI reporting and basic optimization inputs
 
-- **Phase 3 (Month 7+):**
-  - Profit Split: **85% Client / 15% Admireworks**
-  - No management fee
-
-### Governance
-- 12-month minimum partnership
-- Buyout option after Year 1 at fair market value
+### Does Not Include
+- Active media buying management
+- Full performance management across channels
 
 ---
 
-## Option B/C: Fixed Models (No Sharing)
+## Option 2: Managed Growth + Media Buying Management (Higher Option)
 
-### Commercial Terms
-- **Option B - Fixed Build (No Sharing):**
-  - **45,000 EGP** (one-time)
-  - Includes strategy/build/launch package (funnel logic, landing page, lead form, thank-you routing, tracking setup)
-  - Optional continuity: **7,500 EGP/month** for minor updates and A/B setup
+### Commercial
+- **Setup:** 35,000 EGP (one-time)
+- **Monthly:** 17,500 EGP/month (minimum 3 months)
 
-- **Option C - Fixed Optimize (No Sharing):**
-  - Setup Fee: **35,000 EGP** (one-time)
-  - Execution Retainer: **17,500 EGP/month** (minimum 3 months)
-  - Includes ongoing optimization, monthly review, and tracking refinement
-  - Initial payment includes setup fee + Month 1 retainer
-  - Ad spend is directly billed to client ad accounts
+### Includes
+- Everything in Option 1
+- Active media buying management (execution and optimization)
+- Performance management for acquisition channels
+- Google Ads management and optimization
+- Apollo-based lead sourcing workflows
+- Email/WhatsApp follow-up flow management
+- Weekly management cadence and monthly channel review
 
-### Governance
-- No equity transfer
-- No profit-sharing
-- Client retains 100% ownership and net profits
-- Minimum 3-month term applies to Option C
+### Notes
+- Ad spend is billed directly to client ad accounts.
+- No equity transfer. No revenue sharing.
 
 ---
 
-## Research Basis (Already Completed)
+## Meeting-Based Acquisition Baseline
 
-This offer is based on:
-- `02-Research-Report.md`
-- `03-Competitor-Scan.md`
-- `04-Options-and-Recommendation.md`
-- `08-Appendix-Sources.md`
-
-Core thesis: win by selling **confidence and guided decision-making** (Lighting Stylist), then expand through **Projects KSA**.
-
----
-
-## Meeting Update (February 16, 2026)
-
-The latest meeting clarified the operating model:
-- Primary segment focus: mosque/project chandelier buyers (high-intent, project-led demand)
-- Priority: cost-effective acquisition and measurable ROI, not broad awareness traffic
-- Commercial preference: fixed non-partnership structure is important to keep available
-
----
-
-## Recommendation (Current)
-
-Recommended to start now: **Option C (Fixed Optimize, No Sharing)**.
-
-Why this is recommended for this case:
-- It matches the request for active channel management and optimization (not build-only handover).
-- It preserves full ownership (no equity transfer, no profit sharing).
-- It gives a practical 3-month runway to validate acquisition economics before scaling.
-
-Fallback paths:
-- Choose **Option A** if you want aligned upside with lower fixed monthly cost.
-- Choose **Option B** if you want one-time fixed delivery with no ongoing management.
-
----
-
-## Baseline 90-Day Execution
-
-1. **Weeks 1-2:** ICP and segment mapping, value proposition, keyword and outreach architecture, tracking setup.
-2. **Weeks 3-6:** Launch high-intent search + direct outreach + lead routing and follow-up flows.
-3. **Weeks 7-12:** Optimize by channel performance, improve qualification, accelerate quote pipeline.
+From the latest discussion, initial channel mix will be built around:
+1. Apollo lead extraction and targeted outreach
+2. Google Ads for high-intent demand capture
+3. Structured follow-up via email/WhatsApp
+4. Channel-level tracking for ROI and budget decisions
 
 Core KPIs:
 - Qualified leads by channel
@@ -136,8 +88,17 @@ Core KPIs:
 
 ---
 
-## Next Steps (Start-Ready)
+## Recommendation
 
-1. Confirm **Option C** (or choose Option A/B if preferred).
+For immediate start, recommended: **Option 2**.
+
+Reason: it matches the stated need for active management, media buying execution, and ROI-focused optimization.
+
+---
+
+## Next Steps
+
+1. Confirm Option 1 or Option 2.
 2. Process initial payment based on selected option.
-3. Schedule kickoff and begin Week 1 execution.
+3. Schedule kickoff and start execution.
+

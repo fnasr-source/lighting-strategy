@@ -1,37 +1,44 @@
-# Recommended Follow-Up Email (Ready To Send)
+# Recommended Follow-Up Email (Operations Coordinator)
 
 ## Subject
-Updated Proposal + Recommended Start Option (Option C)
+Updated Proposal + Two Fixed Options + Start Recommendation
+
+## Email Header
+- From: Operations Coordinator (Admireworks)
+- To: Mahmoud
+- CC: Fouad Nasseredin
 
 ## Email Body
 Hi Mahmoud,
 
 Thank you for today’s meeting.
 
-Based on our discussion, we updated the proposal to match your exact priorities:
-- Focus on mosque/project chandelier segment (not broad consumer traffic)
-- Cost-effective acquisition model with clear ROI tracking
-- Fixed non-partnership options clearly separated
+As discussed, we updated the proposal based on your exact direction:
+- Two fixed options only (no revenue sharing)
+- Strategy is included in both options
+- Higher option includes full management and media buying management
+- Channel plan aligned to ROI and project-buyer targeting
 
-### Recommended start for your case
-We recommend **Option C (Fixed Optimize, No Sharing)**:
-- **35,000 EGP** setup (one-time)
+### Option 1 - Fixed Build + Monthly Support
+- **45,000 EGP** setup
+- **7,500 EGP/month** support
+- Includes strategy, funnel/build setup, and monthly updates
+
+### Option 2 - Managed Growth + Media Buying (Higher Option)
+- **35,000 EGP** setup
 - **17,500 EGP/month** (minimum 3 months)
-- Includes channel execution and optimization (not just build)
-- You keep 100% ownership, with no equity/profit sharing
+- Includes everything in Option 1 plus Google Ads management, Apollo-based lead workflows, follow-up management, and weekly optimization/reporting
 
-### Why this is the best starting point
-- You asked for a practical system that drives qualified opportunities, not only a website/funnel handover.
-- This model gives enough time to test channels and optimize based on data.
+### Recommended start
+We recommend **Option 2** so we can actively manage acquisition channels and optimize ROI from the start.
 
-### 90-day baseline
-- Week 1-2: positioning, ICP mapping, offer architecture, tracking foundation
-- Week 3-6: launch search + outbound acquisition and lead capture flow
-- Week 7-12: optimization, channel reallocation, quote pipeline acceleration
+### Proposal Links
+- Presentation: https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Proposals/Lighting-Business-Mahmoud/11-Final-Presentation.html
+- One-page proposal: https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Proposals/Lighting-Business-Mahmoud/10-One-Page-Proposal.html
 
-If you approve, we can schedule kickoff immediately and start implementation.
+If approved, we can schedule kickoff immediately and start execution.
 
-Best,
-Fouad
+Best regards,  
+Operations Coordinator  
 Admireworks
 

@@ -64,6 +64,12 @@ function asPosix(relPath) {
   return relPath.split(path.sep).join('/');
 }
 
+function normalizeBaseUrl(input) {
+  const trimmed = String(input || '').trim();
+  if (!trimmed) return '';
+  return trimmed.endsWith('/') ? trimmed : `${trimmed}/`;
+}
+
 function safeReadJson(filePath, fallback) {
   if (!fs.existsSync(filePath)) return fallback;
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -88,15 +94,16 @@ function fileExists(root, relPath) {
   return fs.existsSync(path.join(root, relPath));
 }
 
-function buildUrls(repoSlug) {
-  const baseBlob = `https://github.com/${repoSlug}/blob/main/`;
-  const baseRaw = `https://raw.githubusercontent.com/${repoSlug}/main/`;
-  const baseGithack = `https://raw.githack.com/${repoSlug}/main/`;
+function buildUrls(repoSlug, siteBaseInput) {
+  const siteBase = normalizeBaseUrl(siteBaseInput || process.env.SITE_BASE || 'https://ops.admireworks.com');
+  const baseBlob = siteBase;
+  const baseRaw = siteBase;
+  const basePreview = siteBase;
 
   return {
     blob: (relPath) => `${baseBlob}${encodeURI(asPosix(relPath))}`,
     raw: (relPath) => `${baseRaw}${encodeURI(asPosix(relPath))}`,
-    preview: (relPath) => `${baseGithack}${encodeURI(asPosix(relPath))}`
+    preview: (relPath) => `${basePreview}${encodeURI(asPosix(relPath))}`
   };
 }
 
@@ -416,6 +423,7 @@ function main() {
   const args = parseArgs(process.argv);
   const root = path.resolve(args.root || process.cwd());
   const repoSlug = String(args['repo-slug'] || process.env.REPO_SLUG || 'fnasr-source/admireworks-internal-os');
+  const siteBase = String(args['site-base'] || process.env.SITE_BASE || 'https://ops.admireworks.com');
 
   const registryPath = path.join(root, 'Proposals', '_Proposal-System', 'proposal-registry.csv');
   const crmPath = path.join(root, 'Proposals', '_Proposal-System', 'proposal-crm.csv');
@@ -430,7 +438,7 @@ function main() {
     if (row.proposal_number) crmMap.set(row.proposal_number, row);
   });
 
-  const urls = buildUrls(repoSlug);
+  const urls = buildUrls(repoSlug, siteBase);
 
   const registryRecords = registry.map((row) => {
     const crm = crmMap.get(row.proposal_number) || {};

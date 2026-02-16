@@ -96,6 +96,7 @@ function main() {
   const publishPresentation = String(args['publish-presentation'] || 'false') === 'true';
   const skipHubBuild = String(args['skip-hub-build'] || 'false') === 'true';
   const repoSlug = String(args['repo-slug'] || process.env.REPO_SLUG || 'fnasr-source/admireworks-internal-os');
+  const siteBase = String(args['site-base'] || process.env.SITE_BASE || 'https://ops.admireworks.com');
 
   const [yearStr, monthStr, dayStr] = sendDate.split('-');
   const month = Number(monthStr);
@@ -201,7 +202,7 @@ function main() {
       if (!fs.existsSync(scriptPath)) return;
       const run = childProcess.spawnSync(
         'node',
-        [scriptPath, '--root', root, '--repo-slug', repoSlug],
+        [scriptPath, '--root', root, '--repo-slug', repoSlug, '--site-base', siteBase],
         { stdio: 'inherit' }
       );
       if (run.status !== 0) {
@@ -221,7 +222,8 @@ function main() {
     client_email: contactEmail,
     client_phone: contactPhone,
     hub_build_skipped: skipHubBuild,
-    repo_slug: repoSlug
+    repo_slug: repoSlug,
+    site_base: siteBase
   };
 
   console.log(JSON.stringify(result, null, 2));

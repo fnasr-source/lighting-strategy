@@ -38,6 +38,12 @@ function asPosix(relPath) {
   return relPath.split(path.sep).join('/');
 }
 
+function normalizeBaseUrl(input) {
+  const trimmed = String(input || '').trim();
+  if (!trimmed) return '';
+  return trimmed.endsWith('/') ? trimmed : `${trimmed}/`;
+}
+
 function escapeHtml(input) {
   return String(input || '')
     .replace(/&/g, '&amp;')
@@ -47,12 +53,13 @@ function escapeHtml(input) {
     .replace(/'/g, '&#39;');
 }
 
-function buildUrls(repoSlug) {
-  const raw = `https://raw.githubusercontent.com/${repoSlug}/main/`;
-  const blob = `https://github.com/${repoSlug}/blob/main/`;
-  const githack = `https://raw.githack.com/${repoSlug}/main/`;
+function buildUrls(repoSlug, siteBaseInput) {
+  const siteBase = normalizeBaseUrl(siteBaseInput || process.env.SITE_BASE || 'https://ops.admireworks.com');
+  const raw = siteBase;
+  const blob = siteBase;
+  const preview = siteBase;
   return {
-    preview: (relPath) => `${githack}${encodeURI(asPosix(relPath))}`,
+    preview: (relPath) => `${preview}${encodeURI(asPosix(relPath))}`,
     blob: (relPath) => `${blob}${encodeURI(asPosix(relPath))}`
   };
 }
@@ -193,7 +200,8 @@ function main() {
   const args = parseArgs(process.argv);
   const root = path.resolve(args.root || process.cwd());
   const repoSlug = String(args['repo-slug'] || process.env.REPO_SLUG || 'fnasr-source/admireworks-internal-os');
-  const urls = buildUrls(repoSlug);
+  const siteBase = String(args['site-base'] || process.env.SITE_BASE || 'https://ops.admireworks.com');
+  const urls = buildUrls(repoSlug, siteBase);
 
   const strategyRoot = path.join(root, 'Strategies');
   const files = walkFiles(strategyRoot, root)

@@ -8,7 +8,7 @@ Dear Mr. Mahmoud Selim,
 Greetings. We hope you are doing well.
 
 Please find your one-page proposal at the link below:
-👉 [View Proposal](https://raw.githack.com/fnasr-source/admireworks-internal-os/main/Proposals/_Outgoing/AWP-EG-0MKC-SLK/one-page.html)
+👉 [View Proposal](https://ops.admireworks.com/Proposals/_Outgoing/AWP-EG-0MKC-SLK/one-page.html)
 
 Proposal Number: AWP-EG-0MKC-SLK  
 Valid Until: February 23, 2026

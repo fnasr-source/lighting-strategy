@@ -38,6 +38,12 @@ function asPosix(relPath) {
   return relPath.split(path.sep).join('/');
 }
 
+function normalizeBaseUrl(input) {
+  const trimmed = String(input || '').trim();
+  if (!trimmed) return '';
+  return trimmed.endsWith('/') ? trimmed : `${trimmed}/`;
+}
+
 function escapeHtml(input) {
   return String(input || '')
     .replace(/&/g, '&amp;')
@@ -62,12 +68,13 @@ function walkFiles(dir, out = []) {
   return out;
 }
 
-function buildUrls(repoSlug) {
-  const baseRaw = `https://raw.githubusercontent.com/${repoSlug}/main/`;
-  const baseBlob = `https://github.com/${repoSlug}/blob/main/`;
-  const baseGithack = `https://raw.githack.com/${repoSlug}/main/`;
+function buildUrls(repoSlug, siteBaseInput) {
+  const siteBase = normalizeBaseUrl(siteBaseInput || process.env.SITE_BASE || 'https://ops.admireworks.com');
+  const baseRaw = siteBase;
+  const baseBlob = siteBase;
+  const basePreview = siteBase;
   return {
-    preview: (relPath) => `${baseGithack}${encodeURI(asPosix(relPath))}`,
+    preview: (relPath) => `${basePreview}${encodeURI(asPosix(relPath))}`,
     blob: (relPath) => `${baseBlob}${encodeURI(asPosix(relPath))}`
   };
 }
@@ -323,7 +330,8 @@ function main() {
   const args = parseArgs(process.argv);
   const root = path.resolve(args.root || process.cwd());
   const repoSlug = String(args['repo-slug'] || process.env.REPO_SLUG || 'fnasr-source/admireworks-internal-os');
-  const urls = buildUrls(repoSlug);
+  const siteBase = String(args['site-base'] || process.env.SITE_BASE || 'https://ops.admireworks.com');
+  const urls = buildUrls(repoSlug, siteBase);
 
   const registry = parseCsvSimple(path.join(root, 'Proposals', '_Proposal-System', 'proposal-registry.csv'));
   const legacyPath = path.join(root, 'Proposals', '_Proposal-System', 'legacy-proposals.json');
@@ -363,7 +371,7 @@ function main() {
       workflow_checklist: urls.blob('Proposals/_Proposal-System/WORKFLOW-CHECKLIST.md'),
       payment_rules: urls.blob('Proposals/_Proposal-System/PAYMENT-RULES.md'),
       link_standards: urls.blob('Proposals/_Proposal-System/LINK-STANDARDS.md'),
-      strategies_root: urls.blob('Strategies'),
+      strategies_root: urls.preview('Internal-OS/strategies/index.html'),
       link_map: urls.blob('Internal-OS/system/link-map.json')
     }
   };

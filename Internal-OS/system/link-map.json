@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-02-16T13:28:47.518Z",
+  "generated_at": "2026-02-16T15:53:04.049Z",
   "repo_slug": "fnasr-source/admireworks-internal-os",
   "links": {
-    "internal_home": "https://raw.githack.com/fnasr-source/admireworks-internal-os/main/Internal-OS/index.html",
-    "proposals_hub": "https://raw.githack.com/fnasr-source/admireworks-internal-os/main/Proposals/_Outgoing/_internal-crm/index.html",
-    "proposals_hub_mirror": "https://raw.githack.com/fnasr-source/admireworks-internal-os/main/Internal-OS/proposals/index.html",
-    "strategies_hub": "https://raw.githack.com/fnasr-source/admireworks-internal-os/main/Internal-OS/strategies/index.html",
-    "system_manual": "https://raw.githack.com/fnasr-source/admireworks-internal-os/main/Internal-OS/system/index.html",
-    "system_manual_md": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Internal-OS/system/INDEX.md",
-    "proposal_registry": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Proposals/_Proposal-System/proposal-registry.csv",
-    "proposal_crm": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Proposals/_Proposal-System/proposal-crm.csv",
-    "numbering_system": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Proposals/_Proposal-System/NUMBERING-SYSTEM.md",
-    "workflow_checklist": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Proposals/_Proposal-System/WORKFLOW-CHECKLIST.md",
-    "payment_rules": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Proposals/_Proposal-System/PAYMENT-RULES.md",
-    "link_standards": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Proposals/_Proposal-System/LINK-STANDARDS.md",
-    "strategies_root": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Strategies",
-    "link_map": "https://github.com/fnasr-source/admireworks-internal-os/blob/main/Internal-OS/system/link-map.json"
+    "internal_home": "https://ops.admireworks.com/Internal-OS/index.html",
+    "proposals_hub": "https://ops.admireworks.com/Proposals/_Outgoing/_internal-crm/index.html",
+    "proposals_hub_mirror": "https://ops.admireworks.com/Internal-OS/proposals/index.html",
+    "strategies_hub": "https://ops.admireworks.com/Internal-OS/strategies/index.html",
+    "system_manual": "https://ops.admireworks.com/Internal-OS/system/index.html",
+    "system_manual_md": "https://ops.admireworks.com/Internal-OS/system/INDEX.md",
+    "proposal_registry": "https://ops.admireworks.com/Proposals/_Proposal-System/proposal-registry.csv",
+    "proposal_crm": "https://ops.admireworks.com/Proposals/_Proposal-System/proposal-crm.csv",
+    "numbering_system": "https://ops.admireworks.com/Proposals/_Proposal-System/NUMBERING-SYSTEM.md",
+    "workflow_checklist": "https://ops.admireworks.com/Proposals/_Proposal-System/WORKFLOW-CHECKLIST.md",
+    "payment_rules": "https://ops.admireworks.com/Proposals/_Proposal-System/PAYMENT-RULES.md",
+    "link_standards": "https://ops.admireworks.com/Proposals/_Proposal-System/LINK-STANDARDS.md",
+    "strategies_root": "https://ops.admireworks.com/Internal-OS/strategies/index.html",
+    "link_map": "https://ops.admireworks.com/Internal-OS/system/link-map.json"
   }
 }

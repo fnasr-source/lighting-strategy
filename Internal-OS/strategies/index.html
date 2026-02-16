@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Strategies Hub</title>
+  <style>
+    :root {
+      --navy: #0e1f4f;
+      --blue: #2947a8;
+      --bg: #f4f6fb;
+      --card: #fff;
+      --line: #dfe5f2;
+      --text: #1d2638;
+      --muted: #62718f;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 18px; background: var(--bg); font-family: "Akkurat Pro", "Helvetica Neue", Arial, sans-serif; color: var(--text); }
+    .wrap { max-width: 1140px; margin: 0 auto; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .hero { padding: 22px; color: #fff; background: linear-gradient(135deg, var(--navy), var(--blue)); }
+    .hero h1 { margin: 0 0 6px; font-size: 1.5rem; }
+    .hero p { margin: 2px 0; font-size: 0.92rem; opacity: 0.92; }
+    .controls { padding: 14px 22px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 2fr 1fr; gap: 8px; background: #fafcff; }
+    input, select { border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font-size: 0.9rem; }
+    .list { padding: 14px 22px 20px; }
+    .row { border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 10px; background: #fff; display: grid; grid-template-columns: 1.1fr 0.9fr 0.55fr auto; gap: 10px; align-items: center; }
+    .file { font-size: 0.92rem; font-weight: 600; }
+    .path { font-size: 0.8rem; color: var(--muted); word-break: break-word; }
+    .cat { font-size: 0.78rem; padding: 4px 8px; border-radius: 999px; background: #edf2ff; border: 1px solid #cfdbff; color: #26479a; width: fit-content; }
+    .open a { color: #20429f; text-decoration: none; font-size: 0.85rem; border: 1px solid #d9e3ff; background: #f3f7ff; padding: 6px 9px; border-radius: 8px; }
+    .empty { text-align: center; padding: 18px; color: var(--muted); }
+    .footer { border-top: 1px solid var(--line); padding: 10px 22px; color: var(--muted); font-size: 0.8rem; }
+    @media (max-width: 900px) {
+      .controls { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; }
+      body { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Admireworks Strategies Hub</h1>
+      <p>Cross-device directory for strategy playbooks and client strategy files.</p>
+      <p>Generated: 2026-02-16T11:48:05.403Z | Repo: fnasr-source/lighting-strategy</p>
+    </div>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search by file name or path" />
+      <select id="category">
+        <option value="">All Categories</option>
+      </select>
+    </div>
+    <div class="list" id="list"></div>
+    <div class="empty" id="empty" style="display:none;">No files match the selected filters.</div>
+    <div class="footer">Internal use only</div>
+  </div>
+  <script id="strategy-data" type="application/json">[{&quot;name&quot;:&quot;Admireworks-Agency_Guidelines V1 - 2022.pdf&quot;,&quot;path&quot;:&quot;Strategies/Admireworks-Agency_Guidelines V1 - 2022.pdf&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;PDF Reports&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/Admireworks-Agency_Guidelines%20V1%20-%202022.pdf&quot;},{&quot;name&quot;:&quot;phase2-image-prompts.md&quot;,&quot;path&quot;:&quot;Strategies/Client Strategies/The Slim Game - strategy draft/phase2-image-prompts.md&quot;,&quot;group&quot;:&quot;Strategies/Client Strategies/The Slim Game - strategy draft&quot;,&quot;category&quot;:&quot;Playbooks&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/Client%20Strategies/The%20Slim%20Game%20-%20strategy%20draft/phase2-image-prompts.md&quot;},{&quot;name&quot;:&quot;index.html&quot;,&quot;path&quot;:&quot;Strategies/Client Strategies/The Slim Game - strategy draft/presentation/index.html&quot;,&quot;group&quot;:&quot;Strategies/Client Strategies/The Slim Game - strategy draft/presentation&quot;,&quot;category&quot;:&quot;Interactive HTML&quot;,&quot;url&quot;:&quot;https://htmlpreview.github.io/?https://raw.githubusercontent.com/fnasr-source/lighting-strategy/main/Strategies/Client%20Strategies/The%20Slim%20Game%20-%20strategy%20draft/presentation/index.html&quot;},{&quot;name&quot;:&quot;Direct Response Strategy Framework Playbook.md&quot;,&quot;path&quot;:&quot;Strategies/Direct Response Strategy Framework Playbook.md&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;Playbooks&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/Direct%20Response%20Strategy%20Framework%20Playbook.md&quot;},{&quot;name&quot;:&quot;Edrak Strategy .pdf&quot;,&quot;path&quot;:&quot;Strategies/Edrak Strategy .pdf&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;PDF Reports&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/Edrak%20Strategy%20.pdf&quot;},{&quot;name&quot;:&quot;QYD Strategy .pdf&quot;,&quot;path&quot;:&quot;Strategies/QYD Strategy .pdf&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;PDF Reports&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/QYD%20Strategy%20.pdf&quot;},{&quot;name&quot;:&quot;INSTRUCTIONS.md&quot;,&quot;path&quot;:&quot;Strategies/strategy-kit/INSTRUCTIONS.md&quot;,&quot;group&quot;:&quot;Strategies/strategy-kit&quot;,&quot;category&quot;:&quot;Playbooks&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/strategy-kit/INSTRUCTIONS.md&quot;},{&quot;name&quot;:&quot;STRATEGY-SYSTEM.md&quot;,&quot;path&quot;:&quot;Strategies/strategy-kit/STRATEGY-SYSTEM.md&quot;,&quot;group&quot;:&quot;Strategies/strategy-kit&quot;,&quot;category&quot;:&quot;Playbooks&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/strategy-kit/STRATEGY-SYSTEM.md&quot;},{&quot;name&quot;:&quot;STRATEGY-SYSTEM.md&quot;,&quot;path&quot;:&quot;Strategies/STRATEGY-SYSTEM.md&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;Playbooks&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/STRATEGY-SYSTEM.md&quot;},{&quot;name&quot;:&quot;V4.0 The Accounter Direct Response Marketing Strategy.pdf&quot;,&quot;path&quot;:&quot;Strategies/V4.0 The Accounter Direct Response Marketing Strategy.pdf&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;PDF Reports&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/V4.0%20The%20Accounter%20Direct%20Response%20Marketing%20Strategy.pdf&quot;},{&quot;name&quot;:&quot;Zambalita Fit- Direct Response Marketing Strategy - Q4 2024.pdf&quot;,&quot;path&quot;:&quot;Strategies/Zambalita Fit- Direct Response Marketing Strategy - Q4 2024.pdf&quot;,&quot;group&quot;:&quot;Strategies&quot;,&quot;category&quot;:&quot;PDF Reports&quot;,&quot;url&quot;:&quot;https://github.com/fnasr-source/lighting-strategy/blob/main/Strategies/Zambalita%20Fit-%20Direct%20Response%20Marketing%20Strategy%20-%20Q4%202024.pdf&quot;}]</script>
+  <script>
+    const rows = JSON.parse(document.getElementById('strategy-data').textContent);
+    const listEl = document.getElementById('list');
+    const emptyEl = document.getElementById('empty');
+    const searchEl = document.getElementById('search');
+    const categoryEl = document.getElementById('category');
+
+    function populateCategories() {
+      const set = new Set(rows.map((r) => r.category));
+      [...set].sort().forEach((cat) => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        categoryEl.appendChild(opt);
+      });
+    }
+
+    function render(items) {
+      listEl.innerHTML = '';
+      if (!items.length) {
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      items.forEach((item) => {
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.innerHTML =
+          '<div><div class="file">' + item.name + '</div><div class="path">' + item.path + '</div></div>' +
+          '<div>' + item.group + '</div>' +
+          '<div><span class="cat">' + item.category + '</span></div>' +
+          '<div class="open"><a href="' + item.url + '" target="_blank" rel="noopener noreferrer">Open</a></div>';
+        listEl.appendChild(row);
+      });
+    }
+
+    function apply() {
+      const q = searchEl.value.toLowerCase().trim();
+      const cat = categoryEl.value;
+      const filtered = rows.filter((r) => {
+        if (q && !(r.name + ' ' + r.path).toLowerCase().includes(q)) return false;
+        if (cat && r.category !== cat) return false;
+        return true;
+      });
+      render(filtered);
+    }
+
+    populateCategories();
+    render(rows);
+    searchEl.addEventListener('input', apply);
+    categoryEl.addEventListener('change', apply);
+  </script>
+</body>
+</html>

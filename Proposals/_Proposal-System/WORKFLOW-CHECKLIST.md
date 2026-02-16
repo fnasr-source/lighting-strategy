@@ -1,22 +1,34 @@
 # Proposal Workflow Checklist
 
 1. Create/update the client package under `Proposals/{Client-Folder}`.
-2. Run proposal registration script to generate public ID and publish outgoing one-page URL.
-3. Capture and store client contact details (email + phone) in the registry and package index.
-4. Update package files with generated proposal number:
-   - `00-Proposal-Index.md`
-   - `06-Offer-and-Proposal.md`
-   - `10-One-Page-Proposal.html`
-   - client email in `communications/`
-5. Add validity period (default: 7 days from sending date).
+2. Prepare one-page and proposal docs (`06`, `10`, `00` index).
+3. Run `create_proposal_record.js` to generate number and publish outgoing one-page.
+4. Confirm registry entry in `proposal-registry.csv`.
+5. Confirm CRM entry in `proposal-crm.csv` (pipeline stage, next action, owner).
 6. Confirm payment section by region in both proposal and email:
-   - Egypt: Instapay account details + Instapay payment URL (include subtle footer section in one-page proposal)
-   - International: payment link (include subtle note in one-page proposal)
-7. Keep client email short, with one-page proposal link and payment details.
-8. Write emails in normal sender-to-recipient format (greeting, clear CTA, concise close), not internal note format.
-9. Format email links as action hyperlinks:
+   - Egypt: Instapay account details + Instapay payment URL
+   - International: payment link
+7. Confirm validity period (default 7 days from send date).
+8. Confirm client email format:
+   - normal sender-to-recipient style
+   - short CTA format
+   - action links as hyperlinks
+9. Confirm required action links:
    - `👉 [View Proposal](URL)`
-   - `👉 [Open Payment Link](URL)` when needed.
-10. Use email subject format: `{Agency Name} x {Project/Business Name}`.
-11. Use outgoing URL format: `Proposals/_Outgoing/{PROPOSAL_NUMBER}/one-page.html`.
-12. Push and share final outgoing URL.
+   - `👉 [Pay via Instapay](URL)` for Egypt
+   - `👉 [Open Payment Link](URL)` for international
+10. Confirm email subject format: `{Agency Name} x {Project/Business Name}`.
+11. Confirm internal dashboards refreshed:
+   - `Proposals/_Outgoing/_internal-crm/index.html`
+   - `Internal-OS/proposals/index.html`
+   - `Internal-OS/index.html`
+12. Run link validation:
+   - `node Proposals/_Proposal-System/scripts/validate_internal_links.js --root "..."`
+13. Push and share final links.
+
+## Legacy Intake (Historical Proposals)
+
+1. Add record in `legacy-proposals.json`.
+2. Include direct links to available assets.
+3. Rebuild dashboards.
+4. Validate links.

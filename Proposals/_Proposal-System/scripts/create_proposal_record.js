@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const childProcess = require('child_process');
 
 function parseArgs(argv) {
   const args = {};
@@ -93,6 +94,8 @@ function main() {
   const status = String(args.status || 'DRAFT');
   const recommended = String(args['recommended-option'] || '');
   const publishPresentation = String(args['publish-presentation'] || 'false') === 'true';
+  const skipHubBuild = String(args['skip-hub-build'] || 'false') === 'true';
+  const repoSlug = String(args['repo-slug'] || process.env.REPO_SLUG || 'fnasr-source/lighting-strategy');
 
   const [yearStr, monthStr, dayStr] = sendDate.split('-');
   const month = Number(monthStr);
@@ -187,6 +190,27 @@ function main() {
 
   writeCsv(registryPath, header, rows);
 
+  if (!skipHubBuild) {
+    const scripts = [
+      path.join(root, 'Proposals', '_Proposal-System', 'scripts', 'build_proposals_hub.js'),
+      path.join(root, 'Proposals', '_Proposal-System', 'scripts', 'build_strategies_hub.js'),
+      path.join(root, 'Proposals', '_Proposal-System', 'scripts', 'build_internal_home.js')
+    ];
+
+    scripts.forEach((scriptPath) => {
+      if (!fs.existsSync(scriptPath)) return;
+      const run = childProcess.spawnSync(
+        'node',
+        [scriptPath, '--root', root, '--repo-slug', repoSlug],
+        { stdio: 'inherit' }
+      );
+      if (run.status !== 0) {
+        console.error(`Failed while running ${scriptPath}`);
+        process.exit(run.status || 1);
+      }
+    });
+  }
+
   const result = {
     proposal_number: proposalNumber,
     outgoing_folder: outgoingFolder,
@@ -195,7 +219,9 @@ function main() {
     send_date: sendDate,
     daily_sequence: dailySequence,
     client_email: contactEmail,
-    client_phone: contactPhone
+    client_phone: contactPhone,
+    hub_build_skipped: skipHubBuild,
+    repo_slug: repoSlug
   };
 
   console.log(JSON.stringify(result, null, 2));

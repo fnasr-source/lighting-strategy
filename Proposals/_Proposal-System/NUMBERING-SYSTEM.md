@@ -1,34 +1,36 @@
 # Proposal Numbering System
 
 ## Objective
-Create proposal IDs that are short, professional, and not easily enumerable from outside.
+
+Create proposal IDs that are short, professional, and non-obvious externally.
 
 ## Public Proposal Number Format
+
 - `AWP-{COUNTRY}-{TOKEN}-{NONCE}`
 
 Example:
+
 - `AWP-EG-0MKC-SLK`
 
-## What Each Part Means
+## Component Meaning
+
 - `AWP`: Admireworks Proposal prefix
 - `COUNTRY`: two-letter country code (`EG`, `SA`, `AE`, ...)
-- `TOKEN`: 4-character obfuscated token derived from:
-  - month
-  - day
-  - daily sequence
-- `NONCE`: 3-character random code to prevent predictable guessing
+- `TOKEN`: 4-character obfuscated token derived from month/day/daily sequence
+- `NONCE`: 3-character random code to reduce predictability
 
-## Why This Is Better
-- The ID still includes month/day/sequence at generation time.
-- External viewers cannot easily infer date/order from the visible number.
-- The extra nonce blocks straightforward enumeration.
-- IDs remain short enough for email and URL sharing.
+## Why This Works
 
-## Source Of Truth
-Registry file:
+- Sequence/date are used at generation time without being obvious externally.
+- IDs remain short and shareable.
+- External guessing risk is reduced.
+
+## Source of Truth
+
 - `proposal-registry.csv`
 
 ## Generation Command
+
 ```bash
 node Proposals/_Proposal-System/scripts/create_proposal_record.js \
   --root "/Users/user/Documents/IDE Projects/Internal AW SOP" \
@@ -43,10 +45,15 @@ node Proposals/_Proposal-System/scripts/create_proposal_record.js \
   --recommended-option "Option 2"
 ```
 
-This command:
-1. Generates a new public proposal number
-2. Registers it in `proposal-registry.csv`
-3. Publishes one-page proposal in `Proposals/_Outgoing/{PROPOSAL_NUMBER}/`
+## Command Effects
 
-Optional:
-- Add `--publish-presentation true` only when a public presentation URL is needed.
+1. Generates a new public proposal number.
+2. Appends entry to `proposal-registry.csv`.
+3. Publishes one-page proposal in `Proposals/_Outgoing/{PROPOSAL_NUMBER}/`.
+4. Rebuilds internal dashboards by default.
+
+## Optional Flags
+
+- `--publish-presentation true`: publish `presentation.html` alongside one-page when needed.
+- `--skip-hub-build true`: skip dashboard rebuilds for emergency/manual runs.
+- `--repo-slug <owner/repo>`: override repo slug used by generated links.

@@ -1,71 +1,80 @@
 # Admireworks Proposal System
 
-Master internal framework for creating, numbering, publishing, and sending proposals.
+Core proposal operations module inside the internal OS.
+
+## Mission
+
+Create, number, publish, track, and follow up proposals in a consistent system with internal CRM visibility.
 
 ## Core Principles
-- Use opaque public proposal IDs (not simple year counters).
-- Keep every client package in a numbered file structure.
-- Keep one source of truth registry for issued proposal IDs.
-- Keep payment and email rules standardized by region.
-- Keep payment details present in both the client email and one-page proposal footer.
-- For Egypt clients, always include the live Instapay payment URL with account details.
-- Keep client contact email and phone stored in the registry and package index.
-- Use action-style hyperlink formatting in client emails.
 
-## Main Documents
+- Use opaque public proposal IDs (no obvious sequence exposure).
+- Keep one source of truth for issued proposals.
+- Keep CRM metadata separate but linked by proposal number.
+- Keep legacy proposals discoverable in the same dashboard.
+- Keep payment and email rules standardized by region.
+- Keep payment details in both proposal and email for Egypt clients.
+
+## Core Files
+
+- `proposal-registry.csv`: issued numbered proposals
+- `proposal-crm.csv`: pipeline/ops metadata keyed by `proposal_number`
+- `legacy-proposals.json`: historical sent proposals outside numbered flow
 - `NUMBERING-SYSTEM.md`
-- `proposal-registry.csv`
-- `PAYMENT-RULES.md`
 - `WORKFLOW-CHECKLIST.md`
+- `PAYMENT-RULES.md`
 - `LINK-STANDARDS.md`
 - `templates/`
 - `scripts/`
 
-## Numbering
-See full spec in:
-- `NUMBERING-SYSTEM.md`
+## Dashboard Outputs
 
-## Required Metadata Per Proposal
-- Proposal number
-- Client name
-- Client email
-- Client phone
-- Send date
-- Valid-until date
-- Outgoing URL path
+- Canonical internal CRM page: `Proposals/_Outgoing/_internal-crm/index.html`
+- Mirror in internal OS: `Internal-OS/proposals/index.html`
 
-## Required Client Package Structure
-- `00-Proposal-Index.md`
-- `01-Transcript-Insights.md`
-- `02-Research-Report.md`
-- `03-Competitor-Scan.md`
-- `04-Options-and-Recommendation.md`
-- `05-Go-To-Market-Plan.md`
-- `06-Offer-and-Proposal.md`
-- `07-Presentation-Deck.md`
-- `08-Appendix-Sources.md`
-- `09-Meeting-Update-YYYY-MM-DD.md`
-- `10-One-Page-Proposal.html`
-- `11-Final-Presentation.html`
-- `communications/`
-- `meetings/`
+## Builder Scripts
 
-## Publishing Path Rule
-Public links should point to:
-- `Proposals/_Outgoing/{PROPOSAL_NUMBER}/`
+```bash
+node Proposals/_Proposal-System/scripts/build_proposals_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+node Proposals/_Proposal-System/scripts/build_strategies_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+node Proposals/_Proposal-System/scripts/build_internal_home.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+node Proposals/_Proposal-System/scripts/validate_internal_links.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+```
 
-Avoid client names in outgoing URLs.
-Default published artifact is `one-page.html`.
+## Proposal Number Issuance
 
-## Link Style Standard
-Do not send raw URLs in client emails.
 Use:
-- `👉 [View Proposal](URL)`
-- `👉 [Open Payment Link](URL)`
 
-## Email Subject Standard
-Format:
-- `{Agency Name} x {Project/Business Name}`
+```bash
+node Proposals/_Proposal-System/scripts/create_proposal_record.js ...
+```
 
-Example:
-- `Admirework x Lighting Business`
+Behavior:
+
+1. Generates proposal number
+2. Registers record in `proposal-registry.csv`
+3. Publishes outgoing one-page to `Proposals/_Outgoing/{PROPOSAL_NUMBER}/`
+4. Auto-refreshes internal dashboards (`build_proposals_hub`, `build_strategies_hub`, `build_internal_home`)
+
+Optional flags:
+
+- `--publish-presentation true`
+- `--skip-hub-build true` (emergency/manual use only)
+- `--repo-slug fnasr-source/lighting-strategy` (or new slug after rename)
+
+## Legacy Intake Rule
+
+When adding old proposals that predate numbering:
+
+1. Add record in `legacy-proposals.json`.
+2. Include all available links (HTML, PDF, offer, research).
+3. Rebuild dashboards.
+4. Validate links with `validate_internal_links.js`.
+
+## Publishing Rule
+
+Client-facing outgoing URLs should use:
+
+- `Proposals/_Outgoing/{PROPOSAL_NUMBER}/one-page.html`
+
+Internal review URLs should use dashboard pages.

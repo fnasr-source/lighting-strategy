@@ -1,0 +1,46 @@
+[
+  {
+    "record_id": "LEG-EG-BASSEQAT-V1",
+    "source_type": "legacy",
+    "client_name": "Basseqat",
+    "country_code": "EG",
+    "send_date": "2026-02-09",
+    "status": "SENT",
+    "owner": "Fouad Nasseredin",
+    "pipeline_stage": "Historical",
+    "next_action": "Use as benchmark reference in future proposal discussions",
+    "next_action_date": "",
+    "source_folder": "Proposals/Basseqat/v1",
+    "outgoing_folder": "",
+    "links": {
+      "one_page": "Proposals/Basseqat/v1/index.html",
+      "presentation": "",
+      "offer_doc": "",
+      "research_doc": "",
+      "pdf": "Proposals/Basseqat/v1/Basseqat_Growth_Proposal - V1.0.pdf",
+      "package_index": ""
+    }
+  },
+  {
+    "record_id": "LEG-EG-EDRAK-STRATEGY",
+    "source_type": "legacy",
+    "client_name": "Edrak",
+    "country_code": "EG",
+    "send_date": "2026-02-10",
+    "status": "ARCHIVED",
+    "owner": "Fouad Nasseredin",
+    "pipeline_stage": "Historical",
+    "next_action": "Reference for niche market research and direction framing",
+    "next_action_date": "",
+    "source_folder": "Proposals/Edrak",
+    "outgoing_folder": "",
+    "links": {
+      "one_page": "Proposals/Edrak/Strategic_Market_Report.html",
+      "presentation": "",
+      "offer_doc": "Proposals/Edrak/Proposal_v1.md",
+      "research_doc": "Proposals/Edrak/Research_Report.md",
+      "pdf": "",
+      "package_index": ""
+    }
+  }
+]

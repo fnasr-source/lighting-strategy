@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHK Architects — One Page Proposal</title>
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-bg: #f8f7f4;
+            --aw-white: #ffffff;
+            --aw-text: #1d2436;
+            --aw-muted: #5d6475;
+            --aw-border: #e3e0d8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Akkurat Pro", "Helvetica Neue", Arial, sans-serif;
+            background: var(--aw-bg);
+            color: var(--aw-text);
+            padding: 24px;
+        }
+
+        .container {
+            width: min(1080px, 100%);
+            max-width: 1080px;
+            margin: 0 auto;
+            background: var(--aw-white);
+            border: 1px solid var(--aw-border);
+            border-radius: 14px;
+            padding: 32px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 10px;
+            color: var(--aw-navy);
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--aw-gold);
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-top: 28px;
+        }
+
+        p,
+        li {
+            color: var(--aw-muted);
+            line-height: 1.55;
+        }
+
+        ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+
+        .meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 20px;
+            border: 1px solid var(--aw-border);
+            border-radius: 10px;
+            padding: 14px;
+            margin: 18px 0 24px;
+            background: #fcfcfb;
+            font-size: 0.92rem;
+        }
+
+        .meta strong {
+            color: var(--aw-text);
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .meta div {
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .card {
+            border: 1px solid var(--aw-border);
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+        }
+
+        .card.featured {
+            border-color: var(--aw-gold);
+            box-shadow: 0 0 0 1px rgba(204, 159, 83, 0.25);
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--aw-gold);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: var(--aw-navy);
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .phase {
+            border-left: 3px solid var(--aw-gold);
+            padding-left: 10px;
+            margin-top: 12px;
+        }
+
+        .next {
+            margin-top: 26px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #f6f4ef;
+            border: 1px solid var(--aw-border);
+        }
+
+        .payment-note {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--aw-border);
+            font-size: 0.84rem;
+        }
+
+        .payment-note p {
+            margin: 4px 0;
+            color: #7a7f8b;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .payment-note strong {
+            color: var(--aw-text);
+        }
+
+        .payment-note a {
+            color: #525865;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 10px;
+            }
+
+            .meta,
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 16px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.45rem;
+            }
+
+            h2 {
+                font-size: 1.05rem;
+            }
+
+            .price {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>MHK Architects — Omar Hassan</h1>
+        <p>Video-first lead generation system for luxury interior design projects.</p>
+
+        <div class="meta">
+            <div>Client: <strong>Omar Hassan — MHK Architects</strong></div>
+            <div>Location: <strong>5th Settlement, New Cairo, Egypt</strong></div>
+            <div>Prepared by: <strong>Admireworks</strong></div>
+            <div>Scope: <strong>Video Strategy + Lead Gen + Campaigns</strong></div>
+            <div>Model: <strong>Two fixed options</strong></div>
+            <div>Focus: <strong>Luxury villa / apartment homeowners</strong></div>
+            <div>Date: <strong>February 22, 2026</strong></div>
+            <div>Relationship: <strong>Returning client (6+ months)</strong></div>
+        </div>
+
+        <h2>What Is Included In Both Options</h2>
+        <ul>
+            <li>Video creative direction + scripting for Omar's videographer</li>
+            <li>Landing page with video-gated lead capture form</li>
+            <li>Meta Ads campaign setup, launch, and optimization</li>
+            <li>WhatsApp follow-up flow integration</li>
+            <li>Lead quality reporting and campaign performance tracking</li>
+        </ul>
+
+        <h2>Commercial Options</h2>
+        <div class="grid-2">
+            <div class="card">
+                <span class="pill">Option 1</span>
+                <h3>Campaign Sprint — Build + Launch</h3>
+                <div class="price">25,000 EGP setup + 5,000 EGP/month</div>
+
+                <div class="phase">
+                    <p><strong>Includes</strong><br>Video creative direction + scripting, landing page build, campaign
+                        setup and launch, bi-weekly optimization, WhatsApp flow setup.</p>
+                </div>
+                <div class="phase">
+                    <p><strong>Best for</strong><br>Getting the next 3–4 villa leads quickly, then pausing until the
+                        next project is ready.</p>
+                </div>
+
+                <ul>
+                    <li>Minimum engagement: 2 months.</li>
+                    <li>Ad spend billed directly to client accounts.</li>
+                </ul>
+            </div>
+
+            <div class="card featured">
+                <span class="pill">Option 2 — Recommended</span>
+                <h3>Managed Growth + Content Direction</h3>
+                <div class="price">20,000 EGP setup + 12,500 EGP/month</div>
+
+                <div class="phase">
+                    <p><strong>Includes</strong><br>Everything in Option 1, plus ongoing content direction, lead nurture
+                        sequences, multi-project content planning, and monthly strategy reviews.</p>
+                </div>
+                <div class="phase">
+                    <p><strong>Managed Workstreams</strong><br>Monthly shot lists and script ideas for videographer ·
+                        Email/WhatsApp drip sequences · Periodic boosting management · Campaign scaling on demand.</p>
+                </div>
+
+                <ul>
+                    <li>Reduced setup: returning client rate.</li>
+                    <li>Minimum engagement: 3 months.</li>
+                    <li>Ad spend billed directly to client accounts.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>The Approach — Video-First Lead Generation</h2>
+        <ul>
+            <li><strong>Hero Content:</strong> Documentary-style video from current project (Mehnaaz Story) — 3D vs
+                reality, project journey, Omar interview.</li>
+            <li><strong>Lead Magnet:</strong> Prospects watch the video before accessing the form — builds trust and
+                qualifies serious inquiries.</li>
+            <li><strong>Campaign Targeting:</strong> New Cairo and New Capital compound homeowners (El Patio, SODIC,
+                Midtown, Mountain View).</li>
+            <li><strong>Nurture System:</strong> Lukewarm leads receive drip content showing differentiation — address
+                the "why pay more" objection.</li>
+            <li><strong>Content Pipeline:</strong> 7+ Reels per project, cinematic reveal video, interview clips — all
+                directed by Admireworks, shot by Omar's videographer.</li>
+        </ul>
+
+        <div class="next">
+            <h3>Next Steps</h3>
+            <ul>
+                <li>Omar sends 3D renders + after photos from current project.</li>
+                <li>Schedule creative sync with Omar + videographer.</li>
+                <li>Confirm Option 1 or Option 2.</li>
+                <li>Process initial payment and begin video creative direction.</li>
+            </ul>
+
+            <div class="payment-note">
+                <p><strong>Payment Details (Egypt):</strong> Instapay | Account Name: Fouad Nasseredin | Instapay
+                    Account: admireworks@instapay | <a href="https://ipn.eg/S/admireworks/instapay/5A1jri"
+                        target="_blank" rel="noopener noreferrer">Pay via Instapay</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

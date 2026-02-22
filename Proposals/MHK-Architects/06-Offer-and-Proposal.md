@@ -1,9 +1,12 @@
-# 06-Offer-and-Proposal: MHK Architects — Omar Hassan
+# 06-Offer-and-Proposal: MHK Architects — Omar Kamal
 
+**PROPOSAL NO:** AWP-EG-0MD8-JFM
 **FROM:** Admireworks
-**TO:** Omar Hassan — MHK Architects
+**TO:** Omar Kamal — MHK Architects
+**CLIENT EMAIL:** ohkamal@mhkecc.com
+**CLIENT PHONE:** +201550556808
 **DATE:** February 22, 2026
-**MEETING REF:** AW - M.H.K - February 22, 2026
+**VALID UNTIL:** March 1, 2026
 
 ---
 
@@ -11,13 +14,13 @@
 
 Based on the February 22 meeting, we are building a **video-first lead generation system** for MHK Architects. The approach is designed around Omar's priorities: targeted lead generation, low overhead, and campaign-based engagement.
 
-The offer is built on our standard managed advertising service, with an additional asset-building component spread across the engagement period. No brand positioning, no organic social management — pure lead generation.
+The offer is built on our standard managed advertising service, with an additional asset-building component. No brand positioning, no organic social management — pure lead generation.
 
 ---
 
 ## What Is Included (Both Options)
 
-### Ad Campaign Management (Core Service)
+### Ad Campaign Management (Core Service — 12,500 EGP/month, ~$260 USD)
 - Meta Ads campaign management and optimization
 - Campaign targeting: New Cairo / New Capital compound homeowners
 - Lead quality monitoring and reporting
@@ -25,7 +28,7 @@ The offer is built on our standard managed advertising service, with an addition
 - Bi-weekly performance reports
 
 ### Strategy & Creative Direction
-- Video creative direction + scripting for Omar's videographer
+- Video creative direction + scripting for client's videographer
 - Content strategy: shot lists, scene outlines, posting sequence
 - Lead magnet concept: documentary-style project showcase video
 - Campaign creative development (ad sets, copy, visuals)
@@ -38,6 +41,19 @@ The offer is built on our standard managed advertising service, with an addition
 - **Ad Campaign Management:** 12,500 EGP/month (~$260 USD)
 - **Asset Building (one-time bulk):** 45,000 EGP
 
+### To Start (Upfront Payment)
+| Item | Amount |
+|------|--------|
+| Ad management — 3 months upfront | 37,500 EGP |
+| Asset building — bulk | 45,000 EGP |
+| **Total to start** | **82,500 EGP** |
+
+### After Month 3 (Ongoing Monthly)
+| Item | Amount |
+|------|--------|
+| Ad management | 12,500 EGP/month |
+| **Total monthly** | **12,500 EGP/month** |
+
 ### What's Built (Assets)
 - Landing page with video-gated lead capture form
 - Lead magnet video direction + scripting
@@ -46,8 +62,8 @@ The offer is built on our standard managed advertising service, with an addition
 - Lead qualification flow
 
 ### Terms
+- First 3 months of ad management paid upfront; monthly thereafter
 - Assets are built over the first 3 months of engagement
-- Minimum engagement: 3 months
 - Ad spend billed directly to client's ad accounts
 - Assets belong to MHK after 12 months of continuous service
 
@@ -58,8 +74,20 @@ The offer is built on our standard managed advertising service, with an addition
 ### Commercial
 - **Ad Campaign Management:** 12,500 EGP/month (~$260 USD)
 - **Asset Building:** 6,250 EGP/month (spread across engagement)
-- **Total Monthly:** 18,750 EGP/month
-- **Upfront:** 3 months advance for asset building = 18,750 EGP
+
+### To Start (Upfront Payment)
+| Item | Amount |
+|------|--------|
+| Ad management — 3 months upfront | 37,500 EGP |
+| Asset building — 3 months upfront | 18,750 EGP |
+| **Total to start** | **56,250 EGP** |
+
+### After Month 3 (Ongoing Monthly)
+| Item | Amount |
+|------|--------|
+| Ad management | 12,500 EGP/month |
+| Asset building | 6,250 EGP/month |
+| **Total monthly** | **18,750 EGP/month** |
 
 ### What's Built (Same Assets as Option 1)
 - Landing page with video-gated lead capture form
@@ -69,8 +97,7 @@ The offer is built on our standard managed advertising service, with an addition
 - Lead qualification flow
 
 ### Terms
-- 3 months upfront payment for asset building required at start
-- Minimum engagement: 3 months
+- First 3 months of both fees paid upfront; monthly thereafter
 - Ad spend billed directly to client's ad accounts
 - Assets belong to MHK after 12 months of continuous service
 - If engagement completes 12 months, assets are handed over
@@ -83,16 +110,16 @@ The offer is built on our standard managed advertising service, with an addition
 2. **Lead Magnet:** Prospects watch the video before accessing the form — builds trust and qualifies serious inquiries
 3. **Campaign Targeting:** New Cairo and New Capital compound homeowners (El Patio, SODIC, Midtown, Mountain View)
 4. **Nurture:** Leads who don't convert immediately receive drip content showing MHK's differentiation over time
-5. **Content Pipeline:** 7+ Reels per project, cinematic reveal video, interview clips — all directed by Admireworks, shot by Omar's videographer
+5. **Content Pipeline:** 7+ Reels per project, cinematic reveal video, interview clips — all directed by Admireworks, shot by client's videographer
 
 ---
 
 ## Recommendation
 
-Both options include the same scope. The difference is payment structure only.
+Both options include the same scope and service level. The difference is the asset-building payment structure only.
 
 - **Option 1** suits clients who prefer to settle the asset cost upfront and keep a lower monthly.
-- **Option 2** suits clients who prefer to spread costs and commit to a longer engagement period.
+- **Option 2** suits clients who prefer to spread costs over the engagement period.
 
 ---
 

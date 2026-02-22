@@ -54,6 +54,29 @@ Asset building covers the creation of all marketing infrastructure: landing page
 
 ---
 
+## Upfront Payment Rules
+
+### Ad Campaign Management
+- **First 3 months are always paid upfront** at engagement start
+- After the first 3 months, billing switches to monthly
+
+### Asset Building (Monthly Spread option)
+- **First 3 months are also paid upfront** at engagement start
+- After month 3, asset building fee continues monthly alongside ad management
+
+### Summary of Upfront Amounts
+
+| Option | Upfront at Start | Monthly After Month 3 |
+|--------|-----------------|----------------------|
+| **Option 1 (Bulk Assets)** | 3 × ad mgmt + full asset bulk | Ad mgmt only |
+| **Option 2 (Monthly Assets)** | 3 × ad mgmt + 3 × asset monthly | Ad mgmt + asset monthly |
+
+Example (Egyptian market at 12,500 EGP/mo ad mgmt, 6,250 EGP/mo assets):
+- **Option 1:** 37,500 + 45,000 = **82,500 EGP** upfront → 12,500 EGP/mo after
+- **Option 2:** 37,500 + 18,750 = **56,250 EGP** upfront → 18,750 EGP/mo after
+
+---
+
 ## Proposal Structure
 
 Every proposal should include:
@@ -78,6 +101,53 @@ Every proposal should include:
 - Account Name: Fouad Nasseredin
 - Instapay Account: admireworks@instapay
 - Instapay Link: https://ipn.eg/S/admireworks/instapay/5A1jri
+
+---
+
+## Follow-Up Email Template
+
+After generating a proposal number, send a follow-up email to the client. Standard structure:
+
+```
+Subject: Admireworks x {CLIENT_BUSINESS_NAME}
+
+To: {CLIENT_EMAIL}
+CC: Fouad Nasseredin
+
+Dear Mr./Ms. {CLIENT_NAME},
+
+Greetings. We hope you are doing well.
+
+[Optional: Thank you for today's productive meeting.]
+
+Please find your one-page proposal at the link below:
+👉 [View Proposal](https://ops.admireworks.com/Proposals/_Outgoing/{PROPOSAL_NUMBER}/one-page.html)
+
+Proposal Number: {PROPOSAL_NUMBER}
+Valid Until: {VALID_UNTIL_DATE}
+
+To proceed, kindly confirm your selected option (Option 1 or Option 2) and complete the transfer via Instapay:
+- Account Name: Fouad Nasseredin
+- Instapay Account: admireworks@instapay
+- 👉 [Pay via Instapay](https://ipn.eg/S/admireworks/instapay/5A1jri)
+
+Once the transfer is completed, please share the receipt and we will schedule kickoff immediately.
+
+[Optional: Any specific action items from the meeting, e.g., requesting project assets.]
+
+If you have any questions or need any clarification, please let us know.
+
+All the best,
+Operations Coordinator
+Admireworks
+```
+
+### Email Rules
+- Always CC Fouad Nasseredin
+- Include proposal number and valid-until date
+- Include Instapay payment details for Egypt clients
+- For non-Egypt clients, use the appropriate payment link instead of Instapay
+- Store the email in `{source-folder}/communications/YYYY-MM-DD-recommended-follow-up-email.md`
 
 ---
 

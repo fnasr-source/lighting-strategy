@@ -1,2 +1,3 @@
 proposal_number,country_code,send_date,daily_sequence,token,nonce,client_name,client_email,client_phone,source_folder,outgoing_folder,status,owner,recommended_option
 AWP-EG-0MKC-SLK,EG,2026-02-16,1,0MKC,SLK,Lighting Business - Mahmoud Selim,Mahmoudmselim95@gmail.com,+201022267297,Proposals/Lighting-Business-Mahmoud,Proposals/_Outgoing/AWP-EG-0MKC-SLK,READY_TO_SEND,Fouad Nasseredin,Option 2
+AWP-EG-0MD8-JFM,EG,2026-02-22,1,0MD8,JFM,MHK Architects - Omar Kamal,ohkamal@mhkecc.com,+201550556808,Proposals/MHK-Architects,Proposals/_Outgoing/AWP-EG-0MD8-JFM,READY_TO_SEND,Fouad Nasseredin,Option 2

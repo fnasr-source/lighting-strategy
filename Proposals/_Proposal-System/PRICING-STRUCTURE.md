@@ -27,30 +27,29 @@ This is the main service — managing ad performance on **one ad platform** (typ
 
 ---
 
-## Asset Building (Add-On)
+## Growth System (Add-On)
 
-Asset building covers the creation of all marketing infrastructure: landing pages, lead funnels, campaign creative suites, follow-up flows, etc.
-
-### Standard Rate
-- **Full rate:** 12,500 EGP/month for 12 months (for some clients)
-- **Reduced rate (50%):** 6,250 EGP/month (used for lighter scope or existing clients)
+Covers the creation and maintenance of all marketing infrastructure: landing pages, lead funnels, campaign creative suites, follow-up flows, content direction, etc.
 
 ### Payment Options (present as two options in proposals)
 
-**Option A — Bulk Payment:**
-- 45,000 EGP one-time for asset building
+**Option A — Bulk Payment ("Own Your Assets"):**
+- 45,000 EGP one-time for all growth assets
 - Assets are built over the first 3 months
-- Lower monthly total (just ad management fee)
+- Client owns all assets from day one
+- Lower ongoing monthly (ad management only)
 
-**Option B — Monthly Spread:**
-- 6,250 EGP/month added to the monthly ad management fee
-- Client pays **3 months upfront** for asset building at engagement start
-- Total monthly = ad management + asset building (e.g., 12,500 + 6,250 = 18,750 EGP/month for Egyptian market)
+**Option B — Growth System Subscription:**
+- 5,500 EGP/month subscription
+- Client pays **3 months upfront** at engagement start
+- All assets built, maintained, and optimized as part of the subscription
+- Total monthly = ad management + subscription (e.g., 12,500 + 5,500 = 18,000 EGP/month for Egyptian market)
 
-### Asset Ownership
-- Assets belong to Admireworks during the engagement
-- **Assets are handed over to the client after 12 months of continuous service**
-- If the client terminates before 12 months, assets are not handed over
+### Asset Transfer Rule
+- During the subscription, assets belong to Admireworks
+- **Upon completing 12 months of continuous subscription, all growth assets are transferred to the client at no additional cost**
+- If the client terminates before 12 months, assets are not transferred
+- Option A clients own assets from day one (no transfer needed)
 
 ---
 
@@ -60,20 +59,20 @@ Asset building covers the creation of all marketing infrastructure: landing page
 - **First 3 months are always paid upfront** at engagement start
 - After the first 3 months, billing switches to monthly
 
-### Asset Building (Monthly Spread option)
+### Growth System Subscription
 - **First 3 months are also paid upfront** at engagement start
-- After month 3, asset building fee continues monthly alongside ad management
+- After month 3, subscription fee continues monthly alongside ad management
 
 ### Summary of Upfront Amounts
 
 | Option | Upfront at Start | Monthly After Month 3 |
 |--------|-----------------|----------------------|
 | **Option 1 (Bulk Assets)** | 3 × ad mgmt + full asset bulk | Ad mgmt only |
-| **Option 2 (Monthly Assets)** | 3 × ad mgmt + 3 × asset monthly | Ad mgmt + asset monthly |
+| **Option 2 (Subscription)** | 3 × ad mgmt + 3 × subscription | Ad mgmt + subscription |
 
-Example (Egyptian market at 12,500 EGP/mo ad mgmt, 6,250 EGP/mo assets):
+Example (Egyptian market at 12,500 EGP/mo ad mgmt, 5,500 EGP/mo subscription):
 - **Option 1:** 37,500 + 45,000 = **82,500 EGP** upfront → 12,500 EGP/mo after
-- **Option 2:** 37,500 + 18,750 = **56,250 EGP** upfront → 18,750 EGP/mo after
+- **Option 2:** 37,500 + 16,500 = **54,000 EGP** upfront → 18,000 EGP/mo after
 
 ---
 
@@ -81,9 +80,9 @@ Example (Egyptian market at 12,500 EGP/mo ad mgmt, 6,250 EGP/mo assets):
 
 Every proposal should include:
 1. **What is included** — common scope across all options
-2. **Two commercial options** — same scope, different payment structures:
-   - Option 1: Ad management + asset building (bulk)
-   - Option 2: Ad management + asset building (monthly spread)
+2. **Two commercial options** — same scope, different payment models:
+   - Option 1: Ad management + growth assets (bulk — client owns from day one)
+   - Option 2: Ad management + Admireworks Growth System (subscription — assets transfer after 12 months)
 3. **The approach** — specific strategy for this client
 4. **Next steps** — decision + payment + kickoff
 5. **Payment details** — Instapay link and account info
@@ -155,4 +154,5 @@ Admireworks
 
 | Date | Change | Notes |
 |------|--------|-------|
+| 2026-02-22 | Updated to subscription model | Option B renamed to Growth System Subscription at 5,500 EGP/mo |
 | 2026-02-22 | Initial documentation | Based on verbal briefing from Fouad |

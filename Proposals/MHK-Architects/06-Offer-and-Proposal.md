@@ -14,7 +14,7 @@
 
 Based on the February 22 meeting, we are building a **video-first lead generation system** for MHK Architects. The approach is designed around Omar's priorities: targeted lead generation, low overhead, and campaign-based engagement.
 
-The offer is built on our standard managed advertising service, with an additional asset-building component. No brand positioning, no organic social management — pure lead generation.
+Both options include the same scope of work. The difference is the payment model only.
 
 ---
 
@@ -27,25 +27,29 @@ The offer is built on our standard managed advertising service, with an addition
 - WhatsApp follow-up flow integration
 - Bi-weekly performance reports
 
-### Strategy & Creative Direction
+### Strategy, Creative Direction & Growth Assets
 - Video creative direction + scripting for client's videographer
 - Content strategy: shot lists, scene outlines, posting sequence
 - Lead magnet concept: documentary-style project showcase video
-- Campaign creative development (ad sets, copy, visuals)
+- Landing page with video-gated lead capture form
+- Campaign creative suite (ads, thumbnails, copy variations)
+- WhatsApp follow-up sequences
+- Lead qualification flow
+- Campaign creative development
 
 ---
 
-## Option 1: Ad Management + Asset Building (Bulk Payment)
+## Option 1: Ad Management + Growth Assets (Bulk Payment)
 
 ### Commercial
 - **Ad Campaign Management:** 12,500 EGP/month (~$260 USD)
-- **Asset Building (one-time bulk):** 45,000 EGP
+- **Growth Assets (one-time bulk):** 45,000 EGP
 
 ### To Start (Upfront Payment)
 | Item | Amount |
 |------|--------|
 | Ad management — 3 months upfront | 37,500 EGP |
-| Asset building — bulk | 45,000 EGP |
+| Growth assets — bulk | 45,000 EGP |
 | **Total to start** | **82,500 EGP** |
 
 ### After Month 3 (Ongoing Monthly)
@@ -54,53 +58,45 @@ The offer is built on our standard managed advertising service, with an addition
 | Ad management | 12,500 EGP/month |
 | **Total monthly** | **12,500 EGP/month** |
 
-### What's Built (Assets)
-- Landing page with video-gated lead capture form
-- Lead magnet video direction + scripting
-- Campaign creative suite (ads, thumbnails, copy variations)
-- WhatsApp follow-up sequences
-- Lead qualification flow
-
 ### Terms
 - First 3 months of ad management paid upfront; monthly thereafter
-- Assets are built over the first 3 months of engagement
+- Assets are built over the first 3 months
+- Client owns all growth assets from day one
 - Ad spend billed directly to client's ad accounts
-- Assets belong to MHK after 12 months of continuous service
 
 ---
 
-## Option 2: Ad Management + Asset Building (Monthly Spread)
+## Option 2: Ad Management + Admireworks Growth System (Subscription)
 
 ### Commercial
 - **Ad Campaign Management:** 12,500 EGP/month (~$260 USD)
-- **Asset Building:** 6,250 EGP/month (spread across engagement)
+- **Admireworks Growth System:** 5,500 EGP/month (subscription)
 
 ### To Start (Upfront Payment)
 | Item | Amount |
 |------|--------|
 | Ad management — 3 months upfront | 37,500 EGP |
-| Asset building — 3 months upfront | 18,750 EGP |
-| **Total to start** | **56,250 EGP** |
+| Growth System — 3 months upfront | 16,500 EGP |
+| **Total to start** | **54,000 EGP** |
 
 ### After Month 3 (Ongoing Monthly)
 | Item | Amount |
 |------|--------|
 | Ad management | 12,500 EGP/month |
-| Asset building | 6,250 EGP/month |
-| **Total monthly** | **18,750 EGP/month** |
+| Admireworks Growth System | 5,500 EGP/month |
+| **Total monthly** | **18,000 EGP/month** |
 
-### What's Built (Same Assets as Option 1)
-- Landing page with video-gated lead capture form
-- Lead magnet video direction + scripting
-- Campaign creative suite
-- WhatsApp follow-up sequences
-- Lead qualification flow
+### Growth System Includes
+- Landing pages, creative suite, WhatsApp flows, lead qualification system
+- All assets built, maintained, and optimized as part of the subscription
+- Content direction and creative strategy — ongoing
+- Upon completion of 12 months of continuous subscription, all growth assets are transferred to the client at no additional cost
 
 ### Terms
 - First 3 months of both fees paid upfront; monthly thereafter
 - Ad spend billed directly to client's ad accounts
-- Assets belong to MHK after 12 months of continuous service
-- If engagement completes 12 months, assets are handed over
+- Growth assets remain with Admireworks during the subscription period
+- After 12 months of continuous subscription, assets are handed over to the client
 
 ---
 
@@ -116,10 +112,10 @@ The offer is built on our standard managed advertising service, with an addition
 
 ## Recommendation
 
-Both options include the same scope and service level. The difference is the asset-building payment structure only.
+Both options include the same scope and service level. The difference is the payment model.
 
-- **Option 1** suits clients who prefer to settle the asset cost upfront and keep a lower monthly.
-- **Option 2** suits clients who prefer to spread costs over the engagement period.
+- **Option 1** suits clients who prefer to own all assets outright from day one. Higher upfront, lower monthly.
+- **Option 2** suits clients who prefer a lower entry point with an ongoing subscription. Assets are transferred after 12 months of service.
 
 ---
 

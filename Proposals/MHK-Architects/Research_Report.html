@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Report: MHK Architects — Pre-Meeting Intelligence Brief</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-navy-dark: #000f42;
+            --light: #f8f9fc;
+            --dark: #0c1222;
+            --text: #334155;
+            --muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 50%, #0a0a2e 100%);
+            color: white;
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 159, 83, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 20px;
+            padding: 5px 14px;
+            border: 1px solid rgba(204, 159, 83, 0.3);
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: var(--aw-gold);
+        }
+
+        .hero .subtitle {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .hero-meta {
+            margin-top: 28px;
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .hero-meta-item strong {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            margin: 32px 0;
+            padding: 36px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .section-number {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 6px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--aw-navy);
+            margin: 24px 0 10px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+        }
+
+        ul,
+        ol {
+            margin: 12px 0 16px 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        strong {
+            color: var(--dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.88rem;
+        }
+
+        th,
+        td {
+            padding: 12px 14px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover td {
+            background: #fafbff;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 14px;
+            margin: 28px 0;
+            text-align: center;
+        }
+
+        .highlight p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .highlight .attr {
+            font-size: 0.8rem;
+            color: var(--aw-gold);
+            margin-top: 12px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .tag-green {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .tag-red {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .tag-yellow {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            border: 1px solid #e8ecf2;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        footer .brand {
+            color: var(--aw-navy);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="container">
+            <div class="hero-badge">◆ Research Report</div>
+            <h1>MHK Architects<br><span>Pre-Meeting Intelligence Brief</span></h1>
+            <p class="subtitle">Comprehensive business, digital, and market research for our returning client —
+                expanding from performance marketing to full-scope online marketing.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><strong>Date:</strong> February 22, 2026</div>
+                <div class="hero-meta-item"><strong>Client:</strong> MHK Architects (Returning)</div>
+                <div class="hero-meta-item"><strong>From:</strong> Admireworks Strategy Team</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- EXEC SUMMARY -->
+        <section>
+            <div class="section-number">Section 01</div>
+            <h2>Executive Summary</h2>
+            <p>MHK Architects is a <strong>luxury interior design, architecture, and contracting firm</strong> based in
+                New Cairo's 5th Settlement, with an expanding regional footprint across <strong>Cairo 🇪🇬, Dammam 🇸🇦,
+                    and Dubai 🇦🇪</strong>. They offer a premium <strong>turnkey A-to-Z service</strong> — from concept
+                design through implementation and furnishing — targeting high-end homeowners in Egypt's booming real
+                estate market. Their tagline, <strong>"Simplicity is Luxury"</strong>, positions them firmly in the
+                premium segment.</p>
+            <p>Despite delivering visually stunning projects (El Patio Casa, Midtown Villa, Stone Residence, Al-Futtaim
+                HQ), their <strong>digital presence severely underdelivers</strong> for a firm of their caliber. Their
+                Instagram has 15K followers but only 10–15 likes per post. Their website has <strong>zero portfolio
+                    showcase</strong>. They have <strong>no content strategy, no SEO, no lead generation system, and no
+                    digital sales funnel</strong> — leaving massive revenue on the table in a market growing at
+                <strong>8.9% CAGR</strong>.</p>
+            <p>This is a <strong>returning client</strong> (previously performance marketing / ads management only).
+                They now want to explore the <strong>full scope of our services</strong> including online marketing,
+                content, and sales support.</p>
+        </section>
+
+        <!-- BUSINESS OVERVIEW -->
+        <section>
+            <div class="section-number">Section 02</div>
+            <h2>Business Overview</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Company Profile</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Company</strong></td>
+                            <td>MHK Architects</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Website</strong></td>
+                            <td>mhkecc.com</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tagline</strong></td>
+                            <td>"Simplicity is Luxury"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Location</strong></td>
+                            <td>Villa 18, Southern Investors, 5th Settlement, New Cairo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Category</strong></td>
+                            <td>Interior Design / Architecture / Contracting</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Digital Presence</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Instagram</strong></td>
+                            <td>@mhkarchitects — 15K followers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Facebook</strong></td>
+                            <td>/MHKARCHITECTS — 2.7K followers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TikTok</strong></td>
+                            <td class="tag-red">None ❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>YouTube</strong></td>
+                            <td class="tag-red">None ❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pinterest</strong></td>
+                            <td class="tag-red">None ❌</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h3>Regional Presence — Three Markets</h3>
+            <div class="grid-2">
+                <div class="card" style="border-left: 4px solid var(--aw-gold);">
+                    <h4>🇪🇬 Cairo, Egypt (HQ)</h4>
+                    <p>Primary market. Projects across New Cairo compounds and New Administrative Capital.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--aw-gold);">
+                    <h4>🇸🇦 Dammam, Saudi Arabia</h4>
+                    <p>Expansion market. Saudi Vision 2030 creating massive construction demand.</p>
+                </div>
+            </div>
+            <div class="grid-2" style="margin-top: 20px;">
+                <div class="card" style="border-left: 4px solid var(--aw-gold);">
+                    <h4>🇦🇪 Dubai, UAE</h4>
+                    <p>Expansion market. Premium design demand in one of the world's luxury capitals.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--success); background: #f0fdf4;">
+                    <h4>📐 Turnkey A-to-Z Service</h4>
+                    <p>Space assessment → Concept design → Planning/budget → Execution → Furnishing. Complete solution.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section>
+            <div class="section-number">Section 03</div>
+            <h2>Known Projects</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Location / Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>El Patio Casa</strong></td>
+                        <td>Compound — New Cairo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Midtown Villa</strong></td>
+                        <td>New Administrative Capital</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stone Residence</strong></td>
+                        <td>Compound — New Cairo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Al-Futtaim HQ</strong></td>
+                        <td>Commercial — Corporate Office</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gardenia Heights</strong></td>
+                        <td>Residential Compound</td>
+                    </tr>
+                    <tr>
+                        <td><strong>O.N. Residence</strong></td>
+                        <td>SODIC Eastown</td>
+                    </tr>
+                    <tr>
+                        <td><strong>New Narges</strong></td>
+                        <td>Residential — New Cairo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>El Sherouk 1</strong></td>
+                        <td>Residential — El Sherouk City</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asfour Al Janah</strong></td>
+                        <td>Residential</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scenario</strong></td>
+                        <td>Compound — New Administrative Capital</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- DIGITAL AUDIT -->
+        <section>
+            <div class="section-number">Section 04</div>
+            <h2>Digital Presence Audit</h2>
+            <h3>Website (mhkecc.com)</h3>
+            <table>
+                <tr>
+                    <td><strong>Overall Score</strong></td>
+                    <td class="tag-red">3/10 — Bare minimum WordPress page</td>
+                </tr>
+                <tr>
+                    <td><strong>Portfolio</strong></td>
+                    <td class="tag-red">0/10 — Zero project showcase ❌</td>
+                </tr>
+                <tr>
+                    <td><strong>SEO</strong></td>
+                    <td class="tag-red">1/10 — No blog, no meta, no structured data</td>
+                </tr>
+                <tr>
+                    <td><strong>Arabic Content</strong></td>
+                    <td class="tag-red">0/10 — English only ❌</td>
+                </tr>
+                <tr>
+                    <td><strong>Booking System</strong></td>
+                    <td class="tag-red">None — manual phone/WhatsApp only</td>
+                </tr>
+                <tr>
+                    <td><strong>WhatsApp</strong></td>
+                    <td class="tag-green">✅ Integrated button</td>
+                </tr>
+                <tr>
+                    <td><strong>Contact Form</strong></td>
+                    <td class="tag-green">✅ Present</td>
+                </tr>
+            </table>
+
+            <h3>Social Media Performance</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>📸 Instagram — 15K followers</h4>
+                    <p>329 posts. High-quality renders and photos. But only 10–15 likes per post = 0.1% engagement rate
+                        (vs 1.5–3% industry avg). Reels: 300–750 views. Inconsistent posting with 18+ day gaps.</p>
+                </div>
+                <div class="card">
+                    <h4>📘 Facebook — 2.7K followers</h4>
+                    <p>4–10 likes per post, 0–1 comments. Content mirrored from Instagram. One 5-star review from 2
+                        years ago. Near-zero engagement.</p>
+                </div>
+                <div class="card">
+                    <h4>📱 TikTok — <span class="tag-red">None ❌</span></h4>
+                    <p>Missing the #1 platform for design transformation content and room reveals.</p>
+                </div>
+                <div class="card">
+                    <h4>📌 Pinterest — <span class="tag-red">None ❌</span></h4>
+                    <p>Missing the #1 discovery platform for interior design inspiration.</p>
+                </div>
+            </div>
+
+            <h3>Critical Digital Gaps</h3>
+            <ol>
+                <li><strong>No portfolio on website</strong> — the biggest gap for an interior design firm</li>
+                <li>0.1% engagement rate — 99.9% of 15K followers not engaging</li>
+                <li>All content in English despite Egyptian target market</li>
+                <li>No TikTok, YouTube, Pinterest, or LinkedIn</li>
+                <li>No lead generation system or CRM</li>
+                <li>No content strategy — inconsistent posting with long gaps</li>
+            </ol>
+        </section>
+
+        <!-- MARKET DATA -->
+        <section>
+            <div class="section-number">Section 05</div>
+            <h2>Market Analysis</h2>
+            <h3>Egyptian Interior Design Services Market</h3>
+            <table>
+                <tr>
+                    <td><strong>Market size (2024)</strong></td>
+                    <td>USD 97.68 million (services)</td>
+                </tr>
+                <tr>
+                    <td><strong>CAGR (2024–2031)</strong></td>
+                    <td>8.9%</td>
+                </tr>
+                <tr>
+                    <td><strong>Home Decor Market (2025)</strong></td>
+                    <td>USD 2,844.1 million</td>
+                </tr>
+                <tr>
+                    <td><strong>Home Decor Projected (2034)</strong></td>
+                    <td>USD 4,069.5 million</td>
+                </tr>
+                <tr>
+                    <td><strong>Furniture & Interior Market</strong></td>
+                    <td>USD 3.9 billion (total)</td>
+                </tr>
+            </table>
+
+            <h3>Key Market Drivers</h3>
+            <ul>
+                <li><strong>Real estate boom</strong> — New Administrative Capital, SODIC, Palm Hills compound
+                    developments</li>
+                <li><strong>Rising affluent class</strong> — growing disposable income among upper-middle Egyptians</li>
+                <li><strong>"Quiet Luxury" trend</strong> — sophisticated, understated elegance (perfectly aligned with
+                    MHK)</li>
+                <li><strong>Smart home integration</strong> — AI-powered lighting, climate control becoming standard
+                </li>
+                <li><strong>Sustainability focus</strong> — eco-friendly materials, natural wood & stone</li>
+                <li><strong>E-commerce growth</strong> — home décor increasingly researched and purchased online</li>
+            </ul>
+
+            <h3>Luxury Interior Design Trends 2025–2026</h3>
+            <ul>
+                <li><strong>Warm Greige</strong> replacing cool grays as dominant palette</li>
+                <li><strong>Shadow Gap ceilings</strong> replacing traditional gypsum board</li>
+                <li><strong>Large slab porcelain</strong> favored over marble for resilience</li>
+                <li><strong>Strategic lighting</strong> — 3000K warm for living, 4000K natural for functional</li>
+                <li><strong>Modern Classic Fusion</strong> — pharaonic/Islamic geometric patterns with contemporary
+                    design</li>
+            </ul>
+        </section>
+
+        <!-- SWOT -->
+        <section>
+            <div class="section-number">Section 06</div>
+            <h2>SWOT Analysis</h2>
+            <div class="grid-2">
+                <div class="card" style="border-left: 4px solid var(--success); background: #f0fdf4;">
+                    <h4>💪 Strengths</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>🏠 Premium turnkey A-to-Z service</li>
+                        <li>🌍 Three-country presence (CAI, DMM, DXB)</li>
+                        <li>🎨 High-quality project portfolio</li>
+                        <li>🏢 Commercial experience (Al-Futtaim HQ)</li>
+                        <li>🔖 "Simplicity is Luxury" = Quiet Luxury trend</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger); background: #fef2f2;">
+                    <h4>⚠️ Weaknesses</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>🌐 Website has zero portfolio</li>
+                        <li>📉 0.1% engagement (catastrophic)</li>
+                        <li>📵 No TikTok, YouTube, Pinterest, LinkedIn</li>
+                        <li>🔇 No Arabic content</li>
+                        <li>📊 No lead generation system</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                    <h4>🚀 Opportunities</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>🏗️ Real estate boom = massive demand</li>
+                        <li>📱 TikTok + YouTube for design reveals</li>
+                        <li>📌 Pinterest — interior design's discovery platform</li>
+                        <li>🇸🇦 Saudi Vision 2030 expansion</li>
+                        <li>📊 Automated lead generation system</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--warning); background: #fffbeb;">
+                    <h4>🛡️ Threats</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>⚔️ Competitors investing in digital</li>
+                        <li>💱 Currency devaluation (EGP)</li>
+                        <li>🏛️ Market saturation in New Cairo</li>
+                        <li>🤥 Cheap contractors competing on price</li>
+                        <li>📦 DIY trend reducing pro demand</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEY INSIGHT -->
+        <div class="highlight">
+            <p>"MHK Architects delivers luxury that speaks for itself — but right now, almost nobody can hear it online.
+                Your work is award-worthy, your portfolio is Instagram-gold, and the Egyptian market is booming. The gap
+                between project quality and digital visibility is the single biggest growth lever."</p>
+            <div class="attr">— Admireworks Strategic Positioning</div>
+        </div>
+
+        <!-- ROADMAP -->
+        <section>
+            <div class="section-number">Section 07</div>
+            <h2>Digital Transformation Roadmap</h2>
+            <h3>Phase 1: Foundation & Quick Wins (Month 1–2)</h3>
+            <ul>
+                <li>Complete website redesign — portfolio showcase, project pages, team, testimonials, booking</li>
+                <li>Arabic content layer — bilingual website (critical for Egyptian market)</li>
+                <li>Instagram strategy reset — posting schedule, engagement, hashtag research, Arabic captions</li>
+                <li>Google Business optimization — Maps, reviews, local SEO</li>
+                <li>Launch consultation booking system</li>
+            </ul>
+            <h3>Phase 2: Growth Engine (Month 3–6)</h3>
+            <ul>
+                <li>Launch TikTok & YouTube — room reveals, behind-the-scenes, design tips</li>
+                <li>Pinterest account — pin every project, create inspiration boards</li>
+                <li>Paid advertising — Meta + Google + TikTok ads targeting compound homeowners</li>
+                <li>Influencer partnerships — Egyptian home/lifestyle influencers</li>
+                <li>Email/WhatsApp marketing automation — lead nurture sequences</li>
+            </ul>
+            <h3>Phase 3: Market Leadership (Month 6–12)</h3>
+            <ul>
+                <li>CRM + lead management system — track inquiries, automate follow-ups</li>
+                <li>Sales support placement — recruit/place dedicated sales professional</li>
+                <li>LinkedIn presence — B2B for developer partnerships</li>
+                <li>Saudi market digital push — dedicated landing pages for DMM</li>
+                <li>Award submissions — Egyptian/regional design awards for credibility</li>
+            </ul>
+        </section>
+
+        <!-- TALKING POINTS -->
+        <section>
+            <div class="section-number">Section 08</div>
+            <h2>Meeting Talking Points</h2>
+            <h3>Opening Discussion</h3>
+            <ol>
+                <li>"Congratulations on the expansion to Saudi and Dubai — how is business across the three markets?"
+                </li>
+                <li>"What does your current lead generation process look like? How do most clients find you?"</li>
+                <li>"Tell us about the new project — compound, commercial, or something new?"</li>
+                <li>"When you say 'sales support' — a person, a system, or both?"</li>
+                <li>"Which market is the priority — Egypt, Saudi, or all three?"</li>
+            </ol>
+            <h3>Key Insights to Share</h3>
+            <ul>
+                <li>✅ Egypt's interior design market is growing at <strong>8.9% CAGR</strong></li>
+                <li>✅ Instagram has 15K followers but only 0.1% engagement — massive untapped potential</li>
+                <li>✅ Website has <strong>zero portfolio</strong> — the single biggest gap for a design firm</li>
+                <li>✅ "Quiet Luxury" trend <strong>perfectly aligns</strong> with "Simplicity is Luxury"</li>
+                <li>✅ Competitors like HSI and Flair Egypt are investing heavily in digital — window closing</li>
+            </ul>
+            <h3>Recommended Services</h3>
+            <ul>
+                <li><strong>Website Redesign</strong> — portfolio-driven, Arabic, booking system, SEO</li>
+                <li><strong>Social Media Management</strong> — content strategy, daily posting, community building</li>
+                <li><strong>Content Production</strong> — video shoots, photography, Arabic copywriting</li>
+                <li><strong>Paid Advertising</strong> — Meta, Google, TikTok campaigns</li>
+                <li><strong>Lead Generation System</strong> — CRM, automated booking, WhatsApp flows</li>
+                <li><strong>Sales Support</strong> — team recruitment or dedicated lead qualifier</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 <span class="brand">ADMIRE8 BY ADMIREWORKS</span> · Confidential — Internal Use Only</p>
+        <p style="margin-top: 6px;">hello@admireworks.com · (+971) 4295 8666</p>
+    </footer>
+
+</body>
+
+</html>

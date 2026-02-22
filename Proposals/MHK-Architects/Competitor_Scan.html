@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Scan: Egyptian Luxury Interior Design Market — MHK Architects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-navy-dark: #000f42;
+            --light: #f8f9fc;
+            --dark: #0c1222;
+            --text: #334155;
+            --muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 50%, #0a0a2e 100%);
+            color: white;
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 159, 83, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 20px;
+            padding: 5px 14px;
+            border: 1px solid rgba(204, 159, 83, 0.3);
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: var(--aw-gold);
+        }
+
+        .hero .subtitle {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            margin: 32px 0;
+            padding: 36px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .section-number {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 6px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--aw-navy);
+            margin: 24px 0 10px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 24px;
+            border: 1px solid #e8ecf2;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            border-color: var(--aw-gold);
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0 0 8px;
+        }
+
+        .card .detail {
+            font-size: 0.82rem;
+            color: var(--text);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .badge-high {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .badge-med {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-emerging {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+
+        th,
+        td {
+            padding: 12px 14px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover td {
+            background: #fafbff;
+        }
+
+        .threat-high {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .threat-med {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        .threat-low {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .positioning-map {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 14px;
+            margin: 28px 0;
+            text-align: center;
+        }
+
+        .highlight p {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .highlight .attr {
+            font-size: 0.8rem;
+            color: var(--aw-gold);
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .opp-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .opp-list li {
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .opp-list li.win {
+            background: #f0fdf4;
+            border-left: 3px solid var(--success);
+        }
+
+        .opp-list li.risk {
+            background: #fef2f2;
+            border-left: 3px solid var(--danger);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        footer .brand {
+            color: var(--aw-navy);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 24px;
+            }
+
+            .positioning-map {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="container">
+            <div class="hero-badge">◆ Competitor Intelligence</div>
+            <h1>Egyptian Luxury Interior Design<br><span>Competitive Landscape</span></h1>
+            <p class="subtitle">Detailed competitor profiles, feature comparisons, and market positioning analysis for
+                the MHK Architects meeting preparation.</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- OVERVIEW -->
+        <section>
+            <div class="section-number">Section 01</div>
+            <h2>Competitive Landscape Overview</h2>
+            <p>The Egyptian luxury interior design market features a growing roster of established and emerging firms,
+                particularly clustered around <strong>New Cairo's 5th Settlement and Katameya</strong>. The market is
+                driven by compound developments (SODIC, Palm Hills, Mountain View) and the New Administrative Capital.
+            </p>
+
+            <div class="highlight">
+                <p>MHK has arguably the strongest service offering (full turnkey + 3 countries) but the weakest digital
+                    presence among direct competitors.<br>This is both the biggest risk and the biggest opportunity.</p>
+            </div>
+        </section>
+
+        <!-- COMPETITOR PROFILES -->
+        <section>
+            <div class="section-number">Section 02</div>
+            <h2>Direct Competitor Profiles</h2>
+
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge badge-high">🔴 HIGH THREAT</span>
+                    <h4>Hany Saad Innovations (HSI)</h4>
+                    <p>Ultra-luxury design & contracting. 800+ projects across Africa & Middle East. Founded 2003.</p>
+                    <div class="detail">
+                        <strong>Digital:</strong> Strong portfolio website, active social media<br>
+                        <strong>Key Edge:</strong> Scale, brand authority, award-winning
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-high">🔴 HIGH THREAT</span>
+                    <h4>Flair Egypt</h4>
+                    <p>Award-winning, tailored luxury fit-out. Palm Hills, Uptown Cairo, One Katameya. Founded 2008.</p>
+                    <div class="detail">
+                        <strong>Digital:</strong> Professional website with rich portfolio<br>
+                        <strong>Key Edge:</strong> Awards, case studies, clear process
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-med">🟡 MEDIUM THREAT</span>
+                    <h4>Mona Hussein Design House</h4>
+                    <p>Well-known, uniquely beautiful & functional interiors. Palm Hills, Bloomfields.</p>
+                    <div class="detail">
+                        <strong>Digital:</strong> Good web presence, strong brand reputation<br>
+                        <strong>Key Edge:</strong> Established name recognition
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-med">🟡 MEDIUM THREAT</span>
+                    <h4>Eklego Design Studio</h4>
+                    <p>Modern-traditional blend. Multiple branches including Katameya. Founded 2000.</p>
+                    <div class="detail">
+                        <strong>Digital:</strong> Established, multi-location visibility<br>
+                        <strong>Key Edge:</strong> Proximity to MHK market, longevity
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-med">🟡 MEDIUM THREAT</span>
+                    <h4>Ahmed Hussein Designs</h4>
+                    <p>High-end residential & commercial, international clients. Founded 2008.</p>
+                    <div class="detail">
+                        <strong>Digital:</strong> Good portfolio showcase<br>
+                        <strong>Key Edge:</strong> International reach, luxury segment
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-med">🟡 MEDIUM THREAT</span>
+                    <h4>DAR Designs</h4>
+                    <p>Award-winning, elegant & practical spaces. Founded 2007.</p>
+                    <div class="detail">
+                        <strong>Digital:</strong> Good digital footprint<br>
+                        <strong>Key Edge:</strong> Material/color expertise, awards
+                    </div>
+                </div>
+            </div>
+
+            <h3>Emerging & Mid-Tier Competitors</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge badge-emerging">Emerging</span>
+                    <h4>Archeffect</h4>
+                    <p>Turnkey consultancy + installations. New Cairo villa focus — direct overlap with MHK.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-emerging">Emerging</span>
+                    <h4>Allure Interior Design</h4>
+                    <p>15 years Egypt + GCC. Palm Hills, SODIC Villette projects.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-emerging">Emerging</span>
+                    <h4>Neat for Interior Designs</h4>
+                    <p>Turnkey solutions, New Cairo focus. Direct positioning overlap.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-emerging">Emerging</span>
+                    <h4>Spaces/Architects</h4>
+                    <p>Premium studio producing lavish interiors for Cairo's elite.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-emerging">Emerging</span>
+                    <h4>ERA Egypt Design Studio</h4>
+                    <p>Modern aesthetics + functionality, Cairo-based.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-emerging">Emerging</span>
+                    <h4>Art Build</h4>
+                    <p>Top finishing company 2025. Innovative designs, quality finishes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURE MATRIX -->
+        <section>
+            <div class="section-number">Section 03</div>
+            <h2>Feature Comparison Matrix</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>MHK</th>
+                        <th>HSI</th>
+                        <th>Flair</th>
+                        <th>Mona H.</th>
+                        <th>Eklego</th>
+                        <th>DAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Project Quality</strong></td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Turnkey Service</strong></td>
+                        <td style="color: var(--success);">✅ Full A-to-Z</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--warning);">🟡 Partial</td>
+                        <td style="color: var(--warning);">🟡 Design</td>
+                        <td style="color: var(--warning);">🟡 Design</td>
+                        <td style="color: var(--warning);">🟡 Design</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Website Portfolio</strong></td>
+                        <td style="color: var(--danger);">❌ None</td>
+                        <td style="color: var(--success);">✅ Rich</td>
+                        <td style="color: var(--success);">✅ Rich</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--success);">✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Engagement</strong></td>
+                        <td style="color: var(--danger);">❌ 0.1%</td>
+                        <td style="color: var(--success);">✅ Active</td>
+                        <td style="color: var(--success);">✅ Active</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--warning);">🟡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Arabic Content</strong></td>
+                        <td style="color: var(--danger);">❌ None</td>
+                        <td style="color: var(--warning);">🟡 Some</td>
+                        <td style="color: var(--warning);">🟡 Some</td>
+                        <td style="color: var(--warning);">🟡 Some</td>
+                        <td style="color: var(--warning);">🟡 Some</td>
+                        <td style="color: var(--warning);">🟡 Some</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TikTok/YouTube</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡 Some</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regional Presence</strong></td>
+                        <td style="color: var(--success);">✅ 3 Countries</td>
+                        <td style="color: var(--success);">✅ Multi</td>
+                        <td style="color: var(--warning);">🟡 Egypt</td>
+                        <td style="color: var(--warning);">🟡 Egypt</td>
+                        <td style="color: var(--warning);">🟡 Egypt</td>
+                        <td style="color: var(--warning);">🟡 Egypt</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Awards</strong></td>
+                        <td style="color: var(--danger);">❌ None</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--success);">✅</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- POSITIONING MAP -->
+        <section>
+            <div class="section-number">Section 04</div>
+            <h2>Competitive Positioning Map</h2>
+            <div class="positioning-map">
+                PREMIUM/ULTRA-LUXURY
+                │
+                HSI● │ ●Flair Egypt
+                │ ●DAR Designs
+                MHK● │
+                │
+                TURNKEY/FULL ─────────┼──────────────── DESIGN-ONLY
+                SERVICE │
+                │ ●Mona Hussein
+                Neat● │ ●Eklego
+                Archeffect● │ ●Ahmed Hussein
+                │ ●ERA Egypt
+                │
+                MID-TIER/EMERGING
+            </div>
+            <p style="text-align: center; font-size: 0.88rem;"><strong>MHK's unique position:</strong> They sit at the
+                intersection of "Turnkey Full Service" and "Premium/Ultra-Luxury" — a position that few competitors
+                occupy.</p>
+        </section>
+
+        <!-- DIGITAL BENCHMARK -->
+        <section>
+            <div class="section-number">Section 05</div>
+            <h2>What Top Competitors Do Better Digitally</h2>
+
+            <div class="grid-2">
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <h4>HSI — The Benchmark</h4>
+                    <p style="color: var(--text);">Rich visual portfolio website · Active social with engagement · Award
+                        mentions prominent · Client testimonials integrated</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger);">
+                    <h4>Flair Egypt — The Award Winner</h4>
+                    <p style="color: var(--text);">Project categorization · Before/after documentation · Clear service
+                        process · Award credentials displayed</p>
+                </div>
+            </div>
+
+            <h3>What ALL Top Competitors Have That MHK Lacks</h3>
+            <ol style="margin-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Portfolio website</strong> — rich visual showcase of completed
+                    projects</li>
+                <li style="margin-bottom: 8px;"><strong>Award/recognition mentions</strong> — third-party credibility
+                </li>
+                <li style="margin-bottom: 8px;"><strong>Client testimonials</strong> — social proof</li>
+                <li style="margin-bottom: 8px;"><strong>Project categorization</strong> — residential, commercial,
+                    compound-specific</li>
+                <li style="margin-bottom: 8px;"><strong>Team/about pages</strong> — personal connection</li>
+                <li style="margin-bottom: 8px;"><strong>Booking/consultation CTAs</strong> — clear conversion path</li>
+            </ol>
+        </section>
+
+        <!-- OPPORTUNITY -->
+        <section>
+            <div class="section-number">Section 06</div>
+            <h2>Market Opportunity Assessment</h2>
+
+            <h3>Where MHK Can Win</h3>
+            <ul class="opp-list">
+                <li class="win">🏆 <strong>Full turnkey positioning</strong> — design + build + furnish is rare at the
+                    premium level</li>
+                <li class="win">🌍 <strong>Three-country reach</strong> — no competitor matches CAI + DMM + DXB</li>
+                <li class="win">📱 <strong>TikTok/YouTube first-mover</strong> — no competitor is doing video content
+                    well</li>
+                <li class="win">📌 <strong>Pinterest domination</strong> — interior design's #1 discovery platform is
+                    unclaimed</li>
+                <li class="win">🏢 <strong>B2B commercial</strong> — Al-Futtaim HQ proves corporate capability</li>
+            </ul>
+
+            <h3>Where MHK Is Vulnerable</h3>
+            <ul class="opp-list">
+                <li class="risk">🌐 <strong>Zero web portfolio</strong> — while every single competitor has one</li>
+                <li class="risk">📉 <strong>0.1% engagement rate</strong> — effectively invisible to their own followers
+                </li>
+                <li class="risk">🏆 <strong>No public awards</strong> — competitors use awards for credibility</li>
+                <li class="risk">🔇 <strong>No PR/media presence</strong> — missing design publication features</li>
+                <li class="risk">📊 <strong>Only 1 review (2 yrs old)</strong> — zero social proof</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 <span class="brand">ADMIRE8 BY ADMIREWORKS</span> · Confidential — Internal Use Only</p>
+        <p style="margin-top: 6px;">hello@admireworks.com · (+971) 4295 8666</p>
+    </footer>
+
+</body>
+
+</html>

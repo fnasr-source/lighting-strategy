@@ -9,100 +9,97 @@
 
 ## Executive Offer
 
-Based on the February 22 meeting, we are building a **video-first lead generation system** for MHK Architects. The approach is designed around Omar's stated priorities: targeted lead generation, low overhead, and campaign-based engagement.
+Based on the February 22 meeting, we are building a **video-first lead generation system** for MHK Architects. The approach is designed around Omar's priorities: targeted lead generation, low overhead, and campaign-based engagement.
 
-Both options focus on **performance-driven campaigns** with the current project (Mehnaaz Story) as the hero content asset. No brand positioning, no organic social management — pure lead generation.
+The offer is built on our standard managed advertising service, with an additional asset-building component spread across the engagement period. No brand positioning, no organic social management — pure lead generation.
 
 ---
 
-## Scope Foundation (Included in Both Options)
+## What Is Included (Both Options)
 
-### Phase 1: Video Content Strategy (Week 1–2)
-- Creative direction meeting with Omar + videographer
-- Script and shot list for lead magnet video (documentary/interview format)
-- Scene outline for 15–30 min hero video
-- Short-form content plan: 7+ Reels from project
+### Ad Campaign Management (Core Service)
+- Meta Ads campaign management and optimization
+- Campaign targeting: New Cairo / New Capital compound homeowners
+- Lead quality monitoring and reporting
+- WhatsApp follow-up flow integration
+- Bi-weekly performance reports
 
-### Phase 2: Funnel Build (Week 2–3)
-- Landing page with video embed + lead capture form
-- Lead qualification flow (video must be watched before form)
-- WhatsApp follow-up integration
+### Strategy & Creative Direction
+- Video creative direction + scripting for Omar's videographer
+- Content strategy: shot lists, scene outlines, posting sequence
+- Lead magnet concept: documentary-style project showcase video
 - Campaign creative development (ad sets, copy, visuals)
 
-### Phase 3: Campaign Launch & Optimization (Week 3+)
-- Meta Ads campaign targeting New Cairo / New Capital compound homeowners
-- Campaign monitoring and optimization
-- Lead quality reporting
-- Performance-based budget recommendations
+---
+
+## Option 1: Ad Management + Asset Building (Bulk Payment)
+
+### Commercial
+- **Ad Campaign Management:** 12,500 EGP/month (~$260 USD)
+- **Asset Building (one-time bulk):** 45,000 EGP
+
+### What's Built (Assets)
+- Landing page with video-gated lead capture form
+- Lead magnet video direction + scripting
+- Campaign creative suite (ads, thumbnails, copy variations)
+- WhatsApp follow-up sequences
+- Lead qualification flow
+
+### Terms
+- Assets are built over the first 3 months of engagement
+- Minimum engagement: 3 months
+- Ad spend billed directly to client's ad accounts
+- Assets belong to MHK after 12 months of continuous service
 
 ---
 
-## Option 1: Campaign Sprint — Build + Launch
+## Option 2: Ad Management + Asset Building (Monthly Spread)
 
 ### Commercial
-- **Setup:** 25,000 EGP (one-time)
-- **Ad Management:** 5,000 EGP/month (minimum 2 months)
+- **Ad Campaign Management:** 12,500 EGP/month (~$260 USD)
+- **Asset Building:** 6,250 EGP/month (spread across engagement)
+- **Total Monthly:** 18,750 EGP/month
+- **Upfront:** 3 months advance for asset building = 18,750 EGP
 
-### Includes
-- Video creative direction + scripting for videographer
-- Landing page build with video-gated lead form
-- Campaign setup + launch (Meta Ads)
-- Bi-weekly optimization and lead quality reports
-- WhatsApp follow-up flow setup
+### What's Built (Same Assets as Option 1)
+- Landing page with video-gated lead capture form
+- Lead magnet video direction + scripting
+- Campaign creative suite
+- WhatsApp follow-up sequences
+- Lead qualification flow
 
-### Best For
-- Getting the next 3–4 leads quickly with the current project as hero content
-- Campaign-based engagement (run → close → pause → repeat)
-
-### Does Not Include
-- Ad spend (billed directly to client accounts)
-- Content production / videography (client has own videographer)
-- Social media management
+### Terms
+- 3 months upfront payment for asset building required at start
+- Minimum engagement: 3 months
+- Ad spend billed directly to client's ad accounts
+- Assets belong to MHK after 12 months of continuous service
+- If engagement completes 12 months, assets are handed over
 
 ---
 
-## Option 2: Managed Growth — Campaigns + Content Direction + Lead Nurture
+## The Approach — Video-First Lead Generation
 
-### Commercial
-- **Setup:** 20,000 EGP (one-time — reduced because of existing relationship)
-- **Monthly:** 12,500 EGP/month (minimum 3 months)
-
-### Includes
-- Everything in Option 1
-- Ongoing content direction: monthly shot lists, script ideas, posting sequence
-- Lead nurture system: email/WhatsApp drip sequences for lukewarm leads
-- Multi-project content planning (sequence new projects as they complete)
-- Periodic boosting management for follower growth
-- Monthly strategy review call
-
-### Best For
-- Year-round presence with always-on low-budget campaigns
-- Building a lead pipeline that compounds over time
-- Not needing to restart from scratch each campaign cycle
-
-### Notes
-- Ad spend billed directly to client accounts
-- No revenue sharing
-- Content production by client's videographer, directed by Admireworks
+1. **Hero Content:** Documentary-style video from current project (Mehnaaz Story) — 3D vs reality comparison, project journey, Omar interview
+2. **Lead Magnet:** Prospects watch the video before accessing the form — builds trust and qualifies serious inquiries
+3. **Campaign Targeting:** New Cairo and New Capital compound homeowners (El Patio, SODIC, Midtown, Mountain View)
+4. **Nurture:** Leads who don't convert immediately receive drip content showing MHK's differentiation over time
+5. **Content Pipeline:** 7+ Reels per project, cinematic reveal video, interview clips — all directed by Admireworks, shot by Omar's videographer
 
 ---
 
 ## Recommendation
 
-**Option 2** aligns best with the meeting discussion. Omar expressed interest in:
-- Year-round low-budget presence
-- Having Admireworks provide creative direction for his videographer
-- Lead nurture for lukewarm leads (addressing the "differentiation gap")
-- On-demand campaign scaling when ready for new projects
+Both options include the same scope. The difference is payment structure only.
 
-The reduced setup fee reflects the existing relationship and trust built over 6+ months of previous collaboration.
+- **Option 1** suits clients who prefer to settle the asset cost upfront and keep a lower monthly.
+- **Option 2** suits clients who prefer to spread costs and commit to a longer engagement period.
 
 ---
 
 ## Next Steps
 
 1. Omar sends current project 3D renders + after photos
-2. Schedule sync with Omar + videographer
+2. Schedule creative sync with Omar + videographer
 3. Confirm Option 1 or Option 2
 4. Process initial payment and begin video creative direction
 

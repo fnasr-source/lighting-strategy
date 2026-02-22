@@ -1,0 +1,695 @@
+:root {
+  /* Brand Colors */
+  --aw-navy: #001a70;
+  --aw-navy-light: #1a3a8f;
+  --aw-gold: #cc9f53;
+  --aw-gold-light: #eec780;
+  --aw-gold-glow: rgba(204, 159, 83, 0.3);
+  --aw-white: #ffffff;
+  --aw-off-white: #f8f7f4;
+  --aw-light-gray: #e8e6e1;
+  --aw-medium-gray: #9a9890;
+  --aw-dark-gray: #3a3a38;
+  --aw-black: #0f0f11;
+
+  /* Typography Scale - Redesigned for readability */
+  --font-headline: 'Jaymont',
+    'Georgia',
+    serif;
+  --font-body: 'Akkurat Pro',
+    'Helvetica Neue',
+    sans-serif;
+
+  /* Dimensions - Optimized for content fit */
+  --slide-width: 1920px;
+  --slide-height: 1080px;
+  --slide-padding: 80px 100px;
+  /* Reduced to prevent cutoff */
+}
+
+@font-face {
+  font-family: 'Jaymont';
+  src: url('./assets/fonts/jaymont/Jaymont Medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Jaymont';
+  src: url('./assets/fonts/jaymont/Jaymont Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('./assets/fonts/akkurat-pro/Akkurat Pro-Light.otf') format('opentype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('./assets/fonts/akkurat-pro/Akkurat Pro-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('./assets/fonts/akkurat-pro/Akkurat Pro-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--aw-black);
+  color: var(--aw-navy);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Presentation Infrastructure --- */
+.slide-viewport {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f11 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-scaler {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--aw-white);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  transform-origin: center center;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  padding: var(--slide-padding);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* CRITICAL: Vertical centering */
+  align-items: flex-start;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--aw-white);
+  direction: ltr;
+  text-align: left;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+}
+
+/* --- Global Slide Elements --- */
+.slide-header {
+  position: absolute;
+  top: 40px;
+  right: 70px;
+  z-index: 100;
+}
+
+.brand-mark-mini {
+  width: 90px;
+}
+
+.slide-badge {
+  display: inline-block;
+  background: var(--aw-gold);
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.slide-title {
+  font-family: var(--font-headline);
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--aw-navy);
+  margin-bottom: 24px;
+  line-height: 1.05;
+}
+
+.slide-subtitle {
+  font-family: var(--font-headline);
+  font-size: 32px;
+  color: var(--aw-gold);
+  margin-top: -8px;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.slide-body {
+  font-size: 32px;
+  line-height: 1.6;
+  color: var(--aw-navy);
+}
+
+.slide-content {
+  width: 100%;
+  max-width: 1720px;
+}
+
+.brand-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='200' viewBox='0 0 400 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 200 L100 40 L200 200 L300 40 L400 200' stroke='%23001a70' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* --- Layouts --- */
+
+/* 1. COVER */
+.layout-cover {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url('assets/generated/architectural-bg.png');
+  /* New background */
+  background-size: cover;
+  background-position: center;
+}
+
+.layout-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  /* Subtle overlay */
+  z-index: 0;
+}
+
+.layout-cover>* {
+  position: relative;
+  z-index: 1;
+}
+
+.layout-cover .brand-mark-large {
+  width: 220px;
+  margin-bottom: 50px;
+}
+
+.layout-cover .slide-title {
+  font-size: 120px;
+  margin-bottom: 20px;
+}
+
+.layout-cover .slide-subtitle {
+  font-size: 48px;
+  letter-spacing: 6px;
+  margin-bottom: 60px;
+}
+
+.layout-cover .client-info {
+  border-top: 3px solid var(--aw-gold);
+  padding-top: 50px;
+  margin-top: 20px;
+  width: 700px;
+}
+
+.layout-cover .client-info>div:first-child {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--aw-navy);
+  margin-bottom: 15px;
+}
+
+.layout-cover .client-info>div:nth-child(2) {
+  font-size: 24px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.layout-cover .client-info>div:last-child {
+  font-size: 20px;
+  color: var(--aw-gold);
+}
+
+/* 2. STRATEGIC GRID (Renovated Slide 2) */
+.layout-strategic-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding-top: 40px;
+}
+
+.strategic-intro {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+}
+
+.strategic-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 40px;
+  /* Reduced to give funnel more space */
+}
+
+.strategic-card {
+  background: white;
+  border: 1px solid var(--aw-light-gray);
+  border-top: 6px solid var(--aw-gold);
+  border-radius: 12px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.strategic-icon {
+  font-size: 48px;
+  color: var(--aw-navy);
+  margin-bottom: 10px;
+}
+
+.strategic-card h3 {
+  font-size: 32px;
+  color: var(--aw-navy);
+  margin: 0;
+}
+
+.strategic-card p {
+  font-size: 22px;
+  color: var(--aw-dark-gray);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.strategic-grid-container+img {
+  height: 220px;
+  /* Larger funnel image */
+  width: auto;
+  opacity: 0.85;
+}
+
+/* 3. TITLE BULLETS (Slides 3-5 Balanced) */
+.layout-title-bullets {
+  padding: 120px 100px 100px 100px;
+  /* Balanced padding with bottom margin */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.layout-title-bullets .slide-header {
+  display: none;
+  /* Hidden — brand icon is inside the pricing box instead */
+}
+
+.layout-title-bullets .slide-badge {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.layout-title-bullets .slide-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.layout-title-bullets .slide-subtitle {
+  margin-bottom: 30px;
+}
+
+.layout-title-bullets .slide-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.layout-title-bullets ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.layout-title-bullets li {
+  font-size: 26px;
+  padding: 18px 24px;
+  background: var(--aw-off-white);
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--aw-navy);
+  line-height: 1.4;
+}
+
+.layout-title-bullets li::before {
+  content: '•';
+  color: var(--aw-gold);
+  font-weight: bold;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* Investment Row: pricing box + brand icon side by side */
+.investment-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.investment-box {
+  padding: 30px 35px 35px 35px;
+  background: white;
+  border: 2px solid var(--aw-light-gray);
+  border-left: 8px solid var(--aw-gold);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  flex: 1;
+}
+
+.investment-brand {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.brand-mark-investment {
+  width: 100px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.brand-mark-investment:hover {
+  opacity: 1;
+}
+
+.investment-price {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--aw-navy);
+  margin-bottom: 8px;
+}
+
+.investment-box>div:nth-child(2) {
+  font-size: 20px;
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.investment-box>div:nth-child(3),
+.investment-box>div:last-child {
+  font-size: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--aw-light-gray);
+  margin-top: 12px;
+}
+
+/* 4. PRICING CARDS */
+.layout-pricing-cards .slide-title {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.layout-pricing-cards .cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  align-items: stretch;
+  margin-bottom: 40px;
+  /* More bottom margin */
+}
+
+.pricing-card {
+  background: var(--aw-off-white);
+  border: 2px solid var(--aw-light-gray);
+  border-radius: 20px;
+  padding: 45px 45px 50px 45px;
+  /* Extra bottom padding */
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  /* Slightly reduced height */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card.featured {
+  background: white;
+  border: 3px solid var(--aw-gold);
+  box-shadow: 0 20px 60px rgba(204, 159, 83, 0.25);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.card-name {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--aw-navy);
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  font-size: 18px;
+  color: var(--aw-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.card-price {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--aw-navy);
+  margin-bottom: 10px;
+}
+
+.card-price-note {
+  font-size: 16px;
+  opacity: 0.6;
+  margin-bottom: 40px;
+}
+
+.card-features {
+  list-style: none;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-features li {
+  font-size: 22px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.card-features li::before {
+  content: '✓';
+  color: var(--aw-gold);
+  font-weight: bold;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.card-monthly {
+  margin-top: 40px;
+  font-weight: 700;
+  font-size: 24px;
+  border-top: 2px solid var(--aw-light-gray);
+  padding-top: 30px;
+  color: var(--aw-navy);
+}
+
+/* 5. GRID 3 (Slide 7 - Rebalanced) */
+.layout-grid-3 {
+  padding-top: 100px;
+  /* Reduce top padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.layout-grid-3 .slide-title {
+  margin-bottom: 50px;
+}
+
+.layout-grid-3 .grid-3-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  margin-bottom: 40px;
+  /* More bottom margin */
+}
+
+.grid-card {
+  background: var(--aw-off-white);
+  padding: 40px 40px 50px 40px;
+  /* Extra bottom padding */
+  border-radius: 20px;
+  border: 2px solid var(--aw-light-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 480px;
+  /* Reduced to prevent bottom crowding */
+}
+
+.grid-card h3 {
+  font-size: 36px;
+  color: var(--aw-navy);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.grid-card h4 {
+  font-size: 20px;
+  color: var(--aw-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.grid-card .slide-body {
+  font-size: 24px;
+  line-height: 1.7;
+}
+
+.grid-card .price {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--aw-navy);
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid var(--aw-light-gray);
+}
+
+.grid-card .price+div {
+  font-size: 16px;
+  opacity: 0.5;
+  margin-top: 10px;
+}
+
+/* 6. CLOSING */
+.layout-closing {
+  background: var(--aw-navy);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.layout-closing .slide-title {
+  color: var(--aw-gold);
+  font-size: 100px;
+  margin-bottom: 30px;
+}
+
+.layout-closing .slide-subtitle {
+  color: white;
+  opacity: 0.9;
+  font-size: 44px;
+  margin-bottom: 80px;
+}
+
+.layout-closing .contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 100px;
+}
+
+.layout-closing .contact-info>div {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.layout-closing .contact-info>div:last-child {
+  color: var(--aw-gold);
+  font-weight: 700;
+}
+
+.logo-closing {
+  height: 120px;
+  filter: brightness(0) invert(1);
+  /* Make logo white */
+}
+
+/* PRINT MODE STYLES */
+@media print {
+  @page {
+    size: 1920px 1080px;
+    margin: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+.print-mode {
+  width: 1920px;
+  height: auto;
+  overflow: visible;
+  background: white;
+}
+
+.print-slide-wrapper {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+  overflow: hidden;
+}
+
+.print-mode .slide {
+  transform: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}

@@ -4,7 +4,7 @@
 **Recording:** [View Recording](https://fathom.video/calls/574620059) (No highlights)
 
 ## Participants
-- **Omar Hassan** — MHK Architects (Founder / Lead Designer)
+- **Omar Kamal** — MHK Architects (Founder / Lead Designer)
 - **Fouad Nasseredin** — Admireworks (Strategy)
 - **Esraa Ali** — Admireworks (Account Manager / Strategy)
 
@@ -233,7 +233,7 @@ I think we have a lot of ideas in the video. We can access the video graphers wi
 
 | # | Action | Owner | Status |
 |---|--------|-------|--------|
-| 1 | Send 3D renders + after photos for current project | Omar Hassan | ⏳ Pending |
+| 1 | Send 3D renders + after photos for current project | Omar Kamal | ⏳ Pending |
 | 2 | Schedule sync with Omar + videographer to plan lead-gen video | Esraa Ali / Fouad | ⏳ Pending |
 | 3 | Draft scripts/scenes for lead magnet video | Admireworks | ⏳ Pending |
 | 4 | Prepare campaign proposal with video-based lead funnel | Fouad / Esraa | ⏳ Pending |

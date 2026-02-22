@@ -1,7 +1,7 @@
 # 01-Transcript-Insights: MHK Architects — Meeting Key Takeaways
 
 **Meeting Date:** February 22, 2026
-**Attendees:** Omar Hassan (MHK), Fouad Nasseredin (AW), Esraa Ali (AW)
+**Attendees:** Omar Kamal (MHK), Fouad Nasseredin (AW), Esraa Ali (AW)
 
 ---
 

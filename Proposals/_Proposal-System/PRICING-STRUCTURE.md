@@ -237,11 +237,42 @@ Admireworks
 
 ---
 
+## HubSpot Quotation Playbook (Internal)
+
+### Standardization Rules (Always Apply)
+1. **Comments block:** Use the same standard comments text used in the approved reference quote (Kareem Gamal DRM), unless explicitly instructed otherwise.
+2. **Agreement terms structure:** Reuse the same legal/terms structure and headings from the approved reference quote, then edit only:
+   - Scope
+   - Commercial amount
+   - Payment schedule
+   - Term length
+3. **Context adaptation:** Keep structure fixed, but tailor commercial clauses to each client’s agreed scope.
+
+### Currency Handling Rule (Critical)
+- HubSpot quote currency may be fixed (e.g., AED), while commercial agreement may be in EGP.
+- In this case:
+  1. Keep HubSpot system currency as required.
+  2. Add explicit wording in `hs_terms` stating the **commercial payable amount in EGP**.
+  3. Include the system-currency equivalent as “for HubSpot system currency purposes only”.
+
+### Pre-Send Checklist for Every Quote
+- [ ] Correct deal linked
+- [ ] Correct contact/company linked
+- [ ] Comments block matches standard
+- [ ] Agreement terms structure matches reference
+- [ ] Scope matches agreed package
+- [ ] Amount and payment schedule reflect agreement
+- [ ] EGP amount explicitly stated when commercial currency is EGP
+- [ ] HubSpot currency + equivalent are aligned
+
+---
+
 ## Pricing History / Changelog
 
 | Date | Change | Notes |
 |------|--------|-------|
 | 2026-02-23 | Added Growth Packages (Funnel & Ads) | 3-tier pricing: Funnel Engine Only, Engine + Optimization, Full Growth Partnership, plus add-ons |
+| 2026-02-23 | Added HubSpot quotation playbook rules | Standard comments, agreement terms structure reuse, currency handling (EGP commercial amount + HubSpot equivalent), pre-send checklist |
 | 2026-02-23 | Added Resend contact-tier pricing SOP | One-team-per-client structure, retainer inclusion (up to 1,000 contacts), contact-based add-on tiers, 20–25% margin policy |
 | 2026-02-22 | Updated to subscription model | Option B renamed to Growth System Subscription at 5,500 EGP/mo |
 | 2026-02-22 | Initial documentation | Based on verbal briefing from Fouad |

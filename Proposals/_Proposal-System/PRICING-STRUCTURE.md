@@ -1,6 +1,6 @@
 # Admireworks Proposal Pricing Structure
 
-> **Last Updated:** February 22, 2026
+> **Last Updated:** February 23, 2026
 > **Source:** Fouad Nasseredin (verbal briefing)
 > **Purpose:** Standard pricing reference for all future proposals
 
@@ -73,6 +73,45 @@ Covers the creation and maintenance of all marketing infrastructure: landing pag
 Example (Egyptian market at 12,500 EGP/mo ad mgmt, 5,500 EGP/mo subscription):
 - **Option 1:** 37,500 + 45,000 = **82,500 EGP** upfront → 12,500 EGP/mo after
 - **Option 2:** 37,500 + 16,500 = **54,000 EGP** upfront → 18,000 EGP/mo after
+
+---
+
+## Resend Email Platform Pricing (Agency Internal)
+
+> **Model decision:** Keep billing simple and contact-based.
+> We bill by **contact tiers** and include both transactional + marketing usage in each tier.
+
+### Account Structure Rule (Resend)
+- Use **one Resend Team per client** (separate usage, billing, API keys).
+- Agency can manage all teams from one login via team switcher.
+- No shared pool across clients.
+
+### Billing Rule (Client-Facing)
+- Client pays one email add-on fee based on **active contacts**.
+- Transactional and marketing are not split line items for normal usage.
+- Include fair-use clause for extreme transactional spikes.
+
+### Included in Retainer
+- Up to **1,000 contacts** included in monthly retainer (no extra email platform fee).
+
+### Contact Tiers (Email Add-On)
+| Tier | Contact Range | Suggested Add-On (USD/mo) | Notes |
+|---|---:|---:|---|
+| Included | 0–1,000 | 0 | Covered in retainer |
+| Growth | 1,001–5,000 | 75 | All-in (transactional + marketing) |
+| Scale | 5,001–10,000 | 150 | All-in |
+| Pro | 10,001–25,000 | 375 | All-in |
+| Enterprise Lite | 25,001–50,000 | 750 | All-in |
+| Enterprise | 50,001+ | Custom | Quote case-by-case |
+
+### Margin Policy (Internal)
+- Target markup on platform cost: **20–25%**.
+- Formula: `Client Email Fee = Actual Resend Cost × 1.20 to 1.25`.
+- Keep tier prices clean/rounded for proposals.
+
+### Fair-Use Safeguard (Must Include in Proposal/Agreement)
+- “Email add-on includes normal transactional usage for the selected contact tier.
+  Abnormal transactional spikes may be billed separately as overage.”
 
 ---
 
@@ -154,5 +193,6 @@ Admireworks
 
 | Date | Change | Notes |
 |------|--------|-------|
+| 2026-02-23 | Added Resend contact-tier pricing SOP | One-team-per-client structure, retainer inclusion (up to 1,000 contacts), contact-based add-on tiers, 20–25% margin policy |
 | 2026-02-22 | Updated to subscription model | Option B renamed to Growth System Subscription at 5,500 EGP/mo |
 | 2026-02-22 | Initial documentation | Based on verbal briefing from Fouad |

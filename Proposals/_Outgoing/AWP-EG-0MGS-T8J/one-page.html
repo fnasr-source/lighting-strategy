@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Mahmoud Mongy — One Page Proposal</title>
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-bg: #f8f7f4;
+            --aw-white: #ffffff;
+            --aw-text: #1d2436;
+            --aw-muted: #5d6475;
+            --aw-border: #e3e0d8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Akkurat Pro", "Helvetica Neue", Arial, sans-serif;
+            background: var(--aw-bg);
+            color: var(--aw-text);
+            padding: 24px;
+        }
+
+        .container {
+            width: min(1080px, 100%);
+            max-width: 1080px;
+            margin: 0 auto;
+            background: var(--aw-white);
+            border: 1px solid var(--aw-border);
+            border-radius: 14px;
+            padding: 32px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 10px;
+            color: var(--aw-navy);
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--aw-gold);
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-top: 28px;
+        }
+
+        p,
+        li {
+            color: var(--aw-muted);
+            line-height: 1.55;
+        }
+
+        ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+
+        .meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 20px;
+            border: 1px solid var(--aw-border);
+            border-radius: 10px;
+            padding: 14px;
+            margin: 18px 0 24px;
+            background: #fcfcfb;
+            font-size: 0.92rem;
+        }
+
+        .meta strong {
+            color: var(--aw-text);
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .meta div {
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .card {
+            border: 1px solid var(--aw-border);
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+        }
+
+        .card.featured {
+            border-color: var(--aw-gold);
+            box-shadow: 0 0 0 1px rgba(204, 159, 83, 0.25);
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--aw-gold);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: var(--aw-navy);
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .price-sub {
+            font-size: 0.85rem;
+            color: var(--aw-muted);
+            font-weight: 400;
+        }
+
+        .phase {
+            border-left: 3px solid var(--aw-gold);
+            padding-left: 10px;
+            margin-top: 12px;
+        }
+
+        .sum-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 0;
+            font-size: 0.88rem;
+        }
+
+        .sum-table td {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0ede6;
+        }
+
+        .sum-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--aw-navy);
+        }
+
+        .sum-table tr:last-child td {
+            border-bottom: 2px solid var(--aw-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .sum-table .label {
+            color: var(--aw-muted);
+        }
+
+        .bonus {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #f6f4ef;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            color: var(--aw-muted);
+            border-left: 3px solid var(--aw-gold);
+        }
+
+        .bonus strong {
+            color: var(--aw-text);
+        }
+
+        .next {
+            margin-top: 26px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #f6f4ef;
+            border: 1px solid var(--aw-border);
+        }
+
+        .payment-note {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--aw-border);
+            font-size: 0.84rem;
+        }
+
+        .payment-note p {
+            margin: 4px 0;
+            color: #7a7f8b;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .payment-note strong {
+            color: var(--aw-text);
+        }
+
+        .payment-note a {
+            color: #525865;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 10px;
+            }
+
+            .meta,
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 16px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.45rem;
+            }
+
+            h2 {
+                font-size: 1.05rem;
+            }
+
+            .price {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .container {
+                border: none;
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Dr. Mahmoud Mongy — Growth Proposal</h1>
+        <p>Digital growth and lead acquisition system tailored to your business goals.</p>
+
+        <div class="meta">
+            <div>Proposal No: <strong id="proposal-number">AWP-EG-0MGS-T8J</strong></div>
+            <div>Client: <strong>Dr. Mahmoud Mongy</strong></div>
+            <div>Client Email: <strong>mongy.mhmod@gmail.com</strong></div>
+            <div>Client Phone: <strong>+201554927583</strong></div>
+            <div>Prepared by: <strong>Admireworks</strong></div>
+            <div>Scope: <strong>Growth & Funnel Strategy</strong></div>
+            <div>Date: <strong>February 23, 2026</strong></div>
+            <div>Valid Until: <strong>March 2, 2026</strong></div>
+        </div>
+
+        <h2>What Is Included (Both Options)</h2>
+        <ul>
+            <li>Funnel strategy & structure (lead journey, stages, conversion logic)</li>
+            <li>Landing page build (high-converting layout + copy guidance)</li>
+            <li>Lead capture form with qualification questions</li>
+            <li>Thank You page with next-step routing (WhatsApp / Telegram)</li>
+            <li>Tracking setup & dashboard basics (lead source, actions, insights)</li>
+            <li>Handover & launch support</li>
+        </ul>
+
+        <h2>Commercial Options</h2>
+        <div class="grid-2">
+            <div class="card">
+                <span class="pill">Option 1 — Funnel Engine Only</span>
+                <h3>Build + Launch</h3>
+
+                <div class="phase">
+                    <p><strong>Investment</strong></p>
+                </div>
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">One-time investment</td>
+                        <td>45,000 EGP</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Timeline</td>
+                        <td>10–14 days</td>
+                    </tr>
+                </table>
+
+                <ul style="margin-top: 14px;">
+                    <li>You own all assets from day one.</li>
+                    <li>No ongoing commitment required.</li>
+                    <li>Optional retainer: 7,500 EGP/mo for updates & A/B testing.</li>
+                </ul>
+            </div>
+
+            <div class="card featured">
+                <span class="pill">Option 3 — Full Growth Partnership</span>
+                <h3>Engine + Optimization + Ads Management</h3>
+
+                <div class="phase">
+                    <p><strong>To Start (Upfront)</strong></p>
+                </div>
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">Setup fee</td>
+                        <td>35,000 EGP</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Month 1 retainer</td>
+                        <td>32,500 EGP</td>
+                    </tr>
+                    <tr>
+                        <td>Total to start</td>
+                        <td>67,500 EGP</td>
+                    </tr>
+                </table>
+
+                <div class="phase" style="margin-top:16px;">
+                    <p><strong>After Month 1 (Monthly)</strong></p>
+                </div>
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">Monthly retainer</td>
+                        <td>32,500 EGP/mo</td>
+                    </tr>
+                </table>
+
+                <ul style="margin-top: 14px;">
+                    <li>Full funnel build + continuous optimization.</li>
+                    <li>Full ads management across agreed channels.</li>
+                    <li>Campaign strategy, ad copy angles & weekly optimization.</li>
+                    <li>Monthly performance review & action plan.</li>
+                    <li>Ad spend is billed directly to client accounts.</li>
+                    <li>Minimum engagement: 3 months.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="next">
+            <h3>Decision & Kickoff</h3>
+            <ul>
+                <li>Confirm Option 1 or Option 3.</li>
+                <li>Process initial payment based on selected option.</li>
+                <li>We schedule kickoff and begin execution immediately.</li>
+            </ul>
+
+            <div class="payment-note">
+                <p><strong>Payment Details (Egypt):</strong> Instapay | Account Name: Fouad Nasseredin | Instapay
+                    Account: admireworks@instapay | <a href="https://ipn.eg/S/admireworks/instapay/5A1jri"
+                        target="_blank" rel="noopener noreferrer">Pay via Instapay</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

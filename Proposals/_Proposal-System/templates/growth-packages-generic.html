@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admireworks — Growth Packages</title>
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-bg: #f8f7f4;
+            --aw-white: #ffffff;
+            --aw-text: #1d2436;
+            --aw-muted: #5d6475;
+            --aw-border: #e3e0d8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Akkurat Pro", "Helvetica Neue", Arial, sans-serif;
+            background: var(--aw-bg);
+            color: var(--aw-text);
+            padding: 24px;
+        }
+
+        .container {
+            width: min(1080px, 100%);
+            max-width: 1080px;
+            margin: 0 auto;
+            background: var(--aw-white);
+            border: 1px solid var(--aw-border);
+            border-radius: 14px;
+            padding: 32px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 10px;
+            color: var(--aw-navy);
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--aw-gold);
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-top: 28px;
+        }
+
+        p,
+        li {
+            color: var(--aw-muted);
+            line-height: 1.55;
+        }
+
+        ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+
+        .tagline {
+            color: var(--aw-gold);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .card {
+            border: 1px solid var(--aw-border);
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card.featured {
+            border-color: var(--aw-gold);
+            box-shadow: 0 0 0 1px rgba(204, 159, 83, 0.25);
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--aw-gold);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .price {
+            color: var(--aw-navy);
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .price-sub {
+            font-size: 0.85rem;
+            color: var(--aw-muted);
+            font-weight: 400;
+        }
+
+        .sum-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 0;
+            font-size: 0.85rem;
+        }
+
+        .sum-table td {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0ede6;
+        }
+
+        .sum-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--aw-navy);
+        }
+
+        .sum-table tr:last-child td {
+            border-bottom: 2px solid var(--aw-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .sum-table .label {
+            color: var(--aw-muted);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            padding: 4px 0;
+            font-size: 0.88rem;
+        }
+
+        .feature-list li::before {
+            content: "✓ ";
+            color: var(--aw-gold);
+            font-weight: bold;
+        }
+
+        .addons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .addon-card {
+            border: 1px solid var(--aw-border);
+            border-radius: 10px;
+            padding: 14px;
+            background: #fcfcfb;
+        }
+
+        .addon-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .addon-card .addon-sub {
+            font-size: 0.78rem;
+            color: var(--aw-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .addon-card p {
+            font-size: 0.82rem;
+            margin: 0 0 8px;
+        }
+
+        .addon-card .price {
+            font-size: 0.88rem;
+            margin: 0;
+        }
+
+        .next {
+            margin-top: 26px;
+            padding: 14px;
+            border-radius: 10px;
+            background: #f6f4ef;
+            border: 1px solid var(--aw-border);
+        }
+
+        .payment-note {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--aw-border);
+            font-size: 0.84rem;
+        }
+
+        .payment-note p {
+            margin: 4px 0;
+            color: #7a7f8b;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .payment-note strong {
+            color: var(--aw-text);
+        }
+
+        .payment-note a {
+            color: #525865;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 10px;
+            }
+
+            .grid-3,
+            .addons {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 16px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.45rem;
+            }
+
+            h2 {
+                font-size: 1.05rem;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .container {
+                border: none;
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tagline">Admireworks</div>
+        <h1>Growth & Funnel Strategy Packages</h1>
+        <p>Choose the growth model that fits your priorities, pace, and budget. Each option is designed to accelerate
+            your
+            lead acquisition and conversion pipeline.</p>
+
+        <h2>Growth Packages</h2>
+        <div class="grid-3">
+            <!-- Option 1 -->
+            <div class="card">
+                <span class="pill">Option 1</span>
+                <h3>Funnel Engine Only</h3>
+                <p style="font-size:0.85rem; color:var(--aw-gold); font-weight:600; margin-bottom:10px;">Build + Launch
+                </p>
+
+                <ul class="feature-list">
+                    <li>Funnel strategy & structure</li>
+                    <li>Landing page build (high-converting)</li>
+                    <li>Lead capture form with qualification</li>
+                    <li>Thank You page with routing</li>
+                    <li>Tracking setup & dashboard</li>
+                    <li>Handover & launch support</li>
+                </ul>
+
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">One-time investment</td>
+                        <td>45,000 EGP</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Timeline</td>
+                        <td>10–14 days</td>
+                    </tr>
+                </table>
+                <p style="font-size:0.82rem; color:var(--aw-gold); margin-top:8px; font-weight:600;">Optional retainer:
+                    7,500 EGP/mo</p>
+            </div>
+
+            <!-- Option 2 -->
+            <div class="card featured">
+                <span class="pill">Option 2</span>
+                <h3>Engine + Optimization</h3>
+                <p style="font-size:0.85rem; color:var(--aw-gold); font-weight:600; margin-bottom:10px;">Min. 3 Months
+                </p>
+
+                <ul class="feature-list">
+                    <li>Everything in Option 1</li>
+                    <li>Continuous optimization & iteration</li>
+                    <li>Monthly performance review</li>
+                    <li>Multiple LP variations</li>
+                    <li>Qualification improvements</li>
+                    <li>Tracking refinement</li>
+                </ul>
+
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">Setup</td>
+                        <td>35,000 EGP</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Monthly</td>
+                        <td>17,500 EGP/mo</td>
+                    </tr>
+                </table>
+                <p style="font-size:0.82rem; color:var(--aw-muted); margin-top:8px;">Setup + Month 1 paid at start.</p>
+            </div>
+
+            <!-- Option 3 -->
+            <div class="card">
+                <span class="pill">Option 3</span>
+                <h3>Full Growth Partnership</h3>
+                <p style="font-size:0.85rem; color:var(--aw-gold); font-weight:600; margin-bottom:10px;">Engine +
+                    Optimization + Ads</p>
+
+                <ul class="feature-list">
+                    <li>Everything in Option 2</li>
+                    <li>Full ads management</li>
+                    <li>Campaign strategy & optimization</li>
+                    <li>Ad copy & creative angles</li>
+                    <li>Weekly optimization & budget guidance</li>
+                </ul>
+
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">Setup</td>
+                        <td>35,000 EGP</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Monthly</td>
+                        <td>32,500 EGP/mo</td>
+                    </tr>
+                </table>
+                <p style="font-size:0.82rem; color:var(--aw-muted); margin-top:8px;">Ad spend paid directly by client.
+                </p>
+            </div>
+        </div>
+
+        <h2>Strategic Add-Ons</h2>
+        <div class="addons">
+            <div class="addon-card">
+                <h3>Reply Management</h3>
+                <div class="addon-sub">AI + Escalation</div>
+                <p>AI-assisted reply flows for WhatsApp, Messenger & Telegram. Basic reporting on insights.</p>
+                <div class="price">12,500 Setup + 5,000/mo</div>
+            </div>
+            <div class="addon-card">
+                <h3>Creative Pack</h3>
+                <div class="addon-sub">Quarterly Content</div>
+                <p>8 videos + 4 images per quarter. Scripting, editing, captions. Using supplied footage.</p>
+                <div class="price">22,000 EGP / Quarter</div>
+            </div>
+            <div class="addon-card">
+                <h3>Platform Costs</h3>
+                <div class="addon-sub">Client Responsibility</div>
+                <p>Hosting, domains, AI usage, and third-party subscriptions are paid directly by the client.</p>
+                <div class="price">Paid by Client</div>
+            </div>
+        </div>
+
+        <div class="next">
+            <h3>Next Steps</h3>
+            <ul>
+                <li>Select the option that best fits your goals.</li>
+                <li>Confirm your choice and process the initial payment.</li>
+                <li>We schedule kickoff and begin execution immediately.</li>
+            </ul>
+
+            <div class="payment-note">
+                <p><strong>Payment Details (Egypt):</strong> Instapay | Account Name: Fouad Nasseredin | Instapay
+                    Account: admireworks@instapay | <a href="https://ipn.eg/S/admireworks/instapay/5A1jri"
+                        target="_blank" rel="noopener noreferrer">Pay via Instapay</a></p>
+            </div>
+        </div>
+
+        <p style="margin-top:20px; font-size:0.8rem; color:var(--aw-muted); text-align:center;">
+            Admireworks · hello@admireworks.com · admireworks.com
+        </p>
+    </div>
+</body>
+
+</html>

@@ -53,6 +53,54 @@ Covers the creation and maintenance of all marketing infrastructure: landing pag
 
 ---
 
+## Growth Packages (Funnel & Ads)
+
+Standalone growth packages for clients who need funnel infrastructure, optimization, and/or ads management. These are independent of the Growth System subscription model above.
+
+### Package Options
+
+| Package | Setup Cost | Monthly Cost | Timeline |
+|---------|-----------|-------------|----------|
+| **Option 1 — Funnel Engine Only** | 45,000 EGP (one-time) | 7,500 EGP/mo (optional retainer) | 10–14 days |
+| **Option 2 — Engine + Optimization** | 35,000 EGP setup | 17,500 EGP/mo | Min. 3 months |
+| **Option 3 — Full Growth Partnership** | 35,000 EGP setup | 32,500 EGP/mo | Min. 3 months |
+
+### Option 1 — Funnel Engine Only (Build + Launch)
+- Funnel strategy & structure (lead journey, stages, conversion logic)
+- Landing page build (high-converting layout + copy guidance)
+- Lead capture form with qualification questions
+- Thank You page with next-step routing (WhatsApp / Telegram)
+- Tracking setup & dashboard basics (lead source, actions, insights)
+- Handover & launch support
+- **Optional retainer:** 7,500 EGP/month for minor updates, A/B test setup
+
+### Option 2 — Engine + Optimization (Min. 3 Months)
+- Everything in Option 1, plus:
+- Continuous optimization & iteration based on performance data
+- Monthly performance review & action plan
+- Building & improving multiple landing page variations
+- Ongoing improvements to qualification questions
+- Ongoing tracking refinement for improved visibility
+- **Initial payment includes setup fee + Month 1 retainer**
+
+### Option 3 — Full Growth Partnership (Engine + Optimization + Ads)
+- Everything in Option 2, plus:
+- Full ads management across agreed channels
+- Campaign structure, ad set strategy & optimization plan
+- Ad copy angles & variations aligned with the funnel
+- Weekly optimization & budget guidance
+- **Ad spend is paid directly by the client**
+
+### Strategic Add-Ons
+
+| Add-On | Price | Notes |
+|--------|-------|-------|
+| **Reply Management** (AI + Escalation) | 12,500 EGP setup + 5,000 EGP/mo | AI-assisted reply flows for WhatsApp, Messenger & Telegram. Subscriptions by client. |
+| **Creative Pack** (Quarterly Content) | 22,000 EGP/quarter | 8 videos + 4 images per quarter. Scripting, editing, captions. Using supplied footage (no filming). |
+| **Platform Costs** | Paid by client | Hosting, domains, AI usage, third-party subscriptions. |
+
+---
+
 ## Upfront Payment Rules
 
 ### Ad Campaign Management
@@ -193,6 +241,7 @@ Admireworks
 
 | Date | Change | Notes |
 |------|--------|-------|
+| 2026-02-23 | Added Growth Packages (Funnel & Ads) | 3-tier pricing: Funnel Engine Only, Engine + Optimization, Full Growth Partnership, plus add-ons |
 | 2026-02-23 | Added Resend contact-tier pricing SOP | One-team-per-client structure, retainer inclusion (up to 1,000 contacts), contact-based add-on tiers, 20–25% margin policy |
 | 2026-02-22 | Updated to subscription model | Option B renamed to Growth System Subscription at 5,500 EGP/mo |
 | 2026-02-22 | Initial documentation | Based on verbal briefing from Fouad |

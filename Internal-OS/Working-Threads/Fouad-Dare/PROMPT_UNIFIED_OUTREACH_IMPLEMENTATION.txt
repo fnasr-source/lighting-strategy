@@ -1,0 +1,32 @@
+You are a senior full-stack architect. Build a production-ready Unified Outreach Data Hub on Firebase/GCP.
+
+Context:
+- We use Firebase Hosting + Firestore + Cloud Functions/Run.
+- We need one internal control plane for leads/campaigns/insights.
+- Execution providers: Instantly, Resend, HubSpot (adapter-based).
+- Source of truth must stay internal.
+- Must support per-contact timeline and unified reporting.
+
+What to produce:
+1) Technical architecture (services, queues, schedulers, secrets, monitoring).
+2) Firestore schema and indexes.
+3) Adapter interface and concrete implementation plan for Instantly first.
+4) Webhook ingestion + reconciliation polling design.
+5) Idempotency strategy (keys and dedup logic).
+6) API endpoints (admin + internal jobs).
+7) Security model (RBAC, webhook verification, PII handling).
+8) Failure/retry strategy and dead-letter handling.
+9) MVP roadmap in phases with effort estimates.
+10) Risks and mitigations.
+
+Constraints:
+- Keep provider-agnostic core.
+- Avoid vendor lock-in in business logic.
+- Prefer simple maintainable design over over-engineering.
+- Include example payloads and normalized UnifiedEvent format.
+
+Output format:
+- Start with an executive summary.
+- Then architecture diagram in text.
+- Then implementation details with checklists.
+- Then phased roadmap and go-live checklist.

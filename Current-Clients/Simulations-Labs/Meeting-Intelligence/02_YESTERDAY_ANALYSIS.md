@@ -1,9 +1,5 @@
-# Yesterday Meeting Analysis (Placeholder)
+# Yesterday Meeting Analysis
 
-Pending full transcript ingestion.
+Meetings found on 2026-02-23: 1
 
-This file will contain:
-- Full-context summary (from transcript body)
-- Decisions made
-- Risks/blocks
-- Owner-by-owner action items
+- Stand-up (`Transcripts/2026-02-23_Stand-up_12438057.md`)

@@ -60,10 +60,10 @@ body {
 }
 
 .brand-mark {
-    width: 48px;
-    height: 48px;
+    height: 40px;
+    width: auto;
     margin: 0 auto 16px;
-    opacity: 0.85;
+    display: block;
 }
 
 .page-header h1 {

@@ -1,0 +1,17 @@
+{
+  "name": "admireworks-firebase-setup",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Firebase infrastructure setup scripts for Admireworks Platform",
+  "scripts": {
+    "setup": "node setup-firebase.js",
+    "setup:firestore": "node setup-firestore.js",
+    "setup:auth": "node setup-auth.js",
+    "seed": "node seed-data.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "googleapis": "^144.0.0"
+  }
+}

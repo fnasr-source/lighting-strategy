@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.3.1",
-    "resend": "^6.9.3"
+    "resend": "^6.9.3",
+    "stripe": "^20.4.0"
   }
 }

@@ -691,5 +691,6 @@ body {
     .payment-hero {
         background: var(--aw-navy) !important;
         -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 }

@@ -1,1 +1,4 @@
 draft-peviews/genco
+.env
+node_modules/
+package-lock.json

@@ -1,0 +1,2 @@
+invoice_number,invoice_date,due_date,client_id,client_name,service,amount,currency,status,payment_date,stripe_link,invoice_url,email_sent,reminder_sent,notes
+AWI-202603-001,2026-03-01,2026-03-08,RQM-001,RQM Group,Full Marketing Retainer,5500,AED,pending,,,/Proposals/_Proposal-System/payments/invoices/AWI-202603-001/invoice.html,false,false,March 2026 retainer

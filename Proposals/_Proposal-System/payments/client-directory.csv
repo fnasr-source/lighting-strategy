@@ -1,0 +1,2 @@
+client_id,client_name,company,country,contact_email,contact_phone,service,amount,currency,billing_cycle,billing_day,status,stripe_payment_link,notes
+RQM-001,RQM Group,"QYD, RQM & Ceyaj",SA,,,,5500,AED,monthly,1,active,,Full Marketing Retainer — direct response marketing; social media; email campaigns; funnels; multi-platform ad management

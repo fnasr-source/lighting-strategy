@@ -43,6 +43,14 @@ Internal AW SOP/
 │   ├── {Client-Folder}/              ← One folder per client
 │   │   └── (numbered docs 00–11, HTML, meetings/, etc.)
 │   ├── _Proposal-System/             ← Proposal engine (docs, scripts, templates)
+│   │   └── payments/                 ← Stripe integration, package pages, invoices
+│   │       ├── STRIPE-CONFIG.md      ← Stripe account & product reference
+│   │       ├── INVOICE-PATTERNS.md   ← Self-learning invoice pattern log
+│   │       ├── payment-links.csv     ← Registry of all payment links
+│   │       ├── payment-pages.css     ← Shared styles for payment pages
+│   │       ├── packages/             ← Shareable package pages (HTML)
+│   │       ├── invoices/             ← Generated per-client invoices
+│   │       └── templates/            ← Invoice & payment link templates
 │   └── _Outgoing/                    ← Published client-facing one-pagers
 │       └── _internal-crm/            ← CRM dashboard (auto-generated)
 │
@@ -228,6 +236,44 @@ node Proposals/_Proposal-System/scripts/validate_internal_links.js --root "/User
 | QYD | `Strategies/QYD Strategy.pdf` | PDF strategy document |
 | The Accounter | `Strategies/V4.0 The Accounter...pdf` | Direct Response Marketing Strategy |
 | The Slim Game | `Strategies/Client Strategies/The Slim Game - strategy draft/` | Strategy draft folder |
+
+---
+
+## Module 4: Payment & Invoicing System
+
+### Purpose
+Manage Stripe-powered payment collection, shareable package pages, and invoice generation with self-learning pattern documentation.
+
+### Core Files (`Proposals/_Proposal-System/payments/`)
+| File | Role |
+|---|---|
+| `STRIPE-CONFIG.md` | Stripe account setup, branding, product catalog |
+| `INVOICE-PATTERNS.md` | Self-learning invoice patterns & log |
+| `payment-links.csv` | Registry of all generated payment links |
+| `payment-pages.css` | Shared design system for payment pages |
+
+### Package Pages (Client-Facing)
+| Page | Path |
+|---|---|
+| Ad Campaign Management | `packages/ad-campaign-management.html` |
+| Growth System | `packages/growth-system.html` |
+| Growth & Funnel Packages | `packages/growth-packages.html` |
+
+### Templates
+| Template | Path |
+|---|---|
+| Invoice | `templates/invoice-template.html` |
+| Payment Link Page | `templates/payment-link-page.html` |
+
+### Workflow
+1. Create product/price in Stripe Dashboard
+2. Generate a Stripe Payment Link
+3. Copy template, replace placeholders, save to `invoices/{PROPOSAL-NUMBER}/`
+4. Register in `payment-links.csv`
+5. Log pattern in `INVOICE-PATTERNS.md`
+
+### Branding Rule
+Stripe account may have a different registered name. Configure **Settings → Branding** in Stripe Dashboard to display "Admireworks" on all checkout pages and receipts.
 
 ---
 

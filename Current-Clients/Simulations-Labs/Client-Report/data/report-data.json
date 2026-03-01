@@ -7,41 +7,60 @@
     "period": "May 2025 – March 2026"
   },
   "kpis": {
-    "totalEmailsSent": 1669,
-    "activeCampaigns": 2,
+    "apolloLeads": 1921,
     "pipelineLeads": 69,
     "hotLeads": 22,
-    "meetingsHeld": 25,
-    "deliverables": 24,
-    "workstreamsActive": 8,
+    "emailsSent": 1669,
+    "activeCampaigns": 2,
+    "systemeContacts": 75,
     "completionRate": 90
+  },
+  "apolloPipeline": {
+    "description": "Leads sourced via Apollo.io, filtered by role, and loaded into Instantly for outreach",
+    "lists": [
+      {
+        "name": "Security Engineers",
+        "count": 1100,
+        "status": "Ready for outreach"
+      },
+      {
+        "name": "CTF Organizers",
+        "count": 521,
+        "status": "Ready for outreach"
+      },
+      {
+        "name": "Security Consultants",
+        "count": 300,
+        "status": "Ready for outreach"
+      }
+    ],
+    "totalApolloLeads": 1921,
+    "note": "Continuous lead enrichment process — new leads sourced regularly via Apollo and sent through Instantly"
   },
   "campaigns": [
     {
       "name": "Security Professionals Outreach",
       "status": "Active",
       "emailsSent": 844,
-      "contacted": 844,
       "newLeadsContacted": 466,
       "replies": 1,
       "bounceRate": "5.7%",
       "completed": 106,
       "opportunities": 1,
       "sequenceSteps": 3,
-      "trackingNote": "Open/click tracking to be enabled"
+      "note": "New leads contacted = unique individuals who received the first email of the sequence"
     },
     {
       "name": "CTF Organizers Outreach",
       "status": "Active",
       "emailsSent": 825,
-      "contacted": 825,
       "newLeadsContacted": 361,
       "replies": 1,
       "bounceRate": "7.2%",
       "completed": 192,
       "opportunities": 1,
       "sequenceSteps": 3,
-      "trackingNote": "Open/click tracking to be enabled"
+      "note": "Emails sent = total across all 3 steps in sequence; new leads contacted = unique individuals"
     }
   ],
   "leads": {
@@ -55,6 +74,21 @@
       "Low (Priority C)": 7,
       "Unscored": 1
     },
+    "roleBreakdown": {
+      "Demo Interest": 22,
+      "Education": 18,
+      "Security Team": 11,
+      "Other / General": 10,
+      "Security Services": 6,
+      "Hiring": 1,
+      "Uncategorized": 1
+    },
+    "statusBreakdown": {
+      "New (Not Yet Contacted)": 39,
+      "Outreach Sent": 25,
+      "Follow-up Needed": 4,
+      "Other": 1
+    },
     "sourceBreakdown": {
       "AI Everything Event": 35,
       "Cold Outreach Campaigns": 21,
@@ -62,12 +96,116 @@
       "Demo Requests": 1,
       "Referrals": 2
     },
-    "statusBreakdown": {
-      "New": 39,
-      "Outreach Sent": 25,
-      "Follow-up Needed": 4,
-      "Other": 1
-    }
+    "hotLeads": [
+      {
+        "company": "SAFE Security",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "EG Bank",
+        "useCase": "Security Team",
+        "status": "Outreach Sent",
+        "count": 2
+      },
+      {
+        "company": "Brightskies",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "ADIB Egypt",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Agents Stack",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Silicon21",
+        "useCase": "Security Team",
+        "status": "Follow-up Needed"
+      },
+      {
+        "company": "Sidpec",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "RSM",
+        "useCase": "Security Team",
+        "status": "New"
+      },
+      {
+        "company": "BSS",
+        "useCase": "Security Team",
+        "status": "New"
+      },
+      {
+        "company": "ESense Software",
+        "useCase": "Security Services",
+        "status": "New",
+        "count": 2
+      },
+      {
+        "company": "El Habashy",
+        "useCase": "Security Services",
+        "status": "New"
+      },
+      {
+        "company": "Skildev",
+        "useCase": "Security Services",
+        "status": "New"
+      },
+      {
+        "company": "AUC",
+        "useCase": "Other",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Electropi",
+        "useCase": "Hiring",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Homains EU",
+        "useCase": "Education",
+        "status": "Follow-up Needed"
+      },
+      {
+        "company": "Ejkosen",
+        "useCase": "Education",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "MSA University",
+        "useCase": "Education",
+        "status": "Follow-up Needed"
+      },
+      {
+        "company": "GT Edge",
+        "useCase": "Other",
+        "status": "Follow-up Needed"
+      }
+    ]
+  },
+  "systeme": {
+    "total": 75,
+    "simlabsCandidates": 23,
+    "tags": [
+      {
+        "name": "CTF-Guide",
+        "count": 22,
+        "description": "Downloaded CTF hosting guide"
+      },
+      {
+        "name": "Spotlight-Program",
+        "count": 1,
+        "description": "Applied for Spotlight sponsorship"
+      }
+    ]
   },
   "workCompleted": [
     {
@@ -81,13 +219,13 @@
       ]
     },
     {
-      "category": "Outreach & Lead Generation",
+      "category": "Lead Sourcing & Outreach",
       "items": [
-        "2 cold email campaigns launched targeting security professionals and CTF organizers",
-        "1,669 emails sent across both campaigns with 3-step sequences",
-        "7 sending aliases configured across 3 dedicated domains",
-        "69 leads unified, deduplicated, and quality-scored",
-        "22 hot leads identified and prioritized for follow-up"
+        "1,921 leads sourced via Apollo across 3 target segments",
+        "2 cold email campaigns launched with 3-step automated sequences",
+        "1,669 emails sent to 827 unique contacts",
+        "69 pipeline leads unified, deduplicated, and quality-scored",
+        "22 hot leads identified across security, education, and services sectors"
       ]
     },
     {
@@ -106,7 +244,6 @@
         "8 keyword clusters identified and mapped to content plan",
         "Content strategy: 6-8 blog posts per month planned",
         "302→301 redirect fixes identified (14 pages)",
-        "Low-content business pages flagged for expansion (target: 800-1,500 words)",
         "Internal linking strategy established"
       ]
     },
@@ -117,140 +254,40 @@
         "Platform demo video edited and published",
         "AI Everything Event participation and lead capture (35 leads)",
         "5 Limited Spots Giveaway campaign executed",
-        "Email automation setup via Systeme.io and Resend"
+        "Email automation setup via Systeme.io"
       ]
-    }
-  ],
-  "meetingInsights": {
-    "total": 25,
-    "dateRange": "May 2025 – February 2026",
-    "keyThemes": [
-      {
-        "theme": "Market Positioning & Differentiation",
-        "insight": "Simulations Labs occupies a unique position between expensive enterprise solutions and limited free tools. The platform's key differentiators are: browser-based zero-setup deployment, auto-scaling infrastructure, and a growing challenge library. The market is crowded but fragmented — no competitor covers all three personas (CTF Organizers, Educators, Enterprise) in one platform.",
-        "meetings": "Dec 8 Strategy Discussion, multiple weekly meetings"
-      },
-      {
-        "theme": "Three-Persona GTM Strategy",
-        "insight": "CTF Organizers (viral engine — free tier drives awareness), Educators (steady revenue — curriculum alignment and 30-day trials), and Enterprise Security Leaders (high-value — ROI proof via assessments). Each persona requires distinct messaging, offers, and funnels.",
-        "meetings": "Dec 8, Dec 17, Jan-Feb weekly meetings"
-      },
-      {
-        "theme": "SEO as a Long-Term Growth Engine",
-        "insight": "SEO strategy covers both informational content (builds domain authority) and commercial content (targets product-intent searches). 8 topic clusters organized. Technical audit revealed 14 pages needing redirect fixes, and key business pages (case studies, demos) significantly under the 800-1,500 word target.",
-        "meetings": "Feb 23 Weekly Meeting"
-      },
-      {
-        "theme": "Sales Cycle & Conversion Challenges",
-        "insight": "Enterprise sales cycles are long due to procurement complexity. Platform awareness in the market is still developing. Proposed solutions: free simulations for enterprise prospects, Spotlight Program for CTF organizers (10 monthly sponsored events), and educator starter kits with 30-day access.",
-        "meetings": "Dec 8, Dec 29, Jan 14-28 weekly meetings"
-      },
-      {
-        "theme": "Content & Social Media Expansion",
-        "insight": "Team wants to expand social media presence with challenge-based creatives. Blog content workflow confirmed: Admireworks drafts → Simulations Labs reviews technical accuracy → publish. Internal linking strategy established for SEO benefit.",
-        "meetings": "Feb 23, Feb 4 weekly meetings"
-      }
-    ],
-    "latestMeeting": {
-      "date": "2026-02-23",
-      "title": "Weekly Meeting",
-      "keyDecisions": [
-        "Blog workflow confirmed: AW drafts → SimLabs technical review → publish",
-        "6-8 blogs per month target starting immediately",
-        "Technical SEO fixes to be sent to dev team",
-        "Social media campaign brief requested for review"
-      ],
-      "actionItems": [
-        "Send technical SEO fix list and image optimization specs to dev team",
-        "Begin first blog batch based on keyword clusters",
-        "Send social media campaign brief for strategic review",
-        "Coordinate dev team fixes for 302→301 redirects"
-      ]
-    }
-  },
-  "workstreams": [
-    {
-      "name": "Cold Outreach",
-      "status": "Active",
-      "progress": 75,
-      "detail": "2 campaigns live, sequences running"
-    },
-    {
-      "name": "Lead Pipeline",
-      "status": "Active",
-      "progress": 60,
-      "detail": "69 leads unified, 22 hot leads identified"
-    },
-    {
-      "name": "Google Ads",
-      "status": "Completed",
-      "progress": 100,
-      "detail": "Campaign launched and running"
-    },
-    {
-      "name": "SEO & Content",
-      "status": "In Progress",
-      "progress": 45,
-      "detail": "Audit done, blog calendar starting"
-    },
-    {
-      "name": "Social Media",
-      "status": "In Progress",
-      "progress": 35,
-      "detail": "Creatives ready, campaign brief pending"
-    },
-    {
-      "name": "Landing Pages",
-      "status": "Completed",
-      "progress": 100,
-      "detail": "Audience-specific variants live"
-    },
-    {
-      "name": "Email Automation",
-      "status": "In Progress",
-      "progress": 50,
-      "detail": "Systeme.io setup in progress"
-    },
-    {
-      "name": "Analytics Setup",
-      "status": "Pending",
-      "progress": 15,
-      "detail": "GA/GSC connection needed"
     }
   ],
   "blockers": [
     {
-      "blocker": "Email engagement tracking not yet enabled",
-      "impact": "Cannot measure open rates or click-through rates on outreach campaigns",
-      "resolution": "Enable open and link tracking in campaign settings",
-      "priority": "high"
-    },
-    {
-      "blocker": "Google Analytics not connected",
-      "impact": "No visibility into website traffic sources, user behavior, or conversion funnel",
-      "resolution": "Connect GA4 and Google Search Console to the website",
-      "priority": "high"
-    },
-    {
-      "blocker": "30 pipeline leads unassigned",
-      "impact": "43% of leads have no follow-up owner, delaying potential conversions",
-      "resolution": "Assign leads to team members and begin follow-up sequences",
-      "priority": "medium"
+      "blocker": "Domain verification pending",
+      "impact": "Cannot add new sending domains for email campaigns — limits outreach volume and sender diversity",
+      "resolution": "Complete domain verification for new subdomains to enable additional sending aliases",
+      "priority": "high",
+      "owner": "Simulations Labs"
     },
     {
       "blocker": "Technical SEO fixes pending",
-      "impact": "14 pages with incorrect redirects, key pages under-optimized",
-      "resolution": "Dev team to implement 302→301 fixes and expand page content",
-      "priority": "medium"
+      "impact": "14 pages with incorrect redirects, key pages under-optimized for search ranking",
+      "resolution": "Dev team to implement 302→301 fixes and expand page content to 800-1,500 words",
+      "priority": "medium",
+      "owner": "Simulations Labs"
+    },
+    {
+      "blocker": "Pipeline leads unassigned (30 of 69)",
+      "impact": "43% of leads have no follow-up owner, delaying conversions",
+      "resolution": "Assign leads to team members and begin follow-up sequences",
+      "priority": "medium",
+      "owner": "Joint"
     }
   ],
   "forwardPlan": {
     "days30": [
-      "Enable email open + click tracking on both campaigns",
+      "Complete domain verification to unlock additional sending capacity",
       "Assign all unassigned pipeline leads",
       "Begin hot lead follow-up sequence (22 leads)",
-      "Connect Google Analytics + Search Console",
-      "Send technical SEO fixes to development team"
+      "Send technical SEO fixes to development team",
+      "Continue Apollo lead sourcing and enrichment"
     ],
     "days60": [
       "Publish first batch of SEO blog content (6-8 posts)",
@@ -260,11 +297,11 @@
       "Build lead scoring based on engagement data"
     ],
     "days90": [
-      "Full funnel analytics dashboard (outreach → website → conversion)",
-      "A/B test campaign sequences based on engagement data",
+      "Full funnel analytics review: outreach → website → conversion",
+      "A/B test campaign sequences based on performance data",
       "Launch Spotlight Program for CTF organizer community",
       "Quarterly business review with validated metrics",
-      "Educator starter kit and outreach program"
+      "Educator outreach program with starter kits"
     ]
   }
 }

@@ -1,0 +1,195 @@
+{
+  "fetchedAt": "2026-03-01T14:21:48.523515+00:00",
+  "items": [
+    {
+      "id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "name": "SimLabs | Security Professionals",
+      "status": 1,
+      "campaign_schedule": {},
+      "timestamp_created": "2026-02-02T08:05:30.749Z",
+      "timestamp_updated": "2026-03-01T13:07:57.948Z",
+      "pl_value": 10,
+      "sequences": [
+        {
+          "steps": [
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Quick question about security training at {{companyName}} ",
+                  "body": "<div>Hi {{FirstName}},</div><div><br /></div><div>I was looking at {{companyName}} and your role in security.</div><div><br /></div><div>Quick question, do you ever run (or plan to run) hands-on security training for your team?</div><div>Things like internal labs, workshops, or CTF-style exercises.</div><div><br /></div><div>When teams use CTFs for training, the content is usually solid, but the prep around infra, setup, testing, and stability tends to eat a lot of time.</div><div><br /></div><div>We built a CTF hosting platform specifically to remove that layer, so training sessions don’t turn into infrastructure projects.</div><div><br /></div><div>Instead of pitching anything, I wanted to offer two free resources we give security teams:</div><div><br /></div><div>1) A free trial — spin up a full CTF environment with zero DevOps</div><div>2) A practical CTF Planning &amp; Execution Guide covering:</div><div>   – pre-training setup</div><div>   – smooth execution during the session</div><div>   – post-training wrap-up</div><div>   – a checklist to avoid downtime in front of trainees</div><div><br /></div><div>Happy to send both if this is ever relevant for you. Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 3,
+              "variants": [
+                {
+                  "subject": "Re: {{companyName}} ",
+                  "body": "<div>{{FirstName}}, quick follow-up.</div><div><br /></div><div>Not sure if hands-on security training or CTF-style exercises are something you deal with right now.</div><div><br /></div><div>If they are, I can share:</div><div>• free trial access</div><div>• the CTF Planning &amp; Execution Guide</div><div><br /></div><div>If not, no worries at all. Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 1,
+              "variants": [
+                {
+                  "subject": "Most security leads tell us this",
+                  "body": "<div>{{FirstName}},</div><div><br /></div><div>Most security leads tell us the same thing:</div><div><br /></div><div>“The training itself is valuable. The setup and reliability is what makes it stressful.”</div><div><br /></div><div>That’s the exact problem we remove.</div><div><br /></div><div>Before I stop reaching out, do you want access to:</div><div>1) the free trial</div><div>2) the CTF Planning &amp; Execution Guide</div><div><br /></div><div>Or should I close the loop?</div><div><br /></div><div>Reply “Access” if you’re interested; otherwise, I’ll close the loop.<br /><br />Sincerely,<br id=\"isPasted\" />Hannah<br /></div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            }
+          ]
+        }
+      ],
+      "text_only": false,
+      "first_email_text_only": false,
+      "email_list": [
+        "noah@trysimlabs.com",
+        "noah@simlabs-team.com",
+        "noah@getsimlabs.com",
+        "hannah@trysimlabs.com",
+        "hannah@simlabs-team.com",
+        "hannah@getsimlabs.com",
+        "hannah.adam@getsimlabs.com"
+      ],
+      "daily_limit": 210,
+      "stop_on_reply": true,
+      "email_tag_list": [],
+      "link_tracking": false,
+      "open_tracking": false,
+      "stop_on_auto_reply": false,
+      "prioritize_new_leads": false,
+      "match_lead_esp": false,
+      "stop_for_company": false,
+      "core_variables": {
+        "phone": true,
+        "website": true,
+        "lastName": true,
+        "firstName": true,
+        "companyName": true,
+        "personalization": true
+      },
+      "custom_variables": {
+        "email": true,
+        "Keywords": true,
+        "jobTitle": true,
+        "linkedIn": true,
+        "location": true,
+        "pause_until": true
+      },
+      "insert_unsubscribe_header": false,
+      "allow_risky_contacts": false,
+      "disable_bounce_protect": false,
+      "cc_list": [],
+      "bcc_list": [],
+      "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+      "provider_routing_rules": []
+    },
+    {
+      "id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "name": "Simlabs | CTF Organizers",
+      "status": 1,
+      "campaign_schedule": {},
+      "timestamp_created": "2026-02-02T07:45:12.487Z",
+      "timestamp_updated": "2026-03-01T13:07:56.079Z",
+      "pl_value": 10,
+      "sequences": [
+        {
+          "steps": [
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Quick CTF question for {{firstName}} ",
+                  "body": "<div>Hi {{FirstName}},</div><div><br /></div><div>I was looking at {{companyName}} and noticed you’re organizing CTFs regularly.</div><div><br /></div><div>Quick question, how much time do you usually lose *before* the CTF even starts?</div><div>Infra setup, DevOps, testing, last-minute fixes, etc.</div><div><br /></div><div>We built a CTF hosting platform specifically to remove that entire layer.</div><div><br /></div><div>Instead of pitching anything, I wanted to share two free resources we give organizers:</div><div><br /></div><div>1) A free trial (spin up a full CTF environment without DevOps)</div><div>2) A short CTF Planning &amp; Execution Guide covering:</div><ul style=\"margin-top:0;margin-bottom:0;padding-inline-start:48px\"><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Pre-CTF Planning</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>CTF Day Execution</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Post-CTF Wrap-Up</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Planning Checklist</div></li></ul><div><br /></div><div>Happy to send both if useful.</div><div><br />Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Noah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 3,
+              "variants": [
+                {
+                  "subject": "Re: {{companyName}} ",
+                  "body": "<div>{{FirstName}}, quick follow-up.</div><div><br /></div><div>Not sure if reducing CTF prep time is a priority right now.</div><div><br /></div><div>If it is, I can share:</div><div>• free trial access</div><div>• the CTF Planning &amp; Execution Guide</div><div><br /></div><div>If not, no worries at all.</div><div>Reply “Send” and I’ll send them over.</div><div><br />Sincerely,<br />Noah</div><div><br /></div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 1,
+              "variants": [
+                {
+                  "subject": "Most organizers tell us this",
+                  "body": "<div>{{FirstName}},</div><div><br /></div><div>Most CTF organizers tell us the same thing:</div><div><br /></div><div>“Running the CTF is the easy part. Preparing it is what hurts.”</div><div><br /></div><div>That’s exactly what we remove.</div><div><br /></div><div>Before I stop reaching out, do you want access to:</div><div>1) the free trial</div><div>2) the CTF Planning &amp; Execution Guide</div><div>Or should I close the loop?</div><div><br /></div><div>Reply “Access” if you’re interested; otherwise, I’ll close the loop.</div><div><br />Sincerely,<br id=\"isPasted\" />​Noah<br /></div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            }
+          ]
+        }
+      ],
+      "text_only": false,
+      "first_email_text_only": false,
+      "email_list": [
+        "noah@trysimlabs.com",
+        "noah@simlabs-team.com",
+        "noah@getsimlabs.com",
+        "hannah@trysimlabs.com",
+        "hannah@simlabs-team.com",
+        "hannah@getsimlabs.com",
+        "hannah.adam@getsimlabs.com"
+      ],
+      "daily_limit": 210,
+      "stop_on_reply": true,
+      "email_tag_list": [],
+      "link_tracking": false,
+      "open_tracking": false,
+      "stop_on_auto_reply": false,
+      "prioritize_new_leads": false,
+      "match_lead_esp": false,
+      "stop_for_company": false,
+      "core_variables": {
+        "phone": true,
+        "website": true,
+        "lastName": true,
+        "firstName": true,
+        "companyName": true,
+        "personalization": true
+      },
+      "custom_variables": {
+        "email": true,
+        "Keywords": true,
+        "jobTitle": true,
+        "linkedIn": true,
+        "location": true,
+        "pause_until": true
+      },
+      "insert_unsubscribe_header": false,
+      "allow_risky_contacts": false,
+      "disable_bounce_protect": false,
+      "cc_list": [],
+      "bcc_list": [],
+      "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+      "provider_routing_rules": []
+    }
+  ]
+}

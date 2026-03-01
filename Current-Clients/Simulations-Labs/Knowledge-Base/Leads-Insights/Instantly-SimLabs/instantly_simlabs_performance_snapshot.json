@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-03-01T14:21:48.523515+00:00",
+  "target_campaign_names": [
+    "SimLabs | Security Professionals",
+    "Simlabs | CTF Organizers"
+  ],
+  "target_campaign_ids": [
+    "0754b33b-09c6-487e-a9f7-2535f7580c56",
+    "e742890d-7d05-43c8-93be-575a9660ba2e"
+  ],
+  "campaigns": [
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "status": 1,
+      "timestamp_created": "2026-02-02T08:05:30.749Z",
+      "timestamp_updated": "2026-03-01T13:07:57.948Z",
+      "open_tracking": false,
+      "link_tracking": false,
+      "daily_limit": 210,
+      "stop_on_reply": true,
+      "analytics": {
+        "leads_count": 1380,
+        "contacted_count": 844,
+        "emails_sent_count": 844,
+        "open_count": 0,
+        "open_count_unique": 0,
+        "reply_count": 1,
+        "reply_count_unique": 1,
+        "link_click_count": 0,
+        "link_click_count_unique": 0,
+        "bounced_count": 48,
+        "unsubscribed_count": 0,
+        "completed_count": 106
+      },
+      "email_activity_snapshot": {
+        "records_pulled": 0,
+        "by_ue_type": {},
+        "unique_recipients_count": 0,
+        "unique_recipients": [],
+        "sender_accounts_used": [],
+        "top_subjects": [],
+        "inferred_replied_recipients_count": 0,
+        "inferred_replied_recipients": []
+      }
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "status": 1,
+      "timestamp_created": "2026-02-02T07:45:12.487Z",
+      "timestamp_updated": "2026-03-01T13:07:56.079Z",
+      "open_tracking": false,
+      "link_tracking": false,
+      "daily_limit": 210,
+      "stop_on_reply": true,
+      "analytics": {
+        "leads_count": 372,
+        "contacted_count": 825,
+        "emails_sent_count": 825,
+        "open_count": 0,
+        "open_count_unique": 0,
+        "reply_count": 1,
+        "reply_count_unique": 1,
+        "link_click_count": 0,
+        "link_click_count_unique": 0,
+        "bounced_count": 59,
+        "unsubscribed_count": 0,
+        "completed_count": 192
+      },
+      "email_activity_snapshot": {
+        "records_pulled": 0,
+        "by_ue_type": {},
+        "unique_recipients_count": 0,
+        "unique_recipients": [],
+        "sender_accounts_used": [],
+        "top_subjects": [],
+        "inferred_replied_recipients_count": 0,
+        "inferred_replied_recipients": []
+      }
+    }
+  ],
+  "global": {
+    "campaigns_in_scope": 2,
+    "total_email_records_pulled_for_scope": 0,
+    "total_unique_recipients_in_scope": 0,
+    "total_inferred_replied_recipients": 0,
+    "sender_accounts_used": [],
+    "note": "Open/click person-level attribution depends on tracking + event granularity; use analytics aggregates + email log activity in this snapshot."
+  }
+}

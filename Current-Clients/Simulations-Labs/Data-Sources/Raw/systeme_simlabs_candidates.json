@@ -1,5 +1,11 @@
 {
+  "fetchedAt": "2026-03-01T15:14:53.648852Z",
   "tags": [
+    {
+      "id": 1861156,
+      "name": "Spotlight-Program",
+      "createdAt": "2026-02-09T08:36:05+00:00"
+    },
     {
       "id": 1839484,
       "name": "CTF-Guide",
@@ -7,6 +13,23 @@
     }
   ],
   "contactsCandidates": [
+    {
+      "id": 405329276,
+      "email": "e2e@google.com",
+      "registeredAt": "2026-02-11T09:12:06+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1861156,
+          "name": "Spotlight-Program"
+        }
+      ]
+    },
     {
       "id": 404808829,
       "email": "opjutt10754@gmail.com",
@@ -159,6 +182,231 @@
           "name": "CTF-Guide"
         }
       ]
+    },
+    {
+      "id": 404557887,
+      "email": "shadungrealeboga@gmail.com",
+      "registeredAt": "2026-02-07T04:16:07+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404542113,
+      "email": "jennyghrung@gmail.com",
+      "registeredAt": "2026-02-07T00:37:48+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404526006,
+      "email": "mayoni1263@gmail.com",
+      "registeredAt": "2026-02-06T22:13:57+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404369165,
+      "email": "kwizeraelvis00@gmail.com",
+      "registeredAt": "2026-02-06T13:12:20+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404345073,
+      "email": "mabasamuvindi@gmail.com",
+      "registeredAt": "2026-02-06T10:17:45+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404337009,
+      "email": "boitumelo11@hotmail.co.za",
+      "registeredAt": "2026-02-06T09:02:46+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404324040,
+      "email": "mukwevhomulweli31@gmail.com",
+      "registeredAt": "2026-02-06T07:03:44+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404300913,
+      "email": "leekayrululu@gmail.com",
+      "registeredAt": "2026-02-06T01:50:43+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404266431,
+      "email": "brownsokwl@gamil.com",
+      "registeredAt": "2026-02-05T21:13:01+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404229873,
+      "email": "ihopemakhubele20@icloud.com",
+      "registeredAt": "2026-02-05T19:08:26+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 404213275,
+      "email": "stanleymandlhazi2005@gmail.com",
+      "registeredAt": "2026-02-05T17:01:25+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
+    },
+    {
+      "id": 401938818,
+      "email": "y.khafaga@yahoo.com",
+      "registeredAt": "2026-01-26T08:06:22+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1861156,
+          "name": "Spotlight-Program"
+        }
+      ]
+    },
+    {
+      "id": 389958354,
+      "email": "y.khafaga89@gmail.com",
+      "registeredAt": "2025-11-23T09:29:52+00:00",
+      "locale": "en",
+      "sourceURL": null,
+      "unsubscribed": false,
+      "bounced": false,
+      "needsConfirmation": false,
+      "fields": [],
+      "tags": [
+        {
+          "id": 1839484,
+          "name": "CTF-Guide"
+        }
+      ]
     }
-  ]
+  ],
+  "counts": {
+    "totalContacts": 75,
+    "candidateContacts": 23
+  }
 }

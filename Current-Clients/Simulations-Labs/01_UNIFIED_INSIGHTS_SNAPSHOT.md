@@ -1,12 +1,12 @@
 # Simulations Labs — Unified Insights Snapshot
 
-_Last updated: 2026-03-01 13:37 UTC_
+_Last updated: 2026-03-01 15:18 UTC_
 
 ## What was consolidated in this pass
 - Google Drive client folder inventory (recursive tree)
 - Asana pipeline snapshot (sections + tasks)
 - Instantly campaign + account + lead-list snapshots
-- Systeme.io tags + contacts (first page + SimLabs candidate filtering)
+- Systeme.io tags + full contacts snapshot (paginated fetch) + SimLabs candidate filtering
 - Existing Meeting Intelligence artifacts already in this repo
 
 ## Data coverage summary
@@ -15,7 +15,8 @@ _Last updated: 2026-03-01 13:37 UTC_
 - Instantly campaigns total: **5**
 - Instantly SimLabs-related campaigns matched by name: **2**
 - Systeme tags: **2**
-- Systeme contacts fetched in page 1: **10**
+- Systeme contacts fetched (full snapshot): **75**
+- Systeme SimLabs candidates (tag-filtered): **23**
 
 ## Key findings (early)
 - SimLabs campaigns are present in Instantly (e.g., Security Professionals, CTF Organizers).
@@ -24,10 +25,9 @@ _Last updated: 2026-03-01 13:37 UTC_
 - Repository already contains meeting transcript intelligence under `Meeting-Intelligence/Transcripts/`.
 
 ## Known gaps to close next
-1. Pull full paginated contacts from Systeme (API pagination behavior needs endpoint-specific handling).
-2. Pull Instantly activity/event-level metrics (campaign-level object available; deeper events endpoint needs confirmed route mapping).
-3. Link each outreach artifact to Asana task IDs + meeting transcript references in a single relational index.
-4. Add Gmail/copy inventory ingestion for client-specific outbound content corpus.
+1. Pull Instantly activity/event-level metrics (campaign-level object available; deeper events endpoint needs confirmed route mapping).
+2. Link each outreach artifact to Asana task IDs + meeting transcript references in a single relational index.
+3. Add Gmail/copy inventory ingestion for client-specific outbound content corpus.
 
 ## Raw source files
 - `Data-Sources/Raw/google_drive_client_folder_tree.json`
@@ -40,4 +40,5 @@ _Last updated: 2026-03-01 13:37 UTC_
 - `Data-Sources/Raw/instantly_accounts.json`
 - `Data-Sources/Raw/systeme_tags.json`
 - `Data-Sources/Raw/systeme_contacts_page1.json`
+- `Data-Sources/Raw/systeme_contacts_full.json`
 - `Data-Sources/Raw/systeme_simlabs_candidates.json`

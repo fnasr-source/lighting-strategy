@@ -283,25 +283,29 @@
   ],
   "forwardPlan": {
     "days30": [
-      "Complete domain verification to unlock additional sending capacity",
-      "Assign all unassigned pipeline leads",
-      "Begin hot lead follow-up sequence (22 leads)",
-      "Send technical SEO fixes to development team",
-      "Continue Apollo lead sourcing and enrichment"
+      "Complete domain verification to unlock email sending capacity",
+      "Contact 7 untouched hot leads (BSS, RSM, ESense, El Habashy, Skildev)",
+      "Follow up with 4 stalled leads (Silicon21, Homains, MSA, GT Edge)",
+      "Assign all 30 unassigned pipeline leads to team members",
+      "Set up nurture sequence for 21 CTF-Guide downloaders in Systeme.io",
+      "Continue Apollo lead sourcing across new segments"
     ],
     "days60": [
-      "Publish first batch of SEO blog content (6-8 posts)",
-      "Implement 302→301 redirect fixes",
-      "Launch social media campaign based on approved brief",
-      "Expand business page content to 800-1,500 words",
-      "Build lead scoring based on engagement data"
+      "Launch new cold email campaigns to additional Apollo segments",
+      "Optimize existing sequences (copy, timing, 4th step)",
+      "Build lead scoring model from engagement data",
+      "Publish first SEO blog batch (6-8 posts)",
+      "Implement 302→301 redirect fixes (14 pages)",
+      "Launch social media campaign",
+      "Set up Spotlight Program nurture for high-intent leads"
     ],
     "days90": [
       "Full funnel analytics review: outreach → website → conversion",
-      "A/B test campaign sequences based on performance data",
-      "Launch Spotlight Program for CTF organizer community",
-      "Quarterly business review with validated metrics",
-      "Educator outreach program with starter kits"
+      "A/B test email sequences based on performance data",
+      "Expand sending infrastructure (new domains, warmup)",
+      "Launch CTF Spotlight community program",
+      "Educator outreach with starter kits",
+      "Quarterly business review with validated conversion metrics"
     ]
   }
 }

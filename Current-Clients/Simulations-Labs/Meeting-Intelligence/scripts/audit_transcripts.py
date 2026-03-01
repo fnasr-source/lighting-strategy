@@ -13,7 +13,7 @@ import sys
 
 BASE = Path(__file__).resolve().parents[1]
 TRANSCRIPTS = BASE / "Transcripts"
-ALLOWED = ["simulations-labs", "aw--qyd"]
+ALLOWED = ["simulations-labs", "simlabs", "qyd"]
 
 violations = []
 for f in sorted(TRANSCRIPTS.glob("*.md")):

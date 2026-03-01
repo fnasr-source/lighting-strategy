@@ -26,3 +26,10 @@ GitHub does not keep empty folders. I created structure paths, but without commi
 2. Transcript ingestion in batches -> `Transcripts/*.md`
 3. Yesterday meeting deep analysis -> `02_YESTERDAY_ANALYSIS.md`
 4. Consolidated recommendations -> `03_RECOMMENDATIONS.md`
+
+## Transcript scope guardrail (added 2026-03-01)
+- `Transcripts/` is now restricted to **Simulations Labs / QYD-only** meeting files.
+- Any non-matching files are moved to `Transcripts-Excluded/` (for traceability, not deletion).
+- Validation script: `scripts/audit_transcripts.py`
+- Validation command:
+  - `python3 Current-Clients/Simulations-Labs/Meeting-Intelligence/scripts/audit_transcripts.py`

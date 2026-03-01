@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "json": {
+    "items": [
+      {
+        "id": 1861156,
+        "name": "Spotlight-Program",
+        "createdAt": "2026-02-09T08:36:05+00:00"
+      },
+      {
+        "id": 1839484,
+        "name": "CTF-Guide",
+        "createdAt": "2026-01-26T10:50:20+00:00"
+      }
+    ],
+    "hasMore": false
+  },
+  "text": null
+}

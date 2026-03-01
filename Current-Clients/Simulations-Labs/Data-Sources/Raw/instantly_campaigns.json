@@ -1,0 +1,580 @@
+{
+  "status": 200,
+  "json": {
+    "items": [
+      {
+        "id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+        "name": "SimLabs | Security Professionals",
+        "status": 1,
+        "campaign_schedule": {},
+        "timestamp_created": "2026-02-02T08:05:30.749Z",
+        "timestamp_updated": "2026-03-01T13:07:57.948Z",
+        "pl_value": 10,
+        "sequences": [
+          {
+            "steps": [
+              {
+                "type": "email",
+                "delay": 2,
+                "variants": [
+                  {
+                    "subject": "Quick question about security training at {{companyName}} ",
+                    "body": "<div>Hi {{FirstName}},</div><div><br /></div><div>I was looking at {{companyName}} and your role in security.</div><div><br /></div><div>Quick question, do you ever run (or plan to run) hands-on security training for your team?</div><div>Things like internal labs, workshops, or CTF-style exercises.</div><div><br /></div><div>When teams use CTFs for training, the content is usually solid, but the prep around infra, setup, testing, and stability tends to eat a lot of time.</div><div><br /></div><div>We built a CTF hosting platform specifically to remove that layer, so training sessions don’t turn into infrastructure projects.</div><div><br /></div><div>Instead of pitching anything, I wanted to offer two free resources we give security teams:</div><div><br /></div><div>1) A free trial — spin up a full CTF environment with zero DevOps</div><div>2) A practical CTF Planning &amp; Execution Guide covering:</div><div>   – pre-training setup</div><div>   – smooth execution during the session</div><div>   – post-training wrap-up</div><div>   – a checklist to avoid downtime in front of trainees</div><div><br /></div><div>Happy to send both if this is ever relevant for you. Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Hannah</div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 3,
+                "variants": [
+                  {
+                    "subject": "Re: {{companyName}} ",
+                    "body": "<div>{{FirstName}}, quick follow-up.</div><div><br /></div><div>Not sure if hands-on security training or CTF-style exercises are something you deal with right now.</div><div><br /></div><div>If they are, I can share:</div><div>• free trial access</div><div>• the CTF Planning &amp; Execution Guide</div><div><br /></div><div>If not, no worries at all. Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Hannah</div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 1,
+                "variants": [
+                  {
+                    "subject": "Most security leads tell us this",
+                    "body": "<div>{{FirstName}},</div><div><br /></div><div>Most security leads tell us the same thing:</div><div><br /></div><div>“The training itself is valuable. The setup and reliability is what makes it stressful.”</div><div><br /></div><div>That’s the exact problem we remove.</div><div><br /></div><div>Before I stop reaching out, do you want access to:</div><div>1) the free trial</div><div>2) the CTF Planning &amp; Execution Guide</div><div><br /></div><div>Or should I close the loop?</div><div><br /></div><div>Reply “Access” if you’re interested; otherwise, I’ll close the loop.<br /><br />Sincerely,<br id=\"isPasted\" />Hannah<br /></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              }
+            ]
+          }
+        ],
+        "text_only": false,
+        "first_email_text_only": false,
+        "email_list": [
+          "noah@trysimlabs.com",
+          "noah@simlabs-team.com",
+          "noah@getsimlabs.com",
+          "hannah@trysimlabs.com",
+          "hannah@simlabs-team.com",
+          "hannah@getsimlabs.com",
+          "hannah.adam@getsimlabs.com"
+        ],
+        "daily_limit": 210,
+        "stop_on_reply": true,
+        "email_tag_list": [],
+        "link_tracking": false,
+        "open_tracking": false,
+        "stop_on_auto_reply": false,
+        "prioritize_new_leads": false,
+        "match_lead_esp": false,
+        "stop_for_company": false,
+        "core_variables": {
+          "phone": true,
+          "website": true,
+          "lastName": true,
+          "firstName": true,
+          "companyName": true,
+          "personalization": true
+        },
+        "custom_variables": {
+          "email": true,
+          "Keywords": true,
+          "jobTitle": true,
+          "linkedIn": true,
+          "location": true,
+          "pause_until": true
+        },
+        "insert_unsubscribe_header": false,
+        "allow_risky_contacts": false,
+        "disable_bounce_protect": false,
+        "cc_list": [],
+        "bcc_list": [],
+        "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+        "provider_routing_rules": []
+      },
+      {
+        "id": "7f7dc410-1a8c-4b66-b336-aef94feb9428",
+        "name": "Qafza",
+        "status": 1,
+        "campaign_schedule": {
+          "schedules": [
+            {
+              "name": "Main SA",
+              "timing": {
+                "from": "07:30",
+                "to": "20:30"
+              },
+              "days": {
+                "0": true,
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "6": true
+              },
+              "timezone": "Asia/Aden"
+            }
+          ],
+          "start_date": null,
+          "end_date": null
+        },
+        "timestamp_created": "2026-01-24T13:15:57.082Z",
+        "timestamp_updated": "2026-02-01T09:52:16.614Z",
+        "pl_value": 10,
+        "sequences": [
+          {
+            "steps": [
+              {
+                "type": "email",
+                "delay": 2,
+                "variants": [
+                  {
+                    "subject": "إعلانك شغال… بس إيه اللي بايظ؟",
+                    "body": "<div style=\"direction:rtl;text-align:right;margin:0;padding:0\" dir=\"rtl\"><div style=\"font-family:Tahoma, Arial, sans-serif;font-size:16px;line-height:1.9;color:#111\"><div style=\"margin:0 0 14px 0\">إعلانك شغال… بس فيه حاجة مش راكبة</div><div style=\"margin:0 0 14px 0\">بتصرف ميزانية كل يوم<br />وبتفتح الداشبورد<br />وأرقام كتير بتطلع<br />بس قرارك دايمًا متأخر… أو مبني على إحساس</div><div style=\"margin:0 0 14px 0\">الموضوع مش إنك مش بتتابع<br />الموضوع إنك بتتابع من غير “تشخيص”</div><div style=\"margin:0 0 14px 0\">ومع كل رأي جديد<br />التشويش بيزيد<br />وتبدأ تغيّر حاجات كتير في نفس الوقت<br />فتضيع منك الإشارة الحقيقية</div><div style=\"margin:0 0 14px 0\">مرة صاحب بيزنس كان بيقول<br />أنا حاسس إني بحرق فلوس… بس مش عارف فين الغلط<br />أول ما وقفنا “نجرب” وبدأنا “نشخّص”<br />الصورة اتوضحت في ساعات مش أسابيع</div><div style=\"margin:0 0 14px 0\">الدرس البسيط<br />قبل ما تزود ميزانية… لازم تعرف إيه اللي فعلاً محتاج يتصلّح</div><div style=\"margin:0 0 6px 0\">جرّب Qafza كمستخدم مبكّر</div><div style=\"margin:0 0 18px 0\"><a style=\"color:#0645AD;text-decoration:underline\" href=\"https://getqafza.com/?utm_source=instantly&amp;utm_medium=email&amp;utm_campaign=outreach_jan26&amp;utm_content={{email}}&amp;utm_term={{campaignName}}&amp;utm_id={{sequenceStep}}\"> getqafza.com </a></div><div style=\"margin:0\">تحياتى</div><div style=\"margin:0\">فؤاد</div></div></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 2,
+                "variants": [
+                  {
+                    "subject": "٦٠ ثانية صوت… تشخيص واضح",
+                    "body": "<div dir=\"rtl\" style=\"direction:rtl;text-align:right;margin:0;padding:0\"><div style=\"font-family:Tahoma, Arial, sans-serif;font-size:16px;line-height:1.9;color:#111\"><div style=\"margin:0 0 14px 0\">لو عندك كل البيانات… ليه لسه مش واثق تعمل إيه</div><div style=\"margin:0 0 14px 0\">لأن المشكلة غالبًا مش في الأرقام<br />المشكلة في “تشويش الآراء”<br />كل حد يشوف نفس الحملة… ويطلع بتفسير مختلف</div><div style=\"margin:0 0 14px 0\">فتلاقي نفسك<br />إما داخل في اجتماعات طويلة<br />أو بتكتب شروحات كتير<br />أو بتجرب تعديل ورا تعديل… من غير مسار واضح</div><div style=\"margin:0 0 14px 0\">Qafza بتقصّر الطريق<br />بدل ما تحوّل مشكلتك لتقرير<br />احكيها بصوتك… زي ما هي<br />60 ثانية كفاية</div><div style=\"margin:0 0 14px 0\">واحد من المستخدمين قال<br />أول مرة أحس إن حد فهم اللي أنا شايفه فعلًا<br />مش مجرد نصايح عامة<br />رد واحد واضح… وخطوات تعديل مباشرة</div><div style=\"margin:0 0 14px 0\">الدرس<br />لما التشخيص يبقى واضح… التنفيذ يبقى سهل</div><div style=\"margin:0 0 6px 0\">سجّل مشكلتك صوتيًا الآن</div><div style=\"margin:0 0 18px 0\"><a href=\"https://getqafza.com/?utm_source=instantly&amp;utm_medium=email&amp;utm_campaign=outreach_jan26&amp;utm_content={{email}}&amp;utm_term={{campaignName}}&amp;utm_id={{sequenceStep}}\" style=\"color:#0645AD;text-decoration:underline\"> getqafza.com </a></div><div style=\"margin:0\">تحياتى</div><div style=\"margin:0\">فؤاد</div></div></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 1,
+                "variants": [
+                  {
+                    "subject": "دعوة للمستخدمين الأوائل (محدودة)",
+                    "body": "<div style=\"direction:rtl;text-align:right;margin:0;padding:0\" dir=\"rtl\"><div style=\"font-family:Tahoma, Arial, sans-serif;font-size:16px;line-height:1.9;color:#111\"><div style=\"margin:0 0 14px 0\">لو حملاتك شغالة دلوقتي<br />بس الـ ROAS مش ثابت<br />ومش عايز تفضل تبدّل وكالات… أو تغيّر كل حاجة كل أسبوع</div><div style=\"margin:0 0 14px 0\">Early Access بتاع Qafza معمول للنوع ده من الناس تحديدًا</div><div style=\"margin:0 0 14px 0\">الخطة بسيطة<br />تحكي المشكلة بصوتك<br />نراجع التفاصيل ونطلب الناقص لو لازم<br />نطابق حالتك مع خبير مناسب<br />وتستلم رد عملي بفيديو… يحدد الخلل والخطوات الجاية</div><div style=\"margin:0 0 14px 0\">مش وعد سحري<br />ولا إدارة إعلانات بدل فريقك<br />هو “تشخيص محايد” يرجّعلك السيطرة<br />ويخلّيك تتحرك بثقة بدل القلق</div><div style=\"margin:0 0 14px 0\">الدرس<br />السبق مش إنك تجرّب أكتر… السبق إنك تشخّص صح أسرع</div><div style=\"margin:0 0 6px 0\">احصل على Early Access وابدأ أول طلب</div><div style=\"margin:0 0 18px 0\"><a style=\"color:#0645AD;text-decoration:underline\" href=\"https://getqafza.com/?utm_source=instantly&amp;utm_medium=email&amp;utm_campaign=outreach_jan26&amp;utm_content={{email}}&amp;utm_term={{campaignName}}&amp;utm_id={{sequenceStep}}\"> getqafza.com </a></div><div style=\"margin:0\">تحياتى</div><div style=\"margin:0\">فؤاد</div></div></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              }
+            ]
+          }
+        ],
+        "text_only": false,
+        "first_email_text_only": false,
+        "email_list": [
+          "fouad.nasseredin@get4percent.com",
+          "fouad.nasseredin@joinadmire8.com",
+          "fouad.nasseredin@tryadmire8.com",
+          "fouad@get4percent.com",
+          "fouad@joinadmire8.com",
+          "fouad@tryadmire8.com",
+          "fouadnasseredin@joinadmire8.com",
+          "fouadnasseredin@tryadmire8.com"
+        ],
+        "daily_limit": 150,
+        "stop_on_reply": true,
+        "email_tag_list": [],
+        "link_tracking": true,
+        "open_tracking": true,
+        "stop_on_auto_reply": false,
+        "prioritize_new_leads": false,
+        "auto_variant_select": {
+          "trigger": "click_rate"
+        },
+        "match_lead_esp": false,
+        "stop_for_company": false,
+        "core_variables": {
+          "phone": true,
+          "website": true,
+          "lastName": true,
+          "firstName": true,
+          "companyName": true,
+          "personalization": true
+        },
+        "custom_variables": {
+          "City": true,
+          "email": true,
+          "Country": true,
+          "summary": true,
+          "Industry": true,
+          "Keywords": true,
+          "campaign": true,
+          "esg_code": true,
+          "esp_code": true,
+          "headline": true,
+          "jobLevel": true,
+          "jobTitle": true,
+          "linkedIn": true,
+          "location": true,
+          "department": true,
+          "# Employees": true,
+          "pause_until": true,
+          "subIndustry": true,
+          "companyDomain": true,
+          "companyWebsite": true,
+          "connectionCount": true,
+          "companyHeadCount": true,
+          "companyDescription": true,
+          "Primary Email Source": true
+        },
+        "insert_unsubscribe_header": false,
+        "allow_risky_contacts": false,
+        "disable_bounce_protect": false,
+        "limit_emails_per_company_override": {
+          "mode": "disabled"
+        },
+        "cc_list": [],
+        "bcc_list": [],
+        "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+        "provider_routing_rules": []
+      },
+      {
+        "id": "11c31705-b35b-4b2b-bf72-d4363d7de52f",
+        "name": "Admire8 - 7 ways video",
+        "status": 1,
+        "campaign_schedule": {
+          "schedules": [
+            {
+              "name": "ME schedule (Saudi)",
+              "timing": {
+                "from": "09:30",
+                "to": "18:00"
+              },
+              "days": {
+                "0": true,
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "6": true
+              },
+              "timezone": "Asia/Dubai"
+            }
+          ],
+          "start_date": null,
+          "end_date": null
+        },
+        "timestamp_created": "2025-10-14T14:27:42.313Z",
+        "timestamp_updated": "2026-02-26T11:23:58.010Z",
+        "pl_value": 10,
+        "sequences": [
+          {
+            "steps": [
+              {
+                "type": "email",
+                "delay": 2,
+                "variants": [
+                  {
+                    "subject": "قبل ما تزود ميزانية الإعلانات",
+                    "body": "<div dir=\"rtl\" style=\"direction:rtl;text-align:right;font-size:16px;line-height:1.7\">مرحبا<br /><br />أغلب أصحاب المتاجر اول ما يلاقوا النتائج مش ثابتة. يفتكروا المشكلة من الميديا باينج<br /><br />بس في الغالب المشكلة بتكون في “المنظومة”<br />الرسالة. العرض. تجربة الشراء. التحويل<br />حاجات بسيطة. بس بتعمل فرق ضخم<br /><br />عندى فيديو قصير بعنوان<br />“7 طرق تخليك تختلف عن 99٪ من المتاجر”<br />افكار عملية ومباشرة. مش كلام عام<br /><br />تحب ابعته لك<br /><br />اكتب “ارسلها” وانا ابعته فوراً<br /><br />ولو عندك دقيقة. ابعتلى لينك المتجر واكتب كلمة واحدة عن المشكلة. وانا ارد عليك بفيديو سريع<br /><br />تحياتى<br />فؤاد</div>"
+                  },
+                  {
+                    "subject": "٧ نقاط تفرق فعلاً",
+                    "body": "<div style=\"direction:rtl;text-align:right;font-size:16px;line-height:1.7\" dir=\"rtl\">مرحبا<br /><br />أغلب أصحاب المتاجر اول ما يلاقوا النتائج مش ثابتة. يفتكروا المشكلة من الميديا باينج<br /><br />بس في الغالب المشكلة بتكون في “المنظومة”<br />الرسالة. العرض. تجربة الشراء. التحويل<br />حاجات بسيطة. بس بتعمل فرق ضخم<br /><br />عندى فيديو قصير بعنوان<br />“7 طرق تخليك تختلف عن 99٪ من المتاجر”<br />افكار عملية ومباشرة. مش كلام عام<br /><br />تحب ابعته لك<br /><br />اكتب “ارسلها” وانا ابعته فوراً<br /><br />ولو عندك دقيقة. ابعتلى لينك المتجر واكتب كلمة واحدة عن المشكلة. وانا ارد عليك بفيديو سريع<br /><br />تحياتى<br />فؤاد</div>"
+                  },
+                  {
+                    "subject": "٧ طرق تخليك فوق 99٪ من المتاجر",
+                    "body": "<div style=\"direction:rtl;text-align:right;font-size:16px;line-height:1.7\" dir=\"rtl\">مرحبا<br /><br />أغلب أصحاب المتاجر اول ما يلاقوا النتائج مش ثابتة. يفتكروا المشكلة من الميديا باينج<br /><br />بس في الغالب المشكلة بتكون في “المنظومة”<br />الرسالة. العرض. تجربة الشراء. التحويل<br />حاجات بسيطة. بس بتعمل فرق ضخم<br /><br />عندى فيديو قصير بعنوان<br />“7 طرق تخليك تختلف عن 99٪ من المتاجر”<br />افكار عملية ومباشرة. مش كلام عام<br /><br />تحب ابعته لك<br /><br />اكتب “ارسلها” وانا ابعته فوراً<br /><br />ولو عندك دقيقة. ابعتلى لينك المتجر واكتب كلمة واحدة عن المشكلة. وانا ارد عليك بفيديو سريع<br /><br />تحياتى<br />فؤاد</div>"
+                  },
+                  {
+                    "subject": "أغلب المتاجر تضيّع فلوسها هنا",
+                    "body": "<div dir=\"rtl\" style=\"direction:rtl;text-align:right;font-size:16px;line-height:1.7\">مرحبا<br /><br />أغلب أصحاب المتاجر اول ما يلاقوا النتائج مش ثابتة. يفتكروا المشكلة من الميديا باينج<br /><br />بس في الغالب المشكلة بتكون في “المنظومة”<br />الرسالة. العرض. تجربة الشراء. التحويل<br />حاجات بسيطة. بس بتعمل فرق ضخم<br /><br />عندى فيديو قصير بعنوان<br />“7 طرق تخليك تختلف عن 99٪ من المتاجر”<br />افكار عملية ومباشرة. مش كلام عام<br /><br />تحب ابعته لك<br /><br />اكتب “ارسلها” وانا ابعته فوراً<br /><br />ولو عندك دقيقة. ابعتلى لينك المتجر واكتب كلمة واحدة عن المشكلة. وانا ارد عليك بفيديو سريع<br /><br />تحياتى<br />فؤاد</div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 1,
+                "variants": [
+                  {
+                    "subject": "",
+                    "body": "<div style=\"direction:rtl;text-align:right;font-size:16px;line-height:1.7\" dir=\"rtl\">مرحبا<br /><br />بس برجع اتابع بسرعة<br /><br />تحب ابعتلك فيديو “7 طرق تخليك تختلف عن 99٪ من المتاجر”<br /><br />لو مناسب. اكتب “ارسلها” وانا ابعته فوراً<br /><br />تحياتى<br />فؤاد</div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              }
+            ]
+          }
+        ],
+        "email_gap": 7,
+        "random_wait_max": 5,
+        "text_only": false,
+        "first_email_text_only": false,
+        "email_list": [
+          "fouad.nasseredin@joinadmire8.com",
+          "fouad.nasseredin@tryadmire8.com",
+          "fouad@joinadmire8.com",
+          "fouad@tryadmire8.com",
+          "fouadnasseredin@joinadmire8.com",
+          "fouadnasseredin@tryadmire8.com"
+        ],
+        "daily_limit": 150,
+        "stop_on_reply": true,
+        "email_tag_list": [],
+        "link_tracking": false,
+        "open_tracking": false,
+        "stop_on_auto_reply": false,
+        "prioritize_new_leads": false,
+        "match_lead_esp": false,
+        "stop_for_company": false,
+        "core_variables": {
+          "phone": true,
+          "website": true,
+          "lastName": true,
+          "firstName": true,
+          "companyName": true,
+          "personalization": true
+        },
+        "custom_variables": {
+          "City": true,
+          "email": true,
+          "Country": true,
+          "summary": true,
+          "Industry": true,
+          "Keywords": true,
+          "headline": true,
+          "jobLevel": true,
+          "jobTitle": true,
+          "linkedIn": true,
+          "location": true,
+          "department": true,
+          "# Employees": true,
+          "pause_until": true,
+          "subIndustry": true,
+          "companyDomain": true,
+          "companyWebsite": true,
+          "connectionCount": true,
+          "companyHeadCount": true,
+          "companyDescription": true,
+          "Primary Email Source": true
+        },
+        "insert_unsubscribe_header": false,
+        "allow_risky_contacts": false,
+        "disable_bounce_protect": false,
+        "cc_list": [],
+        "bcc_list": [],
+        "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+        "provider_routing_rules": []
+      },
+      {
+        "id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+        "name": "Simlabs | CTF Organizers",
+        "status": 1,
+        "campaign_schedule": {},
+        "timestamp_created": "2026-02-02T07:45:12.487Z",
+        "timestamp_updated": "2026-03-01T13:07:56.079Z",
+        "pl_value": 10,
+        "sequences": [
+          {
+            "steps": [
+              {
+                "type": "email",
+                "delay": 2,
+                "variants": [
+                  {
+                    "subject": "Quick CTF question for {{firstName}} ",
+                    "body": "<div>Hi {{FirstName}},</div><div><br /></div><div>I was looking at {{companyName}} and noticed you’re organizing CTFs regularly.</div><div><br /></div><div>Quick question, how much time do you usually lose *before* the CTF even starts?</div><div>Infra setup, DevOps, testing, last-minute fixes, etc.</div><div><br /></div><div>We built a CTF hosting platform specifically to remove that entire layer.</div><div><br /></div><div>Instead of pitching anything, I wanted to share two free resources we give organizers:</div><div><br /></div><div>1) A free trial (spin up a full CTF environment without DevOps)</div><div>2) A short CTF Planning &amp; Execution Guide covering:</div><ul style=\"margin-top:0;margin-bottom:0;padding-inline-start:48px\"><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Pre-CTF Planning</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>CTF Day Execution</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Post-CTF Wrap-Up</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Planning Checklist</div></li></ul><div><br /></div><div>Happy to send both if useful.</div><div><br />Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Noah</div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 3,
+                "variants": [
+                  {
+                    "subject": "Re: {{companyName}} ",
+                    "body": "<div>{{FirstName}}, quick follow-up.</div><div><br /></div><div>Not sure if reducing CTF prep time is a priority right now.</div><div><br /></div><div>If it is, I can share:</div><div>• free trial access</div><div>• the CTF Planning &amp; Execution Guide</div><div><br /></div><div>If not, no worries at all.</div><div>Reply “Send” and I’ll send them over.</div><div><br />Sincerely,<br />Noah</div><div><br /></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              },
+              {
+                "type": "email",
+                "delay": 1,
+                "variants": [
+                  {
+                    "subject": "Most organizers tell us this",
+                    "body": "<div>{{FirstName}},</div><div><br /></div><div>Most CTF organizers tell us the same thing:</div><div><br /></div><div>“Running the CTF is the easy part. Preparing it is what hurts.”</div><div><br /></div><div>That’s exactly what we remove.</div><div><br /></div><div>Before I stop reaching out, do you want access to:</div><div>1) the free trial</div><div>2) the CTF Planning &amp; Execution Guide</div><div>Or should I close the loop?</div><div><br /></div><div>Reply “Access” if you’re interested; otherwise, I’ll close the loop.</div><div><br />Sincerely,<br id=\"isPasted\" />​Noah<br /></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              }
+            ]
+          }
+        ],
+        "text_only": false,
+        "first_email_text_only": false,
+        "email_list": [
+          "noah@trysimlabs.com",
+          "noah@simlabs-team.com",
+          "noah@getsimlabs.com",
+          "hannah@trysimlabs.com",
+          "hannah@simlabs-team.com",
+          "hannah@getsimlabs.com",
+          "hannah.adam@getsimlabs.com"
+        ],
+        "daily_limit": 210,
+        "stop_on_reply": true,
+        "email_tag_list": [],
+        "link_tracking": false,
+        "open_tracking": false,
+        "stop_on_auto_reply": false,
+        "prioritize_new_leads": false,
+        "match_lead_esp": false,
+        "stop_for_company": false,
+        "core_variables": {
+          "phone": true,
+          "website": true,
+          "lastName": true,
+          "firstName": true,
+          "companyName": true,
+          "personalization": true
+        },
+        "custom_variables": {
+          "email": true,
+          "Keywords": true,
+          "jobTitle": true,
+          "linkedIn": true,
+          "location": true,
+          "pause_until": true
+        },
+        "insert_unsubscribe_header": false,
+        "allow_risky_contacts": false,
+        "disable_bounce_protect": false,
+        "cc_list": [],
+        "bcc_list": [],
+        "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+        "provider_routing_rules": []
+      },
+      {
+        "id": "02d459cc-0522-43e3-8d44-9a0d1129154d",
+        "name": "Performance Marketers",
+        "status": 0,
+        "campaign_schedule": {
+          "schedules": [
+            {
+              "name": "Cairo",
+              "timing": {
+                "from": "09:00",
+                "to": "18:00"
+              },
+              "days": {
+                "0": true,
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "6": true
+              },
+              "timezone": "Africa/Cairo"
+            }
+          ],
+          "start_date": null,
+          "end_date": null
+        },
+        "timestamp_created": "2025-12-23T14:23:19.052Z",
+        "timestamp_updated": "2025-12-23T20:35:03.045Z",
+        "pl_value": 10,
+        "sequences": [
+          {
+            "steps": [
+              {
+                "type": "email",
+                "delay": 1,
+                "variants": [
+                  {
+                    "subject": "Building a circle of performance marketers in Egypt",
+                    "body": "<div><span style=\"font-size:16px\">Hi {{firstName}},</span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">I’m Fouad.</span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">I’m putting together a pool of strong performance marketers in Egypt</span></div><div><span style=\"font-size:16px\">and I thought of you.</span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">The idea is simple:</span></div><div><span style=\"font-size:16px\">- a vetted talent pool that gets matched with serious business owners</span></div><div><span style=\"font-size:16px\">  who have real ad challenges</span></div><div><span style=\"font-size:16px\">- plus chances to collaborate with me on some ongoing campaigns</span></div><div><span style=\"font-size:16px\">  (e-commerce and other performance work)</span></div><div><span style=\"font-size:16px\">- and a community of performance marketers to share ideas and wins</span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">If you’d like to be in the initial pool,</span></div><div><span style=\"font-size:16px\">you can share a few details here:</span></div><div><span style=\"font-size:16px\"><a href=\"https://form.asana.com/?k=CMukOCCuPj42z7XH5HGxhQ&amp;d=1201934871168294\">Submit through this form</a></span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">If it doesn’t feel like the right time, no problem at all.</span></div><div><span style=\"font-size:16px\">Either way, I’m happy to be connected.</span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">Let’s also connect on LinkedIn:</span></div><div><span style=\"font-size:16px\"><a href=\"https://www.linkedin.com/in/fnasr/\">https://www.linkedin.com/in/fnasr/</a></span></div><div><span style=\"font-size:16px\"><br /></span></div><div><span style=\"font-size:16px\">Best,</span></div><div><span style=\"font-size:16px\">Fouad Nasseredin</span></div><div><span style=\"font-size:16px\">Managing Partner, Admireworks</span></div><div><span style=\"font-size:16px\"><br /></span></div><div><a href=\"https://www.linkedin.com/in/fnasr/\" target=\"_blank\" rel=\"noopener noreferrer\"><span style=\"font-size:16px\"><img src=\"https://d1yei2z3i6k35z.cloudfront.net/5773732/68f5d66272ced_profilepic.png\" style=\"width:126px\" class=\"fr-fic fr-fil fr-dib\" /></span></a></div>"
+                  }
+                ],
+                "delay_unit": "days",
+                "pre_delay_unit": "days"
+              }
+            ]
+          }
+        ],
+        "text_only": false,
+        "first_email_text_only": false,
+        "email_list": [
+          "fouad@fnasr.com",
+          "fouad@get4percent.com",
+          "fouad.nasseredin@get4percent.com",
+          "fouad.nasseredin@joinadmire8.com",
+          "fouad@joinadmire8.com",
+          "fouadnasseredin@joinadmire8.com"
+        ],
+        "daily_limit": 180,
+        "stop_on_reply": true,
+        "email_tag_list": [],
+        "link_tracking": true,
+        "open_tracking": true,
+        "stop_on_auto_reply": false,
+        "prioritize_new_leads": false,
+        "auto_variant_select": {
+          "trigger": "click_rate"
+        },
+        "match_lead_esp": false,
+        "stop_for_company": false,
+        "core_variables": {
+          "phone": true,
+          "website": true,
+          "lastName": true,
+          "firstName": true,
+          "companyName": true,
+          "personalization": true
+        },
+        "custom_variables": {
+          "email": true,
+          "summary": true,
+          "headline": true,
+          "industry": true,
+          "jobLevel": true,
+          "jobTitle": true,
+          "linkedIn": true,
+          "location": true,
+          "department": true,
+          "subIndustry": true,
+          "companyDomain": true,
+          "companyWebsite": true,
+          "connectionCount": true,
+          "companyHeadCount": true,
+          "companyDescription": true
+        },
+        "insert_unsubscribe_header": false,
+        "allow_risky_contacts": false,
+        "disable_bounce_protect": false,
+        "limit_emails_per_company_override": {
+          "mode": "custom",
+          "daily_limit": 1,
+          "scope": "per_campaign"
+        },
+        "cc_list": [],
+        "bcc_list": [],
+        "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+        "provider_routing_rules": []
+      }
+    ],
+    "next_starting_after": "02d459cc-0522-43e3-8d44-9a0d1129154d"
+  },
+  "text": null
+}

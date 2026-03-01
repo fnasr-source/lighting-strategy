@@ -1,0 +1,470 @@
+{
+  "rootFolderId": "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8",
+  "fetchedAt": "2026-03-01T13:35:21Z",
+  "totalItems": 40,
+  "items": [
+    {
+      "id": "1cemSTDsmN3u-PWIbkkPzKjAQs_ZNNH_W",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-11-07T13:17:54.859Z",
+      "name": "05. Web Development - Simulations Labs",
+      "parents": [
+        "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1cemSTDsmN3u-PWIbkkPzKjAQs_ZNNH_W",
+      "_parent_queried": "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+    },
+    {
+      "id": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-11-07T13:17:53.930Z",
+      "name": "04. Marketing - Simulations Labs",
+      "parents": [
+        "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy",
+      "_parent_queried": "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+    },
+    {
+      "id": "1xpR3XlfupAlfm32si1ag9CV8rOFciX1z",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-11-07T13:17:53.096Z",
+      "name": "03. Assets - Simulations Labs",
+      "parents": [
+        "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1xpR3XlfupAlfm32si1ag9CV8rOFciX1z",
+      "_parent_queried": "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+    },
+    {
+      "id": "1JWkBPCTSRSR2JHkoMLJ7Pp8IGPNssnIU",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-11-07T13:17:51.757Z",
+      "name": "02. Brand Identity - Simulations Labs",
+      "parents": [
+        "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1JWkBPCTSRSR2JHkoMLJ7Pp8IGPNssnIU",
+      "_parent_queried": "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+    },
+    {
+      "id": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-11-07T13:17:50.959Z",
+      "name": "01. Account Brief - Simulations Labs",
+      "parents": [
+        "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4",
+      "_parent_queried": "1PwhdS9LDKQesEEJ7898zir75oFf9qfW8"
+    },
+    {
+      "id": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-02-23T11:41:52.971Z",
+      "name": "SEO",
+      "parents": [
+        "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m",
+      "_parent_queried": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+    },
+    {
+      "id": "1HKoB2zhAo0dVQh-nnHNaB0_RpWjI_DXY",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-02-19T08:14:46.014Z",
+      "name": "Blogs",
+      "parents": [
+        "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1HKoB2zhAo0dVQh-nnHNaB0_RpWjI_DXY",
+      "_parent_queried": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+    },
+    {
+      "id": "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-02-16T15:29:47.465Z",
+      "name": "Academy",
+      "parents": [
+        "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/16P_irttvzFlbMSjr_btV9tQlTIp0bdgB",
+      "_parent_queried": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+    },
+    {
+      "id": "1bU-PqUwyFdAEcNaLLGy4yp3VIIjvMlch",
+      "mimeType": "application/vnd.google-apps.shortcut",
+      "modifiedTime": "2026-02-05T13:16:30.579Z",
+      "name": "Cold Outreach",
+      "parents": [
+        "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+      ],
+      "webViewLink": "https://drive.google.com/file/d/1bU-PqUwyFdAEcNaLLGy4yp3VIIjvMlch/view?usp=drivesdk",
+      "_parent_queried": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+    },
+    {
+      "id": "1R5tHkr5tsNA2y_2d7MX4HWTmmXUWJ0Jo",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-01-07T08:35:46.964Z",
+      "name": "Media Buying",
+      "parents": [
+        "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1R5tHkr5tsNA2y_2d7MX4HWTmmXUWJ0Jo",
+      "_parent_queried": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+    },
+    {
+      "id": "1plNRZXwTiDovbm62LISY4seyrCjtw9hi",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-12-08T10:43:51.835Z",
+      "name": "Strategy",
+      "parents": [
+        "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1plNRZXwTiDovbm62LISY4seyrCjtw9hi",
+      "_parent_queried": "1Laz9kPCqAF93roPN7zdP4PuCWgIu6eMy"
+    },
+    {
+      "id": "1gszkQGpl2-9xc88gnQYR3hWrFkcx2I4ABTxuum41R0I",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2025-12-29T17:26:13.246Z",
+      "name": "Meetings",
+      "parents": [
+        "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+      ],
+      "size": "39008",
+      "webViewLink": "https://docs.google.com/document/d/1gszkQGpl2-9xc88gnQYR3hWrFkcx2I4ABTxuum41R0I/edit?usp=drivesdk",
+      "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    },
+    {
+      "id": "14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-12-10T09:50:40.358Z",
+      "name": "Ads Optimization Meeting",
+      "parents": [
+        "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI",
+      "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    },
+    {
+      "id": "1pIubusv9UNQ0VGmRTp6Qe3PatBnoDeKHluJCLqGAfiU",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2025-12-09T08:49:15.689Z",
+      "name": "Clients Performance Report - Simulations Labs",
+      "parents": [
+        "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+      ],
+      "size": "3957",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1pIubusv9UNQ0VGmRTp6Qe3PatBnoDeKHluJCLqGAfiU/edit?usp=drivesdk",
+      "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    },
+    {
+      "id": "1_d7cVsP-RGgZbfH59OJqXO84o8LiF0mNupqXlJ9lyiE",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2025-12-03T11:48:51.510Z",
+      "name": "Simulations Labs Kick-off Meeting",
+      "parents": [
+        "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+      ],
+      "size": "22472",
+      "webViewLink": "https://docs.google.com/document/d/1_d7cVsP-RGgZbfH59OJqXO84o8LiF0mNupqXlJ9lyiE/edit?usp=drivesdk",
+      "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    },
+    {
+      "id": "1KhpthiLBVy2tHeiQsJ6PKtrh-i_Y56nPRBNYQ9uM6g0",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2025-11-29T08:38:40.119Z",
+      "name": "Client brief - Simulations Labs",
+      "parents": [
+        "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+      ],
+      "size": "7280",
+      "webViewLink": "https://docs.google.com/document/d/1KhpthiLBVy2tHeiQsJ6PKtrh-i_Y56nPRBNYQ9uM6g0/edit?usp=drivesdk",
+      "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    },
+    {
+      "id": "1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2025-11-28T17:25:13.978Z",
+      "name": "Kick-Off meeting",
+      "parents": [
+        "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y",
+      "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    },
+    {
+      "id": "156VV3EFLwrtADyrNfK6heL6sLtTipLAV",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-02-25T10:53:50.421Z",
+      "name": "Blogs",
+      "parents": [
+        "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/156VV3EFLwrtADyrNfK6heL6sLtTipLAV",
+      "_parent_queried": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+    },
+    {
+      "id": "1sJRONckEhWPmplZX4loA5yxCX49RIzfAOYZGC3cv18Y",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-02-25T10:24:08.235Z",
+      "name": "SimLabs SEO Technical Implementation",
+      "parents": [
+        "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+      ],
+      "size": "7615",
+      "webViewLink": "https://docs.google.com/document/d/1sJRONckEhWPmplZX4loA5yxCX49RIzfAOYZGC3cv18Y/edit?usp=drivesdk",
+      "_parent_queried": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+    },
+    {
+      "id": "1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-02-23T10:43:00.502Z",
+      "name": "Final Keywords List",
+      "parents": [
+        "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+      ],
+      "size": "9181",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=drivesdk",
+      "_parent_queried": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+    },
+    {
+      "id": "1jIQvgtDwaZ-uoQNhJfoQwvN5zf7gqHJo8zLeVlIljl4",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-02-23T10:42:52.647Z",
+      "name": "Keywords List Reference",
+      "parents": [
+        "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+      ],
+      "size": "30419",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1jIQvgtDwaZ-uoQNhJfoQwvN5zf7gqHJo8zLeVlIljl4/edit?usp=drivesdk",
+      "_parent_queried": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+    },
+    {
+      "id": "1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-02-23T09:48:07.718Z",
+      "name": "Simulations Labs SEO Strategy",
+      "parents": [
+        "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+      ],
+      "size": "10969",
+      "webViewLink": "https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=drivesdk",
+      "_parent_queried": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+    },
+    {
+      "id": "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-02-22T20:15:02.730Z",
+      "name": "Crawling Reports",
+      "parents": [
+        "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1",
+      "_parent_queried": "1GwhVOKPqxFG4lj9WjIOCEqx10tWqoy8m"
+    },
+    {
+      "id": "1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-02-19T08:26:33.863Z",
+      "name": "1st Batch ",
+      "parents": [
+        "1HKoB2zhAo0dVQh-nnHNaB0_RpWjI_DXY"
+      ],
+      "size": "14802",
+      "webViewLink": "https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drivesdk",
+      "_parent_queried": "1HKoB2zhAo0dVQh-nnHNaB0_RpWjI_DXY"
+    },
+    {
+      "id": "1fGjqLscQqBiCMYU4hk8qQAZRi1o8JPM-",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-02-16T15:26:59.114Z",
+      "name": "lesson 2 v 2.mp4",
+      "parents": [
+        "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+      ],
+      "size": "66799404",
+      "webViewLink": "https://drive.google.com/file/d/1fGjqLscQqBiCMYU4hk8qQAZRi1o8JPM-/view?usp=drivesdk",
+      "_parent_queried": "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+    },
+    {
+      "id": "1NL4xFJ3CU69ZKInXsvMjdBUnZppR8QYv",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-02-16T15:26:41.945Z",
+      "name": "lesson 2 v1.mp4",
+      "parents": [
+        "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+      ],
+      "size": "4108584",
+      "webViewLink": "https://drive.google.com/file/d/1NL4xFJ3CU69ZKInXsvMjdBUnZppR8QYv/view?usp=drivesdk",
+      "_parent_queried": "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+    },
+    {
+      "id": "1VLxsOXHhmOGlN4dGFqqjmsusrVum0WRH",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-01-25T10:18:36.411Z",
+      "name": "Lesson 1.mp4",
+      "parents": [
+        "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+      ],
+      "size": "53913002",
+      "webViewLink": "https://drive.google.com/file/d/1VLxsOXHhmOGlN4dGFqqjmsusrVum0WRH/view?usp=drivesdk",
+      "_parent_queried": "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+    },
+    {
+      "id": "1LYJTdufiYz9xmChiczRam-IOjHarXGTa",
+      "mimeType": "video/mp4",
+      "modifiedTime": "2026-01-19T10:39:28.000Z",
+      "name": "s 1.mp4",
+      "parents": [
+        "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+      ],
+      "size": "304850816",
+      "webViewLink": "https://drive.google.com/file/d/1LYJTdufiYz9xmChiczRam-IOjHarXGTa/view?usp=drivesdk",
+      "_parent_queried": "16P_irttvzFlbMSjr_btV9tQlTIp0bdgB"
+    },
+    {
+      "id": "1fGCdQ-J-IkLy9Rce3m29Zu1Vu4SbKKcL",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-01-07T08:35:51.866Z",
+      "name": "Execution",
+      "parents": [
+        "1R5tHkr5tsNA2y_2d7MX4HWTmmXUWJ0Jo"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1fGCdQ-J-IkLy9Rce3m29Zu1Vu4SbKKcL",
+      "_parent_queried": "1R5tHkr5tsNA2y_2d7MX4HWTmmXUWJ0Jo"
+    },
+    {
+      "id": "1b8Zb2LVGMeo5JRBcjBAngx8ktGKGyijkB0mC3_sjtIw",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2025-12-08T10:50:45.340Z",
+      "name": "Strategy Review meeting - 8 Dec 2025",
+      "parents": [
+        "1plNRZXwTiDovbm62LISY4seyrCjtw9hi"
+      ],
+      "size": "24604",
+      "webViewLink": "https://docs.google.com/document/d/1b8Zb2LVGMeo5JRBcjBAngx8ktGKGyijkB0mC3_sjtIw/edit?usp=drivesdk",
+      "_parent_queried": "1plNRZXwTiDovbm62LISY4seyrCjtw9hi"
+    },
+    {
+      "id": "1dk825LnEQ_sGv8DK3fMMcyL3isk2b0hlejkvJcxd0z4",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-01-07T08:09:46.261Z",
+      "name": "Google Ads Structure",
+      "parents": [
+        "14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI"
+      ],
+      "size": "3141",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1dk825LnEQ_sGv8DK3fMMcyL3isk2b0hlejkvJcxd0z4/edit?usp=drivesdk",
+      "_parent_queried": "14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI"
+    },
+    {
+      "id": "14g0OzXQzlAFHytkVy3vaVprhTTex1yRUzimPTCcfgMA",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2025-12-10T17:03:43.683Z",
+      "name": "AW -Simulations Labs [ Ad Optimization ] - December 09",
+      "parents": [
+        "14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI"
+      ],
+      "size": "4836",
+      "webViewLink": "https://docs.google.com/document/d/14g0OzXQzlAFHytkVy3vaVprhTTex1yRUzimPTCcfgMA/edit?usp=drivesdk",
+      "_parent_queried": "14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI"
+    },
+    {
+      "id": "1O3W-baEog7w8w8hKQ_KXTkecd8y2l_2K2uuF1GP8xZY",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2025-11-29T08:39:10.325Z",
+      "name": "Kick-off meeting transcription",
+      "parents": [
+        "1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y"
+      ],
+      "size": "32179",
+      "webViewLink": "https://docs.google.com/document/d/1O3W-baEog7w8w8hKQ_KXTkecd8y2l_2K2uuF1GP8xZY/edit?usp=drivesdk",
+      "_parent_queried": "1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y"
+    },
+    {
+      "id": "16kbVSb1QVLLsNucudoTVyluPP64Cr5TVna6W-HX6NaI",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-02-25T12:00:06.766Z",
+      "name": "CTF Hosting: How to Choose the Right Platform (Without Infrastructure Headaches)",
+      "parents": [
+        "156VV3EFLwrtADyrNfK6heL6sLtTipLAV"
+      ],
+      "size": "6484",
+      "webViewLink": "https://docs.google.com/document/d/16kbVSb1QVLLsNucudoTVyluPP64Cr5TVna6W-HX6NaI/edit?usp=drivesdk",
+      "_parent_queried": "156VV3EFLwrtADyrNfK6heL6sLtTipLAV"
+    },
+    {
+      "id": "1I5moJyaaR3yze7NWgsSv32MCZmbDCTKXnCRINR9tF1A",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-02-22T20:19:39.468Z",
+      "name": "content_low_content_pages",
+      "parents": [
+        "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+      ],
+      "size": "1024",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1I5moJyaaR3yze7NWgsSv32MCZmbDCTKXnCRINR9tF1A/edit?usp=drivesdk",
+      "_parent_queried": "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+    },
+    {
+      "id": "16HvMSqHahanpScVGUcapRKZxOg6iLf-NRoju2jLwVpw",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-02-22T20:17:30.581Z",
+      "name": "page_titles_duplicate",
+      "parents": [
+        "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+      ],
+      "size": "1024",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/16HvMSqHahanpScVGUcapRKZxOg6iLf-NRoju2jLwVpw/edit?usp=drivesdk",
+      "_parent_queried": "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+    },
+    {
+      "id": "17aipVnZ0Nuu-QGdxWEyb1URtN3RyJBoq_sXQZMK-J_M",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-02-22T20:16:20.720Z",
+      "name": "page_titles_all",
+      "parents": [
+        "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+      ],
+      "size": "2529",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/17aipVnZ0Nuu-QGdxWEyb1URtN3RyJBoq_sXQZMK-J_M/edit?usp=drivesdk",
+      "_parent_queried": "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+    },
+    {
+      "id": "1hex4Ggb-Ggqixy4enlbMMyItTqWzWuwMhMKtJVVtg0A",
+      "mimeType": "application/vnd.google-apps.spreadsheet",
+      "modifiedTime": "2026-02-22T20:14:21.434Z",
+      "name": "response_codes_all",
+      "parents": [
+        "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+      ],
+      "size": "6719",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1hex4Ggb-Ggqixy4enlbMMyItTqWzWuwMhMKtJVVtg0A/edit?usp=drivesdk",
+      "_parent_queried": "15_Y6fNWTVnl13gCLLzu_CliGE0gbPCv1"
+    },
+    {
+      "id": "1D4MizGT2Fqppg5EXWmqawS6UL8A30QrU",
+      "mimeType": "application/vnd.google-apps.folder",
+      "modifiedTime": "2026-01-07T08:44:30.933Z",
+      "name": "Google Ads",
+      "parents": [
+        "1fGCdQ-J-IkLy9Rce3m29Zu1Vu4SbKKcL"
+      ],
+      "webViewLink": "https://drive.google.com/drive/folders/1D4MizGT2Fqppg5EXWmqawS6UL8A30QrU",
+      "_parent_queried": "1fGCdQ-J-IkLy9Rce3m29Zu1Vu4SbKKcL"
+    },
+    {
+      "id": "1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo",
+      "mimeType": "application/vnd.google-apps.document",
+      "modifiedTime": "2026-01-07T08:45:20.503Z",
+      "name": "Simulation Labs – Google Ads Account Strategy",
+      "parents": [
+        "1D4MizGT2Fqppg5EXWmqawS6UL8A30QrU"
+      ],
+      "size": "9056",
+      "webViewLink": "https://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=drivesdk",
+      "_parent_queried": "1D4MizGT2Fqppg5EXWmqawS6UL8A30QrU"
+    }
+  ]
+}

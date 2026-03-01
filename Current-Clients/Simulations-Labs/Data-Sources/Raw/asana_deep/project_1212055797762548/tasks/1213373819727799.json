@@ -1,0 +1,223 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213373819727799",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-02-26T11:47:14.581Z",
+      "created_at": "2026-02-22T21:36:04.453Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "2h 24m"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-3d 11h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-23",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body><a href=\"https://app.asana.com/1/1201934871168294/task/1213390980620575?focus=true\" data-asana-gid=\"1213390980620575\" data-asana-accessible=\"true\" data-asana-type=\"task\" data-asana-dynamic=\"true\">Daniel Mayer</a> <a href=\"https://app.asana.com/1/1201934871168294/task/1213390980620566\" data-asana-gid=\"1213390980620566\" data-asana-accessible=\"true\" data-asana-type=\"task\" data-asana-dynamic=\"true\">Marwa</a></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340934",
+            "name": "Execution"
+          }
+        }
+      ],
+      "modified_at": "2026-02-26T11:47:15.141Z",
+      "name": "update source as well for leads",
+      "notes": "https://app.asana.com/1/1201934871168294/task/1213390980620575?focus=true https://app.asana.com/1/1201934871168294/task/1213390980620566",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213373819727799",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1213390981502078",
+        "created_at": "2026-02-22T21:41:36.325Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>As an editor, I don't have access to add new sources. Please add &quot;Cold Emails Outreach&quot; as one of the sources that I can choose from.</body>",
+        "resource_type": "story",
+        "text": "As an editor, I don't have access to add new sources. Please add \"Cold Emails Outreach\" as one of the sources that I can choose from.",
+        "type": "comment"
+      },
+      {
+        "gid": "1213373819727803",
+        "created_at": "2026-02-23T07:13:35.725Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>you're admin now on the project <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022/list/1213388383279052\" data-asana-gid=\"1213388383279022\" data-asana-accessible=\"true\" data-asana-type=\"project\" data-asana-dynamic=\"true\">Simulations Labs Pipeline v2 (AI Everything)</a></body>",
+        "resource_type": "story",
+        "text": "you're admin now on the project https://app.asana.com/1/1201934871168294/project/1213388383279022/list/1213388383279052",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213391921834854",
+        "created_at": "2026-02-22T21:37:12.560Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 23",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 23",
+        "type": "system"
+      },
+      {
+        "gid": "1213391923025380",
+        "created_at": "2026-02-22T21:37:15.058Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1213391924930580",
+        "created_at": "2026-02-22T21:37:15.364Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> moved this task from \"Strategy\" to \"Execution\" in <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin moved this task from \"Strategy\" to \"Execution\" in DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1213391923048680",
+        "created_at": "2026-02-22T21:37:15.654Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1213391921825380",
+        "created_at": "2026-02-22T21:37:16.324Z",
+        "created_by": null,
+        "html_text": "Asana changed Task time to \"2h 24m\"",
+        "resource_type": "story",
+        "text": "Asana changed Task time to \"2h 24m\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213390981502078",
+        "created_at": "2026-02-22T21:41:36.325Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>As an editor, I don't have access to add new sources. Please add &quot;Cold Emails Outreach&quot; as one of the sources that I can choose from.</body>",
+        "resource_type": "story",
+        "text": "As an editor, I don't have access to add new sources. Please add \"Cold Emails Outreach\" as one of the sources that I can choose from.",
+        "type": "comment"
+      },
+      {
+        "gid": "1213373819727803",
+        "created_at": "2026-02-23T07:13:35.725Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>you're admin now on the project <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022/list/1213388383279052\" data-asana-gid=\"1213388383279022\" data-asana-accessible=\"true\" data-asana-type=\"project\" data-asana-dynamic=\"true\">Simulations Labs Pipeline v2 (AI Everything)</a></body>",
+        "resource_type": "story",
+        "text": "you're admin now on the project https://app.asana.com/1/1201934871168294/project/1213388383279022/list/1213388383279052",
+        "type": "comment"
+      },
+      {
+        "gid": "1213452634027818",
+        "created_at": "2026-02-26T11:47:14.612Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1213452571576970",
+        "created_at": "2026-02-26T11:47:14.695Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-3d 11h\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-3d 11h\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

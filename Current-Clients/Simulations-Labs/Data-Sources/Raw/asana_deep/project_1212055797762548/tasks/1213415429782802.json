@@ -1,0 +1,167 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213415429782802",
+      "assignee": {
+        "gid": "1208485318748903",
+        "email": "fouwai55y@gmail.com",
+        "name": "Esraa"
+      },
+      "completed": false,
+      "completed_at": null,
+      "created_at": "2026-02-24T20:50:22.435Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "4d 3h"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-03-01",
+      "followers": [
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340932",
+            "name": "Copywriting"
+          }
+        }
+      ],
+      "modified_at": "2026-02-28T22:00:54.607Z",
+      "name": "Copilot Campaign",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213415429782802",
+      "start_on": null,
+      "tags": [],
+      "resource_subtype": "default_task"
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1213415429782806",
+        "created_at": "2026-02-24T20:51:02.276Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1xW5nq3qaaBjfXOQESngYizJ44qxUrng1_QgVm4_4fos/edit?usp=sharing\">https://docs.google.com/document/d/1xW5nq3qaaBjfXOQESngYizJ44qxUrng1_QgVm4_4fos/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1xW5nq3qaaBjfXOQESngYizJ44qxUrng1_QgVm4_4fos/edit?usp=sharing",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213403935907576",
+        "created_at": "2026-02-24T20:50:22.568Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Esraa added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1213426237648416",
+        "created_at": "2026-02-24T20:50:36.794Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b>",
+        "resource_type": "story",
+        "text": "Esraa assigned to Esraa",
+        "type": "system"
+      },
+      {
+        "gid": "1213426229481533",
+        "created_at": "2026-02-24T20:50:40.772Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Today",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Today",
+        "type": "system"
+      },
+      {
+        "gid": "1213415429782806",
+        "created_at": "2026-02-24T20:51:02.276Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1xW5nq3qaaBjfXOQESngYizJ44qxUrng1_QgVm4_4fos/edit?usp=sharing\">https://docs.google.com/document/d/1xW5nq3qaaBjfXOQESngYizJ44qxUrng1_QgVm4_4fos/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1xW5nq3qaaBjfXOQESngYizJ44qxUrng1_QgVm4_4fos/edit?usp=sharing",
+        "type": "comment"
+      },
+      {
+        "gid": "1213426238224774",
+        "created_at": "2026-02-24T20:51:09.006Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added you as a collaborator",
+        "resource_type": "story",
+        "text": "Esraa added you as a collaborator",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  }
+}

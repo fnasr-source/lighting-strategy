@@ -1,0 +1,118 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213399741379217",
+      "assignee": null,
+      "completed": false,
+      "completed_at": null,
+      "created_at": "2026-02-25T10:31:58.539Z",
+      "custom_fields": [
+        {
+          "gid": "1213388402534421",
+          "name": "Lead Priority",
+          "display_value": "B - Warm"
+        },
+        {
+          "gid": "1213388457746575",
+          "name": "Use Case",
+          "display_value": "Demo"
+        },
+        {
+          "gid": "1213373817146418",
+          "name": "Source",
+          "display_value": "Campaigns"
+        },
+        {
+          "gid": "1213388403636636",
+          "name": "Owner",
+          "display_value": "Unassigned"
+        },
+        {
+          "gid": "1213388506227281",
+          "name": "Lead Status",
+          "display_value": "New"
+        },
+        {
+          "gid": "1213373047721036",
+          "name": "Next Action",
+          "display_value": "Send first outreach email "
+        },
+        {
+          "gid": "1213388509861135",
+          "name": "Lead Email",
+          "display_value": "mayoni1263@gmail.com"
+        },
+        {
+          "gid": "1213361868911225",
+          "name": "Phone",
+          "display_value": null
+        },
+        {
+          "gid": "1213361868909067",
+          "name": "Company",
+          "display_value": null
+        },
+        {
+          "gid": "1213388516577388",
+          "name": "Role",
+          "display_value": null
+        },
+        {
+          "gid": "1213373047777838",
+          "name": "Lead Website",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": null,
+      "followers": [
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1213388383279022",
+            "name": "Simulations Labs Pipeline v2 (AI Everything)"
+          },
+          "section": {
+            "gid": "1213373047674371",
+            "name": "🟦 01 New Leads"
+          }
+        }
+      ],
+      "modified_at": "2026-02-25T10:32:22.125Z",
+      "name": "Mayoni",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1213388383279022/task/1213399741379217",
+      "start_on": null,
+      "tags": [],
+      "resource_subtype": "default_task"
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213431683210507",
+        "created_at": "2026-02-25T10:31:58.611Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Youssef Khafaga added this task to Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  }
+}

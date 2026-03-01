@@ -1,0 +1,166 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213388387136565",
+      "assignee": null,
+      "completed": false,
+      "completed_at": null,
+      "created_at": "2026-02-22T12:51:54.673Z",
+      "custom_fields": [
+        {
+          "gid": "1213388402534421",
+          "name": "Lead Priority",
+          "display_value": "B - Warm"
+        },
+        {
+          "gid": "1213388457746575",
+          "name": "Use Case",
+          "display_value": "Demo"
+        },
+        {
+          "gid": "1213373817146418",
+          "name": "Source",
+          "display_value": "Demo Form"
+        },
+        {
+          "gid": "1213388403636636",
+          "name": "Owner",
+          "display_value": "Unassigned"
+        },
+        {
+          "gid": "1213388506227281",
+          "name": "Lead Status",
+          "display_value": "New"
+        },
+        {
+          "gid": "1213373047721036",
+          "name": "Next Action",
+          "display_value": "Send first outreach email + LinkedIn connect"
+        },
+        {
+          "gid": "1213388509861135",
+          "name": "Lead Email",
+          "display_value": null
+        },
+        {
+          "gid": "1213361868911225",
+          "name": "Phone",
+          "display_value": null
+        },
+        {
+          "gid": "1213361868909067",
+          "name": "Company",
+          "display_value": null
+        },
+        {
+          "gid": "1213388516577388",
+          "name": "Role",
+          "display_value": null
+        },
+        {
+          "gid": "1213373047777838",
+          "name": "Lead Website",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-23",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body>Role: Internship/training\nEmail: <a href=\"mailto:salmamohamedabdelghany@gmail.com\" target=\"_blank\" rel=\"noreferrer noopener\">salmamohamedabdelghany@gmail.com</a>\nPhone: \nWebsite: \nUse Case: Demo\nOwner: \nFollow-up Email: \n\nNotes:\nDemo submission from AI Everything form\n\nSource: Demo Form</body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1213388383279022",
+            "name": "Simulations Labs Pipeline v2 (AI Everything)"
+          },
+          "section": {
+            "gid": "1213373047674371",
+            "name": "🟦 01 New Leads"
+          }
+        }
+      ],
+      "modified_at": "2026-02-22T13:19:24.977Z",
+      "name": "Salma Mohamed Abdelghany",
+      "notes": "Role: Internship/training\nEmail: salmamohamedabdelghany@gmail.com\nPhone: \nWebsite: \nUse Case: Demo\nOwner: \nFollow-up Email: \n\nNotes:\nDemo submission from AI Everything form\n\nSource: Demo Form",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1213388383279022/task/1213388387136565",
+      "start_on": null,
+      "tags": [],
+      "resource_subtype": "default_task"
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213361868732742",
+        "created_at": "2026-02-22T12:51:54.747Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      },
+      {
+        "gid": "1213361868732744",
+        "created_at": "2026-02-22T12:51:54.946Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to you",
+        "type": "system"
+      },
+      {
+        "gid": "1213388385474398",
+        "created_at": "2026-02-22T12:51:55.961Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> moved this task from \"Untitled section\" to \"🟦 01 New Leads\" in <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin moved this task from \"Untitled section\" to \"🟦 01 New Leads\" in Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      },
+      {
+        "gid": "1213388403354269",
+        "created_at": "2026-02-22T13:01:30.227Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 23",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 23",
+        "type": "system"
+      },
+      {
+        "gid": "1213388540283193",
+        "created_at": "2026-02-22T13:19:21.878Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> unassigned from you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin unassigned from you",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "data": {
+    "gid": "1213388383279022",
+    "archived": false,
+    "current_status_update": null,
+    "due_on": null,
+    "html_notes": "<body>Clean rebuilt pipeline from sheets + voice notes. No legacy columns/sections.</body>",
+    "name": "Simulations Labs Pipeline v2 (AI Everything)",
+    "notes": "Clean rebuilt pipeline from sheets + voice notes. No legacy columns/sections.",
+    "owner": {
+      "gid": "1202432356210277",
+      "name": "Fouad Nasseredin"
+    },
+    "permalink_url": "https://app.asana.com/1/1201934871168294/project/1213388383279022",
+    "public": false,
+    "start_on": null,
+    "team": {
+      "gid": "1206495455259708",
+      "name": "Business Development"
+    },
+    "workspace": {
+      "gid": "1201934871168294",
+      "name": "Admireworks"
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212495083870135",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-01-02T12:06:36.163Z",
+      "created_at": "2025-12-18T10:38:39.172Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "2w 2d"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "1d 11h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-01-04",
+      "followers": [
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340932",
+            "name": "Copywriting"
+          }
+        }
+      ],
+      "modified_at": "2026-01-02T12:06:36.881Z",
+      "name": "Cold Outreach Sequence",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212495083870135",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1212578028774316",
+        "created_at": "2025-12-24T11:22:56.854Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> could you please upload the link here</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324 could you please upload the link here",
+        "type": "comment"
+      },
+      {
+        "gid": "1212588104112047",
+        "created_at": "2025-12-25T08:48:20.431Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> <a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nHere’s the link to the updated sequence after applying the adjustments discussed in yesterday’s daily stand-up.\nPlease review it and share your feedback.\n<a href=\"https://docs.google.com/document/d/1twGMpfdkSRd1w9MapN9KoLkkLQeNoXbzBftz37-YJks/edit?usp=sharing\">https://docs.google.com/document/d/1twGMpfdkSRd1w9MapN9KoLkkLQeNoXbzBftz37-YJks/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 https://app.asana.com/0/profile/1202432356210287\nHere’s the link to the updated sequence after applying the adjustments discussed in yesterday’s daily stand-up.\nPlease review it and share your feedback.\nhttps://docs.google.com/document/d/1twGMpfdkSRd1w9MapN9KoLkkLQeNoXbzBftz37-YJks/edit?usp=sharing",
+        "type": "comment"
+      },
+      {
+        "gid": "1212588104112049",
+        "created_at": "2025-12-25T10:48:41.135Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a> Here are the emails for instantly:\n<ul><li><a href=\"mailto:Hannah@getsimlabs.com\" target=\"_blank\" rel=\"noreferrer noopener\">Hannah@getsimlabs.com</a></li><li><a href=\"mailto:Noah@getsimlabs.com\" target=\"_blank\" rel=\"noreferrer noopener\">Noah@getsimlabs.com</a></li><li>Hannah@simlabs-team.com</li><li><a href=\"mailto:Noah@simlabs-team.com\" target=\"_blank\" rel=\"noreferrer noopener\">Noah@simlabs-team.com</a></li><li><a href=\"mailto:Hannah@simlabsteam.com\" target=\"_blank\" rel=\"noreferrer noopener\">Hannah@trysimlabs.com</a></li><li>Noah@trysimlabs.com</li></ul></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1202432356210287 Here are the emails for instantly:\n    Hannah@getsimlabs.com\n    Noah@getsimlabs.com\n    Hannah@simlabs-team.com\n    Noah@simlabs-team.com\n    Hannah@simlabsteam.com\n    Noah@trysimlabs.com\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212600156323878",
+        "created_at": "2025-12-28T11:00:11.208Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Did they mention the second names? as it is mandatory</body>",
+        "resource_type": "story",
+        "text": "Did they mention the second names? as it is mandatory",
+        "type": "comment"
+      },
+      {
+        "gid": "1212602843937757",
+        "created_at": "2025-12-29T09:20:36.075Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hannah Adam, Noah John</body>",
+        "resource_type": "story",
+        "text": "Hannah Adam, Noah John",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212513611259844",
+        "created_at": "2025-12-18T10:38:39.271Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Youssef Khafaga added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212513611261538",
+        "created_at": "2025-12-18T10:38:59.055Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Youssef Khafaga assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1212513612592650",
+        "created_at": "2025-12-18T10:39:03.844Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed the due date to Dec 22, 2025",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed the due date to Dec 22, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212578028774316",
+        "created_at": "2025-12-24T11:22:56.854Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> could you please upload the link here</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324 could you please upload the link here",
+        "type": "comment"
+      },
+      {
+        "gid": "1212588104112047",
+        "created_at": "2025-12-25T08:48:20.431Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> <a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nHere’s the link to the updated sequence after applying the adjustments discussed in yesterday’s daily stand-up.\nPlease review it and share your feedback.\n<a href=\"https://docs.google.com/document/d/1twGMpfdkSRd1w9MapN9KoLkkLQeNoXbzBftz37-YJks/edit?usp=sharing\">https://docs.google.com/document/d/1twGMpfdkSRd1w9MapN9KoLkkLQeNoXbzBftz37-YJks/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 https://app.asana.com/0/profile/1202432356210287\nHere’s the link to the updated sequence after applying the adjustments discussed in yesterday’s daily stand-up.\nPlease review it and share your feedback.\nhttps://docs.google.com/document/d/1twGMpfdkSRd1w9MapN9KoLkkLQeNoXbzBftz37-YJks/edit?usp=sharing",
+        "type": "comment"
+      },
+      {
+        "gid": "1212588104112049",
+        "created_at": "2025-12-25T10:48:41.135Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a> Here are the emails for instantly:\n<ul><li><a href=\"mailto:Hannah@getsimlabs.com\" target=\"_blank\" rel=\"noreferrer noopener\">Hannah@getsimlabs.com</a></li><li><a href=\"mailto:Noah@getsimlabs.com\" target=\"_blank\" rel=\"noreferrer noopener\">Noah@getsimlabs.com</a></li><li>Hannah@simlabs-team.com</li><li><a href=\"mailto:Noah@simlabs-team.com\" target=\"_blank\" rel=\"noreferrer noopener\">Noah@simlabs-team.com</a></li><li><a href=\"mailto:Hannah@simlabsteam.com\" target=\"_blank\" rel=\"noreferrer noopener\">Hannah@trysimlabs.com</a></li><li>Noah@trysimlabs.com</li></ul></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1202432356210287 Here are the emails for instantly:\n    Hannah@getsimlabs.com\n    Noah@getsimlabs.com\n    Hannah@simlabs-team.com\n    Noah@simlabs-team.com\n    Hannah@simlabsteam.com\n    Noah@trysimlabs.com\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212588989581304",
+        "created_at": "2025-12-25T10:58:13.464Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212600156323878",
+        "created_at": "2025-12-28T11:00:11.208Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Did they mention the second names? as it is mandatory</body>",
+        "resource_type": "story",
+        "text": "Did they mention the second names? as it is mandatory",
+        "type": "comment"
+      },
+      {
+        "gid": "1212602843937757",
+        "created_at": "2025-12-29T09:20:36.075Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hannah Adam, Noah John</body>",
+        "resource_type": "story",
+        "text": "Hannah Adam, Noah John",
+        "type": "comment"
+      },
+      {
+        "gid": "1212616459264474",
+        "created_at": "2025-12-30T11:28:54.546Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Jan 4",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Jan 4",
+        "type": "system"
+      },
+      {
+        "gid": "1212616459264476",
+        "created_at": "2025-12-30T11:28:54.598Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"3d 13h\" to \"2w 2d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"3d 13h\" to \"2w 2d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212616459264478",
+        "created_at": "2025-12-30T11:28:54.622Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"3d 13h\" to \"2w 2d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"3d 13h\" to \"2w 2d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212638252430220",
+        "created_at": "2026-01-02T12:06:36.191Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212638252430222",
+        "created_at": "2026-01-02T12:06:36.289Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"1d 11h\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"1d 11h\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

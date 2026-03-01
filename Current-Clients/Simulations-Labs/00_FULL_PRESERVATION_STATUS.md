@@ -27,3 +27,11 @@ _Generated: 2026-03-01T14:53:56.160898_
 ## If this folder is the only remaining artifact
 - It now contains mirrored client Drive files, transcript corpus, Asana snapshots, outreach/source snapshots, and dashboard build docs.
 - This is now sufficient as a single-source package for IDE-based dashboard generation.
+
+## Asana deep extraction update
+- Deep extraction completed for both Simulations Labs Asana projects:
+  - `1213388383279022` (Pipeline v2)
+  - `1212055797762548` (DRM - Simulations Labs; timeline-expanded)
+- For each task: details, description, comments, stories, attachments were exported to raw JSON.
+- External/internal links were extracted and indexed for follow-up data capture.
+- See: `Knowledge-Base/Asana-Deep-Dive/` and `Data-Sources/Raw/asana_deep/`.

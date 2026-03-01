@@ -1,0 +1,353 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213064441826486",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "completed_at": "2026-02-16T11:34:23.129Z",
+      "created_at": "2026-02-01T13:48:51.487Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "1w 0d"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-1w 0d"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-09",
+      "followers": [
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055797762549",
+            "name": "Strategy"
+          }
+        }
+      ],
+      "modified_at": "2026-02-16T11:34:23.678Z",
+      "name": "AI Everything Event",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213064441826486",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1213082566981884",
+        "created_at": "2026-02-02T19:14:37.443Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1213082566981883\" data=\"https://player.vimeo.com/video/1161182590?h=2cd7f04786\" style=\"display:block\"><a href=\"https://vimeo.com/1161182590/2cd7f04786\">https://vimeo.com/1161182590/2cd7f04786</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/app/asana/-/get_asset?asset_id=1213082566981883\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1213082566981886",
+        "created_at": "2026-02-02T19:14:53.817Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1202432356210287\nhttps://app.asana.com/1/1201934871168294/profile/1211996689189324",
+        "type": "comment"
+      },
+      {
+        "gid": "1212372565573814",
+        "created_at": "2026-02-03T21:30:52.835Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>مش عايزة اتاخر عليهم اكتر من كده </body>",
+        "resource_type": "story",
+        "text": "مش عايزة اتاخر عليهم اكتر من كده ",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213065662897842",
+        "created_at": "2026-02-01T13:48:51.591Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Esraa added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1213065670131838",
+        "created_at": "2026-02-01T13:49:21.100Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b>",
+        "resource_type": "story",
+        "text": "Esraa assigned to Esraa",
+        "type": "system"
+      },
+      {
+        "gid": "1213065665304975",
+        "created_at": "2026-02-01T13:49:25.113Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Feb 1",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Feb 1",
+        "type": "system"
+      },
+      {
+        "gid": "1213082566981884",
+        "created_at": "2026-02-02T19:14:37.443Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1213082566981883\" data=\"https://player.vimeo.com/video/1161182590?h=2cd7f04786\" style=\"display:block\"><a href=\"https://vimeo.com/1161182590/2cd7f04786\">https://vimeo.com/1161182590/2cd7f04786</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/app/asana/-/get_asset?asset_id=1213082566981883\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1213082566981886",
+        "created_at": "2026-02-02T19:14:53.817Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1202432356210287\nhttps://app.asana.com/1/1201934871168294/profile/1211996689189324",
+        "type": "comment"
+      },
+      {
+        "gid": "1213094810990196",
+        "created_at": "2026-02-03T05:10:11.133Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Feb 3",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Feb 3",
+        "type": "system"
+      },
+      {
+        "gid": "1213094810990198",
+        "created_at": "2026-02-03T05:10:11.237Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"-13h 49m\" to \"1d 10h\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"-13h 49m\" to \"1d 10h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213094810990200",
+        "created_at": "2026-02-03T05:10:11.295Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"-13h 49m\" to \"1d 10h\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"-13h 49m\" to \"1d 10h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212372565573814",
+        "created_at": "2026-02-03T21:30:52.835Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>مش عايزة اتاخر عليهم اكتر من كده </body>",
+        "resource_type": "story",
+        "text": "مش عايزة اتاخر عليهم اكتر من كده ",
+        "type": "comment"
+      },
+      {
+        "gid": "1213075611458676",
+        "created_at": "2026-02-04T09:33:27.043Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 4",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 4",
+        "type": "system"
+      },
+      {
+        "gid": "1213075611458678",
+        "created_at": "2026-02-04T09:33:27.106Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"1d 10h\" to \"2d 10h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"1d 10h\" to \"2d 10h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213075611458680",
+        "created_at": "2026-02-04T09:33:27.137Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"1d 10h\" to \"2d 10h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"1d 10h\" to \"2d 10h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213169304040780",
+        "created_at": "2026-02-07T15:09:12.574Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Feb 9",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Feb 9",
+        "type": "system"
+      },
+      {
+        "gid": "1213169304040782",
+        "created_at": "2026-02-07T15:09:12.655Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"2d 10h\" to \"1w 0d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"2d 10h\" to \"1w 0d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213169304040784",
+        "created_at": "2026-02-07T15:09:12.686Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"2d 10h\" to \"1w 0d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"2d 10h\" to \"1w 0d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213298961235855",
+        "created_at": "2026-02-16T11:34:23.159Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Esraa completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1213278137885831",
+        "created_at": "2026-02-16T11:34:23.263Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Time Adherence to \"-1w 0d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Time Adherence to \"-1w 0d\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": [
+      {
+        "gid": "1213082566981883",
+        "created_at": "2026-02-02T19:14:35.901Z",
+        "download_url": null,
+        "name": "https://vimeo.com/1161182590/2cd7f04786",
+        "parent": {
+          "gid": "1213064441826486",
+          "name": "AI Everything Event",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1213082566981883",
+        "resource_subtype": "external",
+        "view_url": "https://vimeo.com/1161182590/2cd7f04786"
+      }
+    ]
+  },
+  "_source": "timeline"
+}

@@ -1,0 +1,206 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212545176736098",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-01-07T08:33:17.512Z",
+      "created_at": "2025-12-22T15:30:32.871Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "5d 8h"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-1w 3d"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2025-12-28",
+      "followers": [
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body><a href=\"https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?tab=t.0\">https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?tab=t.0</a></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340938",
+            "name": "Performance"
+          }
+        }
+      ],
+      "modified_at": "2026-01-07T08:49:14.333Z",
+      "name": "Launch Ads On Google",
+      "notes": "https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?tab=t.0",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212545176736098",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1212556733278156",
+        "created_at": "2025-12-23T09:21:01.687Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Thanks Youssef &amp; Esraa.\n\nJust I can't see we took access to their ads account.</body>",
+        "resource_type": "story",
+        "text": "Thanks Youssef & Esraa.\n\nJust I can't see we took access to their ads account.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212666932027235",
+        "created_at": "2026-01-07T08:49:14.304Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nI put together this document mainly as a personal reference to guide me while working on the account, since it’s quite niche and not a straightforward setup.\nSharing it with you for visibility only (no need to go through it unless you’d like to).\n<a href=\"https://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=sharing\">https://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1202432356210287\nI put together this document mainly as a personal reference to guide me while working on the account, since it’s quite niche and not a straightforward setup.\nSharing it with you for visibility only (no need to go through it unless you’d like to).\nhttps://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=sharing",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212558539844452",
+        "created_at": "2025-12-22T15:30:32.977Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Esraa added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212558532599888",
+        "created_at": "2025-12-22T15:30:53.353Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Esraa assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1212558544200376",
+        "created_at": "2025-12-22T15:30:58.675Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Dec 28, 2025",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Dec 28, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212556733278156",
+        "created_at": "2025-12-23T09:21:01.687Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Thanks Youssef &amp; Esraa.\n\nJust I can't see we took access to their ads account.</body>",
+        "resource_type": "story",
+        "text": "Thanks Youssef & Esraa.\n\nJust I can't see we took access to their ads account.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212671561514371",
+        "created_at": "2026-01-07T08:33:17.549Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212671561514373",
+        "created_at": "2026-01-07T08:33:17.680Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-1w 3d\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-1w 3d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212666932027235",
+        "created_at": "2026-01-07T08:49:14.304Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nI put together this document mainly as a personal reference to guide me while working on the account, since it’s quite niche and not a straightforward setup.\nSharing it with you for visibility only (no need to go through it unless you’d like to).\n<a href=\"https://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=sharing\">https://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1202432356210287\nI put together this document mainly as a personal reference to guide me while working on the account, since it’s quite niche and not a straightforward setup.\nSharing it with you for visibility only (no need to go through it unless you’d like to).\nhttps://docs.google.com/document/d/1uDi83xvVH6l-frgyYOQiqHgIPqI0Lab-XZm2e7ovPMo/edit?usp=sharing",
+        "type": "comment"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

@@ -1,0 +1,149 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213388776368218",
+      "assignee": {
+        "gid": "1202432356210277",
+        "name": "Fouad Nasseredin"
+      },
+      "completed": true,
+      "completed_at": "2026-02-24T08:24:05.745Z",
+      "created_at": "2026-02-22T14:30:03.586Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "-14h 30m"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-2d 8h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-22",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body>Objective: perform an immediate check on Simulations Labs and produce a clear status report today.\\n\\nScope:\\n1) Verify current operational status immediately.\\n2) Review latest pipeline/reporting outputs and note discrepancies.\\n3) Confirm access issues by region/segment if any.\\n4) Produce a concise incident + action report.\\n\\nDeliverables today:\\n- Current status snapshot\\n- Issues found\\n- Root-cause hypothesis\\n- Immediate fixes applied\\n- Next actions + owner</body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055797762549",
+            "name": "Strategy"
+          }
+        }
+      ],
+      "modified_at": "2026-02-24T08:24:06.463Z",
+      "name": "Urgent Today: Check Simulations Labs instantly + reporting",
+      "notes": "Objective: perform an immediate check on Simulations Labs and produce a clear status report today.\\n\\nScope:\\n1) Verify current operational status immediately.\\n2) Review latest pipeline/reporting outputs and note discrepancies.\\n3) Confirm access issues by region/segment if any.\\n4) Produce a concise incident + action report.\\n\\nDeliverables today:\\n- Current status snapshot\\n- Issues found\\n- Root-cause hypothesis\\n- Immediate fixes applied\\n- Next actions + owner",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213388776368218",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213388781053507",
+        "created_at": "2026-02-22T14:30:03.699Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1213388781053509",
+        "created_at": "2026-02-22T14:30:03.983Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to you",
+        "type": "system"
+      },
+      {
+        "gid": "1213388781053511",
+        "created_at": "2026-02-22T14:30:04.043Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 22",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 22",
+        "type": "system"
+      },
+      {
+        "gid": "1213414522785195",
+        "created_at": "2026-02-24T08:24:05.793Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1213414528927102",
+        "created_at": "2026-02-24T08:24:05.901Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Time Adherence to \"-2d 8h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Time Adherence to \"-2d 8h\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

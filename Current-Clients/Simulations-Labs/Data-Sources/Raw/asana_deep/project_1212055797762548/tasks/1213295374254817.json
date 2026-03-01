@@ -1,0 +1,410 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213295374254817",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-02-26T11:45:54.294Z",
+      "created_at": "2026-02-16T11:37:32.143Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "1w 1d"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-1d 11h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-25",
+      "followers": [
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340932",
+            "name": "Copywriting"
+          }
+        }
+      ],
+      "modified_at": "2026-02-26T11:47:09.314Z",
+      "name": "Blogs Content",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213295374254817",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1213302832219548",
+        "created_at": "2026-02-17T09:24:35.509Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>what are the Vlogs?\n\nAlso I didn't get the fathom for the Simlabs meeting yesterday if you can share it please.</body>",
+        "resource_type": "story",
+        "text": "what are the Vlogs?\n\nAlso I didn't get the fathom for the Simlabs meeting yesterday if you can share it please.",
+        "type": "comment"
+      },
+      {
+        "gid": "1213323775600838",
+        "created_at": "2026-02-18T10:33:52.272Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>\nI guess you mean Blogs\n\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nHere it is: <a href=\"https://fathom.video/share/dy9FA9sYPzKxw8rems4_b6C81JhG1kM1\">https://fathom.video/share/dy9FA9sYPzKxw8rems4_b6C81JhG1kM1</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1208485999028683\nI guess you mean Blogs\n\nhttps://app.asana.com/1/1201934871168294/profile/1202432356210287\nHere it is: https://fathom.video/share/dy9FA9sYPzKxw8rems4_b6C81JhG1kM1",
+        "type": "comment"
+      },
+      {
+        "gid": "1213354914741637",
+        "created_at": "2026-02-19T08:27:44.842Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drive_link\">https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drive_link</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drive_link",
+        "type": "comment"
+      },
+      {
+        "gid": "1213354914741639",
+        "created_at": "2026-02-19T08:29:53.032Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>I tried to look for topics that attract professors using keywords sahl has sent</body>",
+        "resource_type": "story",
+        "text": "I tried to look for topics that attract professors using keywords sahl has sent",
+        "type": "comment"
+      },
+      {
+        "gid": "1213398563036882",
+        "created_at": "2026-02-23T10:44:23.683Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hey <a href=\"https://app.asana.com/1/1201934871168294/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>, \n\nHere is the SEO strategy: <a href=\"https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=sharing\">https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=sharing</a>\n\nAnd here is the Keywords list we are going to use: <a href=\"https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=sharing\">https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=sharing</a>\n\nYou don't need to come up with ideas; the keywords list I shared is how people in this industry search, and we create blogs about those keywords.</body>",
+        "resource_type": "story",
+        "text": "Hey https://app.asana.com/1/1201934871168294/profile/1208485999028683, \n\nHere is the SEO strategy: https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=sharing\n\nAnd here is the Keywords list we are going to use: https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=sharing\n\nYou don't need to come up with ideas; the keywords list I shared is how people in this industry search, and we create blogs about those keywords.",
+        "type": "comment"
+      },
+      {
+        "gid": "1213415429782809",
+        "created_at": "2026-02-24T20:52:08.348Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>What’s the next step you need from me?\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a></body>",
+        "resource_type": "story",
+        "text": "What’s the next step you need from me?\nhttps://app.asana.com/1/1201934871168294/profile/1211996689189324",
+        "type": "comment"
+      },
+      {
+        "gid": "1213452623755285",
+        "created_at": "2026-02-26T11:47:09.284Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> sharing this for visibility. I have proceeded with the required actions from Sahl and Nourhan.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1208485999028683 sharing this for visibility. I have proceeded with the required actions from Sahl and Nourhan.",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213298999652205",
+        "created_at": "2026-02-16T11:37:32.255Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Esraa added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1213274927226057",
+        "created_at": "2026-02-16T11:38:01.701Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Esraa assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1213299013305181",
+        "created_at": "2026-02-16T11:38:04.390Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Feb 17",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Feb 17",
+        "type": "system"
+      },
+      {
+        "gid": "1213281755690844",
+        "created_at": "2026-02-16T11:38:19.941Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added you as a collaborator",
+        "resource_type": "story",
+        "text": "Esraa added you as a collaborator",
+        "type": "system"
+      },
+      {
+        "gid": "1213302832219548",
+        "created_at": "2026-02-17T09:24:35.509Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>what are the Vlogs?\n\nAlso I didn't get the fathom for the Simlabs meeting yesterday if you can share it please.</body>",
+        "resource_type": "story",
+        "text": "what are the Vlogs?\n\nAlso I didn't get the fathom for the Simlabs meeting yesterday if you can share it please.",
+        "type": "comment"
+      },
+      {
+        "gid": "1213323775600838",
+        "created_at": "2026-02-18T10:33:52.272Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>\nI guess you mean Blogs\n\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nHere it is: <a href=\"https://fathom.video/share/dy9FA9sYPzKxw8rems4_b6C81JhG1kM1\">https://fathom.video/share/dy9FA9sYPzKxw8rems4_b6C81JhG1kM1</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1208485999028683\nI guess you mean Blogs\n\nhttps://app.asana.com/1/1201934871168294/profile/1202432356210287\nHere it is: https://fathom.video/share/dy9FA9sYPzKxw8rems4_b6C81JhG1kM1",
+        "type": "comment"
+      },
+      {
+        "gid": "1213354922952984",
+        "created_at": "2026-02-19T08:27:38.878Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the name to \"Blogs Content\"",
+        "resource_type": "story",
+        "text": "Esraa changed the name to \"Blogs Content\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213354914741637",
+        "created_at": "2026-02-19T08:27:44.842Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drive_link\">https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drive_link</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1an38-Z71aqIZRm3T8fRM-OXlj4qQrI9IrFub2cwqR68/edit?usp=drive_link",
+        "type": "comment"
+      },
+      {
+        "gid": "1213354914741639",
+        "created_at": "2026-02-19T08:29:53.032Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>I tried to look for topics that attract professors using keywords sahl has sent</body>",
+        "resource_type": "story",
+        "text": "I tried to look for topics that attract professors using keywords sahl has sent",
+        "type": "comment"
+      },
+      {
+        "gid": "1213398563036882",
+        "created_at": "2026-02-23T10:44:23.683Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hey <a href=\"https://app.asana.com/1/1201934871168294/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>, \n\nHere is the SEO strategy: <a href=\"https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=sharing\">https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=sharing</a>\n\nAnd here is the Keywords list we are going to use: <a href=\"https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=sharing\">https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=sharing</a>\n\nYou don't need to come up with ideas; the keywords list I shared is how people in this industry search, and we create blogs about those keywords.</body>",
+        "resource_type": "story",
+        "text": "Hey https://app.asana.com/1/1201934871168294/profile/1208485999028683, \n\nHere is the SEO strategy: https://docs.google.com/document/d/1wXIZPkmD7dHWKCH6wZCksOFNymOxZ9ZMbrYCsYI1YCw/edit?usp=sharing\n\nAnd here is the Keywords list we are going to use: https://docs.google.com/spreadsheets/d/1n3-8hS7nIvKilT7mFF3VvAgglWbjA1SI-GZd4EKtxY0/edit?usp=sharing\n\nYou don't need to come up with ideas; the keywords list I shared is how people in this industry search, and we create blogs about those keywords.",
+        "type": "comment"
+      },
+      {
+        "gid": "1213415429782809",
+        "created_at": "2026-02-24T20:52:08.348Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>What’s the next step you need from me?\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a></body>",
+        "resource_type": "story",
+        "text": "What’s the next step you need from me?\nhttps://app.asana.com/1/1201934871168294/profile/1211996689189324",
+        "type": "comment"
+      },
+      {
+        "gid": "1213426248588324",
+        "created_at": "2026-02-24T20:52:15.167Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Feb 18",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Feb 18",
+        "type": "system"
+      },
+      {
+        "gid": "1213426248588326",
+        "created_at": "2026-02-24T20:52:15.219Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"12h 22m\" to \"1d 12h\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"12h 22m\" to \"1d 12h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213426248588328",
+        "created_at": "2026-02-24T20:52:15.246Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"12h 22m\" to \"1w 1d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"12h 22m\" to \"1w 1d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213426248038187",
+        "created_at": "2026-02-24T20:52:16.609Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Feb 25",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Feb 25",
+        "type": "system"
+      },
+      {
+        "gid": "1213426248038189",
+        "created_at": "2026-02-24T20:52:16.694Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"1d 12h\" to \"1w 1d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"1d 12h\" to \"1w 1d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213452624146856",
+        "created_at": "2026-02-26T11:45:54.335Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1213452593427725",
+        "created_at": "2026-02-26T11:45:54.449Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-1d 11h\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-1d 11h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213452623755285",
+        "created_at": "2026-02-26T11:47:09.284Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> sharing this for visibility. I have proceeded with the required actions from Sahl and Nourhan.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1208485999028683 sharing this for visibility. I have proceeded with the required actions from Sahl and Nourhan.",
+        "type": "comment"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

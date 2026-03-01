@@ -1,0 +1,26 @@
+{
+  "data": {
+    "gid": "1212055797762548",
+    "archived": false,
+    "current_status_update": null,
+    "due_on": null,
+    "html_notes": "<body></body>",
+    "name": "DRM - Simulations Labs",
+    "notes": "",
+    "owner": {
+      "gid": "1202432356210277",
+      "name": "Fouad Nasseredin"
+    },
+    "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548",
+    "public": false,
+    "start_on": null,
+    "team": {
+      "gid": "1206239861066328",
+      "name": "AW Projects"
+    },
+    "workspace": {
+      "gid": "1201934871168294",
+      "name": "Admireworks"
+    }
+  }
+}

@@ -1,0 +1,466 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212391903402109",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "completed_at": "2026-01-20T10:25:15.326Z",
+      "created_at": "2025-12-11T10:56:56.539Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "1w 3d"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-4w 1d"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2025-12-22",
+      "followers": [
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340934",
+            "name": "Execution"
+          }
+        }
+      ],
+      "modified_at": "2026-01-20T10:25:16.007Z",
+      "name": "Copies prep",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212391903402109",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1212435238907213",
+        "created_at": "2025-12-14T10:33:08.049Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?usp=sharing\">https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?usp=sharing",
+        "type": "comment"
+      },
+      {
+        "gid": "1212430853833536",
+        "created_at": "2025-12-14T10:58:18.581Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> make sure copies are also done in English.\nAnd copies for different assets we will start with.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 make sure copies are also done in English.\nAnd copies for different assets we will start with.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212372565573780",
+        "created_at": "2025-12-14T10:59:53.864Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>Okay </body>",
+        "resource_type": "story",
+        "text": "Okay ",
+        "type": "comment"
+      },
+      {
+        "gid": "1212435524046093",
+        "created_at": "2025-12-14T11:37:00.053Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hey <a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>,\nLet’s focus primarily on English copies for now, then test Arabic versions later. As Eng. Moataz mentioned, our main focus should be on targeting countries outside the Arabic-speaking market. Once the English versions are finalized and validated, we can create a Saudi Arabia dialect version of the same messages.\n\nI am proposing the following copies that revolve around the core positioning tailored for CTF organizers:\n<a href=\"https://docs.google.com/document/d/1i7Xlk_1eFVY90lBUQQspIcofuPfwiYB3TcBHJl1lzI4/edit?usp=sharing\">https://docs.google.com/document/d/1i7Xlk_1eFVY90lBUQQspIcofuPfwiYB3TcBHJl1lzI4/edit?usp=sharing</a>\n\nLet me know your thoughts.</body>",
+        "resource_type": "story",
+        "text": "Hey https://app.asana.com/0/profile/1208485999028683,\nLet’s focus primarily on English copies for now, then test Arabic versions later. As Eng. Moataz mentioned, our main focus should be on targeting countries outside the Arabic-speaking market. Once the English versions are finalized and validated, we can create a Saudi Arabia dialect version of the same messages.\n\nI am proposing the following copies that revolve around the core positioning tailored for CTF organizers:\nhttps://docs.google.com/document/d/1i7Xlk_1eFVY90lBUQQspIcofuPfwiYB3TcBHJl1lzI4/edit?usp=sharing\n\nLet me know your thoughts.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212436958638924",
+        "created_at": "2025-12-14T16:37:58.673Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?tab=t.2ihztf3dt0gw\">https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?tab=t.2ihztf3dt0gw</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?tab=t.2ihztf3dt0gw",
+        "type": "comment"
+      },
+      {
+        "gid": "1212545176736095",
+        "created_at": "2025-12-22T15:29:32.025Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?usp=sharing\">https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?usp=sharing</a>\n\ncheck tab &quot;creatives &quot; in this document</body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?usp=sharing\n\ncheck tab \"creatives \" in this document",
+        "type": "comment"
+      },
+      {
+        "gid": "1212545176736097",
+        "created_at": "2025-12-22T15:30:18.076Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>here you can find copies after edits and the direction for creatives</body>",
+        "resource_type": "story",
+        "text": "here you can find copies after edits and the direction for creatives",
+        "type": "comment"
+      },
+      {
+        "gid": "1212565896777877",
+        "created_at": "2025-12-23T13:44:48.974Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>\nHey Esraa, I like the first two directions. But we need to further refine the ad format itself to drive better results. Based on experience, there are three formats that consistently perform well for this type of product. We can absolutely keep your creative direction, but adapt it within those formats.\n\nUs Vs Them:\n<a href=\"https://r2.foreplay.co/1548450819336638/42960942af8f616cc9d3c7c0a652ddff.jpg\">https://r2.foreplay.co/1548450819336638/42960942af8f616cc9d3c7c0a652ddff.jpg</a>\n\nStatistics:\n<a href=\"https://r2.foreplay.co/1371937916924817/9b33693a2ea0804784676878c661ea03.jpg\">https://r2.foreplay.co/1371937916924817/9b33693a2ea0804784676878c661ea03.jpg</a>\n\nBullet points:\n<a href=\"https://r2.foreplay.co/2802087896633648/e61516f799a29e88386668208d8e63ff.jpg\">https://r2.foreplay.co/2802087896633648/e61516f799a29e88386668208d8e63ff.jpg</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683\nHey Esraa, I like the first two directions. But we need to further refine the ad format itself to drive better results. Based on experience, there are three formats that consistently perform well for this type of product. We can absolutely keep your creative direction, but adapt it within those formats.\n\nUs Vs Them:\nhttps://r2.foreplay.co/1548450819336638/42960942af8f616cc9d3c7c0a652ddff.jpg\n\nStatistics:\nhttps://r2.foreplay.co/1371937916924817/9b33693a2ea0804784676878c661ea03.jpg\n\nBullet points:\nhttps://r2.foreplay.co/2802087896633648/e61516f799a29e88386668208d8e63ff.jpg",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212327147564735",
+        "created_at": "2025-12-11T10:56:56.651Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Esraa added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212327147627363",
+        "created_at": "2025-12-11T10:57:14.489Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b>",
+        "resource_type": "story",
+        "text": "Esraa assigned to Esraa",
+        "type": "system"
+      },
+      {
+        "gid": "1212391937483829",
+        "created_at": "2025-12-11T10:57:19.841Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Dec 11, 2025",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Dec 11, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212435238907213",
+        "created_at": "2025-12-14T10:33:08.049Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?usp=sharing\">https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?usp=sharing</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?usp=sharing",
+        "type": "comment"
+      },
+      {
+        "gid": "1212435466407211",
+        "created_at": "2025-12-14T10:33:12.031Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added Youssef Khafaga as a collaborator",
+        "resource_type": "story",
+        "text": "Esraa added Youssef Khafaga as a collaborator",
+        "type": "system"
+      },
+      {
+        "gid": "1212435466352536",
+        "created_at": "2025-12-14T10:33:15.642Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> added you as a collaborator",
+        "resource_type": "story",
+        "text": "Esraa added you as a collaborator",
+        "type": "system"
+      },
+      {
+        "gid": "1212430853833536",
+        "created_at": "2025-12-14T10:58:18.581Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> make sure copies are also done in English.\nAnd copies for different assets we will start with.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 make sure copies are also done in English.\nAnd copies for different assets we will start with.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212372565573780",
+        "created_at": "2025-12-14T10:59:53.864Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>Okay </body>",
+        "resource_type": "story",
+        "text": "Okay ",
+        "type": "comment"
+      },
+      {
+        "gid": "1212435524046093",
+        "created_at": "2025-12-14T11:37:00.053Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hey <a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>,\nLet’s focus primarily on English copies for now, then test Arabic versions later. As Eng. Moataz mentioned, our main focus should be on targeting countries outside the Arabic-speaking market. Once the English versions are finalized and validated, we can create a Saudi Arabia dialect version of the same messages.\n\nI am proposing the following copies that revolve around the core positioning tailored for CTF organizers:\n<a href=\"https://docs.google.com/document/d/1i7Xlk_1eFVY90lBUQQspIcofuPfwiYB3TcBHJl1lzI4/edit?usp=sharing\">https://docs.google.com/document/d/1i7Xlk_1eFVY90lBUQQspIcofuPfwiYB3TcBHJl1lzI4/edit?usp=sharing</a>\n\nLet me know your thoughts.</body>",
+        "resource_type": "story",
+        "text": "Hey https://app.asana.com/0/profile/1208485999028683,\nLet’s focus primarily on English copies for now, then test Arabic versions later. As Eng. Moataz mentioned, our main focus should be on targeting countries outside the Arabic-speaking market. Once the English versions are finalized and validated, we can create a Saudi Arabia dialect version of the same messages.\n\nI am proposing the following copies that revolve around the core positioning tailored for CTF organizers:\nhttps://docs.google.com/document/d/1i7Xlk_1eFVY90lBUQQspIcofuPfwiYB3TcBHJl1lzI4/edit?usp=sharing\n\nLet me know your thoughts.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212436046005667",
+        "created_at": "2025-12-14T12:32:17.965Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212436958638924",
+        "created_at": "2025-12-14T16:37:58.673Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?tab=t.2ihztf3dt0gw\">https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?tab=t.2ihztf3dt0gw</a></body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1fw20AU-3FQH4XrigNii6heZfZ0e4LFsA0VVTkFet8BQ/edit?tab=t.2ihztf3dt0gw",
+        "type": "comment"
+      },
+      {
+        "gid": "1212545176736095",
+        "created_at": "2025-12-22T15:29:32.025Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?usp=sharing\">https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?usp=sharing</a>\n\ncheck tab &quot;creatives &quot; in this document</body>",
+        "resource_type": "story",
+        "text": "https://docs.google.com/document/d/1FIJDjiN_7bxmFPNuIqMJJclW_FxkSmwv-XRqWjzsBkQ/edit?usp=sharing\n\ncheck tab \"creatives \" in this document",
+        "type": "comment"
+      },
+      {
+        "gid": "1212558529896268",
+        "created_at": "2025-12-22T15:29:45.219Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Dec 22, 2025",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Dec 22, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212558529896270",
+        "created_at": "2025-12-22T15:29:45.311Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"-10h 57m\" to \"1w 3d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"-10h 57m\" to \"1w 3d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212558529896272",
+        "created_at": "2025-12-22T15:29:45.360Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"-10h 57m\" to \"1w 3d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"-10h 57m\" to \"1w 3d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212545176736097",
+        "created_at": "2025-12-22T15:30:18.076Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>here you can find copies after edits and the direction for creatives</body>",
+        "resource_type": "story",
+        "text": "here you can find copies after edits and the direction for creatives",
+        "type": "comment"
+      },
+      {
+        "gid": "1212565058171651",
+        "created_at": "2025-12-23T09:21:13.640Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212565896777877",
+        "created_at": "2025-12-23T13:44:48.974Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>\nHey Esraa, I like the first two directions. But we need to further refine the ad format itself to drive better results. Based on experience, there are three formats that consistently perform well for this type of product. We can absolutely keep your creative direction, but adapt it within those formats.\n\nUs Vs Them:\n<a href=\"https://r2.foreplay.co/1548450819336638/42960942af8f616cc9d3c7c0a652ddff.jpg\">https://r2.foreplay.co/1548450819336638/42960942af8f616cc9d3c7c0a652ddff.jpg</a>\n\nStatistics:\n<a href=\"https://r2.foreplay.co/1371937916924817/9b33693a2ea0804784676878c661ea03.jpg\">https://r2.foreplay.co/1371937916924817/9b33693a2ea0804784676878c661ea03.jpg</a>\n\nBullet points:\n<a href=\"https://r2.foreplay.co/2802087896633648/e61516f799a29e88386668208d8e63ff.jpg\">https://r2.foreplay.co/2802087896633648/e61516f799a29e88386668208d8e63ff.jpg</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683\nHey Esraa, I like the first two directions. But we need to further refine the ad format itself to drive better results. Based on experience, there are three formats that consistently perform well for this type of product. We can absolutely keep your creative direction, but adapt it within those formats.\n\nUs Vs Them:\nhttps://r2.foreplay.co/1548450819336638/42960942af8f616cc9d3c7c0a652ddff.jpg\n\nStatistics:\nhttps://r2.foreplay.co/1371937916924817/9b33693a2ea0804784676878c661ea03.jpg\n\nBullet points:\nhttps://r2.foreplay.co/2802087896633648/e61516f799a29e88386668208d8e63ff.jpg",
+        "type": "comment"
+      },
+      {
+        "gid": "1212578583731042",
+        "created_at": "2025-12-24T11:20:24.761Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Esraa completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212578583754813",
+        "created_at": "2025-12-24T11:20:30.391Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> moved this task from \"Copywriting\" to \"Execution\" in <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Esraa moved this task from \"Copywriting\" to \"Execution\" in DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212578583761054",
+        "created_at": "2025-12-24T11:20:45.727Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> marked incomplete",
+        "resource_type": "story",
+        "text": "Esraa marked incomplete",
+        "type": "system"
+      },
+      {
+        "gid": "1212876849088244",
+        "created_at": "2026-01-20T10:25:15.361Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Esraa completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212876849088246",
+        "created_at": "2026-01-20T10:25:15.484Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Time Adherence to \"-4w 1d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Time Adherence to \"-4w 1d\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

@@ -1,0 +1,535 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212604732433134",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-01-02T12:06:23.492Z",
+      "created_at": "2025-12-29T12:56:45.777Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "11h 03m"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-3d 12h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2025-12-30",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340934",
+            "name": "Execution"
+          }
+        }
+      ],
+      "modified_at": "2026-01-02T12:06:24.227Z",
+      "name": "Campaign landing pages",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212604732433134",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1212604732433139",
+        "created_at": "2025-12-29T13:03:14.596Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a>\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212604732433138\" data=\"https://www.loom.com/embed/c53f7cb0264544b2b91ee5fc3964e9df\" style=\"display:block\"><a href=\"https://www.loom.com/share/c53f7cb0264544b2b91ee5fc3964e9df\">https://www.loom.com/share/c53f7cb0264544b2b91ee5fc3964e9df</a></object>\n\nLink for it on Google AI Studio:\n<a href=\"https://ai.studio/apps/drive/11inoacExt7pALraCxSIHcSxrPu2zWTVW\">https://ai.studio/apps/drive/11inoacExt7pALraCxSIHcSxrPu2zWTVW</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212604732433138\n\n\n\nLink for it on Google AI Studio:\nhttps://ai.studio/apps/drive/11inoacExt7pALraCxSIHcSxrPu2zWTVW",
+        "type": "comment"
+      },
+      {
+        "gid": "1212581305908417",
+        "created_at": "2025-12-30T09:12:52.019Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>I love the idea. Let me check how we can fix the logo issue, and if there are any additional sections to be added, I’ll let you know before proceeding.</body>",
+        "resource_type": "story",
+        "text": "I love the idea. Let me check how we can fix the logo issue, and if there are any additional sections to be added, I’ll let you know before proceeding.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212615695631228",
+        "created_at": "2025-12-30T10:57:28.168Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> Check this:\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212615695631227\" data=\"https://www.loom.com/embed/c3aa832457f1452d863925a45509b494\" style=\"display:block\"><a href=\"https://www.loom.com/share/c3aa832457f1452d863925a45509b494\">https://www.loom.com/share/c3aa832457f1452d863925a45509b494</a></object>\nShared with you the Github.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324 Check this:\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212615695631227\n\n\nShared with you the Github.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212614545875079",
+        "created_at": "2025-12-30T11:54:09.689Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Done with the hosting:\n<a href=\"https://simlabs-ec9d4.web.app/\">https://simlabs-ec9d4.web.app/</a></body>",
+        "resource_type": "story",
+        "text": "Done with the hosting:\nhttps://simlabs-ec9d4.web.app/",
+        "type": "comment"
+      },
+      {
+        "gid": "1212621056424149",
+        "created_at": "2026-01-01T14:01:26.594Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nOnce you confirm I will update the project on github and Firebase\n\n<a href=\"https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2\">https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2</a>\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212621056424148\" data=\"https://www.loom.com/embed/03ee8bfb859940c7aac90dd7a2bf47b2\" style=\"display:block\"><a href=\"https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2\">https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1202432356210287\nOnce you confirm I will update the project on github and Firebase\n\nhttps://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212621056424148\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212631316925229",
+        "created_at": "2026-01-01T15:39:15.282Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>ok publish yes and just that part of the urls to be separate pages with it's own url (for personas) and the link to include utms\n\nyou can publish any changes normally whenever we are working on any changes.</body>",
+        "resource_type": "story",
+        "text": "ok publish yes and just that part of the urls to be separate pages with it's own url (for personas) and the link to include utms\n\nyou can publish any changes normally whenever we are working on any changes.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212631316925231",
+        "created_at": "2026-01-01T15:42:36.410Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>and the tracking to both websites needs to be also set.\nBut when you send to them send them the dns records for them to change as well to do in one go.</body>",
+        "resource_type": "story",
+        "text": "and the tracking to both websites needs to be also set.\nBut when you send to them send them the dns records for them to change as well to do in one go.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212636210039563",
+        "created_at": "2026-01-02T11:39:29.449Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> Did we share with them?</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324 Did we share with them?",
+        "type": "comment"
+      },
+      {
+        "gid": "1212623541380497",
+        "created_at": "2026-01-02T11:43:52.758Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Not yet, I was setting up Google Tag Manager, and there were a couple of issues to fix. \n\nAnyway, it's done now. <a href=\"https://simlabs-ec9d4.web.app/\">https://simlabs-ec9d4.web.app/</a>\n\nDo I share today?\n\n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "Not yet, I was setting up Google Tag Manager, and there were a couple of issues to fix. \n\nAnyway, it's done now. https://simlabs-ec9d4.web.app/\n\nDo I share today?\n\nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212636210039567",
+        "created_at": "2026-01-02T11:58:01.240Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>yes but share with this URL: <a href=\"http://simlabs.admire8.com/\">http://simlabs.admire8.com/</a>\n\nand check the below for the DNS and domain, let me know if anything else remaining:\n\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212636210039566\" data=\"https://www.loom.com/embed/f1b8caed5ae343c6bce807ed5c2b2508\" style=\"display:block\"><a href=\"https://www.loom.com/share/f1b8caed5ae343c6bce807ed5c2b2508\">https://www.loom.com/share/f1b8caed5ae343c6bce807ed5c2b2508</a></object></body>",
+        "resource_type": "story",
+        "text": "yes but share with this URL: http://simlabs.admire8.com/\n\nand check the below for the DNS and domain, let me know if anything else remaining:\n\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212636210039566\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212623541380500",
+        "created_at": "2026-01-02T12:06:03.203Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Done</body>",
+        "resource_type": "story",
+        "text": "Done",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212604813579710",
+        "created_at": "2025-12-29T12:56:45.856Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212604803006511",
+        "created_at": "2025-12-29T12:56:57.923Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Dec 30, 2025",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Dec 30, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212604951364688",
+        "created_at": "2025-12-29T13:02:51.020Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added Youssef Khafaga as a collaborator",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added Youssef Khafaga as a collaborator",
+        "type": "system"
+      },
+      {
+        "gid": "1212604951370261",
+        "created_at": "2025-12-29T13:02:54.081Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added Esraa as a collaborator",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added Esraa as a collaborator",
+        "type": "system"
+      },
+      {
+        "gid": "1212604732433139",
+        "created_at": "2025-12-29T13:03:14.596Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a>\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212604732433138\" data=\"https://www.loom.com/embed/c53f7cb0264544b2b91ee5fc3964e9df\" style=\"display:block\"><a href=\"https://www.loom.com/share/c53f7cb0264544b2b91ee5fc3964e9df\">https://www.loom.com/share/c53f7cb0264544b2b91ee5fc3964e9df</a></object>\n\nLink for it on Google AI Studio:\n<a href=\"https://ai.studio/apps/drive/11inoacExt7pALraCxSIHcSxrPu2zWTVW\">https://ai.studio/apps/drive/11inoacExt7pALraCxSIHcSxrPu2zWTVW</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212604732433138\n\n\n\nLink for it on Google AI Studio:\nhttps://ai.studio/apps/drive/11inoacExt7pALraCxSIHcSxrPu2zWTVW",
+        "type": "comment"
+      },
+      {
+        "gid": "1212584359078926",
+        "created_at": "2025-12-29T13:03:23.046Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to you",
+        "type": "system"
+      },
+      {
+        "gid": "1212604957261904",
+        "created_at": "2025-12-29T13:03:28.077Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1212581305908417",
+        "created_at": "2025-12-30T09:12:52.019Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>I love the idea. Let me check how we can fix the logo issue, and if there are any additional sections to be added, I’ll let you know before proceeding.</body>",
+        "resource_type": "story",
+        "text": "I love the idea. Let me check how we can fix the logo issue, and if there are any additional sections to be added, I’ll let you know before proceeding.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212615695631228",
+        "created_at": "2025-12-30T10:57:28.168Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> Check this:\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212615695631227\" data=\"https://www.loom.com/embed/c3aa832457f1452d863925a45509b494\" style=\"display:block\"><a href=\"https://www.loom.com/share/c3aa832457f1452d863925a45509b494\">https://www.loom.com/share/c3aa832457f1452d863925a45509b494</a></object>\nShared with you the Github.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324 Check this:\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212615695631227\n\n\nShared with you the Github.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212616443110769",
+        "created_at": "2025-12-30T11:22:19.534Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212614545875079",
+        "created_at": "2025-12-30T11:54:09.689Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Done with the hosting:\n<a href=\"https://simlabs-ec9d4.web.app/\">https://simlabs-ec9d4.web.app/</a></body>",
+        "resource_type": "story",
+        "text": "Done with the hosting:\nhttps://simlabs-ec9d4.web.app/",
+        "type": "comment"
+      },
+      {
+        "gid": "1212621056424149",
+        "created_at": "2026-01-01T14:01:26.594Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a>\nOnce you confirm I will update the project on github and Firebase\n\n<a href=\"https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2\">https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2</a>\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212621056424148\" data=\"https://www.loom.com/embed/03ee8bfb859940c7aac90dd7a2bf47b2\" style=\"display:block\"><a href=\"https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2\">https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1202432356210287\nOnce you confirm I will update the project on github and Firebase\n\nhttps://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212621056424148\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212631316925229",
+        "created_at": "2026-01-01T15:39:15.282Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>ok publish yes and just that part of the urls to be separate pages with it's own url (for personas) and the link to include utms\n\nyou can publish any changes normally whenever we are working on any changes.</body>",
+        "resource_type": "story",
+        "text": "ok publish yes and just that part of the urls to be separate pages with it's own url (for personas) and the link to include utms\n\nyou can publish any changes normally whenever we are working on any changes.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212631316925231",
+        "created_at": "2026-01-01T15:42:36.410Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>and the tracking to both websites needs to be also set.\nBut when you send to them send them the dns records for them to change as well to do in one go.</body>",
+        "resource_type": "story",
+        "text": "and the tracking to both websites needs to be also set.\nBut when you send to them send them the dns records for them to change as well to do in one go.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212636210039563",
+        "created_at": "2026-01-02T11:39:29.449Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> Did we share with them?</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1211996689189324 Did we share with them?",
+        "type": "comment"
+      },
+      {
+        "gid": "1212623541380497",
+        "created_at": "2026-01-02T11:43:52.758Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Not yet, I was setting up Google Tag Manager, and there were a couple of issues to fix. \n\nAnyway, it's done now. <a href=\"https://simlabs-ec9d4.web.app/\">https://simlabs-ec9d4.web.app/</a>\n\nDo I share today?\n\n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "Not yet, I was setting up Google Tag Manager, and there were a couple of issues to fix. \n\nAnyway, it's done now. https://simlabs-ec9d4.web.app/\n\nDo I share today?\n\nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212636210039567",
+        "created_at": "2026-01-02T11:58:01.240Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>yes but share with this URL: <a href=\"http://simlabs.admire8.com/\">http://simlabs.admire8.com/</a>\n\nand check the below for the DNS and domain, let me know if anything else remaining:\n\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212636210039566\" data=\"https://www.loom.com/embed/f1b8caed5ae343c6bce807ed5c2b2508\" style=\"display:block\"><a href=\"https://www.loom.com/share/f1b8caed5ae343c6bce807ed5c2b2508\">https://www.loom.com/share/f1b8caed5ae343c6bce807ed5c2b2508</a></object></body>",
+        "resource_type": "story",
+        "text": "yes but share with this URL: http://simlabs.admire8.com/\n\nand check the below for the DNS and domain, let me know if anything else remaining:\n\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212636210039566\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212638245041060",
+        "created_at": "2026-01-02T12:02:42.582Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212623541380500",
+        "created_at": "2026-01-02T12:06:03.203Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Done</body>",
+        "resource_type": "story",
+        "text": "Done",
+        "type": "comment"
+      },
+      {
+        "gid": "1212638253373870",
+        "created_at": "2026-01-02T12:06:23.516Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212638253963193",
+        "created_at": "2026-01-02T12:06:23.615Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-3d 12h\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-3d 12h\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": [
+      {
+        "gid": "1212604732433138",
+        "created_at": "2025-12-29T13:03:07.818Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/c53f7cb0264544b2b91ee5fc3964e9df",
+        "parent": {
+          "gid": "1212604732433134",
+          "name": "Campaign landing pages",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212604732433138",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/c53f7cb0264544b2b91ee5fc3964e9df"
+      },
+      {
+        "gid": "1212615695631227",
+        "created_at": "2025-12-30T10:55:38.660Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/c3aa832457f1452d863925a45509b494",
+        "parent": {
+          "gid": "1212604732433134",
+          "name": "Campaign landing pages",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212615695631227",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/c3aa832457f1452d863925a45509b494"
+      },
+      {
+        "gid": "1212621056424148",
+        "created_at": "2026-01-01T14:00:56.967Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2",
+        "parent": {
+          "gid": "1212604732433134",
+          "name": "Campaign landing pages",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212621056424148",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/03ee8bfb859940c7aac90dd7a2bf47b2"
+      },
+      {
+        "gid": "1212636210039566",
+        "created_at": "2026-01-02T11:57:57.769Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/f1b8caed5ae343c6bce807ed5c2b2508",
+        "parent": {
+          "gid": "1212604732433134",
+          "name": "Campaign landing pages",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212636210039566",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/f1b8caed5ae343c6bce807ed5c2b2508"
+      }
+    ]
+  },
+  "_source": "timeline"
+}

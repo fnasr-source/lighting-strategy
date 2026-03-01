@@ -541,40 +541,136 @@ body {
 /* ── Responsive ────────────────────────────────── */
 @media (max-width: 760px) {
     .page-container {
-        padding: 16px 12px 48px;
+        padding: 12px 8px 40px;
     }
 
     .page-header {
-        padding: 32px 16px;
+        padding: 28px 16px;
     }
 
     .page-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .page-header .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .brand-mark {
+        height: 32px;
+    }
+
+    /* Package cards stack vertically */
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .package-card {
+        padding: 24px 20px;
+    }
+
+    .package-card .price {
         font-size: 1.6rem;
     }
 
-    .packages-grid {
-        grid-template-columns: 1fr;
+    /* Invoice layout fixes */
+    .invoice-container {
+        padding: 20px 16px;
     }
 
     .invoice-header {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
+    }
+
+    .invoice-header div:last-child {
+        text-align: left;
     }
 
     .invoice-details {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
+    /* Invoice table responsive */
+    .invoice-items thead {
+        display: none;
+    }
+
+    .invoice-items tbody tr {
+        display: block;
+        padding: 16px 0;
+        border-bottom: 1px solid #f0ede6;
+    }
+
+    .invoice-items tbody td {
+        display: block;
+        text-align: left !important;
+        padding: 2px 0;
+        border-bottom: none;
+        font-size: 0.85rem;
+    }
+
+    .invoice-items tbody td:first-child {
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .invoice-items tbody td:last-child {
+        text-align: left !important;
+        font-size: 1.1rem;
+        margin-top: 8px;
+    }
+
+    .total-box {
+        min-width: 100%;
+    }
+
+    .total-row {
+        font-size: 0.85rem;
+    }
+
+    .total-row.grand {
+        font-size: 1.05rem;
+    }
+
+    /* Pay button full-width on mobile */
+    .btn-pay {
+        display: block;
+        width: 100%;
+        max-width: 100% !important;
+        padding: 16px;
+        font-size: 1rem;
+    }
+
+    /* Payment hero */
     .payment-hero {
-        padding: 40px 20px;
+        padding: 36px 20px;
+    }
+
+    .payment-hero h1 {
+        font-size: 1.5rem;
     }
 
     .payment-hero .amount-large {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
-    .invoice-container {
-        padding: 20px 16px;
+    .payment-hero .btn-pay {
+        padding: 14px 32px;
+        width: auto;
+    }
+
+    /* Add-on grid */
+    .addon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .page-footer {
+        padding: 28px 16px 24px;
+        margin-top: 40px;
     }
 }
 

@@ -1,1 +1,2 @@
-link_id,product,client,amount,currency,stripe_url,page_url,created_date,status,notes
+link_id,client,product_id,price_id,url,amount,currency,type,created_date,status
+plink_1T6GQkLwkCBtjbi1X5yAyKcZ,RQM Group,prod_U4PEe7YuCTNblj,price_1T6GQVLwkCBtjbi1BFzvjWxJ,https://buy.stripe.com/fZudRa3OcbTu7UG4q4aIM00,5500,AED,recurring,2026-03-01,active

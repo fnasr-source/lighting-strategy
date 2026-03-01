@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "gid": "1212055797762549",
+      "name": "Strategy",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1212055845340932",
+      "name": "Copywriting",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1212055845340934",
+      "name": "Execution",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1212055845340936",
+      "name": "Pending Client",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1212055845340938",
+      "name": "Performance",
+      "resource_type": "section"
+    }
+  ]
+}

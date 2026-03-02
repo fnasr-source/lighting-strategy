@@ -37,6 +37,7 @@ interface LineItem { description: string; qty: number; rate: number; amount: num
 interface InvoiceData {
     id: string; invoiceNumber: string; clientName: string; lineItems: LineItem[];
     subtotal: number; tax: number; totalDue: number; currency: string; status: string;
+    discount?: number; discountLabel?: string;
     issuedAt?: string; dueDate?: string; paidAt?: string; notes?: string;
 }
 interface CompanyData { name: string; tagline: string; email: string; phone: string; address: string; }
@@ -183,9 +184,17 @@ export default function PublicInvoicePage() {
                             <div key={i} className="inv-item">
                                 <div className="inv-item__desc">
                                     <p className="inv-item__name">{item.description}</p>
-                                    <p className="inv-item__meta">Qty: {item.qty} × {fmtAmt(item.rate)} {invoice.currency}</p>
+                                    {item.amount === 0 && item.rate > 0 ? (
+                                        <p className="inv-item__meta"><span style={{ textDecoration: 'line-through', color: '#bbb' }}>{fmtAmt(item.rate)} {invoice.currency}</span></p>
+                                    ) : (
+                                        <p className="inv-item__meta">Qty: {item.qty} × {fmtAmt(item.rate)} {invoice.currency}</p>
+                                    )}
                                 </div>
-                                <p className="inv-item__amount">{fmtAmt(item.amount)} {invoice.currency}</p>
+                                {item.amount === 0 ? (
+                                    <span className="inv-free-badge">FREE</span>
+                                ) : (
+                                    <p className="inv-item__amount">{fmtAmt(item.amount)} {invoice.currency}</p>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -195,6 +204,12 @@ export default function PublicInvoicePage() {
                         <div className="inv-totals__row">
                             <span>Subtotal</span><span>{fmtAmt(invoice.subtotal)} {invoice.currency}</span>
                         </div>
+                        {(invoice.discount ?? 0) > 0 && (
+                            <div className="inv-totals__row inv-totals__discount">
+                                <span>{invoice.discountLabel || 'Discount'}</span>
+                                <span>-{fmtAmt(invoice.discount!)} {invoice.currency}</span>
+                            </div>
+                        )}
                         {invoice.tax > 0 && (
                             <div className="inv-totals__row">
                                 <span>Tax</span><span>{fmtAmt(invoice.tax)} {invoice.currency}</span>
@@ -385,11 +400,18 @@ const pageStyles = `
 .inv-item__name { margin: 0; font-size: 0.88rem; font-weight: 500; }
 .inv-item__meta { margin: 2px 0 0; font-size: 0.75rem; color: #999; }
 .inv-item__amount { margin: 0; font-weight: 700; font-size: 0.92rem; white-space: nowrap; }
+.inv-free-badge {
+    background: #ecfdf5; color: #059669; font-weight: 700; font-size: 0.72rem;
+    padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px; white-space: nowrap;
+}
 
 /* ── Totals ── */
 .inv-totals { border-top: 2px solid #001a70; padding-top: 12px; }
 .inv-totals__row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.88rem; }
 .inv-totals__row span:first-child { color: #666; }
+.inv-totals__discount { color: #059669; }
+.inv-totals__discount span:first-child { color: #059669; }
+.inv-totals__discount span:last-child { font-weight: 600; }
 .inv-totals__total {
     display: flex; justify-content: space-between;
     padding: 10px 0; font-size: 1.1rem; font-weight: 800;

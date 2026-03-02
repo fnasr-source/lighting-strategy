@@ -79,7 +79,43 @@ export interface Payment {
     method: 'stripe' | 'instapay' | 'bank_transfer';
     status: 'succeeded' | 'pending' | 'failed';
     stripePaymentIntentId?: string;
+    instapayRef?: string;       // InstaPay reference number
+    proofUrl?: string;          // Screenshot/proof of payment (Firebase Storage URL)
     paidAt?: string;
+    createdAt?: any;
+}
+
+export interface RecurringInvoice {
+    id?: string;
+    clientId: string;
+    clientName: string;
+    templateName: string;       // e.g. "Monthly Marketing Retainer"
+    lineItems: { description: string; qty: number; rate: number; amount: number }[];
+    subtotal: number;
+    tax: number;
+    totalDue: number;
+    currency: string;
+    frequency: 'monthly' | 'quarterly' | 'annual';
+    billingDay: number;         // Day of month (1-28)
+    nextDueDate: string;        // YYYY-MM-DD
+    active: boolean;
+    autoSendEmail: boolean;     // Whether to auto-email on generation
+    paymentMethods: ('stripe' | 'instapay' | 'bank_transfer')[]; // Allowed payment methods
+    notes?: string;
+    lastGeneratedAt?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface InvoiceReminder {
+    id?: string;
+    invoiceId: string;
+    invoiceNumber: string;
+    clientId: string;
+    clientName: string;
+    type: 'upcoming' | 'due_today' | 'overdue_3d' | 'overdue_7d' | 'overdue_14d';
+    sentAt?: string;
+    status: 'pending' | 'sent' | 'failed';
     createdAt?: any;
 }
 
@@ -220,6 +256,62 @@ export const paymentsService = {
         return onSnapshot(query(collection(db, 'payments'), orderBy('createdAt', 'desc')), snap => {
             callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Payment)));
         });
+    },
+};
+
+// ── Recurring Invoices ───────────────────────────────
+export const recurringInvoicesService = {
+    async getAll(): Promise<RecurringInvoice[]> {
+        const snap = await getDocs(query(collection(db, 'recurringInvoices'), orderBy('createdAt', 'desc')));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as RecurringInvoice));
+    },
+
+    async getActive(): Promise<RecurringInvoice[]> {
+        const snap = await getDocs(query(collection(db, 'recurringInvoices'), where('active', '==', true)));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as RecurringInvoice));
+    },
+
+    async create(data: Omit<RecurringInvoice, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'recurringInvoices'), {
+            ...data,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+
+    async update(id: string, data: Partial<RecurringInvoice>): Promise<void> {
+        await updateDoc(doc(db, 'recurringInvoices', id), { ...data, updatedAt: serverTimestamp() });
+    },
+
+    async delete(id: string): Promise<void> {
+        await deleteDoc(doc(db, 'recurringInvoices', id));
+    },
+
+    subscribe(callback: (items: RecurringInvoice[]) => void) {
+        return onSnapshot(query(collection(db, 'recurringInvoices'), orderBy('createdAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as RecurringInvoice)));
+        });
+    },
+};
+
+// ── Invoice Reminders ────────────────────────────────
+export const remindersService = {
+    async getByInvoice(invoiceId: string): Promise<InvoiceReminder[]> {
+        const snap = await getDocs(query(collection(db, 'invoiceReminders'), where('invoiceId', '==', invoiceId)));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as InvoiceReminder));
+    },
+
+    async create(data: Omit<InvoiceReminder, 'id' | 'createdAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'invoiceReminders'), {
+            ...data,
+            createdAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+
+    async markSent(id: string): Promise<void> {
+        await updateDoc(doc(db, 'invoiceReminders', id), { status: 'sent', sentAt: new Date().toISOString() });
     },
 };
 

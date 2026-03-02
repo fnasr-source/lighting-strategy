@@ -88,6 +88,9 @@ export default function PublicInvoicePage() {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState<string | null>(null);
     const [paymentComplete, setPaymentComplete] = useState(false);
+    const [paymentMethod, setPaymentMethod] = useState<'card' | 'instapay'>('card');
+    const [instapayRef, setInstapayRef] = useState('');
+    const [instapaySubmitted, setInstapaySubmitted] = useState(false);
 
     const status = searchParams.get('status');
     useEffect(() => { if (status === 'complete') setPaymentComplete(true); }, [status]);
@@ -245,33 +248,161 @@ export default function PublicInvoicePage() {
                                 {invoice.paidAt ? `Paid on ${fmt(invoice.paidAt)}` : 'Thank you for your payment.'}
                             </p>
                         </div>
-                    ) : clientSecret ? (
-                        <>
-                            <div className="inv-payment-header">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#001a70" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" />
+                    ) : instapaySubmitted ? (
+                        <div className="inv-success">
+                            <div className="inv-success__icon" style={{ background: 'rgba(0,26,112,0.08)' }}>
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#001a70" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
                                 </svg>
-                                <h3>Payment Details</h3>
                             </div>
-                            <Elements stripe={stripePromise} options={elementsOptions}>
-                                <PaymentForm amount={invoice.totalDue} currency={invoice.currency} />
-                            </Elements>
-                            <div className="inv-trust">
-                                <span>🔒 Secure payment</span>
-                                <span className="inv-trust__sep">|</span>
-                                <span>256-bit encryption</span>
-                                <span className="inv-trust__sep">|</span>
-                                <span>Powered by <strong style={{ color: '#635bff' }}>Stripe</strong></span>
-                            </div>
-                        </>
-                    ) : (
-                        <div className="inv-center" style={{ minHeight: 200 }}>
-                            <div className="inv-spinner" />
-                            <p className="inv-center__msg">Loading payment form...</p>
+                            <h3 className="inv-success__title" style={{ color: '#001a70' }}>Payment Submitted</h3>
+                            <p className="inv-success__sub">
+                                Your InstaPay reference <strong>{instapayRef}</strong> has been recorded. We'll confirm receipt within 24 hours.
+                            </p>
                         </div>
+                    ) : (
+                        <>
+                            {/* Payment Method Toggle — show for EGP invoices */}
+                            {invoice.currency === 'EGP' && (
+                                <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
+                                    <button onClick={() => setPaymentMethod('card')}
+                                        className="inv-method-btn"
+                                        style={{
+                                            flex: 1, padding: '12px 16px', borderRadius: 8, cursor: 'pointer',
+                                            border: `2px solid ${paymentMethod === 'card' ? '#001a70' : '#e2e5ea'}`,
+                                            background: paymentMethod === 'card' ? 'rgba(0,26,112,0.04)' : '#fff',
+                                            color: paymentMethod === 'card' ? '#001a70' : '#888',
+                                            fontWeight: 600, fontSize: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                                            transition: 'all 0.2s ease',
+                                        }}>
+                                        💳 Card
+                                    </button>
+                                    <button onClick={() => setPaymentMethod('instapay')}
+                                        className="inv-method-btn"
+                                        style={{
+                                            flex: 1, padding: '12px 16px', borderRadius: 8, cursor: 'pointer',
+                                            border: `2px solid ${paymentMethod === 'instapay' ? '#001a70' : '#e2e5ea'}`,
+                                            background: paymentMethod === 'instapay' ? 'rgba(0,26,112,0.04)' : '#fff',
+                                            color: paymentMethod === 'instapay' ? '#001a70' : '#888',
+                                            fontWeight: 600, fontSize: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                                            transition: 'all 0.2s ease',
+                                        }}>
+                                        📱 InstaPay
+                                    </button>
+                                </div>
+                            )}
+
+                            {/* Stripe Card Payment */}
+                            {paymentMethod === 'card' && (
+                                clientSecret ? (
+                                    <>
+                                        <div className="inv-payment-header">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#001a70" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" />
+                                            </svg>
+                                            <h3>Card Payment</h3>
+                                        </div>
+                                        <Elements stripe={stripePromise} options={elementsOptions}>
+                                            <PaymentForm amount={invoice.totalDue} currency={invoice.currency} />
+                                        </Elements>
+                                        <div className="inv-trust">
+                                            <span>🔒 Secure payment</span>
+                                            <span className="inv-trust__sep">|</span>
+                                            <span>256-bit encryption</span>
+                                            <span className="inv-trust__sep">|</span>
+                                            <span>Powered by <strong style={{ color: '#635bff' }}>Stripe</strong></span>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="inv-center" style={{ minHeight: 200 }}>
+                                        <div className="inv-spinner" />
+                                        <p className="inv-center__msg">Loading payment form...</p>
+                                    </div>
+                                )
+                            )}
+
+                            {/* InstaPay Payment */}
+                            {paymentMethod === 'instapay' && (
+                                <div>
+                                    <div className="inv-payment-header">
+                                        <span style={{ fontSize: 18 }}>📱</span>
+                                        <h3>InstaPay Payment</h3>
+                                    </div>
+
+                                    <div style={{
+                                        background: 'rgba(0,26,112,0.04)', borderRadius: 10, padding: 20,
+                                        marginBottom: 16, border: '1px solid rgba(0,26,112,0.1)',
+                                    }}>
+                                        <p style={{ fontSize: '0.82rem', color: '#555', marginBottom: 12 }}>
+                                            Send <strong style={{ color: '#001a70', fontSize: '1rem' }}>{fmtAmt(invoice.totalDue)} {invoice.currency}</strong> to:
+                                        </p>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+                                                <span style={{ color: '#888' }}>Account Name</span>
+                                                <strong>Admirable Venture</strong>
+                                            </div>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+                                                <span style={{ color: '#888' }}>InstaPay ID</span>
+                                                <strong style={{ fontFamily: 'monospace', letterSpacing: 1 }}>admireworks@instapay</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{ marginBottom: 16 }}>
+                                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#555', display: 'block', marginBottom: 6 }}>
+                                            Transaction Reference Number
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={instapayRef}
+                                            onChange={e => setInstapayRef(e.target.value)}
+                                            placeholder="Enter your InstaPay reference"
+                                            style={{
+                                                width: '100%', padding: '12px 14px', borderRadius: 8,
+                                                border: '1.5px solid #d4d8e0', fontSize: '15px',
+                                                fontFamily: 'monospace', outline: 'none', boxSizing: 'border-box',
+                                            }}
+                                        />
+                                        <p style={{ fontSize: '0.72rem', color: '#999', marginTop: 6 }}>
+                                            Please enter the reference number from your InstaPay transfer confirmation.
+                                        </p>
+                                    </div>
+
+                                    <button
+                                        onClick={async () => {
+                                            if (!instapayRef.trim()) return;
+                                            // Submit InstaPay payment record
+                                            await fetch('/api/invoices/' + id, {
+                                                method: 'PATCH',
+                                                headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({
+                                                    paymentMethod: 'instapay',
+                                                    instapayRef: instapayRef.trim(),
+                                                }),
+                                            });
+                                            setInstapaySubmitted(true);
+                                        }}
+                                        disabled={!instapayRef.trim()}
+                                        style={{
+                                            width: '100%', padding: '14px 20px', borderRadius: 8,
+                                            background: instapayRef.trim() ? '#001a70' : '#ccc',
+                                            color: '#fff', border: 'none', fontWeight: 700,
+                                            fontSize: '0.95rem', cursor: instapayRef.trim() ? 'pointer' : 'not-allowed',
+                                            transition: 'background 0.2s ease',
+                                        }}
+                                    >
+                                        Confirm InstaPay Transfer
+                                    </button>
+
+                                    <div className="inv-trust" style={{ marginTop: 12 }}>
+                                        <span>🔐 Your payment will be verified within 24 hours</span>
+                                    </div>
+                                </div>
+                            )}
+                        </>
                     )}
 
-                    {!isPaid && (
+                    {!isPaid && !instapaySubmitted && (
                         <div className="inv-terms-inline">
                             By completing this payment, you agree to the terms of service. Payment is due upon receipt.
                         </div>

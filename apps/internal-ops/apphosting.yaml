@@ -18,7 +18,5 @@ env:
     value: "712573851224"
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
     value: 1:712573851224:web:74bde7742bd992998b1c2d
-  - variable: RESEND_API_KEY
-    secret: RESEND_API_KEY
   - variable: RESEND_FROM_EMAIL
     value: hello@admireworks.com

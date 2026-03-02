@@ -1,7 +1,7 @@
 /**
- * Seed Basiqat Invoice to Firestore
+ * Seed Basseqat Invoice to Firestore
  * 
- * Adds the Basiqat client and invoice AWI-202603-003 to the
+ * Adds the Basseqat client and invoice AWI-202603-003 to the
  * client portal at my.admireworks.com
  * 
  * Usage: node seed-basiqat-invoice.js
@@ -21,21 +21,21 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-async function seedBasiqat() {
-    console.log('🚀 Seeding Basiqat client and invoice...\n');
+async function seedBasseqat() {
+    console.log('🚀 Seeding Basseqat client and invoice...\n');
 
     // 1. Create or check client
     const clientsRef = db.collection('clients');
-    const existingClients = await clientsRef.where('name', '==', 'Basiqat').get();
+    const existingClients = await clientsRef.where('name', '==', 'Basseqat').get();
 
     let clientId;
     if (!existingClients.empty) {
         clientId = existingClients.docs[0].id;
-        console.log(`✅ Client "Basiqat" already exists (ID: ${clientId})`);
+        console.log(`✅ Client "Basseqat" already exists (ID: ${clientId})`);
     } else {
         const clientDoc = await clientsRef.add({
-            name: 'Basiqat',
-            company: 'Basiqat — بصيقات',
+            name: 'Basseqat',
+            company: 'Basseqat — بصيقات',
             email: '',
             phone: '',
             contacts: [
@@ -50,7 +50,7 @@ async function seedBasiqat() {
             updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         });
         clientId = clientDoc.id;
-        console.log(`✅ Created client "Basiqat" (ID: ${clientId})`);
+        console.log(`✅ Created client "Basseqat" (ID: ${clientId})`);
     }
 
     // 2. Create invoice (check if it already exists)
@@ -66,7 +66,7 @@ async function seedBasiqat() {
     const invoiceDoc = await invoicesRef.add({
         invoiceNumber: 'AWI-202603-003',
         clientId: clientId,
-        clientName: 'Basiqat — Eng. Khaled Nasseredin',
+        clientName: 'Basseqat — Eng. Khaled Nasseredin',
         lineItems: [
             { description: 'Full Growth Partnership — Setup Fee', qty: 1, rate: 35000, amount: 35000 },
             { description: 'Full Growth Partnership — Month 1 Retainer', qty: 1, rate: 32500, amount: 32500 },
@@ -95,7 +95,7 @@ async function seedBasiqat() {
     console.log(`📊 Admin view: https://my.admireworks.com/dashboard/invoices`);
 }
 
-seedBasiqat()
+seedBasseqat()
     .then(() => {
         console.log('\n✨ Done!');
         process.exit(0);

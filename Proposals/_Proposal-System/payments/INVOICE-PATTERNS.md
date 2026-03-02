@@ -107,7 +107,7 @@ When offering free months:
 | # | Date | Client | Proposal | Package | Amount | Currency | Notes |
 |---|------|--------|----------|---------|--------|----------|-------|
 | 1 | 2026-03-01 | RQM Group (QYD, RQM & Ceyaj) | AWP-SA-01JV-VWJ | Full Marketing Retainer | 5,500 | AED | Monthly retainer, Saudi Arabia |
-| 2 | 2026-03-03 | Basiqat (Eng. Khaled Nasseredin) | AWI-202603-003 | Full Growth Partnership + Add-Ons | 87,500 | EGP | Option 3 + Reply Mgmt (2mo free) + CRM (1mo free) + 1 UGC bonus. Value: 103,750 EGP |
+| 2 | 2026-03-03 | Basseqat (Eng. Khaled Nasseredin) | AWI-202603-003 | Full Growth Partnership + Add-Ons | 87,500 | EGP | Option 3 + Reply Mgmt (2mo free) + CRM (1mo free) + 1 UGC bonus. Value: 103,750 EGP |
 
 > When creating a new invoice, add a row here and follow the patterns above.
 

@@ -112,7 +112,7 @@ Create a document in the `invoices` collection with this schema:
 {
   "invoiceNumber": "AWI-202603-003",
   "clientId": "BSQ-001",
-  "clientName": "Basiqat — Eng. Khaled Nasseredin",
+  "clientName": "Basseqat — Eng. Khaled Nasseredin",
   "lineItems": [
     { "description": "Full Growth Partnership — Setup Fee", "qty": 1, "rate": 35000, "amount": 35000 },
     { "description": "Full Growth Partnership — Month 1 Retainer", "qty": 1, "rate": 32500, "amount": 32500 },

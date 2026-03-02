@@ -1,4 +1,4 @@
-Subject: Admireworks x Basiqat — Your Growth Package
+Subject: Admireworks x Basseqat — Your Growth Package
 
 To: Islam Darwish
 CC: Fouad Nasseredin, Khaled Nasseredin

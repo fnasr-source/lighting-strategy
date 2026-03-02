@@ -8,12 +8,12 @@ const resend = new Resend('re_8S9k9i6y_6VJCNF9UpnwhXcwQBHVjQYpV');
 const FROM_EMAIL = 'hello@admireworks.com';
 
 const BRAND = {
-    navy: '#001a70',
-    gold: '#cc9f53',
-    bg: '#f8f7f4',
-    white: '#ffffff',
-    muted: '#5d6475',
-    border: '#e3e0d8',
+  navy: '#001a70',
+  gold: '#cc9f53',
+  bg: '#f8f7f4',
+  white: '#ffffff',
+  muted: '#5d6475',
+  border: '#e3e0d8',
 };
 
 const INVOICE_URL = 'https://my.admireworks.com/invoice/AWI-202603-002';
@@ -94,14 +94,14 @@ const html = `<!DOCTYPE html>
                     </tr>
                     <tr>
                       <td style="padding:4px 0;color:#059669;font-size:13px;font-weight:600;">Ramadan Discount</td>
-                      <td style="padding:4px 0;text-align:right;color:#059669;font-size:13px;font-weight:600;">-4,000 SAR</td>
+                      <td style="padding:4px 0;text-align:right;color:#059669;font-size:13px;font-weight:600;">-8,000 SAR</td>
                     </tr>
                     <tr>
                       <td colspan="2" style="padding:12px 0 0;border-top:2px solid ${BRAND.gold};"></td>
                     </tr>
                     <tr>
                       <td style="padding:4px 0;color:${BRAND.navy};font-weight:700;font-size:15px;">Total Due</td>
-                      <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:700;font-size:18px;">20,000 SAR</td>
+                      <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:700;font-size:18px;">16,000 SAR</td>
                     </tr>
                   </table>
                 </td>
@@ -113,8 +113,8 @@ const html = `<!DOCTYPE html>
               <tr>
                 <td style="padding:16px 20px;">
                   <p style="margin:0 0 6px;font-weight:700;font-size:13px;color:${BRAND.navy};">💳 Payment Options</p>
-                  <p style="margin:0 0 3px;font-size:12px;color:${BRAND.muted};">A: Full Payment — 20,000 SAR</p>
-                  <p style="margin:0;font-size:12px;color:${BRAND.muted};">B: 50% Upfront (10,000 SAR) + 50% on Delivery</p>
+                  <p style="margin:0 0 3px;font-size:12px;color:${BRAND.muted};">A: Full Payment — 16,000 SAR</p>
+                  <p style="margin:0;font-size:12px;color:${BRAND.muted};">B: 50% Upfront (8,000 SAR) + 50% on Delivery</p>
                 </td>
               </tr>
             </table>

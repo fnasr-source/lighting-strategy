@@ -1,3 +1,3 @@
 client_id,client_name,company,country,contact_email,contact_phone,service,amount,currency,billing_cycle,billing_day,status,stripe_payment_link,notes
 RQM-001,RQM Group,"QYD, RQM & Ceyaj",SA,,,,5500,AED,monthly,1,active,,Full Marketing Retainer — direct response marketing; social media; email campaigns; funnels; multi-platform ad management
-EIN-001,Ein Abaya,عين عباية — Ein Abayaa,SA,ceo@einabayaa.com,+966533163266,Growth Partnership,20000,SAR,one-time,,active,,"Website rebuild + 90-day strategy + tracking + SEO + Month 1 ads. Ongoing: 8,000 SAR/mo from Month 2"
+EIN-001,Ein Abaya,عين عباية — Ein Abayaa,SA,ceo@einabayaa.com,+966533163266,Growth Partnership,16000,SAR,one-time,,active,,"Website rebuild + 90-day strategy + tracking + SEO + Month 1 ads. Ongoing: 8,000 SAR/mo from Month 2"

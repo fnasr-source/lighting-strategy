@@ -119,6 +119,59 @@ export interface InvoiceReminder {
     createdAt?: any;
 }
 
+// ── Reporting Engine Types ───────────────────────────
+
+export interface PlatformConnection {
+    id?: string;
+    clientId: string;
+    platform: 'meta_ads' | 'google_ads' | 'tiktok_ads' | 'ga4' | 'shopify' | 'woocommerce';
+    isConnected: boolean;
+    credentials: Record<string, string>;
+    lastSync?: string;
+    createdAt?: any;
+}
+
+export interface MonthlyPlatformMetric {
+    id?: string;
+    clientId: string;
+    platform: string;          // "Meta Ads", "Shopify", etc.
+    platformType: 'ad' | 'ecommerce' | 'analytics';
+    monthEndDate: string;       // YYYY-MM-DD
+    currency: string;
+    impressions: number;
+    clicks: number;
+    spend: number;
+    revenue: number;
+    conversions: number;
+    orders: number;
+    reach: number;
+    frequency: number;
+    linkClicks: number;
+    cpm: number;
+    source?: string;
+    aggregatedAt?: any;
+}
+
+export interface MonthlyClientRollup {
+    id?: string;
+    clientId: string;
+    platformType: 'ad' | 'ecommerce' | 'combined';
+    monthEndDate: string;
+    currency: string;
+    impressions: number;
+    clicks: number;
+    spend: number;
+    revenue: number;
+    conversions: number;
+    orders: number;
+    roas: number;
+    cpo: number;
+    aov: number;
+    cpm: number;
+    source?: string;
+    aggregatedAt?: any;
+}
+
 export interface Lead {
     id?: string;
     name: string;
@@ -312,6 +365,53 @@ export const remindersService = {
 
     async markSent(id: string): Promise<void> {
         await updateDoc(doc(db, 'invoiceReminders', id), { status: 'sent', sentAt: new Date().toISOString() });
+    },
+};
+
+// ── Platform Connections ─────────────────────────────
+export const platformConnectionsService = {
+    async getByClient(clientId: string): Promise<PlatformConnection[]> {
+        const snap = await getDocs(query(collection(db, 'platformConnections'), where('clientId', '==', clientId)));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as PlatformConnection));
+    },
+    async getAll(): Promise<PlatformConnection[]> {
+        const snap = await getDocs(collection(db, 'platformConnections'));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as PlatformConnection));
+    },
+    subscribe(callback: (items: PlatformConnection[]) => void) {
+        return onSnapshot(collection(db, 'platformConnections'), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as PlatformConnection)));
+        });
+    },
+};
+
+// ── Monthly Metrics ──────────────────────────────────
+export const monthlyMetricsService = {
+    async getByClient(clientId: string): Promise<MonthlyPlatformMetric[]> {
+        const snap = await getDocs(query(collection(db, 'monthlyPlatformMetrics'), where('clientId', '==', clientId), orderBy('monthEndDate', 'desc')));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as MonthlyPlatformMetric));
+    },
+    subscribe(callback: (items: MonthlyPlatformMetric[]) => void) {
+        return onSnapshot(query(collection(db, 'monthlyPlatformMetrics'), orderBy('monthEndDate', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as MonthlyPlatformMetric)));
+        });
+    },
+};
+
+// ── Monthly Rollups ──────────────────────────────────
+export const monthlyRollupsService = {
+    async getByClient(clientId: string): Promise<MonthlyClientRollup[]> {
+        const snap = await getDocs(query(collection(db, 'monthlyClientRollups'), where('clientId', '==', clientId), orderBy('monthEndDate', 'desc')));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as MonthlyClientRollup));
+    },
+    async getCombinedByClient(clientId: string): Promise<MonthlyClientRollup[]> {
+        const snap = await getDocs(query(collection(db, 'monthlyClientRollups'), where('clientId', '==', clientId), where('platformType', '==', 'combined'), orderBy('monthEndDate', 'desc')));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as MonthlyClientRollup));
+    },
+    subscribe(callback: (items: MonthlyClientRollup[]) => void) {
+        return onSnapshot(query(collection(db, 'monthlyClientRollups'), orderBy('monthEndDate', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as MonthlyClientRollup)));
+        });
     },
 };
 

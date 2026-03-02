@@ -5,6 +5,8 @@ import {
     User,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider,
     signOut as firebaseSignOut,
     onIdTokenChanged,
 } from 'firebase/auth';
@@ -19,15 +21,19 @@ interface AuthContextType {
     user: AuthUser | null;
     loading: boolean;
     signIn: (email: string, password: string) => Promise<void>;
+    signInWithGoogle: () => Promise<void>;
     signOut: () => Promise<void>;
     isAdmin: boolean;
     isClient: boolean;
 }
 
+const googleProvider = new GoogleAuthProvider();
+
 const AuthContext = createContext<AuthContextType>({
     user: null,
     loading: true,
     signIn: async () => { },
+    signInWithGoogle: async () => { },
     signOut: async () => { },
     isAdmin: false,
     isClient: false,
@@ -62,6 +68,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await signInWithEmailAndPassword(auth, email, password);
     };
 
+    const handleGoogleSignIn = async () => {
+        await signInWithPopup(auth, googleProvider);
+    };
+
     const signOut = async () => {
         await firebaseSignOut(auth);
     };
@@ -72,6 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 user,
                 loading,
                 signIn,
+                signInWithGoogle: handleGoogleSignIn,
                 signOut,
                 isAdmin: claims.role === 'admin',
                 isClient: claims.role === 'client',

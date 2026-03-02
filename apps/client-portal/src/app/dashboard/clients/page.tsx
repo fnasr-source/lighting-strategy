@@ -245,7 +245,7 @@ export default function ClientsPage() {
                                             />
                                         </div>
                                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-                                            <input className="form-input" type="email" placeholder="Email *" required={contact.role === 'primary'}
+                                            <input className="form-input" type="email" placeholder="Email"
                                                 value={contact.email} onChange={e => updateContact(i, 'email', e.target.value)}
                                                 style={{ fontSize: '0.85rem', padding: '8px 12px' }}
                                             />

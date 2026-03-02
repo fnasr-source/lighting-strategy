@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 export default function LoginPage() {
     const { signIn, signInWithGoogle } = useAuth();
@@ -11,6 +13,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [resetSent, setResetSent] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -35,6 +38,23 @@ export default function LoginPage() {
             router.push('/dashboard');
         } catch (err: any) {
             setError(err.message || 'Google sign-in failed');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleForgotPassword = async () => {
+        if (!email.trim()) {
+            setError('Please enter your email address first, then click "Forgot password?"');
+            return;
+        }
+        setError('');
+        setLoading(true);
+        try {
+            await sendPasswordResetEmail(auth, email.trim());
+            setResetSent(true);
+        } catch (err: any) {
+            setError('Could not send reset email. Please check the email address.');
         } finally {
             setLoading(false);
         }
@@ -75,54 +95,73 @@ export default function LoginPage() {
                 {/* Divider */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                     <div style={{ flex: 1, height: 1, background: 'var(--border, #e0e0e0)' }} />
-                    <span style={{ color: 'var(--muted)', fontSize: '0.75rem', fontWeight: 500 }}>or</span>
+                    <span style={{ color: 'var(--muted)', fontSize: '0.75rem', fontWeight: 500 }}>or sign in with email</span>
                     <div style={{ flex: 1, height: 1, background: 'var(--border, #e0e0e0)' }} />
                 </div>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label className="form-label" htmlFor="email">
-                            Email Address
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            className="form-input"
-                            placeholder="you@company.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            autoComplete="email"
-                        />
+                {resetSent ? (
+                    <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                        <div style={{ fontSize: '2rem', marginBottom: 12 }}>✉️</div>
+                        <p style={{ fontWeight: 600, marginBottom: 8 }}>Password Reset Email Sent</p>
+                        <p style={{ color: 'var(--muted)', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                            Check your inbox at <strong>{email}</strong> for a link to reset your password.
+                        </p>
+                        <button onClick={() => setResetSent(false)} style={{
+                            marginTop: 16, padding: '8px 20px', borderRadius: 6, border: '1px solid var(--border)',
+                            background: 'none', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600,
+                        }}>Back to Sign In</button>
                     </div>
+                ) : (
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="email">
+                                Email Address
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                className="form-input"
+                                placeholder="you@company.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                autoComplete="email"
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label className="form-label" htmlFor="password">
-                            Password
-                        </label>
-                        <input
-                            id="password"
-                            type="password"
-                            className="form-input"
-                            placeholder="••••••••"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            autoComplete="current-password"
-                        />
-                    </div>
+                        <div className="form-group">
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                                <label className="form-label" htmlFor="password">Password</label>
+                                <button type="button" onClick={handleForgotPassword} style={{
+                                    background: 'none', border: 'none', cursor: 'pointer',
+                                    color: 'var(--aw-navy, #001a70)', fontSize: '0.78rem', fontWeight: 600,
+                                    padding: 0,
+                                }}>Forgot password?</button>
+                            </div>
+                            <input
+                                id="password"
+                                type="password"
+                                className="form-input"
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                autoComplete="current-password"
+                            />
+                        </div>
 
-                    {error && <div className="form-error">{error}</div>}
+                        {error && <div className="form-error">{error}</div>}
 
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                        disabled={loading}
-                        style={{ width: '100%', marginTop: 8, padding: '12px 20px', fontSize: '0.95rem' }}
-                    >
-                        {loading ? 'Signing in...' : 'Sign In'}
-                    </button>
-                </form>
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            disabled={loading}
+                            style={{ width: '100%', marginTop: 8, padding: '12px 20px', fontSize: '0.95rem' }}
+                        >
+                            {loading ? 'Signing in...' : 'Sign In'}
+                        </button>
+                    </form>
+                )}
 
                 <div style={{ textAlign: 'center', marginTop: 24 }}>
                     <p style={{ color: 'var(--muted)', fontSize: '0.78rem' }}>
@@ -136,4 +175,3 @@ export default function LoginPage() {
         </div>
     );
 }
-

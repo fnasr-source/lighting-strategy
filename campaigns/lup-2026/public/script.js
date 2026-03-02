@@ -125,41 +125,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ---- Application Modal ----
-  const modal = document.getElementById('apply-modal');
-  const openButtons = document.querySelectorAll('[data-action="apply"]');
-  const closeButton = document.querySelector('.close-modal');
+  const applyModal = document.getElementById('apply-modal');
+  const inquiryModal = document.getElementById('inquiry-modal');
 
-  openButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  if (closeButton) {
-    closeButton.addEventListener('click', () => {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+  function openModal(modal) {
+    if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  }
+  function closeModal(modal) {
+    if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
   }
 
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+  // Primary CTA → full application
+  document.querySelectorAll('[data-action="apply"]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(applyModal); });
   });
 
-  // ---- Form submission ----
-  const form = document.getElementById('application-form');
-  if (form) {
+  // Secondary CTA → quick inquiry
+  document.querySelectorAll('[data-action="inquiry"]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(inquiryModal); });
+  });
+
+  // Close buttons
+  applyModal?.querySelector('.close-modal')?.addEventListener('click', () => closeModal(applyModal));
+  inquiryModal?.querySelector('.close-modal')?.addEventListener('click', () => closeModal(inquiryModal));
+
+  // Close on backdrop click
+  [applyModal, inquiryModal].forEach(m => {
+    m?.addEventListener('click', (e) => { if (e.target === m) closeModal(m); });
+  });
+
+  // ---- Form submission helper ----
+  function handleFormSubmit(formId, modalId, formType) {
+    const form = document.getElementById(formId);
+    if (!form) return;
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-
-      // Enrich with UTM tracking + landing metadata
       const utmData = getUTMData();
       const landingMeta = getLandingMeta();
       const leadPayload = {
@@ -168,28 +170,30 @@ document.addEventListener('DOMContentLoaded', () => {
         meta: landingMeta,
         submitted_at: new Date().toISOString(),
         campaign: 'leading-under-pressure-2026',
+        form_type: formType,
         status: 'new'
       };
 
-      // Show success state
+      // Show success
       const container = form.closest('.apply-form-container');
+      const successTitle = formType === 'application' ? 'Application Received!' : 'Inquiry Sent!';
+      const successMsg = formType === 'application'
+        ? `Thank you, <strong>${data.firstName}</strong>. Our program team will review your application and contact you within 24 hours.`
+        : `Thank you, <strong>${data.firstName}</strong>. Our team will reach out to you shortly to discuss the program.`;
+
       container.innerHTML = `
         <div style="text-align:center; padding: 40px 0;">
           <div style="font-size: 3rem; margin-bottom: 16px;">✓</div>
-          <h2 style="margin-bottom: 12px; color: var(--gold-400);">Application Received!</h2>
-          <p style="color: var(--text-secondary); margin-bottom: 24px;">
-            Thank you, <strong>${data.firstName}</strong>. Our program team will review your application and contact you within 24 hours.
-          </p>
-          <p style="color: var(--text-muted); font-size: 0.88rem;">
-            In the meantime, check your email for the program brochure.
-          </p>
-          <button class="btn btn-secondary close-modal" style="margin-top: 24px;" onclick="document.getElementById('apply-modal').classList.remove('open'); document.body.style.overflow='';">
+          <h2 style="margin-bottom: 12px; color: var(--gold-400);">${successTitle}</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 24px;">${successMsg}</p>
+          <button class="btn btn-secondary" style="margin-top: 24px;"
+            onclick="document.getElementById('${modalId}').classList.remove('open'); document.body.style.overflow='';">
             Close
           </button>
         </div>
       `;
 
-      // Write lead to Firestore
+      // Write to Firestore
       (async () => {
         try {
           const { collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js');
@@ -199,11 +203,13 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('Lead saved to Firestore:', leadPayload.lead_id);
         } catch (err) {
           console.error('Failed to save lead:', err);
-          // Form already shows success to user — log error for monitoring
         }
       })();
     });
   }
+
+  handleFormSubmit('application-form', 'apply-modal', 'application');
+  handleFormSubmit('inquiry-form', 'inquiry-modal', 'inquiry');
 
   // ---- Scroll animations (Intersection Observer) ----
   const observerOptions = {

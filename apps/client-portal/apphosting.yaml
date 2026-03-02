@@ -1,0 +1,34 @@
+# Firebase App Hosting configuration
+# Docs: https://firebase.google.com/docs/app-hosting/configure
+
+runConfig:
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0
+  maxInstances: 2
+
+env:
+  # Client-side Firebase config (safe — these are public)
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyBQk7osdbUb2hLoFrirVKhHadZ1mi9x_5I
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: admireworks---internal-os.firebaseapp.com
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: admireworks---internal-os
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: admireworks---internal-os.firebasestorage.app
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "712573851224"
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:712573851224:web:33541df018b7f51d8b1c2d
+  - variable: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    value: pk_live_51SzHgPLwkCBtjbi1ZmHjbpsv1GzqN0btoNN5GDvNiBnOnm8hWEgqDbl7HQGBufJkn1ZLvkGT4D93MVxHJMTSIvCS00X4OggVam
+
+  # Server-side secrets (stored in Secret Manager)
+  - variable: STRIPE_SECRET_KEY
+    secret: STRIPE_SECRET_KEY
+  - variable: RESEND_API_KEY
+    secret: RESEND_API_KEY
+  - variable: RESEND_FROM_EMAIL
+    value: hello@admireworks.com

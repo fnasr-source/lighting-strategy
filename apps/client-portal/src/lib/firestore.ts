@@ -295,3 +295,122 @@ export const paymentLinksService = {
         return ref.id;
     },
 };
+
+// ── User Profiles & Roles ────────────────────────────
+export type UserRole = 'owner' | 'admin' | 'team' | 'client';
+
+export type Permission =
+    | 'clients:read' | 'clients:write'
+    | 'invoices:read' | 'invoices:write'
+    | 'payments:read' | 'payments:write'
+    | 'leads:read' | 'leads:write'
+    | 'proposals:read' | 'proposals:write'
+    | 'reports:read' | 'reports:write'
+    | 'campaigns:read' | 'campaigns:write'
+    | 'communications:read' | 'communications:write'
+    | 'settings:read' | 'settings:write'
+    | 'team:read' | 'team:write'
+    | 'billing:read' | 'billing:write';
+
+/** Default permissions per role */
+export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
+    owner: [
+        'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
+        'payments:read', 'payments:write', 'leads:read', 'leads:write',
+        'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
+        'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
+        'settings:read', 'settings:write', 'team:read', 'team:write',
+        'billing:read', 'billing:write',
+    ],
+    admin: [
+        'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
+        'payments:read', 'payments:write', 'leads:read', 'leads:write',
+        'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
+        'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
+        'settings:read', 'team:read', 'team:write',
+    ],
+    team: [
+        'clients:read', 'invoices:read', 'reports:read', 'reports:write',
+        'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
+    ],
+    client: [
+        'invoices:read', 'payments:read', 'reports:read',
+        'campaigns:read', 'communications:read',
+    ],
+};
+
+export interface UserProfile {
+    id?: string;            // Firestore doc ID = Firebase Auth UID
+    uid: string;            // Firebase Auth UID
+    email: string;
+    displayName: string;
+    role: UserRole;
+    permissions: Permission[];       // Can override role defaults
+    assignedClients?: string[];      // For team members: which client IDs they can access
+    linkedClientId?: string;         // For client users: the client record they belong to
+    avatarUrl?: string;
+    phone?: string;
+    title?: string;                  // e.g. "Growth Strategist", "CEO"
+    isActive: boolean;
+    lastLoginAt?: any;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export const userProfilesService = {
+    async getByUid(uid: string): Promise<UserProfile | null> {
+        const snap = await getDoc(doc(db, 'userProfiles', uid));
+        return snap.exists() ? { id: snap.id, ...snap.data() } as UserProfile : null;
+    },
+
+    async getAll(): Promise<UserProfile[]> {
+        const snap = await getDocs(query(collection(db, 'userProfiles'), orderBy('createdAt', 'desc')));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as UserProfile));
+    },
+
+    async getByRole(role: UserRole): Promise<UserProfile[]> {
+        const snap = await getDocs(query(collection(db, 'userProfiles'), where('role', '==', role)));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() } as UserProfile));
+    },
+
+    async create(uid: string, data: Omit<UserProfile, 'id' | 'createdAt' | 'updatedAt'>): Promise<void> {
+        const { ...rest } = data;
+        await (await import('firebase/firestore')).setDoc(doc(db, 'userProfiles', uid), {
+            ...rest,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+        });
+    },
+
+    async update(uid: string, data: Partial<UserProfile>): Promise<void> {
+        await updateDoc(doc(db, 'userProfiles', uid), { ...data, updatedAt: serverTimestamp() });
+    },
+
+    async delete(uid: string): Promise<void> {
+        await deleteDoc(doc(db, 'userProfiles', uid));
+    },
+
+    subscribe(callback: (profiles: UserProfile[]) => void) {
+        return onSnapshot(query(collection(db, 'userProfiles'), orderBy('createdAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as UserProfile)));
+        });
+    },
+
+    /** Check if user has a specific permission */
+    hasPermission(profile: UserProfile | null, permission: Permission): boolean {
+        if (!profile) return false;
+        // Owner always has everything
+        if (profile.role === 'owner') return true;
+        return profile.permissions.includes(permission);
+    },
+
+    /** Check if user can access a specific client */
+    canAccessClient(profile: UserProfile | null, clientId: string): boolean {
+        if (!profile) return false;
+        if (profile.role === 'owner' || profile.role === 'admin') return true;
+        if (profile.role === 'team') return profile.assignedClients?.includes(clientId) ?? false;
+        if (profile.role === 'client') return profile.linkedClientId === clientId;
+        return false;
+    },
+};
+

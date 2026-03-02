@@ -18,31 +18,50 @@ import {
     Users,
     Target,
     BookOpen,
+    Zap,
+    Globe,
+    Shield,
 } from 'lucide-react';
+import type { Permission } from '@/lib/firestore';
 
-const clientNav = [
-    { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
-    { label: 'Reports', href: '/dashboard/reports', icon: BarChart3 },
-    { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt },
-    { label: 'Payments', href: '/dashboard/payments', icon: CreditCard },
-    { label: 'Communications', href: '/dashboard/communications', icon: MessageSquare },
-];
+/** A nav item can be a link or a section header */
+type NavItem =
+    | { section: string }
+    | { label: string; href: string; icon: any; permission?: Permission };
 
-const adminNav = [
+/** All nav items — filtered by permissions at render time */
+const allNavItems: NavItem[] = [
     { section: 'Operations' },
     { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { label: 'Clients', href: '/dashboard/clients', icon: Users },
-    { label: 'Leads', href: '/dashboard/leads', icon: Target },
-    { label: 'Proposals', href: '/dashboard/proposals', icon: FileText },
+    { label: 'Clients', href: '/dashboard/clients', icon: Users, permission: 'clients:read' },
+    { label: 'Leads', href: '/dashboard/leads', icon: Target, permission: 'leads:read' },
+    { label: 'Proposals', href: '/dashboard/proposals', icon: FileText, permission: 'proposals:read' },
     { label: 'Strategies', href: '/dashboard/strategies', icon: BookOpen },
+    { section: 'Campaigns' },
+    { label: 'Performance', href: '/dashboard/campaigns', icon: BarChart3, permission: 'campaigns:read' },
+    { label: 'Integrations', href: '/dashboard/integrations', icon: Globe, permission: 'campaigns:write' },
     { section: 'Finance' },
+    { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt, permission: 'invoices:read' },
+    { label: 'Payments', href: '/dashboard/payments', icon: CreditCard, permission: 'payments:read' },
+    { label: 'Billing', href: '/dashboard/billing', icon: CreditCard, permission: 'billing:read' },
+    { section: 'Communication' },
+    { label: 'Messages', href: '/dashboard/communications', icon: MessageSquare, permission: 'communications:read' },
+    { section: 'Reports' },
+    { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart3, permission: 'reports:read' },
+    { label: 'Reports', href: '/dashboard/reports', icon: FileText, permission: 'reports:read' },
+    { section: 'System' },
+    { label: 'Team', href: '/dashboard/team', icon: Users, permission: 'team:read' },
+    { label: 'Settings', href: '/dashboard/settings', icon: Settings, permission: 'settings:read' },
+];
+
+/** Client portal nav — simplified view */
+const clientNavItems: NavItem[] = [
+    { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
+    { label: 'Campaigns', href: '/dashboard/campaigns', icon: BarChart3 },
+    { label: 'Reports', href: '/dashboard/reports', icon: FileText },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt },
     { label: 'Payments', href: '/dashboard/payments', icon: CreditCard },
-    { section: 'Reports' },
-    { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
-    { label: 'Reports', href: '/dashboard/reports', icon: FileText },
-    { section: 'System' },
-    { label: 'Settings', href: '/dashboard/settings', icon: Settings },
+    { label: 'Messages', href: '/dashboard/communications', icon: MessageSquare },
 ];
 
 export default function DashboardLayout({
@@ -50,7 +69,7 @@ export default function DashboardLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const { user, loading, signOut, isAdmin } = useAuth();
+    const { user, profile, loading, signOut, isClient, isInternal, hasPermission, role } = useAuth();
     const router = useRouter();
     const pathname = usePathname();
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -60,6 +79,9 @@ export default function DashboardLayout({
             router.replace('/login');
         }
     }, [user, loading, router]);
+
+    // Close sidebar on navigation
+    useEffect(() => { setSidebarOpen(false); }, [pathname]);
 
     if (loading) {
         return (
@@ -71,30 +93,54 @@ export default function DashboardLayout({
 
     if (!user) return null;
 
-    const nav = isAdmin ? adminNav : clientNav;
-    const initials = user.displayName
-        ? user.displayName.split(' ').map((n) => n[0]).join('').toUpperCase()
-        : user.email?.substring(0, 2).toUpperCase() || 'U';
+    // Build nav based on role
+    const rawNav = isClient ? clientNavItems : allNavItems;
+    const nav: NavItem[] = [];
+    let lastWasSection = false;
+
+    for (const item of rawNav) {
+        if ('section' in item) {
+            // Don't add consecutive section headers
+            lastWasSection = true;
+            nav.push(item);
+        } else {
+            // Check permission
+            if (item.permission && !hasPermission(item.permission)) {
+                continue;
+            }
+            lastWasSection = false;
+            nav.push(item);
+        }
+    }
+
+    // Remove trailing section headers and consecutive section headers
+    const filteredNav: NavItem[] = [];
+    for (let i = 0; i < nav.length; i++) {
+        if ('section' in nav[i]) {
+            // Check if next non-section item exists
+            let hasChild = false;
+            for (let j = i + 1; j < nav.length; j++) {
+                if ('section' in nav[j]) break;
+                hasChild = true;
+                break;
+            }
+            if (hasChild) filteredNav.push(nav[i]);
+        } else {
+            filteredNav.push(nav[i]);
+        }
+    }
+
+    const displayName = profile?.displayName || user.displayName || user.email || 'User';
+    const initials = displayName.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2);
+    const roleLabel = role === 'owner' ? 'Owner' : role === 'admin' ? 'Admin' : role === 'team' ? 'Team' : 'Client';
 
     return (
         <>
             {/* Mobile menu button */}
             <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                style={{
-                    position: 'fixed',
-                    top: 16,
-                    left: 16,
-                    zIndex: 50,
-                    display: 'none',
-                    background: 'var(--card-bg)',
-                    border: '1px solid var(--card-border)',
-                    borderRadius: 8,
-                    padding: 8,
-                    cursor: 'pointer',
-                    color: 'var(--foreground)',
-                }}
                 className="mobile-menu-btn"
+                aria-label="Toggle menu"
             >
                 {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -107,7 +153,7 @@ export default function DashboardLayout({
                 </div>
 
                 <nav className="sidebar-nav">
-                    {nav.map((item, i) => {
+                    {filteredNav.map((item, i) => {
                         if ('section' in item) {
                             return (
                                 <div key={i} className="sidebar-section">
@@ -116,11 +162,12 @@ export default function DashboardLayout({
                             );
                         }
                         const Icon = item.icon;
-                        const isActive = pathname === item.href;
+                        const isActive = pathname === item.href ||
+                            (item.href !== '/dashboard' && pathname?.startsWith(item.href));
                         return (
                             <Link
                                 key={item.href}
-                                href={item.href!}
+                                href={item.href}
                                 className={`sidebar-link ${isActive ? 'active' : ''}`}
                                 onClick={() => setSidebarOpen(false)}
                             >
@@ -135,10 +182,11 @@ export default function DashboardLayout({
                     <div className="sidebar-user-avatar">{initials}</div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: '0.82rem', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            {user.displayName || user.email}
+                            {displayName}
                         </div>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>
-                            {isAdmin ? 'Admin' : 'Client'}
+                        <div style={{ fontSize: '0.7rem', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <Shield size={10} />
+                            {roleLabel}
                         </div>
                     </div>
                     <button

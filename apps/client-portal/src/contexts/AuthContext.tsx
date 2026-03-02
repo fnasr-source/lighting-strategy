@@ -10,58 +10,111 @@ import {
     signOut as firebaseSignOut,
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
-
-interface AuthUser extends User {
-    role?: string;
-    clientId?: string;
-}
+import {
+    type UserProfile,
+    type UserRole,
+    type Permission,
+    ROLE_PERMISSIONS,
+    userProfilesService,
+} from '@/lib/firestore';
 
 interface AuthContextType {
-    user: AuthUser | null;
+    user: User | null;
+    profile: UserProfile | null;
     loading: boolean;
     signIn: (email: string, password: string) => Promise<void>;
     signInWithGoogle: () => Promise<void>;
     signOut: () => Promise<void>;
-    isAdmin: boolean;
-    isClient: boolean;
+    // Role checks
+    isOwner: boolean;
+    isAdmin: boolean;     // owner OR admin
+    isTeam: boolean;      // owner OR admin OR team
+    isClient: boolean;    // client role
+    isInternal: boolean;  // owner OR admin OR team (not client)
+    role: UserRole | null;
+    // Permission checks
+    hasPermission: (permission: Permission) => boolean;
+    canAccessClient: (clientId: string) => boolean;
 }
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthContext = createContext<AuthContextType>({
     user: null,
+    profile: null,
     loading: true,
     signIn: async () => { },
     signInWithGoogle: async () => { },
     signOut: async () => { },
+    isOwner: false,
     isAdmin: false,
+    isTeam: false,
     isClient: false,
+    isInternal: false,
+    role: null,
+    hasPermission: () => false,
+    canAccessClient: () => false,
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-    const [user, setUser] = useState<AuthUser | null>(null);
+    const [user, setUser] = useState<User | null>(null);
+    const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState(true);
-    const [claims, setClaims] = useState<{ role?: string; clientId?: string }>({});
+
+    // Load UserProfile from Firestore after Firebase Auth
+    const loadProfile = async (firebaseUser: User) => {
+        try {
+            let p = await userProfilesService.getByUid(firebaseUser.uid);
+
+            if (!p) {
+                // First-time login: check custom claims for role
+                const tokenResult = await firebaseUser.getIdTokenResult();
+                const claimRole = tokenResult.claims.role as string | undefined;
+                const claimClientId = tokenResult.claims.clientId as string | undefined;
+
+                // Auto-create profile based on claims or default to 'admin' for first user
+                const role: UserRole = (claimRole === 'client' ? 'client' :
+                    claimRole === 'team' ? 'team' :
+                        claimRole === 'owner' ? 'owner' : 'admin') as UserRole;
+
+                const newProfile: Omit<UserProfile, 'id' | 'createdAt' | 'updatedAt'> = {
+                    uid: firebaseUser.uid,
+                    email: firebaseUser.email || '',
+                    displayName: firebaseUser.displayName || firebaseUser.email || 'User',
+                    role,
+                    permissions: ROLE_PERMISSIONS[role],
+                    isActive: true,
+                    ...(claimClientId ? { linkedClientId: claimClientId } : {}),
+                };
+
+                await userProfilesService.create(firebaseUser.uid, newProfile);
+                p = { ...newProfile, id: firebaseUser.uid } as UserProfile;
+            }
+
+            // Update last login
+            userProfilesService.update(firebaseUser.uid, {
+                lastLoginAt: new Date().toISOString(),
+                // Sync displayName/email from Firebase Auth
+                email: firebaseUser.email || p.email,
+                displayName: firebaseUser.displayName || p.displayName,
+            }).catch(() => { }); // non-blocking
+
+            setProfile(p);
+            return p;
+        } catch (e) {
+            console.error('Error loading profile:', e);
+            return null;
+        }
+    };
 
     useEffect(() => {
         const unsubscribe = onIdTokenChanged(auth, async (firebaseUser) => {
             if (firebaseUser) {
-                try {
-                    const tokenResult = await firebaseUser.getIdTokenResult();
-                    const customClaims = {
-                        role: tokenResult.claims.role as string | undefined,
-                        clientId: tokenResult.claims.clientId as string | undefined,
-                    };
-                    setClaims(customClaims);
-                    setUser(Object.assign(firebaseUser, customClaims));
-                } catch (e) {
-                    console.error('Error getting token:', e);
-                    setUser(firebaseUser as AuthUser);
-                    setClaims({});
-                }
+                setUser(firebaseUser);
+                await loadProfile(firebaseUser);
             } else {
                 setUser(null);
-                setClaims({});
+                setProfile(null);
             }
             setLoading(false);
         });
@@ -74,33 +127,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const handleGoogleSignIn = async () => {
-        const result = await signInWithPopup(auth, googleProvider);
-        // Force token refresh to get latest custom claims
-        if (result.user) {
-            const tokenResult = await result.user.getIdTokenResult(true);
-            const customClaims = {
-                role: tokenResult.claims.role as string | undefined,
-                clientId: tokenResult.claims.clientId as string | undefined,
-            };
-            setClaims(customClaims);
-            setUser(Object.assign(result.user, customClaims));
-        }
+        await signInWithPopup(auth, googleProvider);
     };
 
     const signOut = async () => {
         await firebaseSignOut(auth);
     };
 
+    const role = profile?.role ?? null;
+    const isOwner = role === 'owner';
+    const isAdmin = role === 'owner' || role === 'admin';
+    const isTeam = role === 'owner' || role === 'admin' || role === 'team';
+    const isClient = role === 'client';
+    const isInternal = !isClient && role !== null;
+
     return (
         <AuthContext.Provider
             value={{
                 user,
+                profile,
                 loading,
                 signIn,
                 signInWithGoogle: handleGoogleSignIn,
                 signOut,
-                isAdmin: claims.role === 'admin',
-                isClient: claims.role === 'client',
+                isOwner,
+                isAdmin,
+                isTeam,
+                isClient,
+                isInternal,
+                role,
+                hasPermission: (perm) => userProfilesService.hasPermission(profile, perm),
+                canAccessClient: (clientId) => userProfilesService.canAccessClient(profile, clientId),
             }}
         >
             {children}

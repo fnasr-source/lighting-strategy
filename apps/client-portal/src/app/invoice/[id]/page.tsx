@@ -38,6 +38,7 @@ interface InvoiceData {
     id: string; invoiceNumber: string; clientName: string; lineItems: LineItem[];
     subtotal: number; tax: number; totalDue: number; currency: string; status: string;
     discount?: number; discountLabel?: string;
+    promotionName?: string; promotionExpiry?: string;
     issuedAt?: string; dueDate?: string; paidAt?: string; notes?: string;
 }
 interface CompanyData { name: string; tagline: string; email: string; phone: string; address: string; }
@@ -215,6 +216,15 @@ export default function PublicInvoicePage() {
                             <div className="inv-totals__row inv-totals__discount">
                                 <span>{invoice.discountLabel || 'Discount'}</span>
                                 <span>-{fmtAmt(invoice.discount!)} {invoice.currency}</span>
+                            </div>
+                        )}
+                        {invoice.promotionExpiry && (
+                            <div style={{
+                                textAlign: 'center', padding: '8px 12px', margin: '6px 0',
+                                background: '#fffbeb', border: '1px solid #fed7aa',
+                                borderRadius: 8, fontSize: '0.78rem', color: '#92400e',
+                            }}>
+                                ⏳ {invoice.promotionName || 'Offer'} valid until <strong>{new Date(invoice.promotionExpiry + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>
                             </div>
                         )}
                         {invoice.tax > 0 && (

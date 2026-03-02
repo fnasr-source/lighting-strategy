@@ -495,6 +495,7 @@ const pageStyles = `
     background: linear-gradient(160deg, #f0f2f8 0%, #e4e7ef 100%);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
+    color: #1a1a2e;
 }
 
 /* ── Brand bar ── */
@@ -577,7 +578,7 @@ const pageStyles = `
     border-radius: 10px;
     margin-bottom: 20px;
 }
-.inv-info-value { font-weight: 600; margin: 0; font-size: 0.9rem; }
+.inv-info-value { font-weight: 600; margin: 0; font-size: 0.9rem; color: #1a1a2e; }
 @media (max-width: 420px) {
     .inv-info-grid { grid-template-columns: 1fr; gap: 12px; padding: 12px 14px; }
 }
@@ -604,13 +605,15 @@ const pageStyles = `
 /* ── Totals ── */
 .inv-totals { border-top: 2px solid #001a70; padding-top: 12px; }
 .inv-totals__row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.88rem; }
-.inv-totals__row span:first-child { color: #666; }
+.inv-totals__row span:first-child { color: #555; }
+.inv-totals__row span:last-child { color: #1a1a2e; font-weight: 600; }
 .inv-totals__discount { color: #059669; }
 .inv-totals__discount span:first-child { color: #059669; }
 .inv-totals__discount span:last-child { font-weight: 600; }
 .inv-totals__total {
     display: flex; justify-content: space-between;
     padding: 10px 0; font-size: 1.1rem; font-weight: 800;
+    color: #1a1a2e;
 }
 .inv-totals__total span:last-child { color: #001a70; }
 

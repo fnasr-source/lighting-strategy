@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { invoicesService, clientsService, type Invoice, type Client } from '@/lib/firestore';
 import { useAuth } from '@/contexts/AuthContext';
-import { Receipt, Plus, Search, X, ExternalLink } from 'lucide-react';
+import { Plus, Search, X, ExternalLink, Copy } from 'lucide-react';
+import Link from 'next/link';
 
 export default function InvoicesPage() {
     const { isAdmin } = useAuth();
@@ -11,7 +12,8 @@ export default function InvoicesPage() {
     const [clients, setClients] = useState<Client[]>([]);
     const [search, setSearch] = useState('');
     const [showForm, setShowForm] = useState(false);
-    const [form, setForm] = useState({ invoiceNumber: '', clientId: '', clientName: '', service: '', amount: '', currency: 'USD', dueDate: '', stripePaymentLinkUrl: '', notes: '' });
+    const [copied, setCopied] = useState('');
+    const [form, setForm] = useState({ invoiceNumber: '', clientId: '', clientName: '', service: '', amount: '', currency: 'AED', dueDate: '', notes: '' });
 
     useEffect(() => {
         const u1 = invoicesService.subscribe(setInvoices);
@@ -40,15 +42,21 @@ export default function InvoicesPage() {
             status: 'pending',
             issuedAt: new Date().toISOString().slice(0, 10),
             dueDate: form.dueDate,
-            stripePaymentLinkUrl: form.stripePaymentLinkUrl,
             notes: form.notes,
         });
         setShowForm(false);
-        setForm({ invoiceNumber: '', clientId: '', clientName: '', service: '', amount: '', currency: 'USD', dueDate: '', stripePaymentLinkUrl: '', notes: '' });
+        setForm({ invoiceNumber: '', clientId: '', clientName: '', service: '', amount: '', currency: 'AED', dueDate: '', notes: '' });
     };
 
     const markPaid = async (inv: Invoice) => {
         if (inv.id) await invoicesService.update(inv.id, { status: 'paid', paidAt: new Date().toISOString() });
+    };
+
+    const copyLink = (inv: Invoice) => {
+        const url = `${window.location.origin}/invoice/${inv.id}`;
+        navigator.clipboard.writeText(url);
+        setCopied(inv.id || '');
+        setTimeout(() => setCopied(''), 2000);
     };
 
     return (
@@ -83,13 +91,22 @@ export default function InvoicesPage() {
                         <tbody>
                             {filtered.map(inv => (
                                 <tr key={inv.id}>
-                                    <td style={{ fontWeight: 600 }}>{inv.invoiceNumber}</td>
+                                    <td style={{ fontWeight: 600 }}>
+                                        <Link href={`/invoice/${inv.id}`} style={{ color: 'var(--primary)', textDecoration: 'none' }}>
+                                            {inv.invoiceNumber}
+                                        </Link>
+                                    </td>
                                     <td>{inv.clientName}</td>
                                     <td style={{ fontWeight: 600 }}>{inv.totalDue?.toLocaleString()} {inv.currency}</td>
                                     <td>{inv.dueDate}</td>
                                     <td><span className={`status-pill status-${inv.status}`}>{inv.status}</span></td>
                                     <td style={{ display: 'flex', gap: 8 }}>
-                                        {inv.stripePaymentLinkUrl && <a href={inv.stripePaymentLinkUrl} target="_blank" rel="noopener" className="btn btn-outline" style={{ padding: '4px 10px', fontSize: '0.75rem' }}><ExternalLink size={12} /> Pay</a>}
+                                        <Link href={`/invoice/${inv.id}`} className="btn btn-outline" style={{ padding: '4px 10px', fontSize: '0.75rem' }}>
+                                            <ExternalLink size={12} /> View
+                                        </Link>
+                                        <button className="btn btn-outline" style={{ padding: '4px 10px', fontSize: '0.75rem' }} onClick={() => copyLink(inv)}>
+                                            <Copy size={12} /> {copied === inv.id ? 'Copied!' : 'Copy Link'}
+                                        </button>
                                         {isAdmin && inv.status === 'pending' && <button className="btn btn-gold" style={{ padding: '4px 10px', fontSize: '0.75rem' }} onClick={() => markPaid(inv)}>Mark Paid</button>}
                                     </td>
                                 </tr>
@@ -115,7 +132,7 @@ export default function InvoicesPage() {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label className="form-label">Service</label>
+                                <label className="form-label">Service Description</label>
                                 <input className="form-input" value={form.service} onChange={e => setForm({ ...form, service: e.target.value })} placeholder="e.g. Full Marketing Retainer" />
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -126,7 +143,7 @@ export default function InvoicesPage() {
                                 <div className="form-group">
                                     <label className="form-label">Currency</label>
                                     <select className="form-input" value={form.currency} onChange={e => setForm({ ...form, currency: e.target.value })}>
-                                        <option value="USD">USD</option><option value="AED">AED</option><option value="EGP">EGP</option><option value="SAR">SAR</option>
+                                        <option value="AED">AED</option><option value="USD">USD</option><option value="EGP">EGP</option><option value="SAR">SAR</option>
                                     </select>
                                 </div>
                             </div>
@@ -135,10 +152,13 @@ export default function InvoicesPage() {
                                 <input className="form-input" type="date" value={form.dueDate} onChange={e => setForm({ ...form, dueDate: e.target.value })} />
                             </div>
                             <div className="form-group">
-                                <label className="form-label">Stripe Payment Link URL</label>
-                                <input className="form-input" value={form.stripePaymentLinkUrl} onChange={e => setForm({ ...form, stripePaymentLinkUrl: e.target.value })} placeholder="https://buy.stripe.com/..." />
+                                <label className="form-label">Notes</label>
+                                <input className="form-input" value={form.notes} onChange={e => setForm({ ...form, notes: e.target.value })} placeholder="Internal notes" />
                             </div>
-                            <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', marginTop: 8 }}>
+                            <p style={{ fontSize: '0.78rem', color: 'var(--muted)', margin: '8px 0 16px' }}>
+                                💡 A shareable payment link will be automatically generated. No need for external Stripe links.
+                            </p>
+                            <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
                                 <button type="button" className="btn btn-outline" onClick={() => setShowForm(false)}>Cancel</button>
                                 <button type="submit" className="btn btn-primary">Create Invoice</button>
                             </div>

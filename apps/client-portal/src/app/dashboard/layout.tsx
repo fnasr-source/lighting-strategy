@@ -21,6 +21,7 @@ import {
     Zap,
     Globe,
     Shield,
+    Wallet,
 } from 'lucide-react';
 import type { Permission } from '@/lib/firestore';
 
@@ -43,6 +44,7 @@ const allNavItems: NavItem[] = [
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt, permission: 'invoices:read' },
     { label: 'Payments', href: '/dashboard/payments', icon: CreditCard, permission: 'payments:read' },
     { label: 'Billing', href: '/dashboard/billing', icon: Zap, permission: 'billing:read' },
+    { label: 'Expenses', href: '/dashboard/expenses', icon: Wallet, permission: 'billing:read' },
     { section: 'Communication' },
     { label: 'Messages', href: '/dashboard/communications', icon: MessageSquare, permission: 'communications:read' },
     { section: 'Reports & Strategy' },

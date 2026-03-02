@@ -205,6 +205,27 @@ export interface Message {
     createdAt?: any;
 }
 
+// ── Expenses ─────────────────────────────────────────
+
+export interface Expense {
+    id?: string;
+    description: string;
+    amount: number;
+    currency: string;
+    category: 'operations' | 'marketing' | 'tools' | 'payroll' | 'office' | 'client' | 'other';
+    clientId?: string;       // If expense is client-specific
+    clientName?: string;
+    date: string;            // YYYY-MM-DD
+    vendor?: string;
+    receiptUrl?: string;
+    isRecurring?: boolean;
+    recurringPeriod?: 'monthly' | 'quarterly' | 'yearly';
+    notes?: string;
+    createdBy?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
 export interface Lead {
     id?: string;
     name: string;
@@ -398,6 +419,27 @@ export const remindersService = {
 
     async markSent(id: string): Promise<void> {
         await updateDoc(doc(db, 'invoiceReminders', id), { status: 'sent', sentAt: new Date().toISOString() });
+    },
+};
+
+// ── Expenses ─────────────────────────────────────────
+export const expensesService = {
+    subscribe(callback: (items: Expense[]) => void) {
+        return onSnapshot(query(collection(db, 'expenses'), orderBy('date', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Expense)));
+        });
+    },
+    async create(data: Omit<Expense, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'expenses'), {
+            ...data, createdAt: serverTimestamp(), updatedAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+    async update(id: string, data: Partial<Expense>): Promise<void> {
+        await updateDoc(doc(db, 'expenses', id), { ...data, updatedAt: serverTimestamp() });
+    },
+    async delete(id: string): Promise<void> {
+        await deleteDoc(doc(db, 'expenses', id));
     },
 };
 

@@ -555,7 +555,7 @@ const pageStyles = `
 
 /* ── Labels ── */
 .inv-label {
-    font-size: 0.68rem; font-weight: 700; color: #999;
+    font-size: 0.68rem; font-weight: 700; color: #666;
     letter-spacing: 0.5px; text-transform: uppercase; margin: 0 0 4px;
 }
 
@@ -617,7 +617,7 @@ const pageStyles = `
 /* ── Company info ── */
 .inv-company {
     margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee;
-    font-size: 0.72rem; color: #999; line-height: 1.5;
+    font-size: 0.72rem; color: #666; line-height: 1.5;
 }
 .inv-company p { margin: 0; }
 .inv-company strong { color: #333; }
@@ -664,8 +664,8 @@ const pageStyles = `
     text-align: center; margin-top: 16px; display: flex;
     align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
 }
-.inv-trust span { font-size: 0.72rem; color: #bbb; }
-.inv-trust__sep { color: #ddd; }
+.inv-trust span { font-size: 0.72rem; color: #888; }
+.inv-trust__sep { color: #aaa; }
 @media (max-width: 420px) {
     .inv-trust { gap: 4px; }
     .inv-trust__sep { display: none; }
@@ -675,7 +675,7 @@ const pageStyles = `
 /* ── Terms inline ── */
 .inv-terms-inline {
     margin-top: 16px; padding-top: 14px; border-top: 1px solid #f0f0f0;
-    font-size: 0.72rem; color: #aaa; line-height: 1.5;
+    font-size: 0.72rem; color: #777; line-height: 1.5;
 }
 
 /* ── Spinner ── */
@@ -710,5 +710,5 @@ const pageStyles = `
 /* ── Footer ── */
 .inv-footer { text-align: center; padding: 12px 0 20px; }
 .inv-footer__brand { font-weight: 800; font-size: 0.68rem; letter-spacing: 2px; color: #001a70; margin: 0; }
-.inv-footer__sub { font-size: 0.65rem; color: #999; margin: 2px 0 0; }
+.inv-footer__sub { font-size: 0.65rem; color: #777; margin: 2px 0 0; }
 `;

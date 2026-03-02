@@ -1,0 +1,24 @@
+runConfig:
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0
+  maxInstances: 2
+
+env:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyBQk7osdbUb2hLoFrirVKhHadZ1mi9x_5I
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: admireworks---internal-os.firebaseapp.com
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: admireworks---internal-os
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: admireworks---internal-os.firebasestorage.app
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "712573851224"
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:712573851224:web:74bde7742bd992998b1c2d
+  - variable: RESEND_API_KEY
+    secret: RESEND_API_KEY
+  - variable: RESEND_FROM_EMAIL
+    value: hello@admireworks.com

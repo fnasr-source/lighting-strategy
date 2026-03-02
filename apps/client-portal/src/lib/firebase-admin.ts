@@ -1,47 +1,47 @@
 /**
- * Firebase Admin SDK — used ONLY in server-side code (API routes, server components)
+ * Firebase Admin SDK — lazy initialization
  * 
- * In production (App Hosting): Uses Application Default Credentials (ADC)
- * In local dev: Falls back to service account file via FIREBASE_SERVICE_ACCOUNT_PATH
+ * CRITICAL: Must NOT initialize at module load time because during `next build`
+ * Application Default Credentials (ADC) are not available. Instead, we use
+ * lazy getters that only initialize when first accessed at runtime.
  */
 import admin from 'firebase-admin';
 
-function getAdminApp() {
-    if (admin.apps.length > 0) {
-        return admin.apps[0]!;
-    }
+function initAdmin(): admin.app.App {
+    if (admin.apps.length > 0) return admin.apps[0]!;
 
-    // In App Hosting, ADC works automatically — no service account file needed
     if (process.env.FIREBASE_SERVICE_ACCOUNT_PATH) {
-        // Local development — load from file
         try {
             const fs = require('fs');
             const path = require('path');
             const saPath = path.resolve(process.cwd(), process.env.FIREBASE_SERVICE_ACCOUNT_PATH);
-            const serviceAccount = JSON.parse(fs.readFileSync(saPath, 'utf8'));
+            const sa = JSON.parse(fs.readFileSync(saPath, 'utf8'));
             return admin.initializeApp({
-                credential: admin.credential.cert(serviceAccount),
-                projectId: serviceAccount.project_id,
+                credential: admin.credential.cert(sa),
+                projectId: sa.project_id,
             });
-        } catch {
-            // Fall through to ADC if file read fails
-        }
+        } catch { /* fall through to ADC */ }
     }
 
-    // Cloud environment — use Application Default Credentials
     return admin.initializeApp({
         projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'admireworks---internal-os',
     });
 }
 
-let adminApp: admin.app.App;
-try {
-    adminApp = getAdminApp();
-} catch {
-    adminApp = admin.apps[0]!;
+// Lazy getters — only init on first runtime access, NOT at build time
+export function getAdminAuth() {
+    return admin.auth(initAdmin());
 }
 
-const adminAuth = admin.auth(adminApp);
-const adminDb = admin.firestore(adminApp);
+export function getAdminDb() {
+    return admin.firestore(initAdmin());
+}
 
-export { adminApp, adminAuth, adminDb };
+// Legacy exports for compatibility (lazy)
+export const adminAuth = new Proxy({} as ReturnType<typeof admin.auth>, {
+    get: (_, prop) => (getAdminAuth() as any)[prop],
+});
+
+export const adminDb = new Proxy({} as ReturnType<typeof admin.firestore>, {
+    get: (_, prop) => (getAdminDb() as any)[prop],
+});

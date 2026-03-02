@@ -2,7 +2,6 @@ draft-peviews/genco
 .env
 .env.*
 node_modules/
-package-lock.json
 
 # Firebase / GCP credentials — NEVER commit
 firebase/service-account.json

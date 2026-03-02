@@ -121,16 +121,31 @@ export async function POST(req: NextRequest) {
 }
 
 /**
- * Look up client email and send branded receipt
+ * Look up client contacts and send branded receipt (primary + CC)
  */
 async function sendReceiptForInvoice(invData: any, invoiceId: string, paidAt: string) {
     try {
-        // Get client email from clients collection
-        let clientEmail = invData.clientEmail || '';
-        if (!clientEmail && invData.clientId) {
+        let clientEmail = '';
+        let ccEmails: string[] = [];
+
+        // Look up client contacts from clients collection
+        if (invData.clientId) {
             const clientDoc = await adminDb.collection('clients').doc(invData.clientId).get();
-            clientEmail = clientDoc.data()?.email || clientDoc.data()?.contactEmail || '';
+            const clientData = clientDoc.data();
+            if (clientData?.contacts && Array.isArray(clientData.contacts)) {
+                const primary = clientData.contacts.find((c: any) => c.role === 'primary');
+                clientEmail = primary?.email || clientData.email || clientData.contactEmail || '';
+                ccEmails = clientData.contacts
+                    .filter((c: any) => c.role === 'cc' && c.email)
+                    .map((c: any) => c.email);
+            } else {
+                // Legacy: single email field
+                clientEmail = clientData?.email || clientData?.contactEmail || '';
+            }
         }
+
+        // Fallback to invoice-level email
+        if (!clientEmail) clientEmail = invData.clientEmail || '';
 
         // Get company info for the receipt
         const settingsDoc = await adminDb.collection('systemConfig').doc('settings').get();
@@ -140,6 +155,7 @@ async function sendReceiptForInvoice(invData: any, invoiceId: string, paidAt: st
             await sendPaymentReceipt({
                 clientName: invData.clientName,
                 clientEmail,
+                ccEmails,
                 invoiceNumber: invData.invoiceNumber,
                 amount: invData.totalDue,
                 currency: invData.currency,

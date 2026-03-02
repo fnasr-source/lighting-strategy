@@ -23,12 +23,21 @@ import {
 import { db } from '@/lib/firebase';
 
 // ── Types ────────────────────────────────────────────
+export interface Contact {
+    name: string;
+    email: string;
+    phone?: string;
+    title?: string; // e.g. "CEO", "Marketing Manager"
+    role: 'primary' | 'cc';
+}
+
 export interface Client {
     id?: string;
     name: string;
-    email?: string;
-    phone?: string;
+    email?: string;       // kept for backward compat — primary contact email
+    phone?: string;       // kept for backward compat
     company?: string;
+    contacts?: Contact[]; // multiple contacts: primary + CC
     region: string; // EG, AE, SA, US...
     baseCurrency: string;
     status: 'lead' | 'prospect' | 'proposal_sent' | 'active' | 'churned';

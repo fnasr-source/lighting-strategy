@@ -4,6 +4,7 @@ import { Resend } from 'resend';
 interface ReceiptData {
     clientName: string;
     clientEmail: string;
+    ccEmails?: string[];     // additional contacts to CC
     invoiceNumber: string;
     amount: number;
     currency: string;
@@ -131,9 +132,12 @@ export async function sendPaymentReceipt(data: ReceiptData) {
 </body>
 </html>`;
 
+        const ccList = (data.ccEmails || []).filter(e => e && e !== data.clientEmail);
+
         await resend.emails.send({
             from: `Admireworks <${fromEmail}>`,
             to: data.clientEmail,
+            ...(ccList.length > 0 ? { cc: ccList } : {}),
             subject: `Payment Receipt — ${data.invoiceNumber} | Admireworks`,
             html,
         });
@@ -146,7 +150,7 @@ export async function sendPaymentReceipt(data: ReceiptData) {
             html,
         });
 
-        console.log(`✅ Receipt sent to ${data.clientEmail} and admin`);
+        console.log(`✅ Receipt sent to ${data.clientEmail}${ccList.length > 0 ? ` (CC: ${ccList.join(', ')})` : ''} and admin`);
     } catch (err: any) {
         console.error('Failed to send receipt email:', err.message);
     }

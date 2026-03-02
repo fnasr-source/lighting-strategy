@@ -22,3 +22,8 @@ ui-debug.log
 # OS
 .DS_Store
 AW-Dashboards.zip
+
+# Secret management scripts (contain keys)
+firebase/inject-secrets.mjs
+firebase/fix-secrets.mjs
+firebase/check-builds.mjs

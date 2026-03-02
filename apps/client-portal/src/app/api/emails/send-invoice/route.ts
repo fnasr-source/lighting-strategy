@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminAuth, adminDb } from '@/lib/firebase-admin';
+import { getSecret } from '@/lib/secrets';
 
 /**
  * Send Invoice Email API
@@ -8,7 +9,8 @@ import { adminAuth, adminDb } from '@/lib/firebase-admin';
 export async function POST(req: NextRequest) {
   try {
     const { Resend } = await import('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resendKey = await getSecret('RESEND_API_KEY');
+    const resend = new Resend(resendKey);
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'hello@admireworks.com';
 
     // Verify admin (optional, skip if called from webhook)

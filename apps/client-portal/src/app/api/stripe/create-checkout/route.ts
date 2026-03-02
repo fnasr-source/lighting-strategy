@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
+import { getSecret } from '@/lib/secrets';
 import Stripe from 'stripe';
 
 /**
@@ -8,7 +9,8 @@ import Stripe from 'stripe';
  */
 export async function POST(req: NextRequest) {
     try {
-        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2025-02-24.acacia' as any });
+        const stripeKey = await getSecret('STRIPE_SECRET_KEY');
+        const stripe = new Stripe(stripeKey, { apiVersion: '2025-02-24.acacia' as any });
         const { invoiceId, successUrl, cancelUrl } = await req.json();
 
         const invDoc = await adminDb.collection('invoices').doc(invoiceId).get();

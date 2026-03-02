@@ -91,6 +91,8 @@ export default function PublicInvoicePage() {
     const [paymentMethod, setPaymentMethod] = useState<'card' | 'instapay'>('card');
     const [instapayRef, setInstapayRef] = useState('');
     const [instapaySubmitted, setInstapaySubmitted] = useState(false);
+    const [instapaySubmitting, setInstapaySubmitting] = useState(false);
+    const [instapayProofFile, setInstapayProofFile] = useState<File | null>(null);
 
     const status = searchParams.get('status');
     useEffect(() => { if (status === 'complete') setPaymentComplete(true); }, [status]);
@@ -103,6 +105,8 @@ export default function PublicInvoicePage() {
                 setInvoice(data.invoice);
                 setCompany(data.company);
                 setLoading(false);
+                // Default to InstaPay for EGP invoices
+                if (data.invoice.currency === 'EGP') setPaymentMethod('instapay');
                 if (data.invoice.status !== 'paid') {
                     const piRes = await fetch('/api/stripe/create-payment-intent', {
                         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -171,7 +175,7 @@ export default function PublicInvoicePage() {
                     <div className="inv-info-grid">
                         <div>
                             <p className="inv-label">Bill To</p>
-                            <p className="inv-info-value">{invoice.clientName}</p>
+                            <p className="inv-info-value">{invoice.clientName.split(' — ')[0]}</p>
                         </div>
                         <div>
                             <p className="inv-label">Invoice Date</p>
@@ -188,7 +192,7 @@ export default function PublicInvoicePage() {
                                 <div className="inv-item__desc">
                                     <p className="inv-item__name">{item.description}</p>
                                     {item.amount === 0 && item.rate > 0 ? (
-                                        <p className="inv-item__meta"><span style={{ textDecoration: 'line-through', color: '#bbb' }}>{fmtAmt(item.rate)} {invoice.currency}</span></p>
+                                        <p className="inv-item__meta"><span style={{ textDecoration: 'line-through', color: '#999' }}>{fmtAmt(item.rate)} {invoice.currency}</span></p>
                                     ) : (
                                         <p className="inv-item__meta">Qty: {item.qty} × {fmtAmt(item.rate)} {invoice.currency}</p>
                                     )}
@@ -257,7 +261,8 @@ export default function PublicInvoicePage() {
                             </div>
                             <h3 className="inv-success__title" style={{ color: '#001a70' }}>Payment Submitted</h3>
                             <p className="inv-success__sub">
-                                Your InstaPay reference <strong>{instapayRef}</strong> has been recorded. We'll confirm receipt within 24 hours.
+                                {instapayRef ? (<>Your InstaPay reference <strong>{instapayRef}</strong> has been recorded. </>) : 'Your payment notification has been recorded. '}
+                                We&apos;ll verify and confirm within 24 hours. You&apos;ll receive an email confirmation once verified.
                             </p>
                         </div>
                     ) : (
@@ -329,6 +334,7 @@ export default function PublicInvoicePage() {
                                         <h3>InstaPay Payment</h3>
                                     </div>
 
+                                    {/* Payment Details Card */}
                                     <div style={{
                                         background: 'rgba(0,26,112,0.04)', borderRadius: 10, padding: 20,
                                         marginBottom: 16, border: '1px solid rgba(0,26,112,0.1)',
@@ -339,7 +345,7 @@ export default function PublicInvoicePage() {
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
                                                 <span style={{ color: '#888' }}>Account Name</span>
-                                                <strong>Admirable Venture</strong>
+                                                <strong>Fouad Nasseredin</strong>
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
                                                 <span style={{ color: '#888' }}>InstaPay ID</span>
@@ -348,9 +354,35 @@ export default function PublicInvoicePage() {
                                         </div>
                                     </div>
 
-                                    <div style={{ marginBottom: 16 }}>
+                                    {/* Direct InstaPay Link */}
+                                    <a
+                                        href="https://ipn.eg/S/admireworks/instapay/5A1jri"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: 'block', textAlign: 'center', padding: '14px 20px', borderRadius: 8,
+                                            background: '#001a70', color: '#fff', textDecoration: 'none',
+                                            fontWeight: 700, fontSize: '0.95rem', marginBottom: 8,
+                                            transition: 'background 0.2s ease',
+                                        }}
+                                    >
+                                        🏦 Pay {fmtAmt(invoice.totalDue)} {invoice.currency} via InstaPay
+                                    </a>
+                                    <p style={{ textAlign: 'center', fontSize: '0.72rem', color: '#999', marginBottom: 20 }}>
+                                        <a href="https://ipn.eg/S/admireworks/instapay/5A1jri" target="_blank" rel="noopener noreferrer" style={{ color: '#001a70', fontWeight: 500 }}>
+                                            👉 ipn.eg/S/admireworks/instapay/5A1jri
+                                        </a>
+                                    </p>
+
+                                    {/* Divider */}
+                                    <div style={{ borderTop: '1px solid #e8e8e8', margin: '16px 0', position: 'relative' }}>
+                                        <span style={{ position: 'absolute', top: -10, left: '50%', transform: 'translateX(-50%)', background: '#fff', padding: '0 12px', fontSize: '0.72rem', color: '#999' }}>After payment</span>
+                                    </div>
+
+                                    {/* Optional: Reference Number */}
+                                    <div style={{ marginBottom: 12 }}>
                                         <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#555', display: 'block', marginBottom: 6 }}>
-                                            Transaction Reference Number
+                                            Transaction Reference <span style={{ fontWeight: 400, color: '#bbb' }}>(optional)</span>
                                         </label>
                                         <input
                                             type="text"
@@ -363,39 +395,72 @@ export default function PublicInvoicePage() {
                                                 fontFamily: 'monospace', outline: 'none', boxSizing: 'border-box',
                                             }}
                                         />
-                                        <p style={{ fontSize: '0.72rem', color: '#999', marginTop: 6 }}>
-                                            Please enter the reference number from your InstaPay transfer confirmation.
-                                        </p>
                                     </div>
 
+                                    {/* Optional: Upload Proof */}
+                                    <div style={{ marginBottom: 16 }}>
+                                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#555', display: 'block', marginBottom: 6 }}>
+                                            Payment Screenshot <span style={{ fontWeight: 400, color: '#bbb' }}>(optional)</span>
+                                        </label>
+                                        <div
+                                            style={{
+                                                border: '1.5px dashed #d4d8e0', borderRadius: 8, padding: '14px 16px',
+                                                textAlign: 'center', cursor: 'pointer', transition: 'border-color 0.2s',
+                                                background: instapayProofFile ? 'rgba(0,26,112,0.03)' : '#fff',
+                                            }}
+                                            onClick={() => document.getElementById('proof-upload')?.click()}
+                                        >
+                                            {instapayProofFile ? (
+                                                <p style={{ fontSize: '0.82rem', color: '#001a70', margin: 0, fontWeight: 600 }}>
+                                                    📎 {instapayProofFile.name}
+                                                </p>
+                                            ) : (
+                                                <p style={{ fontSize: '0.82rem', color: '#999', margin: 0 }}>
+                                                    📷 Click to upload screenshot
+                                                </p>
+                                            )}
+                                        </div>
+                                        <input
+                                            id="proof-upload"
+                                            type="file"
+                                            accept="image/*"
+                                            style={{ display: 'none' }}
+                                            onChange={e => setInstapayProofFile(e.target.files?.[0] || null)}
+                                        />
+                                    </div>
+
+                                    {/* Confirm Button */}
                                     <button
                                         onClick={async () => {
-                                            if (!instapayRef.trim()) return;
-                                            // Submit InstaPay payment record
-                                            await fetch('/api/invoices/' + id, {
-                                                method: 'PATCH',
-                                                headers: { 'Content-Type': 'application/json' },
-                                                body: JSON.stringify({
-                                                    paymentMethod: 'instapay',
-                                                    instapayRef: instapayRef.trim(),
-                                                }),
-                                            });
-                                            setInstapaySubmitted(true);
+                                            setInstapaySubmitting(true);
+                                            try {
+                                                await fetch('/api/invoices/' + id, {
+                                                    method: 'PATCH',
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify({
+                                                        paymentMethod: 'instapay',
+                                                        instapayRef: instapayRef.trim() || undefined,
+                                                    }),
+                                                });
+                                                setInstapaySubmitted(true);
+                                            } catch {
+                                                setInstapaySubmitting(false);
+                                            }
                                         }}
-                                        disabled={!instapayRef.trim()}
+                                        disabled={instapaySubmitting}
                                         style={{
                                             width: '100%', padding: '14px 20px', borderRadius: 8,
-                                            background: instapayRef.trim() ? '#001a70' : '#ccc',
+                                            background: instapaySubmitting ? '#999' : '#15803d',
                                             color: '#fff', border: 'none', fontWeight: 700,
-                                            fontSize: '0.95rem', cursor: instapayRef.trim() ? 'pointer' : 'not-allowed',
+                                            fontSize: '0.95rem', cursor: instapaySubmitting ? 'not-allowed' : 'pointer',
                                             transition: 'background 0.2s ease',
                                         }}
                                     >
-                                        Confirm InstaPay Transfer
+                                        {instapaySubmitting ? 'Submitting…' : '✓ I Have Made the Payment'}
                                     </button>
 
                                     <div className="inv-trust" style={{ marginTop: 12 }}>
-                                        <span>🔐 Your payment will be verified within 24 hours</span>
+                                        <span>🔐 We&apos;ll verify and send you a confirmation email within 24 hours</span>
                                     </div>
                                 </div>
                             )}
@@ -528,9 +593,9 @@ const pageStyles = `
     gap: 12px;
 }
 .inv-item__desc { flex: 1; min-width: 0; }
-.inv-item__name { margin: 0; font-size: 0.88rem; font-weight: 500; }
-.inv-item__meta { margin: 2px 0 0; font-size: 0.75rem; color: #999; }
-.inv-item__amount { margin: 0; font-weight: 700; font-size: 0.92rem; white-space: nowrap; }
+.inv-item__name { margin: 0; font-size: 0.88rem; font-weight: 600; color: #1a1a2e; }
+.inv-item__meta { margin: 2px 0 0; font-size: 0.75rem; color: #777; }
+.inv-item__amount { margin: 0; font-weight: 700; font-size: 0.92rem; white-space: nowrap; color: #1a1a2e; }
 .inv-free-badge {
     background: #ecfdf5; color: #059669; font-weight: 700; font-size: 0.72rem;
     padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px; white-space: nowrap;

@@ -83,6 +83,23 @@ Amount: {MONTHLY_RATE}
 Billing: Monthly retainer
 ```
 
+#### CRM System Add-On
+```
+Line 1: CRM System — Setup & Integration | 7,500 EGP (one-time)
+Line 2: CRM System — Month 1 | 3,500 EGP/mo (or FREE if promotional)
+Features: Lead management, role-based access, pipeline, UTM attribution, task assignment, sales reporting, search, flow automation
+```
+
+#### Promotional Pricing (Free Months)
+```
+When offering free months:
+- Show original price with strikethrough
+- Add "FREE" label and green badge
+- Include savings banner with total saved amount
+- List recurring pricing in a note section at bottom
+- Example: Reply Management Month 1 — ~~5,000 EGP~~ FREE
+```
+
 ---
 
 ## Invoice Log
@@ -90,5 +107,7 @@ Billing: Monthly retainer
 | # | Date | Client | Proposal | Package | Amount | Currency | Notes |
 |---|------|--------|----------|---------|--------|----------|-------|
 | 1 | 2026-03-01 | RQM Group (QYD, RQM & Ceyaj) | AWP-SA-01JV-VWJ | Full Marketing Retainer | 5,500 | AED | Monthly retainer, Saudi Arabia |
+| 2 | 2026-03-03 | Basiqat (Eng. Khaled Nasseredin) | AWI-202603-003 | Full Growth Partnership + Add-Ons | 87,500 | EGP | Option 3 + Reply Mgmt (2mo free) + CRM (1mo free) + 1 UGC bonus. Value: 103,750 EGP |
 
 > When creating a new invoice, add a row here and follow the patterns above.
+

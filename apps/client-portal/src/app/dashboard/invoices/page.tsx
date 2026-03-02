@@ -49,7 +49,10 @@ export default function InvoicesPage() {
     };
 
     const markPaid = async (inv: Invoice) => {
-        if (inv.id) await invoicesService.update(inv.id, { status: 'paid', paidAt: new Date().toISOString() });
+        if (inv.id) {
+            await invoicesService.update(inv.id, { status: 'paid', paidAt: new Date().toISOString() });
+            try { await fetch(`/api/invoices/${inv.id}/confirm-paid`, { method: 'POST' }); } catch { }
+        }
     };
 
     const copyLink = (inv: Invoice) => {

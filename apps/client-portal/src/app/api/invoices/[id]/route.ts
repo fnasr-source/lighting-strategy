@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
+import admin from 'firebase-admin';
+import { sendInstapaySubmittedEmail } from '@/lib/email-receipts';
 
 /**
  * Public Invoice data API
- * GET /api/invoices/[id]
- * Returns invoice data + company info for the public invoice page
+ * GET /api/invoices/[id]  — Returns invoice data + company info
+ * PATCH /api/invoices/[id] — Submit InstaPay payment notification
  */
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
@@ -28,6 +30,100 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
             },
         });
     } catch (err: any) {
+        return NextResponse.json({ error: err.message }, { status: 500 });
+    }
+}
+
+/**
+ * PATCH /api/invoices/[id]
+ * Client submits InstaPay payment confirmation.
+ * Creates a pending payment record and sends email notifications.
+ *
+ * Body: { paymentMethod: 'instapay', instapayRef?: string }
+ */
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+    try {
+        const { id } = await params;
+        const body = await req.json();
+        const { paymentMethod, instapayRef } = body;
+
+        if (paymentMethod !== 'instapay') {
+            return NextResponse.json({ error: 'Invalid payment method' }, { status: 400 });
+        }
+
+        // Get invoice
+        const invoiceRef = adminDb.collection('invoices').doc(id);
+        const invoiceSnap = await invoiceRef.get();
+        if (!invoiceSnap.exists) {
+            return NextResponse.json({ error: 'Invoice not found' }, { status: 404 });
+        }
+        const invData = invoiceSnap.data()!;
+
+        if (invData.status === 'paid') {
+            return NextResponse.json({ error: 'Invoice already paid' }, { status: 400 });
+        }
+
+        // Create pending payment record
+        const submittedAt = new Date().toISOString();
+        await adminDb.collection('payments').add({
+            clientId: invData.clientId || '',
+            clientName: invData.clientName || '',
+            invoiceId: id,
+            invoiceNumber: invData.invoiceNumber || '',
+            amount: invData.totalDue,
+            currency: invData.currency,
+            method: 'instapay',
+            status: 'pending',
+            instapayRef: instapayRef || '',
+            paidAt: submittedAt,
+            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+
+        // Update invoice with submission info
+        await invoiceRef.update({
+            instapaySubmittedAt: submittedAt,
+            instapayRef: instapayRef || '',
+        });
+
+        // Send notifications
+        try {
+            let clientEmail = '';
+            let ccEmails: string[] = [];
+
+            if (invData.clientId) {
+                const clientDoc = await adminDb.collection('clients').doc(invData.clientId).get();
+                const cd = clientDoc.data();
+                if (cd?.contacts && Array.isArray(cd.contacts)) {
+                    const primary = cd.contacts.find((c: any) => c.role === 'primary');
+                    clientEmail = primary?.email || cd.email || '';
+                    ccEmails = cd.contacts.filter((c: any) => c.role === 'cc' && c.email).map((c: any) => c.email);
+                } else {
+                    clientEmail = cd?.email || '';
+                }
+            }
+
+            const settingsDoc = await adminDb.collection('systemConfig').doc('settings').get();
+            const settings = settingsDoc.data() || {};
+
+            await sendInstapaySubmittedEmail({
+                clientName: invData.clientName?.split(' — ')[0] || invData.clientName,
+                clientEmail,
+                ccEmails,
+                invoiceNumber: invData.invoiceNumber,
+                amount: invData.totalDue,
+                currency: invData.currency,
+                instapayRef: instapayRef || undefined,
+                submittedAt,
+                companyEmail: settings.companyEmail || 'hello@admireworks.com',
+                companyPhone: settings.companyPhone || '(+971) 4295 8666',
+            });
+        } catch (emailErr: any) {
+            console.error('Email notification failed:', emailErr.message);
+        }
+
+        return NextResponse.json({ ok: true, message: 'Payment submitted' });
+    } catch (err: any) {
+        console.error('PATCH /api/invoices/[id] error:', err.message);
         return NextResponse.json({ error: err.message }, { status: 500 });
     }
 }

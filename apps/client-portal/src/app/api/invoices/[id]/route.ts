@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
 
 /**
- * Invoice data API
+ * Public Invoice data API
  * GET /api/invoices/[id]
+ * Returns invoice data + company info for the public invoice page
  */
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
@@ -14,13 +15,16 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
         }
 
         const configDoc = await adminDb.collection('systemConfig').doc('settings').get();
-        const config = configDoc.data();
+        const config = configDoc.data() || {};
 
         return NextResponse.json({
             invoice: { id: invoiceDoc.id, ...invoiceDoc.data() },
             company: {
-                name: config?.companyName, tagline: config?.companyTagline,
-                email: config?.companyEmail, phone: config?.companyPhone, address: config?.companyAddress,
+                name: config.companyName || 'Admireworks',
+                tagline: config.companyTagline || 'Admirable Venture Services',
+                email: config.companyEmail || 'hello@admireworks.com',
+                phone: config.companyPhone || '(+971) 4295 8666',
+                address: config.companyAddress || 'P.O.Box/36846, DXB, UAE',
             },
         });
     } catch (err: any) {

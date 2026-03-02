@@ -27,3 +27,4 @@ AW-Dashboards.zip
 firebase/inject-secrets.mjs
 firebase/fix-secrets.mjs
 firebase/check-builds.mjs
+firebase/seed-rqm.mjs

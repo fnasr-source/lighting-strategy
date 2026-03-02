@@ -35,18 +35,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
     useEffect(() => {
-        return onAuthStateChanged(auth, async (u) => {
+        const unsub = onAuthStateChanged(auth, async (u) => {
             setUser(u);
             if (u) {
-                const token = await u.getIdTokenResult(true);
-                setIsAdmin(token.claims.role === 'admin');
-                setIsSuperAdmin(!!token.claims.superAdmin);
+                try {
+                    const tokenResult = await u.getIdTokenResult();
+                    setIsAdmin(tokenResult.claims.role === 'admin');
+                    setIsSuperAdmin(!!tokenResult.claims.superAdmin);
+                } catch (e) {
+                    console.error('Error getting token:', e);
+                    setIsAdmin(false);
+                    setIsSuperAdmin(false);
+                }
             } else {
                 setIsAdmin(false);
                 setIsSuperAdmin(false);
             }
             setLoading(false);
         });
+        return () => unsub();
     }, []);
 
     const login = async (email: string, password: string) => {
@@ -54,7 +61,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const loginWithGoogle = async () => {
-        await signInWithPopup(auth, googleProvider);
+        const result = await signInWithPopup(auth, googleProvider);
+        // Force token refresh to get latest custom claims
+        if (result.user) {
+            const tokenResult = await result.user.getIdTokenResult(true);
+            setIsAdmin(tokenResult.claims.role === 'admin');
+            setIsSuperAdmin(!!tokenResult.claims.superAdmin);
+        }
     };
 
     const logout = async () => {

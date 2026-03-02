@@ -3,12 +3,11 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import {
     User,
-    onAuthStateChanged,
+    onIdTokenChanged,
     signInWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
     signOut as firebaseSignOut,
-    onIdTokenChanged,
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
@@ -47,13 +46,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         const unsubscribe = onIdTokenChanged(auth, async (firebaseUser) => {
             if (firebaseUser) {
-                const tokenResult = await firebaseUser.getIdTokenResult();
-                const customClaims = {
-                    role: tokenResult.claims.role as string | undefined,
-                    clientId: tokenResult.claims.clientId as string | undefined,
-                };
-                setClaims(customClaims);
-                setUser(Object.assign(firebaseUser, customClaims));
+                try {
+                    const tokenResult = await firebaseUser.getIdTokenResult();
+                    const customClaims = {
+                        role: tokenResult.claims.role as string | undefined,
+                        clientId: tokenResult.claims.clientId as string | undefined,
+                    };
+                    setClaims(customClaims);
+                    setUser(Object.assign(firebaseUser, customClaims));
+                } catch (e) {
+                    console.error('Error getting token:', e);
+                    setUser(firebaseUser as AuthUser);
+                    setClaims({});
+                }
             } else {
                 setUser(null);
                 setClaims({});
@@ -69,7 +74,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const handleGoogleSignIn = async () => {
-        await signInWithPopup(auth, googleProvider);
+        const result = await signInWithPopup(auth, googleProvider);
+        // Force token refresh to get latest custom claims
+        if (result.user) {
+            const tokenResult = await result.user.getIdTokenResult(true);
+            const customClaims = {
+                role: tokenResult.claims.role as string | undefined,
+                clientId: tokenResult.claims.clientId as string | undefined,
+            };
+            setClaims(customClaims);
+            setUser(Object.assign(result.user, customClaims));
+        }
     };
 
     const signOut = async () => {

@@ -172,6 +172,39 @@ export interface MonthlyClientRollup {
     aggregatedAt?: any;
 }
 
+// ── Communication Types ──────────────────────────────
+
+export interface Thread {
+    id?: string;
+    clientId: string;
+    clientName: string;
+    subject: string;
+    category: 'general' | 'approval' | 'report' | 'billing';
+    priority: 'normal' | 'urgent';
+    status: 'open' | 'resolved' | 'waiting';
+    lastMessageAt?: any;
+    lastMessagePreview?: string;
+    createdBy: string;     // UID
+    createdByName: string;
+    messageCount?: number;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface Message {
+    id?: string;
+    threadId: string;
+    senderUid: string;
+    senderName: string;
+    senderRole: 'owner' | 'admin' | 'team' | 'client';
+    content: string;
+    attachments?: { name: string; url: string; type: string }[];
+    // Approval-specific
+    approvalAction?: 'request' | 'approve' | 'reject';
+    approvalItemUrl?: string;
+    createdAt?: any;
+}
+
 export interface Lead {
     id?: string;
     name: string;
@@ -365,6 +398,52 @@ export const remindersService = {
 
     async markSent(id: string): Promise<void> {
         await updateDoc(doc(db, 'invoiceReminders', id), { status: 'sent', sentAt: new Date().toISOString() });
+    },
+};
+
+// ── Threads (Communication) ──────────────────────────
+export const threadsService = {
+    subscribe(callback: (threads: Thread[]) => void) {
+        return onSnapshot(query(collection(db, 'threads'), orderBy('lastMessageAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Thread)));
+        });
+    },
+    subscribeByClient(clientId: string, callback: (threads: Thread[]) => void) {
+        return onSnapshot(query(collection(db, 'threads'), where('clientId', '==', clientId), orderBy('lastMessageAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Thread)));
+        });
+    },
+    async create(data: Omit<Thread, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'threads'), {
+            ...data, messageCount: 0,
+            lastMessageAt: serverTimestamp(),
+            createdAt: serverTimestamp(), updatedAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+    async update(id: string, data: Partial<Thread>): Promise<void> {
+        await updateDoc(doc(db, 'threads', id), { ...data, updatedAt: serverTimestamp() });
+    },
+};
+
+// ── Messages (Communication) ─────────────────────────
+export const messagesService = {
+    subscribeByThread(threadId: string, callback: (msgs: Message[]) => void) {
+        return onSnapshot(query(collection(db, 'messages'), where('threadId', '==', threadId), orderBy('createdAt', 'asc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Message)));
+        });
+    },
+    async create(data: Omit<Message, 'id' | 'createdAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'messages'), {
+            ...data, createdAt: serverTimestamp(),
+        });
+        // Update thread
+        await updateDoc(doc(db, 'threads', data.threadId), {
+            lastMessageAt: serverTimestamp(),
+            lastMessagePreview: data.content.slice(0, 100),
+            updatedAt: serverTimestamp(),
+        });
+        return ref.id;
     },
 };
 

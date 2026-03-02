@@ -1,135 +1,285 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { db } from '@/lib/firebase';
-import { collection, addDoc, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
-import { MessageSquare, Send, X } from 'lucide-react';
-
-interface Message {
-    id?: string;
-    from: string;
-    fromName: string;
-    to?: string;
-    subject: string;
-    body: string;
-    type: 'update' | 'notification' | 'message';
-    read: boolean;
-    createdAt?: any;
-}
+import {
+    clientsService, threadsService, messagesService,
+    type Client, type Thread, type Message,
+} from '@/lib/firestore';
+import { MessageSquare, Send, Plus, X, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export default function CommunicationsPage() {
-    const { user, isAdmin } = useAuth();
+    const { user, profile, hasPermission, isClient } = useAuth();
+    const [clients, setClients] = useState<Client[]>([]);
+    const [threads, setThreads] = useState<Thread[]>([]);
+    const [selectedThread, setSelectedThread] = useState<Thread | null>(null);
     const [messages, setMessages] = useState<Message[]>([]);
-    const [showCompose, setShowCompose] = useState(false);
-    const [selectedMsg, setSelectedMsg] = useState<Message | null>(null);
-    const [form, setForm] = useState({ subject: '', body: '', to: '', type: 'update' as Message['type'] });
+    const [newMsg, setNewMsg] = useState('');
+    const [showNew, setShowNew] = useState(false);
+    const [newThread, setNewThread] = useState({ clientId: '', subject: '', category: 'general' as const, message: '' });
+    const msgEndRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => { clientsService.subscribe(setClients); }, []);
 
     useEffect(() => {
-        return onSnapshot(query(collection(db, 'communications'), orderBy('createdAt', 'desc')), snap => {
-            setMessages(snap.docs.map(d => ({ id: d.id, ...d.data() } as Message)));
-        });
-    }, []);
-
-    const handleSend = async (e: React.FormEvent) => {
-        e.preventDefault();
-        await addDoc(collection(db, 'communications'), {
-            from: user?.uid || '',
-            fromName: user?.displayName || user?.email || 'Admin',
-            to: form.to || 'all',
-            subject: form.subject,
-            body: form.body,
-            type: form.type,
-            read: false,
-            createdAt: serverTimestamp(),
-        });
-
-        // Also send via email if there's a recipient
-        if (form.to && form.to.includes('@')) {
-            try {
-                const token = await user?.getIdToken();
-                await fetch('/api/emails/send', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-                    body: JSON.stringify({ to: form.to, subject: form.subject, html: `<p>${form.body.replace(/\n/g, '<br>')}</p>` }),
-                });
-            } catch (e) { /* email sending is best-effort */ }
+        if (isClient && profile?.linkedClientId) {
+            return threadsService.subscribeByClient(profile.linkedClientId, setThreads);
         }
+        return threadsService.subscribe(setThreads);
+    }, [isClient, profile]);
 
-        setShowCompose(false);
-        setForm({ subject: '', body: '', to: '', type: 'update' });
+    useEffect(() => {
+        if (!selectedThread?.id) return;
+        return messagesService.subscribeByThread(selectedThread.id, m => {
+            setMessages(m);
+            setTimeout(() => msgEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
+        });
+    }, [selectedThread?.id]);
+
+    if (!hasPermission('communications:read')) {
+        return <div className="empty-state"><div className="empty-state-icon">🔒</div><div className="empty-state-title">Access Denied</div></div>;
+    }
+
+    const handleSend = async () => {
+        if (!newMsg.trim() || !selectedThread?.id || !user || !profile) return;
+        const msg = newMsg.trim();
+        setNewMsg('');
+        await messagesService.create({
+            threadId: selectedThread.id,
+            senderUid: user.uid,
+            senderName: profile.displayName || user.email || 'User',
+            senderRole: profile.role,
+            content: msg,
+        });
     };
 
-    const typeIcons: Record<string, string> = { update: '📢', notification: '🔔', message: '💬' };
+    const handleNewThread = async () => {
+        if (!newThread.subject.trim() || !newThread.message.trim() || !user || !profile) return;
+        const clientId = isClient ? profile.linkedClientId! : newThread.clientId;
+        const client = clients.find(c => c.id === clientId);
+        const threadId = await threadsService.create({
+            clientId,
+            clientName: client?.name || 'Unknown',
+            subject: newThread.subject,
+            category: newThread.category,
+            priority: 'normal',
+            status: 'open',
+            createdBy: user.uid,
+            createdByName: profile.displayName || user.email || 'User',
+        });
+        await messagesService.create({
+            threadId,
+            senderUid: user.uid,
+            senderName: profile.displayName || user.email || 'User',
+            senderRole: profile.role,
+            content: newThread.message,
+        });
+        setShowNew(false);
+        setNewThread({ clientId: '', subject: '', category: 'general', message: '' });
+    };
+
+    const statusIcon = (s: string) => {
+        if (s === 'open') return <Clock size={12} style={{ color: 'var(--aw-gold)' }} />;
+        if (s === 'resolved') return <CheckCircle size={12} style={{ color: 'var(--success)' }} />;
+        return <AlertTriangle size={12} style={{ color: 'var(--danger)' }} />;
+    };
+
+    const catColor = (c: string) => {
+        if (c === 'approval') return '#e67e22';
+        if (c === 'billing') return '#9b59b6';
+        if (c === 'report') return '#3498db';
+        return '#7f8c8d';
+    };
+
+    const timeAgo = (ts: any) => {
+        if (!ts) return '';
+        const d = ts.toDate ? ts.toDate() : new Date(ts);
+        const mins = Math.floor((Date.now() - d.getTime()) / 60000);
+        if (mins < 1) return 'now';
+        if (mins < 60) return `${mins}m ago`;
+        const hrs = Math.floor(mins / 60);
+        if (hrs < 24) return `${hrs}h ago`;
+        return `${Math.floor(hrs / 24)}d ago`;
+    };
 
     return (
-        <>
-            <div className="page-header">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
-                        <h1 className="page-title">Communications</h1>
-                        <p className="page-subtitle">{messages.length} message{messages.length !== 1 ? 's' : ''}</p>
-                    </div>
-                    {isAdmin && <button className="btn btn-primary" onClick={() => setShowCompose(true)}><Send size={16} /> Compose</button>}
+        <div>
+            <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <h1 className="page-title">Communications</h1>
+                    <p className="page-subtitle">Client messaging & approvals</p>
                 </div>
+                {hasPermission('communications:write') && (
+                    <button className="btn-primary" onClick={() => setShowNew(true)} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <Plus size={14} /> New Thread
+                    </button>
+                )}
             </div>
 
-            {messages.length === 0 ? (
-                <div className="card"><div className="empty-state"><div className="empty-state-icon">💬</div><div className="empty-state-title">No Messages</div><p style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Updates and communications will appear here.</p></div></div>
-            ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {messages.map(msg => (
-                        <div key={msg.id} className="card" style={{ padding: 16, cursor: 'pointer', borderLeft: `3px solid ${msg.type === 'update' ? 'var(--aw-navy)' : msg.type === 'notification' ? 'var(--aw-gold)' : 'var(--aw-berry)'}` }} onClick={() => setSelectedMsg(msg)}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                                    <span>{typeIcons[msg.type] || '📧'}</span>
-                                    <div>
-                                        <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{msg.subject}</div>
-                                        <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>From {msg.fromName} · {msg.createdAt?.toDate?.()?.toLocaleDateString() || 'Just now'}</div>
-                                    </div>
-                                </div>
-                                <span className={`status-pill ${msg.read ? '' : 'status-active'}`}>{msg.read ? 'Read' : 'New'}</span>
+            {/* New Thread Modal */}
+            {showNew && (
+                <div className="modal-overlay" onClick={() => setShowNew(false)}>
+                    <div className="modal-content" onClick={e => e.stopPropagation()} style={{ maxWidth: 500 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+                            <h3 style={{ fontWeight: 700 }}>New Thread</h3>
+                            <button onClick={() => setShowNew(false)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><X size={18} /></button>
+                        </div>
+                        {!isClient && (
+                            <div style={{ marginBottom: 12 }}>
+                                <label className="form-label">Client</label>
+                                <select className="form-input" value={newThread.clientId} onChange={e => setNewThread(p => ({ ...p, clientId: e.target.value }))}>
+                                    <option value="">Select client...</option>
+                                    {clients.map(c => <option key={c.id} value={c.id!}>{c.name}</option>)}
+                                </select>
                             </div>
+                        )}
+                        <div style={{ marginBottom: 12 }}>
+                            <label className="form-label">Subject</label>
+                            <input className="form-input" value={newThread.subject} onChange={e => setNewThread(p => ({ ...p, subject: e.target.value }))} placeholder="Thread subject..." />
+                        </div>
+                        <div style={{ marginBottom: 12 }}>
+                            <label className="form-label">Category</label>
+                            <select className="form-input" value={newThread.category} onChange={e => setNewThread(p => ({ ...p, category: e.target.value as any }))}>
+                                <option value="general">General</option>
+                                <option value="approval">Approval Request</option>
+                                <option value="report">Report Discussion</option>
+                                <option value="billing">Billing</option>
+                            </select>
+                        </div>
+                        <div style={{ marginBottom: 16 }}>
+                            <label className="form-label">Message</label>
+                            <textarea className="form-input" rows={3} value={newThread.message} onChange={e => setNewThread(p => ({ ...p, message: e.target.value }))} placeholder="Write your message..." />
+                        </div>
+                        <button className="btn-primary" onClick={handleNewThread} style={{ width: '100%' }}>Create Thread</button>
+                    </div>
+                </div>
+            )}
+
+            {/* Main Layout: Thread list + message view */}
+            <div style={{ display: 'grid', gridTemplateColumns: '340px 1fr', gap: 16, height: 'calc(100vh - 200px)', minHeight: 400 }}>
+                {/* Thread List */}
+                <div className="card" style={{ overflow: 'auto', padding: 0 }}>
+                    {threads.length === 0 ? (
+                        <div className="empty-state" style={{ padding: 32 }}>
+                            <MessageSquare size={32} />
+                            <p style={{ marginTop: 8, color: 'var(--muted)', fontSize: '0.85rem' }}>No threads yet</p>
+                        </div>
+                    ) : threads.map(t => (
+                        <div key={t.id} onClick={() => setSelectedThread(t)}
+                            style={{
+                                padding: '14px 16px', cursor: 'pointer', borderBottom: '1px solid var(--border)',
+                                background: selectedThread?.id === t.id ? 'rgba(0,26,112,0.04)' : 'transparent',
+                                borderLeft: selectedThread?.id === t.id ? '3px solid var(--aw-navy)' : '3px solid transparent',
+                                transition: 'all 0.15s ease',
+                            }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4, alignItems: 'center' }}>
+                                <span style={{ fontSize: '0.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 6 }}>
+                                    {statusIcon(t.status)} {t.subject}
+                                </span>
+                                <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>{timeAgo(t.lastMessageAt)}</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>{t.clientName}</span>
+                                <span style={{
+                                    fontSize: '0.6rem', padding: '2px 6px', borderRadius: 4,
+                                    background: `${catColor(t.category)}18`, color: catColor(t.category),
+                                    fontWeight: 600, textTransform: 'uppercase',
+                                }}>{t.category}</span>
+                            </div>
+                            {t.lastMessagePreview && (
+                                <p style={{ fontSize: '0.72rem', color: 'var(--muted)', marginTop: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                    {t.lastMessagePreview}
+                                </p>
+                            )}
                         </div>
                     ))}
                 </div>
-            )}
 
-            {/* Message detail */}
-            {selectedMsg && (
-                <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setSelectedMsg(null)}>
-                    <div className="card" style={{ width: '100%', maxWidth: 560, maxHeight: '80vh', overflow: 'auto' }} onClick={e => e.stopPropagation()}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-                            <h2 style={{ fontSize: '1.1rem', fontWeight: 700 }}>{selectedMsg.subject}</h2>
-                            <button onClick={() => setSelectedMsg(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted)' }}><X size={20} /></button>
+                {/* Message View */}
+                <div className="card" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
+                    {!selectedThread ? (
+                        <div className="empty-state" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                            <MessageSquare size={40} style={{ color: 'var(--border)' }} />
+                            <p style={{ marginTop: 12, color: 'var(--muted)', fontSize: '0.85rem' }}>Select a thread to view messages</p>
                         </div>
-                        <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: 16 }}>From {selectedMsg.fromName} · {selectedMsg.type}</div>
-                        <div style={{ fontSize: '0.9rem', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>{selectedMsg.body}</div>
-                    </div>
-                </div>
-            )}
-
-            {/* Compose */}
-            {showCompose && (
-                <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setShowCompose(false)}>
-                    <div className="card" style={{ width: '100%', maxWidth: 520, maxHeight: '90vh', overflow: 'auto' }} onClick={e => e.stopPropagation()}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
-                            <h2 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Compose Message</h2>
-                            <button onClick={() => setShowCompose(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted)' }}><X size={20} /></button>
-                        </div>
-                        <form onSubmit={handleSend}>
-                            <div className="form-group"><label className="form-label">To (email, optional)</label><input className="form-input" type="email" value={form.to} onChange={e => setForm({ ...form, to: e.target.value })} placeholder="client@email.com (also sends via email)" /></div>
-                            <div className="form-group"><label className="form-label">Type</label><select className="form-input" value={form.type} onChange={e => setForm({ ...form, type: e.target.value as Message['type'] })}><option value="update">Update</option><option value="notification">Notification</option><option value="message">Message</option></select></div>
-                            <div className="form-group"><label className="form-label">Subject *</label><input className="form-input" required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} /></div>
-                            <div className="form-group"><label className="form-label">Message *</label><textarea className="form-input" rows={5} required value={form.body} onChange={e => setForm({ ...form, body: e.target.value })} /></div>
-                            <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
-                                <button type="button" className="btn btn-outline" onClick={() => setShowCompose(false)}>Cancel</button>
-                                <button type="submit" className="btn btn-primary"><Send size={14} /> Send</button>
+                    ) : (
+                        <>
+                            {/* Thread Header */}
+                            <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div>
+                                    <h3 style={{ fontSize: '0.92rem', fontWeight: 700, margin: 0 }}>{selectedThread.subject}</h3>
+                                    <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>
+                                        {selectedThread.clientName} · {selectedThread.category} · {selectedThread.createdByName}
+                                    </span>
+                                </div>
+                                {hasPermission('communications:write') && selectedThread.status === 'open' && (
+                                    <button onClick={() => threadsService.update(selectedThread.id!, { status: 'resolved' })}
+                                        style={{ fontSize: '0.75rem', padding: '6px 12px', borderRadius: 6, border: '1px solid var(--success)', color: 'var(--success)', background: 'none', cursor: 'pointer', fontWeight: 600 }}>
+                                        ✓ Resolve
+                                    </button>
+                                )}
                             </div>
-                        </form>
-                    </div>
+
+                            {/* Messages */}
+                            <div style={{ flex: 1, overflow: 'auto', padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+                                {messages.map(m => {
+                                    const isMe = m.senderUid === user?.uid;
+                                    const roleColor = m.senderRole === 'client' ? '#e67e22' : 'var(--aw-navy)';
+                                    return (
+                                        <div key={m.id} style={{ display: 'flex', flexDirection: 'column', alignItems: isMe ? 'flex-end' : 'flex-start' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                                                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: roleColor }}>
+                                                    {m.senderName}
+                                                </span>
+                                                <span style={{ fontSize: '0.6rem', color: 'var(--muted)' }}>{timeAgo(m.createdAt)}</span>
+                                            </div>
+                                            <div style={{
+                                                maxWidth: '80%', padding: '10px 14px', borderRadius: 10,
+                                                background: isMe ? 'var(--aw-navy)' : 'var(--bg)',
+                                                color: isMe ? '#fff' : 'var(--text)',
+                                                fontSize: '0.85rem', lineHeight: 1.5,
+                                                borderBottomRightRadius: isMe ? 2 : 10,
+                                                borderBottomLeftRadius: isMe ? 10 : 2,
+                                            }}>
+                                                {m.approvalAction && (
+                                                    <div style={{
+                                                        fontSize: '0.7rem', fontWeight: 700, marginBottom: 6, padding: '3px 8px', borderRadius: 4,
+                                                        background: m.approvalAction === 'approve' ? 'rgba(46,204,113,0.2)' : m.approvalAction === 'reject' ? 'rgba(231,76,60,0.2)' : 'rgba(241,196,15,0.2)',
+                                                        color: m.approvalAction === 'approve' ? '#2ecc71' : m.approvalAction === 'reject' ? '#e74c3c' : '#f1c40f',
+                                                        display: 'inline-block',
+                                                    }}>
+                                                        {m.approvalAction === 'approve' ? '✓ APPROVED' : m.approvalAction === 'reject' ? '✗ REJECTED' : '⏳ APPROVAL REQUESTED'}
+                                                    </div>
+                                                )}
+                                                {m.content}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                                <div ref={msgEndRef} />
+                            </div>
+
+                            {/* Compose */}
+                            {hasPermission('communications:write') && selectedThread.status !== 'resolved' && (
+                                <div style={{ padding: '12px 20px', borderTop: '1px solid var(--border)', display: 'flex', gap: 8 }}>
+                                    <input
+                                        className="form-input"
+                                        style={{ flex: 1, margin: 0 }}
+                                        value={newMsg}
+                                        onChange={e => setNewMsg(e.target.value)}
+                                        onKeyDown={e => e.key === 'Enter' && !e.shiftKey && handleSend()}
+                                        placeholder="Type a message..."
+                                    />
+                                    <button className="btn-primary" onClick={handleSend}
+                                        style={{ padding: '8px 16px', display: 'flex', alignItems: 'center', gap: 6 }}>
+                                        <Send size={14} />
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    )}
                 </div>
-            )}
-        </>
+            </div>
+        </div>
     );
 }

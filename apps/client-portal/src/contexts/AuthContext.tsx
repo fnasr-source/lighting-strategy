@@ -67,15 +67,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             let p = await userProfilesService.getByUid(firebaseUser.uid);
 
             if (!p) {
-                // First-time login: check custom claims for role
-                const tokenResult = await firebaseUser.getIdTokenResult();
+                // First-time login: force token refresh for fresh custom claims
+                const tokenResult = await firebaseUser.getIdTokenResult(true);
                 const claimRole = tokenResult.claims.role as string | undefined;
                 const claimClientId = tokenResult.claims.clientId as string | undefined;
 
-                // Auto-create profile based on claims or default to 'admin' for first user
-                const role: UserRole = (claimRole === 'client' ? 'client' :
-                    claimRole === 'team' ? 'team' :
-                        claimRole === 'owner' ? 'owner' : 'admin') as UserRole;
+                // Determine role: custom claims > email domain > default
+                let role: UserRole;
+                if (claimRole === 'owner') role = 'owner';
+                else if (claimRole === 'admin') role = 'admin';
+                else if (claimRole === 'team') role = 'team';
+                else if (claimRole === 'client') role = 'client';
+                else if (firebaseUser.email?.endsWith('@admireworks.com')) role = 'admin';
+                else role = 'client';
 
                 const newProfile: Omit<UserProfile, 'id' | 'createdAt' | 'updatedAt'> = {
                     uid: firebaseUser.uid,

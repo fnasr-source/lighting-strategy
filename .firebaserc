@@ -1,0 +1,13 @@
+{
+  "projects": {},
+  "targets": {
+    "admireworks---internal-os": {
+      "hosting": {
+        "lup-2026": [
+          "lup-2026"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

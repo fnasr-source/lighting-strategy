@@ -1,5 +1,46 @@
 {
     "firestore": {
         "rules": "firestore.rules"
-    }
+    },
+    "hosting": [
+        {
+            "target": "lup-2026",
+            "public": "campaigns/lup-2026/public",
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "headers": [
+                {
+                    "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico)",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "max-age=2592000, immutable"
+                        }
+                    ]
+                },
+                {
+                    "source": "**/*.@(css|js)",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "max-age=86400"
+                        }
+                    ]
+                }
+            ],
+            "rewrites": [
+                {
+                    "source": "/dashboard",
+                    "destination": "/campaign-hub.html"
+                },
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
+        }
+    ]
 }

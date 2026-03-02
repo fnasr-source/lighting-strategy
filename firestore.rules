@@ -110,6 +110,15 @@ service cloud.firestore {
         // Only admins can update/delete
         allow update, delete: if request.auth != null &&
           get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+
+        // ── Activities (CRM communication log) ──
+        match /activities/{activityId} {
+          // Authenticated users can create and read activities
+          allow create, read: if request.auth != null;
+          // Only owner/admin can update/delete activities
+          allow update, delete: if request.auth != null &&
+            get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+        }
       }
     }
   }

@@ -527,6 +527,11 @@ h3 {
   }
 }
 
+/* ── Sidebar Backdrop ─────────────────────────────── */
+.sidebar-backdrop {
+  display: none;
+}
+
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar {
@@ -537,9 +542,22 @@ h3 {
     transform: translateX(0);
   }
 
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 35;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+  }
+
   .main-content {
     margin-left: 0;
-    padding: 20px 16px;
+    padding: 60px 16px 24px;
   }
 
   .kpi-grid {
@@ -549,6 +567,48 @@ h3 {
   .page-title {
     font-size: 1.4rem;
   }
+
+  .page-header {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  /* Tables scroll horizontally */
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+
+  /* Form adjustments */
+  .form-input {
+    font-size: 16px;
+    /* Prevents iOS zoom */
+  }
+
+  /* Buttons full-width on mobile */
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -556,7 +616,23 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .main-content {
+    padding: 56px 12px 20px;
+  }
+
   .login-card {
     padding: 32px 24px;
+  }
+
+  .page-title {
+    font-size: 1.2rem;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .kpi-value {
+    font-size: 1.4rem;
   }
 }

@@ -151,6 +151,11 @@ export default function DashboardLayout({
                 </div>
             </aside>
 
+            {/* Backdrop overlay (mobile) */}
+            {sidebarOpen && (
+                <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
+            )}
+
             {/* Main content */}
             <main className="main-content">
                 {children}

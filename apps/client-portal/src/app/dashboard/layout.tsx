@@ -39,6 +39,7 @@ const allNavItems: NavItem[] = [
     { label: 'Proposals', href: '/dashboard/proposals', icon: FileText, permission: 'proposals:read' },
     { section: 'Campaigns' },
     { label: 'Performance', href: '/dashboard/campaigns', icon: BarChart3, permission: 'campaigns:read' },
+    { label: 'Campaign Leads', href: '/dashboard/campaign-leads', icon: Target, permission: 'campaigns:read' },
     { label: 'Integrations', href: '/dashboard/integrations', icon: Globe, permission: 'campaigns:read' },
     { section: 'Finance' },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt, permission: 'invoices:read' },

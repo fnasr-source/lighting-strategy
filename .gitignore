@@ -28,3 +28,4 @@ firebase/inject-secrets.mjs
 firebase/fix-secrets.mjs
 firebase/check-builds.mjs
 firebase/seed-rqm.mjs
+firebase/update-stripe-branding.mjs

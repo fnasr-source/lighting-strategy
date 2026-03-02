@@ -16,12 +16,23 @@ export default function ClientsPage() {
 
     useEffect(() => { return clientsService.subscribe(setClients); }, []);
 
-    const filtered = clients.filter(c =>
-        c.name.toLowerCase().includes(search.toLowerCase()) ||
-        c.company?.toLowerCase().includes(search.toLowerCase()) ||
-        c.email?.toLowerCase().includes(search.toLowerCase()) ||
-        c.contacts?.some(ct => ct.email.toLowerCase().includes(search.toLowerCase()) || ct.name.toLowerCase().includes(search.toLowerCase()))
-    );
+    const statusPriority: Record<string, number> = { active: 0, proposal_sent: 1, prospect: 2, lead: 3, churned: 4 };
+
+    const [statusTab, setStatusTab] = useState('all');
+
+    const filtered = clients
+        .filter(c =>
+            (c.name.toLowerCase().includes(search.toLowerCase()) ||
+                c.company?.toLowerCase().includes(search.toLowerCase()) ||
+                c.email?.toLowerCase().includes(search.toLowerCase()) ||
+                c.contacts?.some(ct => ct.email.toLowerCase().includes(search.toLowerCase()) || ct.name.toLowerCase().includes(search.toLowerCase())))
+            && (statusTab === 'all' || (statusTab === 'pipeline' ? ['lead', 'prospect', 'proposal_sent'].includes(c.status) : c.status === statusTab))
+        )
+        .sort((a, b) => (statusPriority[a.status] ?? 5) - (statusPriority[b.status] ?? 5));
+
+    const activeCount = clients.filter(c => c.status === 'active').length;
+    const pipelineCount = clients.filter(c => ['lead', 'prospect', 'proposal_sent'].includes(c.status)).length;
+    const churnedCount = clients.filter(c => c.status === 'churned').length;
 
     const getPrimaryContact = (c: Client): Contact | null => {
         return c.contacts?.find(ct => ct.role === 'primary') || (c.email ? { name: c.name, email: c.email, phone: c.phone || '', role: 'primary' as const } : null);
@@ -35,7 +46,6 @@ export default function ClientsPage() {
         if (client) {
             setEditingClient(client);
             setForm({ name: client.name, company: client.company || '', region: client.region, baseCurrency: client.baseCurrency, status: client.status, notes: client.notes || '' });
-            // Load contacts from client, or create one from legacy email/phone
             if (client.contacts && client.contacts.length > 0) {
                 setContacts([...client.contacts]);
             } else {
@@ -51,18 +61,14 @@ export default function ClientsPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Filter out contacts with no email
         const validContacts = contacts.filter(c => c.email.trim());
         const primary = validContacts.find(c => c.role === 'primary');
-
         const clientData = {
             ...form,
             contacts: validContacts,
-            // Keep legacy fields synced with primary contact for backward compat
             email: primary?.email || '',
             phone: primary?.phone || '',
         };
-
         if (editingClient?.id) {
             await clientsService.update(editingClient.id, clientData);
         } else {
@@ -88,7 +94,6 @@ export default function ClientsPage() {
     const removeContact = (index: number) => {
         if (contacts.length <= 1) return;
         const updated = contacts.filter((_, i) => i !== index);
-        // Ensure at least one primary
         if (!updated.some(c => c.role === 'primary')) updated[0].role = 'primary';
         setContacts(updated);
     };
@@ -104,12 +109,31 @@ export default function ClientsPage() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
                         <h1 className="page-title">Clients</h1>
-                        <p className="page-subtitle">{clients.length} client{clients.length !== 1 ? 's' : ''} managed</p>
+                        <p className="page-subtitle">{activeCount} active · {pipelineCount} pipeline · {churnedCount} churned</p>
                     </div>
                     <button className="btn btn-primary" onClick={() => openForm()}>
                         <Plus size={16} /> Add Client
                     </button>
                 </div>
+            </div>
+
+            {/* Status Tabs + Search */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
+                {[
+                    { key: 'all', label: `All (${clients.length})` },
+                    { key: 'active', label: `Active (${activeCount})` },
+                    { key: 'pipeline', label: `Pipeline (${pipelineCount})` },
+                    { key: 'churned', label: `Churned (${churnedCount})` },
+                ].map(t => (
+                    <button key={t.key} onClick={() => setStatusTab(t.key)} style={{
+                        padding: '6px 14px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                        fontSize: '0.78rem', fontWeight: statusTab === t.key ? 700 : 500,
+                        background: statusTab === t.key ? 'var(--aw-navy)' : 'var(--muted-bg)',
+                        color: statusTab === t.key ? '#fff' : 'var(--muted)',
+                    }}>
+                        {t.label}
+                    </button>
+                ))}
             </div>
 
             <div className="card" style={{ marginBottom: 20 }}>

@@ -39,7 +39,8 @@ export default function CampaignsPage() {
         if (isClient && profile?.linkedClientId) {
             setSelectedClient(profile.linkedClientId);
         } else if (clients.length > 0) {
-            setSelectedClient(clients[0].id!);
+            const active = clients.find(c => c.status === 'active');
+            setSelectedClient(active?.id || clients[0].id!);
         }
     }, [isClient, profile, clients, selectedClient]);
 
@@ -81,21 +82,24 @@ export default function CampaignsPage() {
             </div>
 
             {/* Client tabs */}
-            {!isClient && clients.length > 0 && (
-                <div style={{ display: 'flex', gap: 8, padding: '16px 0 20px', overflowX: 'auto', flexWrap: 'wrap' }}>
-                    {clients.map(c => (
-                        <button key={c.id} onClick={() => setSelectedClient(c.id!)} style={{
-                            padding: '8px 18px', borderRadius: 8, border: 'none', cursor: 'pointer',
-                            fontSize: '0.84rem', fontWeight: selectedClient === c.id ? 700 : 500,
-                            background: selectedClient === c.id ? 'var(--aw-navy)' : 'var(--muted-bg)',
-                            color: selectedClient === c.id ? '#fff' : 'var(--muted)',
-                            transition: 'all 0.15s ease',
-                        }}>
-                            {c.name}
-                        </button>
-                    ))}
-                </div>
-            )}
+            {!isClient && clients.length > 0 && (() => {
+                const activeClients = clients.filter(c => c.status === 'active');
+                return activeClients.length > 0 ? (
+                    <div style={{ display: 'flex', gap: 8, padding: '16px 0 20px', overflowX: 'auto', flexWrap: 'wrap' }}>
+                        {activeClients.map(c => (
+                            <button key={c.id} onClick={() => setSelectedClient(c.id!)} style={{
+                                padding: '8px 18px', borderRadius: 8, border: 'none', cursor: 'pointer',
+                                fontSize: '0.84rem', fontWeight: selectedClient === c.id ? 700 : 500,
+                                background: selectedClient === c.id ? 'var(--aw-navy)' : 'var(--muted-bg)',
+                                color: selectedClient === c.id ? '#fff' : 'var(--muted)',
+                                transition: 'all 0.15s ease',
+                            }}>
+                                {c.name}
+                            </button>
+                        ))}
+                    </div>
+                ) : null;
+            })()}
 
             {!dataLoaded ? (
                 <div className="card"><div className="empty-state" style={{ padding: 48 }}>

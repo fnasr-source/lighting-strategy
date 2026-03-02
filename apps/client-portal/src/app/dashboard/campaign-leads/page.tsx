@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { clientsService, type Client } from '@/lib/firestore';
-import { collection, query, onSnapshot, orderBy, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
+import { collection, query, onSnapshot, orderBy, doc, updateDoc, deleteDoc, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Users, Mail, Building2, Globe, Calendar, Tag, ExternalLink, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
+import { Users, Mail, Building2, Globe, Calendar, Tag, ExternalLink, Trash2, ChevronDown, ChevronUp, MessageSquare, Phone, FileText, Plus, Send } from 'lucide-react';
 
 interface CampaignLead {
     id: string;
@@ -18,6 +18,12 @@ interface CampaignLead {
     title?: string;
     participants?: string;
     motivation?: string;
+    sector?: string;
+    companySize?: string;
+    yearsExperience?: string;
+    yearsManagement?: string;
+    referralSource?: string;
+    form_type?: string;
     status: string;
     campaign?: string;
     client_id?: string;
@@ -25,6 +31,14 @@ interface CampaignLead {
     created_at?: any;
     utm?: { utm_source?: string; utm_medium?: string; utm_campaign?: string; utm_term?: string; utm_content?: string; gclid?: string; fbclid?: string };
     meta?: { landing_url?: string; referrer?: string; first_visit?: string; user_agent?: string };
+}
+
+interface Activity {
+    id: string;
+    type: 'note' | 'call' | 'email' | 'meeting';
+    content: string;
+    author?: string;
+    created_at?: any;
 }
 
 interface Campaign {
@@ -37,6 +51,9 @@ interface Campaign {
     landing_url?: string;
 }
 
+const ACTIVITY_ICONS: Record<string, string> = { note: '📝', call: '📞', email: '📧', meeting: '🤝' };
+const ACTIVITY_COLORS: Record<string, string> = { note: '#6c5ce7', call: '#00b894', email: '#0984e3', meeting: '#e17055' };
+
 export default function CampaignLeadsPage() {
     const { hasPermission, isClient, profile } = useAuth();
     const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -45,6 +62,12 @@ export default function CampaignLeadsPage() {
     const [loading, setLoading] = useState(true);
     const [expandedLead, setExpandedLead] = useState<string | null>(null);
     const [statusFilter, setStatusFilter] = useState('all');
+    const [activities, setActivities] = useState<Record<string, Activity[]>>({});
+
+    // Activity form state
+    const [activityType, setActivityType] = useState<Activity['type']>('note');
+    const [activityContent, setActivityContent] = useState('');
+    const [savingActivity, setSavingActivity] = useState(false);
 
     // Load campaigns
     useEffect(() => {
@@ -67,6 +90,33 @@ export default function CampaignLeadsPage() {
         });
     }, [selectedCampaign]);
 
+    // Load activities for expanded lead
+    useEffect(() => {
+        if (!expandedLead || !selectedCampaign) return;
+        const actRef = collection(db, 'campaigns', selectedCampaign, 'leads', expandedLead, 'activities');
+        const q = query(actRef, orderBy('created_at', 'desc'));
+        return onSnapshot(q, snap => {
+            const list = snap.docs.map(d => ({ id: d.id, ...d.data() } as Activity));
+            setActivities(prev => ({ ...prev, [expandedLead]: list }));
+        });
+    }, [expandedLead, selectedCampaign]);
+
+    const addActivity = useCallback(async (leadId: string) => {
+        if (!activityContent.trim() || savingActivity) return;
+        setSavingActivity(true);
+        try {
+            const actRef = collection(db, 'campaigns', selectedCampaign, 'leads', leadId, 'activities');
+            await addDoc(actRef, {
+                type: activityType,
+                content: activityContent.trim(),
+                author: profile?.displayName || profile?.email || 'Admin',
+                created_at: serverTimestamp(),
+            });
+            setActivityContent('');
+        } catch (err) { console.error('Failed to add activity:', err); }
+        finally { setSavingActivity(false); }
+    }, [activityContent, activityType, selectedCampaign, profile, savingActivity]);
+
     if (!hasPermission('campaigns:read')) {
         return <div className="empty-state"><div className="empty-state-icon">🔒</div><div className="empty-state-title">Access Denied</div></div>;
     }
@@ -80,7 +130,6 @@ export default function CampaignLeadsPage() {
         return counts;
     }, [leads]);
 
-    // UTM source breakdown
     const sourceBreakdown = useMemo(() => {
         const map: Record<string, number> = {};
         leads.forEach(l => {
@@ -99,9 +148,11 @@ export default function CampaignLeadsPage() {
         await deleteDoc(doc(db, 'campaigns', selectedCampaign, 'leads', leadId));
     };
 
-    const fmtDate = (d: string) => {
-        try { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); }
-        catch { return d; }
+    const fmtDate = (d: string | any) => {
+        try {
+            const date = d?.toDate ? d.toDate() : new Date(d);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        } catch { return String(d); }
     };
 
     const statusColors: Record<string, { bg: string; color: string }> = {
@@ -117,7 +168,7 @@ export default function CampaignLeadsPage() {
             <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
                 <div>
                     <h1 className="page-title">Campaign Leads</h1>
-                    <p className="page-subtitle">Track applications from campaign landing pages</p>
+                    <p className="page-subtitle">Track and manage applications from campaign landing pages</p>
                 </div>
                 <select className="form-input" style={{ width: 'auto', minWidth: 200 }} value={selectedCampaign} onChange={e => setSelectedCampaign(e.target.value)}>
                     {campaigns.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -175,7 +226,7 @@ export default function CampaignLeadsPage() {
                 ))}
             </div>
 
-            {/* Leads Table */}
+            {/* Leads List */}
             {loading ? (
                 <div className="card"><div className="empty-state" style={{ padding: 48 }}><div className="loading-spinner" /></div></div>
             ) : filtered.length === 0 ? (
@@ -189,21 +240,32 @@ export default function CampaignLeadsPage() {
                     {filtered.map(lead => {
                         const sc = statusColors[lead.status] || statusColors.new;
                         const isExpanded = expandedLead === lead.id;
+                        const leadActivities = activities[lead.id] || [];
                         return (
                             <div key={lead.id} style={{ borderBottom: '1px solid var(--card-border)' }}>
-                                <div onClick={() => setExpandedLead(isExpanded ? null : lead.id)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 20px', cursor: 'pointer', gap: 12 }}>
+                                <div onClick={() => { setExpandedLead(isExpanded ? null : lead.id); setActivityContent(''); }} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 20px', cursor: 'pointer', gap: 12 }}>
                                     <div style={{ flex: 1, minWidth: 0 }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3, flexWrap: 'wrap' }}>
                                             <span style={{ fontWeight: 700, fontSize: '0.88rem' }}>{lead.firstName} {lead.lastName}</span>
                                             <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: 4, background: sc.bg, color: sc.color, fontWeight: 600, textTransform: 'uppercase' }}>{lead.status}</span>
+                                            {lead.form_type && (
+                                                <span style={{ fontSize: '0.62rem', padding: '2px 6px', borderRadius: 3, background: lead.form_type === 'application' ? 'rgba(0,26,112,0.08)' : 'rgba(201,168,76,0.12)', color: lead.form_type === 'application' ? 'var(--aw-navy)' : '#b8961f', fontWeight: 600, textTransform: 'uppercase' }}>
+                                                    {lead.form_type === 'application' ? '📋 Application' : '💬 Inquiry'}
+                                                </span>
+                                            )}
+                                            {leadActivities.length > 0 && (
+                                                <span style={{ fontSize: '0.62rem', padding: '2px 6px', borderRadius: 3, background: 'rgba(108,92,231,0.08)', color: '#6c5ce7', fontWeight: 600 }}>
+                                                    <MessageSquare size={10} style={{ verticalAlign: 'middle' }} /> {leadActivities.length}
+                                                </span>
+                                            )}
                                         </div>
                                         <div style={{ display: 'flex', gap: 12, fontSize: '0.75rem', color: 'var(--muted)', flexWrap: 'wrap' }}>
-                                            <span>{lead.title} at {lead.company}</span>
+                                            {lead.title && <span>{lead.title}{lead.company ? ` at ${lead.company}` : ''}</span>}
                                             <span>📧 {lead.email}</span>
                                             {lead.utm?.utm_source && <span>📡 {lead.utm.utm_source}/{lead.utm.utm_medium}</span>}
                                         </div>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                                         <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>{lead.submitted_at ? fmtDate(lead.submitted_at) : ''}</span>
                                         {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                                     </div>
@@ -211,18 +273,24 @@ export default function CampaignLeadsPage() {
 
                                 {isExpanded && (
                                     <div style={{ padding: '0 20px 16px', background: 'var(--muted-bg)' }}>
-                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 16, paddingTop: 12 }}>
+                                        {/* Lead Details */}
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 16, paddingTop: 12 }}>
                                             <Detail label="Lead ID" value={lead.lead_id} />
                                             <Detail label="Phone" value={lead.phone} />
                                             <Detail label="Company" value={lead.company} />
                                             <Detail label="Title" value={lead.title} />
                                             <Detail label="Participants" value={lead.participants} />
+                                            <Detail label="Sector" value={lead.sector} />
+                                            <Detail label="Company Size" value={lead.companySize} />
+                                            <Detail label="Experience" value={lead.yearsExperience ? `${lead.yearsExperience} yrs` : undefined} />
+                                            <Detail label="Management" value={lead.yearsManagement ? `${lead.yearsManagement} yrs` : undefined} />
+                                            <Detail label="Referral" value={lead.referralSource} />
                                             <Detail label="Submitted" value={lead.submitted_at ? fmtDate(lead.submitted_at) : '—'} />
                                         </div>
 
                                         {lead.motivation && (
                                             <div style={{ marginBottom: 12 }}>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', display: 'block', marginBottom: 4 }}>Motivation</span>
+                                                <SectionLabel>Motivation</SectionLabel>
                                                 <p style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--foreground)', margin: 0, padding: '8px 12px', background: 'var(--card-bg)', borderRadius: 8, border: '1px solid var(--card-border)' }}>{lead.motivation}</p>
                                             </div>
                                         )}
@@ -230,10 +298,10 @@ export default function CampaignLeadsPage() {
                                         {/* UTM Data */}
                                         {lead.utm && Object.keys(lead.utm).length > 0 && (
                                             <div style={{ marginBottom: 12 }}>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', display: 'block', marginBottom: 4 }}>UTM Attribution</span>
-                                                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                                                <SectionLabel>UTM Attribution</SectionLabel>
+                                                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                                                     {Object.entries(lead.utm).filter(([, v]) => v).map(([k, v]) => (
-                                                        <span key={k} style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: 4, background: 'rgba(0,26,112,0.06)', color: 'var(--aw-navy)', fontFamily: 'monospace' }}>
+                                                        <span key={k} style={{ fontSize: '0.68rem', padding: '3px 8px', borderRadius: 4, background: 'rgba(0,26,112,0.06)', color: 'var(--aw-navy)', fontFamily: 'monospace' }}>
                                                             {k}: {v}
                                                         </span>
                                                     ))}
@@ -241,10 +309,10 @@ export default function CampaignLeadsPage() {
                                             </div>
                                         )}
 
-                                        {/* Meta / Landing Data */}
+                                        {/* Landing Data */}
                                         {lead.meta && (
                                             <div style={{ marginBottom: 12 }}>
-                                                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', display: 'block', marginBottom: 4 }}>Landing Data</span>
+                                                <SectionLabel>Landing Data</SectionLabel>
                                                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                                                     {lead.meta.referrer && <span style={{ fontSize: '0.68rem', color: 'var(--muted)', fontFamily: 'monospace' }}>Ref: {lead.meta.referrer}</span>}
                                                     {lead.meta.first_visit && <span style={{ fontSize: '0.68rem', color: 'var(--muted)', fontFamily: 'monospace' }}>First: {fmtDate(lead.meta.first_visit)}</span>}
@@ -252,8 +320,72 @@ export default function CampaignLeadsPage() {
                                             </div>
                                         )}
 
-                                        {/* Actions */}
-                                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 12 }}>
+                                        {/* ============ COMMUNICATION LOG ============ */}
+                                        <div style={{ marginTop: 16, borderTop: '1px solid var(--card-border)', paddingTop: 16 }}>
+                                            <SectionLabel>Activity Log</SectionLabel>
+
+                                            {/* Add Activity */}
+                                            <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                                                <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
+                                                    {(['note', 'call', 'email', 'meeting'] as const).map(t => (
+                                                        <button key={t} onClick={() => setActivityType(t)} style={{
+                                                            padding: '5px 10px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                                                            fontSize: '0.72rem', fontWeight: activityType === t ? 700 : 500,
+                                                            background: activityType === t ? ACTIVITY_COLORS[t] + '20' : 'var(--card-bg)',
+                                                            color: activityType === t ? ACTIVITY_COLORS[t] : 'var(--muted)',
+                                                        }}>
+                                                            {ACTIVITY_ICONS[t]} {t[0].toUpperCase() + t.slice(1)}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                                <div style={{ display: 'flex', flex: 1, gap: 6, minWidth: 200 }}>
+                                                    <input
+                                                        className="form-input"
+                                                        placeholder={`Add ${activityType}...`}
+                                                        value={activityContent}
+                                                        onChange={e => setActivityContent(e.target.value)}
+                                                        onKeyDown={e => { if (e.key === 'Enter') addActivity(lead.id); }}
+                                                        style={{ fontSize: '0.82rem', padding: '6px 12px', flex: 1 }}
+                                                    />
+                                                    <button onClick={() => addActivity(lead.id)} disabled={!activityContent.trim() || savingActivity} style={{
+                                                        padding: '6px 14px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                                                        background: 'var(--aw-navy)', color: '#fff', fontSize: '0.78rem', fontWeight: 600,
+                                                        opacity: !activityContent.trim() ? 0.5 : 1, display: 'flex', alignItems: 'center', gap: 4,
+                                                    }}>
+                                                        <Send size={12} /> Add
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            {/* Activity Timeline */}
+                                            {leadActivities.length > 0 ? (
+                                                <div style={{ borderLeft: '2px solid var(--card-border)', paddingLeft: 16, marginLeft: 8 }}>
+                                                    {leadActivities.map(act => (
+                                                        <div key={act.id} style={{ marginBottom: 12, position: 'relative' }}>
+                                                            <div style={{
+                                                                position: 'absolute', left: -22, top: 4, width: 12, height: 12,
+                                                                borderRadius: '50%', background: ACTIVITY_COLORS[act.type] || '#999',
+                                                                border: '2px solid var(--muted-bg)',
+                                                            }} />
+                                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                                                                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: ACTIVITY_COLORS[act.type] || '#999', textTransform: 'uppercase' }}>
+                                                                    {ACTIVITY_ICONS[act.type]} {act.type}
+                                                                </span>
+                                                                <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
+                                                                    {act.author} · {act.created_at ? fmtDate(act.created_at) : 'just now'}
+                                                                </span>
+                                                            </div>
+                                                            <p style={{ fontSize: '0.82rem', margin: 0, lineHeight: 1.5, color: 'var(--foreground)' }}>{act.content}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <p style={{ fontSize: '0.78rem', color: 'var(--muted)', fontStyle: 'italic', margin: 0 }}>No activity recorded yet. Add a note, call, email, or meeting above.</p>
+                                            )}
+                                        </div>
+
+                                        {/* Status Actions */}
+                                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 16, borderTop: '1px solid var(--card-border)', paddingTop: 12 }}>
                                             {['new', 'contacted', 'qualified', 'enrolled', 'rejected'].map(s => (
                                                 <button key={s} onClick={() => updateLeadStatus(lead.id, s)} disabled={lead.status === s}
                                                     style={{
@@ -281,10 +413,15 @@ export default function CampaignLeadsPage() {
 }
 
 function Detail({ label, value }: { label: string; value?: string }) {
+    if (!value || value === '—') return null;
     return (
         <div>
             <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase' }}>{label}</span>
-            <div style={{ fontSize: '0.84rem', fontWeight: 500 }}>{value || '—'}</div>
+            <div style={{ fontSize: '0.84rem', fontWeight: 500 }}>{value}</div>
         </div>
     );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+    return <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', display: 'block', marginBottom: 6, letterSpacing: '0.04em' }}>{children}</span>;
 }

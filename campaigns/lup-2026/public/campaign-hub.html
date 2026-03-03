@@ -3,188 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campaign Command Center — Leading Under Pressure 2026</title>
+    <title>Leading Under Pressure 2026 — Campaign Dashboard | Admireworks</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root{--bg:#05080f;--bg2:#080f1a;--card:#0d1628;--card2:#111e33;--bdr:rgba(255,255,255,.07);--gold:#c9a84c;--gl:#dfc07a;--gd:rgba(201,168,76,.12);--red:#c0392b;--tw:#f0f2f5;--tm:rgba(240,242,245,.6);--td:rgba(240,242,245,.38);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--r:12px}
+        :root{--bg:#fafbfc;--bg2:#f3f4f6;--card:#ffffff;--card2:#f8f9fb;--bdr:#e5e7eb;--navy:#001a70;--gold:#cc9f53;--berry:#44756a;--tomato:#d44315;--apricot:#ea5c2e;--jumeirah:#66bc99;--tw:#0a0f1c;--tm:#6b7280;--td:#9ca3af;--sans:'Inter',system-ui,sans-serif;--r:12px}
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         html{font-size:16px;scroll-behavior:smooth}
         body{font-family:var(--sans);background:var(--bg);color:var(--tw);line-height:1.7;-webkit-font-smoothing:antialiased}
-        .wrap{max-width:1200px;margin:0 auto;padding:48px 28px 80px}
-        
+        .wrap{max-width:1160px;margin:0 auto;padding:40px 28px 80px}
+
         /* Header */
-        .hdr{text-align:center;margin-bottom:48px;padding-top:20px}
-        .hdr h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:10px}
-        .hdr p{color:var(--tm);font-size:1rem;max-width:600px;margin:0 auto 20px}
-        .hdr .line{width:56px;height:2px;background:var(--gold);margin:0 auto}
-        
-        /* Quick Links Bar */
-        .qlinks{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
-        .ql{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--card);border:1px solid var(--bdr);border-radius:50px;font-size:.84rem;font-weight:600;color:var(--tw);text-decoration:none;transition:all .2s}
-        .ql:hover{border-color:rgba(201,168,76,.4);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
-        .ql .ico{font-size:1.1rem}
-        .ql-gold{border-color:rgba(201,168,76,.3);background:linear-gradient(135deg,var(--card),rgba(201,168,76,.08))}
+        .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--bdr)}
+        .hdr-left{display:flex;align-items:center;gap:14px}
+        .hdr-logo{width:40px;height:40px;background:var(--navy);color:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+        .hdr-brand{font-size:.78rem;color:var(--tm);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+        .hdr h1{font-size:1.6rem;font-weight:800;letter-spacing:-.03em;color:var(--tw)}
+        .hdr p{color:var(--tm);font-size:.88rem}
+
+        /* Quick Links */
+        .qlinks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+        .ql{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--card);border:1.5px solid var(--bdr);border-radius:8px;font-size:.82rem;font-weight:600;color:var(--tw);text-decoration:none;transition:all .2s}
+        .ql:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+        .ql .ico{font-size:1rem}
+        .ql-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+        .ql-primary:hover{background:#002090;color:#fff;box-shadow:0 4px 16px rgba(0,26,112,.3)}
 
         /* Section Headers */
-        .sec{margin-bottom:56px}
-        .sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-        .sec-n{width:34px;height:34px;border-radius:50%;background:var(--gd);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.88rem;font-weight:700;color:var(--gold);flex-shrink:0}
-        .sec-pill{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);border:1px solid var(--gold);border-radius:50px;padding:5px 16px}
+        .sec{margin-bottom:48px}
+        .sec-hd{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+        .sec-n{width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0}
+        .sec-pill{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy)}
         .sec-line{flex:1;height:1px;background:var(--bdr)}
-        .sec h2{font-family:var(--serif);font-size:1.4rem;margin-bottom:6px}
-        .sec .sub{color:var(--tm);font-size:.88rem;margin-bottom:20px}
+        .sec h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+        .sec .sub{color:var(--tm);font-size:.86rem;margin-bottom:16px}
 
         /* Cards */
-        .fc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:26px 22px;position:relative;transition:all .25s}
-        .fc:hover{border-color:rgba(201,168,76,.3);transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.3)}
+        .fc{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:22px 20px;position:relative;transition:all .2s}
+        .fc:hover{border-color:rgba(0,26,112,.2);box-shadow:0 4px 16px rgba(0,0,0,.06)}
         .fc .accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
-        .a-blue{background:linear-gradient(90deg,#2980b9,#3498db)}
-        .a-indigo{background:linear-gradient(90deg,#5b4fcf,#7c6fcd)}
-        .a-amber{background:linear-gradient(90deg,var(--gold),#e0a020)}
-        .a-teal{background:linear-gradient(90deg,#16a085,#1abc9c)}
-        .a-red{background:linear-gradient(90deg,#922b21,var(--red))}
-        .a-green{background:linear-gradient(90deg,#1e8449,#27ae60)}
-        .fc h3{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--tw);margin-bottom:6px}
-        .fc p{color:var(--tm);font-size:.86rem;line-height:1.65;margin-bottom:8px}
-        .badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
-        .b-blue{background:rgba(52,152,219,.1);color:#5dade2;border:1px solid rgba(52,152,219,.18)}
-        .b-indigo{background:rgba(124,111,205,.1);color:#a29bfe;border:1px solid rgba(124,111,205,.18)}
-        .b-amber{background:var(--gd);color:var(--gl);border:1px solid rgba(201,168,76,.18)}
-        .b-teal{background:rgba(22,160,133,.1);color:#1abc9c;border:1px solid rgba(22,160,133,.18)}
-        .b-red{background:rgba(192,57,43,.1);color:#e04838;border:1px solid rgba(192,57,43,.18)}
-        .b-green{background:rgba(39,174,96,.1);color:#2ecc71;border:1px solid rgba(39,174,96,.18)}
+        .a-navy{background:var(--navy)}
+        .a-gold{background:var(--gold)}
+        .a-berry{background:var(--berry)}
+        .a-tomato{background:var(--tomato)}
+        .a-apricot{background:var(--apricot)}
+        .a-jumeirah{background:var(--jumeirah)}
+        .fc h3{font-size:.95rem;font-weight:700;color:var(--tw);margin-bottom:6px}
+        .fc p{color:var(--tm);font-size:.84rem;line-height:1.65;margin-bottom:6px}
+        .badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+        .b-navy{background:rgba(0,26,112,.06);color:var(--navy);border:1px solid rgba(0,26,112,.12)}
+        .b-gold{background:rgba(204,159,83,.08);color:#9a7330;border:1px solid rgba(204,159,83,.2)}
+        .b-berry{background:rgba(68,117,106,.08);color:var(--berry);border:1px solid rgba(68,117,106,.15)}
+        .b-tomato{background:rgba(212,67,21,.06);color:var(--tomato);border:1px solid rgba(212,67,21,.12)}
+        .b-jumeirah{background:rgba(102,188,153,.08);color:#3d8c6a;border:1px solid rgba(102,188,153,.15)}
 
         /* Grids */
-        .cg{display:grid;gap:18px}
+        .cg{display:grid;gap:16px}
         .cg.c3{grid-template-columns:repeat(3,1fr)}
         .cg.c2{grid-template-columns:repeat(2,1fr)}
         .cg.c4{grid-template-columns:repeat(4,1fr)}
         .cg.c5{grid-template-columns:repeat(5,1fr)}
 
         /* Arrow */
-        .arrow{display:flex;flex-direction:column;align-items:center;gap:2px;margin:24px 0;color:var(--td)}
-        .arrow .al{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent)}
-        .arrow svg{color:var(--gold);opacity:.6}
+        .arrow{display:flex;flex-direction:column;align-items:center;gap:2px;margin:20px 0;color:var(--td)}
+        .arrow .al{width:1px;height:28px;background:linear-gradient(to bottom,var(--navy),transparent)}
+        .arrow svg{color:var(--navy);opacity:.4}
 
         /* Tables */
-        .dtable{width:100%;border-collapse:collapse;margin-top:12px;font-size:.84rem}
-        .dtable th{text-align:left;color:var(--gl);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;padding:10px 14px;border-bottom:2px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04)}
-        .dtable td{padding:10px 14px;border-bottom:1px solid var(--bdr);color:var(--tm)}
-        .dtable tr:hover td{background:rgba(201,168,76,.03)}
+        .dtable{width:100%;border-collapse:collapse;margin-top:10px;font-size:.84rem}
+        .dtable th{text-align:left;color:var(--tm);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;border-bottom:2px solid var(--bdr);background:var(--bg2)}
+        .dtable td{padding:10px 14px;border-bottom:1px solid var(--bdr);color:var(--tw)}
+        .dtable tr:hover td{background:rgba(0,26,112,.02)}
         .dtable .num-cell{font-weight:700;color:var(--tw);font-variant-numeric:tabular-nums;text-align:right}
-        .dtable .total-row td{border-top:2px solid rgba(201,168,76,.3);font-weight:800;color:var(--tw);background:rgba(201,168,76,.06)}
+        .dtable .total-row td{border-top:2px solid var(--navy);font-weight:800;background:rgba(0,26,112,.03)}
         .dtable .geo-flag{margin-right:6px}
 
         /* Stat Cards */
-        .stat{text-align:center;padding:24px 16px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r)}
-        .stat .sv{font-family:var(--serif);font-size:1.8rem;font-weight:800;color:var(--gl);margin-bottom:4px}
-        .stat .sl{color:var(--tm);font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+        .stat{text-align:center;padding:20px 14px;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r)}
+        .stat .sv{font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:2px;letter-spacing:-.03em}
+        .stat .sl{color:var(--tm);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
 
         /* Priority badges */
         .pri{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:700}
-        .pri-1{background:rgba(192,57,43,.15);color:#e04838;border:1px solid rgba(192,57,43,.2)}
-        .pri-2{background:rgba(243,156,18,.15);color:#f39c12;border:1px solid rgba(243,156,18,.2)}
-        .pri-3{background:rgba(52,152,219,.15);color:#5dade2;border:1px solid rgba(52,152,219,.2)}
-        .pri-4{background:rgba(22,160,133,.15);color:#1abc9c;border:1px solid rgba(22,160,133,.2)}
-        .pri-5{background:rgba(155,89,182,.15);color:#bb8fce;border:1px solid rgba(155,89,182,.2)}
+        .pri-1{background:rgba(212,67,21,.08);color:var(--tomato);border:1px solid rgba(212,67,21,.15)}
+        .pri-2{background:rgba(204,159,83,.08);color:#9a7330;border:1px solid rgba(204,159,83,.2)}
+        .pri-3{background:rgba(0,26,112,.06);color:var(--navy);border:1px solid rgba(0,26,112,.12)}
+        .pri-4{background:rgba(68,117,106,.08);color:var(--berry);border:1px solid rgba(68,117,106,.15)}
 
         /* Timeline */
         .tl{position:relative;padding-left:32px}
-        .tl::before{content:'';position:absolute;left:11px;top:4px;bottom:4px;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.15))}
-        .tl-item{position:relative;margin-bottom:20px;padding:16px 20px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r)}
-        .tl-item::before{content:'';position:absolute;left:-27px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg)}
-        .tl-item.active{border-color:rgba(201,168,76,.3);box-shadow:0 0 20px rgba(201,168,76,.1)}
-        .tl-item.active::before{background:#e04838;box-shadow:0 0 8px rgba(224,72,56,.5)}
-        .tl-wk{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:4px}
+        .tl::before{content:'';position:absolute;left:11px;top:4px;bottom:4px;width:2px;background:linear-gradient(to bottom,var(--navy),rgba(0,26,112,.1))}
+        .tl-item{position:relative;margin-bottom:16px;padding:16px 20px;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r)}
+        .tl-item::before{content:'';position:absolute;left:-27px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--navy);border:2px solid var(--bg)}
+        .tl-item.active{border-color:var(--navy);box-shadow:0 2px 12px rgba(0,26,112,.08)}
+        .tl-item.active::before{background:var(--tomato);box-shadow:0 0 6px rgba(212,67,21,.3)}
+        .tl-wk{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin-bottom:2px}
         .tl-dates{font-size:.76rem;color:var(--td);margin-bottom:4px}
         .tl-act{color:var(--tm);font-size:.84rem;line-height:1.6}
 
         /* Persona Cards */
-        .persona{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid rgba(201,168,76,.15);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden}
-        .persona::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-        .persona h3{font-family:var(--serif);font-size:1.2rem;margin-bottom:4px}
-        .persona .role{color:var(--gl);font-size:.82rem;font-weight:600;margin-bottom:14px}
-        .persona .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-        .persona .tag{padding:4px 10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);border-radius:50px;font-size:.72rem;color:var(--gl);font-weight:600}
+        .persona{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:28px 24px;position:relative;overflow:hidden}
+        .persona::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy)}
+        .persona h3{font-size:1.1rem;font-weight:800;margin-bottom:4px;letter-spacing:-.02em}
+        .persona .role{color:var(--navy);font-size:.82rem;font-weight:600;margin-bottom:12px}
+        .persona .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+        .persona .tag{padding:4px 10px;background:rgba(0,26,112,.04);border:1px solid rgba(0,26,112,.1);border-radius:50px;font-size:.72rem;color:var(--navy);font-weight:600}
         .persona p{color:var(--tm);font-size:.84rem;line-height:1.65}
 
         /* Instantly Account Cards */
-        .acct{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r)}
+        .acct{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r)}
         .acct .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-        .acct .dot-green{background:#27ae60;box-shadow:0 0 8px rgba(39,174,96,.5)}
-        .acct .em{font-weight:600;font-size:.9rem}
-        .acct .sc{color:var(--gl);font-size:.78rem;font-weight:700}
+        .acct .dot-green{background:#16a34a;box-shadow:0 0 6px rgba(22,163,74,.4)}
+        .acct .em{font-weight:600;font-size:.88rem}
+        .acct .sc{color:var(--navy);font-size:.78rem;font-weight:700}
 
         /* Landing Page Card */
-        .lp-card{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:36px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 50px rgba(201,168,76,.05),0 20px 50px rgba(0,0,0,.4)}
-        .lp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-        .lp-card h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:8px}
-        .lp-card p{color:var(--tm);font-size:.88rem;max-width:420px;margin:0 auto 20px}
-        .btn-r{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,#a93226,var(--red));color:#fff;font-weight:700;font-size:.88rem;border-radius:6px;text-decoration:none;box-shadow:0 5px 18px rgba(192,57,43,.4);transition:all .25s}
-        .btn-r:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,57,43,.5)}
+        .lp-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:32px;text-align:center;position:relative;overflow:hidden}
+        .lp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy)}
+        .lp-card h2{font-size:1.2rem;font-weight:800;margin-bottom:6px}
+        .lp-card p{color:var(--tm);font-size:.86rem;max-width:420px;margin:0 auto 16px}
+        .btn-r{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--navy);color:#fff;font-weight:700;font-size:.86rem;border-radius:8px;text-decoration:none;box-shadow:0 4px 12px rgba(0,26,112,.2);transition:all .2s}
+        .btn-r:hover{background:#002090;box-shadow:0 6px 20px rgba(0,26,112,.3);transform:translateY(-1px)}
 
         /* Inner cards */
         .inner{border-radius:8px;padding:14px;margin-top:6px}
-        .inner-teal{background:rgba(22,160,133,.06);border:1px solid rgba(22,160,133,.12)}
-        .inner-red{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.12)}
-        .inner .ih{font-weight:700;font-size:.82rem;margin-bottom:5px}
-        .inner .ih-teal{color:#1abc9c}
-        .inner .ih-red{color:#e04838}
+        .inner-teal{background:rgba(68,117,106,.04);border:1px solid rgba(68,117,106,.12)}
+        .inner-red{background:rgba(212,67,21,.03);border:1px solid rgba(212,67,21,.1)}
+        .inner .ih{font-weight:700;font-size:.82rem;margin-bottom:4px}
+        .inner .ih-teal{color:var(--berry)}
+        .inner .ih-red{color:var(--tomato)}
 
         /* Conversion Card */
-        .conv{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:36px;text-align:center;position:relative;overflow:hidden;max-width:480px;margin:0 auto}
-        .conv::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-        .conv h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:16px}
-        .conv ul{list-style:none;text-align:left;max-width:280px;margin:0 auto 20px}
-        .conv li{display:flex;align-items:center;gap:10px;padding:7px 0;color:var(--tm);font-size:.84rem;border-bottom:1px solid var(--bdr)}
+        .conv{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:32px;text-align:center;position:relative;overflow:hidden;max-width:460px;margin:0 auto}
+        .conv::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy)}
+        .conv h2{font-size:1.2rem;font-weight:800;margin-bottom:14px}
+        .conv ul{list-style:none;text-align:left;max-width:280px;margin:0 auto 18px}
+        .conv li{display:flex;align-items:center;gap:8px;padding:6px 0;color:var(--tm);font-size:.84rem;border-bottom:1px solid var(--bdr)}
         .conv li:last-child{border-bottom:none}
-        .conv .chk{color:#27ae60;font-size:.82rem;flex-shrink:0}
-        .conv .date{color:var(--gold);font-size:1rem;font-weight:700;font-family:var(--serif);margin-top:6px}
-        .plabel{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--td);margin-bottom:8px}
+        .conv .chk{color:#16a34a;font-size:.82rem;flex-shrink:0}
+        .conv .date{color:var(--navy);font-size:.95rem;font-weight:700;margin-top:4px}
+        .plabel{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--td);margin-bottom:6px}
 
         /* Accordion */
-        .email-acc{border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin-bottom:14px;background:var(--card);transition:border-color .2s}
-        .email-acc:hover{border-color:rgba(201,168,76,.2)}
-        .email-hd{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:none;border:none;color:var(--tw);font-family:var(--sans);font-size:.92rem;font-weight:600;text-align:left;cursor:pointer;transition:color .2s}
-        .email-hd:hover{color:var(--gl)}
-        .email-hd .day{color:var(--gold);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-right:auto;margin-left:14px;padding:3px 10px;border-radius:50px;background:var(--gd)}
-        .email-hd .arrow-i{font-size:1.1rem;color:var(--gold);transition:transform .2s;flex-shrink:0}
+        .email-acc{border:1.5px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin-bottom:12px;background:var(--card);transition:border-color .2s}
+        .email-acc:hover{border-color:rgba(0,26,112,.15)}
+        .email-hd{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:none;border:none;color:var(--tw);font-family:var(--sans);font-size:.88rem;font-weight:600;text-align:left;cursor:pointer;transition:color .2s}
+        .email-hd:hover{color:var(--navy)}
+        .email-hd .day{color:var(--navy);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-right:auto;margin-left:12px;padding:3px 10px;border-radius:50px;background:rgba(0,26,112,.06)}
+        .email-hd .arrow-i{font-size:1rem;color:var(--navy);transition:transform .2s;flex-shrink:0}
         .email-acc.open .arrow-i{transform:rotate(45deg)}
         .email-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-        .email-body-inner{padding:0 22px 22px;color:var(--tm);font-size:.88rem;line-height:1.75}
-        .email-body-inner h4{color:var(--tw);font-size:.82rem;font-weight:700;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.06em}
-        .email-body-inner .subj{color:var(--gl);font-style:italic;margin-bottom:4px;font-size:.84rem}
-        .email-body-inner .copy{background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;padding:18px 20px;margin-top:10px;white-space:pre-wrap;font-size:.84rem;line-height:1.8}
+        .email-body-inner{padding:0 20px 20px;color:var(--tm);font-size:.86rem;line-height:1.75}
+        .email-body-inner h4{color:var(--tw);font-size:.78rem;font-weight:700;margin:12px 0 6px;text-transform:uppercase;letter-spacing:.04em}
+        .email-body-inner .subj{color:var(--navy);font-weight:500;margin-bottom:3px;font-size:.84rem}
+        .email-body-inner .copy{background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;padding:18px 20px;margin-top:10px;white-space:pre-wrap;font-size:.84rem;line-height:1.8;color:var(--tw)}
         .email-body-inner .copy strong{color:var(--tw)}
-        .email-body-inner .copy em{color:var(--gl);font-style:normal}
+        .email-body-inner .copy em{color:var(--navy);font-style:normal;font-weight:600}
+        .email-body-inner .bp{margin-top:10px;padding:12px 16px;background:rgba(0,26,112,.03);border:1px solid rgba(0,26,112,.08);border-radius:8px;font-size:.78rem;color:var(--navy)}
+        .email-body-inner .bp strong{color:var(--tw)}
 
         /* Sequence sections */
-        .seq-section{margin-bottom:48px}
-        .seq-section>h2{font-family:var(--serif);font-size:1.4rem;margin-bottom:6px}
-        .seq-meta{color:var(--tm);font-size:.85rem;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--bdr)}
-        .seq-meta strong{color:var(--gl)}
+        .seq-section{margin-bottom:40px}
+        .seq-section>h2{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+        .seq-meta{color:var(--tm);font-size:.84rem;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--bdr)}
+        .seq-meta strong{color:var(--navy)}
 
         /* Nav Tabs */
-        .tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:48px;border-bottom:1px solid var(--bdr);padding-bottom:16px;position:sticky;top:0;z-index:100;background:var(--bg);padding-top:12px}
-        .tab-btn{padding:10px 18px;font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--tm);background:none;border:1px solid transparent;border-radius:50px;cursor:pointer;transition:all .2s;letter-spacing:.03em}
-        .tab-btn:hover{color:var(--gl);border-color:rgba(201,168,76,.2)}
-        .tab-btn.active{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+        .tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:36px;border-bottom:1px solid var(--bdr);padding-bottom:14px;position:sticky;top:0;z-index:100;background:var(--bg);padding-top:10px}
+        .tab-btn{padding:9px 16px;font-family:var(--sans);font-size:.76rem;font-weight:600;color:var(--tm);background:none;border:1.5px solid transparent;border-radius:8px;cursor:pointer;transition:all .2s;letter-spacing:.02em}
+        .tab-btn:hover{color:var(--navy);border-color:rgba(0,26,112,.12)}
+        .tab-btn.active{color:#fff;background:var(--navy);border-color:var(--navy)}
         .tab-content{display:none}
-        .tab-content.active{display:block;animation:fadeIn .35s ease}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .tab-content.active{display:block;animation:fadeIn .3s ease}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+        /* Footer */
+        .ftr{text-align:center;padding:32px 0;border-top:1px solid var(--bdr);margin-top:48px;color:var(--td);font-size:.78rem}
+        .ftr a{color:var(--navy);text-decoration:none;font-weight:600}
 
         /* Responsive */
         @media(max-width:768px){
-            .wrap{padding:32px 16px 60px}
+            .wrap{padding:24px 16px 60px}
+            .hdr{flex-direction:column;align-items:flex-start;gap:12px}
             .cg.c3,.cg.c2,.cg.c4,.cg.c5{grid-template-columns:1fr}
-            .tabs{gap:4px}.tab-btn{padding:8px 12px;font-size:.72rem}
-            .persona{padding:24px 18px}
-            .lp-card{padding:24px 18px}
-            .email-hd{padding:14px 16px;font-size:.84rem}
-            .email-body-inner{padding:0 16px 16px}
-            .email-body-inner .copy{padding:14px}
+            .tabs{gap:3px}.tab-btn{padding:7px 10px;font-size:.7rem}
+            .persona{padding:20px 16px}
+            .lp-card{padding:20px 16px}
+            .email-hd{padding:12px 14px;font-size:.82rem}
+            .email-body-inner{padding:0 14px 14px}
             .dtable{font-size:.76rem}
             .dtable th,.dtable td{padding:8px 10px}
         }
@@ -192,66 +199,75 @@
 </head>
 <body>
     <div class="wrap">
+        <!-- Header -->
         <div class="hdr">
-            <h1>Campaign Command Center</h1>
-            <p>Full marketing funnel — every strategy, sequence, lead source, and conversion asset — organized and ready to launch.</p>
-            <div class="line"></div>
+            <div>
+                <div class="hdr-left" style="margin-bottom:8px">
+                    <div class="hdr-logo">AW</div>
+                    <div class="hdr-brand">Admireworks</div>
+                </div>
+                <h1>Leading Under Pressure — Campaign Dashboard</h1>
+                <p>Full campaign plan: targeting, outreach sequences, timeline, and performance goals.</p>
+            </div>
+            <div style="text-align:right">
+                <div style="font-size:.72rem;color:var(--tm);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Program Dates</div>
+                <div style="font-size:1.1rem;font-weight:800;color:var(--navy)">April 20–22, 2026</div>
+                <div style="font-size:.82rem;color:var(--tm)">Dubai, UAE · 25 Seats</div>
+            </div>
         </div>
 
         <!-- Quick Links -->
         <div class="qlinks">
-            <a href="https://lup-2026.web.app" target="_blank" class="ql ql-gold"><span class="ico">🌐</span> Landing Page</a>
-            <a href="https://lup-2026.web.app/dashboard" target="_blank" class="ql"><span class="ico">📊</span> This Dashboard</a>
-            <a href="#tab-leads" class="ql" onclick="showTab('leads');return false"><span class="ico">👥</span> Apollo Lead Data</a>
-            <a href="#tab-sequences" class="ql" onclick="showTab('exec');return false"><span class="ico">✉️</span> Email Sequences</a>
-            <a href="#tab-timeline" class="ql" onclick="showTab('timeline');return false"><span class="ico">📅</span> Timeline</a>
+            <a href="https://lup.admireworks.com" target="_blank" class="ql ql-primary"><span class="ico">🌐</span> Program Page</a>
+            <a href="#" class="ql" onclick="showTab('leads');return false"><span class="ico">🎯</span> Who We're Targeting</a>
+            <a href="#" class="ql" onclick="showTab('exec');return false"><span class="ico">✉️</span> Email Sequences</a>
+            <a href="#" class="ql" onclick="showTab('timeline');return false"><span class="ico">📅</span> Timeline</a>
+            <a href="#" class="ql" onclick="showTab('metrics');return false"><span class="ico">📈</span> Success Metrics</a>
         </div>
 
         <!-- Tabs -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('overview')">📊 Overview & Flow</button>
-            <button class="tab-btn" onclick="showTab('leads')">🎯 Apollo Lead Data</button>
-            <button class="tab-btn" onclick="showTab('personas')">👤 Target Personas</button>
-            <button class="tab-btn" onclick="showTab('exec')">✉️ C-Suite Sequence</button>
-            <button class="tab-btn" onclick="showTab('ld')">✉️ L&D/HR Sequence</button>
+            <button class="tab-btn active" onclick="showTab('overview')">📊 Overview</button>
+            <button class="tab-btn" onclick="showTab('leads')">🎯 Target Audience</button>
+            <button class="tab-btn" onclick="showTab('exec')">✉️ Executive Outreach</button>
+            <button class="tab-btn" onclick="showTab('ld')">✉️ L&D/HR Outreach</button>
             <button class="tab-btn" onclick="showTab('warm')">✉️ Warm Network</button>
-            <button class="tab-btn" onclick="showTab('nurture')">✉️ Nurture (7-Email)</button>
+            <button class="tab-btn" onclick="showTab('nurture')">✉️ Nurture Sequence</button>
             <button class="tab-btn" onclick="showTab('timeline')">📅 Timeline</button>
-            <button class="tab-btn" onclick="showTab('instantly')">⚡ Instantly Setup</button>
-            <button class="tab-btn" onclick="showTab('metrics')">📈 Metrics & Plan</button>
+            <button class="tab-btn" onclick="showTab('sending')">⚡ Sending Setup</button>
+            <button class="tab-btn" onclick="showTab('metrics')">📈 Goals & KPIs</button>
         </div>
-        <!-- ========== TAB: OVERVIEW & FLOW ========== -->
+        <!-- ========== TAB: OVERVIEW ========== -->
         <div id="tab-overview" class="tab-content active">
-            <!-- Program Summary -->
-            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:36px">
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:32px">
                 <div class="stat"><div class="sv">Apr 20–22</div><div class="sl">Dubai, UAE</div></div>
-                <div class="stat"><div class="sv">€4,900</div><div class="sl">Standard Price</div></div>
-                <div class="stat"><div class="sv">25</div><div class="sl">Max Participants</div></div>
-                <div class="stat"><div class="sv">22,495</div><div class="sl">Apollo Leads Found</div></div>
-                <div class="stat"><div class="sv">3</div><div class="sl">Outreach Sequences</div></div>
+                <div class="stat"><div class="sv">€4,900</div><div class="sl">Per Participant</div></div>
+                <div class="stat"><div class="sv">25</div><div class="sl">Max Seats</div></div>
+                <div class="stat"><div class="sv">22,495</div><div class="sl">Leads Identified</div></div>
+                <div class="stat"><div class="sv">18</div><div class="sl">Emails in Sequences</div></div>
             </div>
 
             <!-- Stage 1 -->
             <div class="sec">
-                <div class="sec-hd"><div class="sec-n">1</div><div class="sec-pill">Outbound Awareness — Weeks 1–4</div><div class="sec-line"></div></div>
+                <div class="sec-hd"><div class="sec-n">1</div><div class="sec-pill">Outbound Outreach — Weeks 1–4</div><div class="sec-line"></div></div>
                 <div class="cg c3">
-                    <div class="fc"><div class="accent a-blue"></div>
-                        <h3>Cold: C-Suite Executives</h3>
-                        <span class="badge b-blue">4-Email × 14 Days</span>
-                        <p>CEOs, VPs, GMs — individual decision-makers. Pattern interrupt → authority → social proof → closing push.</p>
-                        <a style="color:var(--gold);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('exec')">View Full Sequence →</a>
+                    <div class="fc"><div class="accent a-navy"></div>
+                        <h3>Executive Outreach</h3>
+                        <span class="badge b-navy">4 Emails · 12 Days</span>
+                        <p>Targeted at CEOs, VPs, and GMs as individual decision-makers. Concise, personalized emails focusing on crisis leadership relevance.</p>
+                        <a style="color:var(--navy);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('exec')">View Sequence →</a>
                     </div>
-                    <div class="fc"><div class="accent a-indigo"></div>
-                        <h3>Cold: L&D / HR Directors</h3>
-                        <span class="badge b-indigo">4-Email × 14 Days</span>
-                        <p>CHROs and L&D Directors — group buyers. Development gap → ROI → differentiation → urgency close.</p>
-                        <a style="color:var(--gold);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('ld')">View Full Sequence →</a>
+                    <div class="fc"><div class="accent a-gold"></div>
+                        <h3>L&D / HR Outreach</h3>
+                        <span class="badge b-gold">4 Emails · 12 Days</span>
+                        <p>Targeted at CHROs and Talent Directors as group buyers. Focused on development pipeline gap and group enrollment value.</p>
+                        <a style="color:var(--navy);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('ld')">View Sequence →</a>
                     </div>
-                    <div class="fc"><div class="accent a-amber"></div>
-                        <h3>Warm Network Activation</h3>
-                        <span class="badge b-amber">3-Email × 10 Days</span>
-                        <p>Personal outreach from Rania & Robert to networks, past clients, alumni. Personal intro → follow-up → referral ask.</p>
-                        <a style="color:var(--gold);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('warm')">View Full Sequence →</a>
+                    <div class="fc"><div class="accent a-berry"></div>
+                        <h3>Warm Network</h3>
+                        <span class="badge b-berry">3 Emails · 8 Days</span>
+                        <p>Personal outreach to existing connections, alumni, and referral partners. Authentic, relationship-driven messaging.</p>
+                        <a style="color:var(--navy);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('warm')">View Sequence →</a>
                     </div>
                 </div>
             </div>
@@ -260,29 +276,29 @@
 
             <!-- Stage 2 -->
             <div class="sec">
-                <div class="sec-hd"><div class="sec-n">2</div><div class="sec-pill">Capture & Consideration — Ongoing</div><div class="sec-line"></div></div>
+                <div class="sec-hd"><div class="sec-n">2</div><div class="sec-pill">Capture & Follow-Up — Ongoing</div><div class="sec-line"></div></div>
                 <div class="lp-card">
-                    <div style="font-size:1.6rem;margin-bottom:12px">🌐</div>
-                    <h2>Premium Landing Page</h2>
-                    <p>StoryBrand-powered conversion engine. Faculty, VR methodology, pricing, FAQ, and application form.</p>
-                    <a href="https://lup-2026.web.app" target="_blank" class="btn-r">View Landing Page →</a>
+                    <div style="font-size:1.4rem;margin-bottom:10px">🌐</div>
+                    <h2>Program Page</h2>
+                    <p>All email outreach drives to the dedicated program page — faculty, methodology, outcomes, pricing, and application form.</p>
+                    <a href="https://lup.admireworks.com" target="_blank" class="btn-r">View Program Page →</a>
                 </div>
-                <div class="cg c2" style="margin-top:18px">
-                    <div class="fc"><div class="accent a-teal"></div>
-                        <div class="plabel">Path A — Not Ready to Enroll</div>
-                        <h3>Download Brochure Flow</h3>
-                        <p>Email captured → enters 21-day nurture sequence (7 automated emails).</p>
-                        <div class="inner inner-teal"><div class="ih ih-teal">📧 21-Day Nurture Sequence</div>
-                            <p>7 emails: welcome → problem → faculty → VR → Joyce → peers → final call.</p>
-                            <a style="color:var(--gold);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('nurture')">View Full Sequence →</a>
+                <div class="cg c2" style="margin-top:16px">
+                    <div class="fc"><div class="accent a-berry"></div>
+                        <div class="plabel">Path A — Interested but not ready</div>
+                        <h3>Brochure Download → Nurture</h3>
+                        <p>Visitor downloads brochure → email captured → enters automated nurture sequence.</p>
+                        <div class="inner inner-teal"><div class="ih ih-teal">📧 7-Email Nurture (21 Days)</div>
+                            <p>Automated sequence: faculty spotlights, VR simulation, peer cohort value, urgency close.</p>
+                            <a style="color:var(--navy);font-size:.82rem;font-weight:600;cursor:pointer" onclick="showTab('nurture')">View Sequence →</a>
                         </div>
                     </div>
-                    <div class="fc"><div class="accent a-red"></div>
-                        <div class="plabel">Path B — Ready to Proceed</div>
-                        <h3>Apply Now Button Flow</h3>
-                        <p>Application submitted directly on landing page → stored in Firestore.</p>
-                        <div class="inner inner-red"><div class="ih ih-red">⚡ Immediate Sales Action</div>
-                            <p>Lead routed to admissions for 15-min qualification call and invoice.</p>
+                    <div class="fc"><div class="accent a-tomato"></div>
+                        <div class="plabel">Path B — Ready to proceed</div>
+                        <h3>Direct Application</h3>
+                        <p>Visitor applies directly on the program page → application stored → routed to admissions.</p>
+                        <div class="inner inner-red"><div class="ih ih-red">⚡ Admissions Follow-Up</div>
+                            <p>15-minute qualification call → invoice sent → seat confirmed.</p>
                         </div>
                     </div>
                 </div>
@@ -292,13 +308,12 @@
 
             <!-- Stage 3 -->
             <div class="sec">
-                <div class="sec-hd"><div class="sec-n">3</div><div class="sec-pill">Decision & Enrollment</div><div class="sec-line"></div></div>
+                <div class="sec-hd"><div class="sec-n">3</div><div class="sec-pill">Enrollment & Confirmation</div><div class="sec-line"></div></div>
                 <div class="conv">
-                    <div style="font-size:1.8rem;margin-bottom:12px">✅</div>
-                    <h2>Program Enrollment</h2>
+                    <div style="font-size:1.4rem;margin-bottom:10px">✅</div>
+                    <h2>Confirmed Registration</h2>
                     <ul>
-                        <li><span class="chk">✓</span> Application form submitted</li>
-                        <li><span class="chk">✓</span> Private briefing call completed</li>
+                        <li><span class="chk">✓</span> Application reviewed & approved</li>
                         <li><span class="chk">✓</span> Invoice sent & payment secured (€4,900)</li>
                         <li><span class="chk">✓</span> Pre-program self-assessment issued</li>
                         <li><span class="chk">✓</span> Welcome pack delivered</li>
@@ -307,381 +322,295 @@
                 </div>
             </div>
         </div>
-        <!-- ========== TAB: APOLLO LEAD DATA ========== -->
+        <!-- ========== TAB: TARGET AUDIENCE ========== -->
         <div id="tab-leads" class="tab-content">
             <div class="sec">
-                <div class="sec-hd"><div class="sec-n">🎯</div><div class="sec-pill">Apollo.io — Live Search Results</div><div class="sec-line"></div></div>
-                <p class="sub">Real-time data from Apollo API. Filters: 500+ employees, C-Suite/VP titles, target geographies. Searched March 3, 2026.</p>
+                <div class="sec-hd"><div class="sec-n">🎯</div><div class="sec-pill">Who We're Targeting</div><div class="sec-line"></div></div>
+                <p class="sub">We identified <strong style="color:var(--tw)">22,495 potential contacts</strong> across 9 geographies using verified data sources. Below is the breakdown by persona, geography, and industry.</p>
+            </div>
 
-                <h2 style="margin-bottom:16px">Persona 1: C-Suite Executives</h2>
-                <p class="sub">Titles: CEO, COO, CFO, VP, SVP, President, Managing Director, General Manager · Company: 500+ employees</p>
+            <!-- Persona Cards -->
+            <div class="cg c2" style="margin-bottom:32px">
+                <div class="persona">
+                    <h3>Persona 1: Senior Executives</h3>
+                    <div class="role">Individual decision-makers who would attend personally</div>
+                    <div class="tags">
+                        <span class="tag">CEO</span><span class="tag">COO</span><span class="tag">CFO</span><span class="tag">VP</span><span class="tag">SVP</span><span class="tag">Managing Director</span><span class="tag">General Manager</span>
+                    </div>
+                    <p><strong style="color:var(--tw)">Company Size:</strong> 500+ employees</p>
+                    <p><strong style="color:var(--tw)">Industries:</strong> Oil & Gas, Finance, Healthcare, Real Estate, Government, Defense, Telecom, Construction, FMCG</p>
+                    <p><strong style="color:var(--tw)">Age:</strong> 38–55 · <strong style="color:var(--tw)">Income:</strong> $150K+</p>
+                    <h4 style="color:var(--navy);font-size:.76rem;margin:12px 0 6px;text-transform:uppercase;letter-spacing:.06em">Why They're Relevant</h4>
+                    <p>These leaders face high-stakes decisions daily but have never been formally trained in crisis leadership. They make decisions under pressure by instinct — this program gives them a proven framework.</p>
+                </div>
+                <div class="persona">
+                    <h3>Persona 2: HR & L&D Leaders</h3>
+                    <div class="role">Group buyers who enroll teams of 3+ participants</div>
+                    <div class="tags">
+                        <span class="tag">VP HR</span><span class="tag">CHRO</span><span class="tag">Head of L&D</span><span class="tag">Talent Director</span><span class="tag">Chief People Officer</span>
+                    </div>
+                    <p><strong style="color:var(--tw)">Company Size:</strong> 1,000+ employees</p>
+                    <p><strong style="color:var(--tw)">Industries:</strong> Same as primary + Professional Services, Consulting, Tech</p>
+                    <p><strong style="color:var(--tw)">Group Rate:</strong> €4,300/person for 3+ participants</p>
+                    <h4 style="color:var(--navy);font-size:.76rem;margin:12px 0 6px;text-transform:uppercase;letter-spacing:.06em">Why They're Relevant</h4>
+                    <p>They manage executive development budgets and are looking for differentiated programs. One conversion = 3+ registrations. They need ROI data and post-program assessment reports to justify the investment internally.</p>
+                </div>
+            </div>
+
+            <!-- Geography Tables -->
+            <div class="sec">
+                <h2 style="margin-bottom:14px">Available Contacts by Geography</h2>
                 <table class="dtable">
-                    <thead><tr><th>Geography</th><th style="text-align:right">Available Leads</th><th>Priority</th></tr></thead>
+                    <thead><tr><th>Geography</th><th style="text-align:right">Senior Executives</th><th style="text-align:right">HR / L&D Leaders</th><th>Priority</th></tr></thead>
                     <tbody>
-                        <tr><td><span class="geo-flag">🇦🇪</span>United Arab Emirates</td><td class="num-cell">9,031</td><td><span class="pri pri-1">🔴 P1 — Event Location</span></td></tr>
-                        <tr><td><span class="geo-flag">🇸🇦</span>Saudi Arabia</td><td class="num-cell">3,629</td><td><span class="pri pri-1">🔴 P1 — Key Market</span></td></tr>
-                        <tr><td><span class="geo-flag">🇵🇱</span>Poland / CEE</td><td class="num-cell">4,401</td><td><span class="pri pri-2">🟡 P2 — QHA Network</span></td></tr>
-                        <tr><td><span class="geo-flag">🇪🇬</span>Egypt</td><td class="num-cell">2,833</td><td><span class="pri pri-2">🟡 P2 — Alumni Network</span></td></tr>
-                        <tr><td><span class="geo-flag">🇶🇦</span>Qatar</td><td class="num-cell">789</td><td><span class="pri pri-3">🔵 P3 — GCC</span></td></tr>
-                        <tr><td><span class="geo-flag">🇰🇼</span>Kuwait</td><td class="num-cell">386</td><td><span class="pri pri-3">🔵 P3 — GCC</span></td></tr>
-                        <tr><td><span class="geo-flag">🇧🇭</span>Bahrain</td><td class="num-cell">301</td><td><span class="pri pri-4">🟢 P4</span></td></tr>
-                        <tr><td><span class="geo-flag">🇴🇲</span>Oman</td><td class="num-cell">244</td><td><span class="pri pri-4">🟢 P4</span></td></tr>
-                        <tr><td><span class="geo-flag">🇯🇴</span>Jordan</td><td class="num-cell">238</td><td><span class="pri pri-4">🟢 P4</span></td></tr>
-                        <tr class="total-row"><td><strong>TOTAL C-SUITE</strong></td><td class="num-cell">21,852</td><td></td></tr>
+                        <tr><td><span class="geo-flag">🇦🇪</span>United Arab Emirates</td><td class="num-cell">9,031</td><td class="num-cell">322</td><td><span class="pri pri-1">P1 · Event Location</span></td></tr>
+                        <tr><td><span class="geo-flag">🇸🇦</span>Saudi Arabia</td><td class="num-cell">3,629</td><td class="num-cell">99</td><td><span class="pri pri-1">P1 · Key Market</span></td></tr>
+                        <tr><td><span class="geo-flag">🇵🇱</span>Poland / CEE</td><td class="num-cell">4,401</td><td class="num-cell">125</td><td><span class="pri pri-2">P2 · QHA Network</span></td></tr>
+                        <tr><td><span class="geo-flag">🇪🇬</span>Egypt</td><td class="num-cell">2,833</td><td class="num-cell">65</td><td><span class="pri pri-2">P2 · Alumni Base</span></td></tr>
+                        <tr><td><span class="geo-flag">🇶🇦</span>Qatar</td><td class="num-cell">789</td><td class="num-cell">—</td><td><span class="pri pri-3">P3 · GCC</span></td></tr>
+                        <tr><td><span class="geo-flag">🇰🇼</span>Kuwait</td><td class="num-cell">386</td><td class="num-cell">—</td><td><span class="pri pri-3">P3 · GCC</span></td></tr>
+                        <tr><td><span class="geo-flag">🇧🇭</span>Bahrain</td><td class="num-cell">301</td><td class="num-cell">—</td><td><span class="pri pri-4">P4</span></td></tr>
+                        <tr><td><span class="geo-flag">🇴🇲</span>Oman</td><td class="num-cell">244</td><td class="num-cell">—</td><td><span class="pri pri-4">P4</span></td></tr>
+                        <tr><td><span class="geo-flag">🇯🇴</span>Jordan</td><td class="num-cell">238</td><td class="num-cell">—</td><td><span class="pri pri-4">P4</span></td></tr>
+                        <tr><td><span class="geo-flag">🌍</span>GCC Other (combined)</td><td class="num-cell">—</td><td class="num-cell">33</td><td><span class="pri pri-4">P4</span></td></tr>
+                        <tr class="total-row"><td><strong>TOTAL</strong></td><td class="num-cell">21,852</td><td class="num-cell">644</td><td></td></tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="sec">
-                <h2 style="margin-bottom:16px">Persona 2: HR / L&D Directors (Group Buyers)</h2>
-                <p class="sub">Titles: VP HR, CHRO, Head of L&D, Talent Development Director, Chief People Officer · Company: 1,000+ employees</p>
+                <h2 style="margin-bottom:14px">UAE Industry Breakdown</h2>
+                <p class="sub">Senior executives in high-pressure industries where crisis leadership is most relevant</p>
                 <table class="dtable">
-                    <thead><tr><th>Geography</th><th style="text-align:right">Available Leads</th><th>Priority</th></tr></thead>
+                    <thead><tr><th>Industry</th><th style="text-align:right">Available</th><th>Relevance</th></tr></thead>
                     <tbody>
-                        <tr><td><span class="geo-flag">🇦🇪</span>United Arab Emirates</td><td class="num-cell">322</td><td><span class="pri pri-1">🔴 P1</span></td></tr>
-                        <tr><td><span class="geo-flag">🇵🇱</span>Poland / CEE</td><td class="num-cell">125</td><td><span class="pri pri-2">🟡 P2</span></td></tr>
-                        <tr><td><span class="geo-flag">🇸🇦</span>Saudi Arabia</td><td class="num-cell">99</td><td><span class="pri pri-2">🟡 P2</span></td></tr>
-                        <tr><td><span class="geo-flag">🇪🇬</span>Egypt</td><td class="num-cell">65</td><td><span class="pri pri-3">🔵 P3</span></td></tr>
-                        <tr><td><span class="geo-flag">🌍</span>GCC Other (KW, QA, BH, OM)</td><td class="num-cell">33</td><td><span class="pri pri-4">🟢 P4</span></td></tr>
-                        <tr class="total-row"><td><strong>TOTAL HR / L&D</strong></td><td class="num-cell">644</td><td></td></tr>
+                        <tr><td>🏛️ Government & Defense</td><td class="num-cell">8,418</td><td><span class="badge b-tomato" style="margin:0">Critical Decision-Making</span></td></tr>
+                        <tr><td>🏗️ Real Estate & Construction</td><td class="num-cell">4,158</td><td><span class="badge b-gold" style="margin:0">High Growth Pressure</span></td></tr>
+                        <tr><td>🏦 Finance & Banking</td><td class="num-cell">3,916</td><td><span class="badge b-navy" style="margin:0">Regulatory Pressure</span></td></tr>
+                        <tr><td>🏥 Healthcare</td><td class="num-cell">2,548</td><td><span class="badge b-berry" style="margin:0">High Stakes</span></td></tr>
+                        <tr><td>📡 Telecom</td><td class="num-cell">851</td><td><span class="badge b-navy" style="margin:0">Market Disruption</span></td></tr>
                     </tbody>
                 </table>
             </div>
 
+            <!-- Outreach Plan -->
             <div class="sec">
-                <h2 style="margin-bottom:16px">Industry Breakdown — UAE C-Suite</h2>
-                <p class="sub">High-pressure industries where crisis leadership is most critical</p>
-                <table class="dtable">
-                    <thead><tr><th>Industry</th><th style="text-align:right">Available Leads</th><th>Relevance</th></tr></thead>
-                    <tbody>
-                        <tr><td>🏛️ Government & Defense</td><td class="num-cell">8,418</td><td><span class="badge b-red">Critical Pressure</span></td></tr>
-                        <tr><td>🏗️ Real Estate & Construction</td><td class="num-cell">4,158</td><td><span class="badge b-amber">High Growth</span></td></tr>
-                        <tr><td>🏦 Finance & Banking</td><td class="num-cell">3,916</td><td><span class="badge b-blue">Regulatory</span></td></tr>
-                        <tr><td>🏥 Healthcare</td><td class="num-cell">2,548</td><td><span class="badge b-teal">Life Stakes</span></td></tr>
-                        <tr><td>📡 Telecom</td><td class="num-cell">851</td><td><span class="badge b-indigo">Disruption</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Recommended Extraction Plan -->
-            <div class="sec">
-                <div class="sec-hd"><div class="sec-n">📋</div><div class="sec-pill">Recommended Lead Extraction Plan</div><div class="sec-line"></div></div>
-                <p class="sub">Based on the data, here's the recommended order for unlocking contacts in Apollo:</p>
-                <div class="cg c2">
-                    <div class="fc"><div class="accent a-red"></div>
-                        <span class="badge b-red">Wave 1 — Immediate</span>
-                        <h3>🇦🇪 UAE C-Suite (Top 200)</h3>
-                        <p>Filter: CEO, COO, CFO, MD in Oil & Gas, Finance, Healthcare, Real Estate. 500+ employees. Extract top 200 with verified emails.</p>
-                        <p><strong style="color:var(--tw)">Rationale:</strong> Event in Dubai. Highest conversion probability. Local travel = no barrier.</p>
+                <div class="sec-hd"><div class="sec-n">📋</div><div class="sec-pill">Recommended Outreach Plan</div><div class="sec-line"></div></div>
+                <p class="sub">We'll extract contacts in 3 waves, prioritized by conversion likelihood:</p>
+                <div class="cg c3">
+                    <div class="fc"><div class="accent a-tomato"></div>
+                        <span class="badge b-tomato">Wave 1 · Immediate</span>
+                        <h3>UAE (Top 520)</h3>
+                        <p>200 senior executives + all 322 HR/L&D leaders. Program is in Dubai — no travel barrier, highest conversion.</p>
                     </div>
-                    <div class="fc"><div class="accent a-red"></div>
-                        <span class="badge b-red">Wave 1 — Immediate</span>
-                        <h3>🇦🇪 UAE HR/L&D Directors (All 322)</h3>
-                        <p>Extract all 322. These are group buyers — one conversion = 3+ registrations at €4,300/pp.</p>
-                        <p><strong style="color:var(--tw)">Rationale:</strong> Highest per-conversion revenue. Group rate €12,900+ per deal.</p>
+                    <div class="fc"><div class="accent a-gold"></div>
+                        <span class="badge b-gold">Wave 2 · Week 2</span>
+                        <h3>KSA + Egypt (250)</h3>
+                        <p>150 KSA executives (short flight) + 100 Egypt executives (alumni network overlap).</p>
                     </div>
-                    <div class="fc"><div class="accent a-amber"></div>
-                        <span class="badge b-amber">Wave 2 — Week 2</span>
-                        <h3>🇸🇦 KSA C-Suite (Top 150)</h3>
-                        <p>Filter: C-Suite in Finance, Energy, Government. Extract top 150 with verified emails.</p>
-                        <p><strong style="color:var(--tw)">Rationale:</strong> Second-largest market. Short flight to Dubai. Vision 2030 = crisis leadership relevant.</p>
-                    </div>
-                    <div class="fc"><div class="accent a-amber"></div>
-                        <span class="badge b-amber">Wave 2 — Week 2</span>
-                        <h3>🇪🇬 Egypt C-Suite (Top 100)</h3>
-                        <p>Filter: CEO, MD in Aspire HR's existing network industries. Extract top 100.</p>
-                        <p><strong style="color:var(--tw)">Rationale:</strong> Rania's home network. Warm connections amplify cold outreach.</p>
-                    </div>
-                    <div class="fc"><div class="accent a-blue"></div>
-                        <span class="badge b-blue">Wave 3 — Week 3</span>
-                        <h3>🇵🇱 Poland C-Suite (Top 100)</h3>
-                        <p>Queen Hedvig Academy's home market. Extract top 100 in Finance, Energy, Tech.</p>
-                        <p><strong style="color:var(--tw)">Rationale:</strong> Robert's direct network. QHA brand recognition in CEE market.</p>
-                    </div>
-                    <div class="fc"><div class="accent a-blue"></div>
-                        <span class="badge b-blue">Wave 3 — Week 3</span>
-                        <h3>🌍 GCC Expansion (QA + KW: 50)</h3>
-                        <p>Cherry-pick top 50 from Qatar + Kuwait. Focus on C-Suite in Government, Energy.</p>
-                        <p><strong style="color:var(--tw)">Rationale:</strong> Small volume, high quality. supplements primary markets.</p>
+                    <div class="fc"><div class="accent a-navy"></div>
+                        <span class="badge b-navy">Wave 3 · Week 3</span>
+                        <h3>Poland + GCC (150)</h3>
+                        <p>100 Poland/CEE (QHA network) + 50 Qatar/Kuwait cherry-picked C-suite.</p>
                     </div>
                 </div>
-
-                <div style="margin-top:24px;padding:20px;background:var(--gd);border:1px solid rgba(201,168,76,.2);border-radius:var(--r);text-align:center">
-                    <div style="font-size:.82rem;color:var(--gl);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Total Recommended Extraction</div>
-                    <div style="font-family:var(--serif);font-size:1.6rem;font-weight:800;color:var(--tw)">~922 Contacts</div>
-                    <div style="color:var(--tm);font-size:.84rem;margin-top:4px">200 UAE C-Suite + 322 UAE HR + 150 KSA + 100 Egypt + 100 Poland + 50 GCC</div>
+                <div style="margin-top:20px;padding:18px;background:rgba(0,26,112,.03);border:1.5px solid rgba(0,26,112,.1);border-radius:var(--r);text-align:center">
+                    <div style="font-size:.72rem;color:var(--navy);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Total Contacts to Extract</div>
+                    <div style="font-size:1.4rem;font-weight:800;color:var(--tw)">~920 Verified Contacts</div>
+                    <div style="color:var(--tm);font-size:.82rem;margin-top:2px">520 UAE + 250 KSA/EG + 150 PL/GCC</div>
                 </div>
             </div>
         </div>
-        <!-- ========== TAB: TARGET PERSONAS ========== -->
-        <div id="tab-personas" class="tab-content">
-            <div class="sec">
-                <div class="sec-hd"><div class="sec-n">👤</div><div class="sec-pill">Target Persona Profiles</div><div class="sec-line"></div></div>
-                <div class="cg c2">
-                    <div class="persona">
-                        <h3>Persona 1: "The Pressured Executive"</h3>
-                        <div class="role">CEO, COO, CFO, VP, SVP, GM, Managing Director, Regional Head</div>
-                        <div class="tags">
-                            <span class="tag">Age 38–55</span><span class="tag">$150K+ Income</span><span class="tag">500+ Employees</span><span class="tag">MBA/Equivalent</span>
-                        </div>
-                        <p><strong style="color:var(--tw)">Industries:</strong> Oil & Gas, Finance/Banking, Healthcare, Real Estate, Government, Defense, FMCG, Telecom, Construction</p>
-                        <p><strong style="color:var(--tw)">Geography:</strong> UAE, Saudi Arabia, Egypt, Kuwait, Qatar, Bahrain, Oman, Jordan, Poland, CEE</p>
-                        <h4 style="color:var(--gl);font-size:.78rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.08em">Pain Points</h4>
-                        <p>• Never formally trained to lead through crisis — been winging it<br>• Needs proven frameworks, not theory<br>• Can't show vulnerability but feels the weight<br>• Most programs too generic for real pressure<br>• Wants to learn from people who've led under extreme conditions</p>
-                        <h4 style="color:var(--gl);font-size:.78rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.08em">Trigger Events</h4>
-                        <p>• Just went through / about to face major crisis<br>• Navigating M&A or restructuring<br>• Recently promoted to senior role<br>• Regulatory or market disruption<br>• Peer attended similar program</p>
-                        <h4 style="color:var(--gl);font-size:.78rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.08em">Apollo Search Criteria</h4>
-                        <p>• Titles: CEO, COO, CFO, VP, SVP, President, MD, GM<br>• Company size: 500+ employees or $100M+ revenue<br>• Seniority: C-suite, VP<br>• Locations: UAE, KSA, Egypt, Qatar, Kuwait, Poland</p>
-                    </div>
-                    <div class="persona">
-                        <h3>Persona 2: "The L&D Director"</h3>
-                        <div class="role">VP HR, CHRO, Head of L&D, Talent Development Director, Chief People Officer</div>
-                        <div class="tags">
-                            <span class="tag">1,000+ Employees</span><span class="tag">Group Buyer</span><span class="tag">L&D Budget Holder</span><span class="tag">ROI Driven</span>
-                        </div>
-                        <p><strong style="color:var(--tw)">Industries:</strong> Same as primary + Professional Services, Consulting, Tech</p>
-                        <p><strong style="color:var(--tw)">Role:</strong> Sponsors and selects executive development programs for leadership pipeline.</p>
-                        <h4 style="color:var(--gl);font-size:.78rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.08em">Key Motivations</h4>
-                        <p>• Find differentiated programs that excite senior leadership<br>• Demonstrate ROI of L&D to the board<br>• Build pipeline of crisis-ready leaders<br>• Leverage group pricing (€4,300/pp for 3+)<br>• Want post-program assessment data to report on</p>
-                        <h4 style="color:var(--gl);font-size:.78rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.08em">Pain Points</h4>
-                        <p>• Most programs are generic — need real behavioral change<br>• Executives hard to impress — faculty must be exceptional<br>• Need to justify spend with measurable outcomes<br>• Previous programs didn't create lasting change</p>
-                        <h4 style="color:var(--gl);font-size:.78rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.08em">How to Convert</h4>
-                        <p>• Position as "most differentiated executive crisis leadership investment in the region"<br>• Lead with faculty credentials + VR simulation<br>• Offer group briefing calls with Rania Abdalla<br>• Provide post-program impact report template<br>• Highlight group rates: €4,300/pp for 3+</p>
-                    </div>
-                </div>
-
-                <!-- ICP Scoring Matrix -->
-                <div style="margin-top:28px">
-                    <h2 style="margin-bottom:12px">ICP Scoring Matrix</h2>
-                    <table class="dtable">
-                        <thead><tr><th>Criteria</th><th style="text-align:right">Weight</th><th>Score Range</th></tr></thead>
-                        <tbody>
-                            <tr><td>Seniority (C-suite = 5, Director = 3)</td><td class="num-cell">25%</td><td>1–5</td></tr>
-                            <tr><td>Industry relevance (high-pressure industries)</td><td class="num-cell">20%</td><td>1–5</td></tr>
-                            <tr><td>Company size (500+ employees)</td><td class="num-cell">15%</td><td>1–5</td></tr>
-                            <tr><td>Geography (UAE/GCC = 5, Europe = 4)</td><td class="num-cell">15%</td><td>1–5</td></tr>
-                            <tr><td>Recent trigger event visible (LinkedIn, news)</td><td class="num-cell">15%</td><td>1–5</td></tr>
-                            <tr><td>Existing connection (warm = 5, cold = 1)</td><td class="num-cell">10%</td><td>1–5</td></tr>
-                        </tbody>
-                    </table>
-                    <div style="margin-top:12px;padding:14px 18px;background:var(--gd);border:1px solid rgba(201,168,76,.15);border-radius:var(--r);font-size:.84rem;color:var(--gl)">
-                        <strong>Priority Tiers:</strong> 4.0+ = 🔴 Hot Lead → Personal outreach &nbsp;|&nbsp; 3.0–3.9 = 🟡 Warm → Email sequence &nbsp;|&nbsp; Below 3.0 = Nurture only
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ========== TAB: C-SUITE SEQUENCE ========== -->
+        <!-- ========== TAB: EXECUTIVE OUTREACH ========== -->
         <div id="tab-exec" class="tab-content">
             <div class="seq-section">
-                <h2>Cold Outreach — C-Suite / Senior Leaders</h2>
-                <div class="seq-meta"><strong>Target:</strong> CEO, COO, CFO, VP, GM, Managing Director &nbsp;|&nbsp; <strong>Goal:</strong> Drive to landing page or private briefing &nbsp;|&nbsp; <strong>Cadence:</strong> Day 0 → 3 → 7 → 12</div>
+                <h2>Executive Outreach — 4-Email Sequence</h2>
+                <div class="seq-meta"><strong>Target:</strong> CEOs, COOs, CFOs, VPs, GMs, Managing Directors &nbsp;|&nbsp; <strong>Sending:</strong> ~200–350 contacts &nbsp;|&nbsp; <strong>Cadence:</strong> Day 0 → 3 → 7 → 12</div>
+                <div style="padding:12px 16px;background:rgba(0,26,112,.03);border:1px solid rgba(0,26,112,.1);border-radius:8px;font-size:.78rem;color:var(--tm);margin-bottom:20px">
+                    ✅ <strong style="color:var(--tw)">Cold Email Best Practices Applied:</strong> Under 90 words per email · Plain text (no images/HTML) · No links in first email · Interest-based CTAs · Personalized subject lines · One ask per email
+                </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: The Pattern Interrupt</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: The Opening</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
-                        <h4>Subject Line Options</h4>
-                        <div class="subj">• The one leadership skill no one teaches you</div>
-                        <div class="subj">• What I learned from an Egyptian Special Forces commander</div>
-                        <div class="subj">• [First Name], a question about pressure</div>
+                        <h4>Subject Line (A/B Test)</h4>
+                        <div class="subj">A: [First Name], quick question about pressure</div>
+                        <div class="subj">B: most leaders never practice this</div>
                         <div class="copy">Hi [First Name],
 
-Quick question — when was the last time you practiced making a critical decision under extreme pressure... <strong>before it actually happened?</strong>
+Quick question — when was the last time you practiced making a critical decision under extreme pressure before it actually happened?
 
-Most senior leaders never do. They wait for the crisis to hit, then improvise.
+Most leaders at your level never do. They wait for the crisis, then improvise.
 
-That's why I wanted to share something with you.
+There's a 3-day program in Dubai (April 20–22) with faculty from IMD and Stanford that specifically trains for this. 25 seats only.
 
-On April 20–22 in Dubai, a program called <strong>Leading Under Pressure</strong> brings together faculty from <strong>IMD</strong>, <strong>Stanford</strong>, and <strong>SRI International</strong> (the lab that invented Siri) for a 3-day immersive experience designed specifically for leaders like you.
-
-The program includes <strong>VR crisis simulations</strong> where you practice high-stakes decisions in real-time, with coaching from Professor Sameh Abadir — an Egyptian Special Forces veteran turned IMD professor.
-
-Only 25 seats. No PowerPoint marathons. Real pressure, real tools, real transformation.
-
-→ <em>[See the full program details here]</em>
-
-If you'd prefer, I'm happy to set up a quick 15-minute briefing call to walk you through it.
+Would it be worth sharing the details?
 
 Best,
-[Sender Name]
-[Title] | Aspire HR Consultants</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> Pattern-interrupt question · No link (drives curiosity) · 73 words · Interest-based CTA ("would it be worth…") · Personal, not promotional</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The Authority Builder</span><span class="day">Day 3</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The Faculty Proof</span><span class="day">Day 3</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
-                        <h4>Subject Line Options</h4>
-                        <div class="subj">• From Everest to the boardroom</div>
-                        <div class="subj">• The faculty lineup that stops senior leaders in their tracks</div>
+                        <h4>Subject Line (A/B Test)</h4>
+                        <div class="subj">A: the faculty lineup</div>
+                        <div class="subj">B: from Special Forces to the boardroom</div>
                         <div class="copy">Hi [First Name],
 
-Following up on my last note about the Leading Under Pressure program in Dubai (April 20–22).
+Following up briefly — here's who teaches the program:
 
-I wanted to share what makes this faculty unlike anything else in the region:
+· Sameh Abadir — IMD Professor, former Egyptian Special Forces. Advises Emirates Nuclear and ArcelorMittal.
+· Joyce Azzam — First Lebanese woman to summit Everest plus all 7 continents. UN Women Ambassador.
+· Steve Ciesinski — Former President of SRI International (invented Siri). Stanford GSB.
 
-🎖️ <strong>Sameh Abadir</strong> — Egyptian Special Forces veteran, IMD Professor of Leadership and Negotiation. Advisor to Emirates Nuclear and ArcelorMittal.
+These aren't consultants reading slides. They've led under real pressure.
 
-🏔️ <strong>Joyce Azzam</strong> — First Lebanese woman to complete the Seven Summits (including Everest). UN Women Goodwill Ambassador.
-
-💡 <strong>Steve Ciesinski</strong> — Former President of SRI International. Stanford GSB lecturer. Silicon Valley veteran.
-
-These aren't typical corporate trainers. These are people who have led under the most extreme conditions on earth.
-
-And they're only taking 25 participants.
-
-→ <em>[Reserve your seat here]</em>
+Details here if relevant: lup.admireworks.com
 
 Best,
-[Sender Name]</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 78 words · Authority proof via credentials · Single link at end (not dominating) · Low-pressure CTA</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: The Case Study / Social Proof</span><span class="day">Day 7</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: The Differentiator</span><span class="day">Day 7</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
-                        <h4>Subject Line Options</h4>
-                        <div class="subj">• Why VR changes everything about leadership training</div>
-                        <div class="subj">• "I've never experienced anything like this"</div>
+                        <h4>Subject Line</h4>
+                        <div class="subj">this is different from typical programs</div>
                         <div class="copy">Hi [First Name],
 
-Most leadership programs give you slides. This one puts you inside a crisis.
+One more thing that makes this unusual:
 
-The <strong>Leading Under Pressure</strong> program uses <strong>VR simulation technology from SRI International</strong> to place you in realistic, high-stakes scenarios.
+The program uses VR crisis simulations built with SRI International. You're placed inside a realistic high-stakes scenario, making decisions under real-time pressure — then faculty debrief your patterns and blind spots.
 
-You'll experience:
-• Making decisions with incomplete information and mounting time pressure
-• Managing emotional responses while your team looks to you for direction
-• Debriefing with IMD faculty who decode your patterns and blind spots
+No other executive program in the region offers this.
 
-The program also includes a <strong>one-hour personal coaching session</strong> after the event.
+25 seats. April 20–22, Dubai. €4,900.
 
-<strong>April 20–22, Dubai. €4,900. 25 seats only.</strong>
-
-→ <em>[See the full program here]</em>
+Open to a quick 10-min call to see if it fits?
 
 Best,
-[Sender Name]</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 74 words · Unique differentiator (VR) · Specific ask (10-min call) · Creates mental image of the experience</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 4: The Closing Push</span><span class="day">Day 12</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 4: The Breakup</span><span class="day">Day 12</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
-                        <h4>Subject Line Options</h4>
-                        <div class="subj">• [First Name], final thought on this</div>
-                        <div class="subj">• Seats are filling — quick update</div>
+                        <h4>Subject Line</h4>
+                        <div class="subj">[First Name], closing the loop</div>
                         <div class="copy">Hi [First Name],
 
-Last note from me on this — I know your inbox is demanding.
+Last note on this — I know you're busy.
 
-Here's the simple case:
+Simple way to think about it: the cost of one wrong decision under pressure is far greater than 3 days and €4,900 invested in building the framework to prevent it.
 
-❌ The cost of one wrong decision under pressure — millions in revenue, key talent walking out, reputational damage.
+If the timing isn't right, I completely understand. But if it is — happy to set up a 10-minute call.
 
-✅ The cost of this program — €4,900 and 3 days to build the crisis leadership framework that prevents those outcomes.
+Either way, wishing you clarity in every decision.
 
-<strong>Leading Under Pressure. April 20–22. Dubai.</strong>
-• Faculty from IMD, Stanford, and SRI International
-• VR crisis simulation + personal coaching
-• 25-person elite cohort
-
-If the timing or budget isn't right, I completely understand. But if it is — seats are limited and filling.
-
-→ <em>[Apply here before they close]</em>
-
-Wishing you clarity in every decision,
-[Sender Name]</div>
+Best,
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 71 words · "Breakup" email signals last contact · ROI framing · Leaves door open · Professional, not pushy</div>
                     </div></div>
                 </div>
             </div>
         </div>
 
-        <!-- ========== TAB: L&D SEQUENCE ========== -->
+        <!-- ========== TAB: L&D OUTREACH ========== -->
         <div id="tab-ld" class="tab-content">
             <div class="seq-section">
-                <h2>Cold Outreach — L&D / HR Directors</h2>
-                <div class="seq-meta"><strong>Target:</strong> VP HR, CHRO, Head of L&D, Chief People Officer &nbsp;|&nbsp; <strong>Goal:</strong> Group enrollment (3+ participants) &nbsp;|&nbsp; <strong>Cadence:</strong> Day 0 → 3 → 7 → 12</div>
+                <h2>L&D / HR Outreach — 4-Email Sequence</h2>
+                <div class="seq-meta"><strong>Target:</strong> VP HR, CHRO, Head of L&D, Chief People Officer &nbsp;|&nbsp; <strong>Goal:</strong> Group enrollment (3+ participants at €4,300/pp) &nbsp;|&nbsp; <strong>Cadence:</strong> Day 0 → 3 → 7 → 12</div>
+                <div style="padding:12px 16px;background:rgba(0,26,112,.03);border:1px solid rgba(0,26,112,.1);border-radius:8px;font-size:.78rem;color:var(--tm);margin-bottom:20px">
+                    ✅ <strong style="color:var(--tw)">Cold Email Best Practices Applied:</strong> Under 90 words · Focused on L&D pain points · Group rate highlighted · Measurable outcomes language · Interest-based CTAs
+                </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: The Executive Development Gap</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: The Development Gap</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line (A/B Test)</h4>
+                        <div class="subj">A: [First Name], a gap in most L&D portfolios</div>
+                        <div class="subj">B: crisis leadership — is it in your pipeline?</div>
                         <div class="copy">Hi [First Name],
 
-Quick thought — is there a program in your current executive development portfolio that specifically prepares your senior leaders to make critical decisions under extreme pressure?
+Quick thought — does your current executive development portfolio include anything that specifically prepares senior leaders to perform under extreme pressure?
 
 For most organizations, the answer is no.
 
-That's why I wanted to put <strong>Leading Under Pressure</strong> on your radar.
+There's a program called Leading Under Pressure (Dubai, April 20–22) designed exactly for this. VR crisis simulations, IMD/Stanford faculty, and pre/post assessments for measurable development.
 
-<strong>What makes it different for L&D:</strong>
-• VR crisis simulations (not slides and theory)
-• Pre-program assessment + post-program coaching (measurable development)
-• Cohort of 25 senior leaders (peer learning at the right level)
-• <strong>Group rate: €4,300/pp for 3+ participants</strong>
+Group rate: €4,300/person for 3+ participants.
 
-I'd love to arrange a 15-minute briefing to show you how this fits into your leadership pipeline.
+Worth a 15-minute briefing to see if it fits your pipeline?
 
 Best,
-[Sender Name]</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 82 words · Opens with a question about their role · Group rate early · "Pipeline" language matches L&D vocabulary</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The ROI Case</span><span class="day">Day 3</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The ROI Argument</span><span class="day">Day 3</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line</h4>
+                        <div class="subj">the cost of not having crisis-ready leaders</div>
                         <div class="copy">Hi [First Name],
 
-<strong>The cost of NOT having crisis-ready leaders:</strong>
-• One reactive decision during a restructuring → $2M+ in turnover costs
-• One poorly managed stakeholder crisis → Reputational damage
-• One leader who can't hold their team → 30% productivity loss
+Quick ROI framing:
 
-<strong>The investment in crisis-readiness:</strong>
-• €4,300/person at the group rate (3+ participants)
-• 3 days + pre/post integration
-• Measurable through pre/post assessment gap analysis
-• Certificates from IMD, SRI International, and Queen Hedvig Academy
+One reactive decision during restructuring → $2M+ in turnover costs.
+One poorly managed stakeholder crisis → reputational damage.
+One leader who can't hold their team → 30% productivity loss.
 
-<strong>Faculty includes:</strong>
-• Sameh Abadir — IMD Professor, Egyptian Special Forces veteran
-• Steve Ciesinski — Former President of SRI International, Stanford GSB
-• Joyce Azzam — Seven Summits mountaineer, UN Women Ambassador
+The investment: €4,300/person at the group rate. 3 days. Pre/post assessment data you can report on. Certificates from IMD and SRI International.
+
+Worth exploring for your next leadership cohort?
 
 Best,
-[Sender Name]</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 72 words · Problem quantification before solution · "Report on" = board-ready language · Low-pressure CTA</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: The Differentiation Play</span><span class="day">Day 7</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: The Comparison</span><span class="day">Day 7</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line</h4>
+                        <div class="subj">how this compares to typical exec programs</div>
                         <div class="copy">Hi [First Name],
 
-Here's why Leading Under Pressure is different:
+Quick comparison:
 
-<strong>Typical Exec Program vs. Leading Under Pressure:</strong>
-• Case studies on paper → VR crisis simulation (you're IN the scenario)
-• One institution → Three: IMD + Stanford/SRI + Queen Hedvig Academy
-• General management → Laser-focused on crisis leadership
-• 50+ participants → Capped at 25
-• Program ends on day 3 → 6 weeks pre-assessment + post-program coaching
-• €7,000–€45,000 → <strong>€4,300/pp (group rate)</strong>
+Typical programs: case studies on paper, 50+ participants, €7K–€45K.
+Leading Under Pressure: VR crisis simulation, 25-person cohort, 3 institutions (IMD + Stanford/SRI + QHA), pre/post assessment, €4,300/pp group rate.
 
-I'd love to walk you through the full program design in a 15-minute call.
+The differentiator: participants are placed inside simulated crises using SRI International's VR technology. No other program in the region does this.
+
+Happy to walk you through it — 15 minutes?
 
 Best,
-[Sender Name]</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 74 words · Side-by-side comparison · Price advantage highlighted · Repeats VR differentiator</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 4: The Urgency Close</span><span class="day">Day 12</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 4: The Seat Hold</span><span class="day">Day 12</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line</h4>
+                        <div class="subj">[First Name], seats update</div>
                         <div class="copy">Hi [First Name],
 
-Quick update: we're at <strong>17 of 25 seats filled</strong> and expect to close registration within 2 weeks.
+Last note — seats are limited to 25 and filling.
 
-✅ <strong>Group Rate:</strong> €4,300/pp (3+ participants)
-✅ <strong>Team Assessment:</strong> Pre/post leadership assessment
-✅ <strong>Direct Faculty Access:</strong> IMD, Stanford, SRI International
-✅ <strong>VR Simulation:</strong> The differentiator your team will talk about for years
+If you're still considering it for your team, I can hold provisional spots for 48 hours while you decide.
 
-I can hold provisional spots for 48 hours if you're still in decision mode.
+Group rate: €4,300/person (3+ participants).
+Pre/post assessment + certificates from IMD, SRI, and QHA.
+
+Just reply and I'll reserve them.
 
 Best,
-[Sender Name]</div>
+Fouad</div>
+                        <div class="bp"><strong>Why this works:</strong> 58 words · Urgency without false scarcity · Specific offer to hold spots · Simple CTA (just reply)</div>
                     </div></div>
                 </div>
             </div>
@@ -690,72 +619,63 @@ Best,
         <!-- ========== TAB: WARM NETWORK ========== -->
         <div id="tab-warm" class="tab-content">
             <div class="seq-section">
-                <h2>Warm Network Outreach</h2>
-                <div class="seq-meta"><strong>Target:</strong> Personal connections, past alumni, referral partners &nbsp;|&nbsp; <strong>Tone:</strong> Personal, friendly, "insider" &nbsp;|&nbsp; <strong>Cadence:</strong> Day 0 → 4 → 8</div>
+                <h2>Warm Network Outreach — 3-Email Sequence</h2>
+                <div class="seq-meta"><strong>Target:</strong> Personal connections, past clients, alumni, referral partners &nbsp;|&nbsp; <strong>Tone:</strong> Personal, authentic &nbsp;|&nbsp; <strong>Cadence:</strong> Day 0 → 4 → 8</div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: The Personal Introduction</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: Personal Introduction</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line</h4>
+                        <div class="subj">something I thought of you for</div>
                         <div class="copy">Hi [First Name],
 
-Hope you're doing well — it's been a while since we last connected.
+Hope you're well — it's been a while.
 
-I wanted to share something personally because I immediately thought of you (or someone in your network).
-
-I'm involved in organizing a program called <strong>Leading Under Pressure</strong> happening in <strong>Dubai, April 20–22</strong>.
-
-The faculty lineup:
-• <strong>Sameh Abadir</strong> — IMD Professor, former Egyptian Special Forces
-• <strong>Joyce Azzam</strong> — First Lebanese woman to summit all 7 continents
-• <strong>Steve Ciesinski</strong> — Former President of SRI International
-• <strong>Peter Marcotullio</strong> — SVP at SRI International
+I'm involved in organizing a program called Leading Under Pressure in Dubai (April 20–22). Faculty from IMD, Stanford, and SRI International. VR crisis simulations. Only 25 seats.
 
 Two reasons I'm reaching out:
-1. <strong>If this resonates for you personally</strong> — I'd love to offer priority access
-2. <strong>If someone in your network</strong> could benefit — I'd be grateful for an introduction
 
-Either way, no pressure (pun intended 😊).
+1. If this resonates for you personally — I'd love to offer priority access.
+2. If someone in your network could benefit — I'd appreciate an introduction.
+
+No pressure either way 😊
 
 Warm regards,
 [Sender Name]</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The Gentle Follow-Up</span><span class="day">Day 4</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: Gentle Follow-Up</span><span class="day">Day 4</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line</h4>
+                        <div class="subj">re: the leadership program</div>
                         <div class="copy">Hi [First Name],
 
-Just bouncing this back to the top of your inbox.
+Just bumping this up in your inbox.
 
-🎓 <strong>Certificates from IMD, SRI International, and Queen Hedvig Academy</strong>
-💰 <strong>€4,900 per person</strong> (alumni and group rates at €4,300)
-📍 <strong>Dubai, April 20–22</strong> — 3 days that could change how you lead
+Quick summary: 3 days in Dubai. Faculty include an IMD professor (former Egyptian Special Forces), an Everest summiteer, and the former President of SRI International. €4,900 per person (€4,300 for alumni/groups).
 
-I'd genuinely value your perspective on whether this resonates — either for you or someone you'd want to refer.
+I'd genuinely value your perspective — either for you or someone you'd refer.
 
 Cheers,
 [Sender Name]</div>
                     </div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: The Referral Ask</span><span class="day">Day 8</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: Referral Ask</span><span class="day">Day 8</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner">
+                        <h4>Subject Line</h4>
+                        <div class="subj">last ask on this</div>
                         <div class="copy">Hi [First Name],
 
-Last message on this — I promise!
+Last message on this — promise!
 
-<strong>Can you think of one or two senior leaders in your network who would benefit from this?</strong>
+Can you think of one or two senior leaders in your network who might benefit? Ideal profile: C-suite or VP level, faces high-stakes decisions, values world-class development, based in the Gulf or Europe.
 
-Ideal profile:
-• C-suite, VP, or GM level
-• Faces high-stakes decisions regularly
-• Values world-class learning experiences
-• Based in the Middle East, Gulf region, or Europe
+A quick email introduction is all it takes — I'll handle the rest.
 
-If you can make a quick introduction via email, I'll take great care of them.
+And if you decide last minute that you want to join — there's always a seat for you 😊
 
-And of course, if you decide last minute that YOU want to come — there's always a seat with your name on it. 😊
-
-Thank you so much,
+Thank you,
 [Sender Name]</div>
                     </div></div>
                 </div>
@@ -764,136 +684,114 @@ Thank you so much,
         <!-- ========== TAB: NURTURE SEQUENCE ========== -->
         <div id="tab-nurture" class="tab-content">
             <div class="seq-section">
-                <h2>Email Nurture Sequence — Brochure Downloaders</h2>
-                <div class="seq-meta"><strong>Target:</strong> People who downloaded the brochure but didn't apply &nbsp;|&nbsp; <strong>Goal:</strong> Build desire → drive to application &nbsp;|&nbsp; <strong>Cadence:</strong> 7 emails over 21 days</div>
+                <h2>Nurture Sequence — 7 Emails Over 21 Days</h2>
+                <div class="seq-meta"><strong>Trigger:</strong> Brochure download on program page &nbsp;|&nbsp; <strong>Goal:</strong> Build desire → drive to application &nbsp;|&nbsp; <strong>Automated via email platform</strong></div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: Welcome + Brochure Delivery</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 1: Welcome + Brochure</span><span class="day">Day 0</span><span class="arrow-i">+</span></button>
                     <div class="email-body"><div class="email-body-inner"><div class="copy">Hi [First Name],
 
-Thank you for your interest in the <strong>Leading Under Pressure</strong> program.
+Thank you for your interest in Leading Under Pressure.
 
-Here's your brochure: [BROCHURE_PDF_LINK]
+Here's your brochure: [BROCHURE LINK]
 
-📅 <strong>April 20–22, 2026</strong> — Dubai, UAE
-🎓 <strong>Faculty from IMD, Stanford GSB, and SRI International</strong>
-🥽 <strong>Includes VR crisis simulation</strong>
-👥 <strong>Limited to 25 participants</strong>
+📅 April 20–22, 2026 — Dubai, UAE
+🎓 Faculty from IMD, Stanford, and SRI International
+🥽 Includes VR crisis simulation
+👥 Limited to 25 participants
 
-Over the next few weeks, I'll share insights about the program, the faculty, and why leaders call it transformative.
+Over the next few weeks, I'll share more about the program, faculty, and what makes it different.
 
 Looking forward to connecting,
-[Sender Name]</div></div></div>
+Fouad</div></div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The Leadership Gap</span><span class="day">Day 3</span><span class="arrow-i">+</span></button>
-                    <div class="email-body"><div class="email-body-inner"><div class="copy"><strong>Most senior leaders have never been formally trained to lead under extreme pressure.</strong>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 2: The Problem</span><span class="day">Day 3</span><span class="arrow-i">+</span></button>
+                    <div class="email-body"><div class="email-body-inner"><div class="copy">Most senior leaders have never been formally trained to lead under extreme pressure.
 
-They've done MBA programs. Strategy workshops. But none simulate what it feels like when:
+They've done MBAs and strategy workshops. But none simulate what it feels like when a crisis breaks at 2am, when you have to make a restructuring decision affecting hundreds of jobs, or when your team is looking at you for direction and you're not sure.
 
-• A crisis breaks at 2am and the board wants answers by 8am
-• You have to make a restructuring decision affecting 500 jobs
-• Your team is looking at you for direction and you're not sure
-• External stakeholders are applying pressure from every angle
-
-<strong>Leading Under Pressure exists because we believe improvisation is not good enough.</strong>
-
-The program is built on one premise: <em>pressure reveals character, but the right training shapes it.</em>
+Leading Under Pressure exists because we believe improvisation is not good enough. The right training shapes how you perform when it matters most.
 
 Best,
-[Sender Name]</div></div></div>
+Fouad</div></div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: Faculty Spotlight — Sameh Abadir</span><span class="day">Day 6</span><span class="arrow-i">+</span></button>
-                    <div class="email-body"><div class="email-body-inner"><div class="copy"><strong>Professor Sameh Abadir</strong> is an IMD Professor of Leadership and Negotiation. But before academia, he served in the <strong>Egyptian Special Forces</strong>.
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 3: Faculty Spotlight</span><span class="day">Day 6</span><span class="arrow-i">+</span></button>
+                    <div class="email-body"><div class="email-body-inner"><div class="copy">Professor Sameh Abadir is an IMD Professor of Leadership and Negotiation. Before academia, he served in the Egyptian Special Forces.
 
-PhD from Paris 1 University. MBA from Sciences Po. 15 years at INSEAD (winning Best Professor awards).
+PhD from Paris 1. MBA from Sciences Po. 15 years at INSEAD (winning Best Professor awards). He's directed programs for Emirates Nuclear, ArcelorMittal, Merck, and Jerónimo Martins.
 
-He's directed programs for <strong>Emirates Nuclear, ArcelorMittal, Merck</strong>, and <strong>Jerónimo Martins</strong>.
+At Leading Under Pressure, he leads sessions on crisis decision-making, negotiation under pressure, and stakeholder mapping in crisis.
 
-At Leading Under Pressure, he leads sessions on <strong>crisis decision-making psychology, negotiation under pressure, and mapping stakeholder ecosystems in crisis</strong>.
-
-This is not someone who teaches from textbooks. This is someone who has lived it.
+This is someone who has lived it — not just studied it.
 
 Best,
-[Sender Name]</div></div></div>
+Fouad</div></div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 4: The VR Simulation</span><span class="day">Day 9</span><span class="arrow-i">+</span></button>
-                    <div class="email-body"><div class="email-body-inner"><div class="copy"><strong>Virtual Reality Crisis Simulation.</strong>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 4: The VR Experience</span><span class="day">Day 9</span><span class="arrow-i">+</span></button>
+                    <div class="email-body"><div class="email-body-inner"><div class="copy">In partnership with SRI International, the program places you inside a realistic crisis scenario using immersive VR.
 
-In partnership with <strong>SRI International</strong>, the program places you inside a realistic, high-stakes crisis scenario using immersive VR.
-
-<strong>Here's what happens:</strong>
-1. You're placed in a simulated crisis with mounting pressure
+Here's what happens:
+1. You're placed in a high-stakes crisis with mounting pressure
 2. You make real-time decisions with incomplete information
-3. Your emotional responses and decision patterns are observed
-4. Faculty debrief you — decoding your blind spots and strengths
-5. You learn exactly how you perform under pressure
+3. Faculty observe your decision patterns and emotional responses
+4. You're debriefed — your blind spots and strengths decoded
+5. You build a personal crisis leadership framework
 
-There is no other executive program in the Middle East that uses this methodology.
-
-Because <strong>reading about crisis leadership is not the same as experiencing it</strong>.
+No other executive program in the Middle East uses this methodology. Because reading about crisis leadership is not the same as experiencing it.
 
 Best,
-[Sender Name]</div></div></div>
+Fouad</div></div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 5: Joyce Azzam's Story</span><span class="day">Day 12</span><span class="arrow-i">+</span></button>
-                    <div class="email-body"><div class="email-body-inner"><div class="copy"><strong>Joyce Azzam</strong> was born in Beirut with a chronic lung condition and hypermobility syndrome. She was also afraid of heights.
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 5: Joyce's Story</span><span class="day">Day 12</span><span class="arrow-i">+</span></button>
+                    <div class="email-body"><div class="email-body-inner"><div class="copy">Joyce Azzam was born in Beirut with a chronic lung condition and hypermobility syndrome. She was also afraid of heights.
 
-She went on to become the <strong>first Lebanese woman to complete the Seven Summits</strong> — climbing the highest peak on every continent, including <strong>Mount Everest in May 2019</strong>.
+She went on to become the first Lebanese woman to complete the Seven Summits — climbing the highest peak on every continent, including Mount Everest.
 
-Today, she's a <strong>UN Women National Goodwill Ambassador</strong> — one of only 15 globally.
+Today, she's a UN Women National Goodwill Ambassador — one of only 15 globally.
 
-At Leading Under Pressure, Joyce leads sessions on <strong>emotional management under stress and building mental frameworks for high-performance under pressure</strong>.
+At Leading Under Pressure, Joyce leads sessions on emotional management under stress and building mental frameworks for high performance.
 
-Her message: <em>The conditions don't determine your performance. Your preparation does.</em>
+Her message: the conditions don't determine your performance. Your preparation does.
 
 Best,
-[Sender Name]</div></div></div>
+Fouad</div></div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 6: Peer Cohort & Network Value</span><span class="day">Day 16</span><span class="arrow-i">+</span></button>
-                    <div class="email-body"><div class="email-body-inner"><div class="copy"><strong>Who else is in the room?</strong>
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 6: The Cohort</span><span class="day">Day 16</span><span class="arrow-i">+</span></button>
+                    <div class="email-body"><div class="email-body-inner"><div class="copy">Who else will be in the room?
 
-Leading Under Pressure is capped at <strong>25 participants</strong>. Past cohorts have included:
+Leading Under Pressure is capped at 25. Past cohorts have included:
+· CEOs and GMs from Fortune 500 multinationals
+· Regional directors managing $500M+ P&Ls
+· Government leaders navigating political complexity
+· Entrepreneurs scaling through turbulence
 
-• CEOs and GMs from Fortune 500 multinationals
-• Regional directors managing $500M+ P&Ls
-• Government leaders navigating political complexity
-• Entrepreneurs scaling through turbulence
+Many alumni say the peer network became one of their most valuable professional assets.
 
-Many alumni report that the <strong>peer network</strong> became one of their most valuable professional assets.
-
-<strong>€4,900 for the program. The network you build? Priceless.</strong>
+€4,900 for the program. The network you build? Priceless.
 
 Best,
-[Sender Name]</div></div></div>
+Fouad</div></div></div>
                 </div>
 
-                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 7: Final Call — Urgency Close</span><span class="day">Day 21</span><span class="arrow-i">+</span></button>
-                    <div class="email-body"><div class="email-body-inner"><div class="copy">This is my last email about the Leading Under Pressure program.
+                <div class="email-acc"><button class="email-hd" onclick="toggleAcc(this)"><span>Email 7: Final Call</span><span class="day">Day 21</span><span class="arrow-i">+</span></button>
+                    <div class="email-body"><div class="email-body-inner"><div class="copy">This is my last email about Leading Under Pressure.
 
-<strong>Every leader faces a moment where the pressure becomes real and the stakes become personal.</strong>
+Every leader faces a moment where pressure becomes real and the stakes become personal. When that moment comes, you'll either draw on frameworks you've practiced — or you'll improvise and hope for the best.
 
-When that moment comes, you'll either draw on frameworks you've practiced — or you'll improvise and hope for the best.
-
-<strong>Quick summary:</strong>
 📅 April 20–22, 2026 — Dubai
-🎓 Faculty from IMD, Stanford, SRI International
-🥽 VR crisis simulation (one-of-a-kind)
-🧠 6-week pre-assessment + post-program coaching
-👥 25-person elite cohort
-💰 €4,900 (€4,300 alumni/group rate)
+🎓 IMD, Stanford, SRI International faculty
+🥽 VR crisis simulation
+👥 25-person cohort
+💰 €4,900 (€4,300 alumni/group)
 
-→ <em>[Reserve Your Seat]</em>
+If this is for you, I'd love to have you in the room: lup.admireworks.com
 
-Whatever you decide, my intention has been genuine: I believe this program can be transformative for the right leader at the right time.
-
-If that's you — we'd love to have you in the room.
-
-With respect and best wishes,
-[Sender Name]</div></div></div>
+With best wishes,
+Fouad</div></div></div>
                 </div>
             </div>
         </div>
@@ -903,186 +801,179 @@ With respect and best wishes,
                 <div class="sec-hd"><div class="sec-n">📅</div><div class="sec-pill">8-Week Campaign Timeline</div><div class="sec-line"></div></div>
                 <div class="tl">
                     <div class="tl-item active">
-                        <div class="tl-wk">Week 1 — NOW</div>
+                        <div class="tl-wk">Week 1 — Launch</div>
                         <div class="tl-dates">March 2–8, 2026</div>
-                        <div class="tl-act">🚀 Launch cold outreach sequences (C-Suite + L&D/HR)<br>📣 Activate warm network outreach (Rania + Robert)<br>🎯 Extract Wave 1 leads from Apollo (UAE C-Suite + HR/L&D)</div>
+                        <div class="tl-act">🚀 Launch Executive + L&D/HR email sequences (Wave 1 contacts)<br>📣 Activate warm network outreach<br>🎯 Extract Wave 1 contacts from Apollo (520 UAE leads)</div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-wk">Week 2</div>
                         <div class="tl-dates">March 9–15, 2026</div>
-                        <div class="tl-act">🌐 Landing page live and receiving traffic<br>💬 LinkedIn direct outreach begins (50–100 connections)<br>📧 First nurture emails triggered for brochure downloaders<br>🎯 Extract Wave 2 leads (KSA + Egypt)</div>
+                        <div class="tl-act">🌐 Monitor program page traffic and conversions<br>💬 Begin LinkedIn direct connection requests (50–100)<br>📧 First nurture emails triggered for brochure downloaders<br>🎯 Extract Wave 2 contacts (250 KSA + Egypt)</div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-wk">Week 3</div>
                         <div class="tl-dates">March 16–22, 2026</div>
-                        <div class="tl-act">📝 Content posts ramp up on LinkedIn (2–3/week)<br>📞 Private briefing calls scheduled with hot leads<br>🎯 Extract Wave 3 leads (Poland + GCC)</div>
+                        <div class="tl-act">📝 LinkedIn content posts ramp up (2–3/week)<br>📞 Private briefing calls with interested leads<br>🎯 Extract Wave 3 contacts (150 Poland + GCC)</div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-wk">Week 4</div>
                         <div class="tl-dates">March 23–29, 2026</div>
-                        <div class="tl-act">🔥 Mid-campaign push — "seats filling" urgency messaging<br>📊 Review metrics: open rates, reply rates, page visits<br>🔁 Optimize underperforming sequences</div>
+                        <div class="tl-act">🔥 Mid-campaign push — "seats filling" messaging<br>📊 Review metrics: open rates, reply rates, page visits<br>🔁 Optimize underperforming sequences based on data</div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-wk">Week 5</div>
                         <div class="tl-dates">March 30 – April 5, 2026</div>
-                        <div class="tl-act">⏰ Application deadline reminder<br>📧 Final nurture emails sent<br>📞 Follow-up calls with undecided leads</div>
+                        <div class="tl-act">⏰ Application deadline reminder to all engaged leads<br>📧 Final nurture emails sent to brochure downloaders<br>📞 Follow-up calls with undecided prospects</div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-wk">Week 6</div>
                         <div class="tl-dates">April 6–12, 2026</div>
-                        <div class="tl-act">🚨 Last-call outreach to all warm leads<br>📞 Final private briefings<br>💳 Process remaining payments</div>
+                        <div class="tl-act">🚨 Last-call outreach to all warm leads<br>📞 Final private briefings<br>💳 Process remaining payments and confirmations</div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-wk">Week 7</div>
                         <div class="tl-dates">April 13–19, 2026</div>
-                        <div class="tl-act">✅ Final confirmation to all registrants<br>📋 Pre-program self-assessment begins<br>📦 Welcome packs sent<br>🏨 Logistics coordination (venue, AV, catering)</div>
+                        <div class="tl-act">✅ Final confirmation to all registrants<br>📋 Pre-program self-assessment begins<br>📦 Welcome packs sent<br>🏨 Venue, AV, and catering coordination</div>
                     </div>
-                    <div class="tl-item" style="border-color:rgba(201,168,76,.4);background:linear-gradient(135deg,var(--card),rgba(201,168,76,.06))">
-                        <div class="tl-wk" style="color:#e04838;font-size:.82rem">Week 8 — PROGRAM DELIVERY</div>
+                    <div class="tl-item" style="border-color:var(--navy);background:rgba(0,26,112,.02)">
+                        <div class="tl-wk" style="color:var(--tomato)">Week 8 — Program Delivery</div>
                         <div class="tl-dates">April 20–22, 2026</div>
-                        <div class="tl-act"><strong style="color:var(--tw)">🎯 LEADING UNDER PRESSURE — 3-Day Executive Program in Dubai</strong><br>Day 1: Crisis Decision-Making & Stakeholder Mapping<br>Day 2: VR Crisis Simulation & Debrief<br>Day 3: Resilience Frameworks & Personal Action Plans</div>
+                        <div class="tl-act"><strong style="color:var(--tw)">🎯 LEADING UNDER PRESSURE — 3-Day Program</strong><br>Day 1: Crisis Decision-Making & Stakeholder Mapping<br>Day 2: VR Crisis Simulation & Debrief<br>Day 3: Resilience Frameworks & Action Plans</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========== TAB: INSTANTLY SETUP ========== -->
-        <div id="tab-instantly" class="tab-content">
+        <!-- ========== TAB: SENDING SETUP ========== -->
+        <div id="tab-sending" class="tab-content">
             <div class="sec">
-                <div class="sec-hd"><div class="sec-n">⚡</div><div class="sec-pill">Instantly.ai — Email Infrastructure</div><div class="sec-line"></div></div>
-                <p class="sub">Email sending accounts connected to Instantly. Warmed up and ready for cold outreach.</p>
+                <div class="sec-hd"><div class="sec-n">⚡</div><div class="sec-pill">Email Sending Infrastructure</div><div class="sec-line"></div></div>
+                <p class="sub">Dedicated sending accounts, fully warmed and ready. All accounts scored 100/100 on deliverability warmup.</p>
 
-                <h2 style="margin-bottom:16px">Connected Sending Accounts</h2>
-                <div style="display:grid;gap:12px;margin-bottom:28px">
-                    <div class="acct">
-                        <div class="dot dot-green"></div>
-                        <div style="flex:1">
-                            <div class="em">hannah@getsimlabs.com</div>
-                            <div style="color:var(--td);font-size:.78rem">First Name: Hannah · Last Name: Adam</div>
-                        </div>
-                        <div class="sc">Warmup: 100/100</div>
-                        <span class="badge b-green" style="margin:0">Ready</span>
-                    </div>
-                    <div class="acct">
-                        <div class="dot dot-green"></div>
-                        <div style="flex:1">
-                            <div class="em">noah@getsimlabs.com</div>
-                            <div style="color:var(--td);font-size:.78rem">First Name: Noah · Last Name: John</div>
-                        </div>
-                        <div class="sc">Warmup: Active</div>
-                        <span class="badge b-green" style="margin:0">Ready</span>
-                    </div>
+                <h2 style="margin-bottom:14px">Available Sending Accounts</h2>
+                <p class="sub">8 accounts across 3 dedicated domains — all warmed up and ready for outreach:</p>
+                <div style="display:grid;gap:10px;margin-bottom:24px">
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouad.nasseredin@joinadmire8.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouad@joinadmire8.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouadnasseredin@joinadmire8.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouad.nasseredin@tryadmire8.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouad@tryadmire8.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouadnasseredin@tryadmire8.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouad.nasseredin@get4percent.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
+                    <div class="acct"><div class="dot dot-green"></div><div style="flex:1"><div class="em">fouad@get4percent.com</div></div><div class="sc">Warmup: 100/100</div><span class="badge b-jumeirah" style="margin:0">Ready</span></div>
                 </div>
 
-                <h2 style="margin-bottom:16px">Campaign Setup Required</h2>
-                <p class="sub">Three new Instantly campaigns need to be created for the LUP outreach:</p>
+                <h2 style="margin-bottom:14px">Campaigns to Create</h2>
                 <div class="cg c3">
-                    <div class="fc"><div class="accent a-blue"></div>
-                        <h3>LUP | C-Suite Executives</h3>
-                        <span class="badge b-blue">4-Step Sequence</span>
-                        <p>Cadence: Day 0 → 3 → 7 → 12<br>Sending limit: 30–50/day per account<br>Estimated send: ~200 contacts</p>
+                    <div class="fc"><div class="accent a-navy"></div>
+                        <h3>LUP | Executive Outreach</h3>
+                        <span class="badge b-navy">4-Step Sequence</span>
+                        <p>Cadence: Day 0 → 3 → 7 → 12<br>Sending: 30–50/day per account<br>Contacts: ~200–350</p>
                     </div>
-                    <div class="fc"><div class="accent a-indigo"></div>
-                        <h3>LUP | L&D / HR Directors</h3>
-                        <span class="badge b-indigo">4-Step Sequence</span>
-                        <p>Cadence: Day 0 → 3 → 7 → 12<br>Sending limit: 20–30/day per account<br>Estimated send: ~400 contacts</p>
+                    <div class="fc"><div class="accent a-gold"></div>
+                        <h3>LUP | L&D / HR Outreach</h3>
+                        <span class="badge b-gold">4-Step Sequence</span>
+                        <p>Cadence: Day 0 → 3 → 7 → 12<br>Sending: 20–30/day per account<br>Contacts: ~350–500</p>
                     </div>
-                    <div class="fc"><div class="accent a-amber"></div>
+                    <div class="fc"><div class="accent a-berry"></div>
                         <h3>LUP | Warm Network</h3>
-                        <span class="badge b-amber">3-Step Sequence</span>
-                        <p>Cadence: Day 0 → 4 → 8<br>Manual / personal sends<br>Estimated send: ~100 contacts</p>
+                        <span class="badge b-berry">3-Step Sequence</span>
+                        <p>Cadence: Day 0 → 4 → 8<br>Personal sends<br>Contacts: ~50–100</p>
                     </div>
                 </div>
 
-                <div style="margin-top:24px;padding:18px 22px;background:rgba(243,156,18,.06);border:1px solid rgba(243,156,18,.15);border-radius:var(--r)">
-                    <div style="font-weight:700;color:#f39c12;font-size:.84rem;margin-bottom:6px">⚠️ Important Notes</div>
+                <div style="margin-top:24px;padding:16px 20px;background:rgba(0,26,112,.03);border:1.5px solid rgba(0,26,112,.1);border-radius:var(--r)">
+                    <div style="font-weight:700;color:var(--navy);font-size:.82rem;margin-bottom:6px">📋 Deliverability Best Practices</div>
                     <ul style="color:var(--tm);font-size:.82rem;padding-left:18px;line-height:1.8">
-                        <li>Current accounts are on the <strong style="color:var(--tw)">getsimlabs.com</strong> domain — consider setting up dedicated Aspire HR sending domains for LUP campaigns</li>
-                        <li>Warmup score of 100 means accounts are fully ready for cold outreach</li>
-                        <li>Tracking domain (<strong style="color:var(--tw)">inst.getsimlabs.com</strong>) is active — all link tracking will work</li>
-                        <li>Recommended daily sending limit: 30–50 emails/account to maintain deliverability</li>
+                        <li>Daily sending limit: <strong style="color:var(--tw)">30–50 emails per account</strong> to maintain inbox placement</li>
+                        <li>Plain text emails (no HTML templates) for cold outreach — higher deliverability</li>
+                        <li>No links in first email — builds trust before directing to program page</li>
+                        <li>All domains have <strong style="color:var(--tw)">SPF, DKIM, and DMARC</strong> properly configured</li>
+                        <li>Tracking domains active: inst.joinadmire8.com, inst.tryadmire8.com, inst.get4percent.com</li>
+                        <li>Target spam rate: <strong style="color:var(--tw)">under 0.1%</strong> · Bounce rate: <strong style="color:var(--tw)">under 2%</strong></li>
                     </ul>
                 </div>
             </div>
         </div>
-
-        <!-- ========== TAB: METRICS & PLAN ========== -->
+        <!-- ========== TAB: GOALS & KPIS ========== -->
         <div id="tab-metrics" class="tab-content">
             <div class="sec">
-                <div class="sec-hd"><div class="sec-n">📈</div><div class="sec-pill">Success Metrics & KPIs</div><div class="sec-line"></div></div>
+                <div class="sec-hd"><div class="sec-n">📈</div><div class="sec-pill">Campaign Goals & Success Metrics</div><div class="sec-line"></div></div>
 
-                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px">
-                    <div class="stat"><div class="sv">400+</div><div class="sl">Cold Emails Sent</div></div>
-                    <div class="stat"><div class="sv">25%+</div><div class="sl">Email Open Rate</div></div>
-                    <div class="stat"><div class="sv">5%+</div><div class="sl">Reply Rate</div></div>
-                    <div class="stat"><div class="sv">3%+</div><div class="sl">LP Click Rate</div></div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px">
+                    <div class="stat"><div class="sv">920</div><div class="sl">Contacts Targeted</div></div>
+                    <div class="stat"><div class="sv">25%+</div><div class="sl">Open Rate Goal</div></div>
+                    <div class="stat"><div class="sv">20–25</div><div class="sl">Registrations Goal</div></div>
+                    <div class="stat"><div class="sv" style="color:var(--navy)">€98K–€122K</div><div class="sl">Revenue Target</div></div>
                 </div>
 
                 <table class="dtable">
                     <thead><tr><th>Metric</th><th style="text-align:right">Target</th><th>Status</th></tr></thead>
                     <tbody>
-                        <tr><td>Cold emails sent</td><td class="num-cell">400+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr><td>Email open rate</td><td class="num-cell">25%+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr><td>Email reply rate</td><td class="num-cell">5%+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr><td>Landing page visitors</td><td class="num-cell">500+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr><td>Brochure downloads</td><td class="num-cell">40+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr><td>Applications submitted</td><td class="num-cell">30+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr><td>Private briefings held</td><td class="num-cell">15+</td><td><span class="badge b-amber" style="margin:0">Pending</span></td></tr>
-                        <tr class="total-row"><td><strong>Registrations confirmed</strong></td><td class="num-cell"><strong>20–25</strong></td><td><span class="badge b-red" style="margin:0">Goal</span></td></tr>
-                        <tr class="total-row"><td><strong>Revenue target</strong></td><td class="num-cell"><strong>€98,000–€122,500</strong></td><td><span class="badge b-red" style="margin:0">Goal</span></td></tr>
+                        <tr><td>Cold emails sent</td><td class="num-cell">600–900</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr><td>Email open rate</td><td class="num-cell">25%+</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr><td>Email reply rate</td><td class="num-cell">5%+</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr><td>Program page visitors</td><td class="num-cell">500+</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr><td>Brochure downloads</td><td class="num-cell">40+</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr><td>Applications submitted</td><td class="num-cell">30+</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr><td>Private briefing calls held</td><td class="num-cell">15+</td><td><span class="badge b-gold" style="margin:0">Planned</span></td></tr>
+                        <tr class="total-row"><td><strong>Confirmed registrations</strong></td><td class="num-cell"><strong>20–25</strong></td><td><span class="badge b-tomato" style="margin:0">Goal</span></td></tr>
+                        <tr class="total-row"><td><strong>Revenue</strong></td><td class="num-cell"><strong>€98,000–€122,500</strong></td><td><span class="badge b-tomato" style="margin:0">Goal</span></td></tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="sec">
-                <h2 style="margin-bottom:16px">Channel-by-Channel Targets</h2>
+                <h2 style="margin-bottom:14px">Channel Breakdown</h2>
                 <div class="cg c3">
-                    <div class="fc"><div class="accent a-blue"></div>
+                    <div class="fc"><div class="accent a-navy"></div>
                         <h3>Cold Email Outreach</h3>
-                        <p><strong style="color:var(--tw)">Volume:</strong> 200–500 contacts<br><strong style="color:var(--tw)">Open rate:</strong> 25%+<br><strong style="color:var(--tw)">Reply rate:</strong> 5%+<br><strong style="color:var(--tw)">LP click:</strong> 3%+</p>
+                        <p><strong style="color:var(--tw)">Volume:</strong> 600–900 emails across 8 accounts<br><strong style="color:var(--tw)">Open rate:</strong> 25%+ target<br><strong style="color:var(--tw)">Reply rate:</strong> 5%+ target<br><strong style="color:var(--tw)">Expected conversions:</strong> 8–12</p>
                     </div>
-                    <div class="fc"><div class="accent a-teal"></div>
-                        <h3>LinkedIn Direct Outreach</h3>
-                        <p><strong style="color:var(--tw)">Volume:</strong> 50–100 connections<br><strong style="color:var(--tw)">Acceptance:</strong> 30%+<br><strong style="color:var(--tw)">Reply rate:</strong> 10%+</p>
+                    <div class="fc"><div class="accent a-berry"></div>
+                        <h3>Warm Network</h3>
+                        <p><strong style="color:var(--tw)">Volume:</strong> 50–100 personal contacts<br><strong style="color:var(--tw)">Response rate:</strong> 15%+ target<br><strong style="color:var(--tw)">Expected conversions:</strong> 3–5</p>
                     </div>
-                    <div class="fc"><div class="accent a-amber"></div>
-                        <h3>Warm Network Activation</h3>
-                        <p><strong style="color:var(--tw)">Volume:</strong> 50–100 contacts<br><strong style="color:var(--tw)">Response rate:</strong> 15%+<br><strong style="color:var(--tw)">Application rate:</strong> 5%+</p>
+                    <div class="fc"><div class="accent a-gold"></div>
+                        <h3>Nurture + Inbound</h3>
+                        <p><strong style="color:var(--tw)">Brochure downloads:</strong> 40+ target<br><strong style="color:var(--tw)">Nurture → application:</strong> 10%+<br><strong style="color:var(--tw)">Expected conversions:</strong> 4–6</p>
                     </div>
                 </div>
             </div>
 
             <div class="sec">
-                <h2 style="margin-bottom:16px">Landing Page Conversion Targets</h2>
+                <h2 style="margin-bottom:14px">Conversion Funnel Targets</h2>
                 <div class="cg c2">
-                    <div class="fc"><div class="accent a-teal"></div>
+                    <div class="fc"><div class="accent a-navy"></div>
                         <h3>Brochure Download Rate</h3>
-                        <p>Target: <strong style="color:var(--tw)">8%+ of visitors</strong><br>Triggers 21-day nurture sequence.<br>Expected: 40+ downloads from 500+ visitors.</p>
+                        <p>Target: <strong style="color:var(--tw)">8% of page visitors</strong><br>40+ downloads → enters 21-day nurture sequence.</p>
                     </div>
-                    <div class="fc"><div class="accent a-red"></div>
-                        <h3>Application Form Submission</h3>
-                        <p>Target: <strong style="color:var(--tw)">3%+ of visitors</strong><br>Direct application → admissions review.<br>Expected: 15+ direct applications.</p>
+                    <div class="fc"><div class="accent a-tomato"></div>
+                        <h3>Direct Application Rate</h3>
+                        <p>Target: <strong style="color:var(--tw)">3% of page visitors</strong><br>15+ direct applications → admissions review.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="sec">
-                <h2 style="margin-bottom:16px">Private Briefing Conversion</h2>
-                <div style="padding:24px;background:var(--gd);border:1px solid rgba(201,168,76,.2);border-radius:var(--r);text-align:center">
-                    <div style="font-family:var(--serif);font-size:1.4rem;font-weight:800;color:var(--tw);margin-bottom:8px">40%+ Conversion</div>
-                    <div style="color:var(--tm);font-size:.88rem">From private briefing call → confirmed registration.<br>15 briefings × 40% = 6 confirmed registrations from this channel alone.</div>
+                <div style="margin-top:16px;padding:20px;background:rgba(0,26,112,.03);border:1.5px solid rgba(0,26,112,.1);border-radius:var(--r);text-align:center">
+                    <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:4px">40%+ Briefing → Registration</div>
+                    <div style="color:var(--tm);font-size:.84rem">From private briefing call → confirmed registration<br>15 briefings × 40% = 6 confirmed from this channel</div>
                 </div>
             </div>
         </div>
 
     </div><!-- /wrap -->
 
+    <!-- Footer -->
+    <div class="ftr">
+        <p>Campaign Dashboard prepared by <a href="https://admireworks.com" target="_blank">Admireworks</a></p>
+        <p style="margin-top:4px">Program: Leading Under Pressure · April 20–22, 2026 · Dubai, UAE</p>
+    </div>
+
     <script>
         function showTab(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('tab-' + id).classList.add('active');
-            const map = {overview:0,leads:1,personas:2,exec:3,ld:4,warm:5,nurture:6,timeline:7,instantly:8,metrics:9};
+            const map = {overview:0,leads:1,exec:2,ld:3,warm:4,nurture:5,timeline:6,sending:7,metrics:8};
             const btns = document.querySelectorAll('.tab-btn');
             if (map[id] !== undefined && btns[map[id]]) btns[map[id]].classList.add('active');
             window.scrollTo({top:document.querySelector('.tabs').offsetTop - 20,behavior:'smooth'});
@@ -1091,7 +982,6 @@ With respect and best wishes,
             const acc = btn.closest('.email-acc');
             const body = acc.querySelector('.email-body');
             const isOpen = acc.classList.contains('open');
-            // Close all in same section
             acc.closest('.seq-section').querySelectorAll('.email-acc').forEach(a => {
                 a.classList.remove('open');
                 a.querySelector('.email-body').style.maxHeight = '0';

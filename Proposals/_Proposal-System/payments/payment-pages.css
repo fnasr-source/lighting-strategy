@@ -539,7 +539,7 @@ body {
 }
 
 /* ── Responsive ────────────────────────────────── */
-@media (max-width: 760px) {
+@media screen and (max-width: 760px) {
     .page-container {
         padding: 12px 8px 40px;
     }
@@ -678,6 +678,38 @@ body {
     body {
         padding: 0;
         background: white;
+    }
+
+    .page-container {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .invoice-container {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .invoice-header,
+    .invoice-details,
+    .savings-row,
+    .invoice-total,
+    .recurring-note,
+    .instapay-details {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .invoice-items {
+        page-break-inside: auto;
+    }
+
+    .invoice-items tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .package-card {

@@ -34,12 +34,15 @@ const appearance: Appearance = {
 
 /* ─── Types ─── */
 interface LineItem { description: string; qty: number; rate: number; amount: number; }
+interface PaymentSplitDeposit { amount: number; label: string; description: string; status: string; }
+interface PaymentSplit { type: string; totalInvestment: number; deposit1: PaymentSplitDeposit; deposit2: PaymentSplitDeposit; }
 interface InvoiceData {
     id: string; invoiceNumber: string; clientName: string; lineItems: LineItem[];
     subtotal: number; tax: number; totalDue: number; currency: string; status: string;
     discount?: number; discountLabel?: string;
     promotionName?: string; promotionExpiry?: string;
     issuedAt?: string; dueDate?: string; paidAt?: string; notes?: string;
+    paymentSplit?: PaymentSplit;
 }
 interface CompanyData { name: string; tagline: string; email: string; phone: string; address: string; }
 
@@ -232,9 +235,38 @@ export default function PublicInvoicePage() {
                                 <span>Tax</span><span>{fmtAmt(invoice.tax)} {invoice.currency}</span>
                             </div>
                         )}
-                        <div className="inv-totals__total">
-                            <span>Total</span><span>{fmtAmt(invoice.totalDue)} {invoice.currency}</span>
-                        </div>
+
+                        {/* Split Payment Display */}
+                        {invoice.paymentSplit ? (
+                            <>
+                                <div className="inv-totals__row" style={{ paddingBottom: 8 }}>
+                                    <span>Total Investment</span>
+                                    <span>{fmtAmt(invoice.paymentSplit.totalInvestment)} {invoice.currency}</span>
+                                </div>
+                                <div className="inv-totals__total" style={{ borderTop: '2px solid #cc9f53', paddingTop: 10 }}>
+                                    <span style={{ fontSize: '0.92rem' }}>{invoice.paymentSplit.deposit1.label}</span>
+                                    <span>{fmtAmt(invoice.paymentSplit.deposit1.amount)} {invoice.currency}</span>
+                                </div>
+                                <div style={{
+                                    display: 'flex', justifyContent: 'space-between',
+                                    padding: '8px 0', fontSize: '0.85rem',
+                                    borderTop: '1px dashed #e0e0e0', marginTop: 4,
+                                }}>
+                                    <span style={{ color: '#555' }}>{invoice.paymentSplit.deposit2.label}</span>
+                                    <span style={{ color: '#001a70', fontWeight: 600 }}>{fmtAmt(invoice.paymentSplit.deposit2.amount)} {invoice.currency}</span>
+                                </div>
+                                <div style={{
+                                    fontSize: '0.72rem', color: '#888', fontStyle: 'italic',
+                                    padding: '4px 0 0', textAlign: 'right',
+                                }}>
+                                    {invoice.paymentSplit.deposit2.description}
+                                </div>
+                            </>
+                        ) : (
+                            <div className="inv-totals__total">
+                                <span>Total</span><span>{fmtAmt(invoice.totalDue)} {invoice.currency}</span>
+                            </div>
+                        )}
                     </div>
 
                     {/* Company Info */}
@@ -479,7 +511,17 @@ export default function PublicInvoicePage() {
 
                     {!isPaid && !instapaySubmitted && (
                         <div className="inv-terms-inline">
-                            By completing this payment, you agree to the terms of service. Payment is due upon receipt.
+                            {invoice.paymentSplit ? (
+                                <>
+                                    By completing this payment, you agree to the terms of service.
+                                    The total investment of {fmtAmt(invoice.paymentSplit.totalInvestment)} {invoice.currency} has been
+                                    split into two payments. {invoice.paymentSplit.deposit1.label} ({fmtAmt(invoice.paymentSplit.deposit1.amount)} {invoice.currency})
+                                    is due now. {invoice.paymentSplit.deposit2.label} ({fmtAmt(invoice.paymentSplit.deposit2.amount)} {invoice.currency})
+                                    will be invoiced separately.
+                                </>
+                            ) : (
+                                'By completing this payment, you agree to the terms of service. Payment is due upon receipt.'
+                            )}
                         </div>
                     )}
                 </div>

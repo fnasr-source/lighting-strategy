@@ -97,24 +97,35 @@ const html = `<!DOCTYPE html>
                       <td style="padding:4px 0;text-align:right;color:#059669;font-size:13px;font-weight:600;">-8,000 SAR</td>
                     </tr>
                     <tr>
+                      <td style="padding:4px 0;color:${BRAND.navy};font-weight:700;font-size:15px;">Total Investment</td>
+                      <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:700;font-size:18px;">16,000 SAR</td>
+                    </tr>
+                    <tr>
                       <td colspan="2" style="padding:12px 0 0;border-top:2px solid ${BRAND.gold};"></td>
                     </tr>
                     <tr>
-                      <td style="padding:4px 0;color:${BRAND.navy};font-weight:700;font-size:15px;">Total Due</td>
-                      <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:700;font-size:18px;">16,000 SAR</td>
+                      <td style="padding:4px 0;color:${BRAND.navy};font-weight:700;font-size:14px;">Payment 1 — Due Now</td>
+                      <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:800;font-size:18px;">8,000 SAR</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="padding:8px 0 0;border-top:1px dashed #e0e0e0;"></td>
+                    </tr>
+                    <tr>
+                      <td style="padding:4px 0;color:${BRAND.muted};font-size:13px;">Payment 2 — Upon Marketing Strategy Approval</td>
+                      <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:600;font-size:14px;">8,000 SAR</td>
                     </tr>
                   </table>
                 </td>
               </tr>
             </table>
 
-            <!-- Payment Options -->
+            <!-- Payment Info -->
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4ff;border-radius:10px;border:1px solid #d0d8f0;margin-bottom:24px;">
               <tr>
                 <td style="padding:16px 20px;">
-                  <p style="margin:0 0 6px;font-weight:700;font-size:13px;color:${BRAND.navy};">💳 Payment Options</p>
-                  <p style="margin:0 0 3px;font-size:12px;color:${BRAND.muted};">A: Full Payment — 16,000 SAR</p>
-                  <p style="margin:0;font-size:12px;color:${BRAND.muted};">B: 50% Upfront (8,000 SAR) + 50% on Delivery</p>
+                  <p style="margin:0 0 6px;font-weight:700;font-size:13px;color:${BRAND.navy};">💳 Payment Structure</p>
+                  <p style="margin:0 0 3px;font-size:12px;color:${BRAND.muted};">Payment 1: <strong>8,000 SAR</strong> — Due now (website rebuild deposit)</p>
+                  <p style="margin:0;font-size:12px;color:${BRAND.muted};">Payment 2: <strong>8,000 SAR</strong> — Upon approval of the Marketing Strategy</p>
                 </td>
               </tr>
             </table>
@@ -124,7 +135,7 @@ const html = `<!DOCTYPE html>
               <tr>
                 <td align="center" style="padding-bottom:12px;">
                   <a href="${INVOICE_URL}" style="display:inline-block;background:${BRAND.navy};color:white;text-decoration:none;padding:14px 40px;border-radius:8px;font-weight:600;font-size:15px;">
-                    View Invoice & Pay →
+                    View Invoice & Pay 8,000 SAR →
                   </a>
                 </td>
               </tr>
@@ -135,7 +146,10 @@ const html = `<!DOCTYPE html>
             </p>
 
             <p style="color:${BRAND.muted};font-size:13px;margin:16px 0 0;line-height:1.5;">
-              Once payment is completed, please share confirmation and we will schedule kickoff immediately.
+              Once Payment 1 is completed, we will begin work on your website rebuild immediately and schedule the kickoff.
+            </p>
+            <p style="color:${BRAND.muted};font-size:13px;margin:8px 0 0;line-height:1.5;">
+              Payment 2 (8,000 SAR) will be due upon your approval of the 90-Day Marketing Strategy & Roadmap.
             </p>
             <p style="color:${BRAND.muted};font-size:13px;margin:8px 0 0;line-height:1.5;">
               If you have any questions or need any clarification, please let us know.

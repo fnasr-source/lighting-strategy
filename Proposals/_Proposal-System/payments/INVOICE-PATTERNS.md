@@ -100,6 +100,24 @@ When offering free months:
 - Example: Reply Management Month 1 — ~~5,000 EGP~~ FREE
 ```
 
+#### 50/50 Payment Split
+```html
+When clients agree to a 50/50 split (e.g., Deposit 1 now, Deposit 2 in 30 days):
+1. **Totals Section Restructure**:
+   - `Overall Investment`: {BASE_TOTAL}
+   - `Deposit 1 (50% Due Now)`: {HALF_TOTAL} (styled as bold/grand total)
+   - `Deposit 2 (50% Due in 30 Days)`: {HALF_TOTAL}
+
+2. **Terms & Conditions Addition**:
+   "The initial investment of {BASE_TOTAL} has been split into two equal payments of {HALF_TOTAL}. Deposit 1 is due immediately to commence kickoff and onboarding. Deposit 2 is due 30 days after the payment of Deposit 1."
+
+3. **Dynamic JS Logic for Add-ons**:
+   Update `updateTotal()` to split `newTotal` dynamically:
+   const newDeposit = newTotal / 2;
+   dynamicDep1.textContent = newDeposit.toLocaleString() + ' EGP';
+   dynamicDep2.textContent = newDeposit.toLocaleString() + ' EGP';
+```
+
 ---
 
 ## Invoice Log

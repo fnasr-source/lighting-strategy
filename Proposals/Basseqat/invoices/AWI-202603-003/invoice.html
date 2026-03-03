@@ -11,12 +11,12 @@
     Promotion: "Early Partner Offer" — valid until March 5, 2026
     - Reply Management setup fee WAIVED as part of offer
     - CRM setup discounted 40% (7,500 → 4,500 EGP)
-    - CRM Month 1 FREE
+    - CRM Months 1-2 FREE
     - Reply Management Months 1-2 FREE
     - UGC Video outside-package rate = 5,500 EGP (2× in-package rate of 2,750)
     - Egypt client = InstaPay only (no Stripe)
     
-    Total Due: 72,000 EGP (saving 34,500 EGP)
+    Total Due: 72,000 EGP (saving 38,000 EGP)
 -->
 
 <head>
@@ -386,6 +386,16 @@
                         <td><span class="original-price">3,500 EGP</span></td>
                         <td><span class="original-price">3,500 EGP</span> <span class="free-label">FREE</span></td>
                     </tr>
+                    <tr class="line-free">
+                        <td>
+                            CRM System — Month 2
+                            <span class="promo-badge">FREE</span>
+                            <div class="item-desc">Continued CRM access for your sales team — promotional trial</div>
+                        </td>
+                        <td>1</td>
+                        <td><span class="original-price">3,500 EGP</span></td>
+                        <td><span class="original-price">3,500 EGP</span> <span class="free-label">FREE</span></td>
+                    </tr>
 
                     <!-- UGC Video Bonus — at outside-package rate -->
                     <tr class="line-free">
@@ -405,7 +415,7 @@
             <!-- Savings Banner -->
             <div class="savings-row">
                 <span class="savings-label">🤝 Early Partner Offer — You Save</span>
-                <span class="savings-amount">34,500 EGP</span>
+                <span class="savings-amount">38,000 EGP</span>
             </div>
             <p style="text-align:center;font-size:0.78rem;color:#b0a898;margin-top:-16px;margin-bottom:20px;">⏳ Offer
                 valid until <strong style="color:var(--aw-text);">March 5, 2026</strong></p>
@@ -415,15 +425,24 @@
                 <div class="total-box">
                     <div class="total-row">
                         <span class="label">Total Value</span>
-                        <span style="text-decoration:line-through;color:#b0a898;">106,500 EGP</span>
+                        <span style="text-decoration:line-through;color:#b0a898;">110,000 EGP</span>
                     </div>
                     <div class="total-row">
                         <span class="label">Early Partner Savings</span>
-                        <span style="color:#2e7d4f;">- 34,500 EGP</span>
+                        <span style="color:#2e7d4f;">- 38,000 EGP</span>
                     </div>
-                    <div class="total-row grand" id="base-total-row">
-                        <span class="label">Total Due</span>
-                        <span id="base-total">72,000 EGP</span>
+                    <div class="total-row">
+                        <span class="label">Overall Investment</span>
+                        <span id="base-total" style="color:var(--aw-navy);font-weight:600;">72,000 EGP</span>
+                    </div>
+                    <div class="total-row grand" id="deposit-1-row">
+                        <span class="label">Deposit 1 (50% Due Now)</span>
+                        <span id="deposit-1">36,000 EGP</span>
+                    </div>
+                    <div class="total-row" id="deposit-2-row"
+                        style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--aw-border);">
+                        <span class="label">Deposit 2 (50% Due in 30 Days)</span>
+                        <span id="deposit-2" style="color:var(--aw-navy);font-weight:600;">36,000 EGP</span>
                     </div>
                 </div>
             </div>
@@ -454,15 +473,26 @@
             </div>
 
             <!-- Dynamic Total -->
-            <div class="dynamic-total" id="dynamic-total" style="display:none;">
-                <span class="dt-label">Updated Total (with selected extras)</span>
-                <span class="dt-amount" id="dynamic-amount">72,000 EGP</span>
+            <div class="dynamic-total" id="dynamic-total"
+                style="display:none;flex-direction:column;align-items:flex-end;">
+                <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:8px;">
+                    <span class="dt-label">Updated Overall Investment</span>
+                    <span class="dt-amount" id="dynamic-amount" style="font-size:1.1rem;color:#fff;">72,000 EGP</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:4px;">
+                    <span class="dt-label" style="font-weight:600;color:var(--aw-gold);">Deposit 1 (50% Due Now)</span>
+                    <span class="dt-amount" id="dynamic-dep-1">36,000 EGP</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;width:100%;">
+                    <span class="dt-label">Deposit 2 (50% Due in 30 Days)</span>
+                    <span class="dt-amount" id="dynamic-dep-2" style="font-size:1.1rem;color:#fff;">36,000 EGP</span>
+                </div>
             </div>
 
             <!-- Payment — InstaPay for Egypt -->
             <a href="https://ipn.eg/S/admireworks/instapay/5A1jri" class="instapay-cta" id="pay-instapay"
                 target="_blank">
-                <span class="cta-icon">🏦</span> Pay 72,000 EGP via InstaPay
+                <span class="cta-icon">🏦</span> Pay 36,000 EGP (Deposit 1) via InstaPay
                 <span class="cta-sub">Click to open InstaPay — Instant Bank Transfer</span>
             </a>
 
@@ -479,8 +509,9 @@
                         <td style="text-align:right;font-weight:600;font-family:monospace;">admireworks@instapay</td>
                     </tr>
                     <tr>
-                        <td style="padding:4px 0;color:var(--aw-muted);">Amount</td>
-                        <td style="text-align:right;font-weight:700;color:var(--aw-navy);">72,000 EGP</td>
+                        <td style="padding:4px 0;color:var(--aw-muted);">Amount Due Now</td>
+                        <td style="text-align:right;font-weight:700;color:var(--aw-navy);">36,000 EGP <span
+                                style="font-size:0.75rem;font-weight:400;color:var(--aw-muted);">(Deposit 1)</span></td>
                     </tr>
                 </table>
                 <p style="margin:10px 0 0;text-align:center;"><a href="https://ipn.eg/S/admireworks/instapay/5A1jri"
@@ -493,7 +524,7 @@
                 <strong>Ongoing Monthly Pricing (from Month 2):</strong><br>
                 • Full Growth Partnership Retainer: 32,500 EGP/mo<br>
                 • Reply Management: <strong>FREE for Month 2</strong>, then 5,000 EGP/mo from Month 3<br>
-                • CRM System: 3,500 EGP/mo from Month 2<br>
+                • CRM System: <strong>FREE for Month 2</strong>, then 3,500 EGP/mo from Month 3<br>
                 • Ad spend is paid directly by the client to the ad platforms
             </div>
 
@@ -501,12 +532,14 @@
             <div
                 style="margin-top:32px;padding-top:20px;border-top:1px solid var(--aw-border);font-size:0.78rem;color:var(--aw-muted);line-height:1.5;">
                 <p><strong style="color:var(--aw-text);">Terms & Conditions:</strong></p>
-                <p>Payment is due by the date specified above. Please reference the invoice number (AWI-202603-003) when
-                    making payment.
-                    Upon payment confirmation, kickoff will be scheduled immediately.</p>
+                <p>The initial investment of 72,000 EGP has been split into two equal payments of 36,000 EGP.
+                    <strong>Deposit 1 (36,000 EGP)</strong> is due immediately to commence kickoff and onboarding.
+                    <strong>Deposit 2 (36,000 EGP)</strong> is due 30 days after the payment of Deposit 1.
+                </p>
+                <p style="margin-top:6px;">Please reference the invoice number (AWI-202603-003) when making payment.</p>
                 <p style="margin-top:6px;">Early Partner Offer pricing (free months, setup waivers, discounts) is
                     valid until March 5, 2026 and applies to the
-                    initial engagement period only. Standard rates apply thereafter as noted above.</p>
+                    initial engagement period only. Standard recurring rates apply thereafter as noted above.</p>
                 <p style="margin-top:6px;">For questions or clarifications, contact us at <a
                         href="mailto:hello@admireworks.com" style="color:var(--aw-navy);">hello@admireworks.com</a> or
                     (+971) 4295 8666.</p>
@@ -538,10 +571,17 @@
 
             const dynamicDiv = document.getElementById('dynamic-total');
             const dynamicAmount = document.getElementById('dynamic-amount');
+            const dynamicDep1 = document.getElementById('dynamic-dep-1');
+            const dynamicDep2 = document.getElementById('dynamic-dep-2');
 
             if (extrasTotal > 0) {
                 const newTotal = BASE_TOTAL + extrasTotal;
+                const newDeposit = newTotal / 2;
+                
                 dynamicAmount.textContent = newTotal.toLocaleString() + ' EGP';
+                dynamicDep1.textContent = newDeposit.toLocaleString() + ' EGP';
+                dynamicDep2.textContent = newDeposit.toLocaleString() + ' EGP';
+                
                 dynamicDiv.style.display = 'flex';
             } else {
                 dynamicDiv.style.display = 'none';

@@ -10,6 +10,7 @@ import {
 } from '@/lib/firestore';
 import { DailyTrendCharts, AdPlatformMetrics, RevenueSplitCards } from './DashboardCharts';
 import { TopCreatives, TopAdCopies } from './TopContent';
+import { SocialEngagement } from './SocialEngagement';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import {
@@ -930,6 +931,11 @@ export default function CampaignsPage() {
                             {/* ═══════ TOP AD COPIES ═══════ */}
                             {connections.some(c => c.platform === 'meta_ads' && c.syncStatus === 'ok') && selectedClient && (
                                 <TopAdCopies clientId={selectedClient} currency={selectedCurrency} />
+                            )}
+
+                            {/* ═══════ SOCIAL MEDIA ENGAGEMENT ═══════ */}
+                            {connections.some(c => c.platform === 'meta_ads') && selectedClient && (
+                                <SocialEngagement clientId={selectedClient} clientName={selectedName} />
                             )}
 
                             {/* ═══════ SECTION 7: CAMPAIGN LEADS & QUICK LINKS ═══════ */}

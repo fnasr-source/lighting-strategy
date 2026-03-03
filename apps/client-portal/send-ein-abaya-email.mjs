@@ -111,7 +111,7 @@ const html = `<!DOCTYPE html>
                       <td colspan="2" style="padding:8px 0 0;border-top:1px dashed #e0e0e0;"></td>
                     </tr>
                     <tr>
-                      <td style="padding:4px 0;color:${BRAND.muted};font-size:13px;">Payment 2 — Upon Marketing Strategy Approval</td>
+                      <td style="padding:4px 0;color:${BRAND.muted};font-size:13px;">Payment 2 — Due in 2 Weeks</td>
                       <td style="padding:4px 0;text-align:right;color:${BRAND.navy};font-weight:600;font-size:14px;">8,000 SAR</td>
                     </tr>
                   </table>
@@ -125,7 +125,7 @@ const html = `<!DOCTYPE html>
                 <td style="padding:16px 20px;">
                   <p style="margin:0 0 6px;font-weight:700;font-size:13px;color:${BRAND.navy};">💳 Payment Structure</p>
                   <p style="margin:0 0 3px;font-size:12px;color:${BRAND.muted};">Payment 1: <strong>8,000 SAR</strong> — Due now (website rebuild deposit)</p>
-                  <p style="margin:0;font-size:12px;color:${BRAND.muted};">Payment 2: <strong>8,000 SAR</strong> — Upon approval of the Marketing Strategy</p>
+                  <p style="margin:0;font-size:12px;color:${BRAND.muted};">Payment 2: <strong>8,000 SAR</strong> — Due in 2 weeks (by March 18, 2026)</p>
                 </td>
               </tr>
             </table>
@@ -149,7 +149,7 @@ const html = `<!DOCTYPE html>
               Once Payment 1 is completed, we will begin work on your website rebuild immediately and schedule the kickoff.
             </p>
             <p style="color:${BRAND.muted};font-size:13px;margin:8px 0 0;line-height:1.5;">
-              Payment 2 (8,000 SAR) will be due upon your approval of the 90-Day Marketing Strategy & Roadmap.
+              Payment 2 (8,000 SAR) will be due in 2 weeks, by March 18, 2026.
             </p>
             <p style="color:${BRAND.muted};font-size:13px;margin:8px 0 0;line-height:1.5;">
               If you have any questions or need any clarification, please let us know.

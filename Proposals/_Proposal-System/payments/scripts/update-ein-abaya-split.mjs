@@ -56,8 +56,8 @@ async function updateEinAbayaSplit() {
             },
             deposit2: {
                 amount: 8000,
-                label: 'Payment 2 — Upon Marketing Strategy Approval',
-                description: 'Due upon client approval of the 90-Day Marketing Strategy & Roadmap',
+                label: 'Payment 2 — Due in 2 Weeks',
+                description: 'Due by March 18, 2026 (2 weeks after Payment 1)',
                 status: 'upcoming',
             },
         },

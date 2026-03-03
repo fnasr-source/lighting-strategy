@@ -186,6 +186,9 @@ export async function POST(request: NextRequest) {
                 let monthlyRows = 0;
 
                 if (platform === 'meta_ads' && credentials.adAccountId && credentials.accessToken) {
+                    let lastFetchError: string | null = null;
+                    let anySuccess = false;
+
                     // ── Daily metrics ──
                     const dailyRange = getDailyRange(daysBack);
                     const dailySince = dailyRange[dailyRange.length - 1];
@@ -207,8 +210,10 @@ export async function POST(request: NextRequest) {
                             }, { merge: true });
                             dailyRows++;
                         }
+                        if (dailyData.length > 0) anySuccess = true;
                     } catch (err: any) {
                         console.error(`Meta daily fetch error:`, err.message);
+                        lastFetchError = err.message;
                     }
 
                     // ── Monthly metrics ──
@@ -230,17 +235,35 @@ export async function POST(request: NextRequest) {
                                 }, { merge: true });
                                 monthlyRows++;
                             }
+                            if (monthlyData.length > 0) anySuccess = true;
                         } catch (err: any) {
                             console.error(`Meta monthly fetch error for ${range.monthEnd}:`, err.message);
+                            lastFetchError = err.message;
                         }
                     }
 
-                    // Mark connection healthy
-                    await connRef.update({
-                        lastSync: new Date().toISOString(),
-                        lastError: null,
-                        syncStatus: 'ok',
-                    });
+                    // Mark connection based on whether any data was actually fetched
+                    if (anySuccess) {
+                        await connRef.update({
+                            lastSync: new Date().toISOString(),
+                            lastError: lastFetchError, // may still have partial errors
+                            syncStatus: 'ok',
+                        });
+                    } else if (lastFetchError) {
+                        // All fetches failed — mark as error
+                        await connRef.update({
+                            lastSync: new Date().toISOString(),
+                            lastError: lastFetchError,
+                            syncStatus: 'error',
+                        });
+                    } else {
+                        // No errors but no data either
+                        await connRef.update({
+                            lastSync: new Date().toISOString(),
+                            lastError: 'No data returned from Meta API',
+                            syncStatus: 'ok',
+                        });
+                    }
 
                 } else if (platform === 'shopify' && credentials.shopUrl && credentials.accessToken) {
                     // ── Daily + Monthly from orders ──

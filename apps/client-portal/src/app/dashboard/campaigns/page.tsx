@@ -226,40 +226,58 @@ export default function CampaignsPage() {
 
     return (
         <div>
-            {/* ═══════ HEADER ═══════ */}
-            <div className="page-header" style={{ marginBottom: 0 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
+            {/* ═══════ DARK GRADIENT HERO HEADER ═══════ */}
+            <div style={{
+                background: 'linear-gradient(135deg, #001a70 0%, #0a1628 60%, #1a0a2e 100%)',
+                borderRadius: 16, padding: '28px 28px 20px', marginBottom: 20, position: 'relative', overflow: 'hidden',
+            }}>
+                {/* Decorative elements */}
+                <div style={{ position: 'absolute', top: -40, right: -40, width: 120, height: 120, borderRadius: '50%', background: 'rgba(212,175,55,0.08)' }} />
+                <div style={{ position: 'absolute', bottom: -20, left: '30%', width: 200, height: 60, borderRadius: '50%', background: 'rgba(52,152,219,0.06)' }} />
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12, position: 'relative', zIndex: 1 }}>
                     <div>
-                        <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <Activity size={22} style={{ color: 'var(--aw-navy)' }} />
-                            Campaign Performance
-                        </h1>
-                        <p className="page-subtitle">
-                            {selectedName ? `${selectedName} — ` : ''}Real-time metrics across all connected platforms
-                            {lastSynced && <span style={{ fontSize: '0.7rem', color: 'var(--success)', marginLeft: 8 }}>✓ Synced {lastSynced}</span>}
-                            {syncing && <span style={{ fontSize: '0.7rem', color: 'var(--aw-navy)', marginLeft: 8 }}>⟳ Syncing...</span>}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+                            <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', margin: 0, letterSpacing: '-0.02em' }}>
+                                📊 Campaign Performance
+                            </h1>
+                            {selectedName && (
+                                <span style={{
+                                    fontSize: '0.65rem', padding: '3px 10px', borderRadius: 20,
+                                    background: isLeadGen ? 'rgba(155,89,182,0.25)' : 'rgba(46,204,113,0.2)',
+                                    color: isLeadGen ? '#c39bd3' : '#82e0aa', fontWeight: 600, letterSpacing: '0.03em',
+                                    textTransform: 'uppercase', border: `1px solid ${isLeadGen ? 'rgba(155,89,182,0.3)' : 'rgba(46,204,113,0.3)'}`,
+                                }}>
+                                    {isLeadGen ? '🎯 Lead Gen' : '🛒 E-commerce'}
+                                </span>
+                            )}
+                        </div>
+                        <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.5)', margin: 0 }}>
+                            {selectedName || 'Select a client'} — Unified analytics across all platforms
+                            {lastSynced && <span style={{ color: '#82e0aa', marginLeft: 8 }}>✓ {lastSynced}</span>}
+                            {syncing && <span style={{ color: '#85c1e9', marginLeft: 8 }}>⟳ Syncing...</span>}
                         </p>
                     </div>
                     <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                        {/* Sync Button */}
                         {!isClient && (
                             <button onClick={() => triggerSync(selectedClient)} disabled={syncing} style={{
-                                padding: '6px 14px', borderRadius: 6, border: '1px solid var(--card-border)',
-                                background: syncing ? 'var(--muted-bg)' : 'var(--card-bg)', cursor: syncing ? 'wait' : 'pointer',
-                                fontSize: '0.76rem', fontWeight: 600, color: syncing ? 'var(--muted)' : 'var(--aw-navy)',
-                                display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.15s ease',
+                                padding: '7px 16px', borderRadius: 8, border: '1px solid rgba(255,255,255,0.15)',
+                                background: syncing ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.1)',
+                                backdropFilter: 'blur(10px)', cursor: syncing ? 'wait' : 'pointer',
+                                fontSize: '0.76rem', fontWeight: 600, color: '#fff',
+                                display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.2s ease',
                             }}>
-                                {syncing ? '⟳ Syncing...' : '🔄 Sync Now'}
+                                <RefreshCw size={13} style={syncing ? { animation: 'spin 1s linear infinite' } : {}} />
+                                {syncing ? 'Syncing...' : 'Sync Now'}
                             </button>
                         )}
-                        {/* Date Range */}
-                        <div style={{ display: 'flex', gap: 4, background: 'var(--muted-bg)', borderRadius: 8, padding: 3 }}>
+                        <div style={{ display: 'flex', gap: 3, background: 'rgba(255,255,255,0.08)', borderRadius: 8, padding: 3 }}>
                             {([['3m', '3M'], ['6m', '6M'], ['12m', '12M'], ['all', 'All']] as const).map(([key, label]) => (
                                 <button key={key} onClick={() => setDateRange(key)} style={{
-                                    padding: '6px 14px', borderRadius: 6, border: 'none', cursor: 'pointer',
-                                    fontSize: '0.76rem', fontWeight: dateRange === key ? 700 : 500,
-                                    background: dateRange === key ? 'var(--aw-navy)' : 'transparent',
-                                    color: dateRange === key ? '#fff' : 'var(--muted)',
+                                    padding: '5px 12px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                                    fontSize: '0.72rem', fontWeight: dateRange === key ? 700 : 400,
+                                    background: dateRange === key ? 'rgba(212,175,55,0.3)' : 'transparent',
+                                    color: dateRange === key ? '#fff' : 'rgba(255,255,255,0.5)',
                                     transition: 'all 0.15s ease',
                                 }}>
                                     {label}
@@ -269,7 +287,8 @@ export default function CampaignsPage() {
                     </div>
                 </div>
             </div>
-            {syncError && <div style={{ padding: '8px 14px', marginBottom: 12, borderRadius: 8, background: 'rgba(231,76,60,0.08)', color: '#e74c3c', fontSize: '0.78rem' }}>⚠️ Sync error: {syncError}</div>}
+            {syncError && <div style={{ padding: '10px 16px', marginBottom: 16, borderRadius: 10, background: 'rgba(231,76,60,0.08)', color: '#e74c3c', fontSize: '0.78rem', border: '1px solid rgba(231,76,60,0.15)' }}>⚠️ Sync error: {syncError}</div>}
+            <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
 
             {/* Client tabs */}
             {!isClient && clients.length > 0 && (() => {
@@ -482,6 +501,68 @@ export default function CampaignsPage() {
                                         <HeroKPI icon={<MousePointer size={16} />} label="CTR" value={fmtPct(latest.impressions > 0 ? (latest.clicks / latest.impressions) * 100 : 0)}
                                             change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" />
                                     </>)}
+                                </div>
+                            )}
+
+                            {/* ═══════ CONVERSION FUNNEL ═══════ */}
+                            {latest && (
+                                <div style={{
+                                    marginBottom: 24, padding: '20px 24px', borderRadius: 14,
+                                    background: 'var(--card-bg)', border: '1px solid var(--card-border)',
+                                    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+                                }}>
+                                    <h3 style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                                        🔀 Conversion Funnel
+                                        <span style={{ fontSize: '0.62rem', color: 'var(--muted)', fontWeight: 400 }}>Latest Month</span>
+                                    </h3>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'center' }}>
+                                        {(() => {
+                                            const funnelSteps = isLeadGen
+                                                ? [
+                                                    { label: 'Impressions', value: latest.impressions, color: '#3498db' },
+                                                    { label: 'Clicks', value: latest.clicks, color: '#2ecc71' },
+                                                    { label: 'Leads', value: latest.conversions, color: '#9b59b6' },
+                                                ]
+                                                : [
+                                                    { label: 'Impressions', value: latest.impressions, color: '#3498db' },
+                                                    { label: 'Clicks', value: latest.clicks, color: '#2ecc71' },
+                                                    { label: 'Orders', value: latest.orders, color: '#e67e22' },
+                                                ];
+                                            const maxVal = Math.max(...funnelSteps.map(s => s.value), 1);
+                                            return funnelSteps.map((step, i) => {
+                                                const widthPct = Math.max((step.value / maxVal) * 100, 15);
+                                                const convRate = i > 0 && funnelSteps[i - 1].value > 0
+                                                    ? ((step.value / funnelSteps[i - 1].value) * 100).toFixed(1)
+                                                    : null;
+                                                return (
+                                                    <div key={step.label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                                        {convRate && (
+                                                            <div style={{
+                                                                position: 'absolute', top: -4, left: -16, fontSize: '0.58rem',
+                                                                background: 'var(--card-bg)', padding: '1px 6px', borderRadius: 8,
+                                                                color: 'var(--muted)', fontWeight: 600, border: '1px solid var(--card-border)',
+                                                                zIndex: 2,
+                                                            }}>
+                                                                {convRate}%
+                                                            </div>
+                                                        )}
+                                                        <div style={{
+                                                            width: `${widthPct}%`, minWidth: 60, height: 44, borderRadius: 8,
+                                                            background: `linear-gradient(135deg, ${step.color}22, ${step.color}11)`,
+                                                            border: `2px solid ${step.color}44`,
+                                                            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                                                            transition: 'all 0.3s ease',
+                                                        }}>
+                                                            <div style={{ fontSize: '1rem', fontWeight: 800, color: step.color }}>{fmtK(step.value)}</div>
+                                                        </div>
+                                                        <div style={{ fontSize: '0.64rem', color: 'var(--muted)', fontWeight: 600, marginTop: 6, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                                                            {step.label}
+                                                        </div>
+                                                    </div>
+                                                );
+                                            });
+                                        })()}
+                                    </div>
                                 </div>
                             )}
 
@@ -793,8 +874,6 @@ export default function CampaignsPage() {
     );
 }
 
-// ═══════ COMPONENTS ═══════
-
 function HeroKPI({ icon, label, value, unit, change, accent, invertChange }: {
     icon: React.ReactNode; label: string; value: string; unit?: string;
     change: string | null; accent: string; invertChange?: boolean;
@@ -803,27 +882,42 @@ function HeroKPI({ icon, label, value, unit, change, accent, invertChange }: {
     const isGood = invertChange ? isNeg : !isNeg;
     return (
         <div style={{
-            padding: '18px 16px', borderRadius: 12, background: 'var(--card-bg)',
+            padding: '20px 18px', borderRadius: 14, background: 'var(--card-bg)',
             border: '1px solid var(--card-border)', position: 'relative', overflow: 'hidden',
-        }}>
+            boxShadow: '0 1px 3px rgba(0,0,0,0.04)', transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+        }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)'; }}
+        >
+            {/* Gradient accent bar */}
             <div style={{
                 position: 'absolute', top: 0, left: 0, right: 0, height: 3,
-                background: accent, borderRadius: '12px 12px 0 0',
+                background: `linear-gradient(90deg, ${accent}, ${accent}88)`,
+                borderRadius: '14px 14px 0 0',
             }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: '0.72rem', fontWeight: 600, marginBottom: 6 }}>
-                {icon} {label}
+            {/* Icon circle */}
+            <div style={{
+                width: 32, height: 32, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: `${accent}15`, color: accent, marginBottom: 10,
+            }}>
+                {icon}
             </div>
-            <div style={{ fontSize: '1.45rem', fontWeight: 800, lineHeight: 1.1, marginBottom: 2 }}>
+            <div style={{ fontSize: '0.68rem', color: 'var(--muted)', fontWeight: 600, marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                {label}
+            </div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.1, marginBottom: 4, letterSpacing: '-0.02em' }}>
                 {value}
-                {unit && <span style={{ fontSize: '0.65rem', fontWeight: 500, color: 'var(--muted)', marginLeft: 4 }}>{unit}</span>}
+                {unit && <span style={{ fontSize: '0.6rem', fontWeight: 500, color: 'var(--muted)', marginLeft: 4 }}>{unit}</span>}
             </div>
             {change !== null && (
                 <div style={{
-                    display: 'flex', alignItems: 'center', gap: 3, fontSize: '0.7rem', fontWeight: 600,
-                    color: isGood ? 'var(--success)' : 'var(--danger)',
+                    display: 'inline-flex', alignItems: 'center', gap: 3, fontSize: '0.68rem', fontWeight: 600,
+                    padding: '2px 8px', borderRadius: 6,
+                    background: isGood ? 'rgba(46,204,113,0.1)' : 'rgba(231,76,60,0.1)',
+                    color: isGood ? '#27ae60' : '#e74c3c',
                 }}>
-                    {isNeg ? <TrendingDown size={11} /> : <TrendingUp size={11} />}
-                    {change}% vs prev
+                    {isNeg ? <TrendingDown size={10} /> : <TrendingUp size={10} />}
+                    {change}%
                 </div>
             )}
         </div>
@@ -832,19 +926,26 @@ function HeroKPI({ icon, label, value, unit, change, accent, invertChange }: {
 
 function ScoreCard({ title, icon, items }: { title: string; icon: string; items: { label: string; value: string; highlight?: boolean }[] }) {
     return (
-        <div className="card" style={{ padding: '18px 16px' }}>
-            <div style={{ fontSize: '0.82rem', fontWeight: 700, marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ fontSize: '1rem' }}>{icon}</span> {title}
+        <div style={{
+            padding: '20px 18px', borderRadius: 14, background: 'var(--card-bg)',
+            border: '1px solid var(--card-border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+        }}>
+            <div style={{
+                fontSize: '0.78rem', fontWeight: 700, marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8,
+                paddingBottom: 10, borderBottom: '1px solid var(--card-border)',
+            }}>
+                <span style={{ fontSize: '1.2rem' }}>{icon}</span>
+                <span style={{ letterSpacing: '-0.01em' }}>{title}</span>
             </div>
             {items.map((item, i) => (
                 <div key={item.label} style={{
                     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                    padding: '8px 0', borderTop: i > 0 ? '1px solid var(--card-border)' : 'none',
+                    padding: '10px 0', borderTop: i > 0 ? '1px solid rgba(0,0,0,0.04)' : 'none',
                 }}>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>{item.label}</span>
+                    <span style={{ fontSize: '0.76rem', color: 'var(--muted)' }}>{item.label}</span>
                     <span style={{
-                        fontSize: '0.88rem', fontWeight: 700,
-                        color: item.highlight ? 'var(--success)' : 'var(--foreground)',
+                        fontSize: '0.92rem', fontWeight: 700,
+                        color: item.highlight ? '#27ae60' : 'var(--foreground)',
                     }}>{item.value}</span>
                 </div>
             ))}

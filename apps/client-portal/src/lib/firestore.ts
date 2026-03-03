@@ -41,6 +41,8 @@ export interface Client {
     region: string; // EG, AE, SA, US...
     baseCurrency: string;
     status: 'lead' | 'prospect' | 'proposal_sent' | 'active' | 'churned';
+    businessType?: 'ecommerce' | 'lead_gen' | 'hybrid' | 'saas';
+    industry?: string; // e.g. 'fashion', 'hr_consulting', 'food_beverage'
     ga4PropertyId?: string;
     notes?: string;
     createdAt?: any;
@@ -128,15 +130,39 @@ export interface PlatformConnection {
     isConnected: boolean;
     credentials: Record<string, string>;
     lastSync?: string;
+    syncStatus?: 'ok' | 'error' | 'syncing';
+    lastError?: string | null;
     createdAt?: any;
 }
 
 export interface MonthlyPlatformMetric {
     id?: string;
     clientId: string;
-    platform: string;          // "Meta Ads", "Shopify", etc.
+    platform: string;
     platformType: 'ad' | 'ecommerce' | 'analytics';
-    monthEndDate: string;       // YYYY-MM-DD
+    monthEndDate: string;
+    currency: string;
+    impressions: number;
+    clicks: number;
+    spend: number;
+    revenue: number;
+    conversions: number;
+    orders: number;
+    reach: number;
+    frequency: number;
+    linkClicks: number;
+    cpm: number;
+    source?: string;
+    aggregatedAt?: any;
+}
+
+export interface DailyPlatformMetric {
+    id?: string;
+    clientId: string;
+    platform: string;
+    platformType: 'ad' | 'ecommerce' | 'analytics';
+    date: string;              // YYYY-MM-DD
+    granularity: 'daily';
     currency: string;
     impressions: number;
     clicks: number;

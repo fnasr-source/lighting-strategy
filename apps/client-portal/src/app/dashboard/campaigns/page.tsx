@@ -11,7 +11,18 @@ import { db } from '@/lib/firebase';
 import {
     BarChart3, TrendingUp, TrendingDown, DollarSign, ShoppingCart, Eye, Globe,
     Zap, Target, Users, MousePointer, ArrowRight, ExternalLink, Activity, Percent,
+    Sparkles, AlertTriangle, CheckCircle, Brain, RefreshCw,
 } from 'lucide-react';
+
+interface AIInsights {
+    summary: string;
+    health_score: number;
+    wins: string[];
+    alerts: { severity: string; message: string; metric?: string }[];
+    recommendations: { priority: number; action: string; expected_impact: string; category: string }[];
+    trends: Record<string, string>;
+    benchmarks: Record<string, string>;
+}
 
 const PLATFORM_LABELS: Record<string, string> = {
     meta_ads: 'Meta Ads', google_ads: 'Google Ads', tiktok_ads: 'TikTok Ads',
@@ -38,6 +49,12 @@ export default function CampaignsPage() {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [dateRange, setDateRange] = useState<DateRange>('12m');
     const [campaignLeadCount, setCampaignLeadCount] = useState(0);
+    const [syncing, setSyncing] = useState(false);
+    const [lastSynced, setLastSynced] = useState<string | null>(null);
+    const [syncError, setSyncError] = useState<string | null>(null);
+    const [aiInsights, setAiInsights] = useState<AIInsights | null>(null);
+    const [aiLoading, setAiLoading] = useState(false);
+    const [aiError, setAiError] = useState<string | null>(null);
 
     useEffect(() => {
         const unsubs = [
@@ -68,6 +85,35 @@ export default function CampaignsPage() {
             setSelectedClient(active?.id || clients[0].id!);
         }
     }, [isClient, profile, clients, selectedClient]);
+
+    // Trigger platform data sync
+    const triggerSync = async (clientId?: string) => {
+        if (syncing) return;
+        setSyncing(true);
+        setSyncError(null);
+        try {
+            const params = new URLSearchParams();
+            if (clientId) params.set('clientId', clientId);
+            params.set('months', '3');
+            const resp = await fetch(`/api/sync/platforms?${params}`, { method: 'POST' });
+            const json = await resp.json();
+            if (json.success) {
+                setLastSynced(new Date().toLocaleTimeString());
+            } else {
+                setSyncError(json.error || 'Sync failed');
+            }
+        } catch (err: any) {
+            setSyncError(err.message);
+        }
+        setSyncing(false);
+    };
+
+    // Auto-sync on first load (background, non-blocking)
+    useEffect(() => {
+        if (dataLoaded && allConnections.length > 0 && !lastSynced) {
+            triggerSync();
+        }
+    }, [dataLoaded, allConnections.length]);
 
     // Date range filter helper
     const getDateCutoff = (range: DateRange) => {
@@ -127,8 +173,37 @@ export default function CampaignsPage() {
 
     const adMetrics = metrics.filter(m => m.platformType === 'ad');
     const ecomMetrics = metrics.filter(m => m.platformType === 'ecommerce');
-    const selectedName = clients.find(c => c.id === selectedClient)?.name || '';
-    const selectedCurrency = clients.find(c => c.id === selectedClient)?.baseCurrency || 'EGP';
+    const selectedClientObj = clients.find(c => c.id === selectedClient);
+    const selectedName = selectedClientObj?.name || '';
+    const selectedCurrency = selectedClientObj?.baseCurrency || 'EGP';
+    const businessType = selectedClientObj?.businessType || 'ecommerce';
+    const isLeadGen = businessType === 'lead_gen';
+    const avgCPL = totalConversions > 0 ? totalSpend / totalConversions : 0;
+
+    // AI Insights
+    const fetchInsights = async () => {
+        if (!selectedClient || aiLoading) return;
+        setAiLoading(true);
+        setAiError(null);
+        try {
+            const resp = await fetch(`/api/ai/insights?clientId=${selectedClient}`, { method: 'POST' });
+            const json = await resp.json();
+            if (json.success) {
+                setAiInsights(json.insights);
+            } else {
+                setAiError(json.error || 'Failed to generate insights');
+            }
+        } catch (err: any) {
+            setAiError(err.message);
+        }
+        setAiLoading(false);
+    };
+
+    // Reset AI when client changes
+    useEffect(() => {
+        setAiInsights(null);
+        setAiError(null);
+    }, [selectedClient]);
 
     // Platform aggregates for the visual breakdown
     const platformAgg = useMemo(() => {
@@ -161,24 +236,40 @@ export default function CampaignsPage() {
                         </h1>
                         <p className="page-subtitle">
                             {selectedName ? `${selectedName} — ` : ''}Real-time metrics across all connected platforms
+                            {lastSynced && <span style={{ fontSize: '0.7rem', color: 'var(--success)', marginLeft: 8 }}>✓ Synced {lastSynced}</span>}
+                            {syncing && <span style={{ fontSize: '0.7rem', color: 'var(--aw-navy)', marginLeft: 8 }}>⟳ Syncing...</span>}
                         </p>
                     </div>
-                    {/* Date Range */}
-                    <div style={{ display: 'flex', gap: 4, background: 'var(--muted-bg)', borderRadius: 8, padding: 3 }}>
-                        {([['3m', '3M'], ['6m', '6M'], ['12m', '12M'], ['all', 'All']] as const).map(([key, label]) => (
-                            <button key={key} onClick={() => setDateRange(key)} style={{
-                                padding: '6px 14px', borderRadius: 6, border: 'none', cursor: 'pointer',
-                                fontSize: '0.76rem', fontWeight: dateRange === key ? 700 : 500,
-                                background: dateRange === key ? 'var(--aw-navy)' : 'transparent',
-                                color: dateRange === key ? '#fff' : 'var(--muted)',
-                                transition: 'all 0.15s ease',
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                        {/* Sync Button */}
+                        {!isClient && (
+                            <button onClick={() => triggerSync(selectedClient)} disabled={syncing} style={{
+                                padding: '6px 14px', borderRadius: 6, border: '1px solid var(--card-border)',
+                                background: syncing ? 'var(--muted-bg)' : 'var(--card-bg)', cursor: syncing ? 'wait' : 'pointer',
+                                fontSize: '0.76rem', fontWeight: 600, color: syncing ? 'var(--muted)' : 'var(--aw-navy)',
+                                display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.15s ease',
                             }}>
-                                {label}
+                                {syncing ? '⟳ Syncing...' : '🔄 Sync Now'}
                             </button>
-                        ))}
+                        )}
+                        {/* Date Range */}
+                        <div style={{ display: 'flex', gap: 4, background: 'var(--muted-bg)', borderRadius: 8, padding: 3 }}>
+                            {([['3m', '3M'], ['6m', '6M'], ['12m', '12M'], ['all', 'All']] as const).map(([key, label]) => (
+                                <button key={key} onClick={() => setDateRange(key)} style={{
+                                    padding: '6px 14px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                                    fontSize: '0.76rem', fontWeight: dateRange === key ? 700 : 500,
+                                    background: dateRange === key ? 'var(--aw-navy)' : 'transparent',
+                                    color: dateRange === key ? '#fff' : 'var(--muted)',
+                                    transition: 'all 0.15s ease',
+                                }}>
+                                    {label}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
+            {syncError && <div style={{ padding: '8px 14px', marginBottom: 12, borderRadius: 8, background: 'rgba(231,76,60,0.08)', color: '#e74c3c', fontSize: '0.78rem' }}>⚠️ Sync error: {syncError}</div>}
 
             {/* Client tabs */}
             {!isClient && clients.length > 0 && (() => {
@@ -208,7 +299,7 @@ export default function CampaignsPage() {
             ) : (
                 <>
                     {/* Connected Platforms */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '0.73rem', color: 'var(--muted)', fontWeight: 600 }}>
                             <Globe size={11} style={{ verticalAlign: 'middle' }} /> Platforms:
                         </span>
@@ -216,18 +307,52 @@ export default function CampaignsPage() {
                             <span style={{ fontSize: '0.73rem', padding: '4px 10px', borderRadius: 6, background: 'rgba(231,76,60,0.08)', color: '#e74c3c' }}>
                                 No platforms connected — <a href="/dashboard/integrations" style={{ color: '#e74c3c', fontWeight: 600 }}>Connect now →</a>
                             </span>
-                        ) : connections.map(c => (
-                            <span key={c.id} style={{
-                                fontSize: '0.7rem', padding: '4px 10px', borderRadius: 6,
-                                background: c.isConnected ? 'rgba(46,204,113,0.08)' : 'rgba(231,76,60,0.08)',
-                                color: c.isConnected ? '#27ae60' : '#e74c3c', fontWeight: 500,
-                                display: 'inline-flex', alignItems: 'center', gap: 4,
-                            }}>
-                                {PLATFORM_ICONS[c.platform] || '🔗'} {PLATFORM_LABELS[c.platform] || c.platform}
-                                {c.isConnected ? ' ✓' : ' ✗'}
-                            </span>
-                        ))}
+                        ) : connections.map(c => {
+                            const hasError = c.syncStatus === 'error';
+                            const isSyncing = c.syncStatus === 'syncing';
+                            const bg = hasError ? 'rgba(231,76,60,0.08)' : isSyncing ? 'rgba(52,152,219,0.08)' : 'rgba(46,204,113,0.08)';
+                            const color = hasError ? '#e74c3c' : isSyncing ? '#3498db' : '#27ae60';
+                            const icon = hasError ? '⚠' : isSyncing ? '⟳' : '✓';
+                            return (
+                                <span key={c.id} style={{
+                                    fontSize: '0.7rem', padding: '4px 10px', borderRadius: 6,
+                                    background: bg, color, fontWeight: 500,
+                                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                                }}>
+                                    {PLATFORM_ICONS[c.platform] || '🔗'} {PLATFORM_LABELS[c.platform] || c.platform}
+                                    {' '}{icon}
+                                    {c.lastSync && <span style={{ opacity: 0.6, marginLeft: 2 }}>· {new Date(c.lastSync).toLocaleDateString()}</span>}
+                                </span>
+                            );
+                        })}
                     </div>
+
+                    {/* Connection Error Alerts */}
+                    {connections.filter(c => c.syncStatus === 'error' && c.lastError).length > 0 && (
+                        <div style={{ marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                            {connections.filter(c => c.syncStatus === 'error' && c.lastError).map(c => (
+                                <div key={`err-${c.id}`} style={{
+                                    padding: '10px 14px', borderRadius: 8,
+                                    background: 'rgba(231,76,60,0.06)', border: '1px solid rgba(231,76,60,0.15)',
+                                    display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: '0.78rem',
+                                }}>
+                                    <span style={{ fontSize: '1rem', flexShrink: 0 }}>⚠️</span>
+                                    <div style={{ flex: 1 }}>
+                                        <div style={{ fontWeight: 700, color: '#c0392b', marginBottom: 2 }}>
+                                            {PLATFORM_LABELS[c.platform] || c.platform} — Connection Issue
+                                        </div>
+                                        <div style={{ color: '#7f8c8d', lineHeight: 1.5 }}>
+                                            {c.lastError}
+                                        </div>
+                                        <div style={{ fontSize: '0.68rem', color: '#bdc3c7', marginTop: 4 }}>
+                                            Last attempted: {c.lastSync ? new Date(c.lastSync).toLocaleString() : 'Never'}
+                                            {' · '}<a href="/dashboard/integrations" style={{ color: '#3498db', fontWeight: 600 }}>Check credentials →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
 
                     {rollups.length === 0 ? (
                         <div className="card"><div className="empty-state" style={{ padding: 48 }}>
@@ -241,26 +366,122 @@ export default function CampaignsPage() {
                         </div></div>
                     ) : (
                         <>
-                            {/* ═══════ SECTION 1: HERO KPIs ═══════ */}
+                            {/* ═══════ AI INSIGHTS CARD ═══════ */}
+                            <div style={{
+                                marginBottom: 24, padding: '20px', borderRadius: 14,
+                                background: 'linear-gradient(135deg, rgba(0,26,112,0.04) 0%, rgba(212,175,55,0.04) 100%)',
+                                border: '1px solid rgba(0,26,112,0.1)',
+                                backdropFilter: 'blur(10px)',
+                            }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: aiInsights ? 16 : 0 }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                        <Brain size={18} style={{ color: 'var(--aw-navy)' }} />
+                                        <span style={{ fontWeight: 700, fontSize: '0.92rem' }}>AI Performance Insights</span>
+                                        <span style={{ fontSize: '0.62rem', padding: '2px 8px', borderRadius: 10, background: 'rgba(0,26,112,0.08)', color: 'var(--aw-navy)', fontWeight: 600 }}>Gemini 2.0</span>
+                                    </div>
+                                    <button onClick={fetchInsights} disabled={aiLoading} style={{
+                                        padding: '6px 14px', borderRadius: 8, border: '1px solid rgba(0,26,112,0.2)',
+                                        background: aiLoading ? 'var(--muted-bg)' : 'rgba(0,26,112,0.05)',
+                                        cursor: aiLoading ? 'wait' : 'pointer', fontSize: '0.74rem', fontWeight: 600,
+                                        color: 'var(--aw-navy)', display: 'flex', alignItems: 'center', gap: 5,
+                                    }}>
+                                        {aiLoading ? <><RefreshCw size={12} style={{ animation: 'spin 1s linear infinite' }} /> Analyzing...</> : <><Sparkles size={12} /> {aiInsights ? 'Refresh' : 'Generate'} Insights</>}
+                                    </button>
+                                </div>
+                                {aiError && <div style={{ fontSize: '0.78rem', color: '#e74c3c', padding: '8px 12px', background: 'rgba(231,76,60,0.06)', borderRadius: 8, marginBottom: 12 }}>⚠️ {aiError}</div>}
+                                {aiInsights && (
+                                    <div>
+                                        {/* Health Score + Summary */}
+                                        <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+                                            <div style={{
+                                                width: 72, height: 72, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                background: `conic-gradient(${aiInsights.health_score >= 70 ? '#27ae60' : aiInsights.health_score >= 40 ? '#f39c12' : '#e74c3c'} ${aiInsights.health_score * 3.6}deg, var(--muted-bg) 0deg)`,
+                                                flexShrink: 0, position: 'relative',
+                                            }}>
+                                                <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'var(--card-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                                                    <span style={{ fontSize: '1.1rem', fontWeight: 800, lineHeight: 1 }}>{aiInsights.health_score}</span>
+                                                    <span style={{ fontSize: '0.5rem', color: 'var(--muted)' }}>Health</span>
+                                                </div>
+                                            </div>
+                                            <div style={{ flex: 1, minWidth: 200 }}>
+                                                <p style={{ fontSize: '0.82rem', lineHeight: 1.7, color: 'var(--foreground)', margin: 0 }}>{aiInsights.summary}</p>
+                                            </div>
+                                        </div>
+                                        {/* Wins + Alerts + Recs grid */}
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+                                            {/* Wins */}
+                                            {aiInsights.wins.length > 0 && (
+                                                <div style={{ padding: 14, borderRadius: 10, background: 'rgba(46,204,113,0.05)', border: '1px solid rgba(46,204,113,0.12)' }}>
+                                                    <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#27ae60', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4 }}><CheckCircle size={12} /> Wins</div>
+                                                    {aiInsights.wins.map((w, i) => <div key={i} style={{ fontSize: '0.76rem', padding: '4px 0', lineHeight: 1.5, color: 'var(--foreground)' }}>• {w}</div>)}
+                                                </div>
+                                            )}
+                                            {/* Alerts */}
+                                            {aiInsights.alerts.length > 0 && (
+                                                <div style={{ padding: 14, borderRadius: 10, background: 'rgba(231,76,60,0.05)', border: '1px solid rgba(231,76,60,0.12)' }}>
+                                                    <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#e74c3c', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4 }}><AlertTriangle size={12} /> Alerts</div>
+                                                    {aiInsights.alerts.map((a, i) => <div key={i} style={{ fontSize: '0.76rem', padding: '4px 0', lineHeight: 1.5, color: 'var(--foreground)' }}>
+                                                        <span style={{ fontSize: '0.6rem', padding: '1px 6px', borderRadius: 4, background: a.severity === 'high' ? '#e74c3c' : a.severity === 'medium' ? '#f39c12' : '#95a5a6', color: '#fff', marginRight: 6 }}>{a.severity}</span>
+                                                        {a.message}
+                                                    </div>)}
+                                                </div>
+                                            )}
+                                            {/* Recommendations */}
+                                            {aiInsights.recommendations.length > 0 && (
+                                                <div style={{ padding: 14, borderRadius: 10, background: 'rgba(0,26,112,0.04)', border: '1px solid rgba(0,26,112,0.1)' }}>
+                                                    <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--aw-navy)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4 }}><Sparkles size={12} /> Recommendations</div>
+                                                    {aiInsights.recommendations.slice(0, 3).map((r, i) => <div key={i} style={{ fontSize: '0.76rem', padding: '4px 0', lineHeight: 1.5 }}>
+                                                        <span style={{ fontWeight: 700, color: 'var(--aw-navy)' }}>{i + 1}.</span> {r.action}
+                                                        <div style={{ fontSize: '0.66rem', color: 'var(--muted)', marginTop: 1 }}>↳ {r.expected_impact}</div>
+                                                    </div>)}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* ═══════ SECTION 1: HERO KPIs (ADAPTIVE) ═══════ */}
                             {latest && (
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 24 }}>
-                                    <HeroKPI icon={<DollarSign size={16} />} label="Revenue" value={`${fmtK(latest.revenue)}`} unit={selectedCurrency}
-                                        change={prev ? pctChange(latest.revenue, prev.revenue) : null} accent="var(--success)" />
-                                    <HeroKPI icon={<TrendingUp size={16} />} label="ROAS" value={`${latest.roas.toFixed(1)}x`}
-                                        change={prev ? pctChange(latest.roas, prev.roas) : null}
-                                        accent={latest.roas >= 8 ? 'var(--success)' : latest.roas >= 5 ? 'var(--aw-gold)' : 'var(--danger)'} />
-                                    <HeroKPI icon={<ShoppingCart size={16} />} label="Orders" value={fmtAmt(latest.orders)}
-                                        change={prev ? pctChange(latest.orders, prev.orders) : null} accent="var(--aw-navy)" />
-                                    <HeroKPI icon={<Eye size={16} />} label="Impressions" value={fmtK(latest.impressions)}
-                                        change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" />
-                                    <HeroKPI icon={<Zap size={16} />} label="Spend" value={`${fmtK(latest.spend)}`} unit={selectedCurrency}
-                                        change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange />
-                                    <HeroKPI icon={<Target size={16} />} label="AOV" value={`${fmtAmt(latest.aov)}`} unit={selectedCurrency}
-                                        change={prev ? pctChange(latest.aov, prev.aov) : null} accent="var(--aw-navy)" />
-                                    <HeroKPI icon={<DollarSign size={16} />} label="CPO" value={`${fmtAmt(latest.cpo)}`} unit={selectedCurrency}
-                                        change={prev ? pctChange(latest.cpo, prev.cpo) : null} accent="#e67e22" invertChange />
-                                    <HeroKPI icon={<MousePointer size={16} />} label="CTR" value={fmtPct(latest.impressions > 0 ? (latest.clicks / latest.impressions) * 100 : 0)}
-                                        change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" />
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12, marginBottom: 24 }}>
+                                    {isLeadGen ? (<>
+                                        {/* Lead Gen KPIs */}
+                                        <HeroKPI icon={<Users size={16} />} label="Leads" value={fmtAmt(latest.conversions)}
+                                            change={prev ? pctChange(latest.conversions, prev.conversions) : null} accent="var(--aw-navy)" />
+                                        <HeroKPI icon={<DollarSign size={16} />} label="CPL" value={fmtAmt(latest.conversions > 0 ? Math.round(latest.spend / latest.conversions) : 0)} unit={selectedCurrency}
+                                            change={prev && prev.conversions > 0 ? pctChange(latest.spend / latest.conversions, prev.spend / prev.conversions) : null} accent="#e67e22" invertChange />
+                                        <HeroKPI icon={<Percent size={16} />} label="Conv Rate" value={fmtPct(latest.clicks > 0 ? (latest.conversions / latest.clicks) * 100 : 0)}
+                                            change={prev && prev.clicks > 0 ? pctChange(latest.conversions / latest.clicks, prev.conversions / prev.clicks) : null} accent="var(--success)" />
+                                        <HeroKPI icon={<Zap size={16} />} label="Spend" value={fmtK(latest.spend)} unit={selectedCurrency}
+                                            change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange />
+                                        <HeroKPI icon={<Eye size={16} />} label="Impressions" value={fmtK(latest.impressions)}
+                                            change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" />
+                                        <HeroKPI icon={<MousePointer size={16} />} label="Clicks" value={fmtK(latest.clicks)}
+                                            change={prev ? pctChange(latest.clicks, prev.clicks) : null} accent="#3498db" />
+                                        <HeroKPI icon={<Target size={16} />} label="CPC" value={fmtAmt(latest.clicks > 0 ? Math.round(latest.spend / latest.clicks) : 0)} unit={selectedCurrency}
+                                            change={prev && prev.clicks > 0 ? pctChange(latest.spend / latest.clicks, prev.spend / prev.clicks) : null} accent="#9b59b6" invertChange />
+                                        <HeroKPI icon={<MousePointer size={16} />} label="CTR" value={fmtPct(latest.impressions > 0 ? (latest.clicks / latest.impressions) * 100 : 0)}
+                                            change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" />
+                                    </>) : (<>
+                                        {/* E-commerce KPIs */}
+                                        <HeroKPI icon={<DollarSign size={16} />} label="Revenue" value={fmtK(latest.revenue)} unit={selectedCurrency}
+                                            change={prev ? pctChange(latest.revenue, prev.revenue) : null} accent="var(--success)" />
+                                        <HeroKPI icon={<TrendingUp size={16} />} label="ROAS" value={`${latest.roas.toFixed(1)}x`}
+                                            change={prev ? pctChange(latest.roas, prev.roas) : null}
+                                            accent={latest.roas >= 8 ? 'var(--success)' : latest.roas >= 5 ? 'var(--aw-gold)' : 'var(--danger)'} />
+                                        <HeroKPI icon={<ShoppingCart size={16} />} label="Orders" value={fmtAmt(latest.orders)}
+                                            change={prev ? pctChange(latest.orders, prev.orders) : null} accent="var(--aw-navy)" />
+                                        <HeroKPI icon={<Target size={16} />} label="AOV" value={fmtAmt(latest.aov)} unit={selectedCurrency}
+                                            change={prev ? pctChange(latest.aov, prev.aov) : null} accent="var(--aw-navy)" />
+                                        <HeroKPI icon={<Zap size={16} />} label="Spend" value={fmtK(latest.spend)} unit={selectedCurrency}
+                                            change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange />
+                                        <HeroKPI icon={<DollarSign size={16} />} label="CPO" value={fmtAmt(latest.cpo)} unit={selectedCurrency}
+                                            change={prev ? pctChange(latest.cpo, prev.cpo) : null} accent="#e67e22" invertChange />
+                                        <HeroKPI icon={<Eye size={16} />} label="Impressions" value={fmtK(latest.impressions)}
+                                            change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" />
+                                        <HeroKPI icon={<MousePointer size={16} />} label="CTR" value={fmtPct(latest.impressions > 0 ? (latest.clicks / latest.impressions) * 100 : 0)}
+                                            change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" />
+                                    </>)}
                                 </div>
                             )}
 
@@ -324,27 +545,48 @@ export default function CampaignsPage() {
                                 </div>
                             </div>
 
-                            {/* ═══════ SECTION 3: EFFICIENCY SCORECARD ═══════ */}
+                            {/* ═══════ SECTION 3: EFFICIENCY SCORECARD (ADAPTIVE) ═══════ */}
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, marginBottom: 24 }}>
                                 <ScoreCard title="Traffic" icon="🌐" items={[
                                     { label: 'Total Impressions', value: fmtK(totalImpressions) },
                                     { label: 'Total Clicks', value: fmtK(totalClicks) },
                                     { label: 'Avg CTR', value: fmtPct(avgCTR), highlight: avgCTR > 2 },
                                 ]} />
-                                <ScoreCard title="Conversion" icon="🎯" items={[
-                                    { label: 'Total Conversions', value: fmtK(totalConversions) },
-                                    { label: 'Total Orders', value: fmtAmt(totalOrders) },
-                                    { label: 'Conv Rate', value: fmtPct(avgConvRate), highlight: avgConvRate > 3 },
-                                ]} />
-                                <ScoreCard title="Value" icon="💰" items={[
-                                    { label: 'Total Revenue', value: `${fmtK(totalRevenue)} ${selectedCurrency}` },
-                                    { label: 'Avg AOV', value: `${fmtAmt(Math.round(avgAOV))} ${selectedCurrency}` },
-                                    { label: 'Overall ROAS', value: `${avgROAS.toFixed(1)}x`, highlight: avgROAS >= 5 },
-                                ]} />
+                                {isLeadGen ? (
+                                    <ScoreCard title="Lead Generation" icon="🎯" items={[
+                                        { label: 'Total Leads', value: fmtAmt(totalConversions) },
+                                        { label: 'Avg CPL', value: `${fmtAmt(Math.round(avgCPL))} ${selectedCurrency}`, highlight: false },
+                                        { label: 'Conv Rate', value: fmtPct(avgConvRate), highlight: avgConvRate > 3 },
+                                    ]} />
+                                ) : (
+                                    <ScoreCard title="Conversion" icon="🎯" items={[
+                                        { label: 'Total Conversions', value: fmtK(totalConversions) },
+                                        { label: 'Total Orders', value: fmtAmt(totalOrders) },
+                                        { label: 'Conv Rate', value: fmtPct(avgConvRate), highlight: avgConvRate > 3 },
+                                    ]} />
+                                )}
+                                {isLeadGen ? (
+                                    <ScoreCard title="Cost Efficiency" icon="💰" items={[
+                                        { label: 'Total Spend', value: `${fmtK(totalSpend)} ${selectedCurrency}` },
+                                        { label: 'Avg CPC', value: `${fmtAmt(totalClicks > 0 ? Math.round(totalSpend / totalClicks) : 0)} ${selectedCurrency}` },
+                                        { label: 'Avg CPM', value: `${(totalImpressions > 0 ? (totalSpend / totalImpressions * 1000) : 0).toFixed(1)}` },
+                                    ]} />
+                                ) : (
+                                    <ScoreCard title="Value" icon="💰" items={[
+                                        { label: 'Total Revenue', value: `${fmtK(totalRevenue)} ${selectedCurrency}` },
+                                        { label: 'Avg AOV', value: `${fmtAmt(Math.round(avgAOV))} ${selectedCurrency}` },
+                                        { label: 'Overall ROAS', value: `${avgROAS.toFixed(1)}x`, highlight: avgROAS >= 5 },
+                                    ]} />
+                                )}
                                 <ScoreCard title="Efficiency" icon="⚡" items={[
                                     { label: 'Total Spend', value: `${fmtK(totalSpend)} ${selectedCurrency}` },
-                                    { label: 'Avg CPO', value: `${fmtAmt(Math.round(avgCPO))} ${selectedCurrency}` },
-                                    { label: 'Avg CPM', value: `${(totalImpressions > 0 ? (totalSpend / totalImpressions * 1000) : 0).toFixed(1)}`, highlight: false },
+                                    ...(isLeadGen ? [
+                                        { label: 'Cost per Lead', value: `${fmtAmt(Math.round(avgCPL))} ${selectedCurrency}` },
+                                        { label: 'Avg CPM', value: `${(totalImpressions > 0 ? (totalSpend / totalImpressions * 1000) : 0).toFixed(1)}` },
+                                    ] : [
+                                        { label: 'Avg CPO', value: `${fmtAmt(Math.round(avgCPO))} ${selectedCurrency}` },
+                                        { label: 'Avg CPM', value: `${(totalImpressions > 0 ? (totalSpend / totalImpressions * 1000) : 0).toFixed(1)}`, highlight: false as boolean },
+                                    ]),
                                 ]} />
                             </div>
 

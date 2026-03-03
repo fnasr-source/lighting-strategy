@@ -9,6 +9,7 @@ import {
     type DailyPlatformMetric,
 } from '@/lib/firestore';
 import { DailyTrendCharts, AdPlatformMetrics, RevenueSplitCards } from './DashboardCharts';
+import { TopCreatives, TopAdCopies } from './TopContent';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import {
@@ -205,7 +206,41 @@ export default function CampaignsPage() {
         reach: dailyData.reduce((s, d) => s + (d.reach || 0), 0),
         linkClicks: dailyData.reduce((s, d) => s + (d.linkClicks || 0), 0),
     }), [dailyData]);
+
+    // Sparkline data: last 12 days aggregated per day
+    const sparklines = useMemo(() => {
+        const last12 = dailyData.slice(-12);
+        // Aggregate per date (may have multiple platforms per day)
+        const byDate: Record<string, { revenue: number; spend: number; orders: number; impressions: number; clicks: number; conversions: number }> = {};
+        last12.forEach(d => {
+            if (!byDate[d.date]) byDate[d.date] = { revenue: 0, spend: 0, orders: 0, impressions: 0, clicks: 0, conversions: 0 };
+            byDate[d.date].revenue += d.revenue || 0;
+            byDate[d.date].spend += d.spend || 0;
+            byDate[d.date].orders += d.orders || 0;
+            byDate[d.date].impressions += d.impressions || 0;
+            byDate[d.date].clicks += d.clicks || 0;
+            byDate[d.date].conversions += d.conversions || 0;
+        });
+        const sorted = Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([, v]) => v);
+        return {
+            revenue: sorted.map(d => d.revenue),
+            spend: sorted.map(d => d.spend),
+            orders: sorted.map(d => d.orders),
+            impressions: sorted.map(d => d.impressions),
+            clicks: sorted.map(d => d.clicks),
+            conversions: sorted.map(d => d.conversions),
+            roas: sorted.map(d => d.spend > 0 ? d.revenue / d.spend : 0),
+            ctr: sorted.map(d => d.impressions > 0 ? (d.clicks / d.impressions) * 100 : 0),
+            aov: sorted.map(d => d.orders > 0 ? d.revenue / d.orders : 0),
+            cpo: sorted.map(d => d.orders > 0 ? d.spend / d.orders : 0),
+            cpl: sorted.map(d => d.conversions > 0 ? d.spend / d.conversions : 0),
+            cpc: sorted.map(d => d.clicks > 0 ? d.spend / d.clicks : 0),
+            convRate: sorted.map(d => d.clicks > 0 ? (d.conversions / d.clicks) * 100 : 0),
+        };
+    }, [dailyData]);
+
     const avgCPL = totalConversions > 0 ? totalSpend / totalConversions : 0;
+
 
     // AI Insights
     const fetchInsights = async () => {
@@ -493,40 +528,40 @@ export default function CampaignsPage() {
                                     {isLeadGen ? (<>
                                         {/* Lead Gen KPIs */}
                                         <HeroKPI icon={<Users size={16} />} label="Leads" value={fmtAmt(latest.conversions)}
-                                            change={prev ? pctChange(latest.conversions, prev.conversions) : null} accent="var(--aw-navy)" />
+                                            change={prev ? pctChange(latest.conversions, prev.conversions) : null} accent="var(--aw-navy)" sparkData={sparklines.conversions} />
                                         <HeroKPI icon={<DollarSign size={16} />} label="CPL" value={fmtAmt(latest.conversions > 0 ? Math.round(latest.spend / latest.conversions) : 0)} unit={selectedCurrency}
-                                            change={prev && prev.conversions > 0 ? pctChange(latest.spend / latest.conversions, prev.spend / prev.conversions) : null} accent="#e67e22" invertChange />
+                                            change={prev && prev.conversions > 0 ? pctChange(latest.spend / latest.conversions, prev.spend / prev.conversions) : null} accent="#e67e22" invertChange sparkData={sparklines.cpl} />
                                         <HeroKPI icon={<Percent size={16} />} label="Conv Rate" value={fmtPct(latest.clicks > 0 ? (latest.conversions / latest.clicks) * 100 : 0)}
-                                            change={prev && prev.clicks > 0 ? pctChange(latest.conversions / latest.clicks, prev.conversions / prev.clicks) : null} accent="var(--success)" />
+                                            change={prev && prev.clicks > 0 ? pctChange(latest.conversions / latest.clicks, prev.conversions / prev.clicks) : null} accent="var(--success)" sparkData={sparklines.convRate} />
                                         <HeroKPI icon={<Zap size={16} />} label="Spend" value={fmtK(latest.spend)} unit={selectedCurrency}
-                                            change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange />
+                                            change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange sparkData={sparklines.spend} />
                                         <HeroKPI icon={<Eye size={16} />} label="Impressions" value={fmtK(latest.impressions)}
-                                            change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" />
+                                            change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" sparkData={sparklines.impressions} />
                                         <HeroKPI icon={<MousePointer size={16} />} label="Clicks" value={fmtK(latest.clicks)}
-                                            change={prev ? pctChange(latest.clicks, prev.clicks) : null} accent="#3498db" />
+                                            change={prev ? pctChange(latest.clicks, prev.clicks) : null} accent="#3498db" sparkData={sparklines.clicks} />
                                         <HeroKPI icon={<Target size={16} />} label="CPC" value={fmtAmt(latest.clicks > 0 ? Math.round(latest.spend / latest.clicks) : 0)} unit={selectedCurrency}
-                                            change={prev && prev.clicks > 0 ? pctChange(latest.spend / latest.clicks, prev.spend / prev.clicks) : null} accent="#9b59b6" invertChange />
+                                            change={prev && prev.clicks > 0 ? pctChange(latest.spend / latest.clicks, prev.spend / prev.clicks) : null} accent="#9b59b6" invertChange sparkData={sparklines.cpc} />
                                         <HeroKPI icon={<MousePointer size={16} />} label="CTR" value={fmtPct(latest.impressions > 0 ? (latest.clicks / latest.impressions) * 100 : 0)}
-                                            change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" />
+                                            change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" sparkData={sparklines.ctr} />
                                     </>) : (<>
                                         {/* E-commerce KPIs */}
                                         <HeroKPI icon={<DollarSign size={16} />} label="Revenue" value={fmtK(latest.revenue)} unit={selectedCurrency}
-                                            change={prev ? pctChange(latest.revenue, prev.revenue) : null} accent="var(--success)" />
+                                            change={prev ? pctChange(latest.revenue, prev.revenue) : null} accent="var(--success)" sparkData={sparklines.revenue} />
                                         <HeroKPI icon={<TrendingUp size={16} />} label="ROAS" value={`${latest.roas.toFixed(1)}x`}
                                             change={prev ? pctChange(latest.roas, prev.roas) : null}
-                                            accent={latest.roas >= 8 ? 'var(--success)' : latest.roas >= 5 ? 'var(--aw-gold)' : 'var(--danger)'} />
+                                            accent={latest.roas >= 8 ? 'var(--success)' : latest.roas >= 5 ? 'var(--aw-gold)' : 'var(--danger)'} sparkData={sparklines.roas} />
                                         <HeroKPI icon={<ShoppingCart size={16} />} label="Orders" value={fmtAmt(latest.orders)}
-                                            change={prev ? pctChange(latest.orders, prev.orders) : null} accent="var(--aw-navy)" />
+                                            change={prev ? pctChange(latest.orders, prev.orders) : null} accent="var(--aw-navy)" sparkData={sparklines.orders} />
                                         <HeroKPI icon={<Target size={16} />} label="AOV" value={fmtAmt(latest.aov)} unit={selectedCurrency}
-                                            change={prev ? pctChange(latest.aov, prev.aov) : null} accent="var(--aw-navy)" />
+                                            change={prev ? pctChange(latest.aov, prev.aov) : null} accent="var(--aw-navy)" sparkData={sparklines.aov} />
                                         <HeroKPI icon={<Zap size={16} />} label="Spend" value={fmtK(latest.spend)} unit={selectedCurrency}
-                                            change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange />
+                                            change={prev ? pctChange(latest.spend, prev.spend) : null} accent="#e74c3c" invertChange sparkData={sparklines.spend} />
                                         <HeroKPI icon={<DollarSign size={16} />} label="CPO" value={fmtAmt(latest.cpo)} unit={selectedCurrency}
-                                            change={prev ? pctChange(latest.cpo, prev.cpo) : null} accent="#e67e22" invertChange />
+                                            change={prev ? pctChange(latest.cpo, prev.cpo) : null} accent="#e67e22" invertChange sparkData={sparklines.cpo} />
                                         <HeroKPI icon={<Eye size={16} />} label="Impressions" value={fmtK(latest.impressions)}
-                                            change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" />
+                                            change={prev ? pctChange(latest.impressions, prev.impressions) : null} accent="var(--muted)" sparkData={sparklines.impressions} />
                                         <HeroKPI icon={<MousePointer size={16} />} label="CTR" value={fmtPct(latest.impressions > 0 ? (latest.clicks / latest.impressions) * 100 : 0)}
-                                            change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" />
+                                            change={prev && prev.impressions > 0 ? pctChange(latest.clicks / latest.impressions, prev.clicks / prev.impressions) : null} accent="#3498db" sparkData={sparklines.ctr} />
                                     </>)}
                                 </div>
                             )}
@@ -887,6 +922,16 @@ export default function CampaignsPage() {
                                 </div>
                             )}
 
+                            {/* ═══════ TOP CREATIVES ═══════ */}
+                            {connections.some(c => c.platform === 'meta_ads' && c.syncStatus === 'ok') && selectedClient && (
+                                <TopCreatives clientId={selectedClient} currency={selectedCurrency} />
+                            )}
+
+                            {/* ═══════ TOP AD COPIES ═══════ */}
+                            {connections.some(c => c.platform === 'meta_ads' && c.syncStatus === 'ok') && selectedClient && (
+                                <TopAdCopies clientId={selectedClient} currency={selectedCurrency} />
+                            )}
+
                             {/* ═══════ SECTION 7: CAMPAIGN LEADS & QUICK LINKS ═══════ */}
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
                                 <a href="/dashboard/campaign-leads" style={{ textDecoration: 'none' }}>
@@ -926,12 +971,29 @@ export default function CampaignsPage() {
     );
 }
 
-function HeroKPI({ icon, label, value, unit, change, accent, invertChange }: {
+function HeroKPI({ icon, label, value, unit, change, accent, invertChange, sparkData }: {
     icon: React.ReactNode; label: string; value: string; unit?: string;
     change: string | null; accent: string; invertChange?: boolean;
+    sparkData?: number[];
 }) {
     const isNeg = change && parseFloat(change) < 0;
     const isGood = invertChange ? isNeg : !isNeg;
+
+    // SVG sparkline
+    const sparkline = sparkData && sparkData.length > 1 ? (() => {
+        const max = Math.max(...sparkData, 1);
+        const w = 80, h = 24, barW = Math.max(2, (w - sparkData.length) / sparkData.length);
+        return (
+            <svg width={w} height={h} style={{ display: 'block', marginTop: 6, opacity: 0.6 }}>
+                {sparkData.map((v, i) => {
+                    const barH = Math.max(1, (v / max) * h);
+                    return <rect key={i} x={i * (barW + 1)} y={h - barH} width={barW} height={barH} rx={1}
+                        fill={accent} opacity={0.5 + 0.5 * (v / max)} />;
+                })}
+            </svg>
+        );
+    })() : null;
+
     return (
         <div style={{
             padding: '20px 18px', borderRadius: 14, background: 'var(--card-bg)',
@@ -972,6 +1034,7 @@ function HeroKPI({ icon, label, value, unit, change, accent, invertChange }: {
                     {change}%
                 </div>
             )}
+            {sparkline}
         </div>
     );
 }

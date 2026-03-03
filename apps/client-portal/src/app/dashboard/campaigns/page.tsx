@@ -4,8 +4,11 @@ import { useEffect, useState, useMemo } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import {
     clientsService, monthlyRollupsService, monthlyMetricsService, platformConnectionsService,
+    dailyMetricsService,
     type Client, type MonthlyClientRollup, type MonthlyPlatformMetric, type PlatformConnection,
+    type DailyPlatformMetric,
 } from '@/lib/firestore';
+import { DailyTrendCharts, AdPlatformMetrics, RevenueSplitCards } from './DashboardCharts';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import {
@@ -55,6 +58,7 @@ export default function CampaignsPage() {
     const [aiInsights, setAiInsights] = useState<AIInsights | null>(null);
     const [aiLoading, setAiLoading] = useState(false);
     const [aiError, setAiError] = useState<string | null>(null);
+    const [allDailyMetrics, setAllDailyMetrics] = useState<DailyPlatformMetric[]>([]);
 
     useEffect(() => {
         const unsubs = [
@@ -62,6 +66,7 @@ export default function CampaignsPage() {
             monthlyRollupsService.subscribe(r => { setAllRollups(r); setDataLoaded(true); }),
             monthlyMetricsService.subscribe(setAllMetrics),
             platformConnectionsService.subscribe(setAllConnections),
+            dailyMetricsService.subscribe(setAllDailyMetrics),
         ];
         return () => unsubs.forEach(u => u());
     }, []);
@@ -178,6 +183,28 @@ export default function CampaignsPage() {
     const selectedCurrency = selectedClientObj?.baseCurrency || 'EGP';
     const businessType = selectedClientObj?.businessType || 'ecommerce';
     const isLeadGen = businessType === 'lead_gen';
+
+    // Daily metrics for trend charts
+    const dailyData = useMemo(() =>
+        allDailyMetrics.filter(d => d.clientId === selectedClient)
+            .sort((a, b) => a.date.localeCompare(b.date)),
+        [allDailyMetrics, selectedClient]);
+
+    // Aggregate ad revenue vs ecom revenue from platform metrics
+    const totalAdRevenue = adMetrics.reduce((s, m) => s + m.revenue, 0);
+    const totalAdConversions = adMetrics.reduce((s, m) => s + m.conversions, 0);
+    const totalEcomRevenue = ecomMetrics.reduce((s, m) => s + m.revenue, 0);
+    const totalEcomOrders = ecomMetrics.reduce((s, m) => s + m.orders, 0);
+
+    // Daily aggregates for ad platform metrics cards
+    const dailyTotals = useMemo(() => ({
+        impressions: dailyData.reduce((s, d) => s + (d.impressions || 0), 0),
+        clicks: dailyData.reduce((s, d) => s + (d.clicks || 0), 0),
+        spend: dailyData.reduce((s, d) => s + (d.spend || 0), 0),
+        conversions: dailyData.reduce((s, d) => s + (d.conversions || 0), 0),
+        reach: dailyData.reduce((s, d) => s + (d.reach || 0), 0),
+        linkClicks: dailyData.reduce((s, d) => s + (d.linkClicks || 0), 0),
+    }), [dailyData]);
     const avgCPL = totalConversions > 0 ? totalSpend / totalConversions : 0;
 
     // AI Insights
@@ -565,6 +592,31 @@ export default function CampaignsPage() {
                                     </div>
                                 </div>
                             )}
+
+                            {/* ═══════ REVENUE & ORDERS SPLIT (Old Sections B & C) ═══════ */}
+                            <RevenueSplitCards
+                                adRevenue={totalAdRevenue}
+                                ecomRevenue={totalEcomRevenue}
+                                adConversions={totalAdConversions}
+                                ecomOrders={totalEcomOrders}
+                                currency={selectedCurrency}
+                            />
+
+                            {/* ═══════ DAILY TREND CHARTS (Old Charts 1-3) ═══════ */}
+                            {dailyData.length > 0 && (
+                                <DailyTrendCharts data={dailyData} currency={selectedCurrency} />
+                            )}
+
+                            {/* ═══════ AD PLATFORM METRICS (Old Section D — 7 cards) ═══════ */}
+                            <AdPlatformMetrics
+                                impressions={totalImpressions}
+                                clicks={totalClicks}
+                                spend={totalSpend}
+                                conversions={totalConversions}
+                                reach={dailyTotals.reach}
+                                linkClicks={dailyTotals.linkClicks}
+                                currency={selectedCurrency}
+                            />
 
                             {/* ═══════ SECTION 2: REVENUE & SPEND CHART ═══════ */}
                             <div className="card" style={{ marginBottom: 24, padding: '24px 20px' }}>

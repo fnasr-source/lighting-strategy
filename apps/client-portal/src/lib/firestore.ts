@@ -562,7 +562,15 @@ export const monthlyRollupsService = {
     },
 };
 
-// ── Leads ────────────────────────────────────────────
+// ── Daily Platform Metrics ───────────────────────────
+export const dailyMetricsService = {
+    subscribe(callback: (items: DailyPlatformMetric[]) => void) {
+        return onSnapshot(query(collection(db, 'dailyPlatformMetrics'), orderBy('date', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as DailyPlatformMetric)));
+        });
+    },
+};
+
 export const leadsService = {
     async getAll(): Promise<Lead[]> {
         const snap = await getDocs(query(collection(db, 'leads'), orderBy('createdAt', 'desc')));

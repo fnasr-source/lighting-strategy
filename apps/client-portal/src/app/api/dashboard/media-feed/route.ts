@@ -25,20 +25,41 @@ export async function GET(request: NextRequest) {
 
     const db = getAdminDb();
 
-    const [socialSnap, creativeSnap] = await Promise.all([
-      db
-        .collection('fact_social_interaction')
-        .where('clientId', '==', clientId)
-        .orderBy('occurredAt', 'desc')
-        .limit(limit)
-        .get(),
-      db
-        .collection('creativePerformance')
-        .where('clientId', '==', clientId)
-        .orderBy('updatedAt', 'desc')
-        .limit(limit)
-        .get(),
-    ]);
+    const loadSocial = async () => {
+      try {
+        return await db
+          .collection('fact_social_interaction')
+          .where('clientId', '==', clientId)
+          .orderBy('occurredAt', 'desc')
+          .limit(limit)
+          .get();
+      } catch {
+        return db
+          .collection('fact_social_interaction')
+          .where('clientId', '==', clientId)
+          .limit(limit)
+          .get();
+      }
+    };
+
+    const loadCreative = async () => {
+      try {
+        return await db
+          .collection('creativePerformance')
+          .where('clientId', '==', clientId)
+          .orderBy('updatedAt', 'desc')
+          .limit(limit)
+          .get();
+      } catch {
+        return db
+          .collection('creativePerformance')
+          .where('clientId', '==', clientId)
+          .limit(limit)
+          .get();
+      }
+    };
+
+    const [socialSnap, creativeSnap] = await Promise.all([loadSocial(), loadCreative()]);
 
     const items: MediaFeedItem[] = [];
 

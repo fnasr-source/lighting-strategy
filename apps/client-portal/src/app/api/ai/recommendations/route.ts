@@ -40,16 +40,21 @@ export async function POST(request: NextRequest) {
       view: 'executive',
     });
 
+    const kpiSnapshotId = body.kpiSnapshotId || `${body.clientId}_adhoc_${Date.now()}`;
     const recommendations = buildRecommendations({
       clientId: body.clientId,
-      kpiSnapshotId: body.kpiSnapshotId,
+      kpiSnapshotId,
       intelligence,
     });
 
     const batch = db.batch();
     for (const recommendation of recommendations) {
       const id = `${body.clientId}_${recommendation.category}_${recommendation.priority}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-      batch.set(db.collection('aiRecommendations').doc(id), recommendation, { merge: true });
+      const payload = {
+        ...recommendation,
+        ...(recommendation.kpiSnapshotId ? { kpiSnapshotId: recommendation.kpiSnapshotId } : {}),
+      };
+      batch.set(db.collection('aiRecommendations').doc(id), payload, { merge: true });
     }
     await batch.commit();
 

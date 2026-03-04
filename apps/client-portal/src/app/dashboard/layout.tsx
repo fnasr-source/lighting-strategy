@@ -23,13 +23,14 @@ import {
     Shield,
     Wallet,
     CalendarClock,
+    type LucideIcon,
 } from 'lucide-react';
 import type { Permission } from '@/lib/firestore';
 
 /** A nav item can be a link or a section header */
 type NavItem =
     | { section: string }
-    | { label: string; href: string; icon: any; permission?: Permission };
+    | { label: string; href: string; icon: LucideIcon; permission?: Permission };
 
 /** All nav items — filtered by permissions at render time */
 const allNavItems: NavItem[] = [
@@ -41,7 +42,7 @@ const allNavItems: NavItem[] = [
     { section: 'Campaigns' },
     { label: 'Performance', href: '/dashboard/campaigns', icon: BarChart3, permission: 'campaigns:read' },
     { label: 'Campaign Leads', href: '/dashboard/campaign-leads', icon: Target, permission: 'campaigns:read' },
-    { label: 'Scheduling', href: '/dashboard/scheduling', icon: CalendarClock, permission: 'scheduling:read' },
+    { label: 'Scheduling', href: '/dashboard/scheduling', icon: CalendarClock, permission: 'campaigns:read' },
     { label: 'Integrations', href: '/dashboard/integrations', icon: Globe, permission: 'campaigns:read' },
     { section: 'Finance' },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt, permission: 'invoices:read' },
@@ -73,7 +74,7 @@ export default function DashboardLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const { user, profile, loading, signOut, isClient, isInternal, hasPermission, role } = useAuth();
+    const { user, profile, loading, signOut, isClient, hasPermission, role } = useAuth();
     const router = useRouter();
     const pathname = usePathname();
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -83,9 +84,6 @@ export default function DashboardLayout({
             router.replace('/login');
         }
     }, [user, loading, router]);
-
-    // Close sidebar on navigation
-    useEffect(() => { setSidebarOpen(false); }, [pathname]);
 
     if (loading) {
         return (
@@ -100,19 +98,15 @@ export default function DashboardLayout({
     // Build nav based on role
     const rawNav = isClient ? clientNavItems : allNavItems;
     const nav: NavItem[] = [];
-    let lastWasSection = false;
 
     for (const item of rawNav) {
         if ('section' in item) {
-            // Don't add consecutive section headers
-            lastWasSection = true;
             nav.push(item);
         } else {
             // Check permission
             if (item.permission && !hasPermission(item.permission)) {
                 continue;
             }
-            lastWasSection = false;
             nav.push(item);
         }
     }

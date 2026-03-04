@@ -113,8 +113,8 @@ export default function SchedulingPage() {
     };
   }, []);
 
-  const canRead = hasPermission('scheduling:read') || hasPermission('campaigns:read');
-  const canWrite = hasPermission('scheduling:write') || hasPermission('campaigns:write');
+  const canRead = hasPermission('campaigns:read');
+  const canWrite = hasPermission('campaigns:write');
 
   const filteredBookings = useMemo(
     () => bookings.filter((b) => bookingStatusFilter === 'all' || b.status === bookingStatusFilter),

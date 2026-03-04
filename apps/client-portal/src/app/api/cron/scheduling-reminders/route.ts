@@ -12,7 +12,8 @@ export async function POST(req: NextRequest) {
 
     const result = await dispatchSchedulingReminders(100);
     return NextResponse.json({ success: true, ...result, executedAt: new Date().toISOString() });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message || 'Failed to process reminders' }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Failed to process reminders';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

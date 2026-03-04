@@ -1,4 +1,5 @@
 import { adminAuth, adminDb } from '@/lib/firebase-admin';
+import type { DecodedIdToken } from 'firebase-admin/auth';
 
 export interface VerifiedApiUser {
   uid: string;
@@ -14,7 +15,7 @@ export async function verifyApiUser(authHeader: string | null | undefined): Prom
 
   try {
     const decoded = await adminAuth.verifyIdToken(token);
-    let role = (decoded as any).role as string | undefined;
+    let role = getStringClaim(decoded, 'role');
 
     if (!role) {
       const profileSnap = await adminDb.collection('userProfiles').doc(decoded.uid).get();
@@ -25,11 +26,16 @@ export async function verifyApiUser(authHeader: string | null | undefined): Prom
       uid: decoded.uid,
       email: decoded.email,
       role,
-      linkedClientId: (decoded as any).clientId as string | undefined,
+      linkedClientId: getStringClaim(decoded, 'clientId'),
     };
   } catch {
     return null;
   }
+}
+
+function getStringClaim(decoded: DecodedIdToken, key: string): string | undefined {
+  const value = decoded[key];
+  return typeof value === 'string' ? value : undefined;
 }
 
 export function isSchedulingManager(role?: string): boolean {

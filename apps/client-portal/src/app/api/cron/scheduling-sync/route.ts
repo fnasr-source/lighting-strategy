@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
 import admin from 'firebase-admin';
 
+interface HostGoogleState {
+  watchExpiration?: string;
+  syncNeedsRenewal?: boolean;
+  lastSyncAt?: string;
+}
+
+interface HostSyncDoc {
+  google?: HostGoogleState;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const authHeader = req.headers.get('authorization');
@@ -18,7 +28,7 @@ export async function POST(req: NextRequest) {
 
     for (const doc of hostsSnap.docs) {
       processed += 1;
-      const host = doc.data() as any;
+      const host = doc.data() as HostSyncDoc;
       const watchExpiration = host?.google?.watchExpiration ? new Date(host.google.watchExpiration).getTime() : 0;
 
       if (!watchExpiration || watchExpiration < Date.now() + 12 * 60 * 60 * 1000) {
@@ -43,7 +53,8 @@ export async function POST(req: NextRequest) {
       renewalFlagged: flagged,
       executedAt: new Date().toISOString(),
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message || 'Sync job failed' }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Sync job failed';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

@@ -21,27 +21,8 @@ import {
     type QueryConstraint,
 } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import type {
-    AiRecommendation as PerformanceAiRecommendation,
-    CanonicalMetricRow as PerformanceCanonicalMetricRow,
-    ClientHealthScore as PerformanceClientHealthScore,
-    IngestionJob as PerformanceIngestionJob,
-    IntegrationCredentialRef as PerformanceIntegrationCredentialRef,
-    KpiSnapshot as PerformanceKpiSnapshot,
-    SocialConversation as PerformanceSocialConversation,
-    SocialInteraction as PerformanceSocialInteraction,
-} from '@/lib/performance-intelligence/types';
 
 // ── Types ────────────────────────────────────────────
-export type IntegrationCredentialRef = PerformanceIntegrationCredentialRef;
-export type IngestionJob = PerformanceIngestionJob;
-export type CanonicalMetricRow = PerformanceCanonicalMetricRow;
-export type SocialInteraction = PerformanceSocialInteraction;
-export type SocialConversation = PerformanceSocialConversation;
-export type KpiSnapshot = PerformanceKpiSnapshot;
-export type ClientHealthScore = PerformanceClientHealthScore;
-export type AiRecommendation = PerformanceAiRecommendation;
-
 export interface Contact {
     name: string;
     email: string;
@@ -329,6 +310,19 @@ export interface PaymentLink {
     clientName?: string;
     status: 'active' | 'inactive';
     createdAt?: any;
+}
+
+export interface IngestionJob {
+    id?: string;
+    clientId: string;
+    platform: string;
+    status: 'running' | 'success' | 'partial' | 'error';
+    rowsRead: number;
+    rowsWritten: number;
+    startedAt: string;
+    finishedAt?: string;
+    createdAt?: any;
+    updatedAt?: any;
 }
 
 // ── Scheduling Types ────────────────────────────────
@@ -726,33 +720,6 @@ export const ingestionJobsService = {
         return onSnapshot(
             query(collection(db, 'ingestionJobs'), where('clientId', '==', clientId), orderBy('startedAt', 'desc')),
             snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as IngestionJob))),
-        );
-    },
-};
-
-export const socialInteractionsService = {
-    subscribeByClient(clientId: string, callback: (items: SocialInteraction[]) => void) {
-        return onSnapshot(
-            query(collection(db, 'fact_social_interaction'), where('clientId', '==', clientId), orderBy('occurredAt', 'desc')),
-            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as SocialInteraction))),
-        );
-    },
-};
-
-export const kpiSnapshotsService = {
-    subscribeDailyByClient(clientId: string, callback: (items: KpiSnapshot[]) => void) {
-        return onSnapshot(
-            query(collection(db, 'kpi_snapshots_daily'), where('clientId', '==', clientId), orderBy('generatedAt', 'desc')),
-            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as KpiSnapshot))),
-        );
-    },
-};
-
-export const aiRecommendationsService = {
-    subscribeByClient(clientId: string, callback: (items: AiRecommendation[]) => void) {
-        return onSnapshot(
-            query(collection(db, 'aiRecommendations'), where('clientId', '==', clientId), orderBy('createdAt', 'desc')),
-            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as AiRecommendation))),
         );
     },
 };

@@ -57,11 +57,14 @@ export function normalizeSelectedOptionalAddOnIds(rawSelectedIds: unknown): stri
 }
 
 export function resolveInvoicePayableAmount(
-    invoice: { totalDue?: unknown; optionalAddOns?: unknown },
+    invoice: { totalDue?: unknown; optionalAddOns?: unknown; optionalItems?: unknown },
     rawSelectedIds?: unknown,
 ) {
     const baseAmount = Math.max(0, toNumber(invoice.totalDue));
-    const optionalAddOns = normalizeInvoiceOptionalAddOns(invoice.optionalAddOns);
+    const optionalSource = Array.isArray(invoice.optionalAddOns) && invoice.optionalAddOns.length > 0
+        ? invoice.optionalAddOns
+        : invoice.optionalItems;
+    const optionalAddOns = normalizeInvoiceOptionalAddOns(optionalSource);
     const selectableAddOns = optionalAddOns.filter((addOn) => addOn.selectable !== false);
 
     const hasExplicitSelection = Array.isArray(rawSelectedIds);

@@ -40,13 +40,13 @@ async function updateInvoice() {
     const updateData = {
         lineItems: [
             {
-                description: 'Growth Partnership — Month 1 (monthly upfront)',
+                description: 'Landing Pages & Funnel Execution — Month 1 (Monthly Upfront)',
                 qty: 1,
                 rate: 41250,
                 amount: 41250,
             },
             {
-                description: 'Pricing structure reference: Months 2–4 at 41,250 EGP/month upfront, then 32,500 EGP/month from Month 5 onward.',
+                description: 'Billing schedule (reference): Months 2–4 at 41,250 EGP/month upfront, then 32,500 EGP/month from Month 5 onward.',
                 qty: 1,
                 rate: 0,
                 amount: 0,
@@ -60,12 +60,47 @@ async function updateInvoice() {
         optionalAddOns: [
             {
                 id: 'full-ecommerce-build-addon',
-                description: 'Optional: Full E-commerce Build Add-On (one-time)',
+                description: 'Optional: Full E-commerce Build Add-On (One-Time)',
                 amount: 28000,
                 defaultSelected: false,
                 selectable: true,
             },
         ],
+        optionalItems: [
+            {
+                id: 'full-ecommerce-build-addon',
+                label: 'Full E-commerce Build Add-On',
+                description: 'Optional one-time add-on (excluded from default total).',
+                qty: 1,
+                amount: 28000,
+                currency: 'EGP',
+                selected: false,
+                uiType: 'checkbox',
+                affectsTotal: true,
+            },
+        ],
+        billingClarity: {
+            title: 'What You Are Paying For',
+            dueNowLabel: 'Due now (to start Month 1)',
+            schedule: [
+                {
+                    label: 'Months 2-4 (monthly upfront)',
+                    value: '41,250 EGP / month',
+                },
+                {
+                    label: 'From Month 5 (monthly upfront)',
+                    value: '32,500 EGP / month',
+                },
+            ],
+            scopeIncluded: [
+                'Landing page and funnel execution for conversion growth',
+                'Lead flow setup and optimization-focused execution',
+                'Direct-response campaign execution tied to funnel outcomes',
+            ],
+            scopeExcluded: [
+                'Full e-commerce build is not included unless the optional add-on is selected',
+            ],
+        },
         notes: 'Option A applied with monthly-upfront structure. Optional e-commerce add-on (28,000 EGP one-time) is outside the default total and should only be included when selected.',
         updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     };

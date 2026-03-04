@@ -37,6 +37,14 @@ const appearance: Appearance = {
 interface LineItem { description: string; qty: number; rate: number; amount: number; }
 interface PaymentSplitDeposit { amount: number; label: string; description: string; status: string; }
 interface PaymentSplit { type: string; totalInvestment: number; deposit1: PaymentSplitDeposit; deposit2: PaymentSplitDeposit; }
+interface BillingClarityScheduleItem { label: string; value: string; }
+interface BillingClarity {
+    title?: string;
+    dueNowLabel?: string;
+    schedule?: BillingClarityScheduleItem[];
+    scopeIncluded?: string[];
+    scopeExcluded?: string[];
+}
 interface InvoiceData {
     id: string; invoiceNumber: string; clientName: string; lineItems: LineItem[];
     subtotal: number; tax: number; totalDue: number; currency: string; status: string;
@@ -45,6 +53,7 @@ interface InvoiceData {
     issuedAt?: string; dueDate?: string; paidAt?: string; notes?: string;
     paymentSplit?: PaymentSplit;
     optionalAddOns?: InvoiceOptionalAddOn[];
+    billingClarity?: BillingClarity;
 }
 interface CompanyData { name: string; tagline: string; email: string; phone: string; address: string; }
 
@@ -168,6 +177,16 @@ export default function PublicInvoicePage() {
     const selectedOptionalAddOnSet = new Set(pricing.selectedOptionalAddOnIds);
     const dynamicSubtotal = invoice.subtotal + pricing.optionalAmount;
     const dynamicTotalDue = pricing.totalAmount;
+    const billingClarity = invoice.billingClarity;
+    const claritySchedule = Array.isArray(billingClarity?.schedule)
+        ? billingClarity.schedule.filter((row) => row?.label && row?.value)
+        : [];
+    const scopeIncluded = Array.isArray(billingClarity?.scopeIncluded)
+        ? billingClarity.scopeIncluded.filter(Boolean)
+        : [];
+    const scopeExcluded = Array.isArray(billingClarity?.scopeExcluded)
+        ? billingClarity.scopeExcluded.filter(Boolean)
+        : [];
     const elementsOptions: StripeElementsOptions = clientSecret ? {
         clientSecret, appearance,
         fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }],
@@ -218,23 +237,31 @@ export default function PublicInvoicePage() {
 
                     {/* Line Items */}
                     <div className="inv-items">
-                        {(invoice.lineItems || []).map((item, i) => (
-                            <div key={i} className="inv-item">
-                                <div className="inv-item__desc">
-                                    <p className="inv-item__name">{item.description}</p>
-                                    {item.amount === 0 && item.rate > 0 ? (
-                                        <p className="inv-item__meta"><span style={{ textDecoration: 'line-through', color: '#999' }}>{fmtAmt(item.rate)} {invoice.currency}</span></p>
+                        {(invoice.lineItems || []).map((item, i) => {
+                            const isZeroAmount = item.amount === 0;
+                            const isInformational = isZeroAmount && item.rate === 0;
+                            return (
+                                <div key={i} className="inv-item">
+                                    <div className="inv-item__desc">
+                                        <p className="inv-item__name">{item.description}</p>
+                                        {isInformational ? (
+                                            <p className="inv-item__meta">Reference only · not charged</p>
+                                        ) : item.amount === 0 && item.rate > 0 ? (
+                                            <p className="inv-item__meta"><span style={{ textDecoration: 'line-through', color: '#999' }}>{fmtAmt(item.rate)} {invoice.currency}</span></p>
+                                        ) : (
+                                            <p className="inv-item__meta">Qty: {item.qty} × {fmtAmt(item.rate)} {invoice.currency}</p>
+                                        )}
+                                    </div>
+                                    {isZeroAmount ? (
+                                        <span className={`inv-free-badge ${isInformational ? 'inv-info-badge' : ''}`}>
+                                            {isInformational ? 'INFO' : 'FREE'}
+                                        </span>
                                     ) : (
-                                        <p className="inv-item__meta">Qty: {item.qty} × {fmtAmt(item.rate)} {invoice.currency}</p>
+                                        <p className="inv-item__amount">{fmtAmt(item.amount)} {invoice.currency}</p>
                                     )}
                                 </div>
-                                {item.amount === 0 ? (
-                                    <span className="inv-free-badge">FREE</span>
-                                ) : (
-                                    <p className="inv-item__amount">{fmtAmt(item.amount)} {invoice.currency}</p>
-                                )}
-                            </div>
-                        ))}
+                            );
+                        })}
                         {optionalAddOns.map((addOn) => (
                             <div key={addOn.id} className="inv-item inv-item--addon">
                                 <label className="inv-addon-toggle">
@@ -326,6 +353,38 @@ export default function PublicInvoicePage() {
                             </div>
                         )}
                     </div>
+
+                    {billingClarity && (
+                        <div className="inv-clarity">
+                            <p className="inv-clarity__title">{billingClarity.title || 'Payment Clarity'}</p>
+                            <div className="inv-clarity__row">
+                                <span>{billingClarity.dueNowLabel || 'Amount due now'}</span>
+                                <strong>{fmtAmt(dynamicTotalDue)} {invoice.currency}</strong>
+                            </div>
+                            {claritySchedule.map((row, i) => (
+                                <div key={i} className="inv-clarity__row">
+                                    <span>{row.label}</span>
+                                    <span>{row.value}</span>
+                                </div>
+                            ))}
+                            {scopeIncluded.length > 0 && (
+                                <>
+                                    <p className="inv-clarity__subtitle">Included in this scope</p>
+                                    <ul className="inv-clarity__list">
+                                        {scopeIncluded.map((item, i) => <li key={i}>{item}</li>)}
+                                    </ul>
+                                </>
+                            )}
+                            {scopeExcluded.length > 0 && (
+                                <>
+                                    <p className="inv-clarity__subtitle">Excluded unless selected</p>
+                                    <ul className="inv-clarity__list inv-clarity__list--warn">
+                                        {scopeExcluded.map((item, i) => <li key={i}>{item}</li>)}
+                                    </ul>
+                                </>
+                            )}
+                        </div>
+                    )}
 
                     {/* Company Info */}
                     {company && (
@@ -744,6 +803,10 @@ const pageStyles = `
     background: #ecfdf5; color: #059669; font-weight: 700; font-size: 0.72rem;
     padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px; white-space: nowrap;
 }
+.inv-info-badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
 
 /* ── Totals ── */
 .inv-totals { border-top: 2px solid #001a70; padding-top: 12px; }
@@ -759,6 +822,47 @@ const pageStyles = `
     color: #1a1a2e;
 }
 .inv-totals__total span:last-child { color: #001a70; }
+.inv-clarity {
+    margin-top: 14px;
+    border: 1px solid #dbe3ff;
+    background: #f8faff;
+    border-radius: 10px;
+    padding: 12px;
+}
+.inv-clarity__title {
+    margin: 0 0 8px;
+    color: #001a70;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+}
+.inv-clarity__subtitle {
+    margin: 10px 0 4px;
+    color: #334155;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+.inv-clarity__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 5px 0;
+    font-size: 0.82rem;
+}
+.inv-clarity__row span:first-child { color: #475569; }
+.inv-clarity__row span:last-child { color: #0f172a; font-weight: 600; text-align: right; }
+.inv-clarity__row strong { color: #001a70; text-align: right; }
+.inv-clarity__list {
+    margin: 0;
+    padding-left: 18px;
+    color: #334155;
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+.inv-clarity__list--warn { color: #92400e; }
 
 /* ── Company info ── */
 .inv-company {

@@ -38,7 +38,8 @@
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "clientId", "order": "ASCENDING" },
-        { "fieldPath": "date", "order": "ASCENDING" }
+        { "fieldPath": "date", "order": "ASCENDING" },
+        { "fieldPath": "__name__", "order": "ASCENDING" }
       ]
     },
     {
@@ -46,7 +47,8 @@
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "clientId", "order": "ASCENDING" },
-        { "fieldPath": "occurredAt", "order": "DESCENDING" }
+        { "fieldPath": "occurredAt", "order": "DESCENDING" },
+        { "fieldPath": "__name__", "order": "DESCENDING" }
       ]
     },
     {
@@ -54,7 +56,8 @@
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "clientId", "order": "ASCENDING" },
-        { "fieldPath": "occurredAt", "order": "ASCENDING" }
+        { "fieldPath": "occurredAt", "order": "ASCENDING" },
+        { "fieldPath": "__name__", "order": "ASCENDING" }
       ]
     },
     {
@@ -62,7 +65,8 @@
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "clientId", "order": "ASCENDING" },
-        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+        { "fieldPath": "updatedAt", "order": "DESCENDING" },
+        { "fieldPath": "__name__", "order": "DESCENDING" }
       ]
     }
   ],

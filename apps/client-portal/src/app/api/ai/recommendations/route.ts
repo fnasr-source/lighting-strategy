@@ -50,9 +50,10 @@ export async function POST(request: NextRequest) {
     const batch = db.batch();
     for (const recommendation of recommendations) {
       const id = `${body.clientId}_${recommendation.category}_${recommendation.priority}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      const { kpiSnapshotId: recommendationSnapshotId, ...rest } = recommendation;
       const payload = {
-        ...recommendation,
-        ...(recommendation.kpiSnapshotId ? { kpiSnapshotId: recommendation.kpiSnapshotId } : {}),
+        ...rest,
+        ...(recommendationSnapshotId ? { kpiSnapshotId: recommendationSnapshotId } : {}),
       };
       batch.set(db.collection('aiRecommendations').doc(id), payload, { merge: true });
     }

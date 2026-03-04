@@ -253,6 +253,7 @@ export default function CampaignsPage() {
     setError(null);
 
     try {
+      const kpiSnapshotId = `${selectedClient}_ui_${Date.now()}`;
       const resp = await fetch('/api/ai/recommendations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -260,6 +261,7 @@ export default function CampaignsPage() {
           clientId: selectedClient,
           from: range.from,
           to: range.to,
+          kpiSnapshotId,
           granularity: 'daily',
         }),
       });

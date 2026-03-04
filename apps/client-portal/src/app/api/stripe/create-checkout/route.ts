@@ -26,7 +26,6 @@ export async function POST(req: NextRequest) {
 
         const session = await stripe.checkout.sessions.create({
             ui_mode: 'embedded',
-            payment_method_types: ['card'],
             line_items: inv.lineItems.map((item: any) => ({
                 price_data: {
                     currency: inv.currency.toLowerCase(),

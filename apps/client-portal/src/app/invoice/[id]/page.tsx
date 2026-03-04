@@ -71,7 +71,11 @@ function PaymentForm({ amount, currency }: { amount: number; currency: string })
 
     return (
         <form onSubmit={handleSubmit}>
-            <PaymentElement options={{ layout: 'tabs', business: { name: 'Admireworks' } }} />
+            <PaymentElement options={{
+                layout: 'tabs',
+                business: { name: 'Admireworks' },
+                wallets: { applePay: 'auto', googlePay: 'auto' },
+            }} />
             {error && <div className="inv-error">{error}</div>}
             <button type="submit" disabled={!stripe || processing} className={`inv-pay-btn ${processing ? 'inv-pay-btn--loading' : ''}`}>
                 {processing ? (
@@ -345,13 +349,19 @@ export default function PublicInvoicePage() {
                                     <>
                                         <div className="inv-payment-header">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#001a70" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" />
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                                             </svg>
-                                            <h3>Card Payment</h3>
+                                            <h3>Secure Payment</h3>
                                         </div>
                                         <Elements stripe={stripePromise} options={elementsOptions}>
                                             <PaymentForm amount={invoice.totalDue} currency={invoice.currency} />
                                         </Elements>
+                                        <div className="inv-wallet-badges">
+                                            <span className="inv-wallet-badge">Apple Pay</span>
+                                            <span className="inv-wallet-badge">Google Pay</span>
+                                            <span className="inv-wallet-badge">Samsung Pay</span>
+                                            <span className="inv-wallet-badge">💳 Card</span>
+                                        </div>
                                         <div className="inv-trust">
                                             <span>🔒 Secure payment</span>
                                             <span className="inv-trust__sep">|</span>
@@ -766,4 +776,21 @@ const pageStyles = `
 .inv-footer { text-align: center; padding: 12px 0 20px; }
 .inv-footer__brand { font-weight: 800; font-size: 0.68rem; letter-spacing: 2px; color: #001a70; margin: 0; }
 .inv-footer__sub { font-size: 0.65rem; color: #777; margin: 2px 0 0; }
+
+/* ── Wallet badges ── */
+.inv-wallet-badges {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; margin-top: 16px; margin-bottom: 4px; flex-wrap: wrap;
+}
+.inv-wallet-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: 6px;
+    background: #f4f5f9; border: 1px solid #e2e5ea;
+    font-size: 0.68rem; font-weight: 600; color: #555;
+    letter-spacing: 0.2px; white-space: nowrap;
+}
+@media (max-width: 420px) {
+    .inv-wallet-badges { gap: 6px; }
+    .inv-wallet-badge { padding: 3px 8px; font-size: 0.64rem; }
+}
 `;

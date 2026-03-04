@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
 import admin from 'firebase-admin';
 import { sendInstapaySubmittedEmail } from '@/lib/email-receipts';
+import { resolveInvoicePayableAmount } from '@/lib/invoice-optionals';
 
 /**
  * Public Invoice data API
@@ -39,13 +40,17 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
  * Client submits InstaPay payment confirmation.
  * Creates a pending payment record and sends email notifications.
  *
- * Body: { paymentMethod: 'instapay', instapayRef?: string }
+ * Body: { paymentMethod: 'instapay', instapayRef?: string, selectedOptionalAddOns?: string[] }
  */
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const { id } = await params;
-        const body = await req.json();
-        const { paymentMethod, instapayRef } = body;
+        const body = await req.json() as {
+            paymentMethod?: string;
+            instapayRef?: string;
+            selectedOptionalAddOns?: string[];
+        };
+        const { paymentMethod, instapayRef, selectedOptionalAddOns } = body;
 
         if (paymentMethod !== 'instapay') {
             return NextResponse.json({ error: 'Invalid payment method' }, { status: 400 });
@@ -58,6 +63,12 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
             return NextResponse.json({ error: 'Invoice not found' }, { status: 404 });
         }
         const invData = invoiceSnap.data()!;
+        const pricing = resolveInvoicePayableAmount(invData, selectedOptionalAddOns);
+        const selectedAddOnsPayload = pricing.selectedOptionalAddOns.map((addOn) => ({
+            id: addOn.id,
+            description: addOn.description,
+            amount: addOn.amount,
+        }));
 
         if (invData.status === 'paid') {
             return NextResponse.json({ error: 'Invoice already paid' }, { status: 400 });
@@ -70,11 +81,13 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
             clientName: invData.clientName || '',
             invoiceId: id,
             invoiceNumber: invData.invoiceNumber || '',
-            amount: invData.totalDue,
+            amount: pricing.totalAmount,
             currency: invData.currency,
             method: 'instapay',
             status: 'pending',
             instapayRef: instapayRef || '',
+            optionalAddOnTotal: pricing.optionalAmount,
+            selectedOptionalAddOns: selectedAddOnsPayload,
             paidAt: submittedAt,
             createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
@@ -83,6 +96,9 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
         await invoiceRef.update({
             instapaySubmittedAt: submittedAt,
             instapayRef: instapayRef || '',
+            instapayAmount: pricing.totalAmount,
+            instapaySelectedOptionalAddOns: selectedAddOnsPayload,
+            instapayOptionalAddOnTotal: pricing.optionalAmount,
         });
 
         // Send notifications
@@ -110,7 +126,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
                 clientEmail,
                 ccEmails,
                 invoiceNumber: invData.invoiceNumber,
-                amount: invData.totalDue,
+                amount: pricing.totalAmount,
                 currency: invData.currency,
                 instapayRef: instapayRef || undefined,
                 submittedAt,

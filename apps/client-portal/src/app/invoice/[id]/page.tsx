@@ -4,6 +4,7 @@ import { useEffect, useState, FormEvent } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import { loadStripe, type StripeElementsOptions, type Appearance } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { resolveInvoicePayableAmount, type InvoiceOptionalAddOn } from '@/lib/invoice-optionals';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -43,6 +44,7 @@ interface InvoiceData {
     promotionName?: string; promotionExpiry?: string;
     issuedAt?: string; dueDate?: string; paidAt?: string; notes?: string;
     paymentSplit?: PaymentSplit;
+    optionalAddOns?: InvoiceOptionalAddOn[];
 }
 interface CompanyData { name: string; tagline: string; email: string; phone: string; address: string; }
 
@@ -95,37 +97,53 @@ export default function PublicInvoicePage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState<string | null>(null);
-    const [paymentComplete, setPaymentComplete] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState<'card' | 'instapay'>('card');
     const [instapayRef, setInstapayRef] = useState('');
     const [instapaySubmitted, setInstapaySubmitted] = useState(false);
     const [instapaySubmitting, setInstapaySubmitting] = useState(false);
     const [instapayProofFile, setInstapayProofFile] = useState<File | null>(null);
+    const [selectedOptionalAddOnIds, setSelectedOptionalAddOnIds] = useState<string[]>([]);
 
-    const status = searchParams.get('status');
-    useEffect(() => { if (status === 'complete') setPaymentComplete(true); }, [status]);
+    const paymentComplete = searchParams.get('status') === 'complete';
 
     useEffect(() => {
         fetch(`/api/invoices/${id}`)
             .then(r => r.json())
-            .then(async data => {
+            .then(data => {
                 if (data.error) { setError(data.error); setLoading(false); return; }
                 setInvoice(data.invoice);
                 setCompany(data.company);
                 setLoading(false);
                 // Default to InstaPay for EGP invoices
                 if (data.invoice.currency === 'EGP') setPaymentMethod('instapay');
-                if (data.invoice.status !== 'paid') {
-                    const piRes = await fetch('/api/stripe/create-payment-intent', {
-                        method: 'POST', headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ invoiceId: id }),
-                    });
-                    const piData = await piRes.json();
-                    if (!piData.error) setClientSecret(piData.clientSecret);
-                }
+                const pricing = resolveInvoicePayableAmount(data.invoice);
+                setSelectedOptionalAddOnIds(pricing.selectedOptionalAddOnIds);
             })
             .catch(() => { setError('Failed to load invoice'); setLoading(false); });
     }, [id]);
+
+    useEffect(() => {
+        if (!invoice || invoice.status === 'paid') return;
+        let cancelled = false;
+
+        fetch('/api/stripe/create-payment-intent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                invoiceId: id,
+                selectedOptionalAddOns: selectedOptionalAddOnIds,
+            }),
+        })
+            .then(r => r.json())
+            .then(data => {
+                if (!cancelled && !data.error) setClientSecret(data.clientSecret);
+            })
+            .catch(() => {
+                if (!cancelled) setClientSecret(null);
+            });
+
+        return () => { cancelled = true; };
+    }, [id, invoice, selectedOptionalAddOnIds]);
 
     const fmt = (d?: string) => d ? new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '—';
     const fmtAmt = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: 0 });
@@ -145,6 +163,11 @@ export default function PublicInvoicePage() {
     );
 
     const isPaid = invoice.status === 'paid' || paymentComplete;
+    const pricing = resolveInvoicePayableAmount(invoice, selectedOptionalAddOnIds);
+    const optionalAddOns = pricing.optionalAddOns;
+    const selectedOptionalAddOnSet = new Set(pricing.selectedOptionalAddOnIds);
+    const dynamicSubtotal = invoice.subtotal + pricing.optionalAmount;
+    const dynamicTotalDue = pricing.totalAmount;
     const elementsOptions: StripeElementsOptions = clientSecret ? {
         clientSecret, appearance,
         fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }],
@@ -212,13 +235,44 @@ export default function PublicInvoicePage() {
                                 )}
                             </div>
                         ))}
+                        {optionalAddOns.map((addOn) => (
+                            <div key={addOn.id} className="inv-item inv-item--addon">
+                                <label className="inv-addon-toggle">
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedOptionalAddOnSet.has(addOn.id)}
+                                        onChange={(e) => {
+                                            const checked = e.target.checked;
+                                            setClientSecret(null);
+                                            setSelectedOptionalAddOnIds((current) => {
+                                                if (checked) {
+                                                    if (current.includes(addOn.id)) return current;
+                                                    return [...current, addOn.id];
+                                                }
+                                                return current.filter((id) => id !== addOn.id);
+                                            });
+                                        }}
+                                    />
+                                    <span className="inv-addon-toggle__label">
+                                        <span className="inv-item__name">{addOn.description}</span>
+                                        <span className="inv-item__meta">Optional add-on · one-time</span>
+                                    </span>
+                                </label>
+                                <p className="inv-item__amount">+{fmtAmt(addOn.amount)} {invoice.currency}</p>
+                            </div>
+                        ))}
                     </div>
 
                     {/* Totals */}
                     <div className="inv-totals">
                         <div className="inv-totals__row">
-                            <span>Subtotal</span><span>{fmtAmt(invoice.subtotal)} {invoice.currency}</span>
+                            <span>Subtotal</span><span>{fmtAmt(dynamicSubtotal)} {invoice.currency}</span>
                         </div>
+                        {pricing.optionalAmount > 0 && (
+                            <div className="inv-totals__row">
+                                <span>Selected add-ons</span><span>+{fmtAmt(pricing.optionalAmount)} {invoice.currency}</span>
+                            </div>
+                        )}
                         {(invoice.discount ?? 0) > 0 && (
                             <div className="inv-totals__row inv-totals__discount">
                                 <span>{invoice.discountLabel || 'Discount'}</span>
@@ -268,7 +322,7 @@ export default function PublicInvoicePage() {
                             </>
                         ) : (
                             <div className="inv-totals__total">
-                                <span>Total</span><span>{fmtAmt(invoice.totalDue)} {invoice.currency}</span>
+                                <span>Total</span><span>{fmtAmt(dynamicTotalDue)} {invoice.currency}</span>
                             </div>
                         )}
                     </div>
@@ -353,8 +407,8 @@ export default function PublicInvoicePage() {
                                             </svg>
                                             <h3>Secure Payment</h3>
                                         </div>
-                                        <Elements stripe={stripePromise} options={elementsOptions}>
-                                            <PaymentForm amount={invoice.totalDue} currency={invoice.currency} />
+                                        <Elements key={clientSecret || 'no-secret'} stripe={stripePromise} options={elementsOptions}>
+                                            <PaymentForm amount={dynamicTotalDue} currency={invoice.currency} />
                                         </Elements>
                                         <div className="inv-wallet-badges">
                                             <span className="inv-wallet-badge">Apple Pay</span>
@@ -392,7 +446,7 @@ export default function PublicInvoicePage() {
                                         marginBottom: 16, border: '1px solid rgba(0,26,112,0.1)',
                                     }}>
                                         <p style={{ fontSize: '0.82rem', color: '#555', marginBottom: 12 }}>
-                                            Send <strong style={{ color: '#001a70', fontSize: '1rem' }}>{fmtAmt(invoice.totalDue)} {invoice.currency}</strong> to:
+                                            Send <strong style={{ color: '#001a70', fontSize: '1rem' }}>{fmtAmt(dynamicTotalDue)} {invoice.currency}</strong> to:
                                         </p>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
@@ -418,7 +472,7 @@ export default function PublicInvoicePage() {
                                             transition: 'background 0.2s ease',
                                         }}
                                     >
-                                        🏦 Pay {fmtAmt(invoice.totalDue)} {invoice.currency} via InstaPay
+                                        🏦 Pay {fmtAmt(dynamicTotalDue)} {invoice.currency} via InstaPay
                                     </a>
                                     <p style={{ textAlign: 'center', fontSize: '0.72rem', color: '#999', marginBottom: 20 }}>
                                         <a href="https://ipn.eg/S/admireworks/instapay/5A1jri" target="_blank" rel="noopener noreferrer" style={{ color: '#001a70', fontWeight: 500 }}>
@@ -492,6 +546,7 @@ export default function PublicInvoicePage() {
                                                     body: JSON.stringify({
                                                         paymentMethod: 'instapay',
                                                         instapayRef: instapayRef.trim() || undefined,
+                                                        selectedOptionalAddOns: pricing.selectedOptionalAddOnIds,
                                                     }),
                                                 });
                                                 setInstapaySubmitted(true);
@@ -659,6 +714,32 @@ const pageStyles = `
 .inv-item__name { margin: 0; font-size: 0.88rem; font-weight: 600; color: #1a1a2e; }
 .inv-item__meta { margin: 2px 0 0; font-size: 0.75rem; color: #777; }
 .inv-item__amount { margin: 0; font-weight: 700; font-size: 0.92rem; white-space: nowrap; color: #1a1a2e; }
+.inv-item--addon {
+    align-items: center;
+    background: #fafbff;
+    border: 1px dashed #dbe3ff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-top: 8px;
+}
+.inv-addon-toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+}
+.inv-addon-toggle input {
+    margin-top: 2px;
+    width: 15px;
+    height: 15px;
+    accent-color: #001a70;
+}
+.inv-addon-toggle__label {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
 .inv-free-badge {
     background: #ecfdf5; color: #059669; font-weight: 700; font-size: 0.72rem;
     padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px; white-space: nowrap;

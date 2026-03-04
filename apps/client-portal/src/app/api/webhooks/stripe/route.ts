@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
                         console.log(`✅ Invoice ${invoiceId} marked paid (PI: ${pi.id})`);
 
                         // Send receipt email
-                        await sendReceiptForInvoice(invData, invoiceId, paidAt);
+                        await sendReceiptForInvoice(invData, invoiceId, paidAt, pi.amount / 100);
                     }
                 }
                 break;
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
                             createdAt: admin.firestore.FieldValue.serverTimestamp(),
                         });
 
-                        await sendReceiptForInvoice(invData, session.metadata.invoiceId, paidAt);
+                        await sendReceiptForInvoice(invData, session.metadata.invoiceId, paidAt, session.amount_total / 100);
                     }
                 } else if (session.payment_link) {
                     const invoicesSnap = await adminDb.collection('invoices')
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
                                 createdAt: admin.firestore.FieldValue.serverTimestamp(),
                             });
 
-                            await sendReceiptForInvoice(invData, doc.id, paidAt);
+                            await sendReceiptForInvoice(invData, doc.id, paidAt, session.amount_total / 100);
                         }
                     }
                 }
@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
 /**
  * Look up client contacts and send branded receipt (primary + CC)
  */
-async function sendReceiptForInvoice(invData: any, invoiceId: string, paidAt: string) {
+async function sendReceiptForInvoice(invData: any, invoiceId: string, paidAt: string, paidAmount?: number) {
     try {
         let clientEmail = '';
         let ccEmails: string[] = [];
@@ -157,7 +157,7 @@ async function sendReceiptForInvoice(invData: any, invoiceId: string, paidAt: st
                 clientEmail,
                 ccEmails,
                 invoiceNumber: invData.invoiceNumber,
-                amount: invData.totalDue,
+                amount: typeof paidAmount === 'number' ? paidAmount : invData.totalDue,
                 currency: invData.currency,
                 paidAt,
                 lineItems: invData.lineItems || [],

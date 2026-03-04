@@ -2,138 +2,225 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function profileDoc() {
+      return get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data;
+    }
+
+    function role() {
+      return profileDoc().role;
+    }
+
+    function isOwnerOrAdmin() {
+      return isSignedIn() && role() in ['owner', 'admin'];
+    }
+
+    function isInternal() {
+      return isSignedIn() && role() in ['owner', 'admin', 'team'];
+    }
+
+    function canAccessClient(clientId) {
+      return isOwnerOrAdmin()
+        || (isSignedIn() && role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([clientId]))
+        || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == clientId);
+    }
+
     // ── User Profiles ──
-    // Authenticated users can read their own profile
-    // Owners/admins can read all profiles (for team management)
     match /userProfiles/{uid} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null && (
-        request.auth.uid == uid ||
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin']
+      allow read: if isSignedIn() && (
+        request.auth.uid == uid || isOwnerOrAdmin() || role() == 'team'
+      );
+      allow write: if isSignedIn() && (
+        request.auth.uid == uid || isOwnerOrAdmin()
       );
     }
 
     // ── Clients ──
     match /clients/{clientId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if canAccessClient(clientId);
+      allow write: if isOwnerOrAdmin();
     }
 
     // ── Invoices ──
     match /invoices/{invoiceId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isSignedIn() && (
+        isOwnerOrAdmin()
+        || (role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([resource.data.clientId]))
+        || (role() == 'client' && profileDoc().linkedClientId == resource.data.clientId)
+      );
+      allow write: if isOwnerOrAdmin();
     }
 
     // ── Payments ──
     match /payments/{paymentId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow read: if isSignedIn() && (
+        isOwnerOrAdmin()
+        || (role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([resource.data.clientId]))
+        || (role() == 'client' && profileDoc().linkedClientId == resource.data.clientId)
+      );
+      allow write: if isOwnerOrAdmin();
     }
 
     // ── Leads ──
     match /leads/{leadId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin', 'team'];
+      allow read: if isInternal();
+      allow write: if isInternal();
     }
 
     // ── Proposals ──
     match /proposals/{proposalId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
     }
 
-    // ── Platform Connections (credentials — restricted) ──
+    // ── Platform Connections (credentials metadata only) ──
     match /platformConnections/{connId} {
-      allow read: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isInternal() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
     }
 
-    // ── Monthly Metrics + Rollups (reporting) ──
+    // ── Secret storage and platform overrides ──
+    match /systemConfig/{docId} {
+      allow read: if isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+    match /platformDataOverrides/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+    match /fxRates/{docId} {
+      allow read: if isSignedIn();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // ── Monthly + Daily Metrics (legacy reporting collections) ──
     match /monthlyPlatformMetrics/{docId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
     }
     match /monthlyClientRollups/{docId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /dailyPlatformMetrics/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // ── Canonical Intelligence Fact Tables ──
+    match /fact_marketing_daily/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /fact_marketing_hourly/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /fact_social_interaction/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /fact_social_conversation/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // ── Intelligence Outputs ──
+    match /kpi_snapshots_daily/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /kpi_snapshots_hourly/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /client_health_scores/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /aiRecommendations/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /ingestionJobs/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
+    }
+    match /intelligenceCronRuns/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // ── Media/creative intelligence ──
+    match /creativePerformance/{docId} {
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isOwnerOrAdmin();
     }
 
     // ── Threads + Messages (communication) ──
     match /threads/{threadId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
+      allow write: if isSignedIn() && canAccessClient(request.resource.data.clientId);
     }
     match /messages/{messageId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
     }
 
     // ── Recurring Invoices + Reminders ──
     match /recurringInvoices/{docId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isSignedIn() && (
+        isOwnerOrAdmin()
+        || (role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([resource.data.clientId]))
+        || (role() == 'client' && profileDoc().linkedClientId == resource.data.clientId)
+      );
+      allow write: if isOwnerOrAdmin();
     }
     match /invoiceReminders/{docId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
     }
 
     // ── Expenses ──
     match /expenses/{expenseId} {
-      allow read: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
     }
 
-    // ── Campaigns (client landing pages) ──
-    match /campaigns/{campaignId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
-      match /leads/{leadId} {
-        // Anyone can create a lead (public form submission)
-        allow create: if true;
-        // Only authenticated users can read leads
-        allow read: if request.auth != null;
-        // Only admins can update/delete
-        allow update, delete: if request.auth != null &&
-          get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+    // ── Reports / Strategy ──
+    match /reports/{reportId} {
+      allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);
+      allow write: if isInternal();
+    }
+    match /strategies/{strategyId} {
+      allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);
+      allow write: if isInternal();
+    }
 
-        // ── Activities (CRM communication log) ──
+    // ── Campaigns (public lead intake + internal management) ──
+    match /campaigns/{campaignId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+
+      match /leads/{leadId} {
+        allow create: if true;
+        allow read: if isInternal();
+        allow update, delete: if isInternal();
+
         match /activities/{activityId} {
-          // Authenticated users can create and read activities
-          allow create, read: if request.auth != null;
-          // Only owner/admin can update/delete activities
-          allow update, delete: if request.auth != null &&
-            get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+          allow create, read: if isInternal();
+          allow update, delete: if isOwnerOrAdmin();
         }
       }
     }
 
-    // ── Daily Platform Metrics (synced data) ──
-    match /dailyPlatformMetrics/{docId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
-    }
-
-    // ── AI-Generated Client Insights ──
+    // ── AI-generated summary cache (legacy) ──
     match /clientInsights/{clientId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null &&
-        get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.role in ['owner', 'admin'];
+      allow read: if canAccessClient(clientId);
+      allow write: if isOwnerOrAdmin();
     }
   }
 }

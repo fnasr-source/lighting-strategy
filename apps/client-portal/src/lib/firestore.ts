@@ -21,8 +21,27 @@ import {
     type QueryConstraint,
 } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import type {
+    AiRecommendation as PerformanceAiRecommendation,
+    CanonicalMetricRow as PerformanceCanonicalMetricRow,
+    ClientHealthScore as PerformanceClientHealthScore,
+    IngestionJob as PerformanceIngestionJob,
+    IntegrationCredentialRef as PerformanceIntegrationCredentialRef,
+    KpiSnapshot as PerformanceKpiSnapshot,
+    SocialConversation as PerformanceSocialConversation,
+    SocialInteraction as PerformanceSocialInteraction,
+} from '@/lib/performance-intelligence/types';
 
 // ── Types ────────────────────────────────────────────
+export type IntegrationCredentialRef = PerformanceIntegrationCredentialRef;
+export type IngestionJob = PerformanceIngestionJob;
+export type CanonicalMetricRow = PerformanceCanonicalMetricRow;
+export type SocialInteraction = PerformanceSocialInteraction;
+export type SocialConversation = PerformanceSocialConversation;
+export type KpiSnapshot = PerformanceKpiSnapshot;
+export type ClientHealthScore = PerformanceClientHealthScore;
+export type AiRecommendation = PerformanceAiRecommendation;
+
 export interface Contact {
     name: string;
     email: string;
@@ -45,6 +64,9 @@ export interface Client {
     industry?: string; // e.g. 'fashion', 'hr_consulting', 'food_beverage'
     ga4PropertyId?: string;
     notes?: string;
+    nextMeetingAt?: string;
+    lastMeetingAt?: string;
+    meetingCount?: number;
     createdAt?: any;
     updatedAt?: any;
 }
@@ -128,7 +150,15 @@ export interface PlatformConnection {
     clientId: string;
     platform: 'meta_ads' | 'google_ads' | 'tiktok_ads' | 'ga4' | 'shopify' | 'woocommerce';
     isConnected: boolean;
-    credentials: Record<string, string>;
+    credentials?: Record<string, string>; // legacy path
+    credentialRef?: {
+        provider: 'firestore';
+        key: string;
+        version: number;
+    };
+    credentialsMasked?: Record<string, string>;
+    timezone?: string;
+    currency?: string;
     lastSync?: string;
     syncStatus?: 'ok' | 'error' | 'syncing';
     lastError?: string | null;
@@ -264,6 +294,9 @@ export interface Lead {
     assignedTo?: string;
     notes?: string;
     convertedToClientId?: string;
+    nextMeetingAt?: string;
+    lastMeetingAt?: string;
+    meetingCount?: number;
     createdAt?: any;
     updatedAt?: any;
 }
@@ -296,6 +329,123 @@ export interface PaymentLink {
     clientName?: string;
     status: 'active' | 'inactive';
     createdAt?: any;
+}
+
+// ── Scheduling Types ────────────────────────────────
+
+export interface SchedulingHost {
+    id?: string;
+    uid: string;
+    email: string;
+    displayName: string;
+    timezone: string;
+    active: boolean;
+    defaultAvailability: { weekday: number; startTime: string; endTime: string }[];
+    google?: {
+        connected: boolean;
+        calendarId?: string;
+        lastSyncAt?: string;
+        lastError?: string;
+    };
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface SchedulingEventType {
+    id?: string;
+    slug: string;
+    name: string;
+    description?: string;
+    audienceCase: 'lead' | 'client' | 'team_partner';
+    durationMin: number;
+    bufferBeforeMin: number;
+    bufferAfterMin: number;
+    minNoticeMinutes: number;
+    bookingWindowDays: number;
+    cancelCutoffHours: number;
+    routingMode: 'host_fixed' | 'round_robin_weighted' | 'collective_required';
+    fixedHostUserId?: string;
+    timezone: string;
+    reminderPolicy: { firstMinutesBefore: number; secondMinutesBefore: number };
+    intakeQuestions: { id: string; label: string; type: string; required: boolean; options?: string[] }[];
+    locationType: 'google_meet' | 'phone' | 'custom';
+    locationDetails?: string;
+    isActive: boolean;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface SchedulingBooking {
+    id?: string;
+    eventTypeId: string;
+    eventSlug: string;
+    eventName: string;
+    status: 'confirmed' | 'cancelled' | 'completed' | 'no_show';
+    startAt: string;
+    endAt: string;
+    hostUserIds: string[];
+    primaryHostUserId: string;
+    invitee: {
+        name: string;
+        email: string;
+        phone?: string;
+        company?: string;
+        timezone: string;
+    };
+    googleMeetLink?: string;
+    locationText?: string;
+    linkedLeadId?: string;
+    linkedClientId?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface SchedulingHostEventTypeMap {
+    id?: string;
+    eventTypeId: string;
+    hostUserId: string;
+    weight: number;
+    active: boolean;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface SchedulingAvailabilityRule {
+    id?: string;
+    hostUserId: string;
+    eventTypeId?: string;
+    ruleType: 'weekly' | 'date_override';
+    weekday?: number;
+    date?: string;
+    startTime?: string;
+    endTime?: string;
+    isAvailable: boolean;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface SchedulingReminder {
+    id?: string;
+    bookingId: string;
+    reminderType: '24h' | '1h';
+    scheduledFor: string;
+    status: 'pending' | 'sent' | 'failed' | 'cancelled';
+    idempotencyKey: string;
+    attempts: number;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface Task {
+    id?: string;
+    bookingId?: string;
+    title: string;
+    description?: string;
+    assignedToUid?: string;
+    dueAt?: string;
+    status: 'open' | 'done';
+    createdAt?: any;
+    updatedAt?: any;
 }
 
 // ── Clients ──────────────────────────────────────────
@@ -571,6 +721,42 @@ export const dailyMetricsService = {
     },
 };
 
+export const ingestionJobsService = {
+    subscribeByClient(clientId: string, callback: (items: IngestionJob[]) => void) {
+        return onSnapshot(
+            query(collection(db, 'ingestionJobs'), where('clientId', '==', clientId), orderBy('startedAt', 'desc')),
+            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as IngestionJob))),
+        );
+    },
+};
+
+export const socialInteractionsService = {
+    subscribeByClient(clientId: string, callback: (items: SocialInteraction[]) => void) {
+        return onSnapshot(
+            query(collection(db, 'fact_social_interaction'), where('clientId', '==', clientId), orderBy('occurredAt', 'desc')),
+            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as SocialInteraction))),
+        );
+    },
+};
+
+export const kpiSnapshotsService = {
+    subscribeDailyByClient(clientId: string, callback: (items: KpiSnapshot[]) => void) {
+        return onSnapshot(
+            query(collection(db, 'kpi_snapshots_daily'), where('clientId', '==', clientId), orderBy('generatedAt', 'desc')),
+            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as KpiSnapshot))),
+        );
+    },
+};
+
+export const aiRecommendationsService = {
+    subscribeByClient(clientId: string, callback: (items: AiRecommendation[]) => void) {
+        return onSnapshot(
+            query(collection(db, 'aiRecommendations'), where('clientId', '==', clientId), orderBy('createdAt', 'desc')),
+            snap => callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as AiRecommendation))),
+        );
+    },
+};
+
 export const leadsService = {
     async getAll(): Promise<Lead[]> {
         const snap = await getDocs(query(collection(db, 'leads'), orderBy('createdAt', 'desc')));
@@ -643,6 +829,39 @@ export const paymentLinksService = {
     },
 };
 
+// ── Scheduling ───────────────────────────────────────
+export const schedulingEventTypesService = {
+    subscribe(callback: (items: SchedulingEventType[]) => void) {
+        return onSnapshot(query(collection(db, 'schedulingEventTypes'), orderBy('createdAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as SchedulingEventType)));
+        });
+    },
+};
+
+export const schedulingBookingsService = {
+    subscribe(callback: (items: SchedulingBooking[]) => void) {
+        return onSnapshot(query(collection(db, 'schedulingBookings'), orderBy('startAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as SchedulingBooking)));
+        });
+    },
+};
+
+export const schedulingHostsService = {
+    subscribe(callback: (items: SchedulingHost[]) => void) {
+        return onSnapshot(query(collection(db, 'schedulingHosts'), orderBy('displayName', 'asc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as SchedulingHost)));
+        });
+    },
+};
+
+export const schedulingHostMapsService = {
+    subscribe(callback: (items: SchedulingHostEventTypeMap[]) => void) {
+        return onSnapshot(query(collection(db, 'schedulingHostEventTypeMap'), orderBy('createdAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as SchedulingHostEventTypeMap)));
+        });
+    },
+};
+
 // ── User Profiles & Roles ────────────────────────────
 export type UserRole = 'owner' | 'admin' | 'team' | 'client';
 
@@ -657,7 +876,8 @@ export type Permission =
     | 'communications:read' | 'communications:write'
     | 'settings:read' | 'settings:write'
     | 'team:read' | 'team:write'
-    | 'billing:read' | 'billing:write';
+    | 'billing:read' | 'billing:write'
+    | 'scheduling:read' | 'scheduling:write';
 
 /** Default permissions per role */
 export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
@@ -668,6 +888,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'settings:read', 'settings:write', 'team:read', 'team:write',
         'billing:read', 'billing:write',
+        'scheduling:read', 'scheduling:write',
     ],
     admin: [
         'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
@@ -675,10 +896,12 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'settings:read', 'team:read', 'team:write',
+        'scheduling:read', 'scheduling:write',
     ],
     team: [
         'clients:read', 'invoices:read', 'reports:read', 'reports:write',
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
+        'scheduling:read', 'scheduling:write',
     ],
     client: [
         'invoices:read', 'payments:read', 'reports:read',
@@ -748,7 +971,8 @@ export const userProfilesService = {
         if (!profile) return false;
         // Owner always has everything
         if (profile.role === 'owner') return true;
-        return profile.permissions.includes(permission);
+        if (profile.permissions.includes(permission)) return true;
+        return ROLE_PERMISSIONS[profile.role]?.includes(permission) ?? false;
     },
 
     /** Check if user can access a specific client */
@@ -760,4 +984,3 @@ export const userProfilesService = {
         return false;
     },
 };
-

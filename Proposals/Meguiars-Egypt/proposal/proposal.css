@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Meguiar's Egypt — Client-Specific Proposal CSS
+   Overrides for the base proposal theme to match Meguiar's brand identity
+   ========================================================================== */
+
+:root {
+    /* Meguiar's Brand Integration */
+    /* Using the Ein Abaya-inspired deep green/gold palette 
+     which complements Meguiar's yellow/black without clashing */
+    --prop-bg-dark: #1b2a1f;
+    --prop-bg-medium: #243828;
+    --prop-bg-light: #f5f0e8;
+    --prop-accent: #cc9f53;
+    --prop-accent-light: #e6c47a;
+
+    /* Meguiar's specific colors available for accent elements */
+    --meg-yellow: #FFD100;
+    --meg-black: #1a1a1a;
+    --meg-red: #c0392b;
+}
+
+/* Cover page — deep green with gold geometric background */
+.page.cover {
+    background-image: url('assets/generated/cover-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.cover .cover-bg {
+    background: linear-gradient(180deg,
+            rgba(27, 42, 31, 0.92) 0%,
+            rgba(15, 22, 17, 0.95) 100%);
+}
+
+.cover .cover-bg::after {
+    background: radial-gradient(ellipse at 50% 40%,
+            rgba(204, 159, 83, 0.12) 0%,
+            transparent 60%);
+}
+
+/* Stat cards with Meguiar's flair */
+.stat-card {
+    background: linear-gradient(135deg, var(--prop-bg-dark) 0%, var(--prop-bg-medium) 100%);
+    border: 1px solid rgba(204, 159, 83, 0.15);
+}
+
+/* Audit cards — subtle refinement */
+.audit-card {
+    transition: box-shadow 0.3s ease;
+}
+
+/* Comparison table — Meguiar's header touch */
+.comparison-table thead th {
+    background: linear-gradient(135deg, var(--prop-bg-dark) 0%, var(--prop-bg-medium) 100%);
+}
+
+/* Insight hero page — deeper atmosphere */
+.page.insight-hero {
+    background: linear-gradient(180deg, #0d1a10 0%, #1b2a1f 50%, #0d1a10 100%);
+}
+
+.insight-card {
+    background: rgba(204, 159, 83, 0.05);
+    border: 1px solid rgba(204, 159, 83, 0.15);
+}
+
+/* Roadmap phases — gold top border enhancement */
+.roadmap-phase {
+    border-top-color: var(--prop-accent);
+}
+
+/* Featured pricing card — premium glow */
+.pricing-card.featured {
+    box-shadow: 0 8px 40px rgba(204, 159, 83, 0.25);
+}
+
+/* Scope cards — subtle hover-like elevation */
+.scope-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Next step numbers — gold circles */
+.next-step .step-number {
+    background: linear-gradient(135deg, var(--prop-accent) 0%, var(--prop-accent-light) 100%);
+    box-shadow: 0 3px 12px rgba(204, 159, 83, 0.3);
+}
+
+/* Closing page — navy with gold accent */
+.page.closing {
+    background: linear-gradient(180deg, var(--aw-navy) 0%, #00103d 100%);
+}
+
+/* Page footer subtle styling */
+.page-footer {
+    font-family: var(--font-body);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}

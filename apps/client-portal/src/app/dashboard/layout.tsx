@@ -22,6 +22,7 @@ import {
     Globe,
     Shield,
     Wallet,
+    CalendarClock,
 } from 'lucide-react';
 import type { Permission } from '@/lib/firestore';
 
@@ -40,6 +41,7 @@ const allNavItems: NavItem[] = [
     { section: 'Campaigns' },
     { label: 'Performance', href: '/dashboard/campaigns', icon: BarChart3, permission: 'campaigns:read' },
     { label: 'Campaign Leads', href: '/dashboard/campaign-leads', icon: Target, permission: 'campaigns:read' },
+    { label: 'Scheduling', href: '/dashboard/scheduling', icon: CalendarClock, permission: 'scheduling:read' },
     { label: 'Integrations', href: '/dashboard/integrations', icon: Globe, permission: 'campaigns:read' },
     { section: 'Finance' },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt, permission: 'invoices:read' },

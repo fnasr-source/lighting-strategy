@@ -7,8 +7,8 @@ import {
     type PlatformConnection, type Client,
 } from '@/lib/firestore';
 import { Globe, Plus, Edit3, Trash2, X, CheckCircle, XCircle, Info, ChevronDown, ChevronUp } from 'lucide-react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { auth, db } from '@/lib/firebase';
 
 const PLATFORMS = [
     {
@@ -32,6 +32,15 @@ const PLATFORMS = [
         instructions: '1. Go to your Shopify admin → Settings → Apps\n2. Click "Develop apps" → Create an app\n3. Configure Admin API scopes: read_orders, read_products, read_analytics\n4. Install the app → copy the Admin API access token\n5. Your shop URL is yourstore.myshopify.com'
     },
     {
+        id: 'woocommerce', name: 'WooCommerce', icon: '🧺', color: '#96588A',
+        fields: [
+            { key: 'baseUrl', label: 'Store URL', placeholder: 'e.g. https://store.example.com' },
+            { key: 'consumerKey', label: 'Consumer Key', placeholder: 'ck_...' },
+            { key: 'consumerSecret', label: 'Consumer Secret', placeholder: 'cs_...' },
+        ],
+        instructions: '1. In WordPress, go to WooCommerce → Settings → Advanced → REST API\n2. Create API key with read access\n3. Copy consumer key/secret\n4. Use your full store URL as base URL'
+    },
+    {
         id: 'ga4', name: 'Google Analytics 4', icon: '📊', color: '#E37400',
         fields: [{ key: 'propertyId', label: 'Property ID', placeholder: 'e.g. 123456789' }, { key: 'serviceAccountKey', label: 'Service Account JSON', placeholder: '{ "type": "service_account", ... }' }],
         instructions: '1. Go to analytics.google.com → Admin → Property Settings\n2. Copy the Property ID\n3. For API: Go to console.cloud.google.com\n4. Create a Service Account → download the JSON key\n5. Add the service account email as a Viewer in GA4'
@@ -44,7 +53,13 @@ export default function IntegrationsPage() {
     const [clients, setClients] = useState<Client[]>([]);
     const [showAdd, setShowAdd] = useState(false);
     const [editConn, setEditConn] = useState<PlatformConnection | null>(null);
-    const [form, setForm] = useState({ clientId: '', platform: '', credentials: {} as Record<string, string> });
+    const [form, setForm] = useState({
+        clientId: '',
+        platform: '',
+        credentials: {} as Record<string, string>,
+        currency: 'USD',
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC',
+    });
     const [expandedInstructions, setExpandedInstructions] = useState('');
     const [saving, setSaving] = useState(false);
 
@@ -61,9 +76,25 @@ export default function IntegrationsPage() {
     const canWrite = hasPermission('campaigns:write');
     const clientName = (id: string) => clients.find(c => c.id === id)?.name || id;
 
-    const openAdd = () => { setForm({ clientId: '', platform: '', credentials: {} }); setEditConn(null); setShowAdd(true); };
+    const openAdd = () => {
+        setForm({
+            clientId: '',
+            platform: '',
+            credentials: {},
+            currency: 'USD',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC',
+        });
+        setEditConn(null);
+        setShowAdd(true);
+    };
     const openEdit = (conn: PlatformConnection) => {
-        setEditConn(conn); setForm({ clientId: conn.clientId, platform: conn.platform, credentials: { ...(conn.credentials || {}) } });
+        setEditConn(conn); setForm({
+            clientId: conn.clientId,
+            platform: conn.platform,
+            credentials: { ...(conn.credentials || {}) },
+            currency: conn.currency || 'USD',
+            timezone: conn.timezone || (Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'),
+        });
         setShowAdd(true);
     };
 
@@ -71,16 +102,23 @@ export default function IntegrationsPage() {
         if (!form.clientId || !form.platform) return;
         setSaving(true);
         try {
-            if (editConn) {
-                await updateDoc(doc(db, 'platformConnections', editConn.id!), {
-                    credentials: form.credentials, isConnected: true,
-                });
-            } else {
-                await addDoc(collection(db, 'platformConnections'), {
-                    clientId: form.clientId, platform: form.platform,
-                    credentials: form.credentials, isConnected: true,
-                    createdAt: serverTimestamp(),
-                });
+            const token = await auth.currentUser?.getIdToken();
+            if (!token) throw new Error('You must be authenticated to update integrations');
+            const resp = await fetch('/api/integrations/upsert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({
+                    connectionId: editConn?.id,
+                    clientId: form.clientId,
+                    platform: form.platform,
+                    credentials: form.credentials,
+                    timezone: form.timezone,
+                    currency: form.currency,
+                }),
+            });
+            const payload = await resp.json();
+            if (!resp.ok || !payload.success) {
+                throw new Error(payload.error || 'Failed to save integration');
             }
             setShowAdd(false);
         } catch (err) { console.error(err); }
@@ -143,6 +181,27 @@ export default function IntegrationsPage() {
                             </select>
                         </div>
 
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 14 }}>
+                            <div>
+                                <label className="form-label">Currency</label>
+                                <select className="form-input" value={form.currency} onChange={e => setForm(p => ({ ...p, currency: e.target.value }))}>
+                                    <option value="USD">USD</option>
+                                    <option value="AED">AED</option>
+                                    <option value="EGP">EGP</option>
+                                    <option value="SAR">SAR</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="form-label">Timezone</label>
+                                <input
+                                    className="form-input"
+                                    value={form.timezone}
+                                    onChange={e => setForm(p => ({ ...p, timezone: e.target.value }))}
+                                    placeholder="e.g. Asia/Dubai"
+                                />
+                            </div>
+                        </div>
+
                         {selectedPlatform && (
                             <>
                                 {/* Setup Instructions */}
@@ -194,7 +253,7 @@ export default function IntegrationsPage() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                         {conns.map(conn => {
                             const info = PLATFORMS.find(p => p.id === conn.platform);
-                            const creds = conn.credentials || {};
+                            const creds = conn.credentialsMasked || conn.credentials || {};
                             const detail = creds.adAccountId ? `Account: ${creds.adAccountId}` : creds.shopUrl ? `Shop: ${creds.shopUrl}` : creds.customerId ? `ID: ${creds.customerId}` : 'Connected';
                             return (
                                 <div key={conn.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px', borderRadius: 10, border: '1px solid var(--card-border)', background: 'var(--muted-bg)' }}>
@@ -203,6 +262,9 @@ export default function IntegrationsPage() {
                                         <div>
                                             <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{info?.name || conn.platform}</div>
                                             <div style={{ fontSize: '0.73rem', color: 'var(--muted)', fontFamily: 'monospace' }}>{detail}</div>
+                                            <div style={{ fontSize: '0.68rem', color: 'var(--muted)' }}>
+                                                {(conn.timezone || 'UTC')} · {conn.currency || 'USD'}
+                                            </div>
                                         </div>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>

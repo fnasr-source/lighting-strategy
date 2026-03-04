@@ -1,0 +1,38 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "schedulingBookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "eventTypeId", "order": "ASCENDING" },
+        { "fieldPath": "startAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "schedulingBookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "hostUserIds", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "startAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "schedulingBookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "hostUserIds", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "startAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "schedulingReminderQueue",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "scheduledFor", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

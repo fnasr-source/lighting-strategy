@@ -8,7 +8,8 @@
     "setup": "node setup-firebase.js",
     "setup:firestore": "node setup-firestore.js",
     "setup:auth": "node setup-auth.js",
-    "seed": "node seed-data.js"
+    "seed": "node seed-data.js",
+    "seed:pi-demo": "node seed-performance-intelligence-demo.mjs"
   },
   "dependencies": {
     "firebase-admin": "^13.0.0",

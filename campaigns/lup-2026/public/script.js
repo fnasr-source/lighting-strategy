@@ -3,6 +3,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const schedulingBaseUrl = window.__SCHEDULING_BASE_URL || 'https://my.admireworks.com';
 
   // ---- UTM Tracking & Lead Attribution ----
   const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id', 'ref', 'gclid', 'fbclid'];
@@ -181,11 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `Thank you, <strong>${data.firstName}</strong>. Our program team will review your application and contact you within 24 hours.`
         : `Thank you, <strong>${data.firstName}</strong>. Our team will reach out to you shortly to discuss the program.`;
 
+      const fallbackBookingUrl = `${schedulingBaseUrl}/book/discovery-call?name=${encodeURIComponent(data.firstName || '')}&email=${encodeURIComponent(data.email || '')}`;
+
       container.innerHTML = `
         <div style="text-align:center; padding: 40px 0;">
           <div style="font-size: 3rem; margin-bottom: 16px;">✓</div>
           <h2 style="margin-bottom: 12px; color: var(--gold-400);">${successTitle}</h2>
           <p style="color: var(--text-secondary); margin-bottom: 24px;">${successMsg}</p>
+          <a href="${fallbackBookingUrl}" class="btn btn-primary" style="display:inline-block;margin-bottom:12px;">
+            Book Your Private Briefing
+          </a>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">You can book immediately using the button above.</p>
           <button class="btn btn-secondary" style="margin-top: 24px;"
             onclick="document.getElementById('${modalId}').classList.remove('open'); document.body.style.overflow='';">
             Close
@@ -193,16 +200,21 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Write to Firestore
+      // Send through API bridge (stores lead + sends booking follow-up email)
       (async () => {
         try {
-          const { collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js');
-          leadPayload.created_at = serverTimestamp();
-          leadPayload.client_id = 'aspire-hr';
-          await addDoc(collection(window.__db, 'campaigns', 'lup-2026', 'leads'), leadPayload);
-          console.log('Lead saved to Firestore:', leadPayload.lead_id);
+          const res = await fetch(`${schedulingBaseUrl}/api/campaigns/lup-2026/lead`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...leadPayload, client_id: 'aspire-hr' }),
+          });
+          const payload = await res.json().catch(() => ({}));
+          const bookingUrl = payload.bookingUrl || fallbackBookingUrl;
+          const bookingAnchor = container.querySelector('a.btn.btn-primary');
+          if (bookingAnchor) bookingAnchor.href = bookingUrl;
+          if (!res.ok) console.error('Lead API failed:', payload.error || res.statusText);
         } catch (err) {
-          console.error('Failed to save lead:', err);
+          console.error('Failed to submit lead via API:', err);
         }
       })();
     });

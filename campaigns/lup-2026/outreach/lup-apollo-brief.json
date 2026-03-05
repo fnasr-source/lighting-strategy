@@ -1,0 +1,89 @@
+{
+  "account_name": "Leading Under Pressure 2026",
+  "offer_summary": "A 3-day executive crisis leadership program in Dubai with VR simulation, elite faculty, and post-program coaching.",
+  "icp": {
+    "industries": [
+      "Oil & Energy",
+      "Banking",
+      "Financial Services",
+      "Hospital & Health Care",
+      "Real Estate",
+      "Government Administration",
+      "Defense & Space",
+      "Consumer Goods",
+      "Telecommunications",
+      "Construction"
+    ],
+    "locations": [
+      "United Arab Emirates",
+      "Saudi Arabia",
+      "Egypt",
+      "Poland",
+      "Qatar",
+      "Kuwait",
+      "Bahrain",
+      "Oman",
+      "Jordan"
+    ],
+    "company_size_ranges": [
+      "501-1000",
+      "1001-5000",
+      "5001-10000",
+      "10001+"
+    ],
+    "titles_include": [
+      "CEO",
+      "COO",
+      "CFO",
+      "Managing Director",
+      "General Manager",
+      "Regional Director",
+      "Country Head",
+      "VP",
+      "SVP",
+      "CHRO",
+      "Head of L&D",
+      "Talent Development Director",
+      "Chief People Officer"
+    ],
+    "titles_exclude": [
+      "Intern",
+      "Student",
+      "Assistant",
+      "Coordinator",
+      "Recruiter",
+      "Talent Acquisition"
+    ],
+    "seniority_include": [
+      "c_suite",
+      "vp",
+      "head",
+      "director",
+      "owner"
+    ],
+    "keywords_include": [
+      "leadership development",
+      "executive development",
+      "organizational transformation",
+      "crisis management"
+    ],
+    "keywords_exclude": [
+      "recruitment agency",
+      "staffing",
+      "hiring"
+    ]
+  },
+  "approach": {
+    "max_contacts_to_unlock": 120,
+    "emails_per_company_cap": 2,
+    "require_email": true
+  },
+  "instantly": {
+    "language": "en",
+    "tone": "authoritative and direct",
+    "cta": "15-minute private briefing call",
+    "sequence_steps": 3,
+    "campaign_name": "Leading Under Pressure 2026 | ICP Outreach | Draft",
+    "lead_list_name": "Leading Under Pressure 2026 | Apollo ICP Leads"
+  }
+}

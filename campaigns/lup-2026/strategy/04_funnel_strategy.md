@@ -17,11 +17,11 @@ AWARENESS ──────── INTEREST ──────── DESIRE ─�
 ## Stage 1: AWARENESS (Top of Funnel)
 
 ### Channel 1: Cold Email Outreach
-- **Volume:** 200–500 targeted contacts
+- **Volume:** 600–900 total sends from ~920 targeted contacts (wave-based extraction)
 - **Sequences:**
-  - *Executive Sequence* (C-suite targets) — 4 emails over 14 days
-  - *L&D/HR Sequence* (sponsors) — 4 emails over 14 days
-  - *Warm Network Sequence* (connections) — 3 emails over 10 days
+  - *Executive Sequence* (C-suite targets) — 4 emails over 12 days
+  - *L&D/HR Sequence* (sponsors) — 4 emails over 12 days
+  - *Warm Network Sequence* (connections) — 3 emails over 8 days
 - **Goal:** Drive to landing page or request a private briefing
 - **KPI:** 25%+ open rate, 5%+ reply rate, 3%+ landing page click
 
@@ -50,7 +50,7 @@ AWARENESS ──────── INTEREST ──────── DESIRE ─�
 ## Stage 2: INTEREST (Mid-Funnel)
 
 ### Landing Page
-- **URL:** To be deployed (Aspire HR subdomain or standalone)
+- **URL:** https://lup.admireworks.com
 - **Structure:** Full StoryBrand framework (see brandscript)
 - **Primary CTA:** "Reserve Your Seat" → Application form
 - **Secondary CTA:** "Download Brochure" → PDF download + email capture
@@ -132,7 +132,7 @@ AWARENESS ──────── INTEREST ──────── DESIRE ─�
 
 | Metric | Target |
 |---|---|
-| Cold emails sent | 400+ |
+| Cold emails sent | 600–900 |
 | Email open rate | 25%+ |
 | Email reply rate | 5%+ |
 | Landing page visitors | 500+ |

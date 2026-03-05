@@ -16,7 +16,7 @@ Hi [First Name],
 
 Thank you for your interest in the **Leading Under Pressure** program.
 
-Here's your brochure: [BROCHURE_PDF_LINK]
+Here's your brochure: https://storage.googleapis.com/admireworks-internal-os-brochures-2026/campaigns/lup-2026/Leading%20Under%20Pressure%20Program%202026%20(1).pdf
 
 A few quick highlights:
 

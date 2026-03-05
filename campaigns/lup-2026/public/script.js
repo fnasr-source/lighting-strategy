@@ -128,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- Application Modal ----
   const applyModal = document.getElementById('apply-modal');
   const inquiryModal = document.getElementById('inquiry-modal');
+  const brochureModal = document.getElementById('brochure-modal');
+  const defaultBrochureUrl = window.__LUP_BROCHURE_URL
+    || 'https://storage.googleapis.com/admireworks-internal-os-brochures-2026/campaigns/lup-2026/Leading%20Under%20Pressure%20Program%202026%20(1).pdf';
 
   function openModal(modal) {
     if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
@@ -146,12 +149,18 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => { e.preventDefault(); openModal(inquiryModal); });
   });
 
+  // Brochure CTA → brochure capture
+  document.querySelectorAll('[data-action="brochure"]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(brochureModal); });
+  });
+
   // Close buttons
   applyModal?.querySelector('.close-modal')?.addEventListener('click', () => closeModal(applyModal));
   inquiryModal?.querySelector('.close-modal')?.addEventListener('click', () => closeModal(inquiryModal));
+  brochureModal?.querySelector('.close-modal')?.addEventListener('click', () => closeModal(brochureModal));
 
   // Close on backdrop click
-  [applyModal, inquiryModal].forEach(m => {
+  [applyModal, inquiryModal, brochureModal].forEach(m => {
     m?.addEventListener('click', (e) => { if (e.target === m) closeModal(m); });
   });
 
@@ -159,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleFormSubmit(formId, modalId, formType) {
     const form = document.getElementById(formId);
     if (!form) return;
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
@@ -174,54 +183,80 @@ document.addEventListener('DOMContentLoaded', () => {
         form_type: formType,
         status: 'new'
       };
-
-      // Show success
       const container = form.closest('.apply-form-container');
-      const successTitle = formType === 'application' ? 'Application Received!' : 'Inquiry Sent!';
-      const successMsg = formType === 'application'
-        ? `Thank you, <strong>${data.firstName}</strong>. Our program team will review your application and contact you within 24 hours.`
-        : `Thank you, <strong>${data.firstName}</strong>. Our team will reach out to you shortly to discuss the program.`;
-
       const fallbackBookingUrl = `${schedulingBaseUrl}/book/discovery-call?name=${encodeURIComponent(data.firstName || '')}&email=${encodeURIComponent(data.email || '')}`;
+      const submitBtn = form.querySelector('.form-submit');
+      const originalBtnText = submitBtn ? submitBtn.textContent : '';
 
-      container.innerHTML = `
-        <div style="text-align:center; padding: 40px 0;">
-          <div style="font-size: 3rem; margin-bottom: 16px;">✓</div>
-          <h2 style="margin-bottom: 12px; color: var(--gold-400);">${successTitle}</h2>
-          <p style="color: var(--text-secondary); margin-bottom: 24px;">${successMsg}</p>
-          <a href="${fallbackBookingUrl}" class="btn btn-primary" style="display:inline-block;margin-bottom:12px;">
-            Book Your Private Briefing
-          </a>
-          <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">You can book immediately using the button above.</p>
-          <button class="btn btn-secondary" style="margin-top: 24px;"
-            onclick="document.getElementById('${modalId}').classList.remove('open'); document.body.style.overflow='';">
-            Close
-          </button>
-        </div>
-      `;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
 
-      // Send through API bridge (stores lead + sends booking follow-up email)
-      (async () => {
-        try {
-          const res = await fetch(`${schedulingBaseUrl}/api/campaigns/lup-2026/lead`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...leadPayload, client_id: 'aspire-hr' }),
-          });
-          const payload = await res.json().catch(() => ({}));
-          const bookingUrl = payload.bookingUrl || fallbackBookingUrl;
-          const bookingAnchor = container.querySelector('a.btn.btn-primary');
-          if (bookingAnchor) bookingAnchor.href = bookingUrl;
-          if (!res.ok) console.error('Lead API failed:', payload.error || res.statusText);
-        } catch (err) {
-          console.error('Failed to submit lead via API:', err);
+      try {
+        const res = await fetch(`${schedulingBaseUrl}/api/campaigns/lup-2026/lead`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...leadPayload, client_id: 'aspire-hr' }),
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(payload.error || 'Failed to submit your details. Please try again.');
         }
-      })();
+
+        const bookingUrl = payload.bookingUrl || fallbackBookingUrl;
+        const brochureUrl = payload.brochureUrl || defaultBrochureUrl;
+        const isBrochure = formType === 'brochure_download';
+        const successTitle = isBrochure
+          ? 'Brochure Ready!'
+          : formType === 'application'
+            ? 'Application Received!'
+            : 'Inquiry Sent!';
+        const successMsg = isBrochure
+          ? `Thank you, <strong>${data.firstName}</strong>. Your brochure link is ready below and we’ve also sent it to your email.`
+          : formType === 'application'
+            ? `Thank you, <strong>${data.firstName}</strong>. Our program team will review your application and contact you within 24 hours.`
+            : `Thank you, <strong>${data.firstName}</strong>. Our team will reach out to you shortly to discuss the program.`;
+        const primaryLabel = isBrochure ? 'Download Brochure' : 'Book Your Private Briefing';
+        const primaryUrl = isBrochure ? brochureUrl : bookingUrl;
+
+        container.innerHTML = `
+          <div style="text-align:center; padding: 40px 0;">
+            <div style="font-size: 3rem; margin-bottom: 16px;">✓</div>
+            <h2 style="margin-bottom: 12px; color: var(--gold-400);">${successTitle}</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 24px;">${successMsg}</p>
+            ${primaryUrl ? `<a href="${primaryUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:inline-block;margin-bottom:12px;">${primaryLabel}</a>` : ''}
+            <a href="${bookingUrl}" class="btn btn-secondary" style="display:inline-block;margin-left:${primaryUrl ? '8px' : '0'};margin-bottom:12px;">
+              Book a Private Briefing
+            </a>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">You can proceed instantly using the buttons above.</p>
+            <button class="btn btn-secondary" style="margin-top: 24px;"
+              onclick="document.getElementById('${modalId}').classList.remove('open'); document.body.style.overflow='';">
+              Close
+            </button>
+          </div>
+        `;
+      } catch (err) {
+        console.error('Lead API failed:', err);
+        const errorEl = form.querySelector('[data-form-error]') || document.createElement('p');
+        errorEl.setAttribute('data-form-error', '1');
+        errorEl.style.color = '#ffb4b4';
+        errorEl.style.fontSize = '0.82rem';
+        errorEl.style.marginTop = '10px';
+        errorEl.textContent = err instanceof Error ? err.message : 'Submission failed. Please try again.';
+        if (!errorEl.parentElement) form.appendChild(errorEl);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      }
     });
   }
 
   handleFormSubmit('application-form', 'apply-modal', 'application');
   handleFormSubmit('inquiry-form', 'inquiry-modal', 'inquiry');
+  handleFormSubmit('brochure-form', 'brochure-modal', 'brochure_download');
 
   // ---- Scroll animations (Intersection Observer) ----
   const observerOptions = {

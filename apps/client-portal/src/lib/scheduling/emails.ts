@@ -253,3 +253,32 @@ export async function sendCampaignBookingFollowupEmail(args: {
     text: `We received your submission. Book your private briefing: ${args.bookingUrl}`,
   });
 }
+
+export async function sendCampaignBrochureFollowupEmail(args: {
+  to: string;
+  firstName: string;
+  campaignName: string;
+  brochureUrl: string;
+  bookingUrl?: string;
+}) {
+  const ctaHtml = args.brochureUrl
+    ? `<a href="${args.brochureUrl}" style="display:inline-block;background:#001a70;color:#fff;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:600;">Download Brochure</a>`
+    : '';
+  const bookingHtml = args.bookingUrl
+    ? `<a href="${args.bookingUrl}" style="display:inline-block;background:#cc9f53;color:#111827;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:700;margin-left:8px;">Book a Private Briefing</a>`
+    : '';
+
+  await sendEmail({
+    to: args.to,
+    subject: `Your brochure: ${args.campaignName}`,
+    html: bookingEmailShell(`
+      <h2 style="margin:0 0 12px;color:#001a70;">Thanks, ${args.firstName}</h2>
+      <p style="margin:0 0 10px;color:#334155;">Your brochure is ready. Use the button below to download it now.</p>
+      <p style="margin:16px 0 0;">${ctaHtml}${bookingHtml}</p>
+      <p style="margin:14px 0 0;color:#64748b;font-size:13px;">If you'd like, you can also book a 15-minute private briefing and we'll walk you through fit, pricing, and next steps.</p>
+    `),
+    text: args.brochureUrl
+      ? `Your brochure is ready: ${args.brochureUrl}${args.bookingUrl ? `\nBook a private briefing: ${args.bookingUrl}` : ''}`
+      : `Thanks for your interest in ${args.campaignName}.`,
+  });
+}

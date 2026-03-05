@@ -72,7 +72,8 @@ export async function POST(req: NextRequest) {
 
     await adminDb.collection('campaigns').doc('lup-2026').collection('leads').add(leadPayload);
 
-    const bookingUrl = `${process.env.NEXT_PUBLIC_BASE_URL || ''}/book/${BOOKING_SLUG}?email=${encodeURIComponent(email)}&name=${encodeURIComponent(firstName)}`;
+    const bookingBaseUrl = (process.env.NEXT_PUBLIC_BASE_URL || req.nextUrl.origin || 'https://my.admireworks.com').replace(/\/$/, '');
+    const bookingUrl = `${bookingBaseUrl}/book/${BOOKING_SLUG}?email=${encodeURIComponent(email)}&name=${encodeURIComponent(firstName)}`;
     const brochureUrl = formType === 'brochure_download' ? await getBrochureUrl() : '';
 
     if (formType === 'brochure_download') {

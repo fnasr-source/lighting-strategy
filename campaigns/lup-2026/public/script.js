@@ -204,7 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(payload.error || 'Failed to submit your details. Please try again.');
         }
 
-        const bookingUrl = payload.bookingUrl || fallbackBookingUrl;
+        const bookingUrlRaw = payload.bookingUrl || fallbackBookingUrl;
+        const bookingUrl = bookingUrlRaw && /^https?:\/\//i.test(bookingUrlRaw)
+          ? bookingUrlRaw
+          : `${schedulingBaseUrl.replace(/\/$/, '')}${String(bookingUrlRaw || '').startsWith('/') ? '' : '/'}${bookingUrlRaw || ''}`;
         const brochureUrl = payload.brochureUrl || defaultBrochureUrl;
         const isBrochure = formType === 'brochure_download';
         const successTitle = isBrochure

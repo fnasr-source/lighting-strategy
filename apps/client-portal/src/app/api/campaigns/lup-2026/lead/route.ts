@@ -8,6 +8,7 @@ const CAMPAIGN_NAME = 'Leading Under Pressure 2026';
 const DEFAULT_BROCHURE_OBJECT_PATH = 'campaigns/lup-2026/Leading Under Pressure Program 2026 (1).pdf';
 const DEFAULT_BUCKET = process.env.LUP_BROCHURE_BUCKET || 'admireworks-internal-os-brochures-2026';
 const DEFAULT_BROCHURE_PUBLIC_URL = 'https://storage.googleapis.com/admireworks-internal-os-brochures-2026/campaigns/lup-2026/Leading%20Under%20Pressure%20Program%202026%20(1).pdf';
+const DEFAULT_PUBLIC_BASE_URL = 'https://my.admireworks.com';
 
 function corsHeaders(origin?: string) {
   return {
@@ -43,6 +44,22 @@ async function getBrochureUrl(): Promise<string> {
   }
 }
 
+function isPublicBaseUrl(url: string): boolean {
+  return !/\/\/(0\.0\.0\.0|127\.0\.0\.1|localhost)(:\d+)?/i.test(url);
+}
+
+function resolveBookingBaseUrl(req: NextRequest): string {
+  const envBase = String(process.env.NEXT_PUBLIC_BASE_URL || '').trim().replace(/\/$/, '');
+  if (envBase && isPublicBaseUrl(envBase)) return envBase;
+
+  const forwardedProto = req.headers.get('x-forwarded-proto') || 'https';
+  const forwardedHost = req.headers.get('x-forwarded-host') || req.headers.get('host') || '';
+  const requestOrigin = forwardedHost ? `${forwardedProto}://${forwardedHost}`.replace(/\/$/, '') : '';
+  if (requestOrigin && isPublicBaseUrl(requestOrigin)) return requestOrigin;
+
+  return DEFAULT_PUBLIC_BASE_URL;
+}
+
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin') || '*';
 
@@ -72,10 +89,7 @@ export async function POST(req: NextRequest) {
 
     await adminDb.collection('campaigns').doc('lup-2026').collection('leads').add(leadPayload);
 
-    const forwardedProto = req.headers.get('x-forwarded-proto') || 'https';
-    const forwardedHost = req.headers.get('x-forwarded-host') || req.headers.get('host') || '';
-    const requestOrigin = forwardedHost ? `${forwardedProto}://${forwardedHost}` : '';
-    const bookingBaseUrl = (process.env.NEXT_PUBLIC_BASE_URL || requestOrigin || 'https://my.admireworks.com').replace(/\/$/, '');
+    const bookingBaseUrl = resolveBookingBaseUrl(req);
     const bookingUrl = `${bookingBaseUrl}/book/${BOOKING_SLUG}?email=${encodeURIComponent(email)}&name=${encodeURIComponent(firstName)}`;
     const brochureUrl = formType === 'brochure_download' ? await getBrochureUrl() : '';
 

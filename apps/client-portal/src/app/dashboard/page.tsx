@@ -138,7 +138,7 @@ function AdminDashboard() {
             {aggregate && (
                 <>
                     {/* Trend Chart + Channel Distribution */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 20, marginTop: 20 }}>
+                    <div className="dashboard-charts-grid">
                         <AggregatedTrendChart series={aggregate.series} currency={aggregate.currency} />
                         <ChannelDistributionChart channels={aggregate.channels} currency={aggregate.currency} />
                     </div>
@@ -156,7 +156,7 @@ function AdminDashboard() {
             )}
 
             {/* Section 4: Recent Clients + Quick Actions */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 20 }}>
+            <div className="dashboard-charts-grid" style={{ marginTop: 20 }}>
                 <div className="card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                         <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>Recent Clients</h3>

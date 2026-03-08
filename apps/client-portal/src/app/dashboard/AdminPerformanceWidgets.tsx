@@ -312,7 +312,7 @@ export function RiskOpportunityPanels({
     opportunities: string[];
 }) {
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        <div className="risk-opp-grid">
             <div className="card" style={{ borderLeft: '4px solid #ef4444' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
                     <AlertTriangle size={16} style={{ color: '#ef4444' }} />

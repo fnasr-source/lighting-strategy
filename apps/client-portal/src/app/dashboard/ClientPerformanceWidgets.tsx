@@ -319,7 +319,7 @@ export function ClientQuickLinks() {
     return (
         <div className="card">
             <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 16 }}>Quick Links</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+            <div className="dashboard-charts-grid">
                 {links.map((link) => (
                     <Link
                         key={link.href}

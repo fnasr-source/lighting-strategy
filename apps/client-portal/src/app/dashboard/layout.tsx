@@ -209,13 +209,6 @@ export default function DashboardLayout({
                 {children}
             </main>
 
-            <style jsx>{`
-        @media (max-width: 768px) {
-          .mobile-menu-btn {
-            display: block !important;
-          }
-        }
-      `}</style>
         </>
     );
 }

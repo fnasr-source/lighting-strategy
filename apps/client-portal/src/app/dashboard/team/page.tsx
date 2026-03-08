@@ -222,7 +222,7 @@ export default function TeamPage() {
             </div>
 
             {/* Tabs */}
-            <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid var(--card-border)', paddingBottom: 0 }}>
+            <div className="tabs-scroll" style={{ marginBottom: 20 }}>
                 {tabs.map(tab => (
                     <button
                         key={tab.id}

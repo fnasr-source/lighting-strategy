@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    ADMIREWORKS INVOICE — AWI-202603-004
+    Meguiar's Egypt (El-Adwar Group)
+    Landing Pages & Funnel Execution + Optional E-Commerce Build
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meguiar's Egypt — Invoice AWI-202603-004 | Admireworks</title>
+    <link rel="stylesheet" href="../../../../_Proposal-System/payments/payment-pages.css">
+    <style>
+        /* Billing clarity section */
+        .billing-clarity {
+            background: var(--aw-white);
+            border: 1px solid var(--aw-border);
+            border-radius: var(--aw-radius);
+            padding: 28px 24px;
+            margin: 24px 0;
+        }
+
+        .billing-clarity h3 {
+            font-size: 1rem;
+            color: var(--aw-navy);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0ede6;
+            font-size: 0.9rem;
+        }
+
+        .schedule-row:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-row .label {
+            color: var(--aw-muted);
+        }
+
+        .schedule-row .value {
+            font-weight: 600;
+            color: var(--aw-navy);
+        }
+
+        .scope-section {
+            margin-top: 20px;
+        }
+
+        .scope-section h4 {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--aw-gold);
+            margin-bottom: 10px;
+        }
+
+        .scope-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .scope-list li {
+            position: relative;
+            padding: 5px 0 5px 22px;
+            font-size: 0.88rem;
+            color: var(--aw-muted);
+        }
+
+        .scope-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--aw-success);
+            font-weight: 700;
+        }
+
+        .scope-list.excluded li::before {
+            content: '✕';
+            color: #e74c3c;
+        }
+
+        .optional-addon-section {
+            margin-top: 28px;
+            padding: 24px;
+            background: #fafaf5;
+            border: 1px dashed var(--aw-gold);
+            border-radius: var(--aw-radius);
+        }
+
+        .optional-addon-section h3 {
+            font-size: 1rem;
+            color: var(--aw-navy);
+            margin-bottom: 6px;
+        }
+
+        .optional-addon-section .addon-desc {
+            font-size: 0.85rem;
+            color: var(--aw-muted);
+            margin-bottom: 12px;
+        }
+
+        .optional-addon-section .addon-amount {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--aw-navy);
+        }
+
+        .optional-addon-section .addon-note {
+            font-size: 0.8rem;
+            color: var(--aw-muted);
+            margin-top: 4px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="invoice-container">
+
+            <!-- Invoice Header -->
+            <div class="invoice-header">
+                <div>
+                    <h2>Invoice</h2>
+                    <p style="font-size:0.85rem;color:var(--aw-muted);margin-top:4px;">Invoice #: AWI-202603-004</p>
+                </div>
+                <div style="text-align:right;">
+                    <img src="data:image/png;base64,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"
+                        alt="Admireworks" style="height:32px;width:auto;margin-bottom:6px;">
+                    <p style="font-size:0.75rem;color:var(--aw-muted);line-height:1.4;">
+                        Admireworks<br>
+                        P.O.Box/36846, DXB, UAE<br>
+                        hello@admireworks.com
+                    </p>
+                </div>
+            </div>
+
+            <!-- Details Grid -->
+            <div class="invoice-details">
+                <div class="detail-block">
+                    <h4>Bill To</h4>
+                    <p><strong>Dr. Hussam El-Adwar</strong></p>
+                    <p>El-Adwar Group — Meguiar's Egypt</p>
+                    <p>info@meguiarsegypt.com</p>
+                    <p>+2 01279999210</p>
+                </div>
+                <div class="detail-block">
+                    <h4>Invoice Details</h4>
+                    <p><strong>Invoice #:</strong> AWI-202603-004</p>
+                    <p><strong>Invoice Date:</strong> March 5, 2026</p>
+                    <p><strong>Due Date:</strong> March 12, 2026</p>
+                    <p><strong>Currency:</strong> EGP</p>
+                    <p><strong>Status:</strong> <span style="color:var(--aw-gold);font-weight:600;">Pending</span></p>
+                </div>
+            </div>
+
+            <!-- Line Items -->
+            <table class="invoice-items">
+                <thead>
+                    <tr>
+                        <th style="width:55%">Description</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Landing Pages & Funnel Execution — Month 1</strong>
+                            <div class="item-desc">
+                                Monthly managed partnership including: conversion-optimized landing pages,
+                                lead flow setup & optimization, direct-response campaign execution,
+                                social media management & Arabic content creation, paid advertising
+                                (Meta + Google + TikTok), influencer marketing & partnerships, and
+                                monthly performance reporting.
+                            </div>
+                        </td>
+                        <td>1</td>
+                        <td>41,250 EGP</td>
+                        <td>41,250 EGP</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Billing Schedule (Reference)</strong>
+                            <div class="item-desc">
+                                Months 2–4: 41,250 EGP/month (monthly upfront).<br>
+                                From Month 5 onward: 32,500 EGP/month (monthly upfront).<br>
+                                <em>This row is for reference only — no additional charge at this time.</em>
+                            </div>
+                        </td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Totals -->
+            <div class="invoice-total">
+                <div class="total-box">
+                    <div class="total-row">
+                        <span class="label">Subtotal</span>
+                        <span>41,250 EGP</span>
+                    </div>
+                    <div class="total-row grand">
+                        <span class="label">Total Due Now</span>
+                        <span>41,250 EGP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing Clarity -->
+            <div class="billing-clarity">
+                <h3>💡 What You Are Paying For</h3>
+                <div class="schedule-row">
+                    <span class="label">Due now (to start Month 1)</span>
+                    <span class="value">41,250 EGP</span>
+                </div>
+                <div class="schedule-row">
+                    <span class="label">Months 2-4 (monthly upfront)</span>
+                    <span class="value">41,250 EGP / month</span>
+                </div>
+                <div class="schedule-row">
+                    <span class="label">From Month 5 (monthly upfront)</span>
+                    <span class="value">32,500 EGP / month</span>
+                </div>
+
+                <div class="scope-section">
+                    <h4>What's Included</h4>
+                    <ul class="scope-list">
+                        <li>Landing page and funnel execution for conversion growth</li>
+                        <li>Lead flow setup and optimization-focused execution</li>
+                        <li>Direct-response campaign execution tied to funnel outcomes</li>
+                        <li>Social media management & Arabic-first content creation</li>
+                        <li>Paid advertising campaigns (Meta + Google + TikTok)</li>
+                        <li>Influencer marketing & partnership management</li>
+                        <li>Monthly performance reporting & optimization</li>
+                    </ul>
+                </div>
+                <div class="scope-section">
+                    <h4>Not Included (unless add-on is selected)</h4>
+                    <ul class="scope-list excluded">
+                        <li>Full e-commerce build is not included unless the optional add-on below is selected</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Optional Add-On -->
+            <div class="optional-addon-section">
+                <h3>🛒 Optional: Full E-Commerce Build Add-On</h3>
+                <p class="addon-desc">
+                    Complete online store with product catalog, Egyptian payment integration
+                    (InstaPay, Fawry, Visa/Mastercard), bilingual Arabic/English site,
+                    WhatsApp commerce integration, and SEO-optimized product pages.
+                </p>
+                <div class="addon-amount">28,000 EGP <span
+                        style="font-size:0.85rem;font-weight:400;color:var(--aw-muted);">(one-time)</span></div>
+                <p class="addon-note">This is excluded from the default total above. Only applies when selected.</p>
+            </div>
+
+            <!-- Payment CTA -->
+            <div style="margin-top:32px;">
+                <a href="#" class="btn-pay" id="pay-invoice" style="max-width:400px;margin:0 auto;">
+                    Pay 41,250 EGP →
+                </a>
+            </div>
+
+            <!-- Alternative Payment -->
+            <div style="text-align:center;margin-top:16px;font-size:0.82rem;color:var(--aw-muted);">
+                <p>Alternative: <a href="https://ipn.eg/S/admireworks/instapay/5A1jri" style="color:var(--aw-navy);">Pay
+                        via Instapay</a></p>
+                <p>Account: admireworks@instapay · Fouad Nasseredin</p>
+            </div>
+
+            <!-- Terms -->
+            <div
+                style="margin-top:32px;padding-top:20px;border-top:1px solid var(--aw-border);font-size:0.78rem;color:var(--aw-muted);line-height:1.5;">
+                <p><strong style="color:var(--aw-text);">Terms & Conditions:</strong></p>
+                <p>Payment is due by the date specified above. Please reference the invoice number AWI-202603-004 when
+                    making payment.
+                    Upon payment confirmation, kickoff will be scheduled immediately.</p>
+                <p style="margin-top:6px;">For questions or clarifications, contact us at <a
+                        href="mailto:hello@admireworks.com" style="color:var(--aw-navy);">hello@admireworks.com</a> or
+                    (+971) 4295 8666.</p>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <p class="brand-name">ADMIREWORKS</p>
+            <p>Admirable Venture Services · Dubai, UAE</p>
+        </footer>
+    </div>
+</body>
+
+</html>

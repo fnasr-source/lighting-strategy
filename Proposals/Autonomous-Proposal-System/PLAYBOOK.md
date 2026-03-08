@@ -436,4 +436,73 @@ Comparison: "Split-screen before and after website redesign, left side: basic ou
 
 ---
 
+## Variant: Direct Response Proposal (V2)
+
+> **When to use:** When the client is desperate to sell (e.g., "non-existent" market share), 
+> when the goal is immediate revenue, or when the user explicitly asks for a DR-style pitch.
+
+### Framework: AIDA Narrative Arc
+
+| Act | Slides | Purpose |
+|-----|--------|---------|
+| **ATTENTION** (Act 1) | 1-4 | Hook with pain — provocative question, digital gap proof, market opportunity |
+| **INTEREST** (Act 2) | 5-9 | Solution — phased growth engine, deliverables per phase, content playbook |
+| **DESIRE** (Act 3) | 10-12 | Proof — growth roadmap, value stack with itemized standalone rates, pricing |
+| **ACTION** (Act 4) | 13-16 | Close — risk reversal guarantee, credibility, getting started, closing |
+
+### Key DR Principles
+
+1. **Starving Crowd** (Gary Halbert): Use the client's own words to surface desperation
+2. **Value Stack** (Dan Kennedy): Itemize every deliverable at standalone market rates — total should be 3-5× the actual price
+3. **Risk Reversal**: Milestone-based delivery, no lock-in, transparent reporting
+4. **First-Mover Urgency**: Show "ZERO digital leaders" or equivalent gap data
+5. **Social Proof**: Market research data with sources, not testimonials
+
+### Value Stack Calculation Pattern
+
+| Service | How to Price (Standalone) |
+|---------|--------------------------|
+| Brand Strategy | One-time consulting engagement rate |
+| E-Commerce Store | Full custom build cost |
+| Content Playbook | Strategy framework deliverable |
+| Ad Management | Monthly rate × 12 months |
+| Lead Gen System | Build cost + monthly mgmt × applicable months |
+| Analytics/Reporting | Monthly rate × 12 months |
+
+**Rule:** Total standalone value should be **3-5× the actual annual cost** to the client. Each line item must be defensible against typical agency rates in the client's market.
+
+### File Structure (V2 Variant)
+
+```
+Proposals/{Client}/
+├── proposal/                    ← V1 (standard proposal)
+│   ├── proposal.html
+│   ├── proposal.css
+│   └── proposal.pdf
+└── proposal-v2/                 ← V2 (direct response variant)
+    ├── proposal-v2.html
+    ├── proposal-v2.css
+    ├── proposal.pdf
+    └── assets/
+        ├── brand/
+        └── generated/
+```
+
+### Image Requirements (V2)
+
+| Slide | Image Type | Quality Standard |
+|-------|-----------|-----------------|
+| Cover | Cinematic luxury + local landmarks | Must feel premium, not stock |
+| Hook slide | Full-bleed with text overlay | Dramatic, emotional |
+| Growth Engine | 3-zone composite scene | Show all phases visually |
+| Phase slides | Split-layout with realistic mockups | Product/service in context |
+| Viral Playbook | Behind-the-scenes production | Authentic, not infographic |
+| Guarantee | Premium badge/shield | Trust and authority |
+
+### Reference Implementation
+- **Meguiar's Egypt V2**: `Proposals/Meguiars-Egypt/proposal-v2/`
+- 16 slides, 6.82 MB PDF, 454K EGP value stack at 32K/mo price point
+
+---
+
 *Created by Admireworks · March 2026*

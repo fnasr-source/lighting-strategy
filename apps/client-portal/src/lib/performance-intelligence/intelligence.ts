@@ -219,3 +219,253 @@ export async function buildDashboardIntelligence(params: {
     generatedAt: new Date().toISOString(),
   };
 }
+
+// ── Cached intelligence loader ─────────────────────────
+
+const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+
+export async function loadCachedOrComputeIntelligence(params: {
+  clientId: string;
+  currency: string;
+  businessType: 'ecommerce' | 'lead_gen' | 'hybrid' | 'saas';
+  from?: string;
+  to?: string;
+  granularity: IntelligenceGranularity;
+  view: IntelligenceView;
+}): Promise<DashboardIntelligenceResponse> {
+  const db = getAdminDb();
+  const range = params.from && params.to ? { from: params.from, to: params.to } : defaultDateRange();
+  const cacheKey = `${params.clientId}_${range.from}_${range.to}`;
+
+  try {
+    const cached = await db.collection('kpi_snapshots_daily').doc(cacheKey).get();
+    if (cached.exists) {
+      const data = cached.data()!;
+      const generatedAt = typeof data.generatedAt === 'string' ? new Date(data.generatedAt).getTime() : 0;
+      if (Date.now() - generatedAt < CACHE_TTL_MS) {
+        return {
+          success: true,
+          clientId: params.clientId,
+          from: range.from,
+          to: range.to,
+          granularity: params.granularity,
+          view: params.view,
+          currency: params.currency,
+          attributionModel: 'canonical_last_click_7d',
+          executive: data.executive ?? { healthScore: 0, spend: 0, value: 0, efficiencyIndex: 0, conversionEfficiency: 0, pacing: 0, topRisks: [], topOpportunities: [] },
+          channels: data.channels ?? [],
+          funnel: data.funnel ?? { impressions: 0, clicks: 0, sessions: 0, leads: 0, orders: 0, qualifiedLeads: 0, clickThroughRate: 0, conversionRate: 0 },
+          social: data.social ?? { interactions: 0, unresolved: 0, negativeShare: 0, sentimentScore: 0, topTopics: [], slaBreaches: 0 },
+          series: data.series ?? [],
+          generatedAt: data.generatedAt,
+        };
+      }
+    }
+  } catch {
+    // Cache miss — compute fresh
+  }
+
+  return buildDashboardIntelligence(params);
+}
+
+// ── Multi-client aggregation ───────────────────────────
+
+export interface AggregateClientEntry {
+  clientId: string;
+  clientName: string;
+  healthScore: number;
+  healthGrade: string;
+  spend: number;
+  value: number;
+  roas: number;
+  conversions: number;
+  topRisks: string[];
+  topOpportunities: string[];
+}
+
+export interface AggregateIntelligenceResponse {
+  success: boolean;
+  from: string;
+  to: string;
+  currency: string;
+  totals: {
+    spend: number;
+    value: number;
+    blendedRoas: number;
+    avgHealthScore: number;
+    totalConversions: number;
+    totalImpressions: number;
+    totalClicks: number;
+    totalLeads: number;
+    activeClients: number;
+  };
+  clients: AggregateClientEntry[];
+  channels: Array<{
+    platform: string;
+    spend: number;
+    value: number;
+    conversions: number;
+    share: number;
+    efficiency: number;
+  }>;
+  series: Array<{
+    date: string;
+    spend: number;
+    value: number;
+    conversions: number;
+    roas: number;
+  }>;
+  topRisks: string[];
+  topOpportunities: string[];
+  generatedAt: string;
+}
+
+export async function loadAllClientsIntelligence(params: {
+  currency: string;
+  from?: string;
+  to?: string;
+}): Promise<AggregateIntelligenceResponse> {
+  const db = getAdminDb();
+  const range = params.from && params.to ? { from: params.from, to: params.to } : defaultDateRange();
+
+  // Load all active clients
+  const clientsSnap = await db.collection('clients').where('status', '==', 'active').get();
+  const clients = clientsSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
+
+  const clientEntries: AggregateClientEntry[] = [];
+  const allChannels = new Map<string, { spend: number; value: number; conversions: number }>();
+  const allSeries = new Map<string, { spend: number; value: number; conversions: number }>();
+  let totalSpend = 0;
+  let totalValue = 0;
+  let totalConversions = 0;
+  let totalImpressions = 0;
+  let totalClicks = 0;
+  let totalLeads = 0;
+  let healthScoreSum = 0;
+  const allRisks: string[] = [];
+  const allOpportunities: string[] = [];
+
+  // Process each client (using cached data when available)
+  const results = await Promise.allSettled(
+    clients.map(async (client) => {
+      const clientId = client.id;
+      const businessType =
+        (client as Record<string, unknown>).businessType === 'lead_gen' ||
+          (client as Record<string, unknown>).businessType === 'hybrid' ||
+          (client as Record<string, unknown>).businessType === 'saas'
+          ? ((client as Record<string, unknown>).businessType as 'lead_gen' | 'hybrid' | 'saas')
+          : 'ecommerce';
+
+      const intel = await loadCachedOrComputeIntelligence({
+        clientId,
+        currency: params.currency,
+        businessType,
+        from: range.from,
+        to: range.to,
+        granularity: 'daily',
+        view: 'executive',
+      });
+
+      return { clientId, clientName: (client as Record<string, unknown>).name as string || clientId, intel };
+    }),
+  );
+
+  for (const result of results) {
+    if (result.status !== 'fulfilled') continue;
+    const { clientId, clientName, intel } = result.value;
+
+    const spend = intel.executive.spend;
+    const value = intel.executive.value;
+    const roas = spend > 0 ? value / spend : 0;
+    const healthScore = intel.executive.healthScore;
+
+    clientEntries.push({
+      clientId,
+      clientName,
+      healthScore,
+      healthGrade: healthScore >= 85 ? 'A' : healthScore >= 75 ? 'B' : healthScore >= 65 ? 'C' : healthScore >= 50 ? 'D' : 'F',
+      spend,
+      value,
+      roas,
+      conversions: intel.funnel.leads + intel.funnel.orders,
+      topRisks: intel.executive.topRisks,
+      topOpportunities: intel.executive.topOpportunities,
+    });
+
+    totalSpend += spend;
+    totalValue += value;
+    totalConversions += intel.funnel.leads + intel.funnel.orders;
+    totalImpressions += intel.funnel.impressions;
+    totalClicks += intel.funnel.clicks;
+    totalLeads += intel.funnel.leads;
+    healthScoreSum += healthScore;
+
+    allRisks.push(...intel.executive.topRisks.map((r) => `[${clientName}] ${r}`));
+    allOpportunities.push(...intel.executive.topOpportunities.map((o) => `[${clientName}] ${o}`));
+
+    for (const ch of intel.channels) {
+      const existing = allChannels.get(ch.platform) ?? { spend: 0, value: 0, conversions: 0 };
+      existing.spend += ch.spend;
+      existing.value += ch.value;
+      existing.conversions += ch.conversions;
+      allChannels.set(ch.platform, existing);
+    }
+
+    for (const s of intel.series) {
+      const existing = allSeries.get(s.date) ?? { spend: 0, value: 0, conversions: 0 };
+      existing.spend += s.spend;
+      existing.value += s.value;
+      existing.conversions += s.conversions;
+      allSeries.set(s.date, existing);
+    }
+  }
+
+  const activeClients = clientEntries.length;
+  const blendedRoas = totalSpend > 0 ? totalValue / totalSpend : 0;
+  const avgHealthScore = activeClients > 0 ? Math.round(healthScoreSum / activeClients) : 0;
+
+  const channelsArr = [...allChannels.entries()].map(([platform, data]) => ({
+    platform,
+    spend: data.spend,
+    value: data.value,
+    conversions: data.conversions,
+    share: totalSpend > 0 ? data.spend / totalSpend : 0,
+    efficiency: data.spend > 0 ? data.value / data.spend : 0,
+  })).sort((a, b) => b.spend - a.spend);
+
+  const seriesArr = [...allSeries.entries()]
+    .map(([date, data]) => ({
+      date,
+      spend: Math.round(data.spend * 100) / 100,
+      value: Math.round(data.value * 100) / 100,
+      conversions: data.conversions,
+      roas: data.spend > 0 ? data.value / data.spend : 0,
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  clientEntries.sort((a, b) => b.spend - a.spend);
+
+  return {
+    success: true,
+    from: range.from,
+    to: range.to,
+    currency: params.currency,
+    totals: {
+      spend: totalSpend,
+      value: totalValue,
+      blendedRoas,
+      avgHealthScore,
+      totalConversions,
+      totalImpressions,
+      totalClicks,
+      totalLeads,
+      activeClients,
+    },
+    clients: clientEntries,
+    channels: channelsArr,
+    series: seriesArr,
+    topRisks: allRisks.slice(0, 10),
+    topOpportunities: allOpportunities.slice(0, 10),
+    generatedAt: new Date().toISOString(),
+  };
+}

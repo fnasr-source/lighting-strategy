@@ -39,8 +39,9 @@ const allNavItems: NavItem[] = [
     { label: 'Clients', href: '/dashboard/clients', icon: Users, permission: 'clients:read' },
     { label: 'Leads', href: '/dashboard/leads', icon: Target, permission: 'leads:read' },
     { label: 'Proposals', href: '/dashboard/proposals', icon: FileText, permission: 'proposals:read' },
-    { section: 'Campaigns' },
-    { label: 'Performance', href: '/dashboard/campaigns', icon: BarChart3, permission: 'campaigns:read' },
+    { section: 'Performance' },
+    { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart3, permission: 'performance:read' },
+    { label: 'Campaigns', href: '/dashboard/campaigns', icon: Zap, permission: 'campaigns:read' },
     { label: 'Campaign Leads', href: '/dashboard/campaign-leads', icon: Target, permission: 'campaigns:read' },
     { label: 'Scheduling', href: '/dashboard/scheduling', icon: CalendarClock, permission: 'campaigns:read' },
     { label: 'Integrations', href: '/dashboard/integrations', icon: Globe, permission: 'campaigns:read' },
@@ -62,7 +63,8 @@ const allNavItems: NavItem[] = [
 /** Client portal nav — simplified view */
 const clientNavItems: NavItem[] = [
     { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
-    { label: 'Campaigns', href: '/dashboard/campaigns', icon: BarChart3 },
+    { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
+    { label: 'Campaigns', href: '/dashboard/campaigns', icon: Zap },
     { label: 'Reports', href: '/dashboard/reports', icon: FileText },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt },
     { label: 'Payments', href: '/dashboard/payments', icon: CreditCard },

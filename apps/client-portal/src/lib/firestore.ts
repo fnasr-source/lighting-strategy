@@ -844,7 +844,8 @@ export type Permission =
     | 'settings:read' | 'settings:write'
     | 'team:read' | 'team:write'
     | 'billing:read' | 'billing:write'
-    | 'scheduling:read' | 'scheduling:write';
+    | 'scheduling:read' | 'scheduling:write'
+    | 'performance:read' | 'performance:write';
 
 /** Default permissions per role */
 export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
@@ -856,6 +857,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         'settings:read', 'settings:write', 'team:read', 'team:write',
         'billing:read', 'billing:write',
         'scheduling:read', 'scheduling:write',
+        'performance:read', 'performance:write',
     ],
     admin: [
         'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
@@ -864,15 +866,18 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'settings:read', 'team:read', 'team:write',
         'scheduling:read', 'scheduling:write',
+        'performance:read', 'performance:write',
     ],
     team: [
         'clients:read', 'invoices:read', 'reports:read', 'reports:write',
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'scheduling:read', 'scheduling:write',
+        'performance:read',
     ],
     client: [
         'invoices:read', 'payments:read', 'reports:read',
         'campaigns:read', 'communications:read',
+        'performance:read',
     ],
 };
 
@@ -949,5 +954,78 @@ export const userProfilesService = {
         if (profile.role === 'team') return profile.assignedClients?.includes(clientId) ?? false;
         if (profile.role === 'client') return profile.linkedClientId === clientId;
         return false;
+    },
+};
+
+// ── Activity Logs ────────────────────────────────────────
+
+export interface ActivityLog {
+    id?: string;
+    userId: string;
+    userEmail: string;
+    userName: string;
+    action: 'user_created' | 'user_updated' | 'user_deleted' | 'role_changed' | 'permission_changed' | 'client_linked' | 'settings_updated' | 'invite_sent';
+    target: string;
+    details: string;
+    createdAt?: any;
+}
+
+export const activityLogsService = {
+    async create(data: Omit<ActivityLog, 'id' | 'createdAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'activityLogs'), {
+            ...data,
+            createdAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+
+    subscribe(callback: (logs: ActivityLog[]) => void, limitCount = 50) {
+        return onSnapshot(
+            query(collection(db, 'activityLogs'), orderBy('createdAt', 'desc'), limit(limitCount)),
+            snap => {
+                callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as ActivityLog)));
+            },
+        );
+    },
+};
+
+// ── Pending Invites ──────────────────────────────────────
+
+export interface PendingInvite {
+    id?: string;
+    email: string;
+    role: UserRole;
+    linkedClientId?: string;
+    invitedBy: string;
+    invitedByName: string;
+    status: 'pending' | 'accepted' | 'expired';
+    createdAt?: any;
+    expiresAt?: string;
+}
+
+export const pendingInvitesService = {
+    async create(data: Omit<PendingInvite, 'id' | 'createdAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'pendingInvites'), {
+            ...data,
+            createdAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+
+    subscribe(callback: (invites: PendingInvite[]) => void) {
+        return onSnapshot(
+            query(collection(db, 'pendingInvites'), orderBy('createdAt', 'desc')),
+            snap => {
+                callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as PendingInvite)));
+            },
+        );
+    },
+
+    async update(id: string, data: Partial<PendingInvite>): Promise<void> {
+        await updateDoc(doc(db, 'pendingInvites', id), data);
+    },
+
+    async delete(id: string): Promise<void> {
+        await deleteDoc(doc(db, 'pendingInvites', id));
     },
 };

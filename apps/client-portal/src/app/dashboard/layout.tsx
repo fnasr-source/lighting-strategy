@@ -136,14 +136,20 @@ export default function DashboardLayout({
 
     return (
         <>
-            {/* Mobile menu button */}
-            <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="mobile-menu-btn"
-                aria-label="Toggle menu"
-            >
-                {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            {/* Mobile top bar */}
+            <div className="mobile-topbar">
+                <button
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                    className="mobile-menu-btn"
+                    aria-label="Toggle menu"
+                >
+                    {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
+                </button>
+                <div className="mobile-topbar-brand">
+                    <div className="mobile-topbar-logo">AW</div>
+                    <span className="mobile-topbar-title">Admireworks</span>
+                </div>
+            </div>
 
             {/* Sidebar */}
             <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>

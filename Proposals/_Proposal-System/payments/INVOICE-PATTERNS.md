@@ -35,6 +35,15 @@ Qty: {MONTHS} (typically 3 for upfront)
 Amount: Rate × Qty
 ```
 
+#### Ad Campaign Management (Legacy Egypt Client — 3-Month Bundle)
+```
+Line 1: Ad Campaign Management — Egypt Market — 1 Platform — 3 Months
+Standard 3-month value: $780 USD equivalent converted to EGP and rounded cleanly
+Bundle price: $700 USD equivalent converted to EGP and rounded cleanly
+Discount: show as separate invoice discount row when needed
+Exchange rate source: realegp.com/usd on invoice date
+```
+
 #### Growth System Bulk
 ```
 Service: Growth System — Full Asset Package
@@ -100,6 +109,29 @@ When offering free months:
 - Example: Reply Management Month 1 — ~~5,000 EGP~~ FREE
 ```
 
+#### Meeting-Revised Commercial Pricing
+```
+Use when a meeting changes the commercial model after the proposal draft:
+
+Line item structure:
+- rate = original commercial anchor
+- amount = agreed payable amount
+
+Example:
+Line 1: E-Commerce Store Build & Launch — rate 45,000 EGP | amount 40,000 EGP
+Line 2: Growth Management & Ads Oversight — rate 32,500 EGP | amount 15,000 EGP
+
+Invoice totals:
+- subtotal = sum of original anchors
+- discount = launch/revision reduction
+- totalDue = actual agreed payable amount
+
+Presentation goal:
+- client sees what the original commercial anchor was,
+- what was agreed,
+- and what is due now.
+```
+
 #### 50/50 Payment Split
 ```html
 When clients agree to a 50/50 split (e.g., Deposit 1 now, Deposit 2 in 30 days):
@@ -126,6 +158,7 @@ When clients agree to a 50/50 split (e.g., Deposit 1 now, Deposit 2 in 30 days):
 |---|------|--------|----------|---------|--------|----------|-------|
 | 1 | 2026-03-01 | RQM Group (QYD, RQM & Ceyaj) | AWP-SA-01JV-VWJ | Full Marketing Retainer | 5,500 | AED | Monthly retainer, Saudi Arabia |
 | 2 | 2026-03-03 | Basseqat (Eng. Khaled Nasseredin) | AWI-202603-003 | Full Growth Partnership + Add-Ons | 87,500 | EGP | Option 3 + Reply Mgmt (2mo free) + CRM (1mo free) + 1 UGC bonus. Value: 103,750 EGP |
+| 3 | 2026-03-08 | Komu Lale | AWI-202603-005 | Ad Campaign Management + Creative Pack | 56,900 | EGP | Teenagers/new-account scope. Legacy 3-month ad bundle at $700 equivalent using 49.91 EGP/USD (realegp.com/usd), rounded to 34,900 EGP + Creative Pack 22,000 EGP. |
+| 4 | 2026-03-09 | Meguiar's Egypt | AWI-202603-004 | Meeting-Revised Launch Structure | 55,000 | EGP | E-commerce build reduced from 45,000 to 40,000 EGP and Month 1 management reduced from 32,500 to 15,000 EGP. Invoice shows original anchors, launch pricing adjustment, and amount due now. |
 
 > When creating a new invoice, add a row here and follow the patterns above.
-

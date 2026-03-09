@@ -15,6 +15,7 @@
    - action links as hyperlinks
 9. Confirm required action links:
    - `👉 [View Proposal](URL)`
+   - `👉 [View Agreement](URL)` when using a one-page agreement/final-terms summary
    - `👉 [Pay via Instapay](URL)` for Egypt
    - `👉 [Open Payment Link](URL)` for international
 10. Confirm email subject format: `{Agency Name} x {Project/Business Name}`.
@@ -25,6 +26,28 @@
 12. Run link validation:
    - `node Proposals/_Proposal-System/scripts/validate_internal_links.js --root "..."`
 13. Push and share final links.
+
+## Meeting-Aligned Commercial Revision
+
+Use this path when the detailed proposal remains strategically useful, but the commercial terms change materially in a later meeting.
+
+1. Keep the detailed proposal/presentation as strategic background unless it must be rewritten.
+2. Document the meeting outcome in:
+   - `meetings/YYYY-MM-DD-meeting-transcript.md`
+   - `meetings/YYYY-MM-DD-decision-summary.md`
+   - `09-Meeting-Update-YYYY-MM-DD.md`
+3. Add or update:
+   - `06-Offer-and-Proposal.md`
+   - `10-One-Page-Proposal.html`
+   - `00-Proposal-Index.md`
+4. Publish the outgoing one-page and use it as the client-facing agreement/final commercial summary.
+5. Update the live invoice so it reflects the agreed commercial terms, not the older proposal anchors.
+6. If pricing was revised down from earlier anchors, show the original commercial anchor and the agreed price clearly on the one-page and invoice.
+7. Keep the email light when the invoice already contains the detail:
+   - short confirmation
+   - agreement link
+   - invoice link
+   - kickoff note after payment
 
 ## Legacy Intake (Historical Proposals)
 

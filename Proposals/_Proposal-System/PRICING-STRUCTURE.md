@@ -174,6 +174,21 @@ Every proposal should include:
 4. **Next steps** — decision + payment + kickoff
 5. **Payment details** — Instapay link and account info
 
+## Meeting-Revised Commercial Rule
+
+When a client agrees to move forward but asks for a safer launch structure after the proposal is already built:
+
+1. Do **not** force the old proposal pricing into the invoice if the meeting changed the commercial model.
+2. Use the proposal as strategic background and create/update a one-page agreement/final-terms summary for the revised commercials.
+3. If launch pricing is intentionally reduced from an earlier anchor:
+   - show the original commercial anchor,
+   - show the agreed price,
+   - make the amount due now explicit.
+4. If future price increases were discussed but exact KPI thresholds were not locked:
+   - document the increase as **review-based**,
+   - do not invent hard thresholds.
+5. For Egypt clients, if the invoice already contains the detailed commercials, keep the payment email short and link-driven rather than repeating all pricing in the email body.
+
 ### Currency Display Rules
 - Always show **both USD and local currency** for ad management fee
 - Use `~$260 USD` with the EGP equivalent for Egyptian market clients
@@ -234,6 +249,35 @@ Admireworks
 - Include Instapay payment details for Egypt clients
 - For non-Egypt clients, use the appropriate payment link instead of Instapay
 - Store the email in `{source-folder}/communications/YYYY-MM-DD-recommended-follow-up-email.md`
+
+### Lightweight Payment Email Variant
+
+Use this variant when:
+- the invoice is already fully self-explanatory,
+- the one-page agreement carries the final commercial summary,
+- and the sender is operations / client servicing rather than strategy.
+
+Recommended structure:
+
+```text
+Dear {CLIENT_NAME},
+
+Thank you for {the meeting / yesterday's meeting}.
+
+As agreed, I’m sharing the final agreement summary and invoice below for your review.
+
+Agreement summary:
+👉 [View Agreement](URL)
+
+Invoice:
+👉 [View Invoice — {INVOICE_NUMBER}](URL)
+
+Once payment is confirmed, we will begin kickoff and access handover immediately.
+```
+
+Notes:
+- If the sender signature is already handled by the email client, do not repeat the sender name in the body.
+- Keep this variant short; the invoice and agreement should carry the detail.
 
 ---
 

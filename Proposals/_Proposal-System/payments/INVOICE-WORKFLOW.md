@@ -37,6 +37,11 @@ Format: `AWI-{YYYYMM}-{SEQ}`
 
 1. Reference `Proposals/_Proposal-System/PRICING-STRUCTURE.md` for standard rates
 2. Apply any promotional pricing (free months, discounts, waived setup fees)
+3. If a later meeting changed the commercial structure, invoice the **agreed meeting terms**, not the older proposal anchors
+4. When the client accepted because of a safer launch structure:
+   - show the original commercial anchor where useful,
+   - show the agreed price,
+   - make the amount due now obvious
 3. **UGC Video pricing:**
    - Inside package (Creative Pack): 22,000 EGP / 8 = **2,750 EGP per video**
    - Outside package (standalone): **5,500 EGP per video** (2× in-package rate)
@@ -48,7 +53,7 @@ Format: `AWI-{YYYYMM}-{SEQ}`
 
 | Client Country | Payment Method | Details |
 |----------------|---------------|---------|
-| **Egypt** | InstaPay ONLY | Account: `admireworks@instapay`, Name: Fouad Nasseredin, Link: `https://ipn.eg/S/admireworks/instapay/5A1jri` |
+| **Egypt** | InstaPay primary, card fallback in portal | Static invoice/email should lead with InstaPay. Client portal may default to InstaPay while keeping card available. |
 | **Saudi Arabia / UAE / International** | Stripe + optional InstaPay | Create Stripe payment link via dashboard or API |
 
 ### Creating Stripe Payment Links (non-Egypt clients)
@@ -59,7 +64,7 @@ Format: `AWI-{YYYYMM}-{SEQ}`
 4. Update `Proposals/_Proposal-System/payments/payment-links.csv` with the new link
 5. Reference: `Proposals/_Proposal-System/payments/STRIPE-CONFIG.md`
 
-> **Important:** For Egypt clients, do NOT include Stripe payment buttons. Use InstaPay only.
+> **Important:** For Egypt clients, static invoice artifacts should emphasize InstaPay. In the client portal, default the payment method to InstaPay and only keep card as a fallback when explicitly allowed.
 
 ---
 
@@ -138,10 +143,26 @@ Create a document in the `invoices` collection with this schema:
 
 ### Client Portal Invoice Features
 - **`amount: 0` with `rate > 0`** → Renders as strikethrough price + "FREE" badge
+- **`amount < rate × qty`** → Use for agreed discounted pricing while keeping the original anchor visible in the UI
 - **`discount > 0`** → Shows discount row in totals
 - **EGP currency** → Shows InstaPay + Card payment toggle
 - **Non-EGP** → Shows Card payment only
 - Public URL: `my.admireworks.com/invoice/{FIRESTORE_DOC_ID}`
+
+### Recommended Client Portal Pattern For Revised Commercials
+
+When the final agreement changed pricing after the proposal:
+
+1. Set each revised line item with:
+   - `rate = original anchor`
+   - `amount = agreed payable amount`
+2. Use invoice-level `discount` and `discountLabel` when the total is intentionally reduced.
+3. Add one informational `0 amount` line for future schedule or review language when needed.
+4. Use `billingClarity` to answer:
+   - what is due now,
+   - what this payment covers,
+   - what happens next,
+   - what is excluded from this amount.
 
 ---
 
@@ -167,9 +188,16 @@ Add any new line item patterns (e.g., CRM add-on, promotional pricing)
    - `Proposals/MHK-Architects/communications/` for examples
 3. Include:
    - Invoice link (client portal URL preferred: `my.admireworks.com/invoice/{ID}`)
-   - Payment instructions (InstaPay for Egypt, Stripe for others)
-   - Package summary
+   - Agreement link when using a one-page final-terms summary
+   - Payment instructions only as needed (InstaPay for Egypt, Stripe for others)
    - Clear next step (payment → kickoff)
+
+### Lean Email Rule
+
+If the invoice and agreement already explain the commercials clearly:
+- do not restate every pricing detail in the email,
+- send a short operational email with the links only,
+- let the invoice carry the detail.
 
 ---
 

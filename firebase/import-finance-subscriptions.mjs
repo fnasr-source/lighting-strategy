@@ -13,6 +13,8 @@ if (!getApps().length) {
 }
 
 const db = getFirestore();
+const GMAIL_CONNECTED_EMAIL = 'fnasr@admireworks.com';
+const WATCHED_LABELS = ['Invoices', '@Invoices'];
 
 function parseCsv(input) {
   const rows = [];
@@ -63,12 +65,35 @@ function parseDate(input = '') {
   return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
+function buildAliases(input = '') {
+  const value = String(input).trim();
+  if (!value) return [];
+  const normalized = value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  return Array.from(new Set([value, normalized].filter(Boolean)));
+}
+
+function addMonthsToIsoDate(isoDate, months) {
+  const date = new Date(`${isoDate}T12:00:00`);
+  date.setMonth(date.getMonth() + months);
+  return date.toISOString().slice(0, 10);
+}
+
+function getServicePeriodMonths(cadence, intervalMonths) {
+  if (Number.isFinite(intervalMonths) && intervalMonths > 0) return intervalMonths;
+  if (cadence === 'monthly') return 1;
+  if (cadence === 'quarterly' || cadence === '3_months') return 3;
+  if (cadence === 'semiannual' || cadence === '6_months') return 6;
+  if (cadence === 'annual') return 12;
+  return 0;
+}
+
 const csv = readFileSync(CSV_PATH, 'utf8');
 const rows = parseCsv(csv);
 const header = rows[0] || [];
 
 await db.collection('systemConfig').doc('finance').set({
-  watchedLabels: ['Finance/Vendor Invoices', 'Finance/Receipts', 'Finance/Client Payments'],
+  gmailConnectedEmail: GMAIL_CONNECTED_EMAIL,
+  watchedLabels: WATCHED_LABELS,
   pollingMinutes: 15,
   digestRecipients: [],
   baseCurrency: 'AED',
@@ -104,10 +129,49 @@ for (const row of rows.slice(1)) {
     status: String(record['STATUS'] || '').toLowerCase() === 'cancelled' ? 'cancelled' : 'active',
     source: 'csv',
     remarks: record['REMARKS'] || '',
+    aliases: buildAliases(record['SUBSCRIPTIONS / EXPENSES']),
     createdAt: FieldValue.serverTimestamp(),
     updatedAt: FieldValue.serverTimestamp(),
   });
   imported += 1;
+}
+
+const recurringTemplates = await db.collection('recurringInvoices').get();
+for (const doc of recurringTemplates.docs) {
+  const data = doc.data();
+  const months = getServicePeriodMonths(data.billingCadence || data.frequency, data.intervalMonths);
+  const start = data.servicePeriodStart || data.nextSendDate || new Date().toISOString().slice(0, 10);
+  const end = data.servicePeriodEnd || (months > 0 ? addMonthsToIsoDate(start, months) : start);
+  await doc.ref.set({
+    servicePeriodStart: start,
+    servicePeriodMonths: months,
+    servicePeriodEnd: end,
+    updatedAt: FieldValue.serverTimestamp(),
+  }, { merge: true });
+
+  if (data.clientId) {
+    await db.collection('clients').doc(data.clientId).set({
+      billingCadence: data.billingCadence || data.frequency || 'monthly',
+      nextInvoiceSendDate: data.nextSendDate || null,
+      nextInvoiceDueDate: data.nextDueDate || null,
+      updatedAt: FieldValue.serverTimestamp(),
+    }, { merge: true });
+  }
+}
+
+const invoices = await db.collection('invoices').get();
+for (const doc of invoices.docs) {
+  const data = doc.data();
+  const cadence = data.billingPolicy?.billingCadence;
+  const months = getServicePeriodMonths(cadence, data.billingPolicy?.intervalMonths);
+  const start = data.servicePeriodStart || data.issuedAt || new Date().toISOString().slice(0, 10);
+  const end = data.servicePeriodEnd || (months > 0 ? addMonthsToIsoDate(start, months) : start);
+  await doc.ref.set({
+    servicePeriodStart: start,
+    servicePeriodMonths: months,
+    servicePeriodEnd: end,
+    updatedAt: FieldValue.serverTimestamp(),
+  }, { merge: true });
 }
 
 console.log(`Imported ${imported} recurring expenses from CSV.`);

@@ -1,8 +1,11 @@
 import { getSecret } from '@/lib/secrets';
-import type { FinanceInboxAttachment, FinanceInboxItem, FinanceSettings } from '@/lib/firestore';
+import { analyzeFinanceEmail, type FinanceAiAttachmentInput } from '@/lib/finance-ai';
+import type { FinanceInboxAttachment, FinanceInboxItem, FinanceSettings, Invoice, RecurringExpense } from '@/lib/firestore';
 import { DEFAULT_FINANCE_LABELS } from '@/lib/finance';
 
 const GMAIL_BASE = 'https://gmail.googleapis.com/gmail/v1/users/me';
+const MAX_ATTACHMENT_TEXT = 3500;
+const MAX_INLINE_ATTACHMENT_BYTES = 5_000_000;
 
 type GmailMessageListResponse = {
   messages?: Array<{ id: string; threadId: string }>;
@@ -24,6 +27,16 @@ type GmailMessageResponse = {
   snippet?: string;
   internalDate?: string;
   payload?: GmailPayload;
+};
+
+type GmailAttachmentResponse = {
+  data?: string;
+  size?: number;
+};
+
+export type FetchedFinanceMessage = {
+  message: GmailMessageResponse;
+  matchedLabels: string[];
 };
 
 function decodeBase64Url(input?: string) {
@@ -73,7 +86,8 @@ function extractCurrency(text: string) {
 }
 
 function extractAmount(text: string) {
-  const match = text.match(/(?:AED|EGP|SAR|USD|\$|£)\s?([0-9][0-9,]*(?:\.[0-9]{1,2})?)/i) || text.match(/([0-9][0-9,]*(?:\.[0-9]{1,2})?)\s?(?:AED|EGP|SAR|USD)/i);
+  const match = text.match(/(?:AED|EGP|SAR|USD|\$|£)\s?([0-9][0-9,]*(?:\.[0-9]{1,2})?)/i)
+    || text.match(/([0-9][0-9,]*(?:\.[0-9]{1,2})?)\s?(?:AED|EGP|SAR|USD)/i);
   if (!match) return undefined;
   const value = Number(match[1].replace(/,/g, ''));
   return Number.isFinite(value) ? value : undefined;
@@ -86,6 +100,20 @@ function extractDate(text: string) {
   if (/^20\d{2}-\d{2}-\d{2}$/.test(raw)) return raw;
   const [month, day, year] = raw.split(/[\/\-]/);
   return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
+function extractInvoiceNumber(text: string) {
+  const patterns = [
+    /invoice\s*(?:number|no\.?|#)?\s*[:#-]?\s*([A-Z0-9][A-Z0-9\-/]{3,})/i,
+    /receipt\s*(?:number|no\.?|#)?\s*[:#-]?\s*([A-Z0-9][A-Z0-9\-/]{3,})/i,
+    /\b(IN[-_][A-Z0-9\-]+)\b/i,
+    /#([0-9]{4,}(?:-[0-9]{2,})+)/i,
+  ];
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match?.[1]) return match[1];
+  }
+  return undefined;
 }
 
 function inferParsedType(labelNames: string[], text: string): FinanceInboxItem['parsedType'] {
@@ -112,6 +140,32 @@ function buildConfidence(parsedType: FinanceInboxItem['parsedType'], amount?: nu
   if (currency) confidence += 0.1;
   if ((attachments || []).length > 0) confidence += 0.1;
   return Math.min(confidence, 0.95);
+}
+
+function mapAiClassification(classification?: string): FinanceInboxItem['parsedType'] {
+  if (classification === 'vendor_invoice' || classification === 'receipt' || classification === 'payment_confirmation' || classification === 'bank_notice') {
+    return classification;
+  }
+  return 'unknown';
+}
+
+function isTextMime(mimeType?: string, filename?: string) {
+  const normalized = (mimeType || '').toLowerCase();
+  const name = (filename || '').toLowerCase();
+  return normalized.startsWith('text/')
+    || normalized.includes('json')
+    || normalized.includes('xml')
+    || normalized.includes('csv')
+    || name.endsWith('.txt')
+    || name.endsWith('.csv')
+    || name.endsWith('.xml')
+    || name.endsWith('.json')
+    || name.endsWith('.html');
+}
+
+function isInlineAiMime(mimeType?: string) {
+  const normalized = (mimeType || '').toLowerCase();
+  return normalized === 'application/pdf' || normalized.startsWith('image/');
 }
 
 async function getAccessToken() {
@@ -150,28 +204,78 @@ async function gmailFetch<T>(path: string, accessToken: string): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-async function getLabelMap(accessToken: string) {
+async function getLabelMaps(accessToken: string) {
   const data = await gmailFetch<{ labels?: Array<{ id: string; name: string }> }>('/labels', accessToken);
-  return new Map((data.labels || []).map((label) => [label.name, label.id]));
+  const byName = new Map<string, string>();
+  const byId = new Map<string, string>();
+  (data.labels || []).forEach((label) => {
+    byName.set(label.name, label.id);
+    byId.set(label.id, label.name);
+  });
+  return { byName, byId };
 }
 
-export async function fetchLabeledFinanceMessages(settings: FinanceSettings | null, maxPerLabel = 20) {
+async function fetchAttachmentData(accessToken: string, messageId: string, attachmentId: string) {
+  return gmailFetch<GmailAttachmentResponse>(`/messages/${messageId}/attachments/${attachmentId}`, accessToken);
+}
+
+async function buildAttachmentContexts(message: GmailMessageResponse, attachments: FinanceInboxAttachment[], accessToken: string) {
+  const aiAttachments: FinanceAiAttachmentInput[] = [];
+  const storedAttachments: FinanceInboxAttachment[] = [];
+
+  for (const attachment of attachments) {
+    try {
+      let rawData = '';
+      if (attachment.attachmentId) {
+        const response = await fetchAttachmentData(accessToken, message.id, attachment.attachmentId);
+        rawData = response.data || '';
+      }
+
+      let excerpt = '';
+      if (isTextMime(attachment.mimeType, attachment.filename) && rawData) {
+        excerpt = decodeBase64Url(rawData).slice(0, MAX_ATTACHMENT_TEXT).replace(/\s+/g, ' ').trim();
+      }
+
+      const aiAttachment: FinanceAiAttachmentInput = {
+        filename: attachment.filename,
+        mimeType: attachment.mimeType,
+        size: attachment.size,
+      };
+
+      if (excerpt) aiAttachment.textPreview = excerpt;
+      if (!excerpt && rawData && isInlineAiMime(attachment.mimeType) && (attachment.size || 0) <= MAX_INLINE_ATTACHMENT_BYTES) {
+        aiAttachment.inlineDataBase64 = rawData;
+      }
+
+      aiAttachments.push(aiAttachment);
+      storedAttachments.push({ ...attachment, excerpt: excerpt || undefined });
+    } catch {
+      storedAttachments.push(attachment);
+    }
+  }
+
+  return { aiAttachments, storedAttachments };
+}
+
+export async function fetchLabeledFinanceMessages(settings: FinanceSettings | null, maxPerLabel = 20): Promise<FetchedFinanceMessage[]> {
   const accessToken = await getAccessToken();
   if (!accessToken) return [];
 
   const labels = settings?.watchedLabels?.length ? settings.watchedLabels : DEFAULT_FINANCE_LABELS;
-  const labelMap = await getLabelMap(accessToken);
+  const { byName, byId } = await getLabelMaps(accessToken);
   const seen = new Set<string>();
-  const messages: GmailMessageResponse[] = [];
+  const messages: FetchedFinanceMessage[] = [];
 
   for (const labelName of labels) {
-    const labelId = labelMap.get(labelName);
+    const labelId = byName.get(labelName);
     if (!labelId) continue;
     const data = await gmailFetch<GmailMessageListResponse>(`/messages?labelIds=${encodeURIComponent(labelId)}&maxResults=${maxPerLabel}`, accessToken);
     for (const item of data.messages || []) {
       if (seen.has(item.id)) continue;
       seen.add(item.id);
-      messages.push(await gmailFetch<GmailMessageResponse>(`/messages/${item.id}?format=full`, accessToken));
+      const message = await gmailFetch<GmailMessageResponse>(`/messages/${item.id}?format=full`, accessToken);
+      const matchedLabels = (message.labelIds || []).map((id) => byId.get(id)).filter(Boolean) as string[];
+      messages.push({ message, matchedLabels: matchedLabels.filter((name) => labels.includes(name)) });
     }
   }
 
@@ -204,6 +308,7 @@ export function parseFinanceMessage(message: GmailMessageResponse, labelNames: s
     extractedVendor,
     extractedAmount,
     extractedCurrency,
+    extractedInvoiceNumber: extractInvoiceNumber(fullText),
     extractedInvoiceDate,
     extractedDueDate,
     extractedDescription: bodyText.slice(0, 500) || subject,
@@ -213,5 +318,62 @@ export function parseFinanceMessage(message: GmailMessageResponse, labelNames: s
     postingTarget: parsedType === 'payment_confirmation' ? 'payment' : parsedType === 'vendor_invoice' || parsedType === 'receipt' ? 'expense' : 'ignore',
     rawSnippet: message.snippet || bodyText.slice(0, 180),
     parserVersion: 'finance-gmail-v1',
+  };
+}
+
+export async function buildFinanceInboxItem(
+  fetched: FetchedFinanceMessage,
+  params: {
+    recurringExpenses: RecurringExpense[];
+    invoices: Invoice[];
+  },
+): Promise<Omit<FinanceInboxItem, 'id' | 'createdAt' | 'updatedAt'> | null> {
+  const heuristic = parseFinanceMessage(fetched.message, fetched.matchedLabels);
+  const accessToken = await getAccessToken();
+  const { aiAttachments, storedAttachments } = await buildAttachmentContexts(fetched.message, heuristic.attachments || [], accessToken);
+
+  let ai = null;
+  try {
+    ai = await analyzeFinanceEmail({
+      subject: heuristic.subject,
+      sender: heuristic.sender,
+      bodyText: heuristic.extractedDescription,
+      labelNames: fetched.matchedLabels,
+      heuristic,
+      attachments: aiAttachments,
+      recurringExpenses: params.recurringExpenses,
+      invoices: params.invoices,
+    });
+  } catch (error) {
+    console.error('Finance AI analysis failed:', error);
+  }
+
+  if (ai?.classification === 'ignore' && ai.shouldCreateInboxItem === false) {
+    return null;
+  }
+
+  return {
+    ...heuristic,
+    labelNames: fetched.matchedLabels,
+    attachments: storedAttachments,
+    parsedType: ai ? mapAiClassification(ai.classification) : heuristic.parsedType,
+    extractedVendor: ai?.vendor || heuristic.extractedVendor,
+    extractedAmount: typeof ai?.amount === 'number' ? ai.amount : heuristic.extractedAmount,
+    extractedCurrency: ai?.currency || heuristic.extractedCurrency,
+    extractedInvoiceNumber: ai?.invoiceNumber || heuristic.extractedInvoiceNumber,
+    extractedInvoiceDate: ai?.invoiceDate || heuristic.extractedInvoiceDate,
+    extractedDueDate: ai?.dueDate || heuristic.extractedDueDate,
+    recurrenceHint: ai?.cadenceHint || heuristic.recurrenceHint,
+    confidence: typeof ai?.confidence === 'number' ? ai.confidence : heuristic.confidence,
+    postingTarget: ai?.suggestedPostingTarget || heuristic.postingTarget,
+    suggestedPostingTarget: ai?.suggestedPostingTarget || heuristic.postingTarget,
+    suggestedRecurringExpenseId: ai?.matchedRecurringExpenseId || undefined,
+    suggestedRecurringExpenseName: ai?.matchedRecurringExpenseName || undefined,
+    suggestedInvoiceId: ai?.matchedInvoiceId || undefined,
+    suggestedInvoiceNumber: ai?.matchedInvoiceNumber || undefined,
+    aiSummary: ai?.summary || undefined,
+    aiReasoning: ai?.reasoning || undefined,
+    analysisVersion: ai ? 'finance-ai-v1' : 'heuristic-only',
+    parserVersion: ai ? 'finance-gmail-v2' : heuristic.parserVersion,
   };
 }

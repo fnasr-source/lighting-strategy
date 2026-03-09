@@ -13,9 +13,8 @@ import type {
 import { addMonthsToISODate, getServicePeriodMonths, type BillingCadence } from '@/lib/billing';
 
 export const DEFAULT_FINANCE_LABELS = [
-  'Finance/Vendor Invoices',
-  'Finance/Receipts',
-  'Finance/Client Payments',
+  'Invoices',
+  '@Invoices',
 ];
 
 const STATIC_USD_RATES: Record<string, number> = {

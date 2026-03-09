@@ -327,6 +327,7 @@ export interface Expense {
     dueDate?: string;
     source?: 'manual' | 'email' | 'import';
     financeInboxItemId?: string;
+    recurringExpenseId?: string;
     paymentAccount?: string;
     approvalState?: 'pending' | 'approved' | 'rejected';
     notes?: string;
@@ -340,6 +341,7 @@ export interface FinanceInboxAttachment {
     mimeType?: string;
     attachmentId?: string;
     size?: number;
+    excerpt?: string;
 }
 
 export interface FinanceInboxItem {
@@ -356,6 +358,7 @@ export interface FinanceInboxItem {
     extractedVendor?: string;
     extractedAmount?: number;
     extractedCurrency?: string;
+    extractedInvoiceNumber?: string;
     extractedInvoiceDate?: string;
     extractedDueDate?: string;
     extractedDescription?: string;
@@ -363,6 +366,14 @@ export interface FinanceInboxItem {
     confidence?: number;
     reviewStatus: 'pending' | 'approved' | 'rejected';
     postingTarget?: 'expense' | 'recurring_expense' | 'payment' | 'ignore';
+    suggestedPostingTarget?: 'expense' | 'recurring_expense' | 'payment' | 'ignore';
+    suggestedRecurringExpenseId?: string;
+    suggestedRecurringExpenseName?: string;
+    suggestedInvoiceId?: string;
+    suggestedInvoiceNumber?: string;
+    aiSummary?: string;
+    aiReasoning?: string;
+    analysisVersion?: string;
     linkedExpenseId?: string;
     linkedRecurringExpenseId?: string;
     linkedPaymentId?: string;
@@ -389,7 +400,11 @@ export interface RecurringExpense {
     status: 'active' | 'paused' | 'cancelled';
     source: 'csv' | 'email' | 'manual';
     remarks?: string;
+    aliases?: string[];
     financeInboxItemId?: string;
+    lastChargedAt?: string;
+    lastInvoiceAmount?: number;
+    lastEmailSubject?: string;
     createdAt?: any;
     updatedAt?: any;
 }

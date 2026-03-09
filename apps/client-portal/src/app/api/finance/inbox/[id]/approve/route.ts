@@ -3,6 +3,7 @@ import admin from 'firebase-admin';
 import { getAdminDb } from '@/lib/firebase-admin';
 import { verifyApiUser } from '@/lib/api-auth';
 import { syncFinanceAlerts, syncFinanceEntries } from '@/lib/finance-admin';
+import { addMonthsToISODate } from '@/lib/billing';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,6 +23,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   const item = snap.data()!;
   const postingTarget = body.postingTarget || item.postingTarget || 'ignore';
   const now = new Date().toISOString();
+  const linkedRecurringExpenseId = body.linkedRecurringExpenseId || item.suggestedRecurringExpenseId || '';
+  const linkedInvoiceId = body.invoiceId || item.suggestedInvoiceId || '';
   const updates: Record<string, unknown> = {
     reviewStatus: 'approved',
     postingTarget,
@@ -40,6 +43,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       notes: body.notes || item.rawSnippet || '',
       source: 'email',
       financeInboxItemId: id,
+      recurringExpenseId: linkedRecurringExpenseId || undefined,
       paymentAccount: body.paymentAccount || '',
       status: body.status || 'approved',
       approvalState: 'approved',
@@ -47,30 +51,75 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
     updates.linkedExpenseId = expenseRef.id;
+    if (linkedRecurringExpenseId) {
+      const recurringRef = db.collection('recurringExpenses').doc(linkedRecurringExpenseId);
+      const recurringSnap = await recurringRef.get();
+      if (recurringSnap.exists) {
+        const recurring = recurringSnap.data()!;
+        const baseDate = body.nextChargeDate || item.extractedDueDate || item.extractedInvoiceDate || recurring.nextChargeDate || now.slice(0, 10);
+        const intervalMonths = Number(recurring.intervalMonths || 1);
+        await recurringRef.set({
+          lastChargedAt: body.date || item.extractedInvoiceDate || now.slice(0, 10),
+          lastInvoiceAmount: Number(body.amount ?? item.extractedAmount ?? recurring.amount ?? 0),
+          lastEmailSubject: item.subject || '',
+          nextChargeDate: addMonthsToISODate(baseDate, intervalMonths),
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        }, { merge: true });
+      }
+    }
   } else if (postingTarget === 'recurring_expense') {
-    const recurringRef = await db.collection('recurringExpenses').add({
-      name: body.name || item.extractedVendor || item.subject || 'Imported recurring expense',
-      vendor: body.vendor || item.extractedVendor || '',
-      category: body.category || 'Other',
-      utilizedBy: body.utilizedBy || '',
-      cadence: body.cadence || item.recurrenceHint || 'monthly',
-      intervalMonths: Number(body.intervalMonths || (body.cadence === 'quarterly' ? 3 : body.cadence === 'semiannual' ? 6 : body.cadence === 'annual' ? 12 : 1)),
-      nextChargeDate: body.nextChargeDate || item.extractedDueDate || item.extractedInvoiceDate || now.slice(0, 10),
-      amount: Number(body.amount ?? item.extractedAmount ?? 0),
-      currency: body.currency || item.extractedCurrency || 'AED',
-      paymentAccount: body.paymentAccount || '',
-      status: body.status || 'active',
-      source: 'email',
-      remarks: body.remarks || item.rawSnippet || '',
-      financeInboxItemId: id,
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-    });
-    updates.linkedRecurringExpenseId = recurringRef.id;
+    const cadence = body.cadence || item.recurrenceHint || 'monthly';
+    const intervalMonths = Number(body.intervalMonths || (cadence === 'quarterly' ? 3 : cadence === 'semiannual' ? 6 : cadence === 'annual' ? 12 : 1));
+    if (linkedRecurringExpenseId) {
+      await db.collection('recurringExpenses').doc(linkedRecurringExpenseId).set({
+        name: body.name || item.suggestedRecurringExpenseName || item.extractedVendor || item.subject || 'Imported recurring expense',
+        vendor: body.vendor || item.extractedVendor || '',
+        category: body.category || 'Other',
+        utilizedBy: body.utilizedBy || '',
+        cadence,
+        intervalMonths,
+        nextChargeDate: body.nextChargeDate || item.extractedDueDate || item.extractedInvoiceDate || now.slice(0, 10),
+        amount: Number(body.amount ?? item.extractedAmount ?? 0),
+        currency: body.currency || item.extractedCurrency || 'AED',
+        paymentAccount: body.paymentAccount || '',
+        status: body.status || 'active',
+        source: 'email',
+        remarks: body.remarks || item.rawSnippet || '',
+        financeInboxItemId: id,
+        lastChargedAt: body.date || item.extractedInvoiceDate || now.slice(0, 10),
+        lastInvoiceAmount: Number(body.amount ?? item.extractedAmount ?? 0),
+        lastEmailSubject: item.subject || '',
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      }, { merge: true });
+      updates.linkedRecurringExpenseId = linkedRecurringExpenseId;
+    } else {
+      const recurringRef = await db.collection('recurringExpenses').add({
+        name: body.name || item.extractedVendor || item.subject || 'Imported recurring expense',
+        vendor: body.vendor || item.extractedVendor || '',
+        category: body.category || 'Other',
+        utilizedBy: body.utilizedBy || '',
+        cadence,
+        intervalMonths,
+        nextChargeDate: body.nextChargeDate || item.extractedDueDate || item.extractedInvoiceDate || now.slice(0, 10),
+        amount: Number(body.amount ?? item.extractedAmount ?? 0),
+        currency: body.currency || item.extractedCurrency || 'AED',
+        paymentAccount: body.paymentAccount || '',
+        status: body.status || 'active',
+        source: 'email',
+        remarks: body.remarks || item.rawSnippet || '',
+        financeInboxItemId: id,
+        lastChargedAt: body.date || item.extractedInvoiceDate || now.slice(0, 10),
+        lastInvoiceAmount: Number(body.amount ?? item.extractedAmount ?? 0),
+        lastEmailSubject: item.subject || '',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+      updates.linkedRecurringExpenseId = recurringRef.id;
+    }
   } else if (postingTarget === 'payment') {
     const amount = Number(body.amount ?? item.extractedAmount ?? 0);
-    const invoiceNumber = body.invoiceNumber || '';
-    let invoiceId = body.invoiceId || '';
+    const invoiceNumber = body.invoiceNumber || item.suggestedInvoiceNumber || '';
+    let invoiceId = linkedInvoiceId;
     let invoiceData: FirebaseFirestore.DocumentData | undefined;
     if (!invoiceId && invoiceNumber) {
       const invoiceSnap = await db.collection('invoices').where('invoiceNumber', '==', invoiceNumber).limit(1).get();

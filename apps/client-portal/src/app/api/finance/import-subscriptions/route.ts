@@ -56,6 +56,13 @@ function parseUpcomingDate(input: string) {
   return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
+function buildAliases(input: string) {
+  const value = (input || '').trim();
+  if (!value) return [];
+  const normalized = value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  return Array.from(new Set([value, normalized].filter(Boolean)));
+}
+
 export async function POST(req: NextRequest) {
   const user = await verifyApiUser(req.headers.get('authorization'));
   if (!user || !['owner', 'admin'].includes(user.role || '')) {
@@ -72,6 +79,12 @@ export async function POST(req: NextRequest) {
   const rows = parseCsv(csv);
   const header = rows[0] || [];
   const db = getAdminDb();
+  const existing = await db.collection('recurringExpenses').where('source', '==', 'csv').get();
+  if (!existing.empty) {
+    const deleteBatch = db.batch();
+    existing.docs.forEach((doc) => deleteBatch.delete(doc.ref));
+    await deleteBatch.commit();
+  }
   let imported = 0;
 
   for (const row of rows.slice(1)) {
@@ -95,6 +108,7 @@ export async function POST(req: NextRequest) {
       status: (record['STATUS'] || '').toLowerCase() === 'cancelled' ? 'cancelled' : 'active',
       source: 'csv',
       remarks: record['REMARKS'] || '',
+      aliases: buildAliases(record['SUBSCRIPTIONS / EXPENSES']),
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
       updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     });

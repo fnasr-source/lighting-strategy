@@ -10,9 +10,11 @@ import {
     type Invoice,
 } from '@/lib/firestore';
 import {
+    addMonthsToISODate,
     computeInvoiceDueDate,
     generateInvoiceNumber,
     getCadenceIntervalMonths,
+    getServicePeriodMonths,
     type BillingCadence,
     type LegacyServiceCode,
 } from '@/lib/billing';
@@ -234,6 +236,8 @@ export default function InvoicesPage() {
             sourceUrl: form.exchangeRateSourceUrl,
             pricingRule: form.pricingRule || undefined,
         } : undefined;
+        const servicePeriodMonths = getServicePeriodMonths(form.billingCadence);
+        const servicePeriodEnd = servicePeriodMonths > 0 ? addMonthsToISODate(form.issuedAt, servicePeriodMonths) : undefined;
 
         const invoicePayload: Omit<Invoice, 'id' | 'createdAt'> = {
             invoiceNumber: form.invoiceNumber,
@@ -258,6 +262,9 @@ export default function InvoicesPage() {
             exchangeRateSourceUrl: exchangeRateSnapshot?.sourceUrl,
             pricingRule: form.pricingRule || undefined,
             sendLeadDays,
+            servicePeriodStart: form.issuedAt,
+            servicePeriodMonths,
+            servicePeriodEnd,
             billingPolicy: {
                 legacyServiceCode: form.legacyServiceCode,
                 billingCadence: form.billingCadence,
@@ -306,6 +313,9 @@ export default function InvoicesPage() {
                 nextSendDate: form.nextSendDate,
                 billingCadence: form.recurringCadence,
                 intervalMonths: getCadenceIntervalMonths(form.recurringCadence),
+                servicePeriodStart: form.nextSendDate || form.issuedAt,
+                servicePeriodMonths: getServicePeriodMonths(form.recurringCadence),
+                servicePeriodEnd: getServicePeriodMonths(form.recurringCadence) > 0 ? addMonthsToISODate(form.nextSendDate || form.issuedAt, getServicePeriodMonths(form.recurringCadence)) : undefined,
                 billingPolicy: {
                     legacyServiceCode: form.legacyServiceCode,
                     billingCadence: form.recurringCadence,

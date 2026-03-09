@@ -87,6 +87,14 @@ export function getCadenceIntervalMonths(cadence?: BillingCadence, intervalMonth
     return CADENCE_MONTHS[cadence] || 1;
 }
 
+export function getServicePeriodMonths(cadence?: BillingCadence, intervalMonths?: number): number {
+    if (typeof intervalMonths === 'number' && Number.isFinite(intervalMonths) && intervalMonths > 0) {
+        return intervalMonths;
+    }
+    if (!cadence || cadence === 'one_time') return 0;
+    return getCadenceIntervalMonths(cadence, intervalMonths);
+}
+
 export function computeInvoiceDueDate(issuedAt: string, sendLeadDays = 3): string {
     return addDaysToISODate(issuedAt, Math.max(0, sendLeadDays));
 }

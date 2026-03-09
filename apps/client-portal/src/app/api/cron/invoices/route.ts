@@ -16,6 +16,7 @@ import {
     computeInvoiceDueDate,
     generateInvoiceNumber,
     getCadenceIntervalMonths,
+    getServicePeriodMonths,
     withReminderState,
 } from '@/lib/billing';
 
@@ -67,6 +68,7 @@ export async function POST(req: NextRequest) {
                 const invoiceNumber = generateInvoiceNumber(existingInvoiceNumbers, today);
                 existingInvoiceNumbers.push(invoiceNumber);
                 const dueDate = computeInvoiceDueDate(today, sendLeadDays);
+                const servicePeriodMonths = getServicePeriodMonths(template.billingCadence, template.intervalMonths);
 
                 await db.collection('invoices').add({
                     invoiceNumber,
@@ -91,6 +93,9 @@ export async function POST(req: NextRequest) {
                     exchangeRateDate: template.exchangeRateSnapshot?.date || null,
                     exchangeRateSourceUrl: template.exchangeRateSnapshot?.sourceUrl || null,
                     sendLeadDays,
+                    servicePeriodStart: today,
+                    servicePeriodMonths,
+                    servicePeriodEnd: servicePeriodMonths > 0 ? addMonthsToISODate(today, servicePeriodMonths) : null,
                     reminderState: template.reminderState || { legacyFollowUps: { first: false, second: false, third: false } },
                     notes: template.notes ? `Auto-generated from: ${template.templateName}\n\n${template.notes}` : `Auto-generated from: ${template.templateName}`,
                     createdAt: FieldValue.serverTimestamp(),

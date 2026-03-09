@@ -46,6 +46,7 @@ const allNavItems: NavItem[] = [
     { label: 'Scheduling', href: '/dashboard/scheduling', icon: CalendarClock, permission: 'campaigns:read' },
     { label: 'Integrations', href: '/dashboard/integrations', icon: Globe, permission: 'campaigns:read' },
     { section: 'Finance' },
+    { label: 'Finance Ops', href: '/dashboard/finance', icon: Wallet, permission: 'billing:read' },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt, permission: 'invoices:read' },
     { label: 'Payments', href: '/dashboard/payments', icon: CreditCard, permission: 'payments:read' },
     { label: 'Billing', href: '/dashboard/billing', icon: Zap, permission: 'billing:read' },

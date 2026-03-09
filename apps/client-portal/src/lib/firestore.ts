@@ -8,6 +8,7 @@ import {
     getDocs,
     getDoc,
     addDoc,
+    setDoc,
     updateDoc,
     deleteDoc,
     query,
@@ -113,6 +114,9 @@ export interface Invoice {
     legacyUrl?: string;
     emailSent?: boolean;
     emailSentAt?: string;
+    servicePeriodStart?: string;
+    servicePeriodMonths?: number;
+    servicePeriodEnd?: string;
     notes?: string;
     createdAt?: any;
     updatedAt?: any;
@@ -165,6 +169,9 @@ export interface RecurringInvoice {
     active: boolean;
     autoSendEmail: boolean;     // Whether to auto-email on generation
     paymentMethods: ('stripe' | 'instapay' | 'bank_transfer')[]; // Allowed payment methods
+    servicePeriodStart?: string;
+    servicePeriodMonths?: number;
+    servicePeriodEnd?: string;
     notes?: string;
     lastGeneratedAt?: string;
     createdAt?: any;
@@ -316,8 +323,132 @@ export interface Expense {
     receiptUrl?: string;
     isRecurring?: boolean;
     recurringPeriod?: 'monthly' | 'quarterly' | 'yearly';
+    status?: 'draft' | 'approved' | 'scheduled' | 'paid' | 'cancelled';
+    dueDate?: string;
+    source?: 'manual' | 'email' | 'import';
+    financeInboxItemId?: string;
+    paymentAccount?: string;
+    approvalState?: 'pending' | 'approved' | 'rejected';
     notes?: string;
     createdBy?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface FinanceInboxAttachment {
+    filename: string;
+    mimeType?: string;
+    attachmentId?: string;
+    size?: number;
+}
+
+export interface FinanceInboxItem {
+    id?: string;
+    source: 'gmail';
+    gmailMessageId: string;
+    gmailThreadId?: string;
+    labelNames: string[];
+    receivedAt?: string;
+    sender?: string;
+    subject?: string;
+    attachments?: FinanceInboxAttachment[];
+    parsedType: 'vendor_invoice' | 'receipt' | 'payment_confirmation' | 'bank_notice' | 'unknown';
+    extractedVendor?: string;
+    extractedAmount?: number;
+    extractedCurrency?: string;
+    extractedInvoiceDate?: string;
+    extractedDueDate?: string;
+    extractedDescription?: string;
+    recurrenceHint?: 'monthly' | 'quarterly' | 'semiannual' | 'annual' | 'unknown';
+    confidence?: number;
+    reviewStatus: 'pending' | 'approved' | 'rejected';
+    postingTarget?: 'expense' | 'recurring_expense' | 'payment' | 'ignore';
+    linkedExpenseId?: string;
+    linkedRecurringExpenseId?: string;
+    linkedPaymentId?: string;
+    rawSnippet?: string;
+    parserVersion?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface RecurringExpense {
+    id?: string;
+    name: string;
+    vendor?: string;
+    category: string;
+    utilizedBy?: string;
+    cadence: 'monthly' | 'quarterly' | 'semiannual' | 'annual' | 'custom_months';
+    intervalMonths?: number;
+    nextChargeDate: string;
+    amount: number;
+    currency: string;
+    normalizedAmount?: number;
+    normalizedCurrency?: string;
+    paymentAccount?: string;
+    status: 'active' | 'paused' | 'cancelled';
+    source: 'csv' | 'email' | 'manual';
+    remarks?: string;
+    financeInboxItemId?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface CashAccount {
+    id?: string;
+    name: string;
+    accountType: 'bank' | 'wallet' | 'card' | 'petty_cash';
+    currency: string;
+    currentBalance: number;
+    includeInAvailableCash: boolean;
+    notes?: string;
+    lastUpdatedAt?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface FinanceEntry {
+    id?: string;
+    entryType: 'receivable_due' | 'receivable_paid' | 'payable_due' | 'payable_paid' | 'deferred_revenue_hold' | 'deferred_revenue_release' | 'manual_adjustment';
+    direction: 'inflow' | 'outflow' | 'reserve';
+    amount: number;
+    currency: string;
+    normalizedAmount?: number;
+    normalizedCurrency?: string;
+    effectiveDate: string;
+    sourceType: 'invoice' | 'payment' | 'expense' | 'recurring_expense' | 'proposal' | 'system';
+    sourceId: string;
+    clientId?: string;
+    clientName?: string;
+    vendor?: string;
+    status: 'scheduled' | 'posted' | 'cleared';
+    notes?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface FinanceAlert {
+    id?: string;
+    type: 'invoice_due_tomorrow' | 'subscription_due_tomorrow' | 'payable_due_tomorrow' | 'overdue_invoice' | 'low_free_cash' | 'forecast_shortfall' | 'inbox_review_pending';
+    severity: 'low' | 'medium' | 'high';
+    targetDate: string;
+    status: 'open' | 'dismissed' | 'sent';
+    title: string;
+    description: string;
+    relatedId?: string;
+    createdAt?: any;
+    updatedAt?: any;
+}
+
+export interface FinanceSettings {
+    id?: string;
+    gmailConnectedEmail?: string;
+    watchedLabels: string[];
+    pollingMinutes: number;
+    digestRecipients: string[];
+    baseCurrency: string;
+    forecastHorizons: number[];
+    dailyDigestHourDubai?: number;
     createdAt?: any;
     updatedAt?: any;
 }
@@ -670,6 +801,98 @@ export const expensesService = {
     },
     async delete(id: string): Promise<void> {
         await deleteDoc(doc(db, 'expenses', id));
+    },
+};
+
+export const financeInboxService = {
+    subscribe(callback: (items: FinanceInboxItem[]) => void) {
+        return onSnapshot(query(collection(db, 'financeInboxItems'), orderBy('createdAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as FinanceInboxItem)));
+        });
+    },
+    async create(data: Omit<FinanceInboxItem, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'financeInboxItems'), {
+            ...data,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+    async update(id: string, data: Partial<FinanceInboxItem>): Promise<void> {
+        await updateDoc(doc(db, 'financeInboxItems', id), { ...data, updatedAt: serverTimestamp() });
+    },
+};
+
+export const recurringExpensesService = {
+    subscribe(callback: (items: RecurringExpense[]) => void) {
+        return onSnapshot(query(collection(db, 'recurringExpenses'), orderBy('nextChargeDate', 'asc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as RecurringExpense)));
+        });
+    },
+    async create(data: Omit<RecurringExpense, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'recurringExpenses'), {
+            ...data,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+    async update(id: string, data: Partial<RecurringExpense>): Promise<void> {
+        await updateDoc(doc(db, 'recurringExpenses', id), { ...data, updatedAt: serverTimestamp() });
+    },
+    async delete(id: string): Promise<void> {
+        await deleteDoc(doc(db, 'recurringExpenses', id));
+    },
+};
+
+export const cashAccountsService = {
+    subscribe(callback: (items: CashAccount[]) => void) {
+        return onSnapshot(query(collection(db, 'cashAccounts'), orderBy('createdAt', 'desc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as CashAccount)));
+        });
+    },
+    async create(data: Omit<CashAccount, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+        const ref = await addDoc(collection(db, 'cashAccounts'), {
+            ...data,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+        });
+        return ref.id;
+    },
+    async update(id: string, data: Partial<CashAccount>): Promise<void> {
+        await updateDoc(doc(db, 'cashAccounts', id), { ...data, updatedAt: serverTimestamp() });
+    },
+    async delete(id: string): Promise<void> {
+        await deleteDoc(doc(db, 'cashAccounts', id));
+    },
+};
+
+export const financeEntriesService = {
+    subscribe(callback: (items: FinanceEntry[]) => void) {
+        return onSnapshot(query(collection(db, 'financeEntries'), orderBy('effectiveDate', 'asc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as FinanceEntry)));
+        });
+    },
+};
+
+export const financeAlertsService = {
+    subscribe(callback: (items: FinanceAlert[]) => void) {
+        return onSnapshot(query(collection(db, 'financeAlerts'), orderBy('targetDate', 'asc')), snap => {
+            callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as FinanceAlert)));
+        });
+    },
+    async update(id: string, data: Partial<FinanceAlert>): Promise<void> {
+        await updateDoc(doc(db, 'financeAlerts', id), { ...data, updatedAt: serverTimestamp() });
+    },
+};
+
+export const financeSettingsService = {
+    async get(): Promise<FinanceSettings | null> {
+        const snap = await getDoc(doc(db, 'systemConfig', 'finance'));
+        return snap.exists() ? { id: snap.id, ...snap.data() } as FinanceSettings : null;
+    },
+    async upsert(data: Partial<FinanceSettings>): Promise<void> {
+        await setDoc(doc(db, 'systemConfig', 'finance'), { ...data, updatedAt: serverTimestamp() }, { merge: true });
     },
 };
 

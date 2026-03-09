@@ -2,7 +2,8 @@
 
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect, useState } from 'react';
-import { clientsService, invoicesService, leadsService, proposalsService, type Client, type Invoice, type Lead, type Proposal } from '@/lib/firestore';
+import { cashAccountsService, clientsService, financeAlertsService, financeInboxService, invoicesService, leadsService, paymentsService, proposalsService, recurringExpensesService, recurringInvoicesService, type CashAccount, type Client, type FinanceAlert, type FinanceInboxItem, type Invoice, type Lead, type Payment, type Proposal, type RecurringExpense, type RecurringInvoice } from '@/lib/firestore';
+import { computeFinanceOverview } from '@/lib/finance';
 import type { AggregateIntelligenceResponse } from '@/lib/performance-intelligence/intelligence';
 import type { DashboardIntelligenceResponse } from '@/lib/performance-intelligence/types';
 import {
@@ -17,7 +18,6 @@ import {
     Loader2,
     Activity,
     DollarSign,
-    Gauge,
     Zap,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -42,17 +42,28 @@ function AdminDashboard() {
     const [proposals, setProposals] = useState<Proposal[]>([]);
     const [aggregate, setAggregate] = useState<AggregateIntelligenceResponse | null>(null);
     const [perfLoading, setPerfLoading] = useState(true);
+    const [payments, setPayments] = useState<Payment[]>([]);
+    const [recurringExpenses, setRecurringExpenses] = useState<RecurringExpense[]>([]);
+    const [recurringInvoices, setRecurringInvoices] = useState<RecurringInvoice[]>([]);
+    const [financeInbox, setFinanceInbox] = useState<FinanceInboxItem[]>([]);
+    const [financeAlerts, setFinanceAlerts] = useState<FinanceAlert[]>([]);
+    const [cashAccounts, setCashAccounts] = useState<CashAccount[]>([]);
 
     useEffect(() => {
         const unsub1 = clientsService.subscribe(setClients);
         const unsub2 = invoicesService.subscribe(setInvoices);
         const unsub3 = leadsService.subscribe(setLeads);
         const unsub4 = proposalsService.subscribe(setProposals);
-        return () => { unsub1(); unsub2(); unsub3(); unsub4(); };
+        const unsub5 = paymentsService.subscribe(setPayments);
+        const unsub6 = recurringExpensesService.subscribe(setRecurringExpenses);
+        const unsub7 = recurringInvoicesService.subscribe(setRecurringInvoices);
+        const unsub8 = financeInboxService.subscribe(setFinanceInbox);
+        const unsub9 = financeAlertsService.subscribe(setFinanceAlerts);
+        const unsub10 = cashAccountsService.subscribe(setCashAccounts);
+        return () => { unsub1(); unsub2(); unsub3(); unsub4(); unsub5(); unsub6(); unsub7(); unsub8(); unsub9(); unsub10(); };
     }, []);
 
     useEffect(() => {
-        setPerfLoading(true);
         fetch('/api/dashboard/intelligence-aggregate?currency=USD')
             .then((r) => r.json())
             .then((data) => {
@@ -64,8 +75,20 @@ function AdminDashboard() {
 
     const activeClients = clients.filter(c => c.status === 'active').length;
     const pendingInvoices = invoices.filter(i => i.status === 'pending').length;
-    const totalRevenue = invoices.filter(i => i.status === 'paid').reduce((s, i) => s + i.totalDue, 0);
     const openProposals = proposals.filter(p => ['ready', 'sent'].includes(p.status)).length;
+    const finance = computeFinanceOverview({
+        cashAccounts,
+        invoices,
+        payments,
+        expenses: [],
+        recurringExpenses,
+        recurringInvoices,
+        proposals,
+        financeInbox,
+        financeAlerts,
+        baseCurrency: 'AED',
+        horizonDays: 90,
+    });
 
     return (
         <>
@@ -132,6 +155,7 @@ function AdminDashboard() {
                 <KPICard label="Open Proposals" value={String(openProposals)} icon={<FileText size={18} />} sub={`${proposals.length} total`} />
                 <KPICard label="Pending Invoices" value={String(pendingInvoices)} icon={<Receipt size={18} />} sub={`${invoices.length} total`} />
                 <KPICard label="Pipeline Leads" value={String(leads.length)} icon={<Target size={18} />} sub="In pipeline" />
+                <KPICard label="Free Cash" value={fmtCurrency(finance.freeCash)} icon={<DollarSign size={18} />} sub={`${finance.pendingInboxCount} inbox pending`} />
             </div>
 
             {/* Section 3: Performance Charts + Health Scoreboard */}
@@ -188,6 +212,7 @@ function AdminDashboard() {
                         <QuickAction label="Create Invoice" icon="🧾" href="/dashboard/invoices" />
                         <QuickAction label="Add Lead" icon="🎯" href="/dashboard/leads" />
                         <QuickAction label="Create Proposal" icon="📝" href="/dashboard/proposals" />
+                        <QuickAction label="Open Finance Ops" icon="💼" href="/dashboard/finance" />
                     </div>
                 </div>
             </div>
@@ -200,12 +225,11 @@ function AdminDashboard() {
 function ClientDashboard() {
     const { user, profile } = useAuth();
     const [intelligence, setIntelligence] = useState<DashboardIntelligenceResponse | null>(null);
-    const [loading, setLoading] = useState(true);
+    const clientId = profile?.linkedClientId;
+    const loading = Boolean(clientId) && !intelligence;
 
     useEffect(() => {
-        const clientId = profile?.linkedClientId;
         if (!clientId) {
-            setLoading(false);
             return;
         }
 
@@ -214,9 +238,8 @@ function ClientDashboard() {
             .then((data) => {
                 if (data.success) setIntelligence(data);
             })
-            .catch(() => { })
-            .finally(() => setLoading(false));
-    }, [profile?.linkedClientId]);
+            .catch(() => { });
+    }, [clientId]);
 
     return (
         <>

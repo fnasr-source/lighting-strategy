@@ -6,7 +6,7 @@ import {
     expensesService, invoicesService, clientsService,
     type Expense, type Invoice, type Client,
 } from '@/lib/firestore';
-import { DollarSign, TrendingUp, TrendingDown, Plus, Edit3, Trash2, X, Wallet, ArrowDownCircle, ArrowUpCircle } from 'lucide-react';
+import { TrendingUp, TrendingDown, Plus, Edit3, Trash2, X, Wallet, ArrowDownCircle, ArrowUpCircle } from 'lucide-react';
 
 const CATEGORIES = [
     { id: 'operations', label: 'Operations', color: '#3498db' },
@@ -20,7 +20,8 @@ const CATEGORIES = [
 
 const EMPTY_FORM: Omit<Expense, 'id' | 'createdAt' | 'updatedAt'> = {
     description: '', amount: 0, currency: 'AED', category: 'operations',
-    date: new Date().toISOString().split('T')[0], vendor: '', notes: '',
+    date: new Date().toISOString().split('T')[0], dueDate: new Date().toISOString().split('T')[0], vendor: '', notes: '',
+    status: 'approved', source: 'manual', approvalState: 'approved', paymentAccount: '',
 };
 
 export default function ExpensesPage() {
@@ -41,10 +42,6 @@ export default function ExpensesPage() {
         clientsService.subscribe(setClients);
         return () => { u1(); u2(); };
     }, []);
-
-    if (!hasPermission('billing:read')) {
-        return <div className="empty-state"><div className="empty-state-icon">🔒</div><div className="empty-state-title">Access Denied</div></div>;
-    }
 
     const canWrite = hasPermission('billing:write');
 
@@ -83,11 +80,15 @@ export default function ExpensesPage() {
     }, [filtered]);
     const maxCatTotal = Math.max(...catBreakdown.map(c => c.total), 1);
 
+    if (!hasPermission('billing:read')) {
+        return <div className="empty-state"><div className="empty-state-icon">🔒</div><div className="empty-state-title">Access Denied</div></div>;
+    }
+
     const fmtAmt = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 
     const openAdd = () => { setForm({ ...EMPTY_FORM }); setEditId(null); setShowForm(true); };
     const openEdit = (e: Expense) => {
-        setEditId(e.id!); setForm({ description: e.description, amount: e.amount, currency: e.currency, category: e.category, date: e.date, vendor: e.vendor || '', notes: e.notes || '', clientId: e.clientId, clientName: e.clientName });
+        setEditId(e.id!); setForm({ description: e.description, amount: e.amount, currency: e.currency, category: e.category, date: e.date, dueDate: e.dueDate || e.date, vendor: e.vendor || '', notes: e.notes || '', clientId: e.clientId, clientName: e.clientName, status: e.status || 'approved', source: e.source || 'manual', approvalState: e.approvalState || 'approved', paymentAccount: e.paymentAccount || '' });
         setShowForm(true);
     };
 
@@ -202,7 +203,7 @@ export default function ExpensesPage() {
                         <table className="data-table">
                             <thead><tr>
                                 <th>Date</th><th>Description</th><th>Category</th>
-                                <th>Vendor</th><th style={{ textAlign: 'right' }}>Amount</th>
+                                <th>Vendor</th><th>Status</th><th style={{ textAlign: 'right' }}>Amount</th>
                                 {canWrite && <th style={{ width: 80 }}>Actions</th>}
                             </tr></thead>
                             <tbody>
@@ -217,9 +218,10 @@ export default function ExpensesPage() {
                                             </td>
                                             <td><span style={{ fontSize: '0.72rem', padding: '3px 8px', borderRadius: 4, background: `${cat?.color || '#999'}15`, color: cat?.color, fontWeight: 600 }}>{cat?.label || e.category}</span></td>
                                             <td style={{ color: 'var(--muted)', fontSize: '0.82rem' }}>{e.vendor || '—'}</td>
+                                            <td><span className={`status-pill status-${e.status === 'paid' ? 'paid' : e.status === 'cancelled' ? 'overdue' : 'pending'}`}>{e.status || 'approved'}</span></td>
                                             <td style={{ textAlign: 'right', fontWeight: 700, color: 'var(--danger)', fontSize: '0.88rem' }}>
                                                 -{fmtAmt(e.amount)} {e.currency}
-                                                {e.isRecurring && <span style={{ fontSize: '0.6rem', color: 'var(--muted)', display: 'block' }}>↻ {e.recurringPeriod}</span>}
+                                                {(e.dueDate || e.paymentAccount || e.isRecurring) && <span style={{ fontSize: '0.6rem', color: 'var(--muted)', display: 'block' }}>{e.isRecurring ? `↻ ${e.recurringPeriod}` : `Due ${e.dueDate || e.date}`}{e.paymentAccount ? ` · ${e.paymentAccount}` : ''}</span>}
                                             </td>
                                             {canWrite && (
                                                 <td>
@@ -253,9 +255,25 @@ export default function ExpensesPage() {
                                 <input className="form-input" type="date" value={form.date} onChange={e => setForm(p => ({ ...p, date: e.target.value }))} />
                             </div>
                             <div>
+                                <label className="form-label">Due Date</label>
+                                <input className="form-input" type="date" value={form.dueDate || form.date} onChange={e => setForm(p => ({ ...p, dueDate: e.target.value }))} />
+                            </div>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
+                            <div>
                                 <label className="form-label">Category</label>
-                                <select className="form-input" value={form.category} onChange={e => setForm(p => ({ ...p, category: e.target.value as any }))}>
+                                <select className="form-input" value={form.category} onChange={e => setForm(p => ({ ...p, category: e.target.value as Expense['category'] }))}>
                                     {CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+                                </select>
+                            </div>
+                            <div>
+                                <label className="form-label">Status</label>
+                                <select className="form-input" value={form.status || 'approved'} onChange={e => setForm(p => ({ ...p, status: e.target.value as Expense['status'] }))}>
+                                    <option value="draft">Draft</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="scheduled">Scheduled</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="cancelled">Cancelled</option>
                                 </select>
                             </div>
                         </div>
@@ -279,6 +297,10 @@ export default function ExpensesPage() {
                                     {clients.map(c => <option key={c.id} value={c.id!}>{c.name}</option>)}
                                 </select>
                             </div>
+                        </div>
+                        <div style={{ marginBottom: 12 }}>
+                            <label className="form-label">Payment Account</label>
+                            <input className="form-input" value={form.paymentAccount || ''} onChange={e => setForm(p => ({ ...p, paymentAccount: e.target.value }))} placeholder="Card / bank / wallet label" />
                         </div>
                         <div style={{ marginBottom: 16 }}>
                             <label className="form-label">Notes</label>

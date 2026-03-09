@@ -327,6 +327,8 @@ export interface Expense {
     dueDate?: string;
     source?: 'manual' | 'email' | 'import';
     financeInboxItemId?: string;
+    financeFingerprint?: string;
+    invoiceReference?: string;
     recurringExpenseId?: string;
     paymentAccount?: string;
     approvalState?: 'pending' | 'approved' | 'rejected';
@@ -377,6 +379,8 @@ export interface FinanceInboxItem {
     linkedExpenseId?: string;
     linkedRecurringExpenseId?: string;
     linkedPaymentId?: string;
+    financeFingerprint?: string;
+    duplicateOfInboxItemId?: string;
     rawSnippet?: string;
     parserVersion?: string;
     createdAt?: any;

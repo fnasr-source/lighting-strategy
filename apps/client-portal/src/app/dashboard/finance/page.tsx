@@ -119,7 +119,7 @@ export default function FinancePage() {
   const [editingRecurringId, setEditingRecurringId] = useState('');
   const [editingCashId, setEditingCashId] = useState('');
   const [cashForm, setCashForm] = useState({ name: '', accountType: 'bank' as CashAccount['accountType'], currency: 'AED', currentBalance: '', includeInAvailableCash: true, notes: '' });
-  const [expenseForm, setExpenseForm] = useState({ name: '', category: 'Other', amount: '', currency: 'AED', nextChargeDate: '', paymentAccount: '', utilizedBy: '', cadence: 'monthly' as RecurringExpense['cadence'] });
+  const [expenseForm, setExpenseForm] = useState({ name: '', vendor: '', aliases: '', category: 'Other', amount: '', currency: 'AED', nextChargeDate: '', paymentAccount: '', utilizedBy: '', cadence: 'monthly' as RecurringExpense['cadence'] });
   const [recurringDrafts, setRecurringDrafts] = useState<Record<string, Partial<RecurringExpense>>>({});
   const [cashDrafts, setCashDrafts] = useState<Record<string, Partial<CashAccount>>>({});
 
@@ -244,9 +244,16 @@ export default function FinancePage() {
 
   const addRecurringExpense = async () => {
     if (!expenseForm.name || !expenseForm.amount || !expenseForm.nextChargeDate) return;
+    const aliases = Array.from(new Set([
+      expenseForm.name,
+      expenseForm.vendor,
+      ...expenseForm.aliases.split(',').map((value) => value.trim()),
+      expenseForm.name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(),
+      expenseForm.vendor.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(),
+    ].filter(Boolean)));
     await recurringExpensesService.create({
       name: expenseForm.name,
-      vendor: expenseForm.name,
+      vendor: expenseForm.vendor || expenseForm.name,
       category: expenseForm.category,
       utilizedBy: expenseForm.utilizedBy,
       cadence: expenseForm.cadence,
@@ -257,9 +264,9 @@ export default function FinancePage() {
       paymentAccount: expenseForm.paymentAccount,
       status: 'active',
       source: 'manual',
-      aliases: Array.from(new Set([expenseForm.name, expenseForm.name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()].filter(Boolean))),
+      aliases,
     });
-    setExpenseForm({ name: '', category: 'Other', amount: '', currency: 'AED', nextChargeDate: '', paymentAccount: '', utilizedBy: '', cadence: 'monthly' });
+    setExpenseForm({ name: '', vendor: '', aliases: '', category: 'Other', amount: '', currency: 'AED', nextChargeDate: '', paymentAccount: '', utilizedBy: '', cadence: 'monthly' });
     flash('Recurring expense added.');
   };
 
@@ -379,6 +386,7 @@ export default function FinancePage() {
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <button className="btn btn-outline" onClick={() => runSync('/api/finance/ingest', 'Finance inbox refreshed from Gmail.')} disabled={syncing}><MailSearch size={14} /> Check Email</button>
+          <button className="btn btn-outline" onClick={() => runSync('/api/finance/reprocess-inbox', 'Finance inbox rematched and deduped.')} disabled={syncing}><RefreshCw size={14} /> Reprocess Inbox</button>
           <button className="btn btn-outline" onClick={() => runSync('/api/finance/sync', 'Ledger and forecast refreshed.')} disabled={syncing}><RefreshCw size={14} /> Sync Ledger</button>
           <button className="btn btn-outline" onClick={() => runSync('/api/finance/alerts', 'Finance alerts refreshed.')} disabled={syncing}><Bell size={14} /> Refresh Alerts</button>
         </div>
@@ -559,6 +567,8 @@ export default function FinancePage() {
               {inboxItems.map((item) => {
                 const suggestedTarget = item.suggestedPostingTarget || item.postingTarget || 'ignore';
                 const primaryAction = suggestedTarget === 'payment' ? 'payment' : 'expense';
+                const primaryLabel = item.suggestedRecurringExpenseId ? 'Log Charge' : primaryAction === 'payment' ? 'Post Payment' : 'Post Expense';
+                const recurringLabel = item.suggestedRecurringExpenseId ? 'Update Subscription' : 'Create Subscription';
                 return (
                   <tr key={item.id}>
                     <td>{item.receivedAt ? new Date(item.receivedAt).toLocaleDateString() : '—'}</td>
@@ -578,8 +588,8 @@ export default function FinancePage() {
                     <td><span className={`status-pill status-${item.reviewStatus === 'approved' ? 'paid' : item.reviewStatus === 'rejected' ? 'overdue' : 'pending'}`}>{item.reviewStatus}</span></td>
                     <td>
                       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                        <button className="btn btn-outline" disabled={busyInboxId === item.id || item.reviewStatus !== 'pending'} onClick={() => approveInbox(item, primaryAction)} style={{ padding: '4px 8px' }}><CheckCircle2 size={12} /> Post</button>
-                        <button className="btn btn-outline" disabled={busyInboxId === item.id || item.reviewStatus !== 'pending'} onClick={() => approveInbox(item, 'recurring_expense')} style={{ padding: '4px 8px' }}><RefreshCw size={12} /> Subscription</button>
+                        <button className="btn btn-outline" disabled={busyInboxId === item.id || item.reviewStatus !== 'pending'} onClick={() => approveInbox(item, primaryAction)} style={{ padding: '4px 8px' }}><CheckCircle2 size={12} /> {primaryLabel}</button>
+                        <button className="btn btn-outline" disabled={busyInboxId === item.id || item.reviewStatus !== 'pending'} onClick={() => approveInbox(item, 'recurring_expense')} style={{ padding: '4px 8px' }}><RefreshCw size={12} /> {recurringLabel}</button>
                         <button className="btn btn-outline" disabled={busyInboxId === item.id || item.reviewStatus !== 'pending'} onClick={() => rejectInbox(item)} style={{ padding: '4px 8px' }}><XCircle size={12} /> Ignore</button>
                       </div>
                     </td>
@@ -623,12 +633,15 @@ export default function FinancePage() {
                           {editing ? (
                             <div style={{ display: 'grid', gap: 8 }}>
                               <input className="form-input" value={String(draft.name || '')} onChange={(event) => setRecurringDrafts((current) => ({ ...current, [item.id!]: { ...current[item.id!], name: event.target.value } }))} />
+                              <input className="form-input" value={String(draft.vendor || '')} onChange={(event) => setRecurringDrafts((current) => ({ ...current, [item.id!]: { ...current[item.id!], vendor: event.target.value } }))} placeholder="Vendor" />
+                              <input className="form-input" value={Array.isArray(draft.aliases) ? draft.aliases.join(', ') : ''} onChange={(event) => setRecurringDrafts((current) => ({ ...current, [item.id!]: { ...current[item.id!], aliases: event.target.value.split(',').map((value) => value.trim()).filter(Boolean) } }))} placeholder="Aliases (comma separated)" />
                               <input className="form-input" value={String(draft.category || '')} onChange={(event) => setRecurringDrafts((current) => ({ ...current, [item.id!]: { ...current[item.id!], category: event.target.value } }))} placeholder="Category" />
                             </div>
                           ) : (
                             <div>
                               <div style={{ fontWeight: 600 }}>{item.name}</div>
-                              <div style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>{item.category} · {item.source}</div>
+                              <div style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>{item.vendor || item.category} · {item.source}</div>
+                              {item.aliases && item.aliases.length > 0 && <div style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>Aliases: {item.aliases.join(', ')}</div>}
                             </div>
                           )}
                         </td>
@@ -686,6 +699,8 @@ export default function FinancePage() {
           <div className="card">
             <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: 16 }}>Add Recurring Expense</h3>
             <div className="form-group"><label className="form-label">Name</label><input className="form-input" value={expenseForm.name} onChange={(e) => setExpenseForm({ ...expenseForm, name: e.target.value })} /></div>
+            <div className="form-group"><label className="form-label">Vendor</label><input className="form-input" value={expenseForm.vendor} onChange={(e) => setExpenseForm({ ...expenseForm, vendor: e.target.value })} /></div>
+            <div className="form-group"><label className="form-label">Aliases</label><input className="form-input" value={expenseForm.aliases} onChange={(e) => setExpenseForm({ ...expenseForm, aliases: e.target.value })} placeholder="Comma separated aliases" /></div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               <div className="form-group"><label className="form-label">Amount</label><input className="form-input" type="number" value={expenseForm.amount} onChange={(e) => setExpenseForm({ ...expenseForm, amount: e.target.value })} /></div>
               <div className="form-group"><label className="form-label">Currency</label><select className="form-input" value={expenseForm.currency} onChange={(e) => setExpenseForm({ ...expenseForm, currency: e.target.value })}><option>AED</option><option>USD</option><option>EGP</option><option>SAR</option></select></div>

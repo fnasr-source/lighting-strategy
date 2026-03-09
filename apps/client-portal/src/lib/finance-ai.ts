@@ -239,7 +239,13 @@ Return ONLY valid JSON:
   "matchedInvoiceNumber": null,
   "summary": null,
   "reasoning": null
-}`;
+}
+
+Rules:
+- Only suggest "payment" when the email clearly confirms payment for one of the internal client invoices listed above.
+- If the email is from a vendor or software tool and it matches an existing recurring expense, prefer matching that recurring expense instead of creating a new recurring expense.
+- Vendor receipts, software subscription invoices, and payment processed notices from vendors should not be treated as internal client payments.
+- If this is not a real finance item, set "classification" to "ignore" and "shouldCreateInboxItem" to false.`;
 
   const resp = await fetch(`https://${LOCATION}-aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${LOCATION}/publishers/google/models/${MODEL}:generateContent`, {
     method: 'POST',

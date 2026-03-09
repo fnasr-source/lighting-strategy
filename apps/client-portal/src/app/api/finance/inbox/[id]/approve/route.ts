@@ -4,8 +4,63 @@ import { getAdminDb } from '@/lib/firebase-admin';
 import { verifyApiUser } from '@/lib/api-auth';
 import { syncFinanceAlerts, syncFinanceEntries } from '@/lib/finance-admin';
 import { addMonthsToISODate } from '@/lib/billing';
+import {
+  buildFinanceFingerprint,
+  findBestRecurringExpenseMatch,
+  sanitizeInvoiceReference,
+} from '@/lib/finance-matching';
+import type { RecurringExpense } from '@/lib/firestore';
 
 export const dynamic = 'force-dynamic';
+
+async function resolveRecurringExpenseId(params: {
+  db: FirebaseFirestore.Firestore;
+  requestedId?: string;
+  item: FirebaseFirestore.DocumentData;
+  body: Record<string, unknown>;
+}) {
+  if (params.requestedId) return params.requestedId;
+
+  const recurringSnap = await params.db.collection('recurringExpenses').get();
+  const recurringExpenses = recurringSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() } as RecurringExpense));
+  const match = findBestRecurringExpenseMatch({
+    extractedVendor: String(params.body.vendor || params.item.extractedVendor || ''),
+    sender: String(params.item.sender || ''),
+    subject: String(params.item.subject || ''),
+    bodyText: String(params.body.description || params.item.extractedDescription || ''),
+    amount: Number(params.body.amount ?? params.item.extractedAmount ?? 0),
+    currency: String(params.body.currency || params.item.extractedCurrency || ''),
+    recurringExpenses,
+  });
+  return match?.recurringExpenseId || '';
+}
+
+async function findDuplicateExpense(params: {
+  db: FirebaseFirestore.Firestore;
+  financeFingerprint: string;
+  invoiceReference: string;
+  recurringExpenseId: string;
+  amount: number;
+  currency: string;
+}) {
+  if (params.financeFingerprint) {
+    const byFingerprint = await params.db.collection('expenses').where('financeFingerprint', '==', params.financeFingerprint).limit(1).get();
+    if (!byFingerprint.empty) return byFingerprint.docs[0];
+  }
+
+  if (params.invoiceReference) {
+    const byInvoiceReference = await params.db.collection('expenses').where('invoiceReference', '==', params.invoiceReference).limit(10).get();
+    const exact = byInvoiceReference.docs.find((doc) => {
+      const data = doc.data();
+      return Number(data.amount || 0) === params.amount
+        && String(data.currency || '').toUpperCase() === params.currency.toUpperCase()
+        && String(data.recurringExpenseId || '') === params.recurringExpenseId;
+    });
+    if (exact) return exact;
+  }
+
+  return null;
+}
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await verifyApiUser(req.headers.get('authorization'));
@@ -23,34 +78,72 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   const item = snap.data()!;
   const postingTarget = body.postingTarget || item.postingTarget || 'ignore';
   const now = new Date().toISOString();
-  const linkedRecurringExpenseId = body.linkedRecurringExpenseId || item.suggestedRecurringExpenseId || '';
+  const linkedRecurringExpenseId = await resolveRecurringExpenseId({
+    db,
+    requestedId: body.linkedRecurringExpenseId || item.suggestedRecurringExpenseId || '',
+    item,
+    body,
+  });
   const linkedInvoiceId = body.invoiceId || item.suggestedInvoiceId || '';
+  const financeFingerprint = item.financeFingerprint || buildFinanceFingerprint({
+    classification: item.parsedType,
+    vendor: String(body.vendor || item.extractedVendor || ''),
+    sender: item.sender,
+    invoiceNumber: String(body.invoiceNumber || item.extractedInvoiceNumber || ''),
+    amount: Number(body.amount ?? item.extractedAmount ?? 0),
+    currency: String(body.currency || item.extractedCurrency || ''),
+    invoiceDate: String(body.date || item.extractedInvoiceDate || ''),
+    subject: item.subject,
+    recurringExpenseId: linkedRecurringExpenseId || null,
+    invoiceId: linkedInvoiceId || null,
+  });
+  const invoiceReference = sanitizeInvoiceReference(String(body.invoiceNumber || item.extractedInvoiceNumber || ''));
   const updates: Record<string, unknown> = {
     reviewStatus: 'approved',
     postingTarget,
+    linkedRecurringExpenseId: linkedRecurringExpenseId || item.linkedRecurringExpenseId || '',
+    financeFingerprint,
     updatedAt: admin.firestore.FieldValue.serverTimestamp(),
   };
 
   if (postingTarget === 'expense') {
-    const expenseRef = await db.collection('expenses').add({
-      description: body.description || item.extractedDescription || item.subject || 'Imported finance expense',
-      amount: Number(body.amount ?? item.extractedAmount ?? 0),
-      currency: body.currency || item.extractedCurrency || 'AED',
-      category: body.category || 'other',
-      date: body.date || item.extractedInvoiceDate || now.slice(0, 10),
-      dueDate: body.dueDate || item.extractedDueDate || item.extractedInvoiceDate || now.slice(0, 10),
-      vendor: body.vendor || item.extractedVendor || '',
-      notes: body.notes || item.rawSnippet || '',
-      source: 'email',
-      financeInboxItemId: id,
-      recurringExpenseId: linkedRecurringExpenseId || undefined,
-      paymentAccount: body.paymentAccount || '',
-      status: body.status || 'approved',
-      approvalState: 'approved',
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+    const amount = Number(body.amount ?? item.extractedAmount ?? 0);
+    const currency = String(body.currency || item.extractedCurrency || 'AED');
+    const duplicateExpense = await findDuplicateExpense({
+      db,
+      financeFingerprint,
+      invoiceReference,
+      recurringExpenseId: linkedRecurringExpenseId,
+      amount,
+      currency,
     });
-    updates.linkedExpenseId = expenseRef.id;
+
+    if (duplicateExpense) {
+      updates.linkedExpenseId = duplicateExpense.id;
+      updates.duplicateOfInboxItemId = duplicateExpense.get('financeInboxItemId') || '';
+    } else {
+      const expenseRef = await db.collection('expenses').add({
+        description: body.description || item.extractedDescription || item.subject || 'Imported finance expense',
+        amount,
+        currency,
+        category: body.category || 'other',
+        date: body.date || item.extractedInvoiceDate || now.slice(0, 10),
+        dueDate: body.dueDate || item.extractedDueDate || item.extractedInvoiceDate || now.slice(0, 10),
+        vendor: body.vendor || item.extractedVendor || '',
+        notes: body.notes || item.rawSnippet || '',
+        source: 'email',
+        financeInboxItemId: id,
+        financeFingerprint,
+        invoiceReference: invoiceReference || undefined,
+        recurringExpenseId: linkedRecurringExpenseId || undefined,
+        paymentAccount: body.paymentAccount || '',
+        status: body.status || 'approved',
+        approvalState: 'approved',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+      updates.linkedExpenseId = expenseRef.id;
+    }
     if (linkedRecurringExpenseId) {
       const recurringRef = db.collection('recurringExpenses').doc(linkedRecurringExpenseId);
       const recurringSnap = await recurringRef.get();
@@ -62,6 +155,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
           lastChargedAt: body.date || item.extractedInvoiceDate || now.slice(0, 10),
           lastInvoiceAmount: Number(body.amount ?? item.extractedAmount ?? recurring.amount ?? 0),
           lastEmailSubject: item.subject || '',
+          status: recurring.status === 'cancelled' ? 'active' : recurring.status || 'active',
           nextChargeDate: addMonthsToISODate(baseDate, intervalMonths),
           updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         }, { merge: true });
@@ -89,6 +183,10 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         lastChargedAt: body.date || item.extractedInvoiceDate || now.slice(0, 10),
         lastInvoiceAmount: Number(body.amount ?? item.extractedAmount ?? 0),
         lastEmailSubject: item.subject || '',
+        aliases: admin.firestore.FieldValue.arrayUnion(
+          String(body.name || item.extractedVendor || item.subject || '').trim(),
+          String(body.vendor || item.extractedVendor || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(),
+        ),
         updatedAt: admin.firestore.FieldValue.serverTimestamp(),
       }, { merge: true });
       updates.linkedRecurringExpenseId = linkedRecurringExpenseId;

@@ -1,5 +1,12 @@
 import { getSecret } from '@/lib/secrets';
 import { analyzeFinanceEmail, type FinanceAiAttachmentInput } from '@/lib/finance-ai';
+import {
+  buildFinanceFingerprint,
+  findBestInvoiceMatch,
+  findBestRecurringExpenseMatch,
+  inferFinanceClassification,
+  inferFinancePostingTarget,
+} from '@/lib/finance-matching';
 import type { FinanceInboxAttachment, FinanceInboxItem, FinanceSettings, Invoice, RecurringExpense } from '@/lib/firestore';
 import { DEFAULT_FINANCE_LABELS } from '@/lib/finance';
 
@@ -140,13 +147,6 @@ function buildConfidence(parsedType: FinanceInboxItem['parsedType'], amount?: nu
   if (currency) confidence += 0.1;
   if ((attachments || []).length > 0) confidence += 0.1;
   return Math.min(confidence, 0.95);
-}
-
-function mapAiClassification(classification?: string): FinanceInboxItem['parsedType'] {
-  if (classification === 'vendor_invoice' || classification === 'receipt' || classification === 'payment_confirmation' || classification === 'bank_notice') {
-    return classification;
-  }
-  return 'unknown';
 }
 
 function isTextMime(mimeType?: string, filename?: string) {
@@ -329,6 +329,24 @@ export async function buildFinanceInboxItem(
   },
 ): Promise<Omit<FinanceInboxItem, 'id' | 'createdAt' | 'updatedAt'> | null> {
   const heuristic = parseFinanceMessage(fetched.message, fetched.matchedLabels);
+  const initialRecurringMatch = findBestRecurringExpenseMatch({
+    extractedVendor: heuristic.extractedVendor,
+    sender: heuristic.sender,
+    subject: heuristic.subject,
+    bodyText: heuristic.extractedDescription,
+    amount: heuristic.extractedAmount,
+    currency: heuristic.extractedCurrency,
+    recurringExpenses: params.recurringExpenses,
+  });
+  const initialInvoiceMatch = findBestInvoiceMatch({
+    sender: heuristic.sender,
+    subject: heuristic.subject,
+    bodyText: heuristic.extractedDescription,
+    invoiceNumber: heuristic.extractedInvoiceNumber,
+    amount: heuristic.extractedAmount,
+    currency: heuristic.extractedCurrency,
+    invoices: params.invoices,
+  });
   const accessToken = await getAccessToken();
   const { aiAttachments, storedAttachments } = await buildAttachmentContexts(fetched.message, heuristic.attachments || [], accessToken);
 
@@ -341,8 +359,12 @@ export async function buildFinanceInboxItem(
       labelNames: fetched.matchedLabels,
       heuristic,
       attachments: aiAttachments,
-      recurringExpenses: params.recurringExpenses,
-      invoices: params.invoices,
+      recurringExpenses: initialRecurringMatch
+        ? params.recurringExpenses.filter((item) => item.id === initialRecurringMatch.recurringExpenseId)
+        : params.recurringExpenses,
+      invoices: initialInvoiceMatch
+        ? params.invoices.filter((item) => item.id === initialInvoiceMatch.invoiceId)
+        : params.invoices,
     });
   } catch (error) {
     console.error('Finance AI analysis failed:', error);
@@ -352,28 +374,86 @@ export async function buildFinanceInboxItem(
     return null;
   }
 
+  const extractedVendor = ai?.vendor || heuristic.extractedVendor;
+  const extractedAmount = typeof ai?.amount === 'number' ? ai.amount : heuristic.extractedAmount;
+  const extractedCurrency = ai?.currency || heuristic.extractedCurrency;
+  const extractedInvoiceNumber = ai?.invoiceNumber || heuristic.extractedInvoiceNumber;
+  const extractedInvoiceDate = ai?.invoiceDate || heuristic.extractedInvoiceDate;
+  const extractedDueDate = ai?.dueDate || heuristic.extractedDueDate;
+  const recurrenceHint = ai?.cadenceHint || heuristic.recurrenceHint;
+
+  const recurringMatch = findBestRecurringExpenseMatch({
+    extractedVendor,
+    sender: heuristic.sender,
+    subject: heuristic.subject,
+    bodyText: heuristic.extractedDescription,
+    amount: extractedAmount,
+    currency: extractedCurrency,
+    recurringExpenses: params.recurringExpenses,
+  });
+  const invoiceMatch = findBestInvoiceMatch({
+    sender: heuristic.sender,
+    subject: heuristic.subject,
+    bodyText: heuristic.extractedDescription,
+    invoiceNumber: extractedInvoiceNumber,
+    amount: extractedAmount,
+    currency: extractedCurrency,
+    invoices: params.invoices,
+  });
+
+  const parsedType = inferFinanceClassification({
+    subject: heuristic.subject,
+    bodyText: heuristic.extractedDescription,
+    labelNames: fetched.matchedLabels,
+    aiClassification: ai?.classification as FinanceInboxItem['parsedType'] | 'ignore' | undefined,
+    heuristicClassification: heuristic.parsedType,
+  });
+  const postingTarget = inferFinancePostingTarget({
+    classification: parsedType,
+    labelNames: fetched.matchedLabels,
+    subject: heuristic.subject,
+    bodyText: heuristic.extractedDescription,
+    recurringMatch,
+    invoiceMatch,
+    aiTarget: ai?.suggestedPostingTarget,
+    recurrenceHint,
+  });
+  const financeFingerprint = buildFinanceFingerprint({
+    classification: parsedType,
+    vendor: extractedVendor,
+    sender: heuristic.sender,
+    invoiceNumber: extractedInvoiceNumber,
+    amount: extractedAmount,
+    currency: extractedCurrency,
+    invoiceDate: extractedInvoiceDate,
+    subject: heuristic.subject,
+    recurringExpenseId: recurringMatch?.recurringExpenseId,
+    invoiceId: invoiceMatch?.invoiceId,
+  });
+
   return {
     ...heuristic,
     labelNames: fetched.matchedLabels,
     attachments: storedAttachments,
-    parsedType: ai ? mapAiClassification(ai.classification) : heuristic.parsedType,
-    extractedVendor: ai?.vendor || heuristic.extractedVendor,
-    extractedAmount: typeof ai?.amount === 'number' ? ai.amount : heuristic.extractedAmount,
-    extractedCurrency: ai?.currency || heuristic.extractedCurrency,
-    extractedInvoiceNumber: ai?.invoiceNumber || heuristic.extractedInvoiceNumber,
-    extractedInvoiceDate: ai?.invoiceDate || heuristic.extractedInvoiceDate,
-    extractedDueDate: ai?.dueDate || heuristic.extractedDueDate,
-    recurrenceHint: ai?.cadenceHint || heuristic.recurrenceHint,
+    parsedType,
+    extractedVendor,
+    extractedAmount,
+    extractedCurrency,
+    extractedInvoiceNumber,
+    extractedInvoiceDate,
+    extractedDueDate,
+    recurrenceHint,
     confidence: typeof ai?.confidence === 'number' ? ai.confidence : heuristic.confidence,
-    postingTarget: ai?.suggestedPostingTarget || heuristic.postingTarget,
-    suggestedPostingTarget: ai?.suggestedPostingTarget || heuristic.postingTarget,
-    suggestedRecurringExpenseId: ai?.matchedRecurringExpenseId || undefined,
-    suggestedRecurringExpenseName: ai?.matchedRecurringExpenseName || undefined,
-    suggestedInvoiceId: ai?.matchedInvoiceId || undefined,
-    suggestedInvoiceNumber: ai?.matchedInvoiceNumber || undefined,
+    postingTarget,
+    suggestedPostingTarget: postingTarget,
+    suggestedRecurringExpenseId: recurringMatch?.recurringExpenseId || ai?.matchedRecurringExpenseId || undefined,
+    suggestedRecurringExpenseName: recurringMatch?.recurringExpenseName || ai?.matchedRecurringExpenseName || undefined,
+    suggestedInvoiceId: invoiceMatch?.invoiceId || ai?.matchedInvoiceId || undefined,
+    suggestedInvoiceNumber: invoiceMatch?.invoiceNumber || ai?.matchedInvoiceNumber || undefined,
     aiSummary: ai?.summary || undefined,
     aiReasoning: ai?.reasoning || undefined,
     analysisVersion: ai ? 'finance-ai-v1' : 'heuristic-only',
     parserVersion: ai ? 'finance-gmail-v2' : heuristic.parserVersion,
+    financeFingerprint,
   };
 }

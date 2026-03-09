@@ -38,6 +38,13 @@ export async function POST(req: NextRequest) {
           skipped += 1;
           continue;
         }
+        if (parsed.financeFingerprint) {
+          const existingFingerprint = await db.collection('financeInboxItems').where('financeFingerprint', '==', parsed.financeFingerprint).limit(1).get();
+          if (!existingFingerprint.empty) {
+            skipped += 1;
+            continue;
+          }
+        }
         const sanitized = JSON.parse(JSON.stringify(parsed));
         await db.collection('financeInboxItems').add({
           ...sanitized,

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "Push blocked: the worktree is not clean."
+  echo
+  echo "Reason:"
+  echo "- pushing with uncommitted changes makes it easy to leave work behind locally"
+  echo "- commit or stash everything first, then push again"
+  echo
+  echo "Pending changes:"
+  git status --short
+  exit 1
+fi
+
+exit 0

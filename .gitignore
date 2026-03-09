@@ -23,6 +23,15 @@ ui-debug.log
 .DS_Store
 AW-Dashboards.zip
 
+# Python cache / local runtime artifacts
+__pycache__/
+*.py[cod]
+
+# Local lock / temp files
+*.lock
+*.tmp
+*.temp
+
 # Secret management scripts (contain keys)
 firebase/inject-secrets.mjs
 firebase/fix-secrets.mjs

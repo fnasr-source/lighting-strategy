@@ -110,6 +110,21 @@ npm run build
 # Deploy happens automatically via GitHub → Vercel
 ```
 
+## Git Guardrails
+
+This repo is configured to block `git push` when the worktree is dirty.
+
+Why:
+- a push only sends committed changes,
+- local modified/untracked files can otherwise be left behind across chats and sessions.
+
+Expected workflow:
+1. Run `git status`
+2. Commit or stash all changes
+3. Push only from a clean worktree
+
+The repo hook lives at `.githooks/pre-push`.
+
 ## Running Migration
 
 ```bash

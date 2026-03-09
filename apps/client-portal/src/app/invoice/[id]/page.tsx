@@ -45,6 +45,15 @@ interface BillingClarity {
     scopeIncluded?: string[];
     scopeExcluded?: string[];
 }
+interface ExchangeRateSnapshot {
+    used: number;
+    date: string;
+    sourceUrl: string;
+    pricingRule?: string;
+    baseAmountUsd?: number;
+    convertedAmount?: number;
+    roundedAmount?: number;
+}
 interface InvoiceData {
     id: string; invoiceNumber: string; clientName: string; lineItems: LineItem[];
     subtotal: number; tax: number; totalDue: number; currency: string; status: string;
@@ -54,6 +63,11 @@ interface InvoiceData {
     paymentSplit?: PaymentSplit;
     optionalAddOns?: InvoiceOptionalAddOn[];
     billingClarity?: BillingClarity;
+    exchangeRateSnapshot?: ExchangeRateSnapshot;
+    exchangeRateUsed?: number;
+    exchangeRateDate?: string;
+    exchangeRateSourceUrl?: string;
+    pricingRule?: string;
 }
 interface CompanyData { name: string; tagline: string; email: string; phone: string; address: string; }
 
@@ -178,6 +192,16 @@ export default function PublicInvoicePage() {
     const dynamicSubtotal = invoice.subtotal + pricing.optionalAmount;
     const dynamicTotalDue = pricing.totalAmount;
     const billingClarity = invoice.billingClarity;
+    const exchangeRate = invoice.exchangeRateSnapshot || (
+        invoice.exchangeRateUsed && invoice.exchangeRateDate && invoice.exchangeRateSourceUrl
+            ? {
+                used: invoice.exchangeRateUsed,
+                date: invoice.exchangeRateDate,
+                sourceUrl: invoice.exchangeRateSourceUrl,
+                pricingRule: invoice.pricingRule,
+            }
+            : null
+    );
     const claritySchedule = Array.isArray(billingClarity?.schedule)
         ? billingClarity.schedule.filter((row) => row?.label && row?.value)
         : [];
@@ -187,6 +211,7 @@ export default function PublicInvoicePage() {
     const scopeExcluded = Array.isArray(billingClarity?.scopeExcluded)
         ? billingClarity.scopeExcluded.filter(Boolean)
         : [];
+    const subtotalLabel = (invoice.discount ?? 0) > 0 ? 'List Price' : 'Subtotal';
     const elementsOptions: StripeElementsOptions = clientSecret ? {
         clientSecret, appearance,
         fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }],
@@ -240,12 +265,19 @@ export default function PublicInvoicePage() {
                         {(invoice.lineItems || []).map((item, i) => {
                             const isZeroAmount = item.amount === 0;
                             const isInformational = isZeroAmount && item.rate === 0;
+                            const originalLineAmount = Math.max(0, item.qty * item.rate);
+                            const hasInlineDiscount = !isZeroAmount && item.rate > 0 && originalLineAmount > item.amount;
                             return (
                                 <div key={i} className="inv-item">
                                     <div className="inv-item__desc">
                                         <p className="inv-item__name">{item.description}</p>
                                         {isInformational ? (
                                             <p className="inv-item__meta">Reference only · not charged</p>
+                                        ) : hasInlineDiscount ? (
+                                            <p className="inv-item__meta">
+                                                <span className="inv-item__strike">{fmtAmt(originalLineAmount)} {invoice.currency}</span>
+                                                <span className="inv-item__discount-note">Agreed price shown at right</span>
+                                            </p>
                                         ) : item.amount === 0 && item.rate > 0 ? (
                                             <p className="inv-item__meta"><span style={{ textDecoration: 'line-through', color: '#999' }}>{fmtAmt(item.rate)} {invoice.currency}</span></p>
                                         ) : (
@@ -293,7 +325,7 @@ export default function PublicInvoicePage() {
                     {/* Totals */}
                     <div className="inv-totals">
                         <div className="inv-totals__row">
-                            <span>Subtotal</span><span>{fmtAmt(dynamicSubtotal)} {invoice.currency}</span>
+                            <span>{subtotalLabel}</span><span>{fmtAmt(dynamicSubtotal)} {invoice.currency}</span>
                         </div>
                         {pricing.optionalAmount > 0 && (
                             <div className="inv-totals__row">
@@ -382,6 +414,32 @@ export default function PublicInvoicePage() {
                                         {scopeExcluded.map((item, i) => <li key={i}>{item}</li>)}
                                     </ul>
                                 </>
+                            )}
+                        </div>
+                    )}
+
+                    {exchangeRate && (
+                        <div className="inv-clarity" style={{ marginTop: 16 }}>
+                            <p className="inv-clarity__title">Exchange Rate Snapshot</p>
+                            <div className="inv-clarity__row">
+                                <span>Rate Used</span>
+                                <strong>1 USD = {exchangeRate.used.toFixed(2)} EGP</strong>
+                            </div>
+                            <div className="inv-clarity__row">
+                                <span>Reference Date</span>
+                                <span>{fmt(exchangeRate.date)}</span>
+                            </div>
+                            <div className="inv-clarity__row">
+                                <span>Source</span>
+                                <a href={exchangeRate.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#001a70', fontWeight: 600 }}>
+                                    {exchangeRate.sourceUrl.replace(/^https?:\/\//, '')}
+                                </a>
+                            </div>
+                            {exchangeRate.pricingRule && (
+                                <div className="inv-clarity__row">
+                                    <span>Pricing Rule</span>
+                                    <span>{exchangeRate.pricingRule}</span>
+                                </div>
                             )}
                         </div>
                     )}
@@ -772,6 +830,8 @@ const pageStyles = `
 .inv-item__desc { flex: 1; min-width: 0; }
 .inv-item__name { margin: 0; font-size: 0.88rem; font-weight: 600; color: #1a1a2e; }
 .inv-item__meta { margin: 2px 0 0; font-size: 0.75rem; color: #777; }
+.inv-item__strike { text-decoration: line-through; color: #999; margin-right: 8px; }
+.inv-item__discount-note { color: #0f766e; font-weight: 600; }
 .inv-item__amount { margin: 0; font-weight: 700; font-size: 0.92rem; white-space: nowrap; color: #1a1a2e; }
 .inv-item--addon {
     align-items: center;

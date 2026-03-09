@@ -59,12 +59,20 @@ node Proposals/Autonomous-Proposal-System/scripts/generate-proposal-pdf.js \
   "Proposals/Meguiars-Egypt/proposal/Meguiars Egypt — Growth Partnership Proposal.pdf"
 ```
 
+## Current Commercial Status
+
+- Final agreed commercial summary now lives in [`../10-One-Page-Proposal.html`](../10-One-Page-Proposal.html)
+- Internal commercial record now lives in [`../06-Offer-and-Proposal.md`](../06-Offer-and-Proposal.md)
+- The March 8 alignment is documented in:
+  - [`../meetings/2026-03-08-decision-summary.md`](../meetings/2026-03-08-decision-summary.md)
+  - [`../09-Meeting-Update-2026-03-08.md`](../09-Meeting-Update-2026-03-08.md)
+
 ## What Still Needs Work
 
-- [ ] **Pricing:** Specific numbers to be added after alignment meeting with Dr. Hussam
 - [ ] **Final copy review:** Arabic subtitles may need native speaker polish
 - [ ] **Client-specific imagery:** Consider adding real photos from Meguiar's Egypt showroom/products
 - [ ] **PDF regeneration:** Regenerate PDF after final content is locked
+- [ ] **Case studies:** Once available, add a page with past campaign results
 
 ---
 

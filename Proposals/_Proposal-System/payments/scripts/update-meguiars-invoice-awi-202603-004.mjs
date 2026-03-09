@@ -1,5 +1,5 @@
 /**
- * Update invoice AWI-202603-004 (Meguiar's Egypt) with optional add-on metadata.
+ * Update invoice AWI-202603-004 (Meguiar's Egypt) to the final March 8 commercial structure.
  *
  * Usage:
  *   cd firebase && node ../Proposals/_Proposal-System/payments/scripts/update-meguiars-invoice-awi-202603-004.mjs
@@ -40,76 +40,67 @@ async function updateInvoice() {
     const updateData = {
         lineItems: [
             {
-                description: 'Landing Pages & Funnel Execution — Month 1 (Monthly Upfront)',
+                description: 'E-Commerce Store Build & Launch — Agreed Start Price (One-Time)',
                 qty: 1,
-                rate: 41250,
-                amount: 41250,
+                rate: 45000,
+                amount: 40000,
             },
             {
-                description: 'Billing schedule (reference): Months 2–4 at 41,250 EGP/month upfront, then 32,500 EGP/month from Month 5 onward.',
+                description: 'Growth Management & Ads Oversight — Month 1 (Monthly Upfront)',
+                qty: 1,
+                rate: 32500,
+                amount: 15000,
+            },
+            {
+                description: 'Commercial note (reference): Month 2 onward starts at 15,000 EGP/month upfront, with future commercial review tied to initial e-commerce growth / KPI review.',
                 qty: 1,
                 rate: 0,
                 amount: 0,
             },
         ],
-        subtotal: 41250,
+        subtotal: 77500,
         tax: 0,
-        discount: 0,
-        totalDue: 41250,
+        discount: 22500,
+        discountLabel: 'Launch pricing adjustment',
+        totalDue: 55000,
         currency: 'EGP',
-        optionalAddOns: [
-            {
-                id: 'full-ecommerce-build-addon',
-                description: 'Optional: Full E-commerce Build Add-On (One-Time)',
-                amount: 28000,
-                defaultSelected: false,
-                selectable: true,
-            },
-        ],
-        optionalItems: [
-            {
-                id: 'full-ecommerce-build-addon',
-                label: 'Full E-commerce Build Add-On',
-                description: 'Optional one-time add-on (excluded from default total).',
-                qty: 1,
-                amount: 28000,
-                currency: 'EGP',
-                selected: false,
-                uiType: 'checkbox',
-                affectsTotal: true,
-            },
-        ],
+        optionalAddOns: [],
+        optionalItems: [],
         billingClarity: {
-            title: 'What You Are Paying For',
-            dueNowLabel: 'Due now (to start Month 1)',
+            title: 'What This Payment Covers',
+            dueNowLabel: 'Due now to begin build + Month 1 management',
             schedule: [
                 {
-                    label: 'Months 2-4 (monthly upfront)',
-                    value: '41,250 EGP / month',
+                    label: 'Month 2 onward (monthly upfront)',
+                    value: '15,000 EGP / month at launch level',
                 },
                 {
-                    label: 'From Month 5 (monthly upfront)',
-                    value: '32,500 EGP / month',
+                    label: 'Commercial review',
+                    value: 'Step-up reviewed only after initial growth / KPI review',
                 },
             ],
             scopeIncluded: [
-                'Landing page and funnel execution for conversion growth',
-                'Lead flow setup and optimization-focused execution',
-                'Direct-response campaign execution tied to funnel outcomes',
+                'E-commerce store build and launch setup',
+                'Month 1 growth management and ads oversight',
+                'Tracking, reporting, and performance visibility',
+                'Coordination with Promolinks / content side on performance requirements',
             ],
             scopeExcluded: [
-                'Full e-commerce build is not included unless the optional add-on is selected',
+                'Ad spend is paid directly by the client',
+                'Content production / filming execution is not included in this amount',
+                'Future phase systems are excluded unless separately approved',
             ],
         },
-        notes: 'Option A applied with monthly-upfront structure. Optional e-commerce add-on (28,000 EGP one-time) is outside the default total and should only be included when selected.',
+        notes: 'Final March 8 commercial alignment applied. E-commerce build discounted from 45,000 EGP to 40,000 EGP. Monthly management launch level discounted from 32,500 EGP to 15,000 EGP/month upfront. Future uplift is subject to initial e-commerce growth and KPI review.',
         updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     };
 
     await doc.ref.update(updateData);
 
     console.log('✅ Invoice updated successfully.');
-    console.log('   Default due now: 41,250 EGP');
-    console.log('   Optional add-on: +28,000 EGP (unchecked by default)');
+    console.log('   List price: 77,500 EGP');
+    console.log('   Launch pricing adjustment: -22,500 EGP');
+    console.log('   Total due now: 55,000 EGP');
     console.log(`\n📄 Invoice URL: https://my.admireworks.com/invoice/${doc.id}`);
 }
 

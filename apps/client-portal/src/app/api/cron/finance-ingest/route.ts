@@ -35,8 +35,9 @@ export async function POST(req: NextRequest) {
         }
 
         const parsed = parseFinanceMessage(message, settings.watchedLabels);
+        const sanitized = JSON.parse(JSON.stringify(parsed));
         await db.collection('financeInboxItems').add({
-          ...parsed,
+          ...sanitized,
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
           updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         });

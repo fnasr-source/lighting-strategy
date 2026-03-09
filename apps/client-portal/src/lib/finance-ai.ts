@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { GoogleAuth } from 'google-auth-library';
 import type { FinanceInboxItem, Invoice, RecurringExpense } from '@/lib/firestore';
+import { getSecret } from '@/lib/secrets';
 
 const PROJECT_ID = 'admireworks---internal-os';
 const LOCATION = 'us-central1';
@@ -42,7 +43,11 @@ let authClient: Awaited<ReturnType<GoogleAuth['getClient']>> | null = null;
 async function getAccessToken(): Promise<string> {
   if (!authClient) {
     const saPath = path.resolve(process.cwd(), process.env.FIREBASE_SERVICE_ACCOUNT_PATH || '../../firebase/service-account.json');
-    const auth = new GoogleAuth(fs.existsSync(saPath) ? {
+    const serviceAccountJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON || await getSecret('GOOGLE_SERVICE_ACCOUNT_JSON');
+    const auth = new GoogleAuth(serviceAccountJson ? {
+      credentials: JSON.parse(serviceAccountJson),
+      scopes: ['https://www.googleapis.com/auth/cloud-platform'],
+    } : fs.existsSync(saPath) ? {
       credentials: JSON.parse(fs.readFileSync(saPath, 'utf8')),
       scopes: ['https://www.googleapis.com/auth/cloud-platform'],
     } : {

@@ -65,6 +65,8 @@ const DEFAULT_SETTINGS: FinanceSettings = {
 
 const TABS = ['overview', 'revenue', 'inbox', 'recurring', 'cash', 'settings'] as const;
 type Tab = (typeof TABS)[number];
+type InboxFilter = 'pending' | 'all' | 'matched' | 'unmatched' | 'duplicates' | 'approved' | 'rejected';
+type RecurringStatusFilter = 'active' | 'paused' | 'cancelled' | 'all';
 
 function fmtAmount(value: number, currency: string) {
   return `${Math.round(value || 0).toLocaleString()} ${currency}`;
@@ -114,7 +116,8 @@ export default function FinancePage() {
   const [busyInboxId, setBusyInboxId] = useState('');
   const [syncing, setSyncing] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-  const [inboxFilter, setInboxFilter] = useState<'pending' | 'all'>('pending');
+  const [inboxFilter, setInboxFilter] = useState<InboxFilter>('pending');
+  const [recurringStatusFilter, setRecurringStatusFilter] = useState<RecurringStatusFilter>('active');
   const [expenseSearch, setExpenseSearch] = useState('');
   const [editingRecurringId, setEditingRecurringId] = useState('');
   const [editingCashId, setEditingCashId] = useState('');
@@ -176,14 +179,37 @@ export default function FinancePage() {
   const activeSubscriptions = useMemo(() => recurringExpenses.filter((item) => item.status === 'active'), [recurringExpenses]);
   const filteredRecurringExpenses = useMemo(() => {
     const query = expenseSearch.trim().toLowerCase();
-    const base = recurringExpenses;
+    const base = recurringExpenses.filter((item) => recurringStatusFilter === 'all' || item.status === recurringStatusFilter);
     if (!query) return base;
     return base.filter((item) => `${item.name} ${item.vendor || ''} ${item.category} ${item.paymentAccount || ''}`.toLowerCase().includes(query));
-  }, [recurringExpenses, expenseSearch]);
+  }, [recurringExpenses, expenseSearch, recurringStatusFilter]);
   const inboxItems = useMemo(() => {
-    const base = inboxFilter === 'pending' ? financeInbox.filter((item) => item.reviewStatus === 'pending') : financeInbox;
+    const base = financeInbox.filter((item) => {
+      if (inboxFilter === 'all') return true;
+      if (inboxFilter === 'pending') return item.reviewStatus === 'pending';
+      if (inboxFilter === 'approved') return item.reviewStatus === 'approved';
+      if (inboxFilter === 'rejected') return item.reviewStatus === 'rejected';
+      if (inboxFilter === 'matched') return !!item.suggestedRecurringExpenseId || !!item.suggestedInvoiceId;
+      if (inboxFilter === 'unmatched') return !item.suggestedRecurringExpenseId && !item.suggestedInvoiceId && !item.duplicateOfInboxItemId;
+      if (inboxFilter === 'duplicates') return !!item.duplicateOfInboxItemId;
+      return true;
+    });
     return [...base].sort((a, b) => (b.receivedAt || '').localeCompare(a.receivedAt || ''));
   }, [financeInbox, inboxFilter]);
+  const inboxSummary = useMemo(() => ({
+    pending: financeInbox.filter((item) => item.reviewStatus === 'pending').length,
+    approved: financeInbox.filter((item) => item.reviewStatus === 'approved').length,
+    rejected: financeInbox.filter((item) => item.reviewStatus === 'rejected').length,
+    matched: financeInbox.filter((item) => item.suggestedRecurringExpenseId || item.suggestedInvoiceId).length,
+    duplicates: financeInbox.filter((item) => item.duplicateOfInboxItemId).length,
+    unmatched: financeInbox.filter((item) => !item.suggestedRecurringExpenseId && !item.suggestedInvoiceId && !item.duplicateOfInboxItemId).length,
+  }), [financeInbox]);
+  const recurringSummary = useMemo(() => ({
+    active: recurringExpenses.filter((item) => item.status === 'active').length,
+    paused: recurringExpenses.filter((item) => item.status === 'paused').length,
+    cancelled: recurringExpenses.filter((item) => item.status === 'cancelled').length,
+    all: recurringExpenses.length,
+  }), [recurringExpenses]);
   const clientsMissingCadence = useMemo(() => {
     const recurringClientIds = new Set(revenueTemplates.map((item) => item.clientId));
     return clients.filter((client) => client.status === 'active' && !client.billingCadence && !recurringClientIds.has(client.id || ''));
@@ -554,14 +580,30 @@ export default function FinancePage() {
         <div className="card" style={{ overflow: 'auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
             <h3 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Finance Inbox Review</h3>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button className="btn btn-outline" style={{ padding: '6px 10px', background: inboxFilter === 'pending' ? 'var(--muted-bg)' : undefined }} onClick={() => setInboxFilter('pending')}>Pending</button>
-              <button className="btn btn-outline" style={{ padding: '6px 10px', background: inboxFilter === 'all' ? 'var(--muted-bg)' : undefined }} onClick={() => setInboxFilter('all')}>All</button>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {[
+                ['pending', `Pending (${inboxSummary.pending})`],
+                ['matched', `Matched (${inboxSummary.matched})`],
+                ['unmatched', `Unmatched (${inboxSummary.unmatched})`],
+                ['duplicates', `Duplicates (${inboxSummary.duplicates})`],
+                ['approved', `Approved (${inboxSummary.approved})`],
+                ['rejected', `Rejected (${inboxSummary.rejected})`],
+                ['all', `All (${financeInbox.length})`],
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  className="btn btn-outline"
+                  style={{ padding: '6px 10px', background: inboxFilter === value ? 'var(--muted-bg)' : undefined }}
+                  onClick={() => setInboxFilter(value as InboxFilter)}
+                >
+                  {label}
+                </button>
+              ))}
             </div>
           </div>
           <table className="data-table">
             <thead>
-              <tr><th>Received</th><th>Sender</th><th>Subject</th><th>AI Decision</th><th>Amount</th><th>Status</th><th>Actions</th></tr>
+              <tr><th>Received</th><th>Sender</th><th>Subject</th><th>Decision</th><th>Match</th><th>Amount</th><th>Status</th><th>Actions</th></tr>
             </thead>
             <tbody>
               {inboxItems.map((item) => {
@@ -581,8 +623,27 @@ export default function FinancePage() {
                     <td>
                       <div style={{ fontWeight: 600 }}>{item.suggestedPostingTarget || item.parsedType}</div>
                       {item.aiSummary && <div style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>{item.aiSummary}</div>}
-                      {item.suggestedRecurringExpenseName && <div style={{ fontSize: '0.72rem', color: 'var(--muted)' }}><Link2 size={11} style={{ display: 'inline-flex', marginRight: 4 }} />Match: {item.suggestedRecurringExpenseName}</div>}
-                      {item.suggestedInvoiceNumber && <div style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>Invoice match: {item.suggestedInvoiceNumber}</div>}
+                    </td>
+                    <td>
+                      {item.suggestedRecurringExpenseName && (
+                        <div style={{ fontSize: '0.74rem', color: 'var(--muted)' }}>
+                          <Link2 size={11} style={{ display: 'inline-flex', marginRight: 4 }} />
+                          {item.suggestedRecurringExpenseName}
+                        </div>
+                      )}
+                      {item.suggestedInvoiceNumber && (
+                        <div style={{ fontSize: '0.74rem', color: 'var(--muted)' }}>
+                          Invoice: {item.suggestedInvoiceNumber}
+                        </div>
+                      )}
+                      {item.duplicateOfInboxItemId && (
+                        <div style={{ fontSize: '0.74rem', color: 'var(--danger, #dc2626)' }}>
+                          Duplicate of existing item
+                        </div>
+                      )}
+                      {!item.suggestedRecurringExpenseName && !item.suggestedInvoiceNumber && !item.duplicateOfInboxItemId && (
+                        <span style={{ color: 'var(--muted)', fontSize: '0.74rem' }}>No match yet</span>
+                      )}
                     </td>
                     <td>{typeof item.extractedAmount === 'number' ? `${item.extractedAmount.toLocaleString()} ${item.extractedCurrency || ''}` : '—'}</td>
                     <td><span className={`status-pill status-${item.reviewStatus === 'approved' ? 'paid' : item.reviewStatus === 'rejected' ? 'overdue' : 'pending'}`}>{item.reviewStatus}</span></td>
@@ -597,7 +658,7 @@ export default function FinancePage() {
                 );
               })}
               {inboxItems.length === 0 && (
-                <tr><td colSpan={7} style={{ textAlign: 'center', color: 'var(--muted)', padding: 24 }}>No finance inbox items for this filter.</td></tr>
+                <tr><td colSpan={8} style={{ textAlign: 'center', color: 'var(--muted)', padding: 24 }}>No finance inbox items for this filter.</td></tr>
               )}
             </tbody>
           </table>
@@ -611,6 +672,21 @@ export default function FinancePage() {
               <h3 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Recurring Expenses</h3>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <input className="form-input" style={{ width: 220 }} value={expenseSearch} onChange={(event) => setExpenseSearch(event.target.value)} placeholder="Search subscriptions" />
+                {[
+                  ['active', `Active (${recurringSummary.active})`],
+                  ['paused', `Paused (${recurringSummary.paused})`],
+                  ['cancelled', `Cancelled (${recurringSummary.cancelled})`],
+                  ['all', `All (${recurringSummary.all})`],
+                ].map(([value, label]) => (
+                  <button
+                    key={value}
+                    className="btn btn-outline"
+                    style={{ padding: '6px 10px', background: recurringStatusFilter === value ? 'var(--muted-bg)' : undefined }}
+                    onClick={() => setRecurringStatusFilter(value as RecurringStatusFilter)}
+                  >
+                    {label}
+                  </button>
+                ))}
                 <label className="btn btn-outline" style={{ width: 'auto', cursor: importing ? 'progress' : 'pointer' }}>
                   <Upload size={14} /> Import CSV
                   <input type="file" accept=".csv,text/csv" style={{ display: 'none' }} onChange={(event) => {

@@ -20,8 +20,9 @@ function isCronAuthorized(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const user = await verifyApiUser(req.headers.get('authorization'));
-  if (!isCronAuthorized(req) && (!user || !['owner', 'admin', 'team'].includes(user.role || ''))) {
+  const cronAuthorized = isCronAuthorized(req);
+  const user = cronAuthorized ? null : await verifyApiUser(req.headers.get('authorization'));
+  if (!cronAuthorized && (!user || !['owner', 'admin', 'team'].includes(user.role || ''))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

@@ -115,7 +115,12 @@ function hasExactishMatch(left?: string, right?: string) {
   const leftCompact = compactFinanceText(left);
   const rightCompact = compactFinanceText(right);
   if (!leftCompact || !rightCompact) return false;
-  return leftCompact === rightCompact || leftCompact.includes(rightCompact) || rightCompact.includes(leftCompact);
+  if (leftCompact === rightCompact) return true;
+
+  const shorter = leftCompact.length <= rightCompact.length ? leftCompact : rightCompact;
+  const longer = leftCompact.length > rightCompact.length ? leftCompact : rightCompact;
+  if ((longer.length - shorter.length) > 2) return false;
+  return longer.startsWith(shorter) || longer.endsWith(shorter);
 }
 
 function amountLooksClose(left?: number, right?: number) {
@@ -171,25 +176,51 @@ export function findBestRecurringExpenseMatch(params: {
   const candidates = params.recurringExpenses
     .map((expense) => {
       let score = 0;
+      let strongSignal = false;
+      let bestSpecificity = 0;
       const terms = recurringTerms(expense);
 
       for (const hint of vendorHints) {
         for (const term of terms) {
           if (!term) continue;
-          if (hasExactishMatch(hint, term)) score += 9;
-          else if (normalizeFinanceText(term) && haystack.includes(normalizeFinanceText(term))) score += 5;
+          const termTokens = tokenize(term);
+          const specificTerm = termTokens.length >= 2 || compactFinanceText(term).length >= 8;
+          if (hasExactishMatch(hint, term)) {
+            score += specificTerm ? 9 : 4;
+            strongSignal = true;
+            bestSpecificity = Math.max(bestSpecificity, termTokens.length || 1);
+          } else if (normalizeFinanceText(term) && haystack.includes(normalizeFinanceText(term))) {
+            score += specificTerm ? 5 : 2;
+            if (specificTerm) {
+              strongSignal = true;
+              bestSpecificity = Math.max(bestSpecificity, termTokens.length || 1);
+            }
+          }
         }
       }
 
       for (const term of terms) {
         const termTokens = tokenize(term);
         const overlap = termTokens.filter((token) => haystackTokens.has(token)).length;
-        score += overlap;
-        if (domainRoot && hasExactishMatch(domainRoot, term)) score += 6;
+        score += termTokens.length >= 2 ? overlap : Math.min(overlap, 1);
+        if (overlap >= 2) {
+          strongSignal = true;
+          bestSpecificity = Math.max(bestSpecificity, termTokens.length || overlap);
+        }
+        if (domainRoot && hasExactishMatch(domainRoot, term)) {
+          score += termTokens.length >= 2 ? 6 : 2;
+          if (termTokens.length >= 2) {
+            strongSignal = true;
+            bestSpecificity = Math.max(bestSpecificity, termTokens.length);
+          }
+        }
       }
 
       if (params.currency && expense.currency && params.currency.toUpperCase() === expense.currency.toUpperCase()) score += 2;
-      if (amountLooksClose(params.amount, expense.amount)) score += 3;
+      if (amountLooksClose(params.amount, expense.amount)) {
+        score += 3;
+        strongSignal = true;
+      }
       if (expense.status === 'active') score += 1;
       if (expense.status === 'cancelled') score -= 1;
 
@@ -197,10 +228,12 @@ export function findBestRecurringExpenseMatch(params: {
         recurringExpenseId: expense.id || '',
         recurringExpenseName: expense.name,
         score,
+        strongSignal,
+        bestSpecificity,
       };
     })
-    .filter((candidate) => candidate.recurringExpenseId && candidate.score >= 8)
-    .sort((left, right) => right.score - left.score);
+    .filter((candidate) => candidate.recurringExpenseId && candidate.score >= 8 && candidate.strongSignal)
+    .sort((left, right) => right.bestSpecificity - left.bestSpecificity || right.score - left.score);
 
   return candidates[0] || null;
 }

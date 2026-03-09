@@ -2,16 +2,56 @@
 
 import { useEffect, useState } from 'react';
 import { clientsService, type Client, type Contact } from '@/lib/firestore';
+import { computeInvoiceDueDate, generateClientCode, type BillingCadence, type LegacyServiceCode } from '@/lib/billing';
 import { Plus, Search, X, Globe, Mail, Phone, UserPlus, Trash2 } from 'lucide-react';
 
 const emptyContact = (): Contact => ({ name: '', email: '', phone: '', title: '', role: 'cc' });
+const today = () => new Date().toISOString().slice(0, 10);
+
+type ClientFormState = {
+    name: string;
+    company: string;
+    region: string;
+    baseCurrency: string;
+    status: Client['status'];
+    clientCode: string;
+    legacyServiceCode: LegacyServiceCode;
+    billingCadence: BillingCadence;
+    billingStatusLabel: string;
+    nextInvoiceSendDate: string;
+    nextInvoiceDueDate: string;
+    legacyRateModel: string;
+    marketRegion: string;
+    platformCount: string;
+    notes: string;
+};
 
 export default function ClientsPage() {
     const [clients, setClients] = useState<Client[]>([]);
     const [search, setSearch] = useState('');
     const [showForm, setShowForm] = useState(false);
     const [editingClient, setEditingClient] = useState<Client | null>(null);
-    const [form, setForm] = useState({ name: '', company: '', region: 'AE', baseCurrency: 'AED', status: 'prospect' as Client['status'], notes: '' });
+    const buildDefaultForm = (): ClientFormState => {
+        const sendDate = today();
+        return {
+            name: '',
+            company: '',
+            region: 'AE',
+            baseCurrency: 'AED',
+            status: 'prospect',
+            clientCode: generateClientCode(sendDate, clients.map((client) => client.clientCode || '').filter(Boolean)),
+            legacyServiceCode: 'Ad Mgt',
+            billingCadence: 'monthly',
+            billingStatusLabel: '',
+            nextInvoiceSendDate: sendDate,
+            nextInvoiceDueDate: computeInvoiceDueDate(sendDate, 3),
+            legacyRateModel: '',
+            marketRegion: '',
+            platformCount: '1',
+            notes: '',
+        };
+    };
+    const [form, setForm] = useState<ClientFormState>(buildDefaultForm);
     const [contacts, setContacts] = useState<Contact[]>([{ name: '', email: '', phone: '', title: '', role: 'primary' }]);
 
     useEffect(() => { return clientsService.subscribe(setClients); }, []);
@@ -45,7 +85,23 @@ export default function ClientsPage() {
     const openForm = (client?: Client) => {
         if (client) {
             setEditingClient(client);
-            setForm({ name: client.name, company: client.company || '', region: client.region, baseCurrency: client.baseCurrency, status: client.status, notes: client.notes || '' });
+            setForm({
+                name: client.name,
+                company: client.company || '',
+                region: client.region,
+                baseCurrency: client.baseCurrency,
+                status: client.status,
+                clientCode: client.clientCode || '',
+                legacyServiceCode: client.legacyServiceCode || 'Ad Mgt',
+                billingCadence: client.billingCadence || 'monthly',
+                billingStatusLabel: client.billingStatusLabel || '',
+                nextInvoiceSendDate: client.nextInvoiceSendDate || '',
+                nextInvoiceDueDate: client.nextInvoiceDueDate || '',
+                legacyRateModel: client.legacyRateModel || '',
+                marketRegion: client.marketRegion || '',
+                platformCount: String(client.platformCount || 1),
+                notes: client.notes || '',
+            });
             if (client.contacts && client.contacts.length > 0) {
                 setContacts([...client.contacts]);
             } else {
@@ -53,7 +109,7 @@ export default function ClientsPage() {
             }
         } else {
             setEditingClient(null);
-            setForm({ name: '', company: '', region: 'AE', baseCurrency: 'AED', status: 'prospect', notes: '' });
+            setForm(buildDefaultForm());
             setContacts([{ name: '', email: '', phone: '', title: '', role: 'primary' }]);
         }
         setShowForm(true);
@@ -68,6 +124,7 @@ export default function ClientsPage() {
             contacts: validContacts,
             email: primary?.email || '',
             phone: primary?.phone || '',
+            platformCount: Number(form.platformCount) || 1,
         };
         if (editingClient?.id) {
             await clientsService.update(editingClient.id, clientData);
@@ -81,10 +138,10 @@ export default function ClientsPage() {
         if (confirm('Delete this client?')) await clientsService.delete(id);
     };
 
-    const updateContact = (index: number, field: keyof Contact, value: string) => {
-        const updated = [...contacts];
-        (updated[index] as any)[field] = value;
-        setContacts(updated);
+    const updateContact = (index: number, field: Exclude<keyof Contact, 'role'>, value: string) => {
+        setContacts((current) => current.map((contact, contactIndex) => (
+            contactIndex === index ? { ...contact, [field]: value } : contact
+        )));
     };
 
     const addContact = () => {
@@ -162,6 +219,11 @@ export default function ClientsPage() {
                                     <div>
                                         <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 2 }}>{c.name}</div>
                                         <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>{c.company}</div>
+                                        {(c.clientCode || c.legacyServiceCode) && (
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginTop: 4 }}>
+                                                {[c.clientCode, c.legacyServiceCode, c.billingCadence].filter(Boolean).join(' · ')}
+                                            </div>
+                                        )}
                                     </div>
                                     <span className={`status-pill status-${c.status === 'active' ? 'active' : c.status === 'churned' ? 'overdue' : 'pending'}`}>{c.status}</span>
                                 </div>
@@ -193,6 +255,7 @@ export default function ClientsPage() {
                                 <div style={{ display: 'flex', gap: 12, fontSize: '0.78rem', color: 'var(--muted)', marginTop: 8 }}>
                                     {c.region && <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Globe size={12} />{c.region}</span>}
                                     {c.baseCurrency && <span>{c.baseCurrency}</span>}
+                                    {c.nextInvoiceSendDate && <span>Send: {c.nextInvoiceSendDate}</span>}
                                 </div>
                             </div>
                         );
@@ -216,6 +279,55 @@ export default function ClientsPage() {
                             <div className="form-group">
                                 <label className="form-label">Company / Brand Names</label>
                                 <input className="form-input" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} placeholder="e.g. QYD, RQM & Ceyaj" />
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+                                <div className="form-group">
+                                    <label className="form-label">Client Code</label>
+                                    <input className="form-input" value={form.clientCode} onChange={e => setForm({ ...form, clientCode: e.target.value })} placeholder="YYYY-MM-DD-01" />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Legacy Service</label>
+                                    <select className="form-input" value={form.legacyServiceCode} onChange={e => setForm({ ...form, legacyServiceCode: e.target.value as LegacyServiceCode })}>
+                                        <option value="Ad Mgt">Ad Mgt</option>
+                                        <option value="DRM">DRM</option>
+                                        <option value="DRM+SM">DRM+SM</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Billing Cadence</label>
+                                    <select className="form-input" value={form.billingCadence} onChange={e => setForm({ ...form, billingCadence: e.target.value as BillingCadence })}>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="2_months">2 Months</option>
+                                        <option value="3_months">3 Months</option>
+                                        <option value="6_months">6 Months</option>
+                                        <option value="quarterly">Quarterly</option>
+                                        <option value="annual">Annual</option>
+                                        <option value="one_time">One-Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+                                <div className="form-group">
+                                    <label className="form-label">Next Invoice Send</label>
+                                    <input
+                                        className="form-input"
+                                        type="date"
+                                        value={form.nextInvoiceSendDate}
+                                        onChange={e => setForm({
+                                            ...form,
+                                            nextInvoiceSendDate: e.target.value,
+                                            nextInvoiceDueDate: e.target.value ? computeInvoiceDueDate(e.target.value, 3) : '',
+                                        })}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Next Invoice Due</label>
+                                    <input className="form-input" type="date" value={form.nextInvoiceDueDate} onChange={e => setForm({ ...form, nextInvoiceDueDate: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Billing Status Label</label>
+                                    <input className="form-input" value={form.billingStatusLabel} onChange={e => setForm({ ...form, billingStatusLabel: e.target.value })} placeholder="e.g. 45 DAYS REMAINING" />
+                                </div>
                             </div>
 
                             {/* ── Contacts Section ── */}
@@ -248,7 +360,7 @@ export default function ClientsPage() {
                                                     {contact.role === 'primary' ? '★ PRIMARY' : 'CC'}
                                                 </button>
                                                 {contact.role === 'primary' && <span style={{ fontSize: '0.72rem', color: '#666' }}>Receives invoices & receipts</span>}
-                                                {contact.role === 'cc' && <span style={{ fontSize: '0.72rem', color: '#999' }}>CC'd on emails</span>}
+                                                {contact.role === 'cc' && <span style={{ fontSize: '0.72rem', color: '#999' }}>CC&apos;d on emails</span>}
                                             </div>
                                             {contacts.length > 1 && (
                                                 <button type="button" onClick={() => removeContact(i)} style={{
@@ -300,6 +412,20 @@ export default function ClientsPage() {
                                     <select className="form-input" value={form.status} onChange={e => setForm({ ...form, status: e.target.value as Client['status'] })}>
                                         <option value="lead">Lead</option><option value="prospect">Prospect</option><option value="proposal_sent">Proposal Sent</option><option value="active">Active</option><option value="churned">Churned</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+                                <div className="form-group">
+                                    <label className="form-label">Market Region</label>
+                                    <input className="form-input" value={form.marketRegion} onChange={e => setForm({ ...form, marketRegion: e.target.value })} placeholder="e.g. Egypt" />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Platform Count</label>
+                                    <input className="form-input" type="number" min="1" value={form.platformCount} onChange={e => setForm({ ...form, platformCount: e.target.value })} />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Legacy Rate Model</label>
+                                    <input className="form-input" value={form.legacyRateModel} onChange={e => setForm({ ...form, legacyRateModel: e.target.value })} placeholder="e.g. eg_old_clients_260usd_equivalent" />
                                 </div>
                             </div>
                             <div className="form-group">

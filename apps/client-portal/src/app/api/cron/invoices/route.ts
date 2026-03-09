@@ -11,8 +11,17 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import {
+    addMonthsToISODate,
+    computeInvoiceDueDate,
+    generateInvoiceNumber,
+    getCadenceIntervalMonths,
+    withReminderState,
+} from '@/lib/billing';
 
 export const dynamic = 'force-dynamic';
+
+const errorMessage = (error: unknown) => error instanceof Error ? error.message : String(error);
 
 /** Lazy-init Firebase Admin to avoid build-time errors */
 async function getAdminDb() {
@@ -43,16 +52,21 @@ export async function POST(req: NextRequest) {
         const recurringSnap = await db.collection('recurringInvoices')
             .where('active', '==', true)
             .get();
+        const allInvoicesSnap = await db.collection('invoices').get();
+        const existingInvoiceNumbers = allInvoicesSnap.docs
+            .map((doc) => doc.data().invoiceNumber)
+            .filter((value): value is string => typeof value === 'string' && value.length > 0);
 
         for (const rdoc of recurringSnap.docs) {
             const template = rdoc.data();
-            if (template.nextDueDate > today) continue;
+            const triggerDate = template.nextSendDate || template.nextDueDate;
+            if (!triggerDate || triggerDate > today) continue;
 
             try {
-                const yearMonth = today.replace(/-/g, '').slice(0, 6);
-                const allInvoices = await db.collection('invoices').get();
-                const seq = String(allInvoices.size + 1).padStart(3, '0');
-                const invoiceNumber = `AWI-${yearMonth}-${seq}`;
+                const sendLeadDays = Number(template.sendLeadDays) || 0;
+                const invoiceNumber = generateInvoiceNumber(existingInvoiceNumbers, today);
+                existingInvoiceNumbers.push(invoiceNumber);
+                const dueDate = computeInvoiceDueDate(today, sendLeadDays);
 
                 await db.collection('invoices').add({
                     invoiceNumber,
@@ -65,25 +79,39 @@ export async function POST(req: NextRequest) {
                     currency: template.currency,
                     status: 'pending',
                     issuedAt: today,
-                    dueDate: today,
-                    notes: `Auto-generated from: ${template.templateName}`,
+                    dueDate,
+                    billingPolicy: template.billingPolicy || null,
+                    billingClarity: template.invoiceTemplateData?.billingClarity || null,
+                    paymentTerms: template.invoiceTemplateData?.paymentTerms || null,
+                    discount: template.invoiceTemplateData?.discount || 0,
+                    discountLabel: template.invoiceTemplateData?.discountLabel || null,
+                    pricingRule: template.invoiceTemplateData?.pricingRule || template.exchangeRateSnapshot?.pricingRule || null,
+                    exchangeRateSnapshot: template.exchangeRateSnapshot || null,
+                    exchangeRateUsed: template.exchangeRateSnapshot?.used || null,
+                    exchangeRateDate: template.exchangeRateSnapshot?.date || null,
+                    exchangeRateSourceUrl: template.exchangeRateSnapshot?.sourceUrl || null,
+                    sendLeadDays,
+                    reminderState: template.reminderState || { legacyFollowUps: { first: false, second: false, third: false } },
+                    notes: template.notes ? `Auto-generated from: ${template.templateName}\n\n${template.notes}` : `Auto-generated from: ${template.templateName}`,
                     createdAt: FieldValue.serverTimestamp(),
+                    updatedAt: FieldValue.serverTimestamp(),
                 });
 
-                const nextDate = new Date(template.nextDueDate);
-                if (template.frequency === 'monthly') nextDate.setMonth(nextDate.getMonth() + 1);
-                else if (template.frequency === 'quarterly') nextDate.setMonth(nextDate.getMonth() + 3);
-                else nextDate.setFullYear(nextDate.getFullYear() + 1);
+                const intervalMonths = getCadenceIntervalMonths(template.billingCadence, template.intervalMonths);
+                const currentSendDate = template.nextSendDate || today;
+                const nextSendDate = addMonthsToISODate(currentSendDate, intervalMonths);
+                const nextDueDate = computeInvoiceDueDate(nextSendDate, sendLeadDays);
 
                 await rdoc.ref.update({
-                    nextDueDate: nextDate.toISOString().slice(0, 10),
+                    nextSendDate,
+                    nextDueDate,
                     lastGeneratedAt: today,
                     updatedAt: FieldValue.serverTimestamp(),
                 });
 
                 results.invoicesGenerated++;
-            } catch (err: any) {
-                results.errors.push(`Failed for ${template.clientName}: ${err.message}`);
+            } catch (err: unknown) {
+                results.errors.push(`Failed for ${template.clientName}: ${errorMessage(err)}`);
             }
         }
 
@@ -120,14 +148,17 @@ export async function POST(req: NextRequest) {
                         status: 'pending',
                         createdAt: FieldValue.serverTimestamp(),
                     });
+                    await pdoc.ref.update({
+                        reminderState: withReminderState(inv.reminderState, reminderType as 'upcoming' | 'due_today' | 'overdue_3d' | 'overdue_7d' | 'overdue_14d', 'pending', today),
+                        updatedAt: FieldValue.serverTimestamp(),
+                    });
                     results.remindersCreated++;
                 }
             }
         }
-    } catch (err: any) {
-        results.errors.push(`Top-level error: ${err.message}`);
+    } catch (err: unknown) {
+        results.errors.push(`Top-level error: ${errorMessage(err)}`);
     }
 
     return NextResponse.json({ success: true, date: today, ...results });
 }
-

@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-03-08T20:36:30.056Z",
+  "instantly": {
+    "available": true,
+    "total_sent": 104,
+    "total_contacted": 54,
+    "total_replies": 0,
+    "total_bounces": 1,
+    "campaigns": [
+      {
+        "id": "f204b2a1-ad17-4252-8e9a-a4d4e5a692db",
+        "name": "Leading Under Pressure 2026 | L&D-HR Outreach | Draft",
+        "status": 1,
+        "leads": 80,
+        "contacted": 13,
+        "sent": 25,
+        "replies": 0,
+        "bounces": 1,
+        "unsubscribed": 0
+      },
+      {
+        "id": "28f160fc-c4bd-47cd-9be1-459d91692175",
+        "name": "Leading Under Pressure 2026 | Nurture Sequence | Draft",
+        "status": 1,
+        "leads": 161,
+        "contacted": 13,
+        "sent": 25,
+        "replies": 0,
+        "bounces": 0,
+        "unsubscribed": 0
+      },
+      {
+        "id": "b81bf8cf-4ae8-4ebb-a111-e1eba7583ee5",
+        "name": "Leading Under Pressure 2026 | Warm Network Outreach | Draft",
+        "status": 1,
+        "leads": 90,
+        "contacted": 12,
+        "sent": 23,
+        "replies": 0,
+        "bounces": 0,
+        "unsubscribed": 0
+      },
+      {
+        "id": "630f3ff9-113c-451c-84de-cc4c336a30a6",
+        "name": "Leading Under Pressure 2026 | Executive Outreach | Draft",
+        "status": 1,
+        "leads": 181,
+        "contacted": 9,
+        "sent": 18,
+        "replies": 0,
+        "bounces": 0,
+        "unsubscribed": 0
+      },
+      {
+        "id": "9dd178cd-33ca-47ef-a6a2-25ae11b6806f",
+        "name": "Leading Under Pressure 2026 | ICP Holding Pool",
+        "status": 2,
+        "leads": 226,
+        "contacted": 7,
+        "sent": 13,
+        "replies": 0,
+        "bounces": 0,
+        "unsubscribed": 0
+      }
+    ]
+  },
+  "firestore": {
+    "leads": {
+      "total": 8,
+      "by_form": {
+        "brochure_download": 8
+      },
+      "by_status": {
+        "new": 8
+      },
+      "by_intent": {
+        "nurture": 7,
+        "unknown": 1
+      },
+      "top_referrers": [
+        [
+          "(direct)",
+          8
+        ]
+      ],
+      "top_landing_urls": [
+        [
+          "(unknown)",
+          8
+        ]
+      ]
+    },
+    "analytics": {
+      "total_events": 0,
+      "unique_sessions": 0,
+      "unique_visitors": 0,
+      "by_event": {},
+      "top_pages": [],
+      "top_referrers": [],
+      "top_ctas": []
+    }
+  }
+}

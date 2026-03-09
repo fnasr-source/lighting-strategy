@@ -19,6 +19,15 @@ Client company records.
 | `region` | string | Country code (EG, SA, AE, US) |
 | `baseCurrency` | string | AED, SAR, EGP, USD |
 | `status` | enum | lead, prospect, proposal_sent, active, churned |
+| `clientCode` | string? | Legacy billing code in `YYYY-MM-DD-SEQ` format |
+| `legacyServiceCode` | string? | Legacy service shorthand such as `Ad Mgt`, `DRM`, `DRM+SM` |
+| `billingCadence` | string? | Billing cadence such as monthly, 3_months, 6_months |
+| `billingStatusLabel` | string? | Legacy-style status/condition label for billing visibility |
+| `nextInvoiceSendDate` | string? | Next invoice send date in YYYY-MM-DD |
+| `nextInvoiceDueDate` | string? | Next invoice due date in YYYY-MM-DD |
+| `legacyRateModel` | string? | Internal label for grandfathered pricing logic |
+| `marketRegion` | string? | Billing market label (Egypt, Saudi Arabia, UAE, etc.) |
+| `platformCount` | number? | Number of ad platforms covered by the billing scope |
 | `ga4PropertyId` | string? | Google Analytics property |
 | `notes` | string? | Internal notes |
 
@@ -41,6 +50,14 @@ One-time and auto-generated invoices.
 | `issuedAt` | string | YYYY-MM-DD |
 | `dueDate` | string | YYYY-MM-DD |
 | `paidAt` | string? | When payment was received |
+| `discount` | number? | Invoice-level discount amount |
+| `discountLabel` | string? | Invoice-level discount label |
+| `billingClarity` | object? | Included/excluded scope and billing schedule summary |
+| `exchangeRateSnapshot` | object? | Exchange-rate metadata used for pricing conversion |
+| `pricingRule` | string? | Internal pricing-rule label such as `legacy_eg_3mo_700usd` |
+| `billingPolicy` | object? | Captures legacy service code, cadence, market, rate model, send lead days |
+| `sendLeadDays` | number? | Days between invoice issue date and due date |
+| `reminderState` | object? | Reminder queue/sent state including legacy follow-up flags |
 | `legacyUrl` | string? | Link to old HTML invoice |
 
 ### `recurringInvoices`
@@ -55,10 +72,17 @@ Templates for automated billing.
 | `currency` | string | Billing currency |
 | `frequency` | enum | monthly, quarterly, annual |
 | `billingDay` | number | Day of month (1-28) |
+| `nextSendDate` | string? | Next scheduled invoice send date |
 | `nextDueDate` | string | YYYY-MM-DD |
+| `billingCadence` | string? | More expressive cadence label such as `3_months` |
+| `intervalMonths` | number? | Explicit cadence interval in months |
 | `active` | boolean | Can be paused/resumed |
 | `autoSendEmail` | boolean | Auto-send on generation |
 | `paymentMethods` | array | ['stripe', 'instapay', 'bank_transfer'] |
+| `sendLeadDays` | number? | Days between send date and due date |
+| `billingPolicy` | object? | Legacy billing metadata carried into generated invoices |
+| `exchangeRateSnapshot` | object? | Stored exchange-rate context for repeatable invoicing |
+| `invoiceTemplateData` | object? | Discount/payment-terms/billing-clarity defaults copied to generated invoices |
 
 ### `payments`
 Payment records (from Stripe or manual).

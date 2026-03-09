@@ -1,0 +1,23 @@
+email,first_name,last_name,title,company,company_domain,country,email_status,segment,suppression_reason,source_ref
+ben.b@cgi.com,Ben,B,Senior Security Consultant,CGI,cgi.com,United Kingdom,extrapolated,security_professionals_apollo,email_not_verified,697a2e4feeca1e000154609e
+ian@cobrainternationalsecurity.com,Ian,Cobra,Senior Security Consultant,COBRA INTERNATIONAL SECURITY LIMITED,cobrainternationalsecurity.com,United Kingdom,extrapolated,security_professionals_apollo,email_not_verified,697a2e4feeca1e0001546085
+betul.ilbahar@cgi.com,Betul,Ilbahar,Senior Security Consultant,CGI,cgi.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e50eeca1e00015460ee
+caichangyu.caichangyu@huawei.com,Caichangyu,Caichangyu,Senior Security Consultant,Huawei,huawei.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e4eeeca1e0001545fd4
+sandeep.kumar@grainger.com,Sandeep,Kumar,Senior Network Security Consultant,Cisco,cisco.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e4feeca1e00015460b2
+lalaniz@northwell.edu,Louie,Alaniz,Sr. Epic Security Consultant,Northwell Health,northwell.edu,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e4eeeca1e0001545fdd
+jeff.man@cgi.com,Jeff,Man,Sr. Information Security Consultant,CGI,cgi.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e50eeca1e00015460be
+raiba.parson@bestbuy.com,Raiba,Parson,Senior Information Security Consultant,Best Buy,bestbuy.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e4feeca1e0001546049
+deacon.kings@navy.mil,Deacon,Kings,Senior Cyber Security Consultant,US Navy,navy.mil,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e4feeca1e0001546067
+peter.george@cgi.com,Peter,George,Senior Cyber Security Consultant,CGI,cgi.com,United Kingdom,extrapolated,security_professionals_apollo,email_not_verified,697a2e50eeca1e00015460fb
+sotto@cisco.com,Silas,Otto,Senior Splunk Security Consultant,Cisco,cisco.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e4feeca1e000154605d
+ashton.perry@bestbuy.com,Ashton,Perry,Senior Information Security Consultant,,bestbuy.com,United States,verified,security_professionals_apollo,missing_company,697a2e4feeca1e00015460ad
+rcampbell@cisco.com,Richard,Campbell,Technical Lead Senior Security Consultant,Cisco,cisco.com,United States,extrapolated,security_professionals_apollo,email_not_verified,697a2e50eeca1e00015460bd
+smohamed@cisco.com,Seif,Mohamed,Head of Cyber Defense | Cyber Security Consultant,Cisco,cisco.com,Saudi Arabia,extrapolated,security_professionals_apollo,email_not_verified,697a2e50eeca1e00015460cf
+tyler.muench@ascension.org,Tyler,Muench,Security Training Manager,Ascension Illinois,ascension.org,United States,extrapolated,educators,email_not_verified,697a0905a8f98a00012f3bcf
+jim.scalese@hardrock.com,Jim,Scalese,Security Training Manager,Hard Rock Hotel & Casino Atlantic City,hardrock.com,United States,extrapolated,educators,email_not_verified,697a0905a8f98a00012f3b79
+randy.thomas@intermountainhealthcare.org,Randy,Thomas,Security Training and Standards Manager,Intermountain Health,intermountainhealthcare.org,United States,extrapolated,educators,email_not_verified,697a0905a8f98a00012f3be8
+jeffrey.welte@wynnlasvegas.com,Jeffrey,Welte,Senior Manager Security Training,Wynn Las Vegas,wynnlasvegas.com,United States,extrapolated,educators,email_not_verified,697a0905a8f98a00012f3bbe
+cselander@mgmresorts.com,Christopher,Selander,Manager- Security Training & Development Partner,MGM Resorts International,mgmresorts.com,United States,extrapolated,educators,email_not_verified,697a0906a8f98a00012f3c63
+globaldentalnetwork@gmail.com,Tareq,Abdulrahman,CEO & Founder,Dental Veneers Network®,gmail.com,United Kingdom,verified,ctf_organizers_v2,free_email_domain,6820732d046f510001389914
+ramzy.nanah@integratedportfoliosolutions.com.au,Ramzy,Nanah,"‏CEO, Founder",Integrated,integratedportfoliosolutions.com.au,Saudi Arabia,extrapolated,ctf_organizers_v2,email_not_verified,691adcbcca6e8600012d5f10
+abdulrahman@vedaholding.com,Abdulrahman,Alhokair,Co-Founder & Group CEO,Veda Holding,vedaholding.com,Saudi Arabia,extrapolated,ctf_organizers_v2,email_not_verified,692d1421d6a19c00014a14bb

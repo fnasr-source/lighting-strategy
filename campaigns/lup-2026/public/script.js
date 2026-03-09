@@ -4,9 +4,33 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const schedulingBaseUrl = window.__SCHEDULING_BASE_URL || 'https://my.admireworks.com';
+  const analyticsBaseUrl = window.__LUP_ANALYTICS_BASE_URL || `${schedulingBaseUrl}/api/campaigns/lup-2026/analytics`;
 
   // ---- UTM Tracking & Lead Attribution ----
   const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id', 'ref', 'gclid', 'fbclid'];
+  const startedForms = new Set();
+
+  function stableId(prefix) {
+    return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+  }
+
+  function getVisitorId() {
+    let visitorId = localStorage.getItem('lup_visitor_id');
+    if (!visitorId) {
+      visitorId = stableId('visitor');
+      localStorage.setItem('lup_visitor_id', visitorId);
+    }
+    return visitorId;
+  }
+
+  function getSessionId() {
+    let sessionId = sessionStorage.getItem('lup_session_id');
+    if (!sessionId) {
+      sessionId = stableId('session');
+      sessionStorage.setItem('lup_session_id', sessionId);
+    }
+    return sessionId;
+  }
 
   function captureUTM() {
     const params = new URLSearchParams(window.location.search);
@@ -46,6 +70,39 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) { return {}; }
   }
 
+  function sendAnalytics(payload) {
+    const body = JSON.stringify({
+      campaign: 'lup-2026',
+      client_id: 'aspire-hr',
+      session_id: getSessionId(),
+      visitor_id: getVisitorId(),
+      page_url: window.location.href,
+      path: window.location.pathname,
+      page_title: document.title,
+      referrer: document.referrer || '(direct)',
+      utm: getUTMData(),
+      meta: getLandingMeta(),
+      submitted_at: new Date().toISOString(),
+      ...payload
+    });
+
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      if (navigator.sendBeacon(analyticsBaseUrl, blob)) return;
+    }
+
+    fetch(analyticsBaseUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+      keepalive: true
+    }).catch(() => {});
+  }
+
+  function trackEvent(eventName, extra = {}) {
+    sendAnalytics({ event_name: eventName, ...extra });
+  }
+
   function generateLeadId() {
     // Compact unique ID: timestamp + random
     return 'LUP-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -53,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Capture UTM on page load
   captureUTM();
+  getVisitorId();
+  getSessionId();
+  trackEvent('page_view');
 
   // Inject hidden UTM fields into all forms
   document.querySelectorAll('form').forEach(form => {
@@ -133,25 +193,45 @@ document.addEventListener('DOMContentLoaded', () => {
     || 'https://storage.googleapis.com/admireworks-internal-os-brochures-2026/campaigns/lup-2026/Leading%20Under%20Pressure%20Program%202026%20(1).pdf';
 
   function openModal(modal) {
-    if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    if (modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      trackEvent('modal_open', { modal_id: modal.id || '' });
+    }
   }
   function closeModal(modal) {
-    if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+    if (modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      trackEvent('modal_close', { modal_id: modal.id || '' });
+    }
   }
 
   // Primary CTA → full application
   document.querySelectorAll('[data-action="apply"]').forEach(btn => {
-    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(applyModal); });
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      trackEvent('cta_click', { cta_type: 'apply', cta_label: btn.textContent.trim() });
+      openModal(applyModal);
+    });
   });
 
   // Secondary CTA → quick inquiry
   document.querySelectorAll('[data-action="inquiry"]').forEach(btn => {
-    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(inquiryModal); });
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      trackEvent('cta_click', { cta_type: 'inquiry', cta_label: btn.textContent.trim() });
+      openModal(inquiryModal);
+    });
   });
 
   // Brochure CTA → brochure capture
   document.querySelectorAll('[data-action="brochure"]').forEach(btn => {
-    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(brochureModal); });
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      trackEvent('cta_click', { cta_type: 'brochure', cta_label: btn.textContent.trim() });
+      openModal(brochureModal);
+    });
   });
 
   // Close buttons
@@ -168,8 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleFormSubmit(formId, modalId, formType) {
     const form = document.getElementById(formId);
     if (!form) return;
+    form.addEventListener('focusin', () => {
+      if (startedForms.has(formId)) return;
+      startedForms.add(formId);
+      trackEvent('form_start', { form_id: formId, form_type: formType });
+    }, { once: false });
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      trackEvent('form_submit_attempt', { form_id: formId, form_type: formType });
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
       const utmData = getUTMData();
@@ -228,8 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size: 3rem; margin-bottom: 16px;">✓</div>
             <h2 style="margin-bottom: 12px; color: var(--gold-400);">${successTitle}</h2>
             <p style="color: var(--text-secondary); margin-bottom: 24px;">${successMsg}</p>
-            ${primaryUrl ? `<a href="${primaryUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:inline-block;margin-bottom:12px;">${primaryLabel}</a>` : ''}
-            <a href="${bookingUrl}" class="btn btn-secondary" style="display:inline-block;margin-left:${primaryUrl ? '8px' : '0'};margin-bottom:12px;">
+            ${primaryUrl ? `<a href="${primaryUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-analytics-event="success_primary_click" data-analytics-form="${formType}" data-analytics-label="${primaryLabel}" style="display:inline-block;margin-bottom:12px;">${primaryLabel}</a>` : ''}
+            <a href="${bookingUrl}" class="btn btn-secondary" data-analytics-event="success_secondary_click" data-analytics-form="${formType}" data-analytics-label="Book a Private Briefing" style="display:inline-block;margin-left:${primaryUrl ? '8px' : '0'};margin-bottom:12px;">
               Book a Private Briefing
             </a>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">You can proceed instantly using the buttons above.</p>
@@ -239,8 +325,22 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
           </div>
         `;
+        trackEvent('form_submit_success', {
+          form_id: formId,
+          form_type: formType,
+          extra: {
+            primary_url_present: Boolean(primaryUrl),
+            booking_url_present: Boolean(bookingUrl),
+            brochure_url_present: Boolean(brochureUrl)
+          }
+        });
       } catch (err) {
         console.error('Lead API failed:', err);
+        trackEvent('form_submit_error', {
+          form_id: formId,
+          form_type: formType,
+          error_message: err instanceof Error ? err.message : 'Submission failed'
+        });
         const errorEl = form.querySelector('[data-form-error]') || document.createElement('p');
         errorEl.setAttribute('data-form-error', '1');
         errorEl.style.color = '#ffb4b4';
@@ -260,6 +360,15 @@ document.addEventListener('DOMContentLoaded', () => {
   handleFormSubmit('application-form', 'apply-modal', 'application');
   handleFormSubmit('inquiry-form', 'inquiry-modal', 'inquiry');
   handleFormSubmit('brochure-form', 'brochure-modal', 'brochure_download');
+
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-analytics-event]');
+    if (!el) return;
+    trackEvent(el.getAttribute('data-analytics-event'), {
+      form_type: el.getAttribute('data-analytics-form') || '',
+      cta_label: el.getAttribute('data-analytics-label') || el.textContent.trim()
+    });
+  });
 
   // ---- Scroll animations (Intersection Observer) ----
   const observerOptions = {

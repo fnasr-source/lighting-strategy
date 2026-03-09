@@ -22,7 +22,14 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    let to: string, clientName: string, invoiceNumber: string, amount: number, currency: string, dueDate: string, paymentUrl: string;
+    let to: string;
+    let cc: string[] = [];
+    let clientName: string;
+    let invoiceNumber: string;
+    let amount: number;
+    let currency: string;
+    let dueDate: string;
+    let paymentUrl: string;
 
     if (body.invoiceId) {
       const invDoc = await adminDb.collection('invoices').doc(body.invoiceId).get();
@@ -32,7 +39,16 @@ export async function POST(req: NextRequest) {
       let clientEmail = '';
       if (inv.clientId) {
         const clientDoc = await adminDb.collection('clients').doc(inv.clientId).get();
-        if (clientDoc.exists) clientEmail = clientDoc.data()!.email || '';
+        if (clientDoc.exists) {
+          const clientData = clientDoc.data() as {
+            email?: string;
+            contacts?: Array<{ email?: string; role?: string }>;
+          };
+          const primary = clientData.contacts?.find((contact) => contact.role === 'primary' && contact.email);
+          const ccContacts = clientData.contacts?.filter((contact) => contact.role === 'cc' && contact.email) || [];
+          clientEmail = primary?.email || clientData.email || '';
+          cc = ccContacts.map((contact) => contact.email!).filter(Boolean);
+        }
       }
       if (!clientEmail && body.to) clientEmail = body.to;
       if (!clientEmail) return NextResponse.json({ error: 'No client email found' }, { status: 400 });
@@ -43,11 +59,23 @@ export async function POST(req: NextRequest) {
       amount = inv.totalDue;
       currency = inv.currency;
       dueDate = inv.dueDate;
-      paymentUrl = inv.stripePaymentLinkUrl || '';
+      paymentUrl = inv.stripePaymentLinkUrl || `${req.nextUrl.origin}/invoice/${body.invoiceId}`;
     } else {
       to = body.to; clientName = body.clientName; invoiceNumber = body.invoiceNumber;
       amount = body.amount; currency = body.currency; dueDate = body.dueDate; paymentUrl = body.paymentUrl || '';
+      cc = Array.isArray(body.cc) ? body.cc.filter((item: unknown): item is string => typeof item === 'string' && item.length > 0) : [];
     }
+
+    const instapayHtml = currency === 'EGP'
+      ? `<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px 18px;margin:24px 0;">
+          <p style="margin:0 0 8px;font-weight:700;color:#1e3a8a;">InstaPay</p>
+          <p style="margin:0;color:#374151;font-size:14px;line-height:1.6;">
+            Account: <strong>admireworks@instapay</strong><br>
+            Name: <strong>Fouad Nasseredin</strong><br>
+            <a href="https://ipn.eg/S/admireworks/instapay/5A1jri" style="color:#001a70;font-weight:700;">Pay via InstaPay</a>
+          </p>
+        </div>`
+      : '';
 
     const emailHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="margin:0;padding:0;font-family:'Inter',Arial,sans-serif;background:#f7f8fa;">
@@ -69,6 +97,7 @@ export async function POST(req: NextRequest) {
         </table>
       </div>
       ${paymentUrl ? `<div style="text-align:center;margin:24px 0;"><a href="${paymentUrl}" style="display:inline-block;background:#001a70;color:#ffffff;padding:14px 32px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none;">Pay Now</a></div>` : ''}
+      ${instapayHtml}
       <p style="color:#6b7280;font-size:13px;line-height:1.6;margin:24px 0 0;">If you have any questions, please reply to this email or contact us at hello@admireworks.com</p>
     </div>
     <div style="padding:20px;text-align:center;font-size:12px;color:#9ca3af;">
@@ -79,7 +108,7 @@ export async function POST(req: NextRequest) {
 </body></html>`;
 
     const result = await resend.emails.send({
-      from: `Admireworks <${fromEmail}>`, to: [to],
+      from: `Admireworks <${fromEmail}>`, to: [to], ...(cc.length > 0 ? { cc } : {}),
       subject: `Invoice ${invoiceNumber} — ${amount.toLocaleString()} ${currency} Due`,
       html: emailHtml,
     });
@@ -89,8 +118,8 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, emailId: result.data?.id });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Send invoice email error:', err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500 });
   }
 }

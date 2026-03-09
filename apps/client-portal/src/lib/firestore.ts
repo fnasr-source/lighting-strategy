@@ -20,6 +20,13 @@ import {
     type DocumentData,
     type QueryConstraint,
 } from 'firebase/firestore';
+import type {
+    BillingCadence,
+    BillingPolicyMetadata,
+    ExchangeRateSnapshot,
+    LegacyServiceCode,
+    ReminderState,
+} from '@/lib/billing';
 import { db } from '@/lib/firebase';
 
 // ── Types ────────────────────────────────────────────
@@ -44,12 +51,34 @@ export interface Client {
     businessType?: 'ecommerce' | 'lead_gen' | 'hybrid' | 'saas';
     industry?: string; // e.g. 'fashion', 'hr_consulting', 'food_beverage'
     ga4PropertyId?: string;
+    clientCode?: string;
+    legacyServiceCode?: LegacyServiceCode;
+    billingCadence?: BillingCadence;
+    billingStatusLabel?: string;
+    nextInvoiceSendDate?: string;
+    nextInvoiceDueDate?: string;
+    legacyRateModel?: string;
+    marketRegion?: string;
+    platformCount?: number;
     notes?: string;
     nextMeetingAt?: string;
     lastMeetingAt?: string;
     meetingCount?: number;
     createdAt?: any;
     updatedAt?: any;
+}
+
+export interface BillingClarityScheduleItem {
+    label: string;
+    value: string;
+}
+
+export interface BillingClarity {
+    title?: string;
+    dueNowLabel?: string;
+    schedule?: BillingClarityScheduleItem[];
+    scopeIncluded?: string[];
+    scopeExcluded?: string[];
 }
 
 export interface Invoice {
@@ -69,8 +98,24 @@ export interface Invoice {
     issuedAt?: string;
     dueDate?: string;
     paidAt?: string;
+    discount?: number;
+    discountLabel?: string;
+    billingClarity?: BillingClarity;
+    exchangeRateSnapshot?: ExchangeRateSnapshot;
+    exchangeRateUsed?: number;
+    exchangeRateDate?: string;
+    exchangeRateSourceUrl?: string;
+    pricingRule?: string;
+    billingPolicy?: BillingPolicyMetadata;
+    sendLeadDays?: number;
+    reminderState?: ReminderState;
+    paymentTerms?: string;
+    legacyUrl?: string;
+    emailSent?: boolean;
+    emailSentAt?: string;
     notes?: string;
     createdAt?: any;
+    updatedAt?: any;
 }
 
 export interface Payment {
@@ -100,9 +145,23 @@ export interface RecurringInvoice {
     tax: number;
     totalDue: number;
     currency: string;
-    frequency: 'monthly' | 'quarterly' | 'annual';
+    frequency: 'monthly' | 'quarterly' | 'semiannual' | 'annual' | 'custom_months';
     billingDay: number;         // Day of month (1-28)
     nextDueDate: string;        // YYYY-MM-DD
+    nextSendDate?: string;      // YYYY-MM-DD
+    billingCadence?: BillingCadence;
+    intervalMonths?: number;
+    billingPolicy?: BillingPolicyMetadata;
+    exchangeRateSnapshot?: ExchangeRateSnapshot;
+    sendLeadDays?: number;
+    reminderState?: ReminderState;
+    invoiceTemplateData?: {
+        billingClarity?: BillingClarity;
+        paymentTerms?: string;
+        discount?: number;
+        discountLabel?: string;
+        pricingRule?: string;
+    };
     active: boolean;
     autoSendEmail: boolean;     // Whether to auto-email on generation
     paymentMethods: ('stripe' | 'instapay' | 'bank_transfer')[]; // Allowed payment methods
@@ -494,12 +553,13 @@ export const invoicesService = {
         const ref = await addDoc(collection(db, 'invoices'), {
             ...data,
             createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
         });
         return ref.id;
     },
 
     async update(id: string, data: Partial<Invoice>): Promise<void> {
-        await updateDoc(doc(db, 'invoices', id), data);
+        await updateDoc(doc(db, 'invoices', id), { ...data, updatedAt: serverTimestamp() });
     },
 
     subscribe(callback: (invoices: Invoice[]) => void) {

@@ -1,0 +1,14 @@
+{
+  "pid": 52860,
+  "command": "apply-plan",
+  "args": [
+    "--week=1",
+    "--upload-limit=33",
+    "--instantly-max-per-minute=12",
+    "--instantly-delay-ms=2000",
+    "--apollo-max-per-minute=20",
+    "--apollo-delay-ms=2500",
+    "--request-timeout-ms=45000"
+  ],
+  "started_at": "2026-03-09T09:20:04.622Z"
+}

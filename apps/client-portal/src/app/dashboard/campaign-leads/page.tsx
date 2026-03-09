@@ -2,10 +2,11 @@
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { clientsService, type Client } from '@/lib/firestore';
-import { collection, query, onSnapshot, orderBy, doc, updateDoc, deleteDoc, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { collection, query, onSnapshot, orderBy, doc, updateDoc, deleteDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Users, Mail, Building2, Globe, Calendar, Tag, ExternalLink, Trash2, ChevronDown, ChevronUp, MessageSquare, Phone, FileText, Plus, Send } from 'lucide-react';
+import { Users, Mail, Building2, Globe, Calendar, Tag, ExternalLink, Trash2, ChevronDown, ChevronUp, MessageSquare, Send } from 'lucide-react';
+
+type DateLike = string | Date | { toDate: () => Date } | null | undefined;
 
 interface CampaignLead {
     id: string;
@@ -28,7 +29,7 @@ interface CampaignLead {
     campaign?: string;
     client_id?: string;
     submitted_at?: string;
-    created_at?: any;
+    created_at?: DateLike;
     utm?: { utm_source?: string; utm_medium?: string; utm_campaign?: string; utm_term?: string; utm_content?: string; gclid?: string; fbclid?: string };
     meta?: { landing_url?: string; referrer?: string; first_visit?: string; user_agent?: string };
 }
@@ -38,7 +39,7 @@ interface Activity {
     type: 'note' | 'call' | 'email' | 'meeting';
     content: string;
     author?: string;
-    created_at?: any;
+    created_at?: DateLike;
 }
 
 interface Campaign {
@@ -51,11 +52,27 @@ interface Campaign {
     landing_url?: string;
 }
 
+interface AnalyticsSummary {
+    total_events: number;
+    unique_sessions: number;
+    unique_visitors: number;
+    pageviews: number;
+    cta_clicks: number;
+    modal_opens: number;
+    form_starts: number;
+    submit_attempts: number;
+    submit_successes: number;
+    submit_errors: number;
+    top_pages: Array<[string, number]>;
+    top_referrers: Array<[string, number]>;
+    top_ctas: Array<[string, number]>;
+}
+
 const ACTIVITY_ICONS: Record<string, string> = { note: '📝', call: '📞', email: '📧', meeting: '🤝' };
 const ACTIVITY_COLORS: Record<string, string> = { note: '#6c5ce7', call: '#00b894', email: '#0984e3', meeting: '#e17055' };
 
 export default function CampaignLeadsPage() {
-    const { hasPermission, isClient, profile } = useAuth();
+    const { hasPermission, profile } = useAuth();
     const [campaigns, setCampaigns] = useState<Campaign[]>([]);
     const [selectedCampaign, setSelectedCampaign] = useState('lup-2026');
     const [leads, setLeads] = useState<CampaignLead[]>([]);
@@ -63,6 +80,8 @@ export default function CampaignLeadsPage() {
     const [expandedLead, setExpandedLead] = useState<string | null>(null);
     const [statusFilter, setStatusFilter] = useState('all');
     const [activities, setActivities] = useState<Record<string, Activity[]>>({});
+    const [analytics, setAnalytics] = useState<AnalyticsSummary | null>(null);
+    const [analyticsLoading, setAnalyticsLoading] = useState(false);
 
     // Activity form state
     const [activityType, setActivityType] = useState<Activity['type']>('note');
@@ -101,6 +120,29 @@ export default function CampaignLeadsPage() {
         });
     }, [expandedLead, selectedCampaign]);
 
+    useEffect(() => {
+        let cancelled = false;
+        if (selectedCampaign !== 'lup-2026') {
+            setAnalytics(null);
+            setAnalyticsLoading(false);
+            return;
+        }
+        setAnalyticsLoading(true);
+        fetch('/api/campaigns/lup-2026/analytics')
+            .then((res) => res.ok ? res.json() : Promise.reject(new Error(`Analytics fetch failed (${res.status})`)))
+            .then((data) => {
+                if (!cancelled) setAnalytics(data as AnalyticsSummary);
+            })
+            .catch((err) => {
+                console.error(err);
+                if (!cancelled) setAnalytics(null);
+            })
+            .finally(() => {
+                if (!cancelled) setAnalyticsLoading(false);
+            });
+        return () => { cancelled = true; };
+    }, [selectedCampaign]);
+
     const addActivity = useCallback(async (leadId: string) => {
         if (!activityContent.trim() || savingActivity) return;
         setSavingActivity(true);
@@ -117,13 +159,6 @@ export default function CampaignLeadsPage() {
         finally { setSavingActivity(false); }
     }, [activityContent, activityType, selectedCampaign, profile, savingActivity]);
 
-    if (!hasPermission('campaigns:read')) {
-        return <div className="empty-state"><div className="empty-state-icon">🔒</div><div className="empty-state-title">Access Denied</div></div>;
-    }
-
-    const filtered = statusFilter === 'all' ? leads : leads.filter(l => l.status === statusFilter);
-    const activeCampaign = campaigns.find(c => c.id === selectedCampaign);
-
     const statusCounts = useMemo(() => {
         const counts: Record<string, number> = { total: leads.length };
         leads.forEach(l => { counts[l.status] = (counts[l.status] || 0) + 1; });
@@ -139,6 +174,13 @@ export default function CampaignLeadsPage() {
         return Object.entries(map).sort((a, b) => b[1] - a[1]);
     }, [leads]);
 
+    const filtered = statusFilter === 'all' ? leads : leads.filter(l => l.status === statusFilter);
+    const activeCampaign = campaigns.find(c => c.id === selectedCampaign);
+
+    if (!hasPermission('campaigns:read')) {
+        return <div className="empty-state"><div className="empty-state-icon">🔒</div><div className="empty-state-title">Access Denied</div></div>;
+    }
+
     const updateLeadStatus = async (leadId: string, status: string) => {
         await updateDoc(doc(db, 'campaigns', selectedCampaign, 'leads', leadId), { status });
     };
@@ -148,9 +190,12 @@ export default function CampaignLeadsPage() {
         await deleteDoc(doc(db, 'campaigns', selectedCampaign, 'leads', leadId));
     };
 
-    const fmtDate = (d: string | any) => {
+    const fmtDate = (d: DateLike) => {
         try {
-            const date = d?.toDate ? d.toDate() : new Date(d);
+            if (d == null) return '—';
+            const date = typeof d === 'object' && d !== null && 'toDate' in d
+                ? d.toDate()
+                : new Date(d);
             return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         } catch { return String(d); }
     };
@@ -196,6 +241,30 @@ export default function CampaignLeadsPage() {
                 <div className="kpi-card"><div className="kpi-label"><Mail size={14} /> Contacted</div><div className="kpi-value" style={{ color: '#f39c12' }}>{statusCounts.contacted || 0}</div></div>
                 <div className="kpi-card"><div className="kpi-label"><Building2 size={14} /> Enrolled</div><div className="kpi-value" style={{ color: '#27ae60' }}>{statusCounts.enrolled || 0}</div></div>
             </div>
+
+            {selectedCampaign === 'lup-2026' && (
+                <div className="card" style={{ marginBottom: 20 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 12 }}>
+                        <h3 style={{ fontSize: '0.88rem', fontWeight: 700, margin: 0 }}>Landing Page Activity</h3>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>
+                            {analyticsLoading ? 'Loading analytics…' : 'Live summary from tracked events'}
+                        </span>
+                    </div>
+
+                    <div className="kpi-grid" style={{ marginBottom: 16 }}>
+                        <div className="kpi-card"><div className="kpi-label"><Globe size={14} /> Pageviews</div><div className="kpi-value">{analytics?.pageviews || 0}</div></div>
+                        <div className="kpi-card"><div className="kpi-label"><Users size={14} /> Sessions</div><div className="kpi-value">{analytics?.unique_sessions || 0}</div></div>
+                        <div className="kpi-card"><div className="kpi-label"><Mail size={14} /> CTA Clicks</div><div className="kpi-value">{analytics?.cta_clicks || 0}</div></div>
+                        <div className="kpi-card"><div className="kpi-label"><Calendar size={14} /> Form Starts</div><div className="kpi-value">{analytics?.form_starts || 0}</div></div>
+                    </div>
+
+                    <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+                        <AnalyticsList title="Top Pages" rows={analytics?.top_pages || []} />
+                        <AnalyticsList title="Top Referrers" rows={analytics?.top_referrers || []} />
+                        <AnalyticsList title="Top CTA Types" rows={analytics?.top_ctas || []} />
+                    </div>
+                </div>
+            )}
 
             {/* Source Attribution */}
             {sourceBreakdown.length > 0 && (
@@ -424,4 +493,22 @@ function Detail({ label, value }: { label: string; value?: string }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
     return <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', display: 'block', marginBottom: 6, letterSpacing: '0.04em' }}>{children}</span>;
+}
+
+function AnalyticsList({ title, rows }: { title: string; rows: Array<[string, number]> }) {
+    return (
+        <div style={{ border: '1px solid var(--card-border)', borderRadius: 10, padding: 12, background: 'var(--card-bg)' }}>
+            <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 10 }}>{title}</div>
+            {rows.length === 0 ? (
+                <div style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>No tracked activity yet.</div>
+            ) : (
+                rows.slice(0, 6).map(([label, count]) => (
+                    <div key={`${title}-${label}`} style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: '0.78rem', padding: '4px 0' }}>
+                        <span style={{ color: 'var(--foreground)', overflowWrap: 'anywhere' }}>{label}</span>
+                        <strong>{count}</strong>
+                    </div>
+                ))
+            )}
+        </div>
+    );
 }

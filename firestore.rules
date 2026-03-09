@@ -190,6 +190,28 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
+    // ── Finance Ops ──
+    match /recurringExpenses/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+    match /cashAccounts/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+    match /financeInboxItems/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+    match /financeEntries/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+    match /financeAlerts/{docId} {
+      allow read: if isInternal();
+      allow write: if isOwnerOrAdmin();
+    }
+
     // ── Reports / Strategy ──
     match /reports/{reportId} {
       allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);

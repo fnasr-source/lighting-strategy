@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { clientsService, type Client, type Contact } from '@/lib/firestore';
 import { computeInvoiceDueDate, generateClientCode, type BillingCadence, type LegacyServiceCode } from '@/lib/billing';
-import { Plus, Search, X, Globe, Mail, Phone, UserPlus, Trash2 } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Plus, Search, X, Globe, Mail, Phone, UserPlus, Trash2, ClipboardList, ExternalLink, History } from 'lucide-react';
 
 const emptyContact = (): Contact => ({ name: '', email: '', phone: '', title: '', role: 'cc' });
 const today = () => new Date().toISOString().slice(0, 10);
@@ -26,8 +27,56 @@ type ClientFormState = {
     notes: string;
 };
 
+type OnboardingVersionSummary = {
+    id: string;
+    versionNumber: number;
+    reason: 'seeded' | 'draft_saved' | 'submitted' | 'resubmitted';
+    savedAt: string;
+    changedFieldLabelsAr: string[];
+    changedFieldLabelsEn: string[];
+    statusAfter: 'draft' | 'submitted';
+};
+
+type ClientOnboardingSummary = {
+    id: string;
+    clientId: string;
+    status: 'draft' | 'submitted';
+    versionCount: number;
+    latestVersionNumber: number;
+    lastVersionAt?: string | null;
+    lastSavedAt?: string | null;
+    submittedAt?: string | null;
+    submissionCount: number;
+    publicUrl: string;
+    recentVersions: OnboardingVersionSummary[];
+};
+
+function formatHistoryDate(iso?: string | null) {
+    if (!iso) return 'N/A';
+    try {
+        return new Date(iso).toLocaleString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    } catch {
+        return iso;
+    }
+}
+
+function versionReasonLabel(reason: OnboardingVersionSummary['reason']) {
+    if (reason === 'seeded') return 'Initial prefill';
+    if (reason === 'draft_saved') return 'Client update saved';
+    if (reason === 'submitted') return 'Client submitted';
+    return 'Client resubmitted';
+}
+
 export default function ClientsPage() {
+    const { user, isInternal } = useAuth();
     const [clients, setClients] = useState<Client[]>([]);
+    const [onboardingByClientId, setOnboardingByClientId] = useState<Record<string, ClientOnboardingSummary>>({});
     const [search, setSearch] = useState('');
     const [showForm, setShowForm] = useState(false);
     const [editingClient, setEditingClient] = useState<Client | null>(null);
@@ -56,6 +105,39 @@ export default function ClientsPage() {
 
     useEffect(() => { return clientsService.subscribe(setClients); }, []);
 
+    useEffect(() => {
+        if (!user || !isInternal) {
+            setOnboardingByClientId({});
+            return;
+        }
+
+        let active = true;
+        const run = async () => {
+            try {
+                const token = await user.getIdToken();
+                const res = await fetch('/api/admin/onboarding/forms', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to load onboarding summaries');
+                if (!active) return;
+
+                const nextMap = (data.forms || []).reduce((acc: Record<string, ClientOnboardingSummary>, form: ClientOnboardingSummary) => {
+                    acc[form.clientId] = form;
+                    return acc;
+                }, {});
+                setOnboardingByClientId(nextMap);
+            } catch (err) {
+                console.error('Failed to load onboarding summaries', err);
+            }
+        };
+
+        run();
+        return () => { active = false; };
+    }, [user, isInternal]);
+
     const statusPriority: Record<string, number> = { active: 0, proposal_sent: 1, prospect: 2, lead: 3, churned: 4 };
 
     const [statusTab, setStatusTab] = useState('all');
@@ -81,6 +163,8 @@ export default function ClientsPage() {
     const getCcContacts = (c: Client): Contact[] => {
         return c.contacts?.filter(ct => ct.role === 'cc') || [];
     };
+
+    const currentOnboarding = editingClient?.id ? onboardingByClientId[editingClient.id] : null;
 
     const openForm = (client?: Client) => {
         if (client) {
@@ -213,6 +297,7 @@ export default function ClientsPage() {
                     {filtered.map(c => {
                         const primary = getPrimaryContact(c);
                         const ccList = getCcContacts(c);
+                        const onboarding = c.id ? onboardingByClientId[c.id] : null;
                         return (
                             <div key={c.id} className="card" style={{ cursor: 'pointer' }} onClick={() => openForm(c)}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
@@ -249,6 +334,31 @@ export default function ClientsPage() {
                                         {ccList.map((cc, i) => (
                                             <span key={i}>{cc.name || cc.email}{i < ccList.length - 1 ? ', ' : ''}</span>
                                         ))}
+                                    </div>
+                                )}
+
+                                {onboarding && (
+                                    <div style={{
+                                        marginTop: 12,
+                                        padding: '12px 14px',
+                                        borderRadius: 10,
+                                        border: '1px solid rgba(24, 51, 40, 0.1)',
+                                        background: 'rgba(24, 51, 40, 0.035)',
+                                    }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                                            <ClipboardList size={14} color="#183328" />
+                                            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#183328' }}>Onboarding Brief</span>
+                                        </div>
+                                        <div style={{ fontSize: '0.74rem', color: 'var(--muted)', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                                            <span>Status: {onboarding.status}</span>
+                                            <span>Versions: {onboarding.versionCount}</span>
+                                            <span>Submissions: {onboarding.submissionCount}</span>
+                                        </div>
+                                        {onboarding.lastVersionAt && (
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginTop: 6 }}>
+                                                Last activity: {formatHistoryDate(onboarding.lastVersionAt)}
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
@@ -432,6 +542,99 @@ export default function ClientsPage() {
                                 <label className="form-label">Notes</label>
                                 <textarea className="form-input" rows={3} value={form.notes} onChange={e => setForm({ ...form, notes: e.target.value })} />
                             </div>
+
+                            {currentOnboarding && (
+                                <div style={{
+                                    marginTop: 20,
+                                    paddingTop: 18,
+                                    borderTop: '1px solid var(--border)',
+                                    display: 'grid',
+                                    gap: 14,
+                                }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                                        <div>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: 'var(--primary)' }}>
+                                                <ClipboardList size={16} /> Onboarding Brief
+                                            </div>
+                                            <div style={{ fontSize: '0.78rem', color: 'var(--muted)', marginTop: 4 }}>
+                                                Status: {currentOnboarding.status} · Versions: {currentOnboarding.versionCount} · Latest: V{currentOnboarding.latestVersionNumber || 0}
+                                            </div>
+                                        </div>
+                                        <a
+                                            href={currentOnboarding.publicUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            onClick={(event) => event.stopPropagation()}
+                                            style={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: 6,
+                                                padding: '8px 12px',
+                                                borderRadius: 8,
+                                                background: 'var(--bg)',
+                                                border: '1px solid var(--border)',
+                                                textDecoration: 'none',
+                                                color: 'var(--primary)',
+                                                fontSize: '0.8rem',
+                                                fontWeight: 600,
+                                            }}
+                                        >
+                                            <ExternalLink size={14} /> Open Public Form
+                                        </a>
+                                    </div>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 10 }}>
+                                        <div style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--bg)' }}>
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: 4 }}>Last Save</div>
+                                            <div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{formatHistoryDate(currentOnboarding.lastSavedAt)}</div>
+                                        </div>
+                                        <div style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--bg)' }}>
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: 4 }}>Last Version</div>
+                                            <div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{formatHistoryDate(currentOnboarding.lastVersionAt)}</div>
+                                        </div>
+                                        <div style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--bg)' }}>
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: 4 }}>Submissions</div>
+                                            <div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{currentOnboarding.submissionCount}</div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{ display: 'grid', gap: 8 }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, fontSize: '0.88rem' }}>
+                                            <History size={15} /> Version History
+                                        </div>
+                                        {currentOnboarding.recentVersions.length === 0 ? (
+                                            <div style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>No version history recorded yet.</div>
+                                        ) : (
+                                            currentOnboarding.recentVersions.map((version) => (
+                                                <div key={version.id} style={{
+                                                    padding: '12px 14px',
+                                                    borderRadius: 10,
+                                                    border: '1px solid var(--border)',
+                                                    background: '#fff',
+                                                }}>
+                                                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+                                                        <div style={{ fontSize: '0.82rem', fontWeight: 700 }}>
+                                                            V{version.versionNumber} · {versionReasonLabel(version.reason)}
+                                                        </div>
+                                                        <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
+                                                            {formatHistoryDate(version.savedAt)}
+                                                        </div>
+                                                    </div>
+                                                    <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: 6 }}>
+                                                        Status after update: {version.statusAfter}
+                                                    </div>
+                                                    {(version.changedFieldLabelsEn.length > 0 || version.changedFieldLabelsAr.length > 0) && (
+                                                        <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: 6, lineHeight: 1.5 }}>
+                                                            Changed: {(version.changedFieldLabelsEn.length > 0 ? version.changedFieldLabelsEn : version.changedFieldLabelsAr).slice(0, 5).join(', ')}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ))
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+
                             <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', marginTop: 8 }}>
                                 {editingClient && <button type="button" className="btn" style={{ color: 'var(--danger)', background: 'transparent' }} onClick={() => { handleDelete(editingClient.id!); setShowForm(false); }}>Delete</button>}
                                 <button type="button" className="btn btn-outline" onClick={() => setShowForm(false)}>Cancel</button>

@@ -41,6 +41,9 @@ async function seed() {
     let submittedAt = null;
     let lastSavedAt = null;
     let lastNotifiedAt = null;
+    let versionCount = 0;
+    let latestVersionNumber = 0;
+    let lastVersionAt = null;
 
     if (existing.exists) {
         const current = existing.data() || {};
@@ -53,7 +56,19 @@ async function seed() {
             submittedAt = current.submittedAt || null;
             lastSavedAt = current.lastSavedAt || null;
             lastNotifiedAt = current.lastNotifiedAt || null;
+            versionCount = current.versionCount || 0;
+            latestVersionNumber = current.latestVersionNumber || 0;
+            lastVersionAt = current.lastVersionAt || null;
         }
+    }
+
+    const shouldCreateVersion = !existing.exists || SHOULD_OVERWRITE;
+    const savedAt = new Date().toISOString();
+    if (shouldCreateVersion) {
+        latestVersionNumber = Number(latestVersionNumber || versionCount || 0) + 1;
+        versionCount = latestVersionNumber;
+        lastVersionAt = savedAt;
+        if (!lastSavedAt) lastSavedAt = savedAt;
     }
 
     const data = {
@@ -71,11 +86,37 @@ async function seed() {
         submittedAt,
         lastSavedAt,
         lastNotifiedAt,
+        versionCount,
+        latestVersionNumber,
+        lastVersionAt,
         updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         ...(existing.exists ? {} : { createdAt: admin.firestore.FieldValue.serverTimestamp() }),
     };
+    const batch = db.batch();
+    batch.set(ref, data, { merge: true });
 
-    await ref.set(data, { merge: true });
+    if (shouldCreateVersion) {
+        const versionRef = ref.collection('versions').doc(`v${String(latestVersionNumber).padStart(4, '0')}`);
+        batch.set(versionRef, {
+            versionNumber: latestVersionNumber,
+            reason: 'seeded',
+            actorType: 'system_seed',
+            savedAt,
+            changedFieldIds: Object.keys(responses),
+            changedFieldLabelsAr: [],
+            changedFieldLabelsEn: [],
+            statusBefore: existing.exists ? ((existing.data() || {}).status || 'draft') : 'draft',
+            statusAfter: status,
+            submissionCountBefore: existing.exists ? Number((existing.data() || {}).submissionCount || 0) : 0,
+            submissionCountAfter: submissionCount,
+            responses,
+            clientId: payload.clientId,
+            clientName: payload.clientName,
+            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+    }
+
+    await batch.commit();
 
     console.log('');
     console.log('Ein Abaya onboarding form seeded successfully.');

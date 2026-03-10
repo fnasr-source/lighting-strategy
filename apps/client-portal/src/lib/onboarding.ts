@@ -12,6 +12,7 @@ export interface OnboardingField {
     labelEn: string;
     type: OnboardingFieldType;
     required: boolean;
+    multiple?: boolean;
     placeholderAr?: string;
     placeholderEn?: string;
     helperAr?: string;
@@ -43,11 +44,51 @@ export interface ClientOnboardingForm {
     responses: ClientOnboardingResponses;
     fieldStates: ClientOnboardingFieldStates;
     submissionCount?: number;
+    versionCount?: number;
+    latestVersionNumber?: number;
+    lastVersionAt?: string;
     lastSavedAt?: string;
     submittedAt?: string;
     lastNotifiedAt?: string;
     createdAt?: unknown;
     updatedAt?: unknown;
+}
+
+export interface ClientOnboardingVersion {
+    id?: string;
+    versionNumber: number;
+    reason: 'seeded' | 'draft_saved' | 'submitted' | 'resubmitted';
+    actorType: 'system_seed' | 'client_public' | 'internal_admin';
+    savedAt: string;
+    changedFieldIds: string[];
+    changedFieldLabelsAr: string[];
+    changedFieldLabelsEn: string[];
+    statusBefore: 'draft' | 'submitted';
+    statusAfter: 'draft' | 'submitted';
+    submissionCountBefore: number;
+    submissionCountAfter: number;
+    responses: ClientOnboardingResponses;
+}
+
+export interface ClientOnboardingAdminSummary {
+    id: string;
+    clientId: string;
+    clientName: string;
+    slug: string;
+    accessKey: string;
+    language: 'ar-en';
+    platform: 'zid';
+    status: 'draft' | 'submitted';
+    versionCount: number;
+    latestVersionNumber: number;
+    lastVersionAt?: string | null;
+    lastSavedAt?: string | null;
+    submittedAt?: string | null;
+    submissionCount: number;
+    publicUrl: string;
+    responses: ClientOnboardingResponses;
+    fieldStates: ClientOnboardingFieldStates;
+    recentVersions: ClientOnboardingVersion[];
 }
 
 export const onboardingStateLabels: Record<
@@ -289,6 +330,9 @@ export const einAbayaOnboardingSections: OnboardingSection[] = [
                 labelEn: 'Brand assets folder link',
                 type: 'url',
                 required: true,
+                multiple: true,
+                helperAr: 'يمكنكم إضافة أكثر من رابط إذا كانت الملفات موزعة على أكثر من مجلد.',
+                helperEn: 'You can add more than one link if the files are split across folders.',
             },
             {
                 id: 'media_folder_link',
@@ -296,6 +340,9 @@ export const einAbayaOnboardingSections: OnboardingSection[] = [
                 labelEn: 'Media folder link',
                 type: 'url',
                 required: true,
+                multiple: true,
+                helperAr: 'أضيفوا كل روابط Google Drive أو Dropbox ذات الصلة بالميديا.',
+                helperEn: 'Add every relevant Google Drive or Dropbox link for media here.',
             },
             {
                 id: 'catalog_export_link',
@@ -303,6 +350,9 @@ export const einAbayaOnboardingSections: OnboardingSection[] = [
                 labelEn: 'Catalog export or current product file link',
                 type: 'url',
                 required: true,
+                multiple: true,
+                helperAr: 'إذا كان لديكم أكثر من ملف أو رابط تصدير، أضيفوها كلها.',
+                helperEn: 'If you have more than one export file or link, add them all.',
             },
             {
                 id: 'social_links_overview',
@@ -355,7 +405,7 @@ export function sanitizeOnboardingResponses(
 
     for (const field of einAbayaOnboardingFields) {
         const raw = input?.[field.id];
-        clean[field.id] = typeof raw === 'string' ? raw : '';
+        clean[field.id] = normalizeResponseValue(raw, field.multiple);
     }
 
     return clean;
@@ -371,13 +421,36 @@ export function sanitizeOnboardingResponsePatch(
     for (const field of einAbayaOnboardingFields) {
         if (!(field.id in input)) continue;
         const raw = input[field.id];
-        clean[field.id] = typeof raw === 'string' ? raw : '';
+        clean[field.id] = normalizeResponseValue(raw, field.multiple);
     }
 
     return clean;
 }
 
-function hasValue(value: string) {
+export function getMultiValueItems(value: string | null | undefined) {
+    return String(value || '')
+        .split('\n')
+        .map((item) => item.trim())
+        .filter(Boolean);
+}
+
+export function joinMultiValueItems(values: string[]) {
+    return values.map((value) => value.trim()).filter(Boolean).join('\n');
+}
+
+export function normalizeResponseValue(raw: unknown, multiple = false) {
+    if (multiple) {
+        if (Array.isArray(raw)) {
+            return joinMultiValueItems(raw.filter((item): item is string => typeof item === 'string'));
+        }
+        if (typeof raw === 'string') return joinMultiValueItems(raw.split('\n'));
+        return '';
+    }
+
+    return typeof raw === 'string' ? raw : '';
+}
+
+export function hasValue(value: string) {
     return value.trim().length > 0;
 }
 
@@ -430,13 +503,17 @@ export function validateOnboardingResponses(responses: ClientOnboardingResponses
             });
         }
 
-        if (field.type === 'url' && !isUrl(value)) {
-            invalidFields.push({
-                id: field.id,
-                labelAr: field.labelAr,
-                labelEn: field.labelEn,
-                reason: 'url',
-            });
+        if (field.type === 'url') {
+            const values = field.multiple ? getMultiValueItems(value) : [value];
+            const invalidUrl = values.find((item) => !isUrl(item));
+            if (invalidUrl) {
+                invalidFields.push({
+                    id: field.id,
+                    labelAr: field.labelAr,
+                    labelEn: field.labelEn,
+                    reason: 'url',
+                });
+            }
         }
     }
 

@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import admin from 'firebase-admin';
 import { adminDb } from '@/lib/firebase-admin';
 import { checkRateLimit } from '@/lib/scheduling/rate-limit';
 import {
@@ -7,6 +6,7 @@ import {
     sanitizeOnboardingResponsePatch,
     sanitizeOnboardingResponses,
 } from '@/lib/onboarding';
+import { writeOnboardingVersion } from '@/lib/onboarding-history';
 
 function getClientIp(req: NextRequest): string {
     return (
@@ -44,6 +44,7 @@ export async function GET(
         return NextResponse.json({
             form: {
                 id: formDoc.id,
+                clientId: data.clientId,
                 clientName: data.clientName,
                 slug: data.slug,
                 language: data.language,
@@ -51,6 +52,9 @@ export async function GET(
                 status: data.status,
                 responses: sanitizeOnboardingResponses(data.responses),
                 fieldStates: data.fieldStates || {},
+                versionCount: Number(data.versionCount || 0),
+                latestVersionNumber: Number(data.latestVersionNumber || 0),
+                lastVersionAt: data.lastVersionAt || null,
                 lastSavedAt: data.lastSavedAt || null,
                 submittedAt: data.submittedAt || null,
                 submissionCount: data.submissionCount || 0,
@@ -105,17 +109,20 @@ export async function PATCH(
         });
 
         const savedAt = new Date().toISOString();
-
-        await formDoc.ref.update({
+        const versionResult = await writeOnboardingVersion({
+            formRef: formDoc.ref,
             responses: mergedResponses,
-            lastSavedAt: savedAt,
-            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+            reason: 'draft_saved',
+            actorType: 'client_public',
+            savedAt,
         });
 
         return NextResponse.json({
             ok: true,
             lastSavedAt: savedAt,
-            status: current.status || 'draft',
+            status: versionResult.current.status || 'draft',
+            versionCount: versionResult.versionCount,
+            latestVersionNumber: versionResult.versionNumber,
         });
     } catch (err: unknown) {
         return NextResponse.json(

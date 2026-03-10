@@ -24,6 +24,8 @@ The public form on `my.admireworks.com` is seeded from the machine-readable payl
   The short list of items still needed to start the Zid build well.
 - `prefill-payload.json`
   The payload used by the onboarding seed script for Firestore.
+- `source-material/partner-kickoff-checklist-extracted.md`
+  Extracted working notes from the partner PDF checklist, used to merge operational kickoff questions into the final public form.
 
 ## Source Material Used
 
@@ -32,9 +34,11 @@ The public form on `my.admireworks.com` is seeded from the machine-readable payl
 - `Proposals/_Proposal-System/payments/client-directory.csv`
 - `Proposals/_Proposal-System/payments/invoice-registry.csv`
 - `/Users/user/Downloads/Ein Abaya — Client Onboarding.pdf`
-- January 21 meeting transcript
-- January 26 meeting transcript
-- March 1 meeting transcript
+- `../01-Transcript-Insights.md`
+- `../meetings/2026-01-21-meeting-transcript.md`
+- `../meetings/2026-01-26-meeting-transcript.md`
+- `../meetings/2026-03-01-meeting-transcript.md`
+- `../meetings/2026-03-01-decision-summary.md`
 
 ## Labeling Rules
 
@@ -53,4 +57,8 @@ Each answer in the filled brief is tagged with one of the following:
 
 - This version assumes the project is starting on `Zid`.
 - The onboarding form is optimized for a website-first kickoff, not a full performance-marketing data dump.
+- The question set is a **combined set**, not a raw duplicate of either source:
+  - the standard `Project-Briefing-Questionnaire`
+  - the partner kickoff PDF
+- Questions were merged, simplified, or deferred where that produced a faster client experience without losing important launch inputs.
 - Pricing and payment-split details are intentionally excluded from the client-facing form because repo sources conflict and they are not needed to start execution.

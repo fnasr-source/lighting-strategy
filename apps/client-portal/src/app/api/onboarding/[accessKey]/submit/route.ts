@@ -9,6 +9,7 @@ import {
     validateOnboardingResponses,
 } from '@/lib/onboarding';
 import { sendOnboardingSubmittedEmail } from '@/lib/onboarding-emails';
+import { writeOnboardingVersion } from '@/lib/onboarding-history';
 
 function getClientIp(req: NextRequest): string {
     return (
@@ -74,16 +75,18 @@ export async function POST(
         }
 
         const submittedAt = new Date().toISOString();
-        const nextSubmissionCount = Number(current.submissionCount || 0) + 1;
-
-        await formDoc.ref.update({
+        const versionResult = await writeOnboardingVersion({
+            formRef: formDoc.ref,
             responses: mergedResponses,
+            reason: current.status === 'submitted' ? 'resubmitted' : 'submitted',
+            actorType: 'client_public',
             status: 'submitted',
-            submissionCount: nextSubmissionCount,
-            lastSavedAt: submittedAt,
+            savedAt: submittedAt,
             submittedAt,
-            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+            submissionIncrement: 1,
+            forceVersion: true,
         });
+        const nextSubmissionCount = Number(versionResult.current.submissionCount || 0) + 1;
 
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://my.admireworks.com';
         try {
@@ -113,6 +116,8 @@ export async function POST(
             status: 'submitted',
             submittedAt,
             submissionCount: nextSubmissionCount,
+            versionCount: versionResult.versionCount,
+            latestVersionNumber: versionResult.versionNumber,
         });
     } catch (err: unknown) {
         return NextResponse.json(

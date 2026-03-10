@@ -13,6 +13,7 @@ Open `index.html` in any modern browser. No build step required.
 - `v1-executive-light/` — Minimal board-level summary
 - `v2-balanced/` — Strategy + evidence (links to main report)
 - `v3-deep-dive/` — Analyst-level with full appendix
+- `v4-growth-reset/` — March 11, 2026 meeting version with the education-first reset, multi-channel sequence plan, landing-page recommendations, dated rollout plan, and PDF export
 - `docs/` — Methodology, assumptions, pipeline documentation
 - `00_AUDIT_LOG.md` — Data audit results
 - `01_SOURCE_MAP.md` — Chart-to-source traceability

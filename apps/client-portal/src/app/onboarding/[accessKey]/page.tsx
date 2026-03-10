@@ -502,6 +502,7 @@ export default function EinAbayaOnboardingPage() {
             <style jsx>{`
                 .onboarding-shell {
                     min-height: 100vh;
+                    direction: rtl;
                     background:
                         radial-gradient(circle at top right, rgba(214, 177, 108, 0.18), transparent 28%),
                         radial-gradient(circle at bottom left, rgba(24, 51, 40, 0.12), transparent 32%),
@@ -516,22 +517,28 @@ export default function EinAbayaOnboardingPage() {
                 }
 
                 .onboarding-wrap {
-                    max-width: 1320px;
+                    max-width: 1360px;
                     margin: 0 auto;
                     display: grid;
-                    gap: 20px;
+                    gap: 24px;
                 }
 
                 .onboarding-hero {
                     display: grid;
-                    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
-                    gap: 20px;
+                    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+                    grid-template-areas: "status copy";
+                    gap: 24px;
                     background: linear-gradient(135deg, #183328 0%, #27493a 60%, #4d5f54 100%);
                     color: #f6efe2;
                     border-radius: 30px;
-                    padding: 30px;
+                    padding: 34px;
                     box-shadow: 0 24px 80px rgba(24, 51, 40, 0.18);
                     align-items: start;
+                }
+
+                .onboarding-hero-copy {
+                    grid-area: copy;
+                    min-width: 0;
                 }
 
                 .onboarding-kicker,
@@ -577,11 +584,13 @@ export default function EinAbayaOnboardingPage() {
                 }
 
                 .onboarding-status-card {
+                    grid-area: status;
                     background: rgba(255, 255, 255, 0.1);
                     border-color: rgba(255, 255, 255, 0.14);
                     color: #f6efe2;
                     padding: 20px;
                     backdrop-filter: blur(12px);
+                    align-self: stretch;
                 }
 
                 .onboarding-status-value {
@@ -598,27 +607,28 @@ export default function EinAbayaOnboardingPage() {
 
                 .onboarding-layout {
                     display: grid;
-                    grid-template-columns: minmax(0, 1fr) minmax(280px, 320px);
-                    gap: 20px;
+                    grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
+                    grid-template-areas: "sidebar main";
+                    gap: 24px;
                     align-items: start;
                 }
 
                 .onboarding-sidebar {
-                    grid-column: 2;
+                    grid-area: sidebar;
                     position: sticky;
-                    top: 20px;
+                    top: 24px;
                     width: 100%;
-                    max-width: 320px;
+                    max-width: 300px;
                     justify-self: start;
                 }
 
                 .onboarding-panel,
                 .onboarding-section-card {
-                    padding: 24px;
+                    padding: 28px;
                 }
 
                 .onboarding-main {
-                    grid-column: 1;
+                    grid-area: main;
                     min-width: 0;
                 }
 
@@ -631,7 +641,7 @@ export default function EinAbayaOnboardingPage() {
                 .onboarding-progress-list,
                 .onboarding-main {
                     display: grid;
-                    gap: 18px;
+                    gap: 24px;
                 }
 
                 .onboarding-progress-list {
@@ -640,7 +650,7 @@ export default function EinAbayaOnboardingPage() {
 
                 .onboarding-progress-item {
                     display: block;
-                    padding: 14px;
+                    padding: 16px;
                     border-radius: 18px;
                     background: #f6f0e6;
                     border: 1px solid #ece1cf;
@@ -726,6 +736,11 @@ export default function EinAbayaOnboardingPage() {
 
                 .onboarding-section-card {
                     scroll-margin-top: 24px;
+                }
+
+                .onboarding-section-card .onboarding-field:first-of-type {
+                    border-top: none;
+                    padding-top: 0;
                 }
 
                 .onboarding-section-head h2 {
@@ -814,17 +829,20 @@ export default function EinAbayaOnboardingPage() {
                     .onboarding-hero,
                     .onboarding-layout {
                         grid-template-columns: 1fr;
+                        grid-template-areas:
+                            "copy"
+                            "status";
                     }
 
                     .onboarding-sidebar {
-                        grid-column: auto;
+                        grid-area: auto;
                         position: static;
                         max-width: none;
                         justify-self: stretch;
                     }
 
                     .onboarding-main {
-                        grid-column: auto;
+                        grid-area: auto;
                     }
                 }
 
@@ -833,16 +851,25 @@ export default function EinAbayaOnboardingPage() {
                         padding: 16px 12px 48px;
                     }
 
+                    .onboarding-wrap {
+                        gap: 16px;
+                    }
+
                     .onboarding-hero,
                     .onboarding-panel,
                     .onboarding-section-card {
                         border-radius: 22px;
-                        padding: 18px;
+                        padding: 20px;
                     }
 
                     .onboarding-field-head,
                     .onboarding-status-card {
                         gap: 14px;
+                    }
+
+                    .onboarding-main,
+                    .onboarding-progress-list {
+                        gap: 18px;
                     }
 
                     .onboarding-status-value {

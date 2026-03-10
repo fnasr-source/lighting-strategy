@@ -604,13 +604,22 @@ export default function EinAbayaOnboardingPage() {
                 }
 
                 .onboarding-sidebar {
+                    grid-column: 2;
                     position: sticky;
                     top: 20px;
+                    width: 100%;
+                    max-width: 320px;
+                    justify-self: start;
                 }
 
                 .onboarding-panel,
                 .onboarding-section-card {
                     padding: 24px;
+                }
+
+                .onboarding-main {
+                    grid-column: 1;
+                    min-width: 0;
                 }
 
                 .onboarding-panel-title {
@@ -808,7 +817,14 @@ export default function EinAbayaOnboardingPage() {
                     }
 
                     .onboarding-sidebar {
+                        grid-column: auto;
                         position: static;
+                        max-width: none;
+                        justify-self: stretch;
+                    }
+
+                    .onboarding-main {
+                        grid-column: auto;
                     }
                 }
 

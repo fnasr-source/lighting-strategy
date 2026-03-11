@@ -80,6 +80,8 @@ body {
 .nav-links a:hover { background: rgba(204,159,83,0.12); color: var(--aw-navy); }
 .nav-meta { font-size: 12px; color: var(--aw-muted); }
 .main { max-width: 1240px; margin: 0 auto; padding: 22px 24px 72px; }
+.section-kicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--aw-gold); font-weight: 700; margin-bottom: 10px; }
+.section-intro { margin: 0 0 18px; max-width: 760px; color: var(--aw-muted); font-size: 15px; }
 .hero {
   position: relative;
   overflow: hidden;
@@ -184,16 +186,81 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
 .timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--aw-gold); box-shadow: 0 0 0 6px rgba(204,159,83,0.14); }
 .timeline-date { font-size: 12px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--aw-gold); font-weight: 700; }
 .signal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.story-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,240,232,0.92));
+  border: 1px solid var(--aw-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.story-title { font-size: 15px; font-weight: 700; color: var(--aw-navy); margin-bottom: 8px; }
+.story-text { font-size: 14px; color: var(--aw-muted); }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-wrap table { min-width: 720px; }
+.priority-list { display: grid; gap: 12px; margin-top: 14px; }
+.priority-card {
+  border: 1px solid var(--aw-border);
+  border-radius: 14px;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,243,237,0.92));
+}
+.priority-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.priority-name { font-size: 15px; font-weight: 700; color: var(--aw-navy); }
+.priority-company { font-size: 13px; color: var(--aw-muted); }
+.decision-list { display: grid; gap: 10px; margin-top: 14px; }
+.decision-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(0,26,112,0.04);
+  border: 1px solid rgba(0,26,112,0.08);
+}
+.decision-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--aw-gold);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
 .footer { margin-top: 18px; font-size: 12px; color: var(--aw-muted); }
 .redirect { max-width: 780px; margin: 60px auto; padding: 24px; background: white; border: 1px solid var(--aw-border); border-radius: 22px; text-align: center; }
 .redirect a { color: var(--aw-navy); font-weight: 700; }
 @media (max-width: 980px) {
-  .meta-grid, .kpi-grid, .chart-grid, .seq-grid, .timeline-grid, .signal-grid { grid-template-columns: 1fr; }
+  .meta-grid, .kpi-grid, .chart-grid, .seq-grid, .timeline-grid, .signal-grid, .story-grid { grid-template-columns: 1fr; }
   .grid { grid-template-columns: 1fr; }
   [class^='span-'] { grid-column: auto; }
   .bar-row { grid-template-columns: 1fr; }
   .nav-inner { flex-direction: column; align-items: flex-start; }
+  .nav { position: static; }
   h1 { font-size: 40px; }
+}
+@media (max-width: 720px) {
+  body { line-height: 1.55; }
+  .main { padding: 14px 14px 56px; }
+  .hero { padding: 28px 22px 24px; border-radius: 22px; }
+  .hero-logo { width: 72px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 25px; }
+  .hero-sub { font-size: 16px; }
+  .meta-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-value { font-size: 30px; }
+  .section-shell { padding: 20px; border-radius: 20px; }
+  .nav-links { overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 4px; }
+  .nav-meta { font-size: 11px; }
+  th, td { padding: 9px 8px; font-size: 12px; }
+}
+@media (max-width: 520px) {
+  .meta-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .priority-top { flex-direction: column; align-items: flex-start; }
 }
 @media print {
   body { background: white; }
@@ -211,11 +278,12 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
         <div class='nav-brand-text'>Admireworks <span>x Simulations Labs</span></div>
       </a>
       <ul class='nav-links'>
-        <li><a href='#diagnosis'>Diagnosis</a></li>
-        <li><a href='#changes'>Changes</a></li>
+        <li><a href='#summary'>Summary</a></li>
+        <li><a href='#diagnosis'>Situation</a></li>
         <li><a href='#strategy'>Strategy</a></li>
+        <li><a href='#action-plan'>Action plan</a></li>
         <li><a href='#sequences'>Sequences</a></li>
-        <li><a href='#roadmap'>Roadmap</a></li>
+        <li><a href='#roadmap'>Decisions</a></li>
       </ul>
       <div class='nav-meta'>Meeting version · March 11, 2026</div>
     </div>
@@ -228,7 +296,7 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
       <h1>Growth Reset Report and 30-Day Execution Plan</h1>
       <p class='hero-sub'>A meeting-ready report built around the live reset already executed: education-first positioning, a cleaner CRM conversion layer, multi-channel sequences, and a narrower MENA rollout plan designed to produce demos instead of just sends.</p>
       <div class='meta-grid'>
-        <div class='meta-card'><div class='meta-label'>Prepared</div><div class='meta-value'>March 10, 2026</div></div>
+        <div class='meta-card'><div class='meta-label'>Prepared</div><div class='meta-value'>March 11, 2026</div></div>
         <div class='meta-card'><div class='meta-label'>Meeting Focus</div><div class='meta-value'>Growth Reset</div></div>
         <div class='meta-card'><div class='meta-label'>Primary KPI</div><div class='meta-value'>Booked demos</div></div>
         <div class='meta-card'><div class='meta-label'>Primary wedge</div><div class='meta-value'>Education, MENA</div></div>
@@ -244,7 +312,17 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
       </div>
     </section>
 
+    <section class='section section-shell' id='summary'>
+      <div class='section-kicker'>Client summary</div>
+      <h2>What the client needs to understand first</h2>
+      <p class='section-intro'>This report is now structured as a meeting document, not an internal audit. It starts with the current commercial reality, then shows what changed, why that direction is more credible, and what needs approval to move faster.</p>
+      <div class='story-grid'><div class='story-card'><div class='story-title'>What changed</div><div class='story-text'>The outreach motion has been narrowed to an education-first MENA wedge with a single pilot CTA instead of broad cold outreach across unrelated personas.</div></div><div class='story-card'><div class='story-title'>What is already live</div><div class='story-text'>Campaign architecture, CRM hygiene, education lead seeding, and the manual recovery queue are already operating. This is no longer a planning-only deck.</div></div><div class='story-card'><div class='story-title'>What the client should decide</div><div class='story-text'>Approve the education landing page, manual follow-up discipline, and demo-booking KPI so the next 30 days are measured on conversations, not just sends.</div></div></div>
+    </section>
+
     <section class='section section-shell'>
+      <div class='section-kicker'>Current situation</div>
+      <h2>Where the account stands now</h2>
+      <p class='section-intro'>The current problem is not a lack of activity. It is a lack of conversion quality. The reset is designed to solve that by narrowing the wedge, tightening the offer, and forcing follow-through on the existing warm opportunities.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Executive diagnosis</div><span class='badge risk'>Problem is conversion, not reach alone</span></div>
@@ -273,6 +351,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='changes'>
+      <div class='section-kicker'>Changes already made</div>
+      <h2>What has already changed in the live system</h2>
+      <p class='section-intro'>The report should show the client that the reset is already underway. The campaign mix, CRM cleanup, and education routing are not proposed ideas only; they are already live and measurable.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Live campaign mix and daily caps</div><span class='badge info'>Current operating shape</span></div>
@@ -295,23 +376,26 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
         </div>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Campaign evidence table</div><span class='badge info'>Analytics + config</span></div>
-          <table>
+          <div class='table-wrap'><table>
             <thead><tr><th>Campaign</th><th>Status</th><th>Cap</th><th>Leads</th><th>Sent</th><th>Replies</th><th>Bounces</th></tr></thead>
             <tbody><tr><td>SimLabs | Security Professionals</td><td>Live</td><td>18</td><td>1,429</td><td>890</td><td>1</td><td>50</td></tr><tr><td>SimLabs | Education Decision Makers - MENA</td><td>Live</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>SimLabs | Faculty / Instructors - MENA</td><td>Live</td><td>18</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>SimLabs | Educators (US/UK/Saudi)</td><td>Live</td><td>6</td><td>92</td><td>42</td><td>0</td><td>2</td></tr><tr><td>SimLabs | Security Training Leaders</td><td>Live</td><td>8</td><td>131</td><td>12</td><td>0</td><td>0</td></tr><tr><td>SimLabs | Education Warm Follow-up / CRM Recovery</td><td>Live</td><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>SimLabs | CTF Organizers v2 (Spotlight Program)</td><td>Live</td><td>18</td><td>773</td><td>42</td><td>0</td><td>0</td></tr><tr><td>SimLabs | Security Consultants</td><td>Live</td><td>10</td><td>111</td><td>14</td><td>0</td><td>0</td></tr></tbody>
-          </table>
+          </table></div>
           <div class='footer'>Instantly analytics lag the newest education campaigns. The live seed uploads are confirmed in the registry and sync logs even before they show in analytics totals.</div>
         </div>
       </div>
     </section>
 
     <section class='section section-shell'>
+      <div class='section-kicker'>Background and context</div>
+      <h2>What was done before the reset, and why it was not enough</h2>
+      <p class='section-intro'>This section preserves the evidence of prior work while making the logic easier for the client to follow: substantial execution happened, but the original motion was still too broad and too weak at the point of conversion.</p>
       <div class='grid'>
         <div class='panel span-6'>
-          <h2>What Admireworks has already executed</h2>
+          <h3>What Admireworks has already executed</h3>
           <div class='grid'><div class='panel span-4'><h3>Strategy & Positioning</h3><ul class='text-list'><li>Go-to-market strategy with 3-persona framework (CTF Organizers, Educators, Enterprise)</li><li>Competitive analysis covering CTFD, TryHackMe, HackTheBox, and enterprise alternatives</li><li>Market segmentation for US, UK, and Saudi Arabia regions</li><li>Messaging and value proposition framework per audience segment</li><li>Landing page copy and headline variants per audience</li></ul></div><div class='panel span-4'><h3>Lead Sourcing & Outreach</h3><ul class='text-list'><li>1,921 leads sourced via Apollo across 3 target segments</li><li>2 cold email campaigns launched with 3-step automated sequences</li><li>1,669 emails sent to 827 unique contacts</li><li>69 pipeline leads unified, deduplicated, and quality-scored</li><li>22 hot leads identified across security, education, and services sectors</li></ul></div><div class='panel span-4'><h3>Advertising & Media</h3><ul class='text-list'><li>Google Ads campaign launched with keyword targeting</li><li>Social media ad creatives designed and reviewed</li><li>Media buying plan developed with channel allocation</li><li>Ad copy variations created for multiple audience segments</li></ul></div><div class='panel span-4'><h3>SEO & Content</h3><ul class='text-list'><li>Full website technical SEO audit completed</li><li>8 keyword clusters identified and mapped to content plan</li><li>Content strategy: 6-8 blog posts per month planned</li><li>302→301 redirect fixes identified (14 pages)</li><li>Internal linking strategy established</li></ul></div><div class='panel span-4'><h3>Platform & Events</h3><ul class='text-list'><li>Campaign landing pages created with audience-specific variants</li><li>Platform demo video edited and published</li><li>AI Everything Event participation and lead capture (35 leads)</li><li>5 Limited Spots Giveaway campaign executed</li><li>Email automation setup via Systeme.io</li></ul></div></div>
         </div>
         <div class='panel span-6'>
-          <h2>Why results stalled</h2>
+          <h3>Why results stalled</h3>
           <div class='dual-bars'>
             <div class='dual-row'><div class='dual-name'>Broad positioning</div><div class='dual-stack'><div class='dual-primary' style='width:84%'></div><div class='dual-secondary' style='width:16%'></div></div><div class='dual-meta'><span>Too many audiences at once</span><span>High friction</span></div></div>
             <div class='dual-row'><div class='dual-name'>Proof layer</div><div class='dual-stack'><div class='dual-primary' style='width:22%'></div><div class='dual-secondary' style='width:78%'></div></div><div class='dual-meta'><span>Old state: weak</span><span>Reset: strengthened</span></div></div>
@@ -328,6 +412,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='strategy'>
+      <div class='section-kicker'>New direction</div>
+      <h2>The proposed commercial direction</h2>
+      <p class='section-intro'>The plan is no longer to send more of the same outreach. The plan is to use an education-first offer, a tighter geographic focus, and one clear pilot CTA that can move qualified prospects into conversations faster.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>New growth thesis</div><span class='badge live'>Education-first</span></div>
@@ -345,25 +432,19 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
       </div>
     </section>
 
-    <section class='section section-shell' id='sequences'>
-      <h2>Multi-channel sequence maps</h2>
-      <div class='seq-grid'>
-        <div class='panel'><h3>Education decision makers</h3><div class='small'>Deans, program leaders, training heads, and institutional owners.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>Day 0</div><div class='step-channel'>Email</div></div><h4>Pilot-led opener</h4><div class='small'>Lead with the 30-day cyber lab pilot, no infrastructure burden, and one CTA: a pilot scoping call.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 1</div><div class='step-channel'>LinkedIn</div></div><h4>Light social touch</h4><div class='small'>Profile visit and connection request tied to practical cyber learning, not a generic sales note.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 3</div><div class='step-channel'>Email</div></div><h4>Send the proof layer</h4><div class='small'>Offer the pilot brief and outcomes framework before asking for more time.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 5</div><div class='step-channel'>Call / WhatsApp</div></div><h4>Direct qualification</h4><div class='small'>If a real phone or warm path exists, ask whether a pilot scoping call is relevant now or should be closed.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 7</div><div class='step-channel'>Email</div></div><h4>Close-loop CTA</h4><div class='small'>Simple reply CTA: “Pilot”.</div></div></div></div>
-        <div class='panel'><h3>Faculty / instructors</h3><div class='small'>Faculty, lab owners, researchers, and technical skills leads.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>Day 0</div><div class='step-channel'>Email</div></div><h4>Term-fit question</h4><div class='small'>Ask whether labs, assessments, or practical exercises are running this term and frame SimLabs as the setup bottleneck remover.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 2</div><div class='step-channel'>LinkedIn</div></div><h4>Faculty relevance note</h4><div class='small'>Short note around making labs and assessments easier to run this term.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 4</div><div class='step-channel'>Email</div></div><h4>Outcomes follow-up</h4><div class='small'>Offer a short summary around engagement, assessment credibility, and readiness measurement.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 6</div><div class='step-channel'>Manual follow-up</div></div><h4>Pilot fit check</h4><div class='small'>If engaged, send the pilot brief and ask whether this term or the next is more realistic.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 8</div><div class='step-channel'>Email</div></div><h4>Close-loop CTA</h4><div class='small'>Ask for a one-word reply: “Pilot”.</div></div></div></div>
-        <div class='panel'><h3>Warm recovery / CRM</h3><div class='small'>Follow-up Needed and Discovery Call Pending leads.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>24h</div><div class='step-channel'>Manual email</div></div><h4>Owner-led follow-up</h4><div class='small'>Assigned owner sends a direct follow-up with one next step only: confirm the scoping call.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Same day</div><div class='step-channel'>WhatsApp / Phone</div></div><h4>Direct contact</h4><div class='small'>Use phone only when it exists. Confirm timing instead of reselling the whole offer.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 3</div><div class='step-channel'>Email</div></div><h4>Agenda or pilot outline</h4><div class='small'>Send the specific pilot outline or meeting agenda.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 5</div><div class='step-channel'>CRM decision</div></div><h4>Resolve the lead</h4><div class='small'>Move to Discovery Call Done, Nurture, or Lost. No open-ended waiting state.</div></div></div></div>
-      </div>
-    </section>
-
-    <section class='section section-shell'>
-      <div class='chart-grid'>
+    <section class='section section-shell' id='action-plan'>
+      <div class='section-kicker'>Execution plan</div>
+      <h2>How the next 30 days should run</h2>
+      <p class='section-intro'>The next phase should be run as a controlled sprint. The purpose is to turn warm and near-fit education leads into meetings, then decide whether the wedge is strong enough to scale.</p>
+      <div class='timeline-grid'>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>Manual priority queue</div><span class='badge warn'>Needs same-day action</span></div>
-          <table>
-            <thead><tr><th>Lead</th><th>Stage</th><th>Owner</th><th>Company</th><th>Next action</th></tr></thead>
-            <tbody><tr><td>Daniel Mayer</td><td>03 Follow-up Needed</td><td>Sahl</td><td>gtedge
-
-</td><td>2026-03-11 Send tailored follow-up with partnership/use-case angle and propose a 20-minute pilot scoping call.</td></tr><tr><td>Marwa</td><td>03 Follow-up Needed</td><td>Sahl</td><td>Silicon21</td><td>2026-03-11 Send security training pilot follow-up with measurable outcomes angle and ask for a scoping call.</td></tr><tr><td>Ayman</td><td>03 Follow-up Needed</td><td>Nourhan</td><td>Homains</td><td>2026-03-11 Follow up with discovery scheduling for the education pilot and confirm if an instructor/program lead should join.</td></tr><tr><td>Sameh Ayman</td><td>03 Follow-up Needed</td><td>Sahl</td><td>S U Tech, Elsewedy University</td><td>2026-03-11 Send education use-case follow-up and ask for a 20-minute pilot scoping call.</td></tr><tr><td>Rabab Nabawy</td><td>04 Discovery Call Pending</td><td>Sahl</td><td>MSA University | Digilianze</td><td>2026-03-11 WhatsApp follow-up to confirm discovery call slot and send pilot scoping agenda.</td></tr><tr><td>Ahmed Elgyar</td><td>04 Discovery Call Pending</td><td>Sahl</td><td>Badr Universtiy in Assiut</td><td>2026-03-11 Email/WhatsApp follow-up to confirm whether the planned demo happened and lock the next call or close to nurture.</td></tr></tbody>
-          </table>
+          <div class='chart-head'><div class='chart-title'>30-day roadmap</div><span class='badge live'>Dated plan</span></div>
+          <div class='timeline'>
+            <div class='timeline-item'><div class='timeline-date'>March 10 - March 12, 2026</div><h3>Reset activation</h3><div class='small'>Campaign reset activated, CRM hygiene applied, pilot materials prepared, and education seed leads routed into the live stack.</div></div>
+            <div class='timeline-item'><div class='timeline-date'>March 13 - March 17, 2026</div><h3>Multi-channel sprint</h3><div class='small'>Manual follow-up on hot/warm leads, education outbound + LinkedIn touches, and landing-page copy finalized.</div></div>
+            <div class='timeline-item'><div class='timeline-date'>March 18 - March 24, 2026</div><h3>Optimization window</h3><div class='small'>Review bounce, reply quality, and demo movement; tighten copy or proof if needed.</div></div>
+            <div class='timeline-item'><div class='timeline-date'>March 25 - April 10, 2026</div><h3>Scale or reposition</h3><div class='small'>Scale only the winning lane, or add a secondary wedge if education does not show enough traction.</div></div>
+          </div>
         </div>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Expected outcomes</div><span class='badge info'>Ranges, not guarantees</span></div>
@@ -377,29 +458,43 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
       </div>
     </section>
 
-    <section class='section section-shell' id='roadmap'>
-      <div class='timeline-grid'>
+    <section class='section section-shell' id='sequences'>
+      <div class='section-kicker'>Outreach motion</div>
+      <h2>Multi-channel sequence maps</h2>
+      <p class='section-intro'>These sequences are shown in a meeting-friendly format so the client can clearly see how email, LinkedIn, and manual follow-up work together for each audience instead of acting as isolated tactics.</p>
+      <div class='seq-grid'>
+        <div class='panel'><h3>Education decision makers</h3><div class='small'>Deans, program leaders, training heads, and institutional owners.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>Day 0</div><div class='step-channel'>Email</div></div><h4>Pilot-led opener</h4><div class='small'>Lead with the 30-day cyber lab pilot, no infrastructure burden, and one CTA: a pilot scoping call.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 1</div><div class='step-channel'>LinkedIn</div></div><h4>Light social touch</h4><div class='small'>Profile visit and connection request tied to practical cyber learning, not a generic sales note.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 3</div><div class='step-channel'>Email</div></div><h4>Send the proof layer</h4><div class='small'>Offer the pilot brief and outcomes framework before asking for more time.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 5</div><div class='step-channel'>Call / WhatsApp</div></div><h4>Direct qualification</h4><div class='small'>If a real phone or warm path exists, ask whether a pilot scoping call is relevant now or should be closed.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 7</div><div class='step-channel'>Email</div></div><h4>Close-loop CTA</h4><div class='small'>Simple reply CTA: “Pilot”.</div></div></div></div>
+        <div class='panel'><h3>Faculty / instructors</h3><div class='small'>Faculty, lab owners, researchers, and technical skills leads.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>Day 0</div><div class='step-channel'>Email</div></div><h4>Term-fit question</h4><div class='small'>Ask whether labs, assessments, or practical exercises are running this term and frame SimLabs as the setup bottleneck remover.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 2</div><div class='step-channel'>LinkedIn</div></div><h4>Faculty relevance note</h4><div class='small'>Short note around making labs and assessments easier to run this term.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 4</div><div class='step-channel'>Email</div></div><h4>Outcomes follow-up</h4><div class='small'>Offer a short summary around engagement, assessment credibility, and readiness measurement.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 6</div><div class='step-channel'>Manual follow-up</div></div><h4>Pilot fit check</h4><div class='small'>If engaged, send the pilot brief and ask whether this term or the next is more realistic.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 8</div><div class='step-channel'>Email</div></div><h4>Close-loop CTA</h4><div class='small'>Ask for a one-word reply: “Pilot”.</div></div></div></div>
+        <div class='panel'><h3>Warm recovery / CRM</h3><div class='small'>Follow-up Needed and Discovery Call Pending leads.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>24h</div><div class='step-channel'>Manual email</div></div><h4>Owner-led follow-up</h4><div class='small'>Assigned owner sends a direct follow-up with one next step only: confirm the scoping call.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Same day</div><div class='step-channel'>WhatsApp / Phone</div></div><h4>Direct contact</h4><div class='small'>Use phone only when it exists. Confirm timing instead of reselling the whole offer.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 3</div><div class='step-channel'>Email</div></div><h4>Agenda or pilot outline</h4><div class='small'>Send the specific pilot outline or meeting agenda.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 5</div><div class='step-channel'>CRM decision</div></div><h4>Resolve the lead</h4><div class='small'>Move to Discovery Call Done, Nurture, or Lost. No open-ended waiting state.</div></div></div></div>
+      </div>
+    </section>
+
+    <section class='section section-shell'>
+      <div class='chart-grid'>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>30-day roadmap</div><span class='badge live'>Dated plan</span></div>
-          <div class='timeline'>
-            <div class='timeline-item'><div class='timeline-date'>March 10 - March 12, 2026</div><h3>Reset activation</h3><div class='small'>Campaign reset activated, CRM hygiene applied, pilot materials prepared, and education seed leads routed into the live stack.</div></div>
-            <div class='timeline-item'><div class='timeline-date'>March 13 - March 17, 2026</div><h3>Multi-channel sprint</h3><div class='small'>Manual follow-up on hot/warm leads, education outbound + LinkedIn touches, and landing-page copy finalized.</div></div>
-            <div class='timeline-item'><div class='timeline-date'>March 18 - March 24, 2026</div><h3>Optimization window</h3><div class='small'>Review bounce, reply quality, and demo movement; tighten copy or proof if needed.</div></div>
-            <div class='timeline-item'><div class='timeline-date'>March 25 - April 10, 2026</div><h3>Scale or reposition</h3><div class='small'>Scale only the winning lane, or add a secondary wedge if education does not show enough traction.</div></div>
-          </div>
+          <div class='chart-head'><div class='chart-title'>Manual priority queue</div><span class='badge warn'>Needs same-day action</span></div>
+          <div class='priority-list'><div class='priority-card'><div class='priority-top'><div><div class='priority-name'>Daniel Mayer</div><div class='priority-company'>gtedge
+
+</div></div><span class='badge warn'>03 Follow-up Needed</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> Sahl</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> 2026-03-11 Send tailored follow-up with partnership/use-case angle and propose a 20-minute pilot scoping call.</div></div><div class='priority-card'><div class='priority-top'><div><div class='priority-name'>Marwa</div><div class='priority-company'>Silicon21</div></div><span class='badge warn'>03 Follow-up Needed</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> Sahl</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> 2026-03-11 Send security training pilot follow-up with measurable outcomes angle and ask for a scoping call.</div></div><div class='priority-card'><div class='priority-top'><div><div class='priority-name'>Ayman</div><div class='priority-company'>Homains</div></div><span class='badge warn'>03 Follow-up Needed</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> Nourhan</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> 2026-03-11 Follow up with discovery scheduling for the education pilot and confirm if an instructor/program lead should join.</div></div><div class='priority-card'><div class='priority-top'><div><div class='priority-name'>Sameh Ayman</div><div class='priority-company'>S U Tech, Elsewedy University</div></div><span class='badge warn'>03 Follow-up Needed</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> Sahl</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> 2026-03-11 Send education use-case follow-up and ask for a 20-minute pilot scoping call.</div></div><div class='priority-card'><div class='priority-top'><div><div class='priority-name'>Rabab Nabawy</div><div class='priority-company'>MSA University | Digilianze</div></div><span class='badge warn'>04 Discovery Call Pending</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> Sahl</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> 2026-03-11 WhatsApp follow-up to confirm discovery call slot and send pilot scoping agenda.</div></div><div class='priority-card'><div class='priority-top'><div><div class='priority-name'>Ahmed Elgyar</div><div class='priority-company'>Badr Universtiy in Assiut</div></div><span class='badge warn'>04 Discovery Call Pending</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> Sahl</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> 2026-03-11 Email/WhatsApp follow-up to confirm whether the planned demo happened and lock the next call or close to nurture.</div></div></div>
+          <div class='table-wrap' style='margin-top:14px;'><table>
+            <thead><tr><th>Lead</th><th>Stage</th><th>Owner</th><th>Company</th><th>Next action</th></tr></thead>
+            <tbody><tr><td>Daniel Mayer</td><td>03 Follow-up Needed</td><td>Sahl</td><td>gtedge
+
+</td><td>2026-03-11 Send tailored follow-up with partnership/use-case angle and propose a 20-minute pilot scoping call.</td></tr><tr><td>Marwa</td><td>03 Follow-up Needed</td><td>Sahl</td><td>Silicon21</td><td>2026-03-11 Send security training pilot follow-up with measurable outcomes angle and ask for a scoping call.</td></tr><tr><td>Ayman</td><td>03 Follow-up Needed</td><td>Nourhan</td><td>Homains</td><td>2026-03-11 Follow up with discovery scheduling for the education pilot and confirm if an instructor/program lead should join.</td></tr><tr><td>Sameh Ayman</td><td>03 Follow-up Needed</td><td>Sahl</td><td>S U Tech, Elsewedy University</td><td>2026-03-11 Send education use-case follow-up and ask for a 20-minute pilot scoping call.</td></tr><tr><td>Rabab Nabawy</td><td>04 Discovery Call Pending</td><td>Sahl</td><td>MSA University | Digilianze</td><td>2026-03-11 WhatsApp follow-up to confirm discovery call slot and send pilot scoping agenda.</td></tr><tr><td>Ahmed Elgyar</td><td>04 Discovery Call Pending</td><td>Sahl</td><td>Badr Universtiy in Assiut</td><td>2026-03-11 Email/WhatsApp follow-up to confirm whether the planned demo happened and lock the next call or close to nurture.</td></tr></tbody>
+          </table></div>
         </div>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>Client meeting decisions</div><span class='badge next'>What needs approval</span></div>
-          <ul class='text-list'>
-            <li>Approve education-first as the main wedge for the next 30 days.</li>
-            <li>Approve Egypt, Saudi Arabia, and UAE as the near-term priority markets.</li>
-            <li>Approve the dedicated education pilot landing page as the primary destination for outreach.</li>
-            <li>Approve manual operator / founder follow-up for warm leads instead of relying on automation only.</li>
-            <li>Approve booked demos and qualified conversations as the KPI standard for this sprint.</li>
-          </ul>
+          <div class='chart-head'><div class='chart-title'>What the client needs to approve</div><span class='badge next'>Decision checklist</span></div>
+          <div class='decision-list'><div class='decision-item'><div class='decision-badge'>1</div><div class='small'><strong>Approve education-first as the main wedge</strong><br/>Run the next 30 days around institutions, instructors, and training teams in Egypt, Saudi Arabia, and UAE.</div></div><div class='decision-item'><div class='decision-badge'>2</div><div class='small'><strong>Approve the dedicated pilot landing page</strong><br/>Use one clear destination that explains the 30-day pilot, the proof layer, and the booking CTA.</div></div><div class='decision-item'><div class='decision-badge'>3</div><div class='small'><strong>Approve manual follow-up on the warm queue</strong><br/>The existing hot and warm leads need fast operator follow-up, not more automated waiting.</div></div><div class='decision-item'><div class='decision-badge'>4</div><div class='small'><strong>Approve success metrics</strong><br/>Judge the sprint on booked demos and qualified conversations rather than send count alone.</div></div></div>
           <p class='quote'>This report should be discussed as a reset plan with live execution already started, not as another broad status update.</p>
         </div>
       </div>
+    </section>
+
+    <section class='section section-shell' id='roadmap'>
+      <div class='section-kicker'>Appendix evidence</div>
+      <h2>Evidence sources behind this recommendation</h2>
+      <p class='section-intro'>This final section exists for credibility in the meeting. It shows where the recommendation comes from without forcing the client to start with raw detail.</p>
       <div class='footer'>Prepared by Admireworks. Evidence sources include Instantly live campaign data, Apollo enrichment outputs, Asana CRM state, and the live reset execution logs.</div>
     </section>
   </main>

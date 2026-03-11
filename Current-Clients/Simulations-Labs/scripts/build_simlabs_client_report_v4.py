@@ -151,6 +151,8 @@ body {{
 .nav-links a:hover {{ background: rgba(204,159,83,0.12); color: var(--aw-navy); }}
 .nav-meta {{ font-size: 12px; color: var(--aw-muted); }}
 .main {{ max-width: 1240px; margin: 0 auto; padding: 22px 24px 72px; }}
+.section-kicker {{ font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--aw-gold); font-weight: 700; margin-bottom: 10px; }}
+.section-intro {{ margin: 0 0 18px; max-width: 760px; color: var(--aw-muted); font-size: 15px; }}
 .hero {{
   position: relative;
   overflow: hidden;
@@ -255,16 +257,81 @@ th {{ font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: 
 .timeline-item::before {{ content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--aw-gold); box-shadow: 0 0 0 6px rgba(204,159,83,0.14); }}
 .timeline-date {{ font-size: 12px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--aw-gold); font-weight: 700; }}
 .signal-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }}
+.story-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }}
+.story-card {{
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,240,232,0.92));
+  border: 1px solid var(--aw-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}}
+.story-title {{ font-size: 15px; font-weight: 700; color: var(--aw-navy); margin-bottom: 8px; }}
+.story-text {{ font-size: 14px; color: var(--aw-muted); }}
+.table-wrap {{ overflow-x: auto; -webkit-overflow-scrolling: touch; }}
+.table-wrap table {{ min-width: 720px; }}
+.priority-list {{ display: grid; gap: 12px; margin-top: 14px; }}
+.priority-card {{
+  border: 1px solid var(--aw-border);
+  border-radius: 14px;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,243,237,0.92));
+}}
+.priority-top {{ display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }}
+.priority-name {{ font-size: 15px; font-weight: 700; color: var(--aw-navy); }}
+.priority-company {{ font-size: 13px; color: var(--aw-muted); }}
+.decision-list {{ display: grid; gap: 10px; margin-top: 14px; }}
+.decision-item {{
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(0,26,112,0.04);
+  border: 1px solid rgba(0,26,112,0.08);
+}}
+.decision-badge {{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--aw-gold);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}}
 .footer {{ margin-top: 18px; font-size: 12px; color: var(--aw-muted); }}
 .redirect {{ max-width: 780px; margin: 60px auto; padding: 24px; background: white; border: 1px solid var(--aw-border); border-radius: 22px; text-align: center; }}
 .redirect a {{ color: var(--aw-navy); font-weight: 700; }}
 @media (max-width: 980px) {{
-  .meta-grid, .kpi-grid, .chart-grid, .seq-grid, .timeline-grid, .signal-grid {{ grid-template-columns: 1fr; }}
+  .meta-grid, .kpi-grid, .chart-grid, .seq-grid, .timeline-grid, .signal-grid, .story-grid {{ grid-template-columns: 1fr; }}
   .grid {{ grid-template-columns: 1fr; }}
   [class^='span-'] {{ grid-column: auto; }}
   .bar-row {{ grid-template-columns: 1fr; }}
   .nav-inner {{ flex-direction: column; align-items: flex-start; }}
+  .nav {{ position: static; }}
   h1 {{ font-size: 40px; }}
+}}
+@media (max-width: 720px) {{
+  body {{ line-height: 1.55; }}
+  .main {{ padding: 14px 14px 56px; }}
+  .hero {{ padding: 28px 22px 24px; border-radius: 22px; }}
+  .hero-logo {{ width: 72px; }}
+  h1 {{ font-size: 32px; }}
+  h2 {{ font-size: 25px; }}
+  .hero-sub {{ font-size: 16px; }}
+  .meta-grid {{ grid-template-columns: 1fr 1fr; }}
+  .kpi-value {{ font-size: 30px; }}
+  .section-shell {{ padding: 20px; border-radius: 20px; }}
+  .nav-links {{ overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 4px; }}
+  .nav-meta {{ font-size: 11px; }}
+  th, td {{ padding: 9px 8px; font-size: 12px; }}
+}}
+@media (max-width: 520px) {{
+  .meta-grid {{ grid-template-columns: 1fr; }}
+  .kpi-grid {{ grid-template-columns: 1fr 1fr; }}
+  .priority-top {{ flex-direction: column; align-items: flex-start; }}
 }}
 @media print {{
   body {{ background: white; }}
@@ -345,6 +412,10 @@ def build_html(asset_prefix: str) -> str:
         f"<tr><td>{item['name']}</td><td>{item['section'].replace('🟨 ', '').replace('🟧 ', '')}</td><td>{item['owner']}</td><td>{item['company']}</td><td>{item['next_action']}</td></tr>"
         for item in focus
     )
+    priority_cards = ''.join(
+        f"<div class='priority-card'><div class='priority-top'><div><div class='priority-name'>{item['name']}</div><div class='priority-company'>{item['company']}</div></div><span class='badge warn'>{item['section'].replace('🟨 ', '').replace('🟧 ', '')}</span></div><div class='small' style='margin-top:10px;'><strong>Owner:</strong> {item['owner'] or 'Unassigned'}</div><div class='small' style='margin-top:6px;'><strong>Next action:</strong> {item['next_action']}</div></div>"
+        for item in focus
+    )
 
     work_done = report_data.get('workCompleted', [])
     work_done_cards = ''.join(
@@ -353,6 +424,17 @@ def build_html(asset_prefix: str) -> str:
     )
 
     focus_names = ', '.join(item['name'] for item in focus[:4])
+    summary_cards = ''.join([
+        "<div class='story-card'><div class='story-title'>What changed</div><div class='story-text'>The outreach motion has been narrowed to an education-first MENA wedge with a single pilot CTA instead of broad cold outreach across unrelated personas.</div></div>",
+        "<div class='story-card'><div class='story-title'>What is already live</div><div class='story-text'>Campaign architecture, CRM hygiene, education lead seeding, and the manual recovery queue are already operating. This is no longer a planning-only deck.</div></div>",
+        "<div class='story-card'><div class='story-title'>What the client should decide</div><div class='story-text'>Approve the education landing page, manual follow-up discipline, and demo-booking KPI so the next 30 days are measured on conversations, not just sends.</div></div>",
+    ])
+    decision_items = ''.join([
+        "<div class='decision-item'><div class='decision-badge'>1</div><div class='small'><strong>Approve education-first as the main wedge</strong><br/>Run the next 30 days around institutions, instructors, and training teams in Egypt, Saudi Arabia, and UAE.</div></div>",
+        "<div class='decision-item'><div class='decision-badge'>2</div><div class='small'><strong>Approve the dedicated pilot landing page</strong><br/>Use one clear destination that explains the 30-day pilot, the proof layer, and the booking CTA.</div></div>",
+        "<div class='decision-item'><div class='decision-badge'>3</div><div class='small'><strong>Approve manual follow-up on the warm queue</strong><br/>The existing hot and warm leads need fast operator follow-up, not more automated waiting.</div></div>",
+        "<div class='decision-item'><div class='decision-badge'>4</div><div class='small'><strong>Approve success metrics</strong><br/>Judge the sprint on booked demos and qualified conversations rather than send count alone.</div></div>",
+    ])
 
     decision_steps = [
         {'day': 'Day 0', 'channel': 'Email', 'title': 'Pilot-led opener', 'desc': 'Lead with the 30-day cyber lab pilot, no infrastructure burden, and one CTA: a pilot scoping call.'},
@@ -402,11 +484,12 @@ def build_html(asset_prefix: str) -> str:
         <div class='nav-brand-text'>Admireworks <span>x Simulations Labs</span></div>
       </a>
       <ul class='nav-links'>
-        <li><a href='#diagnosis'>Diagnosis</a></li>
-        <li><a href='#changes'>Changes</a></li>
+        <li><a href='#summary'>Summary</a></li>
+        <li><a href='#diagnosis'>Situation</a></li>
         <li><a href='#strategy'>Strategy</a></li>
+        <li><a href='#action-plan'>Action plan</a></li>
         <li><a href='#sequences'>Sequences</a></li>
-        <li><a href='#roadmap'>Roadmap</a></li>
+        <li><a href='#roadmap'>Decisions</a></li>
       </ul>
       <div class='nav-meta'>Meeting version · March 11, 2026</div>
     </div>
@@ -435,7 +518,17 @@ def build_html(asset_prefix: str) -> str:
       </div>
     </section>
 
+    <section class='section section-shell' id='summary'>
+      <div class='section-kicker'>Client summary</div>
+      <h2>What the client needs to understand first</h2>
+      <p class='section-intro'>This report is now structured as a meeting document, not an internal audit. It starts with the current commercial reality, then shows what changed, why that direction is more credible, and what needs approval to move faster.</p>
+      <div class='story-grid'>{summary_cards}</div>
+    </section>
+
     <section class='section section-shell'>
+      <div class='section-kicker'>Current situation</div>
+      <h2>Where the account stands now</h2>
+      <p class='section-intro'>The current problem is not a lack of activity. It is a lack of conversion quality. The reset is designed to solve that by narrowing the wedge, tightening the offer, and forcing follow-through on the existing warm opportunities.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Executive diagnosis</div><span class='badge risk'>Problem is conversion, not reach alone</span></div>
@@ -464,6 +557,9 @@ def build_html(asset_prefix: str) -> str:
     </section>
 
     <section class='section section-shell' id='changes'>
+      <div class='section-kicker'>Changes already made</div>
+      <h2>What has already changed in the live system</h2>
+      <p class='section-intro'>The report should show the client that the reset is already underway. The campaign mix, CRM cleanup, and education routing are not proposed ideas only; they are already live and measurable.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Live campaign mix and daily caps</div><span class='badge info'>Current operating shape</span></div>
@@ -486,23 +582,26 @@ def build_html(asset_prefix: str) -> str:
         </div>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Campaign evidence table</div><span class='badge info'>Analytics + config</span></div>
-          <table>
+          <div class='table-wrap'><table>
             <thead><tr><th>Campaign</th><th>Status</th><th>Cap</th><th>Leads</th><th>Sent</th><th>Replies</th><th>Bounces</th></tr></thead>
             <tbody>{''.join(campaign_rows)}</tbody>
-          </table>
+          </table></div>
           <div class='footer'>Instantly analytics lag the newest education campaigns. The live seed uploads are confirmed in the registry and sync logs even before they show in analytics totals.</div>
         </div>
       </div>
     </section>
 
     <section class='section section-shell'>
+      <div class='section-kicker'>Background and context</div>
+      <h2>What was done before the reset, and why it was not enough</h2>
+      <p class='section-intro'>This section preserves the evidence of prior work while making the logic easier for the client to follow: substantial execution happened, but the original motion was still too broad and too weak at the point of conversion.</p>
       <div class='grid'>
         <div class='panel span-6'>
-          <h2>What Admireworks has already executed</h2>
+          <h3>What Admireworks has already executed</h3>
           <div class='grid'>{work_done_cards}</div>
         </div>
         <div class='panel span-6'>
-          <h2>Why results stalled</h2>
+          <h3>Why results stalled</h3>
           <div class='dual-bars'>
             <div class='dual-row'><div class='dual-name'>Broad positioning</div><div class='dual-stack'><div class='dual-primary' style='width:84%'></div><div class='dual-secondary' style='width:16%'></div></div><div class='dual-meta'><span>Too many audiences at once</span><span>High friction</span></div></div>
             <div class='dual-row'><div class='dual-name'>Proof layer</div><div class='dual-stack'><div class='dual-primary' style='width:22%'></div><div class='dual-secondary' style='width:78%'></div></div><div class='dual-meta'><span>Old state: weak</span><span>Reset: strengthened</span></div></div>
@@ -519,6 +618,9 @@ def build_html(asset_prefix: str) -> str:
     </section>
 
     <section class='section section-shell' id='strategy'>
+      <div class='section-kicker'>New direction</div>
+      <h2>The proposed commercial direction</h2>
+      <p class='section-intro'>The plan is no longer to send more of the same outreach. The plan is to use an education-first offer, a tighter geographic focus, and one clear pilot CTA that can move qualified prospects into conversations faster.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>New growth thesis</div><span class='badge live'>Education-first</span></div>
@@ -536,23 +638,19 @@ def build_html(asset_prefix: str) -> str:
       </div>
     </section>
 
-    <section class='section section-shell' id='sequences'>
-      <h2>Multi-channel sequence maps</h2>
-      <div class='seq-grid'>
-        {build_sequence_card('Education decision makers', 'Deans, program leaders, training heads, and institutional owners.', decision_steps)}
-        {build_sequence_card('Faculty / instructors', 'Faculty, lab owners, researchers, and technical skills leads.', faculty_steps)}
-        {build_sequence_card('Warm recovery / CRM', 'Follow-up Needed and Discovery Call Pending leads.', recovery_steps)}
-      </div>
-    </section>
-
-    <section class='section section-shell'>
-      <div class='chart-grid'>
+    <section class='section section-shell' id='action-plan'>
+      <div class='section-kicker'>Execution plan</div>
+      <h2>How the next 30 days should run</h2>
+      <p class='section-intro'>The next phase should be run as a controlled sprint. The purpose is to turn warm and near-fit education leads into meetings, then decide whether the wedge is strong enough to scale.</p>
+      <div class='timeline-grid'>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>Manual priority queue</div><span class='badge warn'>Needs same-day action</span></div>
-          <table>
-            <thead><tr><th>Lead</th><th>Stage</th><th>Owner</th><th>Company</th><th>Next action</th></tr></thead>
-            <tbody>{focus_rows}</tbody>
-          </table>
+          <div class='chart-head'><div class='chart-title'>30-day roadmap</div><span class='badge live'>Dated plan</span></div>
+          <div class='timeline'>
+            <div class='timeline-item'><div class='timeline-date'>March 10 - March 12, 2026</div><h3>Reset activation</h3><div class='small'>Campaign reset activated, CRM hygiene applied, pilot materials prepared, and education seed leads routed into the live stack.</div></div>
+            <div class='timeline-item'><div class='timeline-date'>March 13 - March 17, 2026</div><h3>Multi-channel sprint</h3><div class='small'>Manual follow-up on hot/warm leads, education outbound + LinkedIn touches, and landing-page copy finalized.</div></div>
+            <div class='timeline-item'><div class='timeline-date'>March 18 - March 24, 2026</div><h3>Optimization window</h3><div class='small'>Review bounce, reply quality, and demo movement; tighten copy or proof if needed.</div></div>
+            <div class='timeline-item'><div class='timeline-date'>March 25 - April 10, 2026</div><h3>Scale or reposition</h3><div class='small'>Scale only the winning lane, or add a secondary wedge if education does not show enough traction.</div></div>
+          </div>
         </div>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Expected outcomes</div><span class='badge info'>Ranges, not guarantees</span></div>
@@ -566,29 +664,39 @@ def build_html(asset_prefix: str) -> str:
       </div>
     </section>
 
-    <section class='section section-shell' id='roadmap'>
-      <div class='timeline-grid'>
+    <section class='section section-shell' id='sequences'>
+      <div class='section-kicker'>Outreach motion</div>
+      <h2>Multi-channel sequence maps</h2>
+      <p class='section-intro'>These sequences are shown in a meeting-friendly format so the client can clearly see how email, LinkedIn, and manual follow-up work together for each audience instead of acting as isolated tactics.</p>
+      <div class='seq-grid'>
+        {build_sequence_card('Education decision makers', 'Deans, program leaders, training heads, and institutional owners.', decision_steps)}
+        {build_sequence_card('Faculty / instructors', 'Faculty, lab owners, researchers, and technical skills leads.', faculty_steps)}
+        {build_sequence_card('Warm recovery / CRM', 'Follow-up Needed and Discovery Call Pending leads.', recovery_steps)}
+      </div>
+    </section>
+
+    <section class='section section-shell'>
+      <div class='chart-grid'>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>30-day roadmap</div><span class='badge live'>Dated plan</span></div>
-          <div class='timeline'>
-            <div class='timeline-item'><div class='timeline-date'>March 10 - March 12, 2026</div><h3>Reset activation</h3><div class='small'>Campaign reset activated, CRM hygiene applied, pilot materials prepared, and education seed leads routed into the live stack.</div></div>
-            <div class='timeline-item'><div class='timeline-date'>March 13 - March 17, 2026</div><h3>Multi-channel sprint</h3><div class='small'>Manual follow-up on hot/warm leads, education outbound + LinkedIn touches, and landing-page copy finalized.</div></div>
-            <div class='timeline-item'><div class='timeline-date'>March 18 - March 24, 2026</div><h3>Optimization window</h3><div class='small'>Review bounce, reply quality, and demo movement; tighten copy or proof if needed.</div></div>
-            <div class='timeline-item'><div class='timeline-date'>March 25 - April 10, 2026</div><h3>Scale or reposition</h3><div class='small'>Scale only the winning lane, or add a secondary wedge if education does not show enough traction.</div></div>
-          </div>
+          <div class='chart-head'><div class='chart-title'>Manual priority queue</div><span class='badge warn'>Needs same-day action</span></div>
+          <div class='priority-list'>{priority_cards}</div>
+          <div class='table-wrap' style='margin-top:14px;'><table>
+            <thead><tr><th>Lead</th><th>Stage</th><th>Owner</th><th>Company</th><th>Next action</th></tr></thead>
+            <tbody>{focus_rows}</tbody>
+          </table></div>
         </div>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>Client meeting decisions</div><span class='badge next'>What needs approval</span></div>
-          <ul class='text-list'>
-            <li>Approve education-first as the main wedge for the next 30 days.</li>
-            <li>Approve Egypt, Saudi Arabia, and UAE as the near-term priority markets.</li>
-            <li>Approve the dedicated education pilot landing page as the primary destination for outreach.</li>
-            <li>Approve manual operator / founder follow-up for warm leads instead of relying on automation only.</li>
-            <li>Approve booked demos and qualified conversations as the KPI standard for this sprint.</li>
-          </ul>
+          <div class='chart-head'><div class='chart-title'>What the client needs to approve</div><span class='badge next'>Decision checklist</span></div>
+          <div class='decision-list'>{decision_items}</div>
           <p class='quote'>This report should be discussed as a reset plan with live execution already started, not as another broad status update.</p>
         </div>
       </div>
+    </section>
+
+    <section class='section section-shell' id='roadmap'>
+      <div class='section-kicker'>Appendix evidence</div>
+      <h2>Evidence sources behind this recommendation</h2>
+      <p class='section-intro'>This final section exists for credibility in the meeting. It shows where the recommendation comes from without forcing the client to start with raw detail.</p>
       <div class='footer'>Prepared by Admireworks. Evidence sources include Instantly live campaign data, Apollo enrichment outputs, Asana CRM state, and the live reset execution logs.</div>
     </section>
   </main>

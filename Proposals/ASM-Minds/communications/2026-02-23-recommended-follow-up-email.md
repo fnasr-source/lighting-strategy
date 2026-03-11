@@ -1,9 +1,9 @@
-Subject: Admireworks x Dr. Mahmoud Mongy
+Subject: Admireworks x ASM Minds
 
-To: mongy.mhmod@gmail.com
+To: asm.minds@gmail.com
 CC: Fouad Nasseredin
 
-Dear Dr. Mongy,
+Dear ASM Minds team,
 
 Greetings. We hope you are doing well.
 

@@ -82,6 +82,16 @@ body {
 .main { max-width: 1240px; margin: 0 auto; padding: 22px 24px 72px; }
 .section-kicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--aw-gold); font-weight: 700; margin-bottom: 10px; }
 .section-intro { margin: 0 0 18px; max-width: 760px; color: var(--aw-muted); font-size: 15px; }
+.agenda-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 18px; }
+.agenda-item {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--aw-border);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+.agenda-step { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aw-gold); font-weight: 700; }
+.agenda-title { margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--aw-navy); }
+.agenda-text { margin-top: 4px; font-size: 12px; color: var(--aw-muted); }
 .hero {
   position: relative;
   overflow: hidden;
@@ -234,7 +244,7 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
 .redirect { max-width: 780px; margin: 60px auto; padding: 24px; background: white; border: 1px solid var(--aw-border); border-radius: 22px; text-align: center; }
 .redirect a { color: var(--aw-navy); font-weight: 700; }
 @media (max-width: 980px) {
-  .meta-grid, .kpi-grid, .chart-grid, .seq-grid, .timeline-grid, .signal-grid, .story-grid { grid-template-columns: 1fr; }
+  .meta-grid, .kpi-grid, .chart-grid, .seq-grid, .timeline-grid, .signal-grid, .story-grid, .agenda-strip { grid-template-columns: 1fr; }
   .grid { grid-template-columns: 1fr; }
   [class^='span-'] { grid-column: auto; }
   .bar-row { grid-template-columns: 1fr; }
@@ -278,12 +288,12 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
         <div class='nav-brand-text'>Admireworks <span>x Simulations Labs</span></div>
       </a>
       <ul class='nav-links'>
-        <li><a href='#summary'>Summary</a></li>
-        <li><a href='#diagnosis'>Situation</a></li>
+        <li><a href='#summary'>Overview</a></li>
+        <li><a href='#diagnosis'>Performance</a></li>
         <li><a href='#strategy'>Strategy</a></li>
-        <li><a href='#action-plan'>Action plan</a></li>
+        <li><a href='#action-plan'>Roadmap</a></li>
         <li><a href='#sequences'>Sequences</a></li>
-        <li><a href='#roadmap'>Decisions</a></li>
+        <li><a href='#roadmap'>Next Steps</a></li>
       </ul>
       <div class='nav-meta'>Meeting version · March 11, 2026</div>
     </div>
@@ -303,6 +313,10 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
       </div>
     </section>
 
+    <section class='section'>
+      <div class='agenda-strip'><div class='agenda-item'><div class='agenda-step'>01</div><div class='agenda-title'>Snapshot</div><div class='agenda-text'>Where performance stands now.</div></div><div class='agenda-item'><div class='agenda-step'>02</div><div class='agenda-title'>Reset</div><div class='agenda-text'>What has already changed live.</div></div><div class='agenda-item'><div class='agenda-step'>03</div><div class='agenda-title'>Direction</div><div class='agenda-text'>Why education-first is the right wedge.</div></div><div class='agenda-item'><div class='agenda-step'>04</div><div class='agenda-title'>Roadmap</div><div class='agenda-text'>What the next 30 days should look like.</div></div><div class='agenda-item'><div class='agenda-step'>05</div><div class='agenda-title'>Approvals</div><div class='agenda-text'>What needs alignment in the meeting.</div></div></div>
+    </section>
+
     <section class='section' id='diagnosis'>
       <div class='kpi-grid'>
         <div class='kpi-card'><div class='kpi-label'>Active emails sent</div><div class='kpi-value'>1,000</div><div class='kpi-note'>Active-campaign send volume in Instantly as of March 10, 2026.</div></div>
@@ -313,16 +327,16 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='summary'>
-      <div class='section-kicker'>Client summary</div>
-      <h2>What the client needs to understand first</h2>
-      <p class='section-intro'>This report is now structured as a meeting document, not an internal audit. It starts with the current commercial reality, then shows what changed, why that direction is more credible, and what needs approval to move faster.</p>
-      <div class='story-grid'><div class='story-card'><div class='story-title'>What changed</div><div class='story-text'>The outreach motion has been narrowed to an education-first MENA wedge with a single pilot CTA instead of broad cold outreach across unrelated personas.</div></div><div class='story-card'><div class='story-title'>What is already live</div><div class='story-text'>Campaign architecture, CRM hygiene, education lead seeding, and the manual recovery queue are already operating. This is no longer a planning-only deck.</div></div><div class='story-card'><div class='story-title'>What the client should decide</div><div class='story-text'>Approve the education landing page, manual follow-up discipline, and demo-booking KPI so the next 30 days are measured on conversations, not just sends.</div></div></div>
+      <div class='section-kicker'>Executive overview</div>
+      <h2>Growth reset summary</h2>
+      <p class='section-intro'>This report is designed for the meeting flow: current performance, live reset changes, the new commercial direction, the 30-day rollout, and the decisions needed to move forward with clarity.</p>
+      <div class='story-grid'><div class='story-card'><div class='story-title'>The shift</div><div class='story-text'>The go-to-market motion is being narrowed to an education-first MENA wedge with one pilot-led CTA instead of broad outreach across unrelated personas.</div></div><div class='story-card'><div class='story-title'>Already activated</div><div class='story-text'>Campaign architecture, CRM hygiene, education lead seeding, and the manual recovery queue are already operating. This is a live reset, not a planning-only proposal.</div></div><div class='story-card'><div class='story-title'>Meeting decisions</div><div class='story-text'>The next 30 days depend on alignment around the education landing page, manual follow-up discipline, and booked-demo KPI.</div></div></div>
     </section>
 
     <section class='section section-shell'>
-      <div class='section-kicker'>Current situation</div>
-      <h2>Where the account stands now</h2>
-      <p class='section-intro'>The current problem is not a lack of activity. It is a lack of conversion quality. The reset is designed to solve that by narrowing the wedge, tightening the offer, and forcing follow-through on the existing warm opportunities.</p>
+      <div class='section-kicker'>Performance snapshot</div>
+      <h2>Where performance stands today</h2>
+      <p class='section-intro'>The current issue is not a lack of activity. The issue is conversion quality. The reset is intended to improve that by narrowing the wedge, tightening the offer, and forcing follow-through on the warm opportunities already in the system.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Executive diagnosis</div><span class='badge risk'>Problem is conversion, not reach alone</span></div>
@@ -351,9 +365,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='changes'>
-      <div class='section-kicker'>Changes already made</div>
-      <h2>What has already changed in the live system</h2>
-      <p class='section-intro'>The report should show the client that the reset is already underway. The campaign mix, CRM cleanup, and education routing are not proposed ideas only; they are already live and measurable.</p>
+      <div class='section-kicker'>Live reset</div>
+      <h2>What has already changed in market</h2>
+      <p class='section-intro'>The campaign mix, CRM cleanup, and education routing are already live. This section shows the operational shift that has already been activated, not just the next plan.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>Live campaign mix and daily caps</div><span class='badge info'>Current operating shape</span></div>
@@ -386,9 +400,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell'>
-      <div class='section-kicker'>Background and context</div>
-      <h2>What was done before the reset, and why it was not enough</h2>
-      <p class='section-intro'>This section preserves the evidence of prior work while making the logic easier for the client to follow: substantial execution happened, but the original motion was still too broad and too weak at the point of conversion.</p>
+      <div class='section-kicker'>Background</div>
+      <h2>What was already built, and what we learned from it</h2>
+      <p class='section-intro'>Substantial execution happened before the reset. The issue was not lack of work; it was that the original motion was too broad and too weak at the point of conversion.</p>
       <div class='grid'>
         <div class='panel span-6'>
           <h3>What Admireworks has already executed</h3>
@@ -412,9 +426,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='strategy'>
-      <div class='section-kicker'>New direction</div>
-      <h2>The proposed commercial direction</h2>
-      <p class='section-intro'>The plan is no longer to send more of the same outreach. The plan is to use an education-first offer, a tighter geographic focus, and one clear pilot CTA that can move qualified prospects into conversations faster.</p>
+      <div class='section-kicker'>Strategic direction</div>
+      <h2>The next commercial direction</h2>
+      <p class='section-intro'>The next phase is not about sending more of the same outreach. It is about using an education-first offer, a tighter geographic focus, and one pilot CTA that can move qualified prospects into conversations faster.</p>
       <div class='chart-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>New growth thesis</div><span class='badge live'>Education-first</span></div>
@@ -433,9 +447,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='action-plan'>
-      <div class='section-kicker'>Execution plan</div>
-      <h2>How the next 30 days should run</h2>
-      <p class='section-intro'>The next phase should be run as a controlled sprint. The purpose is to turn warm and near-fit education leads into meetings, then decide whether the wedge is strong enough to scale.</p>
+      <div class='section-kicker'>30-day roadmap</div>
+      <h2>The next 30 days</h2>
+      <p class='section-intro'>The next phase should run as a controlled sprint. The goal is to turn warm and near-fit education leads into meetings, then decide whether the wedge is strong enough to scale.</p>
       <div class='timeline-grid'>
         <div class='chart-card'>
           <div class='chart-head'><div class='chart-title'>30-day roadmap</div><span class='badge live'>Dated plan</span></div>
@@ -459,9 +473,9 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
     </section>
 
     <section class='section section-shell' id='sequences'>
-      <div class='section-kicker'>Outreach motion</div>
+      <div class='section-kicker'>Outreach system</div>
       <h2>Multi-channel sequence maps</h2>
-      <p class='section-intro'>These sequences are shown in a meeting-friendly format so the client can clearly see how email, LinkedIn, and manual follow-up work together for each audience instead of acting as isolated tactics.</p>
+      <p class='section-intro'>These sequence maps show how email, LinkedIn, and manual follow-up work together for each audience instead of acting as isolated tactics.</p>
       <div class='seq-grid'>
         <div class='panel'><h3>Education decision makers</h3><div class='small'>Deans, program leaders, training heads, and institutional owners.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>Day 0</div><div class='step-channel'>Email</div></div><h4>Pilot-led opener</h4><div class='small'>Lead with the 30-day cyber lab pilot, no infrastructure burden, and one CTA: a pilot scoping call.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 1</div><div class='step-channel'>LinkedIn</div></div><h4>Light social touch</h4><div class='small'>Profile visit and connection request tied to practical cyber learning, not a generic sales note.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 3</div><div class='step-channel'>Email</div></div><h4>Send the proof layer</h4><div class='small'>Offer the pilot brief and outcomes framework before asking for more time.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 5</div><div class='step-channel'>Call / WhatsApp</div></div><h4>Direct qualification</h4><div class='small'>If a real phone or warm path exists, ask whether a pilot scoping call is relevant now or should be closed.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 7</div><div class='step-channel'>Email</div></div><h4>Close-loop CTA</h4><div class='small'>Simple reply CTA: “Pilot”.</div></div></div></div>
         <div class='panel'><h3>Faculty / instructors</h3><div class='small'>Faculty, lab owners, researchers, and technical skills leads.</div><div class='step-flow'><div class='step-card'><div class='step-top'><div class='step-day'>Day 0</div><div class='step-channel'>Email</div></div><h4>Term-fit question</h4><div class='small'>Ask whether labs, assessments, or practical exercises are running this term and frame SimLabs as the setup bottleneck remover.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 2</div><div class='step-channel'>LinkedIn</div></div><h4>Faculty relevance note</h4><div class='small'>Short note around making labs and assessments easier to run this term.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 4</div><div class='step-channel'>Email</div></div><h4>Outcomes follow-up</h4><div class='small'>Offer a short summary around engagement, assessment credibility, and readiness measurement.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 6</div><div class='step-channel'>Manual follow-up</div></div><h4>Pilot fit check</h4><div class='small'>If engaged, send the pilot brief and ask whether this term or the next is more realistic.</div></div><div class='step-card'><div class='step-top'><div class='step-day'>Day 8</div><div class='step-channel'>Email</div></div><h4>Close-loop CTA</h4><div class='small'>Ask for a one-word reply: “Pilot”.</div></div></div></div>
@@ -484,17 +498,17 @@ th { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: v
           </table></div>
         </div>
         <div class='chart-card'>
-          <div class='chart-head'><div class='chart-title'>What the client needs to approve</div><span class='badge next'>Decision checklist</span></div>
-          <div class='decision-list'><div class='decision-item'><div class='decision-badge'>1</div><div class='small'><strong>Approve education-first as the main wedge</strong><br/>Run the next 30 days around institutions, instructors, and training teams in Egypt, Saudi Arabia, and UAE.</div></div><div class='decision-item'><div class='decision-badge'>2</div><div class='small'><strong>Approve the dedicated pilot landing page</strong><br/>Use one clear destination that explains the 30-day pilot, the proof layer, and the booking CTA.</div></div><div class='decision-item'><div class='decision-badge'>3</div><div class='small'><strong>Approve manual follow-up on the warm queue</strong><br/>The existing hot and warm leads need fast operator follow-up, not more automated waiting.</div></div><div class='decision-item'><div class='decision-badge'>4</div><div class='small'><strong>Approve success metrics</strong><br/>Judge the sprint on booked demos and qualified conversations rather than send count alone.</div></div></div>
-          <p class='quote'>This report should be discussed as a reset plan with live execution already started, not as another broad status update.</p>
+          <div class='chart-head'><div class='chart-title'>Meeting approvals</div><span class='badge next'>Decision checklist</span></div>
+          <div class='decision-list'><div class='decision-item'><div class='decision-badge'>1</div><div class='small'><strong>Approve education-first as the lead commercial motion</strong><br/>Run the next 30 days around institutions, instructors, and training teams in Egypt, Saudi Arabia, and UAE.</div></div><div class='decision-item'><div class='decision-badge'>2</div><div class='small'><strong>Approve the dedicated pilot landing page</strong><br/>Use one destination that explains the 30-day pilot, the proof layer, and the booking CTA with less friction.</div></div><div class='decision-item'><div class='decision-badge'>3</div><div class='small'><strong>Approve manual follow-up on warm opportunities</strong><br/>The existing hot and warm leads need fast operator follow-up, not more automated waiting.</div></div><div class='decision-item'><div class='decision-badge'>4</div><div class='small'><strong>Approve the KPI standard for this sprint</strong><br/>Judge the next phase on booked demos and qualified conversations rather than send count alone.</div></div></div>
+          <p class='quote'>This meeting should close with a clear decision on the wedge, the landing page path, the follow-up discipline, and the KPI standard for the sprint.</p>
         </div>
       </div>
     </section>
 
     <section class='section section-shell' id='roadmap'>
-      <div class='section-kicker'>Appendix evidence</div>
-      <h2>Evidence sources behind this recommendation</h2>
-      <p class='section-intro'>This final section exists for credibility in the meeting. It shows where the recommendation comes from without forcing the client to start with raw detail.</p>
+      <div class='section-kicker'>Supporting evidence</div>
+      <h2>Evidence behind the recommendation</h2>
+      <p class='section-intro'>This final section is here for credibility in the meeting. It shows where the recommendation comes from without forcing the presentation to begin with raw detail.</p>
       <div class='footer'>Prepared by Admireworks. Evidence sources include Instantly live campaign data, Apollo enrichment outputs, Asana CRM state, and the live reset execution logs.</div>
     </section>
   </main>

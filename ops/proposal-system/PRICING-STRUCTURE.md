@@ -1,0 +1,322 @@
+# Admireworks Proposal Pricing Structure
+
+> **Last Updated:** February 23, 2026
+> **Source:** Fouad Nasseredin (verbal briefing)
+> **Purpose:** Standard pricing reference for all future proposals
+
+---
+
+## Core Service: Ad Campaign Management
+
+This is the main service — managing ad performance on **one ad platform** (typically Meta Ads).
+
+### Egyptian Market Clients (campaigns targeting Egypt)
+- **Price:** $260 USD/month equivalent in EGP
+- **As of Feb 2026:** ~12,500 EGP/month (at ~47.5 EGP/USD)
+- **Always round** to a clean, professional figure in the proposal
+
+### International Market Clients
+| Client Location | Monthly Price |
+|---|---|
+| **UAE** | 1,200 AED/month |
+| **Saudi Arabia** | 1,200 SAR/month |
+| **All other markets** | $330 USD/month equivalent |
+| **Egyptian client targeting outside Egypt** | $330 USD/month equivalent |
+
+> **Key rule:** If the client is Egyptian but their campaigns target a market outside Egypt, they pay the international rate ($330 USD equivalent), not the Egyptian rate.
+
+---
+
+## Growth System (Add-On)
+
+Covers the creation and maintenance of all marketing infrastructure: landing pages, lead funnels, campaign creative suites, follow-up flows, content direction, etc.
+
+### Payment Options (present as two options in proposals)
+
+**Option A — Bulk Payment ("Own Your Assets"):**
+- 45,000 EGP one-time for all growth assets
+- Assets are built over the first 3 months
+- Client owns all assets from day one
+- Lower ongoing monthly (ad management only)
+
+**Option B — Growth System Subscription:**
+- 5,500 EGP/month subscription
+- Client pays **3 months upfront** at engagement start
+- All assets built, maintained, and optimized as part of the subscription
+- Total monthly = ad management + subscription (e.g., 12,500 + 5,500 = 18,000 EGP/month for Egyptian market)
+
+### Asset Transfer Rule
+- During the subscription, assets belong to Admireworks
+- **Upon completing 12 months of continuous subscription, all growth assets are transferred to the client at no additional cost**
+- If the client terminates before 12 months, assets are not transferred
+- Option A clients own assets from day one (no transfer needed)
+
+---
+
+## Growth Packages (Funnel & Ads)
+
+Standalone growth packages for clients who need funnel infrastructure, optimization, and/or ads management. These are independent of the Growth System subscription model above.
+
+### Package Options
+
+| Package | Setup Cost | Monthly Cost | Timeline |
+|---------|-----------|-------------|----------|
+| **Option 1 — Funnel Engine Only** | 45,000 EGP (one-time) | 7,500 EGP/mo (optional retainer) | 10–14 days |
+| **Option 2 — Engine + Optimization** | 35,000 EGP setup | 17,500 EGP/mo | Min. 3 months |
+| **Option 3 — Full Growth Partnership** | 35,000 EGP setup | 32,500 EGP/mo | Min. 3 months |
+
+### Option 1 — Funnel Engine Only (Build + Launch)
+- Funnel strategy & structure (lead journey, stages, conversion logic)
+- Landing page build (high-converting layout + copy guidance)
+- Lead capture form with qualification questions
+- Thank You page with next-step routing (WhatsApp / Telegram)
+- Tracking setup & dashboard basics (lead source, actions, insights)
+- Handover & launch support
+- **Optional retainer:** 7,500 EGP/month for minor updates, A/B test setup
+
+### Option 2 — Engine + Optimization (Min. 3 Months)
+- Everything in Option 1, plus:
+- Continuous optimization & iteration based on performance data
+- Monthly performance review & action plan
+- Building & improving multiple landing page variations
+- Ongoing improvements to qualification questions
+- Ongoing tracking refinement for improved visibility
+- **Initial payment includes setup fee + Month 1 retainer**
+
+### Option 3 — Full Growth Partnership (Engine + Optimization + Ads)
+- Everything in Option 2, plus:
+- Full ads management across agreed channels
+- Campaign structure, ad set strategy & optimization plan
+- Ad copy angles & variations aligned with the funnel
+- Weekly optimization & budget guidance
+- **Ad spend is paid directly by the client**
+
+### Strategic Add-Ons
+
+| Add-On | Price | Notes |
+|--------|-------|-------|
+| **Reply Management** (AI + Escalation) | 12,500 EGP setup + 5,000 EGP/mo | AI-assisted reply flows for WhatsApp, Messenger & Telegram. Subscriptions by client. |
+| **Creative Pack** (Quarterly Content) | 22,000 EGP/quarter | 8 videos + 4 images per quarter. Scripting, editing, captions. Using supplied footage (no filming). |
+| **Platform Costs** | Paid by client | Hosting, domains, AI usage, third-party subscriptions. |
+
+---
+
+## Upfront Payment Rules
+
+### Ad Campaign Management
+- **First 3 months are always paid upfront** at engagement start
+- After the first 3 months, billing switches to monthly
+
+### Growth System Subscription
+- **First 3 months are also paid upfront** at engagement start
+- After month 3, subscription fee continues monthly alongside ad management
+
+### Summary of Upfront Amounts
+
+| Option | Upfront at Start | Monthly After Month 3 |
+|--------|-----------------|----------------------|
+| **Option 1 (Bulk Assets)** | 3 × ad mgmt + full asset bulk | Ad mgmt only |
+| **Option 2 (Subscription)** | 3 × ad mgmt + 3 × subscription | Ad mgmt + subscription |
+
+Example (Egyptian market at 12,500 EGP/mo ad mgmt, 5,500 EGP/mo subscription):
+- **Option 1:** 37,500 + 45,000 = **82,500 EGP** upfront → 12,500 EGP/mo after
+- **Option 2:** 37,500 + 16,500 = **54,000 EGP** upfront → 18,000 EGP/mo after
+
+---
+
+## Resend Email Platform Pricing (Agency Internal)
+
+> **Model decision:** Keep billing simple and contact-based.
+> We bill by **contact tiers** and include both transactional + marketing usage in each tier.
+
+### Account Structure Rule (Resend)
+- Use **one Resend Team per client** (separate usage, billing, API keys).
+- Agency can manage all teams from one login via team switcher.
+- No shared pool across clients.
+
+### Billing Rule (Client-Facing)
+- Client pays one email add-on fee based on **active contacts**.
+- Transactional and marketing are not split line items for normal usage.
+- Include fair-use clause for extreme transactional spikes.
+
+### Included in Retainer
+- Up to **1,000 contacts** included in monthly retainer (no extra email platform fee).
+
+### Contact Tiers (Email Add-On)
+| Tier | Contact Range | Suggested Add-On (USD/mo) | Notes |
+|---|---:|---:|---|
+| Included | 0–1,000 | 0 | Covered in retainer |
+| Growth | 1,001–5,000 | 75 | All-in (transactional + marketing) |
+| Scale | 5,001–10,000 | 150 | All-in |
+| Pro | 10,001–25,000 | 375 | All-in |
+| Enterprise Lite | 25,001–50,000 | 750 | All-in |
+| Enterprise | 50,001+ | Custom | Quote case-by-case |
+
+### Margin Policy (Internal)
+- Target markup on platform cost: **20–25%**.
+- Formula: `Client Email Fee = Actual Resend Cost × 1.20 to 1.25`.
+- Keep tier prices clean/rounded for proposals.
+
+### Fair-Use Safeguard (Must Include in Proposal/Agreement)
+- “Email add-on includes normal transactional usage for the selected contact tier.
+  Abnormal transactional spikes may be billed separately as overage.”
+
+---
+
+## Proposal Structure
+
+Every proposal should include:
+1. **What is included** — common scope across all options
+2. **Two commercial options** — same scope, different payment models:
+   - Option 1: Ad management + growth assets (bulk — client owns from day one)
+   - Option 2: Ad management + Admireworks Growth System (subscription — assets transfer after 12 months)
+3. **The approach** — specific strategy for this client
+4. **Next steps** — decision + payment + kickoff
+5. **Payment details** — Instapay link and account info
+
+## Meeting-Revised Commercial Rule
+
+When a client agrees to move forward but asks for a safer launch structure after the proposal is already built:
+
+1. Do **not** force the old proposal pricing into the invoice if the meeting changed the commercial model.
+2. Use the proposal as strategic background and create/update a one-page agreement/final-terms summary for the revised commercials.
+3. If launch pricing is intentionally reduced from an earlier anchor:
+   - show the original commercial anchor,
+   - show the agreed price,
+   - make the amount due now explicit.
+4. If future price increases were discussed but exact KPI thresholds were not locked:
+   - document the increase as **review-based**,
+   - do not invent hard thresholds.
+5. For Egypt clients, if the invoice already contains the detailed commercials, keep the payment email short and link-driven rather than repeating all pricing in the email body.
+
+### Currency Display Rules
+- Always show **both USD and local currency** for ad management fee
+- Use `~$260 USD` with the EGP equivalent for Egyptian market clients
+- Round all figures to clean numbers (no decimals, no odd amounts)
+- Check current exchange rate at time of proposal creation
+
+---
+
+## Payment Details (Egypt)
+
+- Account Name: Fouad Nasseredin
+- Instapay Account: admireworks@instapay
+- Instapay Link: https://ipn.eg/S/admireworks/instapay/5A1jri
+
+---
+
+## Follow-Up Email Template
+
+After generating a proposal number, send a follow-up email to the client. Standard structure:
+
+```
+Subject: Admireworks x {CLIENT_BUSINESS_NAME}
+
+To: {CLIENT_EMAIL}
+CC: Fouad Nasseredin
+
+Dear Mr./Ms. {CLIENT_NAME},
+
+Greetings. We hope you are doing well.
+
+[Optional: Thank you for today's productive meeting.]
+
+Please find your one-page proposal at the link below:
+👉 [View Proposal](https://ops.admireworks.com/ops/proposal-system/_Outgoing/{PROPOSAL_NUMBER}/one-page.html)
+
+Proposal Number: {PROPOSAL_NUMBER}
+Valid Until: {VALID_UNTIL_DATE}
+
+To proceed, kindly confirm your selected option (Option 1 or Option 2) and complete the transfer via Instapay:
+- Account Name: Fouad Nasseredin
+- Instapay Account: admireworks@instapay
+- 👉 [Pay via Instapay](https://ipn.eg/S/admireworks/instapay/5A1jri)
+
+Once the transfer is completed, please share the receipt and we will schedule kickoff immediately.
+
+[Optional: Any specific action items from the meeting, e.g., requesting project assets.]
+
+If you have any questions or need any clarification, please let us know.
+
+All the best,
+Operations Coordinator
+Admireworks
+```
+
+### Email Rules
+- Always CC Fouad Nasseredin
+- Include proposal number and valid-until date
+- Include Instapay payment details for Egypt clients
+- For non-Egypt clients, use the appropriate payment link instead of Instapay
+- Store the email in `{source-folder}/communications/YYYY-MM-DD-recommended-follow-up-email.md`
+
+### Lightweight Payment Email Variant
+
+Use this variant when:
+- the invoice is already fully self-explanatory,
+- the one-page agreement carries the final commercial summary,
+- and the sender is operations / client servicing rather than strategy.
+
+Recommended structure:
+
+```text
+Dear {CLIENT_NAME},
+
+Thank you for {the meeting / yesterday's meeting}.
+
+As agreed, I’m sharing the final agreement summary and invoice below for your review.
+
+Agreement summary:
+👉 [View Agreement](URL)
+
+Invoice:
+👉 [View Invoice — {INVOICE_NUMBER}](URL)
+
+Once payment is confirmed, we will begin kickoff and access handover immediately.
+```
+
+Notes:
+- If the sender signature is already handled by the email client, do not repeat the sender name in the body.
+- Keep this variant short; the invoice and agreement should carry the detail.
+
+---
+
+## HubSpot Quotation Playbook (Internal)
+
+### Standardization Rules (Always Apply)
+1. **Comments block:** Use the same standard comments text used in the approved reference quote (Kareem Gamal DRM), unless explicitly instructed otherwise.
+2. **Agreement terms structure:** Reuse the same legal/terms structure and headings from the approved reference quote, then edit only:
+   - Scope
+   - Commercial amount
+   - Payment schedule
+   - Term length
+3. **Context adaptation:** Keep structure fixed, but tailor commercial clauses to each client’s agreed scope.
+
+### Currency Handling Rule (Critical)
+- HubSpot quote currency may be fixed (e.g., AED), while commercial agreement may be in EGP.
+- In this case:
+  1. Keep HubSpot system currency as required.
+  2. Add explicit wording in `hs_terms` stating the **commercial payable amount in EGP**.
+  3. Include the system-currency equivalent as “for HubSpot system currency purposes only”.
+
+### Pre-Send Checklist for Every Quote
+- [ ] Correct deal linked
+- [ ] Correct contact/company linked
+- [ ] Comments block matches standard
+- [ ] Agreement terms structure matches reference
+- [ ] Scope matches agreed package
+- [ ] Amount and payment schedule reflect agreement
+- [ ] EGP amount explicitly stated when commercial currency is EGP
+- [ ] HubSpot currency + equivalent are aligned
+
+---
+
+## Pricing History / Changelog
+
+| Date | Change | Notes |
+|------|--------|-------|
+| 2026-02-23 | Added Growth Packages (Funnel & Ads) | 3-tier pricing: Funnel Engine Only, Engine + Optimization, Full Growth Partnership, plus add-ons |
+| 2026-02-23 | Added HubSpot quotation playbook rules | Standard comments, agreement terms structure reuse, currency handling (EGP commercial amount + HubSpot equivalent), pre-send checklist |
+| 2026-02-23 | Added Resend contact-tier pricing SOP | One-team-per-client structure, retainer inclusion (up to 1,000 contacts), contact-based add-on tiers, 20–25% margin policy |
+| 2026-02-22 | Updated to subscription model | Option B renamed to Growth System Subscription at 5,500 EGP/mo |
+| 2026-02-22 | Initial documentation | Based on verbal briefing from Fouad |

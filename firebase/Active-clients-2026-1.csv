@@ -1,0 +1,37 @@
+Client Code,Client Name,Status,Service,Monthly payment - USD,Monthly payment - AED,Monthly T (AED),Payment,Monthly,6 months,3 months,Amount,Send Invoice,Date of Invoice,Condition,Sent Invoice/Email,1st Follow up ,2nd Follow up ,3rd Follow up ,Remarks,First Name,Second Name,Email,Country Code,Contact Number,FName 2,SName 2,Email 2,Country Code 2,Contact Number 2
+2023-02-19-01,Jasmin Store,Stopped,Ad Mgt,200,,950,Monthly,950,,,$570.00,12/15/2025,12/18/2025,80  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Mohamed,Osman,mohamedosman1309@gmail.com,20,1002066626,,,,,
+2023-08-20-01,Nadco,Stopped,Ad Mgt,1000,,3567.24,Monthly,3567.24,,,"$5,832.00",6/27/2025,6/30/2025,251  DAYS OVERDUE,TRUE,FALSE,FALSE,FALSE,,Haitham,,haitham.a@nadco.com.sa,966,534702321,,,,,
+,MHK,paused,Ad Mgt,200,,,,,734,,,,,,FALSE,,,,,,,,,,,,,,
+2023-10-05-01,Bracelet EG,Active,Ad Mgt,200,,954.2,6 Months,,3963.6,,"$1,080.00",4/22/2026,4/25/2026,48  DAYS REMAINING,FALSE,FALSE,FALSE,FALSE,,Bassem,Sabry,bassem.fathy.sabry@gmail.com,20,1221766122,,,,,
+2024-03-30-01,Certify Scrum,paused,Ad Mgt,200,,1320,2 Months,950,,,,12/18/2025,12/21/2025,77  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Ziad,Algamal,ziad.algamal@gmail.com,20,1005373264,,,certifyscrum.com@gmail.com,,
+,SoulNSmell,paused,Ad Mgt,500,,1191.833333,,,7151,,"AED 7,151.00",,5/25/2025,,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+2024-07-22-01,Komu Lale,Active,Ad Mgt,200,,950,3 Months,,,2850,,4/19/2026,4/22/2026,45  DAYS REMAINING,FALSE,FALSE,FALSE,FALSE,,Ahmed,Shaker,ahmedshaker80@yahoo.com,20,1060333387,,,,,
+2024-08-03-01,Al Forsan Interation School,paused,Ad Mgt,200,,1200,3 Months,,,,,9/23/2025,9/26/2025,163  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Muhammed,Akef,makef@ajialuna.edu.sa,966,543390700,Wafa,Aljarba,waljarba@adec.edu.sa,966,554747487
+,Ben Sabri,paused,Ad Mgt,200,,,,,734,,,,,,FALSE,,,,,,,,,,,,,,
+,Noura Potion,paused,Ad Mgt,200,,734,,734,,2202,,,,,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,M&G Consultancy,paused,Ad Mgt,200,,,,,734,,,,,,FALSE,,,,,,,,,,,,,,
+2024-08-15-01,Genco Stores,Active,Ad Mgt,200,,1350,3 Months,,,4050,"AED 4,050.00",5/13/2026,5/16/2026,69  DAYS REMAINING,FALSE,FALSE,FALSE,FALSE,,Ahmed,Kotb,info@gencostores.com,20,1005659590,Omar,,,,
+2022-02-10-01,Pose Eg,Active,Ad Mgt,200,,1724.9,Monthly,734,,,$470,3/22/2026,3/25/2026,17  DAYS REMAINING,FALSE,FALSE,FALSE,FALSE,,Karim,Salem,karimsalem1@gmail.com,20,‪1005469999‬,Engy,Bassem,ingybassem@aucegypt.edu,20,1200003404
+,Naseem,paused,Ad Mgt,200,,734,,734,,2202,,,,,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,Hendi,paused,Ad Mgt,500,,1750.59,,,10503.54,,,,2/25/2025,,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,Yasmin Tohamy,paused,Ad Mgt,partnership agreement,,,,,,,,,,,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,Makani Travel,paused,Ad Mgt,,2000,,,,2000,,,,,,FALSE,,,,,,,,,,,,,,
+2024-10-22-01,Gaming Store UAE,Stopped,Ad Mgt,,1200,1200,Monthly,1200,,,,8/12/2025,8/15/2025,205  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Fadi,Elgendy,sales@gamingstoreuae.com,971,521485482,,,,,
+2024-10-13-01,Otn Textile,paused,Ad Mgt,330,,954.2,Monthly,,,2128.6,580,8/13/2025,8/16/2025,204  DAYS OVERDUE,TRUE,FALSE,FALSE,FALSE,,Ahmed,Farahat,otntextiles@gmail.com,20,1001538190,Shady,Barrage,,20,1223989520
+2024-08-23-01,FXEM,paused,DRM+SM,,5800,5800,Monthly,5800,,,5800,7/12/2025,7/15/2025,236  DAYS OVERDUE,TRUE,TRUE,TRUE,TRUE,we agreed to cancel invoices of March & April. Hence amount paid for March to go to May.,Khaled,Assy,k.assy@fxem.com,971,566661473,Abdelaziz,Albogdady,abogdady@fxem.com,974,66414947
+2024-09-27-01,Zambalita,paused,DRM,,3200,3000,,3200,,,3200,5/25/2025,5/28/2025,284  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,4dimensions,paused,DRM,,6000,,,,6000,,,,,,FALSE,,,,,,,,,,,,,,
+2024-10-07-01,The Accounter,Stopped,DRM,,3000,1750,Monthly,1750,,,1750,9/1/2025,9/4/2025,185  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Murad,,murad@theaccounter.com,,,Fadi,ElGhattis,fadi@theaccounter.com,,
+,Ronex,paused,DRM,,,,,,,,,,,,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+2024-12-17-01,Nomination,Stopped,DRM,,,,Monthly,4000,,,12000,8/29/2025,9/1/2025,188  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Mohamed,Diab,mdiab@saya-saudigroup.com,966,569757575,,,,,
+,Dovember,Stopped,Ad Mgt,,,1200,,1200,,,1200,4/25/2025,4/28/2025,314  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+2025-01-09-01,Pretty Nature,paused,DRM,,,3200,Monthly,3800,,,3100,8/23/2025,8/26/2025,194  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Mohamed,Mostafa,mohamed.a.mostafa@hotmail.com,966,549000993,Hend,Eldemerdash,hend_eldemerdash@hotmail.com,966,535808057‬
+2025-06-16-01,QYD,Active,DRM,,,5500,Monthly,,,,,2/26/2026,3/1/2026,7  DAYS OVERDUE,TRUE,TRUE,FALSE,FALSE,,Abdullah,Alqahtani,aalqahtani@rqm.sa,966,,Ruba,Alasigaa,ralasigaa@rqm.sa,966,
+2025-07-22-01,Sultan Saray,paused,Ad Mgt,,,950,Monthly,,,,,11/27/2025,11/30/2025,98  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Hussein,Kobtan,hhkobtan@sweetexperts.com.tr,20,,Geha,Guda,gehadguda20@gmail.com,20,
+2025-08-19-01,Baleeg EDU,Active,Ad Mgt,,,500,3 Months,,,,,1/21/2026,1/24/2026,43  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Noha,Abdelmoez,n.a.r.998.N9@gmail.com,20,,,,,,
+2025-12-01-01,Simulations Labs,Active,DRM,,,2700,Monthly,,,,,2/26/2026,3/1/2026,7  DAYS OVERDUE,TRUE,FALSE,FALSE,FALSE,,Moataz,Salah,moataz.salah@cybertalents.com,20,1002675570,,,,,
+2025-08-24-01,Ketano,Stopped,Ad Mgt,,,1200,3 Months,,,,,11/22/2025,11/25/2025,103  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,Sherry,Shafik,ketanoegypt@gmail.com,20,1555553097,Rashed,Sawaqed,rashed@sawaqed.net,971,501962324
+2025-11-15-01,Edrak Space,Active,Ad Mgt,,,950,3 Months,,,,,5/12/2026,5/15/2026,68  DAYS REMAINING,FALSE,FALSE,FALSE,FALSE,,Sara,Selim,sara_selim99@outlook.com,20,,Myrette,El Sokkary,Eftegypt.myrette@gmail.com,20,1223276738
+2025-08-28-01,Egada,paused,Ad Mgt,,,950,Monthly,,,,,9/27/2025,9/30/2025,159  DAYS OVERDUE,TRUE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,,,,,,,,,,,,12/27/1899,,46089  DAYS OVERDUE,FALSE,FALSE,FALSE,FALSE,,,,,,,,,,,
+,,,,,,14629.1,,734,3963.6,6900,,,,,,,,,,,,,,,,,,,

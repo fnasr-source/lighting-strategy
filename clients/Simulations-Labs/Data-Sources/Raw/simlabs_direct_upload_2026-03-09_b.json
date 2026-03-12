@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-03-09T09:25:40.766Z",
+  "selectedCount": 33,
+  "created": 32,
+  "errors": 1,
+  "createdBySegment": {
+    "security_training_leaders": 29,
+    "security_expansion_apollo": 2,
+    "security_consultants": 1
+  },
+  "sampleErrors": [
+    {
+      "email": "sshin@shorooq.ae",
+      "segment": "ctf_organizers_v2",
+      "status": 400,
+      "data": {
+        "statusCode": 400,
+        "error": "Bad Request",
+        "message": "Lead is in blocklist."
+      }
+    }
+  ]
+}

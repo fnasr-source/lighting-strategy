@@ -1,0 +1,163 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212906334263263",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-02-04T09:22:34.299Z",
+      "created_at": "2026-01-23T12:39:00.615Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "11h 21m"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-1w 4d"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-01-24",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> Check videos here explaining the setup: <a href=\"https://app.asana.com/1/1201934871168294/task/1212935498905902\" data-asana-gid=\"1212935498905902\" data-asana-accessible=\"true\" data-asana-type=\"task\" data-asana-dynamic=\"true\">Email Marketing Stack - B2B</a></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340934",
+            "name": "Execution"
+          }
+        }
+      ],
+      "modified_at": "2026-02-04T09:22:35.067Z",
+      "name": "Setting up resend & Systeme.io for emails",
+      "notes": "https://app.asana.com/1/1201934871168294/profile/1211996689189324 Check videos here explaining the setup: https://app.asana.com/1/1201934871168294/task/1212935498905902",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212906334263263",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212938004206121",
+        "created_at": "2026-01-23T12:39:00.691Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212938007060891",
+        "created_at": "2026-01-23T12:39:27.262Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Jan 24",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Jan 24",
+        "type": "system"
+      },
+      {
+        "gid": "1212910159605932",
+        "created_at": "2026-01-23T12:39:42.067Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212910159630798",
+        "created_at": "2026-01-23T12:40:09.266Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1213075610972803",
+        "created_at": "2026-02-04T09:22:34.340Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1213111761413598",
+        "created_at": "2026-02-04T09:22:34.465Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-1w 4d\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-1w 4d\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

@@ -1,0 +1,289 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212509483300136",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-01-28T16:01:48.451Z",
+      "created_at": "2025-12-18T14:07:32.000Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "-14h 08m"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-5w 6d"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2025-12-18",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body><object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212509483300139\" data=\"https://www.loom.com/embed/b193a5a04cc54472869908e2e65ae494\" style=\"display:block\"><a href=\"https://www.loom.com/share/b193a5a04cc54472869908e2e65ae494\">https://www.loom.com/share/b193a5a04cc54472869908e2e65ae494</a></object>\n\n</body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340934",
+            "name": "Execution"
+          }
+        }
+      ],
+      "modified_at": "2026-01-28T16:01:49.250Z",
+      "name": "Apollo account search filters",
+      "notes": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212509483300139\n\n\n\n",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212509483300136",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1212509483300142",
+        "created_at": "2025-12-18T14:08:15.713Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Check loom here</body>",
+        "resource_type": "story",
+        "text": "Check loom here",
+        "type": "comment"
+      },
+      {
+        "gid": "1212565896777879",
+        "created_at": "2025-12-23T14:21:31.119Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>I created 3 saved searches, let's discuss them in our next stand-up.</body>",
+        "resource_type": "story",
+        "text": "I created 3 saved searches, let's discuss them in our next stand-up.",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212517592728128",
+        "created_at": "2025-12-18T14:07:32.079Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212512215639046",
+        "created_at": "2025-12-18T14:08:03.417Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1212517610246277",
+        "created_at": "2025-12-18T14:08:04.985Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Dec 18, 2025",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Dec 18, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212509483300142",
+        "created_at": "2025-12-18T14:08:15.713Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Check loom here</body>",
+        "resource_type": "story",
+        "text": "Check loom here",
+        "type": "comment"
+      },
+      {
+        "gid": "1212565896777879",
+        "created_at": "2025-12-23T14:21:31.119Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>I created 3 saved searches, let's discuss them in our next stand-up.</body>",
+        "resource_type": "story",
+        "text": "I created 3 saved searches, let's discuss them in our next stand-up.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212638253926317",
+        "created_at": "2026-01-02T12:06:30.245Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212638253926319",
+        "created_at": "2026-01-02T12:06:30.340Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-2w 1d\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-2w 1d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212783235557481",
+        "created_at": "2026-01-14T07:32:42.136Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> marked incomplete",
+        "resource_type": "story",
+        "text": "Youssef Khafaga marked incomplete",
+        "type": "system"
+      },
+      {
+        "gid": "1212783235557483",
+        "created_at": "2026-01-14T07:32:42.244Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> cleared Time Adherence, removing -2w 1d",
+        "resource_type": "story",
+        "text": "Youssef Khafaga cleared Time Adherence, removing -2w 1d",
+        "type": "system"
+      },
+      {
+        "gid": "1212783240207764",
+        "created_at": "2026-01-14T07:32:46.314Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212783247357221",
+        "created_at": "2026-01-14T07:34:22.356Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> marked incomplete",
+        "resource_type": "story",
+        "text": "Youssef Khafaga marked incomplete",
+        "type": "system"
+      },
+      {
+        "gid": "1213016276329626",
+        "created_at": "2026-01-28T16:01:48.483Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> marked this task complete",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin marked this task complete",
+        "type": "system"
+      },
+      {
+        "gid": "1213016275800020",
+        "created_at": "2026-01-28T16:01:48.662Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Time Adherence to \"-5w 6d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Time Adherence to \"-5w 6d\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": [
+      {
+        "gid": "1212509483300139",
+        "created_at": "2025-12-18T14:07:55.148Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/b193a5a04cc54472869908e2e65ae494",
+        "parent": {
+          "gid": "1212509483300136",
+          "name": "Apollo account search filters",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212509483300139",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/b193a5a04cc54472869908e2e65ae494"
+      }
+    ]
+  },
+  "_source": "timeline"
+}

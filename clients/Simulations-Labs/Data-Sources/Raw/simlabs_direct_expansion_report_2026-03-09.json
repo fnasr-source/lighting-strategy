@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-03-08T20:52:23.229Z",
+  "selectedCount": 141,
+  "created": 141,
+  "errors": 0,
+  "createdBySegment": {
+    "security_training_leaders": 102,
+    "security_expansion_apollo": 32,
+    "security_consultants": 7
+  },
+  "createdByCampaign": {
+    "75c11274-b8ae-428d-945d-a3bbab506162": 102,
+    "e742890d-7d05-43c8-93be-575a9660ba2e": 32,
+    "2833f18a-d78b-460e-9a54-2b4119848b90": 7
+  },
+  "apolloListSync": "blocked_on_current_apollo_list_endpoint",
+  "instantlyCampaigns": {
+    "securityTrainingLeaders": "75c11274-b8ae-428d-945d-a3bbab506162",
+    "securityProfessionals": "e742890d-7d05-43c8-93be-575a9660ba2e",
+    "securityConsultants": "2833f18a-d78b-460e-9a54-2b4119848b90"
+  }
+}

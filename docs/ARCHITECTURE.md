@@ -16,7 +16,7 @@ The Admireworks platform is a unified dashboard at `my.admireworks.com` serving 
 | **Payments** | Stripe (cards), InstaPay (Egypt) |
 | **Email** | Resend API |
 | **Storage** | Firebase Storage |
-| **Hosting** | Vercel (via GitHub auto-deploy) |
+| **Hosting** | Firebase App Hosting (GitHub auto-deploy on `main`) |
 | **Icons** | Lucide React |
 
 ## Application Structure
@@ -54,12 +54,20 @@ apps/
 │   └── src/contexts/
 │       └── AuthContext.tsx         # Auth + UserProfile + roles
 │
-├── internal-ops/               # Legacy internal ops (being merged)
+clients/                        # All client work (lifecycle-organized)
+├── _templates/                 # Copy to start a new client folder
+└── {Client-Name}/              # One folder per client
+│
+ops/                            # Operational systems & playbooks
+├── proposal-playbook/          # Canonical proposal generation SOP
+├── proposal-system/            # Numbering, CRM, payment links
+├── strategy-system/            # 36-section strategy engine
+├── briefing/                   # Onboarding & questionnaires
+└── dashboards/                 # Static HTML dashboards (ops.admireworks.com)
 │
 firebase/
-├── service-account-key.json    # Firebase Admin credentials
-├── migrate-legacy.mjs          # CSV → Firestore migration
-└── link-proposal.mjs           # Link proposals to invoices
+├── service-account.json        # Firebase Admin credentials
+└── *.mjs                       # Data migration and setup scripts
 ```
 
 ## Role-Based Access
@@ -82,10 +90,17 @@ firebase/
 |---|---|---|
 | `/api/invoices/[id]` | GET | Fetch invoice for public page |
 | `/api/invoices/[id]` | PATCH | Update invoice (InstaPay ref) |
+| `/api/invoices/[id]/confirm-paid` | POST | Admin: confirm payment received |
 | `/api/stripe/create-payment-intent` | POST | Create Stripe PaymentIntent |
 | `/api/stripe/create-checkout` | POST | Create Stripe Checkout |
 | `/api/webhooks/stripe` | POST | Handle Stripe webhooks |
 | `/api/emails/send` | POST | Send email via Resend |
 | `/api/emails/send-invoice` | POST | Send branded invoice email |
 | `/api/cron/invoices` | POST | Auto-generate recurring invoices |
+| `/api/cron/finance-*` | POST | Finance tracking and alerts |
+| `/api/cron/scheduling-*` | POST | Calendar sync and reminders |
 | `/api/admin/create-client-user` | POST | Create Firebase Auth user for client |
+| `/api/finance/*` | Various | Finance overview, inbox, import |
+| `/api/scheduling/*` | Various | Booking slots, event types, Google Calendar |
+| `/api/meta/*` | Various | Meta Ads creatives and engagement |
+| `/api/ai/*` | Various | AI insights and recommendations |

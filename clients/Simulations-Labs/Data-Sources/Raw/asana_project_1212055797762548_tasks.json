@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "gid": "1213415429782802",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": false,
+      "due_at": null,
+      "due_on": "2026-03-01",
+      "modified_at": "2026-02-28T22:00:54.607Z",
+      "name": "Copilot Campaign",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213415429782802",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213398700987622",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": false,
+      "due_at": null,
+      "due_on": "2026-02-24",
+      "modified_at": "2026-02-24T09:00:09.424Z",
+      "name": "SimLabs Instantly campaigns active",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213398700987622",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    }
+  ]
+}

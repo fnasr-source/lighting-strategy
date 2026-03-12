@@ -102,12 +102,12 @@ apps/client-portal/
 
 ## Deployment
 
-Pushes to `main` auto-deploy via Vercel.
+Pushes to `main` auto-deploy via Firebase App Hosting.
 
 ```bash
 # Manual deploy
 npm run build
-# Deploy happens automatically via GitHub → Vercel
+# Deploy happens automatically via GitHub → Firebase App Hosting
 ```
 
 ## Git Guardrails

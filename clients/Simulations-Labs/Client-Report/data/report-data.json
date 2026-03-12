@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "generated": "2026-03-01",
+    "reportTitle": "Simulations Labs — Progress Report",
+    "client": "Simulations Labs",
+    "preparedBy": "Admireworks",
+    "period": "May 2025 – March 2026"
+  },
+  "kpis": {
+    "apolloLeads": 1921,
+    "pipelineLeads": 69,
+    "hotLeads": 22,
+    "emailsSent": 1669,
+    "activeCampaigns": 2,
+    "systemeContacts": 75,
+    "completionRate": 90
+  },
+  "apolloPipeline": {
+    "description": "Leads sourced via Apollo.io, filtered by role, and loaded into Instantly for outreach",
+    "lists": [
+      {
+        "name": "Security Engineers",
+        "count": 1100,
+        "status": "Ready for outreach"
+      },
+      {
+        "name": "CTF Organizers",
+        "count": 521,
+        "status": "Ready for outreach"
+      },
+      {
+        "name": "Security Consultants",
+        "count": 300,
+        "status": "Ready for outreach"
+      }
+    ],
+    "totalApolloLeads": 1921,
+    "note": "Continuous lead enrichment process — new leads sourced regularly via Apollo and sent through Instantly"
+  },
+  "campaigns": [
+    {
+      "name": "Security Professionals Outreach",
+      "status": "Active",
+      "emailsSent": 844,
+      "newLeadsContacted": 466,
+      "replies": 1,
+      "bounceRate": "5.7%",
+      "completed": 106,
+      "opportunities": 1,
+      "sequenceSteps": 3,
+      "note": "New leads contacted = unique individuals who received the first email of the sequence"
+    },
+    {
+      "name": "CTF Organizers Outreach",
+      "status": "Active",
+      "emailsSent": 825,
+      "newLeadsContacted": 361,
+      "replies": 1,
+      "bounceRate": "7.2%",
+      "completed": 192,
+      "opportunities": 1,
+      "sequenceSteps": 3,
+      "note": "Emails sent = total across all 3 steps in sequence; new leads contacted = unique individuals"
+    }
+  ],
+  "leads": {
+    "total": 69,
+    "withEmail": 62,
+    "withCompany": 46,
+    "qualityCoverage": "90%",
+    "priorityBreakdown": {
+      "Hot (Priority A)": 22,
+      "Warm (Priority B)": 39,
+      "Low (Priority C)": 7,
+      "Unscored": 1
+    },
+    "roleBreakdown": {
+      "Demo Interest": 22,
+      "Education": 18,
+      "Security Team": 11,
+      "Other / General": 10,
+      "Security Services": 6,
+      "Hiring": 1,
+      "Uncategorized": 1
+    },
+    "statusBreakdown": {
+      "New (Not Yet Contacted)": 39,
+      "Outreach Sent": 25,
+      "Follow-up Needed": 4,
+      "Other": 1
+    },
+    "sourceBreakdown": {
+      "AI Everything Event": 35,
+      "Cold Outreach Campaigns": 21,
+      "Direct Outreach": 10,
+      "Demo Requests": 1,
+      "Referrals": 2
+    },
+    "hotLeads": [
+      {
+        "company": "SAFE Security",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "EG Bank",
+        "useCase": "Security Team",
+        "status": "Outreach Sent",
+        "count": 2
+      },
+      {
+        "company": "Brightskies",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "ADIB Egypt",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Agents Stack",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Silicon21",
+        "useCase": "Security Team",
+        "status": "Follow-up Needed"
+      },
+      {
+        "company": "Sidpec",
+        "useCase": "Security Team",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "RSM",
+        "useCase": "Security Team",
+        "status": "New"
+      },
+      {
+        "company": "BSS",
+        "useCase": "Security Team",
+        "status": "New"
+      },
+      {
+        "company": "ESense Software",
+        "useCase": "Security Services",
+        "status": "New",
+        "count": 2
+      },
+      {
+        "company": "El Habashy",
+        "useCase": "Security Services",
+        "status": "New"
+      },
+      {
+        "company": "Skildev",
+        "useCase": "Security Services",
+        "status": "New"
+      },
+      {
+        "company": "AUC",
+        "useCase": "Other",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Electropi",
+        "useCase": "Hiring",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "Homains EU",
+        "useCase": "Education",
+        "status": "Follow-up Needed"
+      },
+      {
+        "company": "Ejkosen",
+        "useCase": "Education",
+        "status": "Outreach Sent"
+      },
+      {
+        "company": "MSA University",
+        "useCase": "Education",
+        "status": "Follow-up Needed"
+      },
+      {
+        "company": "GT Edge",
+        "useCase": "Other",
+        "status": "Follow-up Needed"
+      }
+    ]
+  },
+  "systeme": {
+    "total": 75,
+    "simlabsCandidates": 23,
+    "tags": [
+      {
+        "name": "CTF-Guide",
+        "count": 21,
+        "description": "Downloaded CTF hosting guide"
+      },
+      {
+        "name": "Spotlight-Program",
+        "count": 2,
+        "description": "Applied for Spotlight sponsorship"
+      }
+    ]
+  },
+  "workCompleted": [
+    {
+      "category": "Strategy & Positioning",
+      "items": [
+        "Go-to-market strategy with 3-persona framework (CTF Organizers, Educators, Enterprise)",
+        "Competitive analysis covering CTFD, TryHackMe, HackTheBox, and enterprise alternatives",
+        "Market segmentation for US, UK, and Saudi Arabia regions",
+        "Messaging and value proposition framework per audience segment",
+        "Landing page copy and headline variants per audience"
+      ]
+    },
+    {
+      "category": "Lead Sourcing & Outreach",
+      "items": [
+        "1,921 leads sourced via Apollo across 3 target segments",
+        "2 cold email campaigns launched with 3-step automated sequences",
+        "1,669 emails sent to 827 unique contacts",
+        "69 pipeline leads unified, deduplicated, and quality-scored",
+        "22 hot leads identified across security, education, and services sectors"
+      ]
+    },
+    {
+      "category": "Advertising & Media",
+      "items": [
+        "Google Ads campaign launched with keyword targeting",
+        "Social media ad creatives designed and reviewed",
+        "Media buying plan developed with channel allocation",
+        "Ad copy variations created for multiple audience segments"
+      ]
+    },
+    {
+      "category": "SEO & Content",
+      "items": [
+        "Full website technical SEO audit completed",
+        "8 keyword clusters identified and mapped to content plan",
+        "Content strategy: 6-8 blog posts per month planned",
+        "302→301 redirect fixes identified (14 pages)",
+        "Internal linking strategy established"
+      ]
+    },
+    {
+      "category": "Platform & Events",
+      "items": [
+        "Campaign landing pages created with audience-specific variants",
+        "Platform demo video edited and published",
+        "AI Everything Event participation and lead capture (35 leads)",
+        "5 Limited Spots Giveaway campaign executed",
+        "Email automation setup via Systeme.io"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "blocker": "Domain verification pending",
+      "impact": "Cannot add new sending domains for email campaigns — limits outreach volume and sender diversity",
+      "resolution": "Complete domain verification for new subdomains to enable additional sending aliases",
+      "priority": "high",
+      "owner": "Simulations Labs"
+    },
+    {
+      "blocker": "Technical SEO fixes pending",
+      "impact": "14 pages with incorrect redirects, key pages under-optimized for search ranking",
+      "resolution": "Dev team to implement 302→301 fixes and expand page content to 800-1,500 words",
+      "priority": "medium",
+      "owner": "Simulations Labs"
+    },
+    {
+      "blocker": "Pipeline leads unassigned (30 of 69)",
+      "impact": "43% of leads have no follow-up owner, delaying conversions",
+      "resolution": "Assign leads to team members and begin follow-up sequences",
+      "priority": "medium",
+      "owner": "Joint"
+    }
+  ],
+  "forwardPlan": {
+    "days30": [
+      "Complete domain verification to unlock email sending capacity",
+      "Contact 7 untouched hot leads (BSS, RSM, ESense, El Habashy, Skildev)",
+      "Follow up with 4 stalled leads (Silicon21, Homains, MSA, GT Edge)",
+      "Assign all 30 unassigned pipeline leads to team members",
+      "Set up nurture sequence for 21 CTF-Guide downloaders in Systeme.io",
+      "Continue Apollo lead sourcing across new segments"
+    ],
+    "days60": [
+      "Launch new cold email campaigns to additional Apollo segments",
+      "Optimize existing sequences (copy, timing, 4th step)",
+      "Build lead scoring model from engagement data",
+      "Publish first SEO blog batch (6-8 posts)",
+      "Implement 302→301 redirect fixes (14 pages)",
+      "Launch social media campaign",
+      "Set up Spotlight Program nurture for high-intent leads"
+    ],
+    "days90": [
+      "Full funnel analytics review: outreach → website → conversion",
+      "A/B test email sequences based on performance data",
+      "Expand sending infrastructure (new domains, warmup)",
+      "Launch CTF Spotlight community program",
+      "Educator outreach with starter kits",
+      "Quarterly business review with validated conversion metrics"
+    ]
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "data": [
+    {
+      "gid": "1212055797762550",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-06",
+      "modified_at": "2025-12-29T16:07:07.703Z",
+      "name": "DRM Strategy",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212055797762550",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212356436067476",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-09",
+      "modified_at": "2025-12-14T12:20:07.673Z",
+      "name": "Client Ad Optimization meeting",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212356436067476",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212458380373922",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-16",
+      "modified_at": "2025-12-18T10:38:35.434Z",
+      "name": "Media Buying Plan",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212458380373922",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212509483300136",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-18",
+      "modified_at": "2026-01-28T16:01:49.250Z",
+      "name": "Apollo account search filters",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212509483300136",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212391903402109",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-22",
+      "modified_at": "2026-01-20T10:25:16.007Z",
+      "name": "Copies prep",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212391903402109",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212545176736098",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-28",
+      "modified_at": "2026-01-07T08:49:14.333Z",
+      "name": "Launch Ads On Google",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212545176736098",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212604732433134",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2025-12-30",
+      "modified_at": "2026-01-02T12:06:24.227Z",
+      "name": "Campaign landing pages",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212604732433134",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212495083870135",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-01-04",
+      "modified_at": "2026-01-02T12:06:36.881Z",
+      "name": "Cold Outreach Sequence",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212495083870135",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212736850867637",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-01-13",
+      "modified_at": "2026-01-21T08:14:26.375Z",
+      "name": "Social Media Ads Launch",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212736850867637",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212736850867648",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-01-15",
+      "modified_at": "2026-02-09T09:11:28.797Z",
+      "name": "5 Limited Spots Giveaway",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212736850867648",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212876582515384",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-01-20",
+      "modified_at": "2026-02-01T13:48:16.244Z",
+      "name": "Second lesson ",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212876582515384",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212906334263263",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-01-24",
+      "modified_at": "2026-02-04T09:22:35.067Z",
+      "name": "Setting up resend & Systeme.io for emails",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212906334263263",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1212736850867642",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-01",
+      "modified_at": "2026-02-04T09:22:35.977Z",
+      "name": "Cold Outreach Campaign",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212736850867642",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213116001529506",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-08",
+      "modified_at": "2026-02-16T15:38:09.669Z",
+      "name": "Editing Platform video",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213116001529506",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213064441826486",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-09",
+      "modified_at": "2026-02-16T11:34:23.678Z",
+      "name": "AI Everything Event",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213064441826486",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213295374254814",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-17",
+      "modified_at": "2026-02-24T20:52:25.849Z",
+      "name": "Emails for who signed up in Event",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213295374254814",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213388776368218",
+      "assignee": {
+        "gid": "1202432356210277",
+        "name": "Fouad Nasseredin"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-22",
+      "modified_at": "2026-02-24T08:24:06.463Z",
+      "name": "Urgent Today: Check Simulations Labs instantly + reporting",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213388776368218",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213373819727799",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-23",
+      "modified_at": "2026-02-26T11:47:15.141Z",
+      "name": "update source as well for leads",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213373819727799",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213398700987622",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": false,
+      "due_at": null,
+      "due_on": "2026-02-24",
+      "modified_at": "2026-02-24T09:00:09.424Z",
+      "name": "SimLabs Instantly campaigns active",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213398700987622",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213295374254817",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "due_at": null,
+      "due_on": "2026-02-25",
+      "modified_at": "2026-02-26T11:47:09.314Z",
+      "name": "Blogs Content",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213295374254817",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "1213415429782802",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": false,
+      "due_at": null,
+      "due_on": "2026-03-01",
+      "modified_at": "2026-02-28T22:00:54.607Z",
+      "name": "Copilot Campaign",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213415429782802",
+      "start_at": null,
+      "start_on": null,
+      "resource_subtype": "default_task"
+    }
+  ]
+}

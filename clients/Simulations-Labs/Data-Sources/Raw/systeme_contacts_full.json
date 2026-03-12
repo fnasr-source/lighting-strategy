@@ -1,0 +1,1031 @@
+{
+  "fetchedAt": "2026-03-01T15:14:53.647885Z",
+  "status": 200,
+  "pagination": {
+    "method": "page+limit",
+    "limit": 100,
+    "pagesFetched": 1,
+    "totalItems": 75
+  },
+  "json": {
+    "items": [
+      {
+        "id": 405329276,
+        "email": "e2e@google.com",
+        "registeredAt": "2026-02-11T09:12:06+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1861156,
+            "name": "Spotlight-Program"
+          }
+        ]
+      },
+      {
+        "id": 404808829,
+        "email": "opjutt10754@gmail.com",
+        "registeredAt": "2026-02-08T15:32:30+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404772304,
+        "email": "leo.m@live.co.za",
+        "registeredAt": "2026-02-08T12:16:45+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404724003,
+        "email": "onwabandeleni1@gmail.com",
+        "registeredAt": "2026-02-08T04:55:09+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404710923,
+        "email": "mahlanguphillip@yahoo.com",
+        "registeredAt": "2026-02-08T00:46:36+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404710467,
+        "email": "bonganimahlambi06@gmail.com",
+        "registeredAt": "2026-02-08T00:39:50+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404709889,
+        "email": "nicklindokuhle097@gmail.com",
+        "registeredAt": "2026-02-08T00:31:01+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404703390,
+        "email": "mgadi.xolisa@gmail.com",
+        "registeredAt": "2026-02-07T23:26:51+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404619200,
+        "email": "dubetumelo11@gmail.com",
+        "registeredAt": "2026-02-07T13:58:14+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404606384,
+        "email": "tshabalalantokozo706@gmail.com",
+        "registeredAt": "2026-02-07T11:55:52+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404557887,
+        "email": "shadungrealeboga@gmail.com",
+        "registeredAt": "2026-02-07T04:16:07+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404542113,
+        "email": "jennyghrung@gmail.com",
+        "registeredAt": "2026-02-07T00:37:48+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404526006,
+        "email": "mayoni1263@gmail.com",
+        "registeredAt": "2026-02-06T22:13:57+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404369165,
+        "email": "kwizeraelvis00@gmail.com",
+        "registeredAt": "2026-02-06T13:12:20+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404345073,
+        "email": "mabasamuvindi@gmail.com",
+        "registeredAt": "2026-02-06T10:17:45+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404337009,
+        "email": "boitumelo11@hotmail.co.za",
+        "registeredAt": "2026-02-06T09:02:46+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404324040,
+        "email": "mukwevhomulweli31@gmail.com",
+        "registeredAt": "2026-02-06T07:03:44+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404300913,
+        "email": "leekayrululu@gmail.com",
+        "registeredAt": "2026-02-06T01:50:43+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404266431,
+        "email": "brownsokwl@gamil.com",
+        "registeredAt": "2026-02-05T21:13:01+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404229873,
+        "email": "ihopemakhubele20@icloud.com",
+        "registeredAt": "2026-02-05T19:08:26+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 404213275,
+        "email": "stanleymandlhazi2005@gmail.com",
+        "registeredAt": "2026-02-05T17:01:25+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      },
+      {
+        "id": 401938818,
+        "email": "y.khafaga@yahoo.com",
+        "registeredAt": "2026-01-26T08:06:22+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1861156,
+            "name": "Spotlight-Program"
+          }
+        ]
+      },
+      {
+        "id": 399511982,
+        "email": "kowaslaba2015@gmail.com",
+        "registeredAt": "2026-01-14T08:11:32+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511980,
+        "email": "8sf9v5f7ig@xkxkud.com",
+        "registeredAt": "2026-01-14T08:11:30+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511977,
+        "email": "mahmoud.khobez@gmail.com",
+        "registeredAt": "2026-01-14T08:11:29+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511973,
+        "email": "0xog13@gmail.com",
+        "registeredAt": "2026-01-14T08:11:27+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511967,
+        "email": "m0hammed.s3c@gmail.com",
+        "registeredAt": "2026-01-14T08:11:25+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511961,
+        "email": "ya7iardp@gmail.com",
+        "registeredAt": "2026-01-14T08:11:23+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511957,
+        "email": "evanszachariah36@gmail.com",
+        "registeredAt": "2026-01-14T08:11:21+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511945,
+        "email": "sdey30525@gmail.com",
+        "registeredAt": "2026-01-14T08:11:16+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511943,
+        "email": "amy33375@gmail.com",
+        "registeredAt": "2026-01-14T08:11:15+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511941,
+        "email": "neetanu89@gmail.com",
+        "registeredAt": "2026-01-14T08:11:13+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511937,
+        "email": "umadevi@cyberwolverine.com",
+        "registeredAt": "2026-01-14T08:11:11+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511932,
+        "email": "onibudo.ayodele@yahoo.com",
+        "registeredAt": "2026-01-14T08:11:08+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511928,
+        "email": "kharbout2017@gmail.com",
+        "registeredAt": "2026-01-14T08:11:07+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511923,
+        "email": "abdulboda22@gmail.com",
+        "registeredAt": "2026-01-14T08:11:05+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511903,
+        "email": "moreb.mohammad@gmail.com",
+        "registeredAt": "2026-01-14T08:10:59+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511900,
+        "email": "saidyahmady11@yahoo.com",
+        "registeredAt": "2026-01-14T08:10:58+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511897,
+        "email": "sowabin809@poesd.com",
+        "registeredAt": "2026-01-14T08:10:56+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511893,
+        "email": "loole.michael22@students.dkut.ac.ke",
+        "registeredAt": "2026-01-14T08:10:54+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511887,
+        "email": "hamdan.radaideh@hotmail.com",
+        "registeredAt": "2026-01-14T08:10:50+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511877,
+        "email": "hibaalmufty@yahoo.com",
+        "registeredAt": "2026-01-14T08:10:47+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511875,
+        "email": "sagnik.saha.raptor@gmail.com",
+        "registeredAt": "2026-01-14T08:10:45+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511872,
+        "email": "trustiekiguru01@gmail.com",
+        "registeredAt": "2026-01-14T08:10:44+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511868,
+        "email": "engismael90@gmail.com",
+        "registeredAt": "2026-01-14T08:10:42+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511862,
+        "email": "darghamali4sec@gmai.com",
+        "registeredAt": "2026-01-14T08:10:40+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511857,
+        "email": "info@simulationslabs.com",
+        "registeredAt": "2026-01-14T08:10:39+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511854,
+        "email": "mahmoudasem990@gmail.com",
+        "registeredAt": "2026-01-14T08:10:37+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511851,
+        "email": "kefarop98@gmail.com",
+        "registeredAt": "2026-01-14T08:10:36+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511847,
+        "email": "hackclub@stemegypt.edu.eg",
+        "registeredAt": "2026-01-14T08:10:34+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511837,
+        "email": "hibazoubir61@gmail.com",
+        "registeredAt": "2026-01-14T08:10:30+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511835,
+        "email": "natnael337@gmail.com",
+        "registeredAt": "2026-01-14T08:10:27+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511824,
+        "email": "bloblo0068@gmail.com",
+        "registeredAt": "2026-01-14T08:10:23+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511815,
+        "email": "egycondor@gmail.com",
+        "registeredAt": "2026-01-14T08:10:19+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511808,
+        "email": "vijayanand.vincent@gmail.com",
+        "registeredAt": "2026-01-14T08:10:16+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511803,
+        "email": "mohammed_alshamsi@mod.gov.ae",
+        "registeredAt": "2026-01-14T08:10:15+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511800,
+        "email": "zarcokere@yahoo.com",
+        "registeredAt": "2026-01-14T08:10:13+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511788,
+        "email": "vikiezeky@gmail.com",
+        "registeredAt": "2026-01-14T08:10:08+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511783,
+        "email": "nnn@nnn.com",
+        "registeredAt": "2026-01-14T08:10:06+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511778,
+        "email": "amy333375@gmail.com",
+        "registeredAt": "2026-01-14T08:10:05+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511773,
+        "email": "keronady884@gmail.com",
+        "registeredAt": "2026-01-14T08:10:03+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511761,
+        "email": "khaledahmedmossad@gmail.com",
+        "registeredAt": "2026-01-14T08:09:58+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511746,
+        "email": "ctf@cybertalents.com",
+        "registeredAt": "2026-01-14T08:09:53+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511041,
+        "email": "teddynew0903@gmail.com",
+        "registeredAt": "2026-01-14T08:03:15+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511036,
+        "email": "eneojoisah769@gmail.com",
+        "registeredAt": "2026-01-14T08:03:11+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399511014,
+        "email": "2natnael337@gmail.com",
+        "registeredAt": "2026-01-14T08:03:01+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510986,
+        "email": "khanzjoel55@gmail.com",
+        "registeredAt": "2026-01-14T08:02:48+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510967,
+        "email": "suchamojo@gmail.com",
+        "registeredAt": "2026-01-14T08:02:40+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510952,
+        "email": "mayssa.ouerfelli@edu.isetcom.tn",
+        "registeredAt": "2026-01-14T08:02:31+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510947,
+        "email": "gtm400@gmail.com",
+        "registeredAt": "2026-01-14T08:02:28+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510927,
+        "email": "gtm100@gmail.com",
+        "registeredAt": "2026-01-14T08:02:20+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510919,
+        "email": "arezmhamad07@gmail.com",
+        "registeredAt": "2026-01-14T08:02:17+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510898,
+        "email": "ray@waygmail.com",
+        "registeredAt": "2026-01-14T08:02:09+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 399510808,
+        "email": "yahyamhmoudmousa@gmail.com",
+        "registeredAt": "2026-01-14T08:01:26+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": []
+      },
+      {
+        "id": 389958354,
+        "email": "y.khafaga89@gmail.com",
+        "registeredAt": "2025-11-23T09:29:52+00:00",
+        "locale": "en",
+        "sourceURL": null,
+        "unsubscribed": false,
+        "bounced": false,
+        "needsConfirmation": false,
+        "fields": [],
+        "tags": [
+          {
+            "id": 1839484,
+            "name": "CTF-Guide"
+          }
+        ]
+      }
+    ],
+    "hasMore": false
+  },
+  "text": null
+}

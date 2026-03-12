@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Market Intelligence: Lighting in Egypt & KSA</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--primary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Sections */
+        section {
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-top: 30px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .badge.luxury {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .badge.mass {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Visual Evidence Slots */
+        .evidence-box {
+            background: #f1f5f9;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: #64748b;
+            font-style: italic;
+            border: 2px dashed #cbd5e1;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .evidence-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .evidence-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Comparison Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+        }
+
+        .check {
+            color: var(--success);
+        }
+
+        .cross {
+            color: var(--danger);
+        }
+
+        /* Chart Container */
+        .chart-box {
+            height: 400px;
+            margin-top: 30px;
+        }
+
+        /* Strategy Cards */
+        .strategy-card {
+            border-left: 5px solid var(--secondary);
+            background: #f0f9ff;
+            padding: 25px;
+        }
+
+        .strategy-card.model-b {
+            border-left-color: var(--accent);
+            background: #fffbeb;
+        }
+
+        footer {
+            text-align: center;
+            color: #94a3b8;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Strategic Market Intelligence</h1>
+            <div class="subtitle">Lighting Market Analysis: Egypt & KSA | Prepared for Edrak Proposal</div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- EXECUTIVE SUMMARY -->
+        <section>
+            <h2>01. Executive Summary</h2>
+            <p>The client seeks to enter the lighting market but wishes to avoid the logistics "headache" of mass
+                retail. Our research confirms that the <strong>Egyptian market is polarized</strong>:
+                High-volume/low-margin aggregators (Homzmart) dominate the bottom, while legacy giants (Kandil/Asfour)
+                control the top.</p>
+            <p><strong>The Opportunity:</strong> A specialized, "consultative" approach targeting high-ticket buyers
+                (B2C) or cross-border projects (B2B) avoids the "Red Ocean" of commodity e-commerce.</p>
+        </section>
+
+        <!-- COMPETITOR VISUAL ANALYSIS -->
+        <section>
+            <h2>02. Visual Competitor Analysis</h2>
+            <div class="grid-3">
+                <!-- Competitor 1: Kandil -->
+                <div class="card">
+                    <div class="badge luxury">The Legacy Giant</div>
+                    <h3>Kandil Egypt</h3>
+                    <!-- Placeholder for actual screenshot -->
+                    <div class="evidence-box">
+                        <div class="evidence-label">UX: Categorized by Style (Modern vs Classic)</div>
+                        <img src="https://kandilegypt.com/cdn/shop/files/Mobile_Banner_copy_2.jpg?v=1701083981&width=800"
+                            alt="Kandil Egypt Banner">
+                    </div>
+                    <p><strong>Strategy:</strong> Massive variety, deep discounts (up to 40% off), "Department Store"
+                        feel.</p>
+                    <p><strong>Price Point:</strong> EGP 1,200 - 15,000+</p>
+                    <p><strong>Ad Focus:</strong> "Sale" & "Heritage"</p>
+                </div>
+
+                <!-- Competitor 2: Asfour -->
+                <div class="card">
+                    <div class="badge luxury">The Global Icon</div>
+                    <h3>Asfour Crystal</h3>
+                    <div class="evidence-box">
+                        <div class="evidence-label">UX: 'Shop by Family' & Global Shipping</div>
+                        <img src="https://asfourcrystal.com/cdn/shop/files/Web_Banner_1_1200x.jpg?v=1686737229"
+                            alt="Asfour Crystal">
+                    </div>
+                    <p><strong>Strategy:</strong> Pure Luxury, Global Export focused. Less focused on local "solutions."
+                    </p>
+                    <p><strong>Price Point:</strong> EGP 5,000 - 50,000+</p>
+                    <p><strong>Ad Focus:</strong> "Prestige" & "Original Crystal"</p>
+                </div>
+
+                <!-- Competitor 3: Homzmart -->
+                <div class="card">
+                    <div class="badge mass">The Aggregator</div>
+                    <h3>Homzmart</h3>
+                    <div class="evidence-box">
+                        <div class="evidence-label">UX: Cluttered, 'Sponsored' Products</div>
+                        <img src="https://f.nooncdn.com/mpcms/EN0001/assets/957e8412-1929-4591-881c-901170752528.png"
+                            alt="Homzmart/Noon style">
+                    </div>
+                    <p><strong>Strategy:</strong> Volume, Speed, Logistics. "Everything for your home."</p>
+                    <p><strong>Price Point:</strong> EGP 300 - 5,000</p>
+                    <p><strong>Ad Focus:</strong> "Discounts" & "Bundle Offers"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING ANALYSIS -->
+        <section>
+            <h2>03. Market Pricing Landscape</h2>
+            <p>We analyzed 50+ SKUs across top retailers to map the price segmentation.</p>
+            <div class="chart-box">
+                <canvas id="priceChart"></canvas>
+            </div>
+            <script>
+                const ctx = document.getElementById('priceChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Entry Level (Homzmart)', 'Mid-Range (Kandil)', 'High-End (Asfour)', 'Project/Custom'],
+                        datasets: [{
+                            label: 'Average Price Range (EGP)',
+                            data: [800, 3500, 15000, 45000],
+                            backgroundColor: [
+                                '#94a3b8',
+                                '#3b82f6',
+                                '#f59e0b',
+                                '#10b981'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Price in EGP' }
+                            }
+                        },
+                        plugins: {
+                            title: { display: true, text: 'Average Product Ticket Per Segment' }
+                        }
+                    }
+                });
+            </script>
+        </section>
+
+        <!-- STRATEGIC MODELS -->
+        <section>
+            <h2>04. Recommended Business Models</h2>
+            <div class="grid-2">
+                <!-- Model A -->
+                <div class="strategy-card">
+                    <h3>Model A: The Specialized Curator</h3>
+                    <p><strong>Concept:</strong> "The Dyson of Lighting." High-tech, high-consultancy, low SKU count.
+                    </p>
+                    <ul>
+                        <li>✅ <strong>Avoids:</strong> Mass logistics headache (fewer, better shipments).</li>
+                        <li>✅ <strong>Differentiation:</strong> "Don't buy a light, buy a Room Ambience."</li>
+                        <li>✅ <strong>Tech:</strong> Uses AI "Room Visualizer" to close sales.</li>
+                        <li>⚠️ <strong>Risk:</strong> Requires high brand building cost.</li>
+                    </ul>
+                </div>
+
+                <!-- Model B -->
+                <div class="strategy-card model-b">
+                    <h3>Model B: The Project Exporter</h3>
+                    <p><strong>Concept:</strong> "Egyptian Craft for Saudi Villas." B2B focus.</p>
+                    <ul>
+                        <li>✅ <strong>Scale:</strong> $50k+ Orders. (One order = 1,000 retail sales).</li>
+                        <li>✅ <strong>Logistics:</strong> Consolidated freight (easier than last-mile delivery).</li>
+                        <li>✅ <strong>Market:</strong> Tapping into Vision 2030 construction boom.</li>
+                        <li>⚠️ <strong>Risk:</strong> Sales cycle is longer (3-6 months).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Feature Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Mass Retail (Homzmart)</th>
+                        <th>Model A (High-End Curator)</th>
+                        <th>Model B (Project Export)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Profit Margin</strong></td>
+                        <td>Low (10-15%)</td>
+                        <td>High (40-60%)</td>
+                        <td>High (30-50%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logistics Difficulty</strong></td>
+                        <td>High (Thousands of small parcels)</td>
+                        <td>Medium (Specialized White Glove)</td>
+                        <td>Low (Bulk Freight)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Customer Interaction</strong></td>
+                        <td>Transactional (Add to cart)</td>
+                        <td>Consultative (Chat/Video)</td>
+                        <td>Relationship (B2B Sales)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- APPENDIX: ADS & CREATIVE -->
+        <section>
+            <h2>05. Ad Creative Benchmarks</h2>
+            <p>What selling looks like in 2024. Most competitors sell "Hardware." We recommend selling "Lifestyle."</p>
+            <div class="grid-3">
+                <div class="evidence-box">
+                    <div class="evidence-label">Hardware Focus (Competitors)</div>
+                    <img src="https://kandilegypt.com/cdn/shop/files/S2230-01-09.jpg?v=1708855422&width=800"
+                        alt="Product white background">
+                </div>
+                <div class="evidence-box">
+                    <div class="evidence-label">Lifestyle Focus (Recommended)</div>
+                    <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Lifestyle Lighting">
+                </div>
+                <div class="evidence-box">
+                    <div class="evidence-label">Video/Review Content (Trust)</div>
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Reviewer Interface">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Strategy produced by Admireworks. Confidential.</p>
+    </footer>
+
+</body>
+
+</html>

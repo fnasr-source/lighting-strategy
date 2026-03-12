@@ -1,0 +1,67 @@
+{
+  "project": {
+    "gid": "1212055797762548",
+    "name": "DRM - Simulations Labs",
+    "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548"
+  },
+  "workspace": {
+    "gid": "1201934871168294"
+  },
+  "as_of_utc": "2026-03-01T13:53:36.356Z",
+  "due_within_days": 7,
+  "metrics": {
+    "total": 2,
+    "completed": 0,
+    "incomplete": 2,
+    "milestones": 0,
+    "overdue": 1,
+    "due_soon": 1,
+    "no_due_date": 0,
+    "unassigned": 0,
+    "blocked": 0,
+    "blocking": 0
+  },
+  "lists": {
+    "overdue": [
+      {
+        "gid": "1213398700987622",
+        "assignee": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "completed": false,
+        "due_at": null,
+        "due_on": "2026-02-24",
+        "modified_at": "2026-02-24T09:00:09.424Z",
+        "name": "SimLabs Instantly campaigns active",
+        "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213398700987622",
+        "start_at": null,
+        "start_on": null,
+        "resource_subtype": "default_task"
+      }
+    ],
+    "due_soon": [
+      {
+        "gid": "1213415429782802",
+        "assignee": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "completed": false,
+        "due_at": null,
+        "due_on": "2026-03-01",
+        "modified_at": "2026-02-28T22:00:54.607Z",
+        "name": "Copilot Campaign",
+        "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1213415429782802",
+        "start_at": null,
+        "start_on": null,
+        "resource_subtype": "default_task"
+      }
+    ],
+    "no_due_date": [],
+    "unassigned": [],
+    "blocked": [],
+    "blocking": []
+  },
+  "blockers_error": null
+}

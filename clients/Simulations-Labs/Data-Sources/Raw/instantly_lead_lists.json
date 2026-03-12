@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "json": {
+    "items": [
+      {
+        "id": "7f7dba21-2287-4b64-b060-00ffee6d7aed",
+        "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "name": "SimLabs - Security Engineers",
+        "timestamp_created": "2026-01-28T15:48:15.722Z",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97"
+      },
+      {
+        "id": "c2b39185-9bed-4d67-8f8b-b2e87ec64ded",
+        "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "name": "SimLabs - Security Consultants",
+        "timestamp_created": "2026-01-28T15:48:04.067Z",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97"
+      },
+      {
+        "id": "edab9d23-1bb8-4a09-a55d-d34f003320bb",
+        "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "name": "SimLabs - CTF Organizers",
+        "timestamp_created": "2026-01-28T15:47:47.145Z",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97"
+      },
+      {
+        "id": "d0ad2a63-85d2-4643-9a23-620f089442da",
+        "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "name": "Saudi business owners",
+        "timestamp_created": "2026-01-24T13:15:07.272Z",
+        "has_enrichment_task": false,
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97"
+      },
+      {
+        "id": "f1bc7bae-e0c5-4179-866d-a87d8dd45514",
+        "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "name": "Performance Marketers",
+        "timestamp_created": "2025-12-23T14:16:01.684Z",
+        "has_enrichment_task": false,
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97"
+      },
+      {
+        "id": "bee7b6ba-0dc6-4f7c-a8a1-4c8c80a808f8",
+        "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+        "name": "E-Commerce Saudi",
+        "timestamp_created": "2025-12-16T11:02:33.934Z",
+        "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97"
+      }
+    ],
+    "next_starting_after": "2025-12-16T11:02:33.934Z"
+  },
+  "text": null
+}

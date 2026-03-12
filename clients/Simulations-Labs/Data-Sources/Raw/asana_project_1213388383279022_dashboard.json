@@ -1,0 +1,5 @@
+{
+  "error": {
+    "message": "Missing Asana PAT. Set one of: ASANA_PAT, ASANA_TOKEN"
+  }
+}

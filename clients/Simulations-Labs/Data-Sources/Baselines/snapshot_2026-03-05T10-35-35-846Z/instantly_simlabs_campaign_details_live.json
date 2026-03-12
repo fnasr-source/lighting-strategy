@@ -1,0 +1,383 @@
+{
+  "fetchedAt": "2026-03-05T10:35:35.753Z",
+  "items": [
+    {
+      "id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "name": "SimLabs | Security Professionals",
+      "status": 1,
+      "campaign_schedule": {},
+      "timestamp_created": "2026-02-02T08:05:30.749Z",
+      "timestamp_updated": "2026-03-05T10:21:17.532Z",
+      "pl_value": 10,
+      "sequences": [
+        {
+          "steps": [
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Quick question about security training at {{companyName}}",
+                  "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Are you currently planning practical cybersecurity training for your team?</div><div><br /></div><div>We run hosted CTF/lab delivery so teams can launch without infrastructure overhead.</div><div><br /></div><div>If relevant, I can walk you through the setup in a short demo.</div><div><br /></div><div>Would a 15-minute demo be useful?</div><div><br /></div><div>Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 3,
+              "variants": [
+                {
+                  "subject": "Re: security training setup",
+                  "body": "<div>{{firstName}}, quick follow-up.</div><div><br /></div><div>If this is a priority, I can share demo slots and show exactly how teams launch quickly.</div><div><br /></div><div>Should I send times?</div><div><br /></div><div>Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Close the loop?",
+                  "body": "<div>{{firstName}},</div><div><br /></div><div>I can close this thread if timing is not right.</div><div><br /></div><div>If you want a quick demo, reply with <b>Demo</b>.</div><div><br /></div><div>Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            }
+          ]
+        }
+      ],
+      "text_only": false,
+      "first_email_text_only": false,
+      "email_list": [
+        "noah@trysimlabs.com",
+        "noah@simlabs-team.com",
+        "noah@getsimlabs.com",
+        "hannah@trysimlabs.com",
+        "hannah@simlabs-team.com",
+        "hannah@getsimlabs.com",
+        "hannah.adam@getsimlabs.com"
+      ],
+      "daily_limit": 26,
+      "stop_on_reply": true,
+      "email_tag_list": [],
+      "link_tracking": true,
+      "open_tracking": true,
+      "stop_on_auto_reply": false,
+      "prioritize_new_leads": false,
+      "match_lead_esp": false,
+      "not_sending_status": 1,
+      "stop_for_company": false,
+      "core_variables": {
+        "phone": true,
+        "website": true,
+        "lastName": true,
+        "firstName": true,
+        "companyName": true,
+        "personalization": true
+      },
+      "custom_variables": {
+        "email": true,
+        "Keywords": true,
+        "jobTitle": true,
+        "linkedIn": true,
+        "location": true,
+        "pause_until": true
+      },
+      "insert_unsubscribe_header": false,
+      "allow_risky_contacts": false,
+      "disable_bounce_protect": false,
+      "cc_list": [],
+      "bcc_list": [],
+      "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+      "provider_routing_rules": []
+    },
+    {
+      "id": "7c438462-5962-4796-a9a6-f0be04d17acc",
+      "name": "SimLabs | Educators (US/UK/Saudi)",
+      "status": 1,
+      "campaign_schedule": {
+        "schedules": [
+          {
+            "name": "SimLabs Default",
+            "timing": {
+              "from": "09:00",
+              "to": "18:00"
+            },
+            "days": {
+              "0": true,
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "6": true
+            },
+            "timezone": "Asia/Dubai"
+          }
+        ]
+      },
+      "timestamp_created": "2026-03-05T10:15:09.742Z",
+      "timestamp_updated": "2026-03-05T10:21:18.339Z",
+      "pl_value": 10,
+      "sequences": [
+        {
+          "steps": [
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Quick question about practical cybersecurity labs for your learners",
+                  "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Quick question: are you currently running practical cybersecurity labs or CTF-style activities for your students or trainees?</div><div><br /></div><div>We help education teams launch hosted labs quickly without infrastructure overhead.</div><div><br /></div><div>If relevant, I can share a short pilot path your team can run this month.</div><div><br /></div><div>Would a 15-minute demo be useful?</div><div><br /></div><div>Sincerely,<br />Noah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 3,
+              "variants": [
+                {
+                  "subject": "Re: practical cyber labs",
+                  "body": "<div>{{firstName}}, following up in case this is relevant this semester.</div><div><br /></div><div>If you want, I can send a sample pilot structure and we can walk through it in a short demo call.</div><div><br /></div><div>Should I send available demo slots?</div><div><br /></div><div>Sincerely,<br />Noah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Close the loop on this?",
+                  "body": "<div>{{firstName}},</div><div><br /></div><div>I can close this out if timing is not right.</div><div><br /></div><div>If a pilot demo is useful, reply with <b>Demo</b> and I will send times.</div><div><br /></div><div>Sincerely,<br />Noah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            }
+          ]
+        }
+      ],
+      "email_list": [
+        "noah@trysimlabs.com",
+        "noah@simlabs-team.com",
+        "noah@getsimlabs.com",
+        "hannah@trysimlabs.com",
+        "hannah@simlabs-team.com",
+        "hannah@getsimlabs.com",
+        "hannah.adam@getsimlabs.com"
+      ],
+      "daily_limit": 26,
+      "stop_on_reply": true,
+      "link_tracking": true,
+      "open_tracking": true,
+      "core_variables": {
+        "phone": true,
+        "website": true,
+        "lastName": true,
+        "firstName": true,
+        "companyName": true,
+        "personalization": true
+      },
+      "custom_variables": {},
+      "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5"
+    },
+    {
+      "id": "582c3c98-3166-4f66-8203-df5b129f4281",
+      "name": "SimLabs | CTF Organizers v2 (Spotlight Program)",
+      "status": 1,
+      "campaign_schedule": {
+        "schedules": [
+          {
+            "name": "SimLabs Default",
+            "timing": {
+              "from": "09:00",
+              "to": "18:00"
+            },
+            "days": {
+              "0": true,
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "6": true
+            },
+            "timezone": "Asia/Dubai"
+          }
+        ]
+      },
+      "timestamp_created": "2026-03-05T10:16:03.452Z",
+      "timestamp_updated": "2026-03-05T10:26:20.199Z",
+      "pl_value": 10,
+      "sequences": [
+        {
+          "steps": [
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Spotlight support for your next CTF event",
+                  "body": "<div>Hi {{firstName}},</div><div><br /></div><div>We are opening a Spotlight Program for selected CTF organizers this cycle.</div><div><br /></div><div>The idea: hosted delivery support + event visibility support so you can run faster with less setup risk.</div><div><br /></div><div>If you are planning an upcoming event, I can share eligibility and next steps.</div><div><br /></div><div>Would a quick demo help?</div><div><br /></div><div>Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 3,
+              "variants": [
+                {
+                  "subject": "Re: CTF Spotlight Program",
+                  "body": "<div>{{firstName}}, just checking if this is relevant for your next CTF.</div><div><br /></div><div>If yes, reply <b>Demo</b> and I will send the shortest route to launch.</div><div><br /></div><div>Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Keep this open or close it?",
+                  "body": "<div>{{firstName}},</div><div><br /></div><div>Happy to close this loop if now is not a fit.</div><div><br /></div><div>If you want details and demo slots, reply with <b>Demo</b>.</div><div><br /></div><div>Sincerely,<br />Hannah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            }
+          ]
+        }
+      ],
+      "email_list": [
+        "noah@trysimlabs.com",
+        "noah@simlabs-team.com",
+        "noah@getsimlabs.com",
+        "hannah@trysimlabs.com",
+        "hannah@simlabs-team.com",
+        "hannah@getsimlabs.com",
+        "hannah.adam@getsimlabs.com"
+      ],
+      "daily_limit": 26,
+      "stop_on_reply": true,
+      "link_tracking": true,
+      "open_tracking": true,
+      "core_variables": {
+        "phone": true,
+        "website": true,
+        "lastName": true,
+        "firstName": true,
+        "companyName": true,
+        "personalization": true
+      },
+      "custom_variables": {},
+      "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5"
+    },
+    {
+      "id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "name": "Simlabs | CTF Organizers",
+      "status": 1,
+      "campaign_schedule": {},
+      "timestamp_created": "2026-02-02T07:45:12.487Z",
+      "timestamp_updated": "2026-03-05T10:21:18.124Z",
+      "pl_value": 10,
+      "sequences": [
+        {
+          "steps": [
+            {
+              "type": "email",
+              "delay": 2,
+              "variants": [
+                {
+                  "subject": "Quick CTF question for {{firstName}} ",
+                  "body": "<div>Hi {{FirstName}},</div><div><br /></div><div>I was looking at {{companyName}} and noticed you’re organizing CTFs regularly.</div><div><br /></div><div>Quick question, how much time do you usually lose *before* the CTF even starts?</div><div>Infra setup, DevOps, testing, last-minute fixes, etc.</div><div><br /></div><div>We built a CTF hosting platform specifically to remove that entire layer.</div><div><br /></div><div>Instead of pitching anything, I wanted to share two free resources we give organizers:</div><div><br /></div><div>1) A free trial (spin up a full CTF environment without DevOps)</div><div>2) A short CTF Planning &amp; Execution Guide covering:</div><ul style=\"margin-top:0;margin-bottom:0;padding-inline-start:48px\"><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Pre-CTF Planning</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>CTF Day Execution</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Post-CTF Wrap-Up</div></li><li style=\"list-style-type:disc;font-size:11pt;font-family:Arial, sans-serif;color:rgb(0, 0, 0);background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;--darkreader-inline-color:var(--darkreader-text-000000, #f0ebe2);--darkreader-inline-bgcolor:transparent\" dir=\"ltr\" data-darkreader-inline-color data-darkreader-inline-bgcolor><div>Planning Checklist</div></li></ul><div><br /></div><div>Happy to send both if useful.</div><div><br />Reply “Send” and I’ll send them over.<br /><br />Sincerely,<br />Noah</div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 3,
+              "variants": [
+                {
+                  "subject": "Re: {{companyName}} ",
+                  "body": "<div>{{FirstName}}, quick follow-up.</div><div><br /></div><div>Not sure if reducing CTF prep time is a priority right now.</div><div><br /></div><div>If it is, I can share:</div><div>• free trial access</div><div>• the CTF Planning &amp; Execution Guide</div><div><br /></div><div>If not, no worries at all.</div><div>Reply “Send” and I’ll send them over.</div><div><br />Sincerely,<br />Noah</div><div><br /></div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            },
+            {
+              "type": "email",
+              "delay": 1,
+              "variants": [
+                {
+                  "subject": "Most organizers tell us this",
+                  "body": "<div>{{FirstName}},</div><div><br /></div><div>Most CTF organizers tell us the same thing:</div><div><br /></div><div>“Running the CTF is the easy part. Preparing it is what hurts.”</div><div><br /></div><div>That’s exactly what we remove.</div><div><br /></div><div>Before I stop reaching out, do you want access to:</div><div>1) the free trial</div><div>2) the CTF Planning &amp; Execution Guide</div><div>Or should I close the loop?</div><div><br /></div><div>Reply “Access” if you’re interested; otherwise, I’ll close the loop.</div><div><br />Sincerely,<br id=\"isPasted\" />​Noah<br /></div>"
+                }
+              ],
+              "delay_unit": "days",
+              "pre_delay_unit": "days"
+            }
+          ]
+        }
+      ],
+      "text_only": false,
+      "first_email_text_only": false,
+      "email_list": [
+        "noah@trysimlabs.com",
+        "noah@simlabs-team.com",
+        "noah@getsimlabs.com",
+        "hannah@trysimlabs.com",
+        "hannah@simlabs-team.com",
+        "hannah@getsimlabs.com",
+        "hannah.adam@getsimlabs.com"
+      ],
+      "daily_limit": 26,
+      "stop_on_reply": true,
+      "email_tag_list": [],
+      "link_tracking": true,
+      "open_tracking": true,
+      "stop_on_auto_reply": false,
+      "prioritize_new_leads": false,
+      "match_lead_esp": false,
+      "not_sending_status": 1,
+      "stop_for_company": false,
+      "core_variables": {
+        "phone": true,
+        "website": true,
+        "lastName": true,
+        "firstName": true,
+        "companyName": true,
+        "personalization": true
+      },
+      "custom_variables": {
+        "email": true,
+        "Keywords": true,
+        "jobTitle": true,
+        "linkedIn": true,
+        "location": true,
+        "pause_until": true
+      },
+      "insert_unsubscribe_header": false,
+      "allow_risky_contacts": false,
+      "disable_bounce_protect": false,
+      "cc_list": [],
+      "bcc_list": [],
+      "organization": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "owned_by": "a0366f0a-0b10-4574-ae8e-b212ac302b97",
+      "provider_routing_rules": []
+    }
+  ]
+}

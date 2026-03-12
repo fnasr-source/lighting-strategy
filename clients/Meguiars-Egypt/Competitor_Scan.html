@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Scan: Egyptian Car Care Market — Meguiar's Egypt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-navy-dark: #000f42;
+            --light: #f8f9fc;
+            --dark: #0c1222;
+            --text: #334155;
+            --muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 50%, #0a0a2e 100%);
+            color: white;
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 159, 83, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 20px;
+            padding: 5px 14px;
+            border: 1px solid rgba(204, 159, 83, 0.3);
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: var(--aw-gold);
+        }
+
+        .hero .subtitle {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            margin: 32px 0;
+            padding: 36px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .section-number {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 6px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--aw-navy);
+            margin: 24px 0 10px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 24px;
+            border: 1px solid #e8ecf2;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            border-color: var(--aw-gold);
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0 0 8px;
+        }
+
+        .card .detail {
+            font-size: 0.82rem;
+            color: var(--text);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .badge-premium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-mass {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-local {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-niche {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+
+        th,
+        td {
+            padding: 12px 14px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover td {
+            background: #fafbff;
+        }
+
+        .threat-high {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .threat-med {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        .threat-low {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .positioning-map {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 14px;
+            margin: 28px 0;
+            text-align: center;
+        }
+
+        .highlight p {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .highlight .attr {
+            font-size: 0.8rem;
+            color: var(--aw-gold);
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .opp-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .opp-list li {
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .opp-list li.win {
+            background: #f0fdf4;
+            border-left: 3px solid var(--success);
+        }
+
+        .opp-list li.risk {
+            background: #fef2f2;
+            border-left: 3px solid var(--danger);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        footer .brand {
+            color: var(--aw-navy);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 24px;
+            }
+
+            .positioning-map {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="container">
+            <div class="hero-badge">◆ Competitor Intelligence</div>
+            <h1>Egyptian Car Care Market<br><span>Competitive Landscape</span></h1>
+            <p class="subtitle">Detailed competitor profiles, feature comparisons, and market positioning analysis for
+                the Meguiar's Egypt meeting preparation.</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- OVERVIEW -->
+        <section>
+            <div class="section-number">Section 01</div>
+            <h2>Competitive Landscape Overview</h2>
+            <p>The Egyptian car care products market features a mix of international premium brands, mass-market
+                players, and emerging local competitors. The market is <strong>fragmented</strong> — no single brand
+                dominates digitally, creating opportunity for first-movers.</p>
+
+            <div class="highlight">
+                <p>Nobody is winning the digital car care game in Egypt.<br>This is an underserved playing field where
+                    Meguiar's can establish dominant first-mover advantage.</p>
+            </div>
+        </section>
+
+        <!-- COMPETITOR PROFILES -->
+        <section>
+            <div class="section-number">Section 02</div>
+            <h2>Competitor Profiles</h2>
+
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge badge-premium">Premium · Germany</span>
+                    <h4>Sonax</h4>
+                    <p>Professional-grade detailing. Strong among pros, limited consumer marketing in Egypt.</p>
+                    <div class="detail">
+                        <strong>Pricing:</strong> Premium · <strong>Threat:</strong> <span class="threat-med">🟡
+                            Medium</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-mass">Mass Market · USA</span>
+                    <h4>Turtle Wax</h4>
+                    <p>Growing demand, good pricing, wide retail availability. "Budget" perception.</p>
+                    <div class="detail">
+                        <strong>Pricing:</strong> Mid-range · <strong>Threat:</strong> <span class="threat-low">🟢 Low
+                            (direct)</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-premium">Broad Auto · USA</span>
+                    <h4>3M</h4>
+                    <p>Massive Egypt presence (window film, PPF). Parent company of Meguiar's — unique dynamic.</p>
+                    <div class="detail">
+                        <strong>Pricing:</strong> Premium · <strong>Threat:</strong> <span class="threat-med">🟡
+                            Medium</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-mass">Consumer · USA</span>
+                    <h4>Armor All</h4>
+                    <p>Affordable, widely available. "Supermarket" car care. Low professional credibility.</p>
+                    <div class="detail">
+                        <strong>Pricing:</strong> Budget · <strong>Threat:</strong> <span class="threat-low">🟢
+                            Low</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-niche">Professional · Italy</span>
+                    <h4>MA-FRA</h4>
+                    <p>Strong B2B in car wash chemicals. Limited consumer brand awareness in Egypt.</p>
+                    <div class="detail">
+                        <strong>Pricing:</strong> Mid-premium · <strong>Threat:</strong> <span class="threat-med">🟡
+                            Medium (B2B)</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge badge-niche">Specialist · Germany</span>
+                    <h4>Menzerna</h4>
+                    <p>Pro detailer favorite for polishing compounds. Very narrow product range.</p>
+                    <div class="detail">
+                        <strong>Pricing:</strong> Premium · <strong>Threat:</strong> <span class="threat-med">🟡 Medium
+                            (pro segment)</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Local Egyptian Competitors</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge badge-local">Local · Egypt</span>
+                    <h4>Cleantech</h4>
+                    <p>Local brand with price advantage and local manufacturing.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-local">Local · Egypt</span>
+                    <h4>Egypt Car Care</h4>
+                    <p>Local brand with deep market knowledge and distribution.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-local">Local · Egypt</span>
+                    <h4>Independent Centers</h4>
+                    <p>Service businesses that mix multiple product brands.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURE MATRIX -->
+        <section>
+            <div class="section-number">Section 03</div>
+            <h2>Feature Comparison Matrix</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Meguiar's EG</th>
+                        <th>Sonax</th>
+                        <th>Turtle Wax</th>
+                        <th>3M</th>
+                        <th>Armor All</th>
+                        <th>MA-FRA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Brand Heritage</strong></td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐</td>
+                        <td>⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E-commerce</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Media</strong></td>
+                        <td style="color: var(--warning);">🟡 Weak</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Arabic Content</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Local Influencers</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional Line</strong></td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--success);">✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Video Content</strong></td>
+                        <td style="color: var(--danger);">❌ Local</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- POSITIONING MAP -->
+        <section>
+            <div class="section-number">Section 04</div>
+            <h2>Competitive Positioning Map</h2>
+            <div class="positioning-map">
+                PREMIUM PRICE
+                │
+                Meguiar's● ●Sonax
+                │ ●Menzerna
+                │
+                NICHE/PRO ─────────────┼──────────────── MASS/CONSUMER
+                │
+                MA-FRA● │ ●Armor All
+                3M● │ ●Turtle Wax
+                │ ●ABRO
+                │
+                VALUE PRICE
+            </div>
+        </section>
+
+        <!-- OPPORTUNITY -->
+        <section>
+            <div class="section-number">Section 05</div>
+            <h2>Market Opportunity Assessment</h2>
+
+            <h3>Where Meguiar's Egypt Can Win</h3>
+            <ul class="opp-list">
+                <li class="win">🏆 <strong>Digital-first brand presence</strong> — nobody is doing it well yet</li>
+                <li class="win">📚 <strong>Content authority</strong> — educational detailing content in Arabic</li>
+                <li class="win">👥 <strong>Community leadership</strong> — build THE Egyptian car care community</li>
+                <li class="win">🛒 <strong>E-commerce</strong> — be the first premium brand to sell directly online</li>
+                <li class="win">🤳 <strong>Influencer partnerships</strong> — no competitor has activated this channel
+                </li>
+            </ul>
+
+            <h3>Where They're Vulnerable</h3>
+            <ul class="opp-list">
+                <li class="risk">💰 <strong>Price-sensitive market</strong> — consumers may trade down to Turtle
+                    Wax/Armor All</li>
+                <li class="risk">📦 <strong>Parallel imports</strong> — products on Ubuy/Amazon outside distributor
+                    control</li>
+                <li class="risk">🔄 <strong>3M dynamics</strong> — parent company products competing in same market</li>
+                <li class="risk">🏭 <strong>Local brands</strong> — lower cost, potentially better distribution</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 <span class="brand">ADMIRE8 BY ADMIREWORKS</span> · Confidential — Internal Use Only</p>
+        <p style="margin-top: 6px;">hello@admireworks.com · (+971) 4295 8666</p>
+    </footer>
+
+</body>
+
+</html>

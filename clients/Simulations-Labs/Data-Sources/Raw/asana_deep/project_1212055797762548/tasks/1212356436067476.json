@@ -1,0 +1,153 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212356436067476",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2025-12-14T12:20:07.006Z",
+      "created_at": "2025-12-09T08:51:00.458Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "-8h 51m"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-5d 12h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2025-12-09",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body>Below is the sheet we usually fill in ad optimization meetings:\n<a href=\"https://docs.google.com/spreadsheets/d/1pIubusv9UNQ0VGmRTp6Qe3PatBnoDeKHluJCLqGAfiU/edit?usp=sharing\">https://docs.google.com/spreadsheets/d/1pIubusv9UNQ0VGmRTp6Qe3PatBnoDeKHluJCLqGAfiU/edit?usp=sharing</a>\n\nYou'll find it inside the brief folder which is inside the main client folder:\n<a href=\"https://drive.google.com/drive/folders/1PwhdS9LDKQesEEJ7898zir75oFf9qfW8?usp=sharing\">https://drive.google.com/drive/folders/1PwhdS9LDKQesEEJ7898zir75oFf9qfW8?usp=sharing</a></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340938",
+            "name": "Performance"
+          }
+        }
+      ],
+      "modified_at": "2025-12-14T12:20:07.673Z",
+      "name": "Client Ad Optimization meeting",
+      "notes": "Below is the sheet we usually fill in ad optimization meetings:\nhttps://docs.google.com/spreadsheets/d/1pIubusv9UNQ0VGmRTp6Qe3PatBnoDeKHluJCLqGAfiU/edit?usp=sharing\n\nYou'll find it inside the brief folder which is inside the main client folder:\nhttps://drive.google.com/drive/folders/1PwhdS9LDKQesEEJ7898zir75oFf9qfW8?usp=sharing",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212356436067476",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212356634891050",
+        "created_at": "2025-12-09T08:51:00.542Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212356649533683",
+        "created_at": "2025-12-09T08:52:00.394Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1212325911543812",
+        "created_at": "2025-12-09T08:52:01.938Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Dec 9, 2025",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Dec 9, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212436027403115",
+        "created_at": "2025-12-14T12:20:07.037Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212436027403117",
+        "created_at": "2025-12-14T12:20:07.152Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-5d 12h\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-5d 12h\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  },
+  "_source": "timeline"
+}

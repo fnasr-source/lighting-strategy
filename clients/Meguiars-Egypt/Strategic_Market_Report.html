@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Market Intelligence: Meguiar's Egypt</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-navy-dark: #000f42;
+            --meg-yellow: #FFD100;
+            --meg-black: #1a1a1a;
+            --meg-red: #C41E3A;
+            --light: #f8f9fc;
+            --dark: #0c1222;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --text: #334155;
+            --muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 50%, #0a0a2e 100%);
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(204, 159, 83, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 209, 0, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 24px;
+            padding: 6px 16px;
+            border: 1px solid rgba(204, 159, 83, 0.3);
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--aw-gold);
+        }
+
+        .hero .subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            font-weight: 400;
+            max-width: 600px;
+        }
+
+        .hero-meta {
+            margin-top: 32px;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-meta-item strong {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Sections */
+        section {
+            margin: 40px 0;
+            padding: 40px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .section-number {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--aw-navy);
+            margin: 28px 0 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        /* Stat Highlights */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 100%);
+            color: white;
+            padding: 28px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--aw-gold);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-card .label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.4;
+        }
+
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        /* Cards */
+        .card {
+            padding: 24px;
+            border: 1px solid #e8ecf2;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--aw-gold);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .card-icon.green {
+            background: #ecfdf5;
+        }
+
+        .card-icon.red {
+            background: #fef2f2;
+        }
+
+        .card-icon.yellow {
+            background: #fffbeb;
+        }
+
+        .card-icon.blue {
+            background: #eff6ff;
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .badge-premium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-mass {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-local {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-niche {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        /* Score Bars */
+        .score-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 10px 0;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            width: 160px;
+            flex-shrink: 0;
+        }
+
+        .score-bar {
+            flex: 1;
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .score-fill.gold {
+            background: var(--aw-gold);
+        }
+
+        .score-fill.green {
+            background: var(--success);
+        }
+
+        .score-fill.red {
+            background: var(--danger);
+        }
+
+        .score-fill.blue {
+            background: var(--info);
+        }
+
+        .score-value {
+            font-size: 0.85rem;
+            font-weight: 700;
+            width: 40px;
+            text-align: right;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover td {
+            background: #fafbff;
+        }
+
+        /* Chart */
+        .chart-box {
+            height: 350px;
+            margin: 24px 0;
+        }
+
+        /* SWOT */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .swot-card {
+            padding: 28px;
+            border-radius: 14px;
+            border-left: 5px solid;
+        }
+
+        .swot-card h4 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .swot-card li {
+            font-size: 0.88rem;
+            color: var(--text);
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .swot-s {
+            background: #f0fdf4;
+            border-color: var(--success);
+        }
+
+        .swot-w {
+            background: #fef2f2;
+            border-color: var(--danger);
+        }
+
+        .swot-o {
+            background: #eff6ff;
+            border-color: var(--info);
+        }
+
+        .swot-t {
+            background: #fffbeb;
+            border-color: var(--warning);
+        }
+
+        /* Roadmap Timeline */
+        .roadmap-phase {
+            position: relative;
+            padding: 28px 28px 28px 72px;
+            border-left: 3px solid #e2e8f0;
+            margin-left: 20px;
+        }
+
+        .roadmap-phase:last-child {
+            border-left-color: transparent;
+        }
+
+        .roadmap-phase .phase-marker {
+            position: absolute;
+            left: -17px;
+            top: 28px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--aw-navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .roadmap-phase h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .roadmap-phase .phase-time {
+            font-size: 0.8rem;
+            color: var(--aw-gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .roadmap-phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .roadmap-phase li {
+            font-size: 0.88rem;
+            color: var(--text);
+            padding: 4px 0;
+        }
+
+        .roadmap-phase li::before {
+            content: '→ ';
+            color: var(--aw-gold);
+            font-weight: 700;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .highlight-box p {
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .highlight-box .attribution {
+            font-size: 0.85rem;
+            color: var(--aw-gold);
+            margin-top: 16px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        footer .brand {
+            color: var(--aw-navy);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 24px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-badge">◆ Admireworks Strategic Intelligence</div>
+            <h1>Meguiar's Egypt<br><span>Market Intelligence Brief</span></h1>
+            <p class="subtitle">Comprehensive pre-meeting research covering brand analysis, digital audit, competitive
+                landscape, and growth opportunities in the Egyptian car care market.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><strong>Date:</strong> February 21, 2026</div>
+                <div class="hero-meta-item"><strong>Client:</strong> El-Adwar Group (Dr. Hussam El-Adwar)</div>
+                <div class="hero-meta-item"><strong>Market:</strong> Egypt — Car Care Products</div>
+                <div class="hero-meta-item"><strong>Type:</strong> Internal — Meeting Prep</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- MARKET OVERVIEW STATS -->
+        <section>
+            <div class="section-number">Section 01</div>
+            <h2>Egyptian Automotive Aftermarket at a Glance</h2>
+            <p>The Egyptian car care market is riding a wave of record automotive growth — more cars, more owners, and a
+                rising culture of premium car maintenance.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="number">$1.6B</div>
+                    <div class="label">Automotive Aftermarket<br>Size (2024)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">5.8%</div>
+                    <div class="label">CAGR Growth Rate<br>(2025–2032)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">10.4M</div>
+                    <div class="label">Registered Vehicles<br>in Egypt (2024)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">+83%</div>
+                    <div class="label">Car Sales Growth<br>H1 2025 YoY</div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <canvas id="marketChart"></canvas>
+            </div>
+        </section>
+
+        <!-- BRAND PROFILE -->
+        <section>
+            <div class="section-number">Section 02</div>
+            <h2>Brand Profile: Meguiar's Egypt</h2>
+
+            <div class="grid-2">
+                <div>
+                    <h3>Global Brand Heritage</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Founded</strong></td>
+                            <td>1901 — Frank Meguiar Jr.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HQ</strong></td>
+                            <td>Irvine, California, USA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Parent</strong></td>
+                            <td>3M (acquired 2008)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Legacy</strong></td>
+                            <td>120+ years of surface science</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Consumer Line</strong></td>
+                            <td>Since 1973 (Barry Meguiar era)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mission</strong></td>
+                            <td>"Global leader in appearance care"</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Egypt Operations</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Distributor</strong></td>
+                            <td>El-Adwar Group</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Leader</strong></td>
+                            <td>Dr. Hussam El-Adwar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Since</strong></td>
+                            <td>2010 (sole exclusive)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Base</strong></td>
+                            <td>Alexandria, Egypt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Channels</strong></td>
+                            <td>Dealerships, service centers, car care centers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>E-commerce</strong></td>
+                            <td style="color: var(--danger); font-weight: 600;">None ❌</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIGITAL AUDIT -->
+        <section>
+            <div class="section-number">Section 03</div>
+            <h2>Digital Presence Audit</h2>
+            <p>A thorough analysis of Meguiar's Egypt's current digital footprint reveals a professional but largely
+                <strong>passive</strong> online presence with significant growth potential.</p>
+
+            <h3>Website Assessment (meguiarsegypt.com)</h3>
+            <div class="score-row">
+                <span class="score-label">Design Quality</span>
+                <div class="score-bar">
+                    <div class="score-fill gold" style="width: 75%"></div>
+                </div>
+                <span class="score-value">7.5</span>
+            </div>
+            <div class="score-row">
+                <span class="score-label">E-commerce</span>
+                <div class="score-bar">
+                    <div class="score-fill red" style="width: 0%"></div>
+                </div>
+                <span class="score-value">0</span>
+            </div>
+            <div class="score-row">
+                <span class="score-label">SEO</span>
+                <div class="score-bar">
+                    <div class="score-fill blue" style="width: 30%"></div>
+                </div>
+                <span class="score-value">3.0</span>
+            </div>
+            <div class="score-row">
+                <span class="score-label">Content Depth</span>
+                <div class="score-bar">
+                    <div class="score-fill blue" style="width: 25%"></div>
+                </div>
+                <span class="score-value">2.5</span>
+            </div>
+            <div class="score-row">
+                <span class="score-label">Mobile UX</span>
+                <div class="score-bar">
+                    <div class="score-fill green" style="width: 70%"></div>
+                </div>
+                <span class="score-value">7.0</span>
+            </div>
+            <div class="score-row">
+                <span class="score-label">Arabic Support</span>
+                <div class="score-bar">
+                    <div class="score-fill red" style="width: 0%"></div>
+                </div>
+                <span class="score-value">0</span>
+            </div>
+
+            <h3>Social Media Performance</h3>
+            <div class="grid-4">
+                <div class="card">
+                    <div class="card-icon yellow">📘</div>
+                    <h4>Facebook</h4>
+                    <p><strong style="color: var(--dark); font-size: 1.3rem;">7,600</strong></p>
+                    <p>followers · Low engagement (4-10 reactions/post)</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon red">📸</div>
+                    <h4>Instagram</h4>
+                    <p><strong style="color: var(--dark); font-size: 1.3rem;">493</strong></p>
+                    <p>followers · 157 posts · Very limited reach</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon blue">🎬</div>
+                    <h4>YouTube</h4>
+                    <p><strong style="color: var(--dark); font-size: 1.3rem;">Global</strong></p>
+                    <p>Links to @meguiars global · No local content</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">📱</div>
+                    <h4>TikTok</h4>
+                    <p><strong style="color: var(--danger); font-size: 1.3rem;">None</strong></p>
+                    <p>Missing Egypt's fastest-growing platform</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPETITOR LANDSCAPE -->
+        <section>
+            <div class="section-number">Section 04</div>
+            <h2>Competitor Landscape</h2>
+            <p>The Egyptian car care market features international premium brands, mass-market players, and local
+                competitors. <strong>No one is winning the digital game yet.</strong></p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge badge-premium">Premium · Germany</span>
+                    <h4>Sonax</h4>
+                    <p>Professional-grade detailing. Strong among pros, limited consumer marketing in Egypt.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-mass">Mass Market · USA</span>
+                    <h4>Turtle Wax</h4>
+                    <p>Growing demand. Competes on price and availability. "Budget" perception vs Meguiar's.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-premium">Broad Automotive · USA</span>
+                    <h4>3M</h4>
+                    <p>Massive Egypt presence via window film & PPF. Parent company of Meguiar's — unique dynamic.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-mass">Consumer · USA</span>
+                    <h4>Armor All</h4>
+                    <p>Affordable, widely available. "Supermarket" car care perception. Low professional credibility.
+                    </p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-niche">Professional · Italy</span>
+                    <h4>MA-FRA</h4>
+                    <p>Strong B2B presence in car wash chemicals. Limited consumer brand awareness in Egypt.</p>
+                </div>
+                <div class="card">
+                    <span class="badge badge-niche">Specialist · Germany</span>
+                    <h4>Menzerna</h4>
+                    <p>Absolute favorite among pro detailers for polishing compounds. Very narrow range.</p>
+                </div>
+            </div>
+
+            <h3>Competitive Feature Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Meguiar's EG</th>
+                        <th>Sonax</th>
+                        <th>Turtle Wax</th>
+                        <th>3M</th>
+                        <th>Armor All</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>E-commerce</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡 Via retailers</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--warning);">🟡 Via retailers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Media</strong></td>
+                        <td style="color: var(--warning);">🟡 Weak</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--warning);">🟡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Arabic Content</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--warning);">🟡</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Local Influencers</strong></td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional Line</strong></td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--danger);">❌</td>
+                        <td style="color: var(--success);">✅</td>
+                        <td style="color: var(--danger);">❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SWOT -->
+        <section>
+            <div class="section-number">Section 05</div>
+            <h2>SWOT Analysis</h2>
+
+            <div class="swot-grid">
+                <div class="swot-card swot-s">
+                    <h4>💪 Strengths</h4>
+                    <ul>
+                        <li>🏆 120+ year brand heritage — trusted worldwide</li>
+                        <li>🔬 3M R&D and global logistics backing</li>
+                        <li>🎯 Premium positioning — not competing on price</li>
+                        <li>🤝 14+ years in Egypt via El-Adwar Group</li>
+                        <li>📦 Full product range: consumer + professional</li>
+                    </ul>
+                </div>
+                <div class="swot-card swot-w">
+                    <h4>⚠️ Weaknesses</h4>
+                    <ul>
+                        <li>🚫 No e-commerce capability</li>
+                        <li>📉 Sub-500 Instagram followers for a global brand</li>
+                        <li>🔇 No Arabic website or localized content</li>
+                        <li>📵 Missing TikTok entirely</li>
+                        <li>💰 No pricing transparency online</li>
+                    </ul>
+                </div>
+                <div class="swot-card swot-o">
+                    <h4>🚀 Opportunities</h4>
+                    <ul>
+                        <li>🛒 E-commerce launch — first premium brand to sell directly</li>
+                        <li>📱 TikTok & Reels — detailing is perfect viral content</li>
+                        <li>🤳 Egyptian influencer partnerships — untapped by all competitors</li>
+                        <li>🏜️ Localized messaging — "Protect from Egypt's sun & sand"</li>
+                        <li>👥 Community building — Egyptian car enthusiast hub</li>
+                    </ul>
+                </div>
+                <div class="swot-card swot-t">
+                    <h4>🛡️ Threats</h4>
+                    <ul>
+                        <li>⚔️ Competitor digital investment may come first</li>
+                        <li>🏷️ Counterfeit products in market</li>
+                        <li>💱 Egyptian pound devaluation → import costs</li>
+                        <li>📦 Parallel imports via Ubuy/Amazon at uncontrolled pricing</li>
+                        <li>📉 "Expensive foreign brand" perception</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEY INSIGHT -->
+        <div class="highlight-box">
+            <p>"Meguiar's has owned car care for 120 years. In Egypt, the digital car care race hasn't been won yet. The
+                opportunity is to own it before anyone else does."</p>
+            <div class="attribution">— Admireworks Strategic Positioning</div>
+        </div>
+
+        <!-- DIGITAL ROADMAP -->
+        <section>
+            <div class="section-number">Section 06</div>
+            <h2>Digital Growth Roadmap</h2>
+            <p>A phased approach to transform Meguiar's Egypt from a digital brochure into a lead-generating,
+                community-building market leader.</p>
+
+            <div class="roadmap-phase">
+                <div class="phase-marker">1</div>
+                <h4>Quick Wins</h4>
+                <div class="phase-time">Month 1–2</div>
+                <ul>
+                    <li>Launch Arabic version of website</li>
+                    <li>Add product pricing (or "starting from" ranges)</li>
+                    <li>Create TikTok account + first 10 short-form detailing videos</li>
+                    <li>Start "Before & After" content series across all platforms</li>
+                    <li>Google Business profile optimization (Alexandria + Cairo)</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-phase">
+                <div class="phase-marker">2</div>
+                <h4>Growth Engine</h4>
+                <div class="phase-time">Month 3–6</div>
+                <ul>
+                    <li>E-commerce integration (WooCommerce or Shopify)</li>
+                    <li>Egyptian automotive influencer outreach (5-10 creators)</li>
+                    <li>Localized content calendar (heat tips, sand protection, seasonal)</li>
+                    <li>WhatsApp Business catalog setup</li>
+                    <li>Google + Meta paid advertising campaigns</li>
+                    <li>Email & SMS list building system</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-phase">
+                <div class="phase-marker">3</div>
+                <h4>Market Leadership</h4>
+                <div class="phase-time">Month 6–12</div>
+                <ul>
+                    <li>"Meguiar's Egypt Detailing Academy" — workshops + live streams</li>
+                    <li>B2B partnerships (luxury dealerships, 5-star hotels, car rentals)</li>
+                    <li>Subscription box model — seasonal car care kits</li>
+                    <li>Community platform — Egyptian car enthusiast hub</li>
+                    <li>UGC campaign — monthly "Best Detail" competition</li>
+                    <li>Brand ambassador program — certified Meguiar's detailers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- RECOMMENDED SERVICES -->
+        <section>
+            <div class="section-number">Section 07</div>
+            <h2>Recommended Admireworks Services</h2>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon blue">🎯</div>
+                    <h4>Digital Strategy</h4>
+                    <p>Comprehensive market entry strategy for Meguiar's Egypt's online presence</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">📱</div>
+                    <h4>Social Media</h4>
+                    <p>Content creation, community management, and follower growth</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon yellow">🛒</div>
+                    <h4>E-commerce</h4>
+                    <p>Online store with Egyptian payment integration</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon red">📢</div>
+                    <h4>Paid Advertising</h4>
+                    <p>Meta, Google, and TikTok ad campaigns</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon blue">🎬</div>
+                    <h4>Content Production</h4>
+                    <p>Video shoots, photography, Arabic copywriting</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">🤳</div>
+                    <h4>Influencer Marketing</h4>
+                    <p>Identify and manage Egyptian automotive partnerships</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 <span class="brand">ADMIRE8 BY ADMIREWORKS</span> · Confidential — Internal Use Only</p>
+        <p style="margin-top: 8px;">hello@admireworks.com · (+971) 4295 8666 · P.O.Box/36846, DXB, UAE</p>
+    </footer>
+
+    <script>
+        // Market Growth Chart
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032'],
+                datasets: [{
+                    label: 'Projected Market Size (USD Billion)',
+                    data: [1.6, 1.69, 1.79, 1.89, 2.0, 2.12, 2.24, 2.37, 2.5],
+                    backgroundColor: 'rgba(0, 26, 112, 0.8)',
+                    borderColor: '#001a70',
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Egypt Automotive Aftermarket Projected Growth (USD Billions)',
+                        font: { family: 'Inter', size: 14, weight: '600' },
+                        color: '#0c1222',
+                        padding: { bottom: 20 }
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 1.4,
+                        max: 2.7,
+                        title: {
+                            display: true,
+                            text: 'USD Billion',
+                            font: { family: 'Inter', size: 12 },
+                            color: '#94a3b8'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.04)' },
+                        ticks: { font: { family: 'Inter' }, color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { family: 'Inter', weight: '500' }, color: '#334155' }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

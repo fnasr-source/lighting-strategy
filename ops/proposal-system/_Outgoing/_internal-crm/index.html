@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Proposal CRM Hub</title>
+  <style>
+    :root {
+      --navy: #0d1f53;
+      --gold: #c89a4a;
+      --bg: #f4f5f8;
+      --card: #ffffff;
+      --line: #dde1ea;
+      --text: #1e2536;
+      --muted: #65708a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Akkurat Pro", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(160deg, #eef1f7 0%, #f8f9fc 60%, #f3f4f7 100%);
+      color: var(--text);
+      padding: 20px;
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(13, 31, 83, 0.08);
+    }
+    .hero {
+      padding: 24px;
+      background: radial-gradient(circle at 85% 0%, rgba(200, 154, 74, 0.2), transparent 42%),
+                  linear-gradient(130deg, #0d1f53, #213b89);
+      color: #fff;
+    }
+    .hero h1 {
+      margin: 0 0 6px;
+      font-size: 1.65rem;
+      letter-spacing: 0.2px;
+    }
+    .hero p {
+      margin: 4px 0;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+      font-size: 0.95rem;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .kpi {
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .kpi .label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.84; }
+    .kpi .value { font-size: 1.2rem; font-weight: 700; margin-top: 4px; }
+    .controls {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 10px;
+      background: #fbfcff;
+    }
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.92rem;
+      color: var(--text);
+      background: #fff;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+    thead th {
+      text-align: left;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 14px;
+      background: #f7f9ff;
+    }
+    tbody td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      background: #eef3ff;
+      border: 1px solid #cfdbff;
+      color: #2a4da2;
+      white-space: nowrap;
+    }
+    .status {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      border: 1px solid #e4d4b6;
+      background: #fff7e8;
+      color: #8a5a12;
+      white-space: nowrap;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      color: #214196;
+      text-decoration: none;
+      font-size: 0.84rem;
+      padding: 4px 8px;
+      border: 1px solid #d7e1ff;
+      border-radius: 7px;
+      background: #f5f8ff;
+    }
+    .links a:hover { background: #ebf0ff; }
+    .empty {
+      padding: 26px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .footer {
+      padding: 14px 24px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      background: #fcfcfe;
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 900px) {
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .controls { grid-template-columns: 1fr; }
+      body { padding: 10px; }
+      .hero h1 { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Admireworks Internal Proposal CRM</h1>
+      <p>Unified operational view for sent and legacy proposals.</p>
+      <p>Generated: 2026-03-09T11:03:25.673Z | Repo: fnasr-source/admireworks-internal-os</p>
+      <div class="kpis">
+        <div class="kpi"><div class="label">Total Records</div><div class="value" id="kpi-total">0</div></div>
+        <div class="kpi"><div class="label">Ready To Send</div><div class="value" id="kpi-ready">0</div></div>
+        <div class="kpi"><div class="label">Legacy Records</div><div class="value" id="kpi-legacy">0</div></div>
+        <div class="kpi"><div class="label">Registry Records</div><div class="value" id="kpi-registry">0</div></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search by proposal ID or client name" />
+      <select id="statusFilter"><option value="">All Statuses</option></select>
+      <select id="sourceFilter">
+        <option value="">All Sources</option>
+        <option value="registry">Registry</option>
+        <option value="legacy">Legacy</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Proposal</th>
+            <th>Client</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Pipeline</th>
+            <th>Source</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="empty" class="empty" style="display:none;">No proposals match the current filters.</div>
+    </div>
+
+    <div class="footer">
+      Internal use only. Keep this page updated through proposal system scripts.
+    </div>
+  </div>
+
+  <script id="crm-data" type="application/json">[{"id":"AWP-EG-0LVG-5SS","source_type":"registry","client_name":"Meguiar's Egypt - El-Adwar Group","country_code":"EG","send_date":"2026-03-09","status":"READY_TO_SEND","owner":"Fouad Nasseredin","pipeline_stage":"Ready To Send","next_action":"Client to review agreement and transfer","next_action_date":"2026-03-16","priority":"High","last_contact_date":"2026-03-08","recommended_option":"Agreed launch structure","links":{"one_page":"https://ops.admireworks.com/Proposals/_Outgoing/AWP-EG-0LVG-5SS/one-page.html","presentation":"https://ops.admireworks.com/Proposals/_Outgoing/AWP-EG-0LVG-5SS/presentation.html","offer_doc":"https://ops.admireworks.com/Proposals/Meguiars-Egypt/06-Offer-and-Proposal.md","research_doc":"https://ops.admireworks.com/Proposals/Meguiars-Egypt/02-Research-Report.md","pdf":"","package_index":"https://ops.admireworks.com/Proposals/Meguiars-Egypt/00-Proposal-Index.md"}},{"id":"AWP-EG-0MGS-T8J","source_type":"registry","client_name":"ASM Minds","country_code":"EG","send_date":"2026-02-23","status":"READY_TO_SEND","owner":"Fouad Nasseredin","pipeline_stage":"Ready To Send","next_action":"Client to confirm option and transfer","next_action_date":"2026-03-02","priority":"High","last_contact_date":"2026-02-23","recommended_option":"Option 3","links":{"one_page":"https://ops.admireworks.com/Proposals/_Outgoing/AWP-EG-0MGS-T8J/one-page.html","presentation":"","offer_doc":"https://ops.admireworks.com/Proposals/ASM-Minds/10-One-Page-Proposal.html","research_doc":"","pdf":"https://ops.admireworks.com/Proposals/ASM-Minds/ASM-Minds-Growth-Proposal.pdf","package_index":""}},{"id":"AWP-EG-0MD8-JFM","source_type":"registry","client_name":"MHK Architects - Omar Kamal","country_code":"EG","send_date":"2026-02-22","status":"READY_TO_SEND","owner":"Fouad Nasseredin","pipeline_stage":"Ready To Send","next_action":"Client to confirm option and transfer","next_action_date":"2026-03-01","priority":"High","last_contact_date":"2026-02-22","recommended_option":"Option 2","links":{"one_page":"https://ops.admireworks.com/Proposals/_Outgoing/AWP-EG-0MD8-JFM/one-page.html","presentation":"https://ops.admireworks.com/Proposals/MHK-Architects/11-Final-Presentation.html","offer_doc":"https://ops.admireworks.com/Proposals/MHK-Architects/06-Offer-and-Proposal.md","research_doc":"https://ops.admireworks.com/Proposals/MHK-Architects/02-Research-Report.md","pdf":"","package_index":"https://ops.admireworks.com/Proposals/MHK-Architects/00-Proposal-Index.md"}},{"id":"AWP-EG-0MKC-SLK","source_type":"registry","client_name":"Lighting Business - Mahmoud Selim","country_code":"EG","send_date":"2026-02-16","status":"READY_TO_SEND","owner":"Fouad Nasseredin","pipeline_stage":"Ready To Send","next_action":"Client to confirm option and transfer","next_action_date":"2026-02-23","priority":"High","last_contact_date":"2026-02-16","recommended_option":"Option 2","links":{"one_page":"https://ops.admireworks.com/Proposals/_Outgoing/AWP-EG-0MKC-SLK/one-page.html","presentation":"https://ops.admireworks.com/Proposals/Lighting-Business-Mahmoud/11-Final-Presentation.html","offer_doc":"https://ops.admireworks.com/Proposals/Lighting-Business-Mahmoud/06-Offer-and-Proposal.md","research_doc":"https://ops.admireworks.com/Proposals/Lighting-Business-Mahmoud/02-Research-Report.md","pdf":"","package_index":"https://ops.admireworks.com/Proposals/Lighting-Business-Mahmoud/00-Proposal-Index.md"}},{"id":"LEG-EG-EDRAK-STRATEGY","source_type":"legacy","client_name":"Edrak","country_code":"EG","send_date":"2026-02-10","status":"ARCHIVED","owner":"Fouad Nasseredin","pipeline_stage":"Historical","next_action":"Reference for niche market research and direction framing","next_action_date":"","priority":"","last_contact_date":"","recommended_option":"","links":{"one_page":"https://ops.admireworks.com/Proposals/Edrak/Strategic_Market_Report.html","presentation":"","offer_doc":"https://ops.admireworks.com/Proposals/Edrak/Proposal_v1.md","research_doc":"https://ops.admireworks.com/Proposals/Edrak/Research_Report.md","pdf":"","package_index":""}},{"id":"LEG-EG-BASSEQAT-V1","source_type":"legacy","client_name":"Basseqat","country_code":"EG","send_date":"2026-02-09","status":"SENT","owner":"Fouad Nasseredin","pipeline_stage":"Historical","next_action":"Use as benchmark reference in future proposal discussions","next_action_date":"","priority":"","last_contact_date":"","recommended_option":"","links":{"one_page":"https://ops.admireworks.com/Proposals/Basseqat/v1/index.html","presentation":"","offer_doc":"","research_doc":"","pdf":"https://ops.admireworks.com/Proposals/Basseqat/v1/Basseqat_Growth_Proposal%20-%20V1.0.pdf","package_index":""}}]</script>
+  <script>
+    const records = JSON.parse(document.getElementById('crm-data').textContent);
+    const rowsEl = document.getElementById('rows');
+    const emptyEl = document.getElementById('empty');
+    const searchEl = document.getElementById('search');
+    const statusEl = document.getElementById('statusFilter');
+    const sourceEl = document.getElementById('sourceFilter');
+
+    function renderKpis(items) {
+      document.getElementById('kpi-total').textContent = String(items.length);
+      document.getElementById('kpi-ready').textContent = String(items.filter((r) => r.status === 'READY_TO_SEND').length);
+      document.getElementById('kpi-legacy').textContent = String(items.filter((r) => r.source_type === 'legacy').length);
+      document.getElementById('kpi-registry').textContent = String(items.filter((r) => r.source_type === 'registry').length);
+    }
+
+    function buildStatusOptions(items) {
+      const set = new Set(items.map((r) => r.status).filter(Boolean));
+      [...set].sort().forEach((status) => {
+        const opt = document.createElement('option');
+        opt.value = status;
+        opt.textContent = status;
+        statusEl.appendChild(opt);
+      });
+    }
+
+    function actionsHtml(record) {
+      const links = [];
+      if (record.links.one_page) links.push('<a href="' + record.links.one_page + '" target="_blank" rel="noopener noreferrer">👉 View One-Page</a>');
+      if (record.links.presentation) links.push('<a href="' + record.links.presentation + '" target="_blank" rel="noopener noreferrer">👉 View Presentation</a>');
+      if (record.links.offer_doc) links.push('<a href="' + record.links.offer_doc + '" target="_blank" rel="noopener noreferrer">👉 View Offer</a>');
+      if (record.links.research_doc) links.push('<a href="' + record.links.research_doc + '" target="_blank" rel="noopener noreferrer">👉 View Research</a>');
+      if (record.links.pdf) links.push('<a href="' + record.links.pdf + '" target="_blank" rel="noopener noreferrer">👉 View PDF</a>');
+      if (record.links.package_index) links.push('<a href="' + record.links.package_index + '" target="_blank" rel="noopener noreferrer">👉 View Package Index</a>');
+      return links.join('');
+    }
+
+    function renderTable(items) {
+      rowsEl.innerHTML = '';
+      if (!items.length) {
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      items.forEach((r) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><strong>' + (r.id || '-') + '</strong><br><span class="badge">' + (r.country_code || 'NA') + '</span></td>' +
+          '<td>' + (r.client_name || '-') + '<br><small style="color:#6a7286;">' + (r.owner || '-') + '</small></td>' +
+          '<td>' + (r.send_date || '-') + '</td>' +
+          '<td><span class="status">' + (r.status || '-') + '</span></td>' +
+          '<td>' + (r.pipeline_stage || '-') + '<br><small style="color:#6a7286;">' + (r.next_action || '') + '</small></td>' +
+          '<td><span class="badge">' + (r.source_type || '-') + '</span></td>' +
+          '<td class="links">' + actionsHtml(r) + '</td>';
+        rowsEl.appendChild(tr);
+      });
+    }
+
+    function applyFilters() {
+      const q = searchEl.value.trim().toLowerCase();
+      const status = statusEl.value;
+      const source = sourceEl.value;
+
+      const filtered = records.filter((r) => {
+        const searchable = ((r.id || '') + ' ' + (r.client_name || '')).toLowerCase();
+        if (q && !searchable.includes(q)) return false;
+        if (status && r.status !== status) return false;
+        if (source && r.source_type !== source) return false;
+        return true;
+      });
+
+      renderTable(filtered);
+    }
+
+    renderKpis(records);
+    buildStatusOptions(records);
+    renderTable(records);
+
+    searchEl.addEventListener('input', applyFilters);
+    statusEl.addEventListener('change', applyFilters);
+    sourceEl.addEventListener('change', applyFilters);
+  </script>
+</body>
+</html>

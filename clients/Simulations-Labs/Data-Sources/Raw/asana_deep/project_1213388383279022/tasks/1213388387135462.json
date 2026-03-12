@@ -1,0 +1,166 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213388387135462",
+      "assignee": null,
+      "completed": false,
+      "completed_at": null,
+      "created_at": "2026-02-22T12:51:45.101Z",
+      "custom_fields": [
+        {
+          "gid": "1213388402534421",
+          "name": "Lead Priority",
+          "display_value": "A - Hot"
+        },
+        {
+          "gid": "1213388457746575",
+          "name": "Use Case",
+          "display_value": "Security Services"
+        },
+        {
+          "gid": "1213373817146418",
+          "name": "Source",
+          "display_value": "AI Everything Sheet"
+        },
+        {
+          "gid": "1213388403636636",
+          "name": "Owner",
+          "display_value": "Sahl"
+        },
+        {
+          "gid": "1213388506227281",
+          "name": "Lead Status",
+          "display_value": "New"
+        },
+        {
+          "gid": "1213373047721036",
+          "name": "Next Action",
+          "display_value": "1) Send first outreach email\\n2) Connect on LinkedIn"
+        },
+        {
+          "gid": "1213388509861135",
+          "name": "Lead Email",
+          "display_value": "walid.zaki@skil-dev.com"
+        },
+        {
+          "gid": "1213361868911225",
+          "name": "Phone",
+          "display_value": "1018601901"
+        },
+        {
+          "gid": "1213361868909067",
+          "name": "Company",
+          "display_value": "Skildev"
+        },
+        {
+          "gid": "1213388516577388",
+          "name": "Role",
+          "display_value": "CEO"
+        },
+        {
+          "gid": "1213373047777838",
+          "name": "Lead Website",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-23",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body>1) Contact Summary\\nCT\\n\\n2) Qualification\\nUse Case: Security Services\\nPriority: A - Hot\\nOwner: Sahl\\n\\n3) CRM Checklist\\n- Email/phone verified\\n- Next action assigned\\n- Due date set</body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1213388383279022",
+            "name": "Simulations Labs Pipeline v2 (AI Everything)"
+          },
+          "section": {
+            "gid": "1213373047674371",
+            "name": "🟦 01 New Leads"
+          }
+        }
+      ],
+      "modified_at": "2026-02-22T13:19:25.262Z",
+      "name": "Walid Zaki",
+      "notes": "1) Contact Summary\\nCT\\n\\n2) Qualification\\nUse Case: Security Services\\nPriority: A - Hot\\nOwner: Sahl\\n\\n3) CRM Checklist\\n- Email/phone verified\\n- Next action assigned\\n- Due date set",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1213388383279022/task/1213388387135462",
+      "start_on": null,
+      "tags": [],
+      "resource_subtype": "default_task"
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213388388351035",
+        "created_at": "2026-02-22T12:51:46.383Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      },
+      {
+        "gid": "1213388388351037",
+        "created_at": "2026-02-22T12:51:46.668Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to you",
+        "type": "system"
+      },
+      {
+        "gid": "1213388387134320",
+        "created_at": "2026-02-22T12:51:47.654Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> moved this task from \"Untitled section\" to \"🟦 01 New Leads\" in <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin moved this task from \"Untitled section\" to \"🟦 01 New Leads\" in Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      },
+      {
+        "gid": "1213388403358785",
+        "created_at": "2026-02-22T13:01:34.689Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 23",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 23",
+        "type": "system"
+      },
+      {
+        "gid": "1213388540283201",
+        "created_at": "2026-02-22T13:19:22.047Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> unassigned from you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin unassigned from you",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  }
+}

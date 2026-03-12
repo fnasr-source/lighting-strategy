@@ -1,64 +1,64 @@
 # Admireworks Internal OS
 
-Internal operating system for managing proposals, strategy assets, and CRM-style operational tracking.
+Internal operating system for managing the full client lifecycle: lead research, proposals, strategies, invoicing, and ongoing operations.
 
-## Modules
+## Quick Start
 
-- `Proposals/`:
-  - Client proposal packages
-  - Numbering and issuance system
-  - Outgoing client-safe links
-  - Internal CRM dashboard generator
-- `Strategies/`:
-  - Strategy playbooks and historical strategy assets
-- `Internal-OS/`:
-  - Internal dashboards for quick cross-device review
-  - Central system manual and link map
+```bash
+# Client portal dev server
+cd apps/client-portal && npm install && npm run dev
+# → http://localhost:3002
+```
 
-## Main Entry Pages
+## Project Structure
 
-- Internal Home: `Internal-OS/index.html`
-- Proposals CRM Hub: `Proposals/_Outgoing/_internal-crm/index.html`
-- Proposals Hub Mirror: `Internal-OS/proposals/index.html`
-- Strategies Hub: `Internal-OS/strategies/index.html`
-- System Manual (page): `Internal-OS/system/index.html`
-- System Manual (markdown): `Internal-OS/system/INDEX.md`
+| Directory | Purpose |
+|---|---|
+| `apps/client-portal/` | Main web app — `my.admireworks.com` |
+| `clients/` | All client folders (lifecycle-organized) |
+| `ops/` | Operational systems: proposals, strategies, briefing, dashboards |
+| `campaigns/` | Standalone campaign sites (Firebase Hosting) |
+| `firebase/` | Admin scripts, service account, migrations |
+| `docs/` | Technical documentation |
+| `.agents/workflows/` | Agent workflow definitions |
+
+## Key Documentation
+
+| Doc | What It Covers |
+|---|---|
+| `Claude.md` | Master reference for AI assistants — read this first |
+| `docs/WORKFLOWS.md` | Full client lifecycle workflows |
+| `docs/ARCHITECTURE.md` | Platform architecture and tech stack |
+| `docs/DATA-MODEL.md` | Firestore collections and schemas |
+| `docs/DEVELOPMENT.md` | Dev setup and environment guide |
+
+## Available Workflows
+
+| Command | Description |
+|---|---|
+| `/lead-research` | Research a new lead or potential client |
+| `/create-proposal` | Create a Growth Partnership Proposal |
+| `/create-strategy` | Create a Direct Response Marketing Strategy |
+| `/issue-invoice` | Create and send an invoice |
+| `/onboard-client` | Onboard a new client after acceptance |
+| `/process-meeting` | Process a meeting recording or transcript |
+| `/setup-client-project` | Set up a Firebase project for full-funnel client |
+| `/deploy` | Deploy changes to the live platform |
 
 ## Build Commands
 
 ```bash
-node Proposals/_Proposal-System/scripts/build_proposals_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-node Proposals/_Proposal-System/scripts/build_strategies_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-node Proposals/_Proposal-System/scripts/build_internal_home.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-node Proposals/_Proposal-System/scripts/validate_internal_links.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+# Rebuild static dashboards
+node ops/proposal-system/scripts/build_proposals_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+node ops/proposal-system/scripts/build_strategies_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+node ops/proposal-system/scripts/build_internal_home.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
+
+# Validate links
+node ops/proposal-system/scripts/validate_internal_links.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
 ```
-
-## Proposal Issuance (Auto-refreshes hubs)
-
-```bash
-node Proposals/_Proposal-System/scripts/create_proposal_record.js \
-  --root "/Users/user/Documents/IDE Projects/Internal AW SOP" \
-  --country EG \
-  --send-date 2026-02-16 \
-  --client "Lighting Business - Mahmoud Selim" \
-  --contact-email "Mahmoudmselim95@gmail.com" \
-  --contact-phone "+201022267297" \
-  --source-folder "Proposals/Lighting-Business-Mahmoud" \
-  --owner "Fouad Nasseredin" \
-  --status READY_TO_SEND \
-  --recommended-option "Option 2"
-```
-
-Use `--skip-hub-build true` only for emergency/manual runs.
 
 ## Repository
 
-- Current remote: `fnasr-source/admireworks-internal-os`
-
-To regenerate hubs on current slug:
-
-```bash
-REPO_SLUG=fnasr-source/admireworks-internal-os node Proposals/_Proposal-System/scripts/build_proposals_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-REPO_SLUG=fnasr-source/admireworks-internal-os node Proposals/_Proposal-System/scripts/build_strategies_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-REPO_SLUG=fnasr-source/admireworks-internal-os node Proposals/_Proposal-System/scripts/build_internal_home.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-```
+- **Remote:** `fnasr-source/admireworks-internal-os`
+- **Client Portal:** `my.admireworks.com` (Firebase App Hosting)
+- **Static Dashboards:** `ops.admireworks.com` (GitHub Pages)

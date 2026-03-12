@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-03-10T10:34:28.015Z",
+  "selected": 17,
+  "instantly": {
+    "created": 17,
+    "errors": []
+  },
+  "apollo": {
+    "labeled": 17,
+    "errors": []
+  },
+  "bySegment": {
+    "decision": {
+      "selected": 11,
+      "created": 11,
+      "labeled": 11
+    },
+    "faculty": {
+      "selected": 2,
+      "created": 2,
+      "labeled": 2
+    },
+    "recovery": {
+      "selected": 4,
+      "created": 4,
+      "labeled": 4
+    }
+  }
+}

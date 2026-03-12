@@ -1,0 +1,120 @@
+{
+  "fetchedAt": "2026-03-10T10:31:14.431Z",
+  "totalCampaigns": 17,
+  "simlabsCampaigns": [
+    {
+      "id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "name": "SimLabs | Security Professionals",
+      "status": 1,
+      "updated": "2026-03-10T10:26:04.623Z"
+    },
+    {
+      "id": "baa763fd-32bf-45b2-8fd8-a5d096637d8c",
+      "name": "SimLabs | Education Decision Makers - MENA",
+      "status": 1,
+      "updated": "2026-03-10T10:26:28.249Z"
+    },
+    {
+      "id": "a8b5e21b-a626-42fa-96f7-f33e83feefa2",
+      "name": "SimLabs | Faculty / Instructors - MENA",
+      "status": 1,
+      "updated": "2026-03-10T10:26:06.911Z"
+    },
+    {
+      "id": "7c438462-5962-4796-a9a6-f0be04d17acc",
+      "name": "SimLabs | Educators (US/UK/Saudi)",
+      "status": 1,
+      "updated": "2026-03-10T10:26:04.830Z"
+    },
+    {
+      "id": "75c11274-b8ae-428d-945d-a3bbab506162",
+      "name": "SimLabs | Security Training Leaders",
+      "status": 1,
+      "updated": "2026-03-10T10:26:05.044Z"
+    },
+    {
+      "id": "6198f69f-22ea-4442-b0db-f77309e3218e",
+      "name": "SimLabs | Education Warm Follow-up / CRM Recovery",
+      "status": 1,
+      "updated": "2026-03-10T10:26:07.105Z"
+    },
+    {
+      "id": "582c3c98-3166-4f66-8203-df5b129f4281",
+      "name": "SimLabs | CTF Organizers v2 (Spotlight Program)",
+      "status": 1,
+      "updated": "2026-03-10T10:26:05.246Z"
+    },
+    {
+      "id": "2833f18a-d78b-460e-9a54-2b4119848b90",
+      "name": "SimLabs | Security Consultants",
+      "status": 1,
+      "updated": "2026-03-10T10:26:05.537Z"
+    },
+    {
+      "id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "name": "Simlabs | CTF Organizers",
+      "status": 2,
+      "updated": "2026-03-10T10:26:07.298Z"
+    }
+  ],
+  "totalLeadLists": 10,
+  "simlabsLeadLists": [
+    {
+      "id": "3d808bd9-35cc-4cf1-80c7-c3a1f3da3c1f",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Education Warm Follow-up / CRM Recovery",
+      "timestamp_created": "2026-03-10T10:23:35.391Z"
+    },
+    {
+      "id": "700777ad-4472-4f3b-9c18-f48439b402db",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Faculty / Instructors - MENA",
+      "timestamp_created": "2026-03-10T10:23:31.387Z"
+    },
+    {
+      "id": "b8656a52-5f2b-44a5-9547-0f2787b66215",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Education Decision Makers - MENA",
+      "timestamp_created": "2026-03-10T10:23:27.403Z"
+    },
+    {
+      "id": "7b0cf0ee-1e0e-441d-aefc-e6573fe028fc",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - CTF Organizers v2 (Spotlight)",
+      "timestamp_created": "2026-03-08T20:42:18.733Z"
+    },
+    {
+      "id": "d243f75e-4d76-4b4a-90be-a009e49d7563",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Educators (US/UK/Saudi)",
+      "timestamp_created": "2026-03-08T20:42:15.471Z"
+    },
+    {
+      "id": "54ee26cf-f3d8-4df9-854f-63f8aa7bbb31",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Security Expansion",
+      "timestamp_created": "2026-03-08T20:39:34.586Z"
+    },
+    {
+      "id": "43e40eb2-bb0d-4665-b6a8-9f2bcb0e47b3",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Security Training Leaders",
+      "timestamp_created": "2026-03-08T20:39:29.596Z"
+    },
+    {
+      "id": "2a48cf1e-21d7-47ac-9a31-be0f70d41fe2",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Security Consultants",
+      "timestamp_created": "2026-03-08T10:52:08.544Z"
+    },
+    {
+      "id": "382a805f-acaa-409b-b489-9c31c2644dd2",
+      "organization_id": "ddf9817d-abee-46f2-8d31-2425c5c580f5",
+      "name": "SimLabs - Security Consultants (Instantly Supersearch)",
+      "timestamp_created": "2026-03-08T10:49:01.711Z"
+    }
+  ],
+  "analyticsRows": 13,
+  "simAnalyticsRows": 6,
+  "totalSimEmailEvents": 1864
+}

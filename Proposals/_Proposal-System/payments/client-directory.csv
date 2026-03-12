@@ -1,5 +1,0 @@
-client_id,client_name,company,country,contact_email,contact_phone,service,amount,currency,billing_cycle,billing_day,status,stripe_payment_link,notes
-RQM-001,RQM Group,"QYD, RQM & Ceyaj",SA,,,,5500,AED,monthly,1,active,,Full Marketing Retainer — direct response marketing; social media; email campaigns; funnels; multi-platform ad management
-EIN-001,Ein Abaya,عين عباية — Ein Abayaa,SA,ceo@einabayaa.com,+966533163266,Growth Partnership,16000,SAR,one-time,,active,,"Website rebuild + 90-day strategy + tracking + SEO + Month 1 ads. Ongoing: 8,000 SAR/mo from Month 2"
-BSQ-001,Basseqat,Basseqat — بصيقات,EG,,,Full Growth Partnership + CRM + Reply Mgmt,72000,EGP,one-time,,pending,,"Option 3 (32,500/mo) + Reply Mgmt (setup waived, 5K/mo from M3) + CRM (40% off, 3.5K/mo from M2). Promos: save 34,500"
-2024-07-22-01,Komu Lale,Komu Lale,EG,ahmedshaker80@yahoo.com,+201060333387,Ad Mgt + Creative Pack,56900,EGP,3_months,8,active,,"Teenagers/new-account billing scope. Current cycle issued 2026-03-08; next send 2026-06-08; next due 2026-06-11. Legacy rate model: legacy_eg_old_clients_usd_equivalent."

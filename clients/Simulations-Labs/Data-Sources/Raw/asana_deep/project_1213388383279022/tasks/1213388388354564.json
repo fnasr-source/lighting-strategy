@@ -1,0 +1,178 @@
+{
+  "task": {
+    "data": {
+      "gid": "1213388388354564",
+      "assignee": null,
+      "completed": false,
+      "completed_at": null,
+      "created_at": "2026-02-22T12:51:50.404Z",
+      "custom_fields": [
+        {
+          "gid": "1213388402534421",
+          "name": "Lead Priority",
+          "display_value": "A - Hot"
+        },
+        {
+          "gid": "1213388457746575",
+          "name": "Use Case",
+          "display_value": "Security Services"
+        },
+        {
+          "gid": "1213373817146418",
+          "name": "Source",
+          "display_value": "AI Everything Sheet"
+        },
+        {
+          "gid": "1213388403636636",
+          "name": "Owner",
+          "display_value": "Sahl"
+        },
+        {
+          "gid": "1213388506227281",
+          "name": "Lead Status",
+          "display_value": "New"
+        },
+        {
+          "gid": "1213373047721036",
+          "name": "Next Action",
+          "display_value": "1) Send first outreach email + LinkedIn connect\\n2) Connect on LinkedIn"
+        },
+        {
+          "gid": "1213388509861135",
+          "name": "Lead Email",
+          "display_value": null
+        },
+        {
+          "gid": "1213361868911225",
+          "name": "Phone",
+          "display_value": null
+        },
+        {
+          "gid": "1213361868909067",
+          "name": "Company",
+          "display_value": "1044335955"
+        },
+        {
+          "gid": "1213388516577388",
+          "name": "Role",
+          "display_value": "1044335955"
+        },
+        {
+          "gid": "1213373047777838",
+          "name": "Lead Website",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-23",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body>1) Contact Summary\\n-\\n\\n2) Qualification\\nUse Case: Security Services\\nPriority: A - Hot\\nOwner: Sahl\\n\\n3) CRM Checklist\\n- Email/phone verified\\n- Next action assigned\\n- Due date set</body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1213388383279022",
+            "name": "Simulations Labs Pipeline v2 (AI Everything)"
+          },
+          "section": {
+            "gid": "1213373047674371",
+            "name": "🟦 01 New Leads"
+          }
+        }
+      ],
+      "modified_at": "2026-02-25T10:03:53.611Z",
+      "name": "Abdelmonem",
+      "notes": "1) Contact Summary\\n-\\n\\n2) Qualification\\nUse Case: Security Services\\nPriority: A - Hot\\nOwner: Sahl\\n\\n3) CRM Checklist\\n- Email/phone verified\\n- Next action assigned\\n- Due date set",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1213388383279022/task/1213388388354564",
+      "start_on": null,
+      "tags": [],
+      "resource_subtype": "default_task"
+    }
+  },
+  "comments": {
+    "data": []
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1213361868731074",
+        "created_at": "2026-02-22T12:51:50.472Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      },
+      {
+        "gid": "1213361868731076",
+        "created_at": "2026-02-22T12:51:50.698Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to you",
+        "type": "system"
+      },
+      {
+        "gid": "1213373047686623",
+        "created_at": "2026-02-22T12:51:51.692Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> moved this task from \"Untitled section\" to \"🟦 01 New Leads\" in <a href=\"https://app.asana.com/1/1201934871168294/project/1213388383279022\">Simulations Labs Pipeline v2 (AI Everything)</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin moved this task from \"Untitled section\" to \"🟦 01 New Leads\" in Simulations Labs Pipeline v2 (AI Everything)",
+        "type": "system"
+      },
+      {
+        "gid": "1213388403647888",
+        "created_at": "2026-02-22T13:01:32.423Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 23",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 23",
+        "type": "system"
+      },
+      {
+        "gid": "1213388540283197",
+        "created_at": "2026-02-22T13:19:21.961Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> unassigned from you",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin unassigned from you",
+        "type": "system"
+      },
+      {
+        "gid": "1213431430376629",
+        "created_at": "2026-02-25T10:03:53.130Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Next Action from \"1) Send first outreach email\\n2) Connect on LinkedIn\" to \"1) Send first outreach email + LinkedIn connect\\n2) Connect on LinkedIn\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Next Action from \"1) Send first outreach email\\n2) Connect on LinkedIn\" to \"1) Send first outreach email + LinkedIn connect\\n2) Connect on LinkedIn\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": []
+  }
+}

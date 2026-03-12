@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1gszkQGpl2-9xc88gnQYR3hWrFkcx2I4ABTxuum41R0I",
+    "mimeType": "application/vnd.google-apps.document",
+    "modifiedTime": "2025-12-29T17:26:13.246Z",
+    "name": "Meetings",
+    "parents": [
+      "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    ],
+    "size": "39008",
+    "webViewLink": "https://docs.google.com/document/d/1gszkQGpl2-9xc88gnQYR3hWrFkcx2I4ABTxuum41R0I/edit?usp=drivesdk",
+    "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+  },
+  {
+    "id": "14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2025-12-10T09:50:40.358Z",
+    "name": "Ads Optimization Meeting",
+    "parents": [
+      "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/14vDzYeyPBCHwxzsfOOGwpnlX2RYlGMNI",
+    "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+  },
+  {
+    "id": "1_d7cVsP-RGgZbfH59OJqXO84o8LiF0mNupqXlJ9lyiE",
+    "mimeType": "application/vnd.google-apps.document",
+    "modifiedTime": "2025-12-03T11:48:51.510Z",
+    "name": "Simulations Labs Kick-off Meeting",
+    "parents": [
+      "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    ],
+    "size": "22472",
+    "webViewLink": "https://docs.google.com/document/d/1_d7cVsP-RGgZbfH59OJqXO84o8LiF0mNupqXlJ9lyiE/edit?usp=drivesdk",
+    "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+  },
+  {
+    "id": "1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2025-11-28T17:25:13.978Z",
+    "name": "Kick-Off meeting",
+    "parents": [
+      "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y",
+    "_parent_queried": "1YbWQA_7eIYkvgJ1BP0eJEaJ32fyblSV4"
+  },
+  {
+    "id": "1b8Zb2LVGMeo5JRBcjBAngx8ktGKGyijkB0mC3_sjtIw",
+    "mimeType": "application/vnd.google-apps.document",
+    "modifiedTime": "2025-12-08T10:50:45.340Z",
+    "name": "Strategy Review meeting - 8 Dec 2025",
+    "parents": [
+      "1plNRZXwTiDovbm62LISY4seyrCjtw9hi"
+    ],
+    "size": "24604",
+    "webViewLink": "https://docs.google.com/document/d/1b8Zb2LVGMeo5JRBcjBAngx8ktGKGyijkB0mC3_sjtIw/edit?usp=drivesdk",
+    "_parent_queried": "1plNRZXwTiDovbm62LISY4seyrCjtw9hi"
+  },
+  {
+    "id": "1O3W-baEog7w8w8hKQ_KXTkecd8y2l_2K2uuF1GP8xZY",
+    "mimeType": "application/vnd.google-apps.document",
+    "modifiedTime": "2025-11-29T08:39:10.325Z",
+    "name": "Kick-off meeting transcription",
+    "parents": [
+      "1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y"
+    ],
+    "size": "32179",
+    "webViewLink": "https://docs.google.com/document/d/1O3W-baEog7w8w8hKQ_KXTkecd8y2l_2K2uuF1GP8xZY/edit?usp=drivesdk",
+    "_parent_queried": "1Z-ATEXmxfsn8U_eZir4bCGlg2xG_9s-Y"
+  }
+]

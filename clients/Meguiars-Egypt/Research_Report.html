@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Report: Meguiar's Egypt — Pre-Meeting Intelligence Brief</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --aw-navy: #001a70;
+            --aw-gold: #cc9f53;
+            --aw-navy-dark: #000f42;
+            --light: #f8f9fc;
+            --dark: #0c1222;
+            --text: #334155;
+            --muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 50%, #0a0a2e 100%);
+            color: white;
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 159, 83, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 20px;
+            padding: 5px 14px;
+            border: 1px solid rgba(204, 159, 83, 0.3);
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: var(--aw-gold);
+        }
+
+        .hero .subtitle {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .hero-meta {
+            margin-top: 28px;
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .hero-meta-item strong {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            margin: 32px 0;
+            padding: 36px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .section-number {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--aw-gold);
+            margin-bottom: 6px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--aw-navy);
+            margin: 24px 0 10px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+        }
+
+        ul,
+        ol {
+            margin: 12px 0 16px 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        strong {
+            color: var(--dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.88rem;
+        }
+
+        th,
+        td {
+            padding: 12px 14px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover td {
+            background: #fafbff;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--aw-navy) 0%, var(--aw-navy-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 14px;
+            margin: 28px 0;
+            text-align: center;
+        }
+
+        .highlight p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .highlight .attr {
+            font-size: 0.8rem;
+            color: var(--aw-gold);
+            margin-top: 12px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .tag-green {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .tag-red {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .tag-yellow {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            border: 1px solid #e8ecf2;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        footer .brand {
+            color: var(--aw-navy);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="container">
+            <div class="hero-badge">◆ Research Report</div>
+            <h1>Meguiar's Egypt<br><span>Pre-Meeting Intelligence Brief</span></h1>
+            <p class="subtitle">Comprehensive business, digital, and market research to prepare for the meeting with
+                El-Adwar Group.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><strong>Date:</strong> February 21, 2026</div>
+                <div class="hero-meta-item"><strong>Client:</strong> El-Adwar Group</div>
+                <div class="hero-meta-item"><strong>From:</strong> Admireworks Strategy Team</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- EXEC SUMMARY -->
+        <section>
+            <div class="section-number">Section 01</div>
+            <h2>Executive Summary</h2>
+            <p>Meguiar's Egypt, distributed exclusively by <strong>El-Adwar Group</strong> since 2010, represents one of
+                the world's most iconic car care brands (est. 1901, acquired by 3M in 2008) in a rapidly growing
+                Egyptian automotive aftermarket worth <strong>USD 1.6 billion</strong> (5.8% CAGR through 2032).</p>
+            <p>While the brand has a strong heritage and professional-grade product portfolio, their current digital
+                presence operates as a <strong>passive catalog</strong> — no e-commerce, limited social engagement, and
+                no locally tailored content strategy. This presents a significant opportunity to transform from a
+                "digital brochure" into a <strong>lead-generating, community-building, Egyptian market
+                    powerhouse</strong>.</p>
+        </section>
+
+        <!-- BRAND OVERVIEW -->
+        <section>
+            <div class="section-number">Section 02</div>
+            <h2>Brand Overview</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Meguiar's Global</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Founded</strong></td>
+                            <td>1901 — Frank Meguiar Jr.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HQ</strong></td>
+                            <td>Irvine, California, USA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Parent</strong></td>
+                            <td>3M (acquired October 2008)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Legacy</strong></td>
+                            <td>120+ years of surface science</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Consumer Line</strong></td>
+                            <td>Since 1973 (Barry Meguiar)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Egypt Operations</h3>
+                    <table>
+                        <tr>
+                            <td><strong>Distributor</strong></td>
+                            <td>El-Adwar Group</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Leader</strong></td>
+                            <td>Dr. Hussam El-Adwar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Since</strong></td>
+                            <td>2010 (sole exclusive)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Base</strong></td>
+                            <td>Alexandria, Egypt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>E-commerce</strong></td>
+                            <td class="tag-red">None ❌</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section>
+            <div class="section-number">Section 03</div>
+            <h2>Product Portfolio</h2>
+            <h3>Professional Products (for detailing centers)</h3>
+            <ul>
+                <li>Mirror Glaze® Detailing Clay (Aggressive & Mild)</li>
+                <li>Hyper-Dressing Bottle</li>
+                <li>Detailer Hyper-Wash</li>
+                <li>Professional-grade compounds and polishes</li>
+            </ul>
+            <h3>Consumer Products (for car enthusiasts)</h3>
+            <ul>
+                <li><strong>Wash & Wax:</strong> Ultimate Wash and Wax, Deep Crystal® Car Wash, Hybrid Ceramic Wax</li>
+                <li><strong>Polish & Protection:</strong> Gold Class™ Carnauba Plus, ScratchX® 2.0, Paint Protect
+                    (365-day)</li>
+                <li><strong>Interior:</strong> Quik Interior Detailer, Gold Class™ Rich Leather Spray, Ultimate
+                    Protectant</li>
+                <li><strong>Exterior Detail:</strong> PlastX Clear Plastic Cleaner, Ultimate Black (trim restorer)</li>
+                <li><strong>Wheels & Tires:</strong> Hot Rims Wheel & Tire Cleaner, Hot Shine Tire Foam</li>
+                <li><strong>Glass:</strong> Detailer Glass Cleaner Concentrate</li>
+            </ul>
+            <p><strong>Key observation:</strong> No prices displayed anywhere online. No e-commerce — all purchases
+                routed through phone/WhatsApp.</p>
+        </section>
+
+        <!-- DIGITAL AUDIT -->
+        <section>
+            <div class="section-number">Section 04</div>
+            <h2>Digital Presence Audit</h2>
+            <h3>Website (meguiarsegypt.com)</h3>
+            <table>
+                <tr>
+                    <td><strong>Design Quality</strong></td>
+                    <td class="tag-green">7.5/10 — Modern, brand-aligned</td>
+                </tr>
+                <tr>
+                    <td><strong>E-commerce</strong></td>
+                    <td class="tag-red">0/10 — None</td>
+                </tr>
+                <tr>
+                    <td><strong>SEO</strong></td>
+                    <td class="tag-yellow">3/10 — Basic, no blog, thin content</td>
+                </tr>
+                <tr>
+                    <td><strong>Content Depth</strong></td>
+                    <td class="tag-red">2.5/10 — No guides, tutorials, or Arabic content</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile UX</strong></td>
+                    <td class="tag-green">7/10 — Responsive</td>
+                </tr>
+                <tr>
+                    <td><strong>Arabic Support</strong></td>
+                    <td class="tag-red">0/10 — English only</td>
+                </tr>
+            </table>
+
+            <h3>Social Media</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>📘 Facebook — 7,600 followers</h4>
+                    <p>Low engagement: 4-10 reactions, 0-1 comments per post. One-way broadcast.</p>
+                </div>
+                <div class="card">
+                    <h4>📸 Instagram — 493 followers</h4>
+                    <p>157 posts. Very limited reach. Content mirrored from Facebook.</p>
+                </div>
+                <div class="card">
+                    <h4>🎬 YouTube — Global Only</h4>
+                    <p>Links to @meguiars global channel. No local Egyptian content.</p>
+                </div>
+                <div class="card">
+                    <h4>📱 TikTok — <span class="tag-red">None ❌</span></h4>
+                    <p>Missing Egypt's fastest-growing social platform.</p>
+                </div>
+            </div>
+
+            <h3>Critical Digital Gaps</h3>
+            <ol>
+                <li>No user-generated content (before/after, customer cars)</li>
+                <li>No Egyptian automotive influencer partnerships</li>
+                <li>No locally relevant content (e.g., "protect your car from Egyptian sand")</li>
+                <li>No video tutorials or detailing tips in Arabic</li>
+                <li>No TikTok presence</li>
+                <li>No pricing transparency online</li>
+            </ol>
+        </section>
+
+        <!-- MARKET DATA -->
+        <section>
+            <div class="section-number">Section 05</div>
+            <h2>Market Analysis</h2>
+            <h3>Egyptian Automotive Aftermarket</h3>
+            <table>
+                <tr>
+                    <td><strong>Market size (2024)</strong></td>
+                    <td>USD 1.6 billion</td>
+                </tr>
+                <tr>
+                    <td><strong>Projected size (2032)</strong></td>
+                    <td>USD 2.5 billion</td>
+                </tr>
+                <tr>
+                    <td><strong>CAGR (2025-2032)</strong></td>
+                    <td>5.8%</td>
+                </tr>
+                <tr>
+                    <td><strong>Registered vehicles</strong></td>
+                    <td>10.4 million (2024)</td>
+                </tr>
+                <tr>
+                    <td><strong>Passenger cars</strong></td>
+                    <td>~6 million (57.6% of total)</td>
+                </tr>
+                <tr>
+                    <td><strong>New car sales growth (2024)</strong></td>
+                    <td>+17.8% (81.4K units)</td>
+                </tr>
+                <tr>
+                    <td><strong>Car sales growth (H1 2025)</strong></td>
+                    <td>+83% YoY (90.1K vehicles)</td>
+                </tr>
+            </table>
+
+            <h3>Emerging Car Care Trends</h3>
+            <ul>
+                <li>Advanced ceramic coatings (Ceramic 3.0) — up to 10 years durability</li>
+                <li>Waterless wash systems — eco-friendly, water-conscious</li>
+                <li>Eco-friendly/biodegradable products — growing demand</li>
+                <li>Graphene coatings — next-gen paint protection</li>
+                <li>Mobile detailing services — convenience-driven</li>
+                <li>DIY detailing community growth — YouTube, social media tutorials</li>
+            </ul>
+        </section>
+
+        <!-- SWOT -->
+        <section>
+            <div class="section-number">Section 06</div>
+            <h2>SWOT Analysis</h2>
+            <div class="grid-2">
+                <div class="card" style="border-left: 4px solid var(--success); background: #f0fdf4;">
+                    <h4>💪 Strengths</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>🏆 120+ year brand heritage</li>
+                        <li>🔬 3M R&D and logistics backing</li>
+                        <li>🎯 Premium positioning</li>
+                        <li>🤝 14+ years in Egypt</li>
+                        <li>📦 Full product range</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger); background: #fef2f2;">
+                    <h4>⚠️ Weaknesses</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>🚫 No e-commerce</li>
+                        <li>📉 Sub-500 Instagram followers</li>
+                        <li>🔇 No Arabic website</li>
+                        <li>📵 Missing TikTok</li>
+                        <li>💰 No pricing transparency</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 4px solid #3b82f6; background: #eff6ff;">
+                    <h4>🚀 Opportunities</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>🛒 E-commerce — first premium brand online</li>
+                        <li>📱 TikTok & Reels — viral detailing content</li>
+                        <li>🤳 Egyptian influencer partnerships</li>
+                        <li>🏜️ Localized "sun & sand" messaging</li>
+                        <li>👥 Community building</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--warning); background: #fffbeb;">
+                    <h4>🛡️ Threats</h4>
+                    <ul style="margin-left: 0; list-style: none; padding: 0;">
+                        <li>⚔️ Competitor digital investment</li>
+                        <li>🏷️ Counterfeit products</li>
+                        <li>💱 Currency devaluation</li>
+                        <li>📦 Parallel imports (Ubuy/Amazon)</li>
+                        <li>📉 "Expensive brand" perception</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEY INSIGHT -->
+        <div class="highlight">
+            <p>"Meguiar's has owned car care for 120 years. In Egypt, the digital car care race hasn't been won yet. The
+                opportunity is to own it before anyone else does."</p>
+            <div class="attr">— Admireworks Strategic Positioning</div>
+        </div>
+
+        <!-- ROADMAP -->
+        <section>
+            <div class="section-number">Section 07</div>
+            <h2>Digital Growth Roadmap</h2>
+            <h3>Phase 1: Quick Wins (Month 1–2)</h3>
+            <ul>
+                <li>Launch Arabic version of website</li>
+                <li>Add product pricing (or "starting from" ranges)</li>
+                <li>Create TikTok account + first 10 short-form detailing videos</li>
+                <li>Start "Before & After" content series across all platforms</li>
+                <li>Google Business profile optimization</li>
+            </ul>
+            <h3>Phase 2: Growth Engine (Month 3–6)</h3>
+            <ul>
+                <li>E-commerce integration (WooCommerce or Shopify)</li>
+                <li>Egyptian automotive influencer outreach (5-10 creators)</li>
+                <li>Localized content calendar (sand, heat, seasonal tips)</li>
+                <li>WhatsApp Business catalog setup</li>
+                <li>Google + Meta paid advertising campaigns</li>
+            </ul>
+            <h3>Phase 3: Market Leadership (Month 6–12)</h3>
+            <ul>
+                <li>"Meguiar's Egypt Detailing Academy" — workshops + streams</li>
+                <li>B2B partnerships (luxury dealerships, 5-star hotels)</li>
+                <li>Subscription box model — seasonal car care kits</li>
+                <li>Community platform and UGC campaigns</li>
+                <li>Brand ambassador program</li>
+            </ul>
+        </section>
+
+        <!-- TALKING POINTS -->
+        <section>
+            <div class="section-number">Section 08</div>
+            <h2>Meeting Talking Points</h2>
+            <h3>Opening Discussion</h3>
+            <ol>
+                <li>"What are your biggest challenges in growing Meguiar's in Egypt today?"</li>
+                <li>"How do customers currently discover and purchase your products?"</li>
+                <li>"What's your relationship like with Meguiar's/3M corporate?"</li>
+                <li>"Who is your primary customer — enthusiasts, professionals, or both?"</li>
+                <li>"Have you considered selling online directly?"</li>
+            </ol>
+            <h3>Key Insights to Share</h3>
+            <ul>
+                <li>✅ Egypt's automotive aftermarket is booming (+83% car sales growth in 2025)</li>
+                <li>✅ Website is professional but currently a "digital brochure"</li>
+                <li>✅ Instagram has only 493 followers for a globally iconic brand</li>
+                <li>✅ TikTok is perfect for car detailing content — and they're not there</li>
+                <li>✅ No competitor has invested in digital either — first-mover advantage is open</li>
+            </ul>
+            <h3>Recommended Services</h3>
+            <ul>
+                <li><strong>Digital Strategy & Positioning</strong> — comprehensive market entry plan</li>
+                <li><strong>Social Media Management</strong> — content, community, growth</li>
+                <li><strong>E-commerce Development</strong> — online store with Egyptian payment integration</li>
+                <li><strong>Paid Advertising</strong> — Meta, Google, TikTok campaigns</li>
+                <li><strong>Content Production</strong> — video, photography, Arabic copy</li>
+                <li><strong>Influencer Marketing</strong> — Egyptian automotive partnerships</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 <span class="brand">ADMIRE8 BY ADMIREWORKS</span> · Confidential — Internal Use Only</p>
+        <p style="margin-top: 6px;">hello@admireworks.com · (+971) 4295 8666</p>
+    </footer>
+
+</body>
+
+</html>

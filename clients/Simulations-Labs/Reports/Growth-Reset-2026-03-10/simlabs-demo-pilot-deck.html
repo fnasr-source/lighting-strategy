@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulations Labs Demo / Pilot Deck</title>
+  <style>
+@font-face {
+  font-family: 'Jaymont';
+  src: url('file:///Users/user/Documents/IDE%20Projects/Internal%20AW%20SOP/Proposals/_Proposal-System/templates/growth-packages-assets/fonts/jaymont/Jaymont%20Medium.otf') format('opentype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Jaymont';
+  src: url('file:///Users/user/Documents/IDE%20Projects/Internal%20AW%20SOP/Proposals/_Proposal-System/templates/growth-packages-assets/fonts/jaymont/Jaymont%20Bold.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('file:///Users/user/Documents/IDE%20Projects/Internal%20AW%20SOP/Proposals/_Proposal-System/templates/growth-packages-assets/fonts/akkurat-pro/Akkurat%20Pro-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('file:///Users/user/Documents/IDE%20Projects/Internal%20AW%20SOP/Proposals/_Proposal-System/templates/growth-packages-assets/fonts/akkurat-pro/Akkurat%20Pro-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+:root {
+  --aw-navy: #001a70;
+  --aw-gold: #cc9f53;
+  --aw-gold-light: #eec780;
+  --aw-off-white: #f8f7f4;
+  --aw-white: #ffffff;
+  --aw-light-gray: #e8e6e1;
+  --aw-dark: #131722;
+  --aw-text: #1a1d25;
+  --aw-muted: #5f6778;
+  --aw-danger: #a53d2a;
+  --aw-success: #2c7a5a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--aw-off-white);
+  color: var(--aw-text);
+  font-family: 'Akkurat Pro', Arial, sans-serif;
+  line-height: 1.55;
+}
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 28px 64px;
+}
+.cover {
+  background: linear-gradient(180deg, rgba(0,26,112,0.96), rgba(0,17,73,0.98));
+  color: var(--aw-white);
+  border-radius: 24px;
+  padding: 48px;
+  margin-bottom: 28px;
+  box-shadow: 0 18px 50px rgba(0, 18, 71, 0.2);
+}
+.cover img {
+  width: 84px;
+  display: block;
+  margin-bottom: 24px;
+  filter: brightness(0) invert(1);
+}
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+h1, h2, h3 {
+  font-family: 'Jaymont', Georgia, serif;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+h1 { font-size: 42px; }
+h2 { font-size: 28px; color: var(--aw-navy); margin-top: 12px; }
+h3 { font-size: 20px; color: var(--aw-navy); }
+.subtitle {
+  max-width: 760px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.88);
+}
+.meta {
+  margin-top: 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+.section {
+  background: var(--aw-white);
+  border: 1px solid var(--aw-light-gray);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 28px rgba(17, 26, 44, 0.06);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.card {
+  background: var(--aw-off-white);
+  border: 1px solid var(--aw-light-gray);
+  border-radius: 16px;
+  padding: 18px;
+}
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.span-6 { grid-column: span 6; }
+.span-8 { grid-column: span 8; }
+.span-12 { grid-column: span 12; }
+.kpi-label {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aw-muted);
+}
+.kpi-value {
+  margin-top: 8px;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--aw-navy);
+}
+.kpi-sub {
+  margin-top: 6px;
+  color: var(--aw-muted);
+  font-size: 14px;
+}
+.pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.pill.warn { background: rgba(204,159,83,0.18); color: #8a611f; }
+.pill.bad { background: rgba(165,61,42,0.12); color: var(--aw-danger); }
+.pill.good { background: rgba(44,122,90,0.12); color: var(--aw-success); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+th, td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--aw-light-gray);
+  vertical-align: top;
+}
+th {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--aw-muted);
+}
+ul {
+  margin: 10px 0 0 18px;
+  padding: 0;
+}
+li { margin: 8px 0; }
+.quote {
+  border-left: 3px solid var(--aw-gold);
+  padding-left: 14px;
+  color: var(--aw-muted);
+}
+.footer {
+  padding-top: 12px;
+  color: var(--aw-muted);
+  font-size: 12px;
+}
+@media print {
+  body { background: var(--aw-white); }
+  .page { max-width: none; padding: 0; }
+  .section, .cover { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+  <div class="page">
+    <section class="cover">
+      <img src="file:///Users/user/Documents/IDE%20Projects/Internal%20AW%20SOP/Proposals/_Proposal-System/templates/growth-packages-assets/brand/brandmark.png" alt="Admireworks" />
+      <div class="eyebrow">Admireworks · Simulations Labs</div>
+      <h1>Simulations Labs Demo / Pilot Deck</h1>
+      <p class="subtitle">A short client-facing narrative for discovery calls and pilot scoping conversations.</p>
+      <div class="meta">Prepared on 2026-03-10 10:36 UTC</div>
+    </section>
+    
+    <section class="section">
+      <h2>Demo / Pilot Deck</h2>
+      <div class="grid">
+        <div class="card span-12">
+          <h3>1. The Problem</h3>
+          <p>Education teams want hands-on cybersecurity learning, but technical environment setup, fairness, and measurement often slow adoption.</p>
+        </div>
+        <div class="card span-12">
+          <h3>2. The Shift</h3>
+          <p>Simulations Labs positions itself not as just another tool, but as the fastest route to launching measurable cyber learning without DevOps overhead.</p>
+        </div>
+        <div class="card span-12">
+          <h3>3. What The Pilot Looks Like</h3>
+          <p>A 30-day scoped pilot for one cohort, one use case, and one set of agreed outcomes.</p>
+        </div>
+        <div class="card span-12">
+          <h3>4. What Can Be Measured</h3>
+          <p>Activation, participation, challenge completion, performance, readiness signals, and faculty execution efficiency.</p>
+        </div>
+        <div class="card span-12">
+          <h3>5. The CTA</h3>
+          <p>Book a pilot scoping call to define the cohort, use case, and success criteria.</p>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-03-08T10:49:04.510Z",
+  "options": {
+    "delayMs": 8000,
+    "limitPerSegment": 10,
+    "createTrackingLists": true,
+    "segment": "security_consultants"
+  },
+  "results": [
+    {
+      "segment": "security_consultants",
+      "campaign_name": "SimLabs | Security Consultants",
+      "tracking_list_name": "SimLabs - Security Consultants (Instantly Supersearch)",
+      "tracking_list_id": "382a805f-acaa-409b-b489-9c31c2644dd2",
+      "campaign_id": "2833f18a-d78b-460e-9a54-2b4119848b90",
+      "status": "error",
+      "limit": 10,
+      "message": "POST /api/v2/supersearch-enrichment/enrich-leads-from-supersearch failed (402): {\"statusCode\":402,\"error\":\"Insufficient credits\",\"message\":\"Insufficient credits\",\"creditsRequired\":20,\"creditsAvailable\":-10}"
+    }
+  ]
+}

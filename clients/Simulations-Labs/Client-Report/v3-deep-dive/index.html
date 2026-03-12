@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Simulations Labs — Deep Dive Analyst Report. Full methodology, extended data tables, and granular analysis.">
+    <title>Simulations Labs — Deep Dive Report | Admireworks</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#top" class="nav-brand">
+                <div class="nav-brand-icon">AW</div>
+                <div class="nav-brand-text">Admireworks <span>× Simulations Labs · Deep Dive</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#outreach">Outreach</a></li>
+                <li><a href="#pipeline">Pipeline</a></li>
+                <li><a href="#operations">Operations</a></li>
+                <li><a href="#meetings">Meetings</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+            </ul>
+            <div class="nav-meta">Analyst Report — March 2026</div>
+        </div>
+    </nav>
+
+    <main class="report-container" id="top">
+
+        <section class="hero section" id="overview">
+            <div class="hero-badge">Deep Dive Analysis — March 2026</div>
+            <h1 class="hero-title">Simulations Labs<br>Analyst Report</h1>
+            <p class="hero-subtitle">Granular analysis across all workstreams with full methodology, extended data
+                tables, and source traceability.</p>
+        </section>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Total Emails Sent</div>
+                <div class="kpi-value">1,669</div>
+                <div class="kpi-note">844 Security Prof. + 825 CTF Org.</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Pipeline Leads</div>
+                <div class="kpi-value">69</div>
+                <div class="kpi-note">62 with email (90%)</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Reply Rate</div>
+                <div class="kpi-value">0.12%</div>
+                <div class="kpi-note">2 replies / 1,669 sent</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Bounce Rate</div>
+                <div class="kpi-value">6.4%</div>
+                <div class="kpi-note">107 / 1,669 (acceptable)</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Tasks Done</div>
+                <div class="kpi-value">19/21</div>
+                <div class="kpi-note">90.5% completion rate</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Links Extracted</div>
+                <div class="kpi-value">317</div>
+                <div class="kpi-note">87 OK · 24 broken · 145 gated</div>
+            </div>
+        </div>
+
+        <!-- OUTREACH DEEP DIVE -->
+        <section class="section" id="outreach">
+            <div class="section-header">
+                <div class="section-label">Deep Dive</div>
+                <h2 class="section-title">Outreach Analysis</h2>
+            </div>
+
+            <div class="chart-card" style="margin-bottom: 24px; overflow-x: auto;">
+                <div class="chart-header">
+                    <div class="chart-title">Campaign Comparison Table</div><span class="badge badge-high">High
+                        Confidence</span>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Security Professionals</th>
+                            <th>CTF Organizers</th>
+                            <th>Combined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Leads</td>
+                            <td>1,380</td>
+                            <td>372</td>
+                            <td>1,752</td>
+                        </tr>
+                        <tr>
+                            <td>Contacted</td>
+                            <td>844</td>
+                            <td>825</td>
+                            <td>1,669</td>
+                        </tr>
+                        <tr>
+                            <td>New Leads Contacted</td>
+                            <td>466</td>
+                            <td>361</td>
+                            <td>827</td>
+                        </tr>
+                        <tr>
+                            <td>Emails Sent</td>
+                            <td>844</td>
+                            <td>825</td>
+                            <td>1,669</td>
+                        </tr>
+                        <tr>
+                            <td>Opens</td>
+                            <td colspan="3" style="text-align:center"><span class="badge badge-low">Tracking
+                                    Disabled</span></td>
+                        </tr>
+                        <tr>
+                            <td>Replies (total)</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Replies (unique)</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-replies</td>
+                            <td>3</td>
+                            <td>8</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>Bounced</td>
+                            <td>48 (5.7%)</td>
+                            <td>59 (7.2%)</td>
+                            <td>107 (6.4%)</td>
+                        </tr>
+                        <tr>
+                            <td>Completed</td>
+                            <td>106</td>
+                            <td>192</td>
+                            <td>298</td>
+                        </tr>
+                        <tr>
+                            <td>Opportunities</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Link Clicks</td>
+                            <td colspan="3" style="text-align:center"><span class="badge badge-low">Tracking
+                                    Disabled</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sequence Steps</td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Sending Aliases</td>
+                            <td>7</td>
+                            <td>7</td>
+                            <td>7 (shared)</td>
+                        </tr>
+                        <tr>
+                            <td>Daily Limit</td>
+                            <td>210</td>
+                            <td>210</td>
+                            <td>420</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>Active</td>
+                            <td>Active</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Created</td>
+                            <td>2026-02-02</td>
+                            <td>2026-02-02</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="chart-source">Source: instantly_simlabs_campaign_analytics_live.json +
+                    instantly_simlabs_campaigns_filtered_live.json</div>
+            </div>
+
+            <div class="chart-card" style="margin-bottom: 24px;">
+                <div class="chart-header">
+                    <div class="chart-title">Sending Infrastructure</div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Alias</th>
+                            <th>Domain</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>noah@trysimlabs.com</td>
+                            <td>trysimlabs.com</td>
+                        </tr>
+                        <tr>
+                            <td>noah@simlabs-team.com</td>
+                            <td>simlabs-team.com</td>
+                        </tr>
+                        <tr>
+                            <td>noah@getsimlabs.com</td>
+                            <td>getsimlabs.com</td>
+                        </tr>
+                        <tr>
+                            <td>hannah@trysimlabs.com</td>
+                            <td>trysimlabs.com</td>
+                        </tr>
+                        <tr>
+                            <td>hannah@simlabs-team.com</td>
+                            <td>simlabs-team.com</td>
+                        </tr>
+                        <tr>
+                            <td>hannah@getsimlabs.com</td>
+                            <td>getsimlabs.com</td>
+                        </tr>
+                        <tr>
+                            <td>hannah.adam@getsimlabs.com</td>
+                            <td>getsimlabs.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- PIPELINE DEEP DIVE -->
+        <section class="section" id="pipeline">
+            <div class="section-header">
+                <div class="section-label">Deep Dive</div>
+                <h2 class="section-title">Lead Pipeline Analysis</h2>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">Lead Quality Metrics</div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Count</th>
+                                <th>Coverage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>With Email</td>
+                                <td>62 / 69</td>
+                                <td>89.9%</td>
+                            </tr>
+                            <tr>
+                                <td>With Company</td>
+                                <td>46 / 69</td>
+                                <td>66.7%</td>
+                            </tr>
+                            <tr>
+                                <td>With Status</td>
+                                <td>68 / 69</td>
+                                <td>98.6%</td>
+                            </tr>
+                            <tr>
+                                <td>With Next Action</td>
+                                <td>65 / 69</td>
+                                <td>94.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">Owner Distribution</div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Owner</th>
+                                <th>Leads</th>
+                                <th>Share</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Unassigned</strong></td>
+                                <td>30</td>
+                                <td>43.5% ⚠</td>
+                            </tr>
+                            <tr>
+                                <td>Sahl</td>
+                                <td>17</td>
+                                <td>24.6%</td>
+                            </tr>
+                            <tr>
+                                <td>Nourhan</td>
+                                <td>14</td>
+                                <td>20.3%</td>
+                            </tr>
+                            <tr>
+                                <td>Unknown</td>
+                                <td>8</td>
+                                <td>11.6%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPERATIONS DEEP DIVE -->
+        <section class="section" id="operations">
+            <div class="section-header">
+                <div class="section-label">Deep Dive</div>
+                <h2 class="section-title">Asana Operations Analysis</h2>
+            </div>
+
+            <div class="chart-card" style="margin-bottom: 24px; overflow-x: auto;">
+                <div class="chart-header">
+                    <div class="chart-title">DRM Project Tasks (Project 1212055797762548)</div><span
+                        class="badge badge-high">19/21 Completed</span>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Status</th>
+                            <th>Links</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DRM Strategy</td>
+                            <td>✅ Completed</td>
+                            <td>146</td>
+                        </tr>
+                        <tr>
+                            <td>Campaign landing pages</td>
+                            <td>✅ Completed</td>
+                            <td>101</td>
+                        </tr>
+                        <tr>
+                            <td>Copies prep</td>
+                            <td>✅ Completed</td>
+                            <td>69</td>
+                        </tr>
+                        <tr>
+                            <td>Blogs Content</td>
+                            <td>✅ Completed</td>
+                            <td>59</td>
+                        </tr>
+                        <tr>
+                            <td>Cold Outreach Campaign</td>
+                            <td>✅ Completed</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>AI Everything Event</td>
+                            <td>✅ Completed</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>Cold Outreach Sequence</td>
+                            <td>✅ Completed</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>Editing Platform video</td>
+                            <td>✅ Completed</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>Apollo account search filters</td>
+                            <td>✅ Completed</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>Launch Ads On Google</td>
+                            <td>✅ Completed</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>Second lesson</td>
+                            <td>✅ Completed</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>Update source for leads</td>
+                            <td>✅ Completed</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>5 Limited Spots Giveaway</td>
+                            <td>✅ Completed</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>Emails for event signups</td>
+                            <td>✅ Completed</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>Client Ad Optimization meeting</td>
+                            <td>✅ Completed</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>Media Buying Plan</td>
+                            <td>✅ Completed</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>Setting up resend & Systeme.io</td>
+                            <td>✅ Completed</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>Social Media Ads Launch</td>
+                            <td>✅ Completed</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>Urgent: Check Instantly + reporting</td>
+                            <td>✅ Completed</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>SimLabs Instantly campaigns active</td>
+                            <td>⬜ Open</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>Copilot Campaign</td>
+                            <td>⬜ Open</td>
+                            <td>13</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-card" style="overflow-x: auto;">
+                <div class="chart-header">
+                    <div class="chart-title">Link Health Analysis (317 extracted)</div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Count</th>
+                            <th>Share</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: var(--status-high)">HTTP 200</td>
+                            <td>87</td>
+                            <td>27.4%</td>
+                            <td>Accessible and valid</td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--status-medium)">HTTP 403</td>
+                            <td>145</td>
+                            <td>45.7%</td>
+                            <td>Permission-gated (private)</td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--status-low)">HTTP 404</td>
+                            <td>24</td>
+                            <td>7.6%</td>
+                            <td>Broken links</td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--status-info)">Drive (skipped)</td>
+                            <td>59</td>
+                            <td>18.6%</td>
+                            <td>Google Docs/Drive refs</td>
+                        </tr>
+                        <tr>
+                            <td>Error</td>
+                            <td>2</td>
+                            <td>0.6%</td>
+                            <td>Connection failures</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- MEETINGS DEEP DIVE -->
+        <section class="section" id="meetings">
+            <div class="section-header">
+                <div class="section-label">Deep Dive</div>
+                <h2 class="section-title">Meeting Intelligence</h2>
+            </div>
+
+            <div class="chart-card" style="overflow-x: auto;">
+                <div class="chart-header">
+                    <div class="chart-title">Full Meeting Index (24 tracked)</div><span
+                        class="badge badge-medium">Metadata Only</span>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Recording ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025-05-21</td>
+                            <td>AW - QYD</td>
+                            <td>63855459</td>
+                        </tr>
+                        <tr>
+                            <td>2025-07-06</td>
+                            <td>Finalize QYD strategy</td>
+                            <td>72364347</td>
+                        </tr>
+                        <tr>
+                            <td>2025-07-09</td>
+                            <td>AW -QYD [ Strategy ]</td>
+                            <td>72993541</td>
+                        </tr>
+                        <tr>
+                            <td>2025-07-17</td>
+                            <td>AW -QYD [ Ad Optimization ]</td>
+                            <td>74732475</td>
+                        </tr>
+                        <tr>
+                            <td>2025-07-22</td>
+                            <td>AW -QYD [ Content Review + Ad Optimization ]</td>
+                            <td>75586158</td>
+                        </tr>
+                        <tr>
+                            <td>2025-07-29</td>
+                            <td>AW -QYD [ Tracking Issues ]</td>
+                            <td>77026299</td>
+                        </tr>
+                        <tr>
+                            <td>2025-08-27</td>
+                            <td>AW -QYD [ Overview ]</td>
+                            <td>83195314</td>
+                        </tr>
+                        <tr>
+                            <td>2025-09-17</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>87804458</td>
+                        </tr>
+                        <tr>
+                            <td>2025-10-02</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>91349220</td>
+                        </tr>
+                        <tr>
+                            <td>2025-10-08</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>92650573</td>
+                        </tr>
+                        <tr>
+                            <td>2025-10-15</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>94263775</td>
+                        </tr>
+                        <tr>
+                            <td>2025-11-24</td>
+                            <td>QYD / RQM meeting</td>
+                            <td>103780871</td>
+                        </tr>
+                        <tr>
+                            <td>2025-11-30</td>
+                            <td>AW- Simulations Labs: Internal Discussion</td>
+                            <td>105067474</td>
+                        </tr>
+                        <tr>
+                            <td>2025-12-08</td>
+                            <td>AW -Simulations Labs [ Strategy Discussion ]</td>
+                            <td>106874813</td>
+                        </tr>
+                        <tr>
+                            <td>2025-12-09</td>
+                            <td>Youssef [Simulations Labs]</td>
+                            <td>107216390</td>
+                        </tr>
+                        <tr>
+                            <td>2025-12-15</td>
+                            <td>AW -QYD [ AI team Discussion ]</td>
+                            <td>108640585</td>
+                        </tr>
+                        <tr>
+                            <td>2025-12-17</td>
+                            <td>Simulations Labs meeting</td>
+                            <td>109352124</td>
+                        </tr>
+                        <tr>
+                            <td>2025-12-29</td>
+                            <td>AW -Simulations Labs [ Weekly Meeting ]</td>
+                            <td>111009383</td>
+                        </tr>
+                        <tr>
+                            <td>2025-12-30</td>
+                            <td>AW -QYD [ Google console issue ]</td>
+                            <td>111178529</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-14</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>114145905</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-21</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>115917531</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-22</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>116293710</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-28</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>117757986</td>
+                        </tr>
+                        <tr>
+                            <td>2026-02-04</td>
+                            <td>AW -QYD [ Weekly Meeting ]</td>
+                            <td>119618885</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="chart-source">Source: Meeting-Intelligence/index.json · Note: transcript bodies pending full
+                    re-ingestion from Fathom API</div>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY -->
+        <section class="section" id="methodology">
+            <div class="section-header">
+                <div class="section-label">Appendix</div>
+                <h2 class="section-title">Methodology & Data Sources</h2>
+            </div>
+
+            <div class="chart-card" style="margin-bottom: 24px;">
+                <div class="chart-header">
+                    <div class="chart-title">Data Collection Methodology</div>
+                </div>
+                <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+                    <p><strong>Instantly:</strong> Live API pull (2026-03-01) via campaign analytics and campaign detail
+                        endpoints. 2 SimLabs campaigns matched by name filter. Note: open_tracking=false,
+                        link_tracking=false on both campaigns.</p>
+                    <p style="margin-top: 12px;"><strong>Asana:</strong> Deep extraction via Task API including custom
+                        fields, comments, stories, and attachments for all tasks in projects 1212055797762548 and
+                        1213388383279022. Links extracted and HTTP-validated.</p>
+                    <p style="margin-top: 12px;"><strong>Fathom:</strong> 758 total meetings filtered to 24 using strict
+                        criteria: title match (Simulations Labs / SimLabs / QYD) OR invitee domain
+                        (simulationslabs.com). Dedup key: recording_id.</p>
+                    <p style="margin-top: 12px;"><strong>Google Drive:</strong> Recursive mirror of client folder. 24
+                        files catalogued. Large files (>50MB) preserved locally with hash verification.</p>
+                    <p style="margin-top: 12px;"><strong>Lead Unification:</strong> 70 Asana pipeline tasks parsed,
+                        deduplicated by email + company name, enriched with Instantly campaign context. 1 duplicate
+                        group collapsed → 69 final records.</p>
+                    <p style="margin-top: 12px;"><strong>Systeme.io:</strong> Tags and page 1 contacts fetched. Full
+                        pagination not implemented — data is incomplete.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 20px;">
+                <a href="../index.html"
+                    style="color: var(--aw-gold); text-decoration: none; font-weight: 600; font-size: 14px;">
+                    → View Balanced Report
+                </a>
+                <span style="margin: 0 16px; color: var(--text-muted);">|</span>
+                <a href="../v1-executive-light/index.html"
+                    style="color: var(--aw-gold); text-decoration: none; font-weight: 600; font-size: 14px;">
+                    → View Executive Summary
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="report-footer">
+        <p>Prepared by <a href="https://admireworks.com" target="_blank" rel="noopener">Admireworks</a> — Deep Dive
+            Analysis · March 2026</p>
+    </footer>
+
+</body>
+
+</html>

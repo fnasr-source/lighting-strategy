@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    ADMIREWORKS PAYMENT LINK SHARING PAGE
+    =====================================
+    A branded landing page that wraps a Stripe Payment Link.
+    Clients see Admireworks branding before being redirected to Stripe checkout.
+
+    To create a new payment link page:
+    1. Copy this file to the appropriate client/proposal folder
+    2. Replace all {PLACEHOLDER} tokens
+    3. Set the Stripe Payment Link URL in the hero CTA button
+    4. Register in payment-links.csv
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{CLIENT_NAME} — Payment | Admireworks</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../payment-pages.css">
+</head>
+
+<body>
+    <div class="page-container">
+
+        <!-- Hero Payment Block -->
+        <div class="payment-hero">
+            <p class="subtitle">ADMIREWORKS</p>
+            <h1>{SERVICE_TITLE}</h1>
+            <p class="subtitle">{CLIENT_NAME} · {PROPOSAL_NUMBER}</p>
+
+            <div class="amount-large">{TOTAL_AMOUNT}</div>
+            <p class="amount-note">{AMOUNT_DESCRIPTION}</p>
+
+            <a href="{STRIPE_PAYMENT_LINK}" class="btn-pay" id="pay-now">
+                Proceed to Secure Payment →
+            </a>
+        </div>
+
+        <!-- What's Included -->
+        <div class="invoice-container" style="margin-top:32px;">
+            <h3 style="color:var(--aw-navy);margin-bottom:16px;">What's Included</h3>
+            <ul class="feature-list">
+                <li>{INCLUDED_ITEM_1}</li>
+                <li>{INCLUDED_ITEM_2}</li>
+                <li>{INCLUDED_ITEM_3}</li>
+                <li>{INCLUDED_ITEM_4}</li>
+                <!-- Add more items as needed -->
+            </ul>
+
+            <!-- Payment Breakdown (optional) -->
+            <div style="margin-top:24px;">
+                <table class="sum-table">
+                    <tr>
+                        <td class="label">{LINE_ITEM_1_NAME}</td>
+                        <td>{LINE_ITEM_1_AMOUNT}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">{LINE_ITEM_2_NAME}</td>
+                        <td>{LINE_ITEM_2_AMOUNT}</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total</td>
+                        <td>{TOTAL_AMOUNT}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Trust & Security -->
+        <div style="text-align:center;margin-top:32px;padding:20px;font-size:0.82rem;color:var(--aw-muted);">
+            <p>🔒 Payments are processed securely via <strong style="color:var(--aw-text);">Stripe</strong></p>
+            <p style="margin-top:4px;">Questions? Contact <a href="mailto:hello@admireworks.com"
+                    style="color:var(--aw-navy);">hello@admireworks.com</a></p>
+        </div>
+
+        <footer class="page-footer">
+            <p class="brand-name">ADMIREWORKS</p>
+            <p>Admirable Venture Services · Dubai, UAE</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+{
+  "generatedAt": "2026-03-05T15:03:32.437Z",
+  "campaign_metrics": [
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "status": 1,
+      "leads": 1390,
+      "contacted": 850,
+      "sent": 850,
+      "replies": 1,
+      "bounces": 48,
+      "unsub": 0,
+      "completed": 108,
+      "reply_rate_pct": 0.118,
+      "bounce_rate_pct": 5.647
+    },
+    {
+      "campaign_id": "7c438462-5962-4796-a9a6-f0be04d17acc",
+      "campaign_name": "SimLabs | Educators (US/UK/Saudi)",
+      "status": 1,
+      "leads": 92,
+      "contacted": 5,
+      "sent": 5,
+      "replies": 0,
+      "bounces": 0,
+      "unsub": 0,
+      "completed": 0,
+      "reply_rate_pct": 0,
+      "bounce_rate_pct": 0
+    },
+    {
+      "campaign_id": "582c3c98-3166-4f66-8203-df5b129f4281",
+      "campaign_name": "SimLabs | CTF Organizers v2 (Spotlight Program)",
+      "status": 1,
+      "leads": 409,
+      "contacted": 5,
+      "sent": 5,
+      "replies": 0,
+      "bounces": 0,
+      "unsub": 0,
+      "completed": 0,
+      "reply_rate_pct": 0,
+      "bounce_rate_pct": 0
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "status": -2,
+      "leads": 372,
+      "contacted": 832,
+      "sent": 832,
+      "replies": 1,
+      "bounces": 60,
+      "unsub": 0,
+      "completed": 196,
+      "reply_rate_pct": 0.12,
+      "bounce_rate_pct": 7.212
+    }
+  ],
+  "sender_breakdown": [
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "noah@trysimlabs.com",
+      "events": 127
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "noah@trysimlabs.com",
+      "events": 125
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "hannah@simlabs-team.com",
+      "events": 122
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "noah@getsimlabs.com",
+      "events": 121
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "hannah@getsimlabs.com",
+      "events": 121
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "hannah.adam@getsimlabs.com",
+      "events": 121
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "hannah@trysimlabs.com",
+      "events": 121
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "noah@simlabs-team.com",
+      "events": 120
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "hannah.adam@getsimlabs.com",
+      "events": 119
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "noah@simlabs-team.com",
+      "events": 118
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "noah@getsimlabs.com",
+      "events": 118
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "hannah@getsimlabs.com",
+      "events": 117
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "hannah@trysimlabs.com",
+      "events": 117
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "hannah@simlabs-team.com",
+      "events": 117
+    },
+    {
+      "campaign_id": "7c438462-5962-4796-a9a6-f0be04d17acc",
+      "campaign_name": "SimLabs | Educators (US/UK/Saudi)",
+      "sender": "noah@trysimlabs.com",
+      "events": 5
+    },
+    {
+      "campaign_id": "582c3c98-3166-4f66-8203-df5b129f4281",
+      "campaign_name": "SimLabs | CTF Organizers v2 (Spotlight Program)",
+      "sender": "noah@trysimlabs.com",
+      "events": 5
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "aalqahtani@site.sa",
+      "events": 1
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "mabdallah@silicon21.com.eg",
+      "events": 1
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "mario.doyle@onlinenursingdegrees.wilkes.edu",
+      "events": 1
+    },
+    {
+      "campaign_id": "e742890d-7d05-43c8-93be-575a9660ba2e",
+      "campaign_name": "SimLabs | Security Professionals",
+      "sender": "subhrajit.basak@vt.uniting.org",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "john.lee@fortra.com",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "juste.simelyte@phished.io",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "bridgette.nielsen@secondmuse.com",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "daniel.mayer@gtedge.ai",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "sean.smith@cesicorp.com",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "dzimmerman@atsstl.com",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "nitin.malhotra@goindigo.in",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "stephanie.goetz@statcan.gc.ca",
+      "events": 1
+    },
+    {
+      "campaign_id": "0754b33b-09c6-487e-a9f7-2535f7580c56",
+      "campaign_name": "Simlabs | CTF Organizers",
+      "sender": "randy.zamora@disney.com",
+      "events": 1
+    }
+  ]
+}

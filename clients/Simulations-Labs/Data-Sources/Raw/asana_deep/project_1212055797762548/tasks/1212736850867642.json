@@ -1,0 +1,324 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212736850867642",
+      "assignee": {
+        "gid": "1211996689189317",
+        "name": "Youssef Khafaga"
+      },
+      "completed": true,
+      "completed_at": "2026-02-04T09:22:35.488Z",
+      "created_at": "2026-01-12T09:04:17.348Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "2w 5d"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-3d 9h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2026-02-01",
+      "followers": [
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        }
+      ],
+      "html_notes": "<body></body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055845340934",
+            "name": "Execution"
+          }
+        }
+      ],
+      "modified_at": "2026-02-04T09:22:35.977Z",
+      "name": "Cold Outreach Campaign",
+      "notes": "",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212736850867642",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1213013586839308",
+        "created_at": "2026-01-28T16:04:42.341Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> I've got the leads for the 3 search filters and you'll find the under CRM =&gt; Lists in Instantly account of Admireworks (check below screenshot).\nAlso the emails of SimLabs are already moved on this account, so it's ready for you to create a campaign on it and move leads from the list in the CRM to the campaign.\nJust let me know when campaign is created.\n\n<img src=\"https://asanausercontent.com/us1/assets/1201934871168294/1213013586839306/b8ffcad1d307bc09a1900f4cc941d524?e=1772375575&amp;v=0&amp;t=sQnkCMtpPtlycJnzuKQAsWChFrmF1aYO_8j1LlggbPU\" data-asana-gid=\"1213013586839307\" data-asana-type=\"attachment\" data-src-height=\"1382\" data-src-width=\"2868\" data-thumbnail-url=\"https://asanausercontent.com/us1/assets/1201934871168294/1213013586839306/1213013586839307.unP83okY9Hi0q0ZZmfLs_height640.png?e=1772375575&amp;v=0&amp;t=GdhytSv2ns1Gk3EUTa16xGXnBNqwJl2jp2MJoMDzl1c\" data-thumbnail-height=\"308\" data-thumbnail-width=\"640\" alt=\"Screenshot 2026-01-28 at 8.00.49 PM.png\" style=\"display:block;max-width:100%;margin-left:auto;margin-right:auto\" /></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1211996689189324 I've got the leads for the 3 search filters and you'll find the under CRM => Lists in Instantly account of Admireworks (check below screenshot).\nAlso the emails of SimLabs are already moved on this account, so it's ready for you to create a campaign on it and move leads from the list in the CRM to the campaign.\nJust let me know when campaign is created.\n\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1213013586839307\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1213064351182092",
+        "created_at": "2026-02-01T09:54:20.184Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1211996689189324",
+        "type": "comment"
+      },
+      {
+        "gid": "1213079874132486",
+        "created_at": "2026-02-02T08:22:00.601Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>The campaign's draft is ready on instantly, please check before I launch.\n\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "The campaign's draft is ready on instantly, please check before I launch.\n\nhttps://app.asana.com/1/1201934871168294/profile/1202432356210287",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212744164435741",
+        "created_at": "2026-01-12T09:04:17.444Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Youssef Khafaga added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212744176005534",
+        "created_at": "2026-01-12T09:04:26.681Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b>",
+        "resource_type": "story",
+        "text": "Youssef Khafaga assigned to Youssef Khafaga",
+        "type": "system"
+      },
+      {
+        "gid": "1212744176024686",
+        "created_at": "2026-01-12T09:04:31.752Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed the due date to Jan 15",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed the due date to Jan 15",
+        "type": "system"
+      },
+      {
+        "gid": "1212998619544399",
+        "created_at": "2026-01-28T16:01:57.009Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Jan 29",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Jan 29",
+        "type": "system"
+      },
+      {
+        "gid": "1212998619544401",
+        "created_at": "2026-01-28T16:01:57.091Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"2d 14h\" to \"2w 2d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"2d 14h\" to \"2w 2d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213016281567895",
+        "created_at": "2026-01-28T16:01:57.141Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"2d 14h\" to \"2w 2d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"2d 14h\" to \"2w 2d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213013586839308",
+        "created_at": "2026-01-28T16:04:42.341Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> I've got the leads for the 3 search filters and you'll find the under CRM =&gt; Lists in Instantly account of Admireworks (check below screenshot).\nAlso the emails of SimLabs are already moved on this account, so it's ready for you to create a campaign on it and move leads from the list in the CRM to the campaign.\nJust let me know when campaign is created.\n\n<img src=\"https://asanausercontent.com/us1/assets/1201934871168294/1213013586839306/b8ffcad1d307bc09a1900f4cc941d524?e=1772375576&amp;v=0&amp;t=XhAJYDgIkbkCGGDn0yR5VbTpjRKuGANlmfK5BjIcNU4\" data-asana-gid=\"1213013586839307\" data-asana-type=\"attachment\" data-src-height=\"1382\" data-src-width=\"2868\" data-thumbnail-url=\"https://asanausercontent.com/us1/assets/1201934871168294/1213013586839306/1213013586839307.unP83okY9Hi0q0ZZmfLs_height640.png?e=1772375576&amp;v=0&amp;t=5bQB13nbGJuZNze97F7wK8C98QABtwZa3C-1kSmG5dg\" data-thumbnail-height=\"308\" data-thumbnail-width=\"640\" alt=\"Screenshot 2026-01-28 at 8.00.49 PM.png\" style=\"display:block;max-width:100%;margin-left:auto;margin-right:auto\" /></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1211996689189324 I've got the leads for the 3 search filters and you'll find the under CRM => Lists in Instantly account of Admireworks (check below screenshot).\nAlso the emails of SimLabs are already moved on this account, so it's ready for you to create a campaign on it and move leads from the list in the CRM to the campaign.\nJust let me know when campaign is created.\n\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1213013586839307\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1213064351037441",
+        "created_at": "2026-02-01T09:54:09.271Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Feb 1",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Feb 1",
+        "type": "system"
+      },
+      {
+        "gid": "1213064351037443",
+        "created_at": "2026-02-01T09:54:09.358Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"2w 2d\" to \"2w 5d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"2w 2d\" to \"2w 5d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213064351037445",
+        "created_at": "2026-02-01T09:54:09.400Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"2w 2d\" to \"2w 5d\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"2w 2d\" to \"2w 5d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1213064351182092",
+        "created_at": "2026-02-01T09:54:20.184Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/1/1201934871168294/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/1/1201934871168294/profile/1211996689189324",
+        "type": "comment"
+      },
+      {
+        "gid": "1213079874132486",
+        "created_at": "2026-02-02T08:22:00.601Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>The campaign's draft is ready on instantly, please check before I launch.\n\n<a href=\"https://app.asana.com/1/1201934871168294/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "The campaign's draft is ready on instantly, please check before I launch.\n\nhttps://app.asana.com/1/1201934871168294/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1213075744701787",
+        "created_at": "2026-02-02T11:22:46.905Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1213111763918899",
+        "created_at": "2026-02-04T09:22:35.515Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Youssef Khafaga completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1213111763903931",
+        "created_at": "2026-02-04T09:22:35.599Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1211996689189324\">Youssef Khafaga</a></b> changed Time Adherence to \"-3d 9h\"",
+        "resource_type": "story",
+        "text": "Youssef Khafaga changed Time Adherence to \"-3d 9h\"",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": [
+      {
+        "gid": "1213013586839307",
+        "created_at": "2026-01-28T16:04:33.121Z",
+        "download_url": "https://asanausercontent.com/us1/assets/1201934871168294/1213013586839306/b8ffcad1d307bc09a1900f4cc941d524?e=1772375576&v=0&t=XhAJYDgIkbkCGGDn0yR5VbTpjRKuGANlmfK5BjIcNU4",
+        "name": "Screenshot 2026-01-28 at 8.00.49 PM.png",
+        "parent": {
+          "gid": "1212736850867642",
+          "name": "Cold Outreach Campaign",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1213013586839307",
+        "resource_subtype": "asana",
+        "view_url": "https://asanausercontent.com/us1/assets/1201934871168294/1213013586839306/b8ffcad1d307bc09a1900f4cc941d524?e=1772375576&v=0&t=XhAJYDgIkbkCGGDn0yR5VbTpjRKuGANlmfK5BjIcNU4",
+        "size": 440772
+      }
+    ]
+  },
+  "_source": "timeline"
+}

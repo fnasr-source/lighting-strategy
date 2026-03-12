@@ -1,0 +1,164 @@
+# Invoice Patterns — Self-Learning Reference
+
+> This document is automatically updated as invoices are created. It captures patterns
+> to ensure consistency across all future invoices.
+
+---
+
+## Pattern Rules (Extracted from Existing Work)
+
+### Structure
+Every invoice follows this structure:
+1. **Header** — Invoice label + proposal number + Admireworks branding
+2. **Details Grid** — Bill To (client info) + Invoice Details (date, due, currency, status)
+3. **Line Items Table** — Description, Qty, Rate, Amount
+4. **Totals** — Subtotal, optional tax, grand total
+5. **Payment CTA** — Stripe payment button
+6. **Alternative Payment** — Instapay for Egypt clients (omit for international)
+7. **Terms** — Standard terms & conditions
+
+### Currency Rules
+| Client Region | Primary Currency | Display |
+|---------------|-----------------|---------|
+| Egypt | EGP | Amount in EGP, note USD equivalent |
+| UAE | AED | Amount in AED |
+| KSA | SAR | Amount in SAR |
+| International | USD | Amount in USD |
+
+### Line Item Patterns
+
+#### Ad Campaign Management (Monthly)
+```
+Service: Ad Campaign Management — {MARKET}
+Rate: {MONTHLY_RATE}
+Qty: {MONTHS} (typically 3 for upfront)
+Amount: Rate × Qty
+```
+
+#### Ad Campaign Management (Legacy Egypt Client — 3-Month Bundle)
+```
+Line 1: Ad Campaign Management — Egypt Market — 1 Platform — 3 Months
+Standard 3-month value: $780 USD equivalent converted to EGP and rounded cleanly
+Bundle price: $700 USD equivalent converted to EGP and rounded cleanly
+Discount: show as separate invoice discount row when needed
+Exchange rate source: realegp.com/usd on invoice date
+```
+
+#### Growth System Bulk
+```
+Service: Growth System — Full Asset Package
+Rate: 45,000 EGP (one-time)
+Qty: 1
+Amount: 45,000 EGP
+```
+
+#### Growth System Subscription
+```
+Service: Growth System Subscription
+Rate: 5,500 EGP/mo
+Qty: 3 (upfront months)
+Amount: 16,500 EGP
+```
+
+#### Growth Package — Funnel Engine
+```
+Service: Funnel Engine Only — Setup
+Rate: 45,000 EGP
+Qty: 1
+Amount: 45,000 EGP
+```
+
+#### Growth Package — Engine + Optimization
+```
+Line 1: Engine + Optimization — Setup Fee | 35,000 EGP
+Line 2: Engine + Optimization — Month 1 Retainer | 17,500 EGP
+Total to start: 52,500 EGP
+```
+
+#### Growth Package — Full Growth Partnership
+```
+Line 1: Full Growth Partnership — Setup Fee | 35,000 EGP
+Line 2: Full Growth Partnership — Month 1 Retainer | 32,500 EGP
+Total to start: 67,500 EGP
+```
+
+#### Full Marketing Retainer (Custom)
+```
+Service: Full Marketing Retainer for {CLIENT_NAME}
+Description: Monthly service covering direct response marketing, social media, email campaigns, funnels, and multi-platform ad management.
+Rate: {MONTHLY_RATE}
+Qty: 1
+Amount: {MONTHLY_RATE}
+Billing: Monthly retainer
+```
+
+#### CRM System Add-On
+```
+Line 1: CRM System — Setup & Integration | 7,500 EGP (one-time)
+Line 2: CRM System — Month 1 | 3,500 EGP/mo (or FREE if promotional)
+Features: Lead management, role-based access, pipeline, UTM attribution, task assignment, sales reporting, search, flow automation
+```
+
+#### Promotional Pricing (Free Months)
+```
+When offering free months:
+- Show original price with strikethrough
+- Add "FREE" label and green badge
+- Include savings banner with total saved amount
+- List recurring pricing in a note section at bottom
+- Example: Reply Management Month 1 — ~~5,000 EGP~~ FREE
+```
+
+#### Meeting-Revised Commercial Pricing
+```
+Use when a meeting changes the commercial model after the proposal draft:
+
+Line item structure:
+- rate = original commercial anchor
+- amount = agreed payable amount
+
+Example:
+Line 1: E-Commerce Store Build & Launch — rate 45,000 EGP | amount 40,000 EGP
+Line 2: Growth Management & Ads Oversight — rate 32,500 EGP | amount 15,000 EGP
+
+Invoice totals:
+- subtotal = sum of original anchors
+- discount = launch/revision reduction
+- totalDue = actual agreed payable amount
+
+Presentation goal:
+- client sees what the original commercial anchor was,
+- what was agreed,
+- and what is due now.
+```
+
+#### 50/50 Payment Split
+```html
+When clients agree to a 50/50 split (e.g., Deposit 1 now, Deposit 2 in 30 days):
+1. **Totals Section Restructure**:
+   - `Overall Investment`: {BASE_TOTAL}
+   - `Deposit 1 (50% Due Now)`: {HALF_TOTAL} (styled as bold/grand total)
+   - `Deposit 2 (50% Due in 30 Days)`: {HALF_TOTAL}
+
+2. **Terms & Conditions Addition**:
+   "The initial investment of {BASE_TOTAL} has been split into two equal payments of {HALF_TOTAL}. Deposit 1 is due immediately to commence kickoff and onboarding. Deposit 2 is due 30 days after the payment of Deposit 1."
+
+3. **Dynamic JS Logic for Add-ons**:
+   Update `updateTotal()` to split `newTotal` dynamically:
+   const newDeposit = newTotal / 2;
+   dynamicDep1.textContent = newDeposit.toLocaleString() + ' EGP';
+   dynamicDep2.textContent = newDeposit.toLocaleString() + ' EGP';
+```
+
+---
+
+## Invoice Log
+
+| # | Date | Client | Proposal | Package | Amount | Currency | Notes |
+|---|------|--------|----------|---------|--------|----------|-------|
+| 1 | 2026-03-01 | RQM Group (QYD, RQM & Ceyaj) | AWP-SA-01JV-VWJ | Full Marketing Retainer | 5,500 | AED | Monthly retainer, Saudi Arabia |
+| 2 | 2026-03-03 | Basseqat (Eng. Khaled Nasseredin) | AWI-202603-003 | Full Growth Partnership + Add-Ons | 87,500 | EGP | Option 3 + Reply Mgmt (2mo free) + CRM (1mo free) + 1 UGC bonus. Value: 103,750 EGP |
+| 3 | 2026-03-08 | Komu Lale | AWI-202603-005 | Ad Campaign Management + Creative Pack | 56,900 | EGP | Teenagers/new-account scope. Legacy 3-month ad bundle at $700 equivalent using 49.91 EGP/USD (realegp.com/usd), rounded to 34,900 EGP + Creative Pack 22,000 EGP. |
+| 4 | 2026-03-09 | Meguiar's Egypt | AWI-202603-004 | Meeting-Revised Launch Structure | 55,000 | EGP | E-commerce build reduced from 45,000 to 40,000 EGP and Month 1 management reduced from 32,500 to 15,000 EGP. Invoice shows original anchors, launch pricing adjustment, and amount due now. |
+
+> When creating a new invoice, add a row here and follow the patterns above.

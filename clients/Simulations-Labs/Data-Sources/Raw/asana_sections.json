@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "gid": "1213388383279050",
+      "name": "Untitled section",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213373047674371",
+      "name": "🟦 01 New Leads",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388384499432",
+      "name": "🟪 02 Outreach Sent",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388385055649",
+      "name": "🟨 03 Follow-up Needed",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388385458837",
+      "name": "🟧 04 Discovery Call Pending",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388385459005",
+      "name": "🟩 05 Discovery Call Done",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388384506429",
+      "name": "🟫 06 Proposal Sent",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213373817075818",
+      "name": "🟥 07 Negotiation",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388387120702",
+      "name": "✅ 08 Won",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388384506751",
+      "name": "❌ 09 Lost",
+      "resource_type": "section"
+    },
+    {
+      "gid": "1213388387120926",
+      "name": "🌙 10 Nurture / Later",
+      "resource_type": "section"
+    }
+  ]
+}

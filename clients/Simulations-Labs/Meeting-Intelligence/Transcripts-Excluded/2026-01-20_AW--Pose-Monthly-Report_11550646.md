@@ -1,0 +1,338 @@
+# AW -Pose [ Monthly Report ]
+
+- Date: 2026-01-20T12:25:15Z
+- Recording ID: 115506462
+- Share URL: https://fathom.video/share/YikYMn3TS6GfgjRSsVChs_yDTmy5gGTp
+- Invitees: eali@admireworks.com, karimsalem1@gmail.com, y.khafaga89@gmail.com, fnasr@admireworks.com
+
+## Default Summary
+N/A
+
+## Action Items
+N/A
+
+## Full Transcript
+- **{'display_name': 'Fouad Nasseredin', 'matched_calendar_invitee_email': 'fnasr@admireworks.com'}:** مساء الخير.
+- **{'display_name': 'Fouad Nasseredin', 'matched_calendar_invitee_email': 'fnasr@admireworks.com'}:** إيه الأخبار?
+- **{'display_name': 'Fouad Nasseredin', 'matched_calendar_invitee_email': 'fnasr@admireworks.com'}:** الحمد لله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الحمد لله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الحمد لله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** معلش أنا أخرت الميتن بس كان عندي شوفي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا لا لا.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** معها دي جدا.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** مفهوم.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** أوكي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** إحنا إيه أخبارنا سوفار؟ أنا كنت بصراحة من المرحة عايزة أبعث لك أسألك إحنا أخبارنا إيه سوفار؟ أنا مش عارفة أصلاً إحنا اليومين دولة في السيل بس بصراحة في حالة بتوية يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** إحنا عالبجت اللي هي الهندرد ولا رجعنا تاني هندرد سيفتي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا رجعت هندرد سيفتي على طول أول لما عملنا الأخرى.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** السيل؟ أوكي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** أول لما عملنا السيل.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** خلص هو يعني أيام بيك أحسن من أيام بس يعني البرفورمانس طبعاً أحسن من قبل ما نبتدي السيل يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** أوكي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** كان علي سؤال.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يعني هل احنا في التالة الشهور دول او في الفترة اللي هي السيزن واقع شوية.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** هل احنا وصلنا للي احنا عايزينه?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه بصراحة يعني اه انا حاسة يعني احنا حاسة ان احنا ماشيين كويس اه واحسن من اه بالسنة اللي فاتت في الوقت اللي زي ده كانت لو انت عندك الريكورتس القديمة انت اللي فاتت بصراحة ما كانش احسن حكي خلص كان ممكن من اقال فيها من اول ما بتدينا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس احسن من كتير.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اوكي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** الحمد لله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** هو طبعا يعني الشيطة بيبقى ما فيهوش.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه يعني اللي احنا متوقعناها اوي اوي اوي زي الصيف.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه دايما في الصيف الحمد لله احنا بنحط وبنعديها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه في الشيطة بيبقى نضع اصعب شوية.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عشان نفسه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اماصدي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عشان نفسه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** كم احنا بحديد.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** او صحيح اصحبه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الان احنا
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** So I feel like people are front of the brand and items.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Do understand?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Yes, am.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Yes, I feel like there is collection, brand, and items.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** This season is unlike the comparison to what happened.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Okay, perfect.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** Okay, since we working on regular basis, we didn't have Google Ads or email.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** Yes, I I know.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** Do you want to focus on social media more?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** No, we only need to buy Google Ads.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** We want to buy something special before Ramadan.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Okay, okay.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** We're just going to think that you're going to be or we want to buy it now.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** But once a day, we're going right now.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Yes, that's the time we have to it now.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** We're to now with the collection the collection.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** and get beat, and Google Tagenda.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** But I already want to put budget to Ramadan because Ramadan has a high performance season of the year.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** It could be matching with the year's last year, which is 7 or 8, which is still field peak, or even higher.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** I want to put all factors that I can use in Ramadan from Google Ads, from social media, وطبعا اشتغل على كولابس كثير وكل الحاجات اللي اقدر اشتغل عليها اشتغل عليها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لانه بصراحة رمضان بالنسبة يعني مش بتعمل شغل رمضاني قوي يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فبيبقى في فوكس على البراند انها الحمد لله بناقدر يعني نعمل حاجات لذيذة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فبقى في فوكس في الحتة دي فانا مش بحق بصراحة اضايع الحاجات دي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وبحاول ان انا استخدم كل اللي انا اقدر عليها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عشان ابوش في الاربع سبيع مرمضان بصراحة بيبقى الاسبوع.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اللي قبل رمضان بالنسبة لنا يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الاسبوع اللي قبل رمضان بالزبط.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** والاول كانت اسابيع في رمضان.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** دلول اللي هما بيبقوا فيهم يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ماركات تانية بتهدى شوية من رابع اسبوع typically لانه خلص بيبقى رمضان بيخلص.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وتتزي الناس تبقى لو في حاجات للعيد وكتا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** زي الفل.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا عمتن ريدي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ويلا بنا يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يبقى السيزن ده ان شاء الله بتاع رمضان.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يبقى اعلى سيزن في اللي تايمين.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** شاء الله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** يعني بس كده يعني مع نفسي على مثلا مش قادر لسه اقول لك انا متوقعها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس ممكن نهارده بليل اشتغل على الموضوع واقول لك مسلا على طبعا على حجم اللي انا عملاي انا متوقع سيلز بقد ايه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه سيلز بقد ايه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه واقول لك انا متوقع سيلز بقد ايه علشان نشوف احنا محتاجين ان احنا نشتغل ببودجت قد ايه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الحاجات جديدة ان احنا ممكن نشغلها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** كنا شغلين بفترة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس ما كانش بيجيب حاجة قوي فوقفناه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فممكن لو عندنا لي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** يعني نشتغل عليها هتجيب معنا افاكت نشغله يعني اي حاجة زي ما بقولك ممكن نستخدمها نستخدمها ما فيش مشكلة يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** خلص اتفقنا زي الفل.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** تمام.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه فيه بقى الموضوع اللي بخصوص اه كريم انت هنا هو كريم هنا ولا كريم اه لا هنا اه عشان الموضوع ده بتاع كريم بتاع بتاع الشحن برا مصر وكده يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس يعني انا خلصت بالنسبة لحتة البلان الشورت ترم.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه فيه بقى احنا كنا بصراحة بتاعت السنة دي ان احنا كنا عايزين نبتزي اه الماركت اللي برا مصر.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اصلا بيجي لنا اه كتير على احنا بنشحن برا ولا لأ?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** احنا قرار دي كنا بنشحن برا فترة جبيرة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** مسلا عادنا سنة وسنة ونص نشحن برا وكان الوابسايت عليه كل البلاد.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس كان قابلتنا مشكلة في الشحن كده من فترة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الاسعار
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** شحنة نفسها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** تبقى معدية يعني سعر الشحنة نفسه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فوقفنا بفترة يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس مجدد عليه حل يعني خلاص يعني أنا لقيته.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فممكن ان احنا نقدر نشتغل على ان احنا نعمل ويبسايت تاني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا حابة ان نعمل ويبسايت تاني شمال الجاي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه شمال الجاي ده اه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ويبسايت تاني لبرا مصر.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ده هيبقى شغال يعني شوكي فايل واحده لبرا مصر.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وهيبقى عليه سعر واحد بيو اس دولرز.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عشان تبقاش اصعار مختلفة وهو ده كده مفصول نهائي عن الويبسايت بتاع مصر على طول.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه بس.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** بتاع البرا ده هيبقى مختلفة عن البيبسايت بتاع مصر?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا بصراحة بصيت على برانت تانية.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عاملين ويبسايت تانية.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بيبقى البيبسايت يعني ساعات بيحطو في جزء من سعر الشحنة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس يعني ببقى امبادت فيه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** مش محتاجين نعمل الويبسايت تاني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يعني احنا ممكن.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا ممكن.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ممكن ده يبقى variable في price بتاع item نفسها يعني على تاخد ده ممكن يتعمل في الويب سايت نفسه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** هو ورابر يتفتح منين يبقى بيقرى price بتاع البلد اصبك يعني?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ولا ايه?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** هو يقرى price بتاع البلد ومش شرط يبقى.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا مش عارف ايه مش عارف ايه انسب حاجة بسرعة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** مش عارف اشتغل على نفس الويب سايت ولا اعمل ويب سايت تاني على طول.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ممكن فقط فيها شوية اكتر بس خلينا يعني انا كنت حابة اعرف اكتر ليه الوردن بالتحديد.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** انا اشتغلت الوردن قوية جدا جدا جدا بس كنت عايز عارف ايش معنى الوردن بالتحديد هي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الوردن لما الوقت اللي كنا شغالين فيه زمان اه لما اقول لك كان احنا مش طال لحد من السنة اللي فاتت يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** كان الوردن من اكتر البلاد يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** هما والسعودية.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وبعدين يليهم الامارات.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فانا مش بنزدالي مش الوردن بس والكريم كان جايز بقى صدو على ان احنا نبتدي نبتدي بالحيطة اللي هي فيها ديماند عالي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس هو في العموم الجزء بتاع الوردن الوردن
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** والسعودية والحاجات دي كلها يعني.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** احنا كنا بس بالنون الاردن عشان الاردن هتمشي اكتر في الشتاء.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** عشان جوهم قريب جدا من مصر ويمكن ابرز مية.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** فهما في الشتاء هيبقوا هاي ضماند قوي.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** اه لكن اللبس الشتوي في السعودية والخليجة عمتا مش هيبقى الايفادت بتاعه عالي زي الاردن.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** فانا بس كنت قلت نبتدي بدأ ما احنا في الشتاء يبقى نبتدي في الاردن نستبقى الويب سايت ونستبقى كل حاجة.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** على ما الصيف هيجي خيكون خلاص عملنا البيز ساعتها بقى سهلة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اوكي يلا بينا جدا هو انا بالنسبة لي كمان على تجار الاردن هو فيه كمان ممكن تمكنش ماضحة من عندكم.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ان في الاردن ارخص بكتير من في السعودية والامارات.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** فده في صالحنا ان احنا قادرين ان احنا البودجت تبقى اكتر في بلد زي دي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** خلص زي الكل.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** وبالنسبة
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** الويب سايت انا بفضل لو قدرنا فعلا نخلي كله من الويب سايت واحد دي افضل بس هي البوينت اللي مش عارفها الفكرة اللي هل فعلا ينفق اغاير في شوكي فاي ولا?
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** يعني دي لو لو موجودة يبقى خلاص يعني اقدر احط مسلا لو مثلا الحاجة سعرها مسلا عشرين دولار في مصر يبقى مسلا لا هي لو هرحل اردن تبقى ثلاثين مسلا.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** مش اه لو قدر تعمل دي يبقى هيبقى خلاص يبقى مش لازم اروح لويب سايت تاني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا لا بتتعمل بتتعمل متأكد يعني انها بتتعمل ما عنديش يعني ما عنديش بيعملوها زي بس هي مش صعبة ده اللي انا عرفها.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** طيب حلو دي لو موجودة خلاص.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** حلو خلاص.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** حاجة شارجة بتيها يفيدنا اكتر بكتير يعني.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** آآ آآ آآ خلاص نستل الحتة دي والشحن بقى برضه هشوف معينجي هنعمل فيها ايه?
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** لو لنفيس اليوم اشتركوا القناة
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** او هنقاد شوية برضو ايه?
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** نقاد على التوتل بتاع البرودكت شوية من الشح وشوية يبقى في بحيث انها تبقى reasonable شوية.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اوكي خلاص زيفل طيب احنا يعني بنستمدك اننا هنبدأ امتى تقريبا?
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** امتى انت عايزة نبتدي امتى.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** ثانية واحدة انا بالنسبالي يعني بصراحة كنت عايزة ابتدي في رمضان.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ازوال يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** علشان برضو النسبة تبقى عندها عايزة تشتري كافتانز عايزة مش عارف ايه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فحسن ان كنا ممكن نبتدي في رمضان يعني لو نقدر نبتدي مسلا من اول الشهر يبقى يا ريت يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اكون انا زبطت خلاص موضوع الشهر.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** واحنا زبطنا احنا نشتغل ازاي?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وهنقالوكيت بوجيت عاملة ازاي?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عايزين برضو نحط للموضوع بوجيت.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا مش عايزة الدنيا بوز من فاهم قصد دي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** تسار فواية يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا عايزة عارف انا بصرف مسلا مصة كزا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وهحطك اجرب الاول بحط كزا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** واطلع منه او لا البوجيت دي مش مكافية.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** او دي مش نفعة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ع عشان مش عايزة الدنيا برضو تبوز مني يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عايز اتأكد ان ان انا بصرفه في الادز.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بيجيلي سيلز طبعا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فهم ان انا مش بصرف من اللي بيجيلي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس فحسن ان النوضوع ده مكتب تاستيك بس حسن ان هو مش يعني عشان نش هتغله خلاص المفروض الكولكشن بتاع رمضان يبتدي يكون بينزل.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فعشان كده بقول لك على اول الشهر.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** شهرنا ان شاء الله هنصور كده كده.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الاسبوع الجاي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الاربع الجاي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وان شاء الله نبتدي ننزل الكولكشن على طول.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فحسن ان هو ده الوقت يعني اللي ممكن على ساعة هتكون حضرنا حاجة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** يعني بعد ذي على طول خلاص يعني بعد رمضان خلاص بقى نبتدي ننزل العيد.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** العيد اللي بعده السيف.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فالمهم يعني ان انا عايزة ابتدي احط رجليه في الحاجة يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** مش عايزة اقعد واستنى حاجة معينة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا عايزة ابتدي واقعد اتست وكده وباشغالة يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا لو جاهزين من ناحيتكم ككييتز وكييتز وكييتز.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لست بقى.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** احنا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** وبعد انا معرفين ان ان الان هييتز فتعة كبرة مصر هي بتبقى اكتر.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** Tiktok وكده صح?
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ولا انا ممكن استخدم creative ازاي اللي باشتغلها عادي ولا اي انا دايها في الاردن اه يعني الاردن على فكرة الانستجرام اقوى تجربتي يعني ان الانستجرام بيجيب لي بيجيب لي شغله اكتر في الاردن من من تيك توك.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اصلا على فكرة تيك توك مفهوش تارجة الاردن اصلا.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يعني تيك توك لو حاولنا نعمل تارجة في الاردن مش هيرضع.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ما فيش يعني الابشن دهش موجود.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** مم.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** مش هيرضع بقى حاجبينه او حاجة فهو مين لي اه الاردن.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** بشتغل عليها حاجتين اه ميتا.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** الهو مين لي انستجرام.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** سنابشت هناك قوي جدا بس سنابشت مشكلته في الالغريتم بتاعته.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ان احنا بنحتاج ان احنا اول اسبوعين دول احنا عاملين نصرفه وخلاص ما بنشوفش نتيجة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اه.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** بس بعد كده بيدرب جامد اوي بيبقى ربع بتاع ميتا على فكرة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا ممكن نعمل حاجة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا ممكن نبدأ لو بالدنيا بتاعتنا جاهزة نبدأ في اول فبراير نعمل نعمل على ميتا.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ولو ان شاء الله الدنيا في القناة
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** معنا بشكل كويس الرؤاس طالع كويس وكده ناخد شوية من الرؤاس ده.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** او ناخد شوية من الجيترون ده نحطه في سنابشات نعمل learning لسنابشات.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** بحيث نحب عندنا نشتغل بيها في الأورجين.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** تماميش خلاص اوتي سنابشات.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** وبالنسبة لجوجل انا بس تديني اليهارده او بكرة هكون زفبطت اللي عليها وبعد كده تتخشت كده لو في اي ده جوجل اد؟ اه.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** ده جوجل اد؟ اه.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** وخلاص ونقدر لجتدي بجوجل برد.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** صح او لي?
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** اوكي خلاص زي الفنجل.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** تمام خلاص اوكي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا زي ما بقول لك انا عايزة قبل رمضان اكون اي حاجة اقدر استخدمها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** استخدمها ما عنديش مشكلة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا بصرف جامدة على رمضان ولسه اصرف.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فما عنديش مشكلة ان انا يعني اه خلاص ده لما انا حطيت في دماغي ان انا اه في ده فانا عايزة اشتغل عليه.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس العيب الوحيد طالما دو؟
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ان النتائج لازم تبقى سريعة لان ما فيش وقت يعني يعني ما تبقاش في وقت قوي ان انت تجرب ده يعني طبعا كل حاجة تجربة وجايز تنفع او ما تنفعش بس قصدي لازم لو في حاجة مش شغالة كاعلان او اي حاجة تتبدل بسرعة لازم مش عارف ايه كده لانه ما فيش وقت قوي في اللي نحن يبقى نفسنا طويل لان الوقت صغير هي مشكلة رمضان انه الوقت صغير فهي it's only one chance يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس فالموضوع ببعايز متابعة سريعة مش اكتر يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لا خلاص زي كل.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا حتى رح حاولها بتشتغل على content من دلوقتي من قبل الشوت يعني اصدع.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** علشان اكسب وقت.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عشان على ما اوصل للشوت وكده يبقى معايش شوية شغل الجاهز يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اوكي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** خلاص انا متى احنا جاهزين وانا هجاز يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اوكي كده معايا التستنج strategy اللي ممكن استخدمها ومعايا الموضوع معايا كل حاجة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** استنى بس منكم الانبوت بتاع ان خلاص احنا ال green light يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا operation اه جاهزة وان احنا الكرياتف زي اللي نستخدمها.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** واطلع اشتغل على اطول.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** ايه.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** انا متعرف ليش وانا زنانة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا بالعكس انا بحس ان ده مهم جدا في الشغل بتاعنا يعني بتحديد كمان.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** فمعنديش اي مشكلة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** مش عايزة فهم.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** كمان انا ببعثها ايه الحاجة مثلا الحلوة المظلومة وايه الحاجة للوحشة اللي مش مظلومة وايه مسلا دواء تحيل ودواء توحش يعني ساعات طبعا ببقى لتها طبعا قادرة مني بس انا ساعات ببعثها ان مشكلة اللي في حاجة ممكن تتزقى اكتر من جدا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ان الدنيا فيها احسن من كده.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** في ساعات فبحث ان خلاص ما هو اصلا الحاجات بقى قليلة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** خلاص ما هي المرات دي في حاجات مش حلوة ببعث كده واسجد.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لكن طول ما ببقى حاسة ان فيه ببقى عايزة اجيب اقصى حاجة اقدر اجيبها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لو انا عاكيبت حاجة زي كده بتساعديني اكتر على فكرة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يعني انا انا جاريت دايما اني بقى فيه فيدباك في الوحش دي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** انت اللي قلت.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انت اللي قلت او.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اه لا بكلم بجد يعني بجد والله في حال مش اللي هو كلامه خلاص.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اه لان ده بيفيدني في الشغل جدا ان انت اكيد قوير اكتر مني بك الجنز ده.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** فانا على قد ماضي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** الحكثرة من المعلومة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** في حاجات معينة كده.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** طبعا دة من .
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس بيبقى بنقلك المعلومة عشان نحاول نبقى مع بعض.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا لا هو اكيد هو اما بشكل زيادة ونفيش اما بشكل زيادة حيخسر بالنسبة لي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** خشون في الشغل اللي بتاعنا دا يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** اي زاعديني بيه وانا بقى اكتر ليه.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** تمام.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** اخر حاجة بس بالنسبة للاميلات لحد الماتي مش شغال فاحنا مش عارفين الاميلات بتوصل عاملة عاملة اي حاجة.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** فلو ما عرفنش نحل لها انا تساف ان اخنا انا ده تالت شهر يجي لتين دولار.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** ايه الاميلات يجي لكتير يعني بدفع متين دولار لكلاديو اكسترا اي ميلز وتمينة انا حاجة بنبعت اي ميلز.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** حرام.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا ده اخر اخر بلكت انت لان انا مش مش شغال على خالص اللي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا ما هو ايه?
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** فقالنا فترة مش مش هتغاللنا?
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** على شخص مياه.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** بس ما فيهاش ما فيهاش حد وانا بصراحة اتشغلت ونسيت خالص اقول كويس ان احنا افتكرنا.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** عشان انا لسه من اول مبارح جايلي انا لسه جايلي من كام يوم اتسحب متين دولار مش يعني هي اصلا اللي انا فيها خمسين دولار.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** فلما يتسحب متين اكسترا يعني معنا كان في مية وخمسين يعني عملنا ايمينات رهيبة.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** متهيقل يعني.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** واحنا كان احنا احنا اول مدانة اول ما اول مسكت معكم الاكاونت كان المفروض اه كان مفروض فيه فلوس صار?
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** مع روية مش كده يعني كان كان عشان كده.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** مش عارب بس هيش غالة.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** فنوقفها متأكد بس
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** نوقفها.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** بعد كده نشوف.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا فكتة يا كريم ان احنا وقفناها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** احنا قول ان احنا نوقفها بس هي غالبا ما وقفتش ليه ليه جالي انا.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** اصلا هو حتى ما فيش شغالي.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** يعني ما فيش اي جديد عمل عشان هيك بشغالة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** يعني احنا اصلا كان عندنا في الاخر يعني حتى كانت عندنا مشاكل مع وكانت عندنا مشاكل مع اللي بتطلع لنا على يوتيوب وكانت مسلا مفيهاش صور اصلا فاحنا وقفنا الموضوع كله على بعض.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** فبدل ما هي بتصرف حرام لو انت شايف انها فيلك اصلا بتروح على كريم مش بتروح عليها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا مش مش شايفاتها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لو هي بتصرف على الفاظين وقفها.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لحد ما نحط المناسب.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** عشان ساعتها تكلمنا فان احنا لو هنبعد ايميل عايزين ايميل يبقى ليه معنا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ايميل بيتكلم في موضوع ايميل بيقول ان فيه ان فيه سيل ان فيه لكن ايميل في العموم لأ مش بتجيب معايا قوي يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بس يعني.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** هو بس دابل بتشكل هي وافة من نحياتكم وانا من عندي هحاول بشوف
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** ايه اه اه اه اه اه بس اه من عندك هتبعي اسك.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** خلص وكي انا هتشك دلوقتي المشكلة حصلة فيهم بالزبط وهتلوني بديكم ابديتها طول على الجروب.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** خلص تمام.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** اوكي.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** اوكي.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** ان شاء الله بحسن كتب الويب سايت كده ونبتدي الادز نوعات بقية قادة نشوف هنعمل ايه في الادز هل هنعمل اد اكاونت جديدة على نفس الاكاونت هنشوف الافضل طريقيا.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** لا خليل اشتغل نفس الاكاونت عادي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** احنا كده كده ما بنصرفش اه ما بنصرفش كتير قوي فعادي طول محلة ده مفيش مشكلة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** حتى لو دعائم صورتين ثلاثة يعني.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** وحثت ان هو اه انه انه انه انه انه انه ما بين البلاد ما مش هتأثر صح?
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** غالي عادي.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** لا لا مش هتأثر خلص هو الالجوريون انت تبقى فاهم ان ده مختلف في مختلف وكده.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** بالعكس ده ممكن ممكن يبقى فيه بتساعد شوية او دكوش شوية اشتركوا القناة.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** البيهدريد بتاع الكاستمرز اللي بشتروا في مصر فبتدور عليهم في الاول او ناس شباهم شوية.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بتروح تجيبهم بتروح تجيبهم من برا الكاستمرز دول وبعدين يروح شاريين وشحنينه وقضلبيه على حد عندهم في مصر عشان يوفر بس انا عايزهم اه عايزهم يخشوا يدفعوا بقى استخداموا بقى يروحوا بقى لك خش اطلبوا انا موجودة في الامارات بس انا عايز كان على صاحبتي اللي في مصر عشان يوفروا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** يعني مش كده يعني يا جماعة.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لا لا لا هيبقى فيه غير ده.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** يعني هيعتقد ناس كبيرة جدا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** نوع من اعلانة اللي بيروح للمصريين اللي عايشين برا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** انا عايزة بقى تارجة الناس اللي هم اصلا اصلا مش مصريين.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بالزبط يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** لا لا.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** نجرب الموضوع خيري وان شاء الله خير يعني.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** بإذن الله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** ان شاء الله.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** مش خلاص.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** مش سياه يوزف.
+- **{'display_name': 'Engy Bassem', 'matched_calendar_invitee_email': None}:** خلاص.
+- **{'display_name': 'Youssef Khafaga', 'matched_calendar_invitee_email': 'y.khafaga89@gmail.com'}:** هتسان له مني مفروض يا انا عزيزة الغرنية السيوار والميال موقعي وان شاهدت حسنة اطاق الديوحان
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** Thank you so much.
+- **{'display_name': 'karim salem', 'matched_calendar_invitee_email': 'karimsalem1@gmail.com'}:** Bye.

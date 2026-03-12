@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-03-10T10:27:12.275Z",
+  "campaignId": "baa763fd-32bf-45b2-8fd8-a5d096637d8c",
+  "leadListId": "b8656a52-5f2b-44a5-9547-0f2787b66215",
+  "selected": 18,
+  "created": 17,
+  "errors": 1,
+  "sampleErrors": [
+    {
+      "email": "m.nabawy@crystalshade.com.sa",
+      "status": 400,
+      "data": {
+        "statusCode": 400,
+        "error": "Bad Request",
+        "message": "Lead is in blocklist."
+      }
+    }
+  ]
+}

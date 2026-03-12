@@ -1,0 +1,837 @@
+/* ==========================================================================
+   Meguiar's Egypt — Slide-Deck Proposal CSS
+   Visual pitch deck overrides for the base proposal theme
+   ========================================================================== */
+
+:root {
+    --prop-bg-dark: #1b2a1f;
+    --prop-bg-medium: #243828;
+    --prop-bg-light: #f5f0e8;
+    --prop-accent: #cc9f53;
+    --prop-accent-light: #e6c47a;
+    --meg-yellow: #FFD100;
+    --meg-black: #1a1a1a;
+    --meg-red: #c0392b;
+}
+
+/* === SLIDE SYSTEM === */
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide .slide-content {
+    width: 100%;
+    height: 100%;
+    padding: 40px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.slide .slide-content.slide-center {
+    align-items: center;
+    text-align: center;
+}
+
+/* === SLIDE LABELS === */
+.slide-label {
+    font-size: 8pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--prop-accent);
+    margin-bottom: 12px;
+}
+
+.slide-label .label-ar {
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+/* === SLIDE HEADLINES === */
+.slide-headline {
+    font-family: var(--font-headline);
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--aw-navy);
+    margin-bottom: 14px;
+}
+
+.slide-headline-sm {
+    font-family: var(--font-headline);
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--aw-navy);
+    margin-bottom: 16px;
+}
+
+.slide-subtext {
+    font-size: 12pt;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* === DARK SLIDES === */
+.slide-dark {
+    background: linear-gradient(180deg, #0d1a10 0%, var(--prop-bg-dark) 50%, #0d1a10 100%);
+    color: var(--prop-text-on-dark);
+}
+
+.slide-dark .slide-headline {
+    color: var(--prop-text-on-dark);
+}
+
+.slide-dark .slide-subtext {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.slide-dark .slide-label {
+    color: var(--prop-accent-light);
+}
+
+/* === COVER SLIDE === */
+.slide-cover {
+    position: relative;
+}
+
+.slide-cover .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.slide-cover .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(27, 42, 31, 0.88) 0%,
+            rgba(15, 22, 17, 0.94) 100%);
+    z-index: 0;
+}
+
+.cover-layout {
+    align-items: center;
+    text-align: center;
+    gap: 0;
+}
+
+.cover-layout .brand-logo {
+    width: 70px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.cover-title {
+    font-family: var(--font-headline);
+    font-size: 38pt;
+    font-weight: 700;
+    color: var(--aw-white);
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.cover-subtitle-ar {
+    font-size: 16pt;
+    color: var(--prop-accent-light);
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.cover-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--prop-accent);
+    margin: 10px auto;
+}
+
+.cover-client {
+    font-size: 10pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 20px;
+}
+
+.cover-meta {
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 8px;
+}
+
+.cover-meta strong {
+    color: var(--prop-accent-light);
+}
+
+.cover-byline {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.cover-byline .by-label {
+    font-size: 7pt;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.cover-byline .by-name {
+    font-size: 14pt;
+    letter-spacing: 5px;
+    color: var(--aw-white);
+    font-weight: 500;
+}
+
+.cover-byline .by-desc {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 1px;
+}
+
+/* === STATS ROW === */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-block {
+    background: rgba(204, 159, 83, 0.08);
+    border: 1px solid rgba(204, 159, 83, 0.2);
+    border-radius: 12px;
+    padding: 22px 18px;
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-headline);
+    font-size: 26pt;
+    font-weight: 700;
+    color: var(--prop-accent);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.stat-desc {
+    font-size: 8pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.insight-quote {
+    font-family: var(--font-headline);
+    font-size: 13pt;
+    color: var(--prop-accent);
+    text-align: center;
+    padding: 18px 30px;
+    background: rgba(204, 159, 83, 0.08);
+    border-radius: 10px;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* === AUDIT SLIDE === */
+.slide-audit .slide-headline {
+    margin-bottom: 20px;
+}
+
+.audit-visual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    flex: 1;
+}
+
+.audit-screenshots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.screenshot-frame {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--aw-light-gray);
+    background: var(--aw-off-white);
+}
+
+.screenshot-frame img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.screenshot-caption {
+    font-size: 7.5pt;
+    color: var(--aw-dark-gray);
+    padding: 8px 12px;
+    text-align: center;
+    background: var(--aw-off-white);
+    border-top: 1px solid var(--aw-light-gray);
+}
+
+.audit-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.score-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    background: var(--aw-off-white);
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.score-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-headline);
+    font-size: 16pt;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.score-badge span {
+    font-size: 9pt;
+    opacity: 0.7;
+}
+
+.score-ok {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.score-bad {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.score-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.score-info strong {
+    font-size: 9.5pt;
+    color: var(--aw-navy);
+}
+
+.score-info span {
+    font-size: 8pt;
+    color: var(--aw-dark-gray);
+    opacity: 0.8;
+}
+
+/* === SPLIT LAYOUT (What We'll Build slides) === */
+.slide-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+.slide-split.split-reverse {
+    direction: rtl;
+}
+
+.slide-split.split-reverse>* {
+    direction: ltr;
+}
+
+.split-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.split-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.split-text {
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.deliverables-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.deliverable {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.del-icon {
+    font-size: 18pt;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.del-text {
+    font-size: 9pt;
+    line-height: 1.45;
+    color: var(--aw-dark-gray);
+}
+
+.del-text strong {
+    color: var(--aw-navy);
+    font-weight: 700;
+}
+
+/* === ROADMAP SLIDE === */
+.roadmap-visual {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 12px;
+    flex: 1;
+    align-items: stretch;
+}
+
+.roadmap-col {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(204, 159, 83, 0.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-top: 3px solid var(--prop-accent);
+    display: flex;
+    flex-direction: column;
+}
+
+.roadmap-badge {
+    display: inline-block;
+    font-size: 6.5pt;
+    letter-spacing: 2.5px;
+    font-weight: 800;
+    color: var(--aw-dark);
+    background: var(--prop-accent);
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    width: fit-content;
+}
+
+.roadmap-title {
+    font-family: var(--font-headline);
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--prop-text-on-dark);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.roadmap-time {
+    display: none;
+}
+
+.roadmap-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.roadmap-items li {
+    font-size: 7.5pt;
+    line-height: 1.45;
+    padding: 1.5px 0;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.roadmap-items li::before {
+    content: '→ ';
+    color: var(--prop-accent);
+    font-weight: 700;
+}
+
+/* === VISUAL TIMELINE === */
+.timeline-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+}
+
+.timeline-phase {
+    display: grid;
+    grid-template-columns: 120px 6px 1fr;
+    gap: 0;
+    align-items: center;
+    min-height: 70px;
+}
+
+.timeline-phase-header {
+    text-align: right;
+    padding-right: 16px;
+}
+
+.timeline-phase-label {
+    font-size: 7pt;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.timeline-phase.phase-active .timeline-phase-label {
+    color: var(--prop-accent);
+}
+
+.timeline-phase-name {
+    font-family: var(--font-headline);
+    font-size: 11pt;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.2;
+}
+
+.timeline-phase.phase-active .timeline-phase-name {
+    color: var(--prop-text-on-dark);
+}
+
+.timeline-bar {
+    width: 4px;
+    height: 100%;
+    background: rgba(204, 159, 83, 0.2);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+.timeline-phase.phase-active .timeline-bar {
+    background: var(--prop-accent);
+}
+
+.timeline-months {
+    display: flex;
+    gap: 0;
+    padding-left: 20px;
+}
+
+.timeline-month {
+    flex: 1;
+    text-align: center;
+    padding: 14px 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(204, 159, 83, 0.08);
+    border-radius: 8px;
+    margin: 0 4px;
+}
+
+.timeline-phase.phase-active .timeline-month {
+    background: rgba(204, 159, 83, 0.08);
+    border-color: rgba(204, 159, 83, 0.2);
+}
+
+.timeline-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin: 0 auto 6px;
+}
+
+.timeline-phase.phase-active .timeline-dot {
+    background: var(--prop-accent);
+    box-shadow: 0 0 8px rgba(204, 159, 83, 0.4);
+}
+
+.timeline-month-label {
+    font-size: 7pt;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--prop-accent);
+    margin-bottom: 4px;
+}
+
+.timeline-month-title {
+    font-family: var(--font-headline);
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--prop-text-on-dark);
+    line-height: 1.2;
+}
+
+/* === PRICING SLIDE === */
+.pricing-visual {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 22px;
+    margin-bottom: 16px;
+}
+
+.price-card {
+    background: var(--aw-off-white);
+    border: 2px solid var(--aw-light-gray);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+}
+
+.price-featured {
+    background: linear-gradient(135deg, var(--prop-bg-dark) 0%, var(--prop-bg-medium) 100%);
+    color: var(--prop-text-on-dark);
+    border: 2px solid var(--prop-accent);
+    box-shadow: 0 8px 40px rgba(204, 159, 83, 0.2);
+}
+
+.price-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--prop-accent);
+    color: var(--aw-white);
+    font-size: 7pt;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+.price-tier {
+    font-size: 8pt;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--prop-accent);
+    margin-bottom: 6px;
+}
+
+.price-tagline {
+    font-size: 9pt;
+    opacity: 0.6;
+    margin-bottom: 14px;
+}
+
+.price-amount {
+    font-family: var(--font-headline);
+    font-size: 20pt;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.price-card:not(.price-featured) .price-amount {
+    color: var(--aw-navy);
+}
+
+.price-type {
+    font-size: 8.5pt;
+    opacity: 0.6;
+    margin-bottom: 18px;
+}
+
+.price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.price-list li {
+    font-size: 8.5pt;
+    line-height: 1.4;
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.price-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--prop-accent);
+    font-weight: 700;
+}
+
+/* === ADD-ON BADGE === */
+.addon-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.price-currency {
+    font-size: 12pt;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.pricing-note {
+    font-size: 9pt;
+    color: var(--aw-dark-gray);
+    text-align: center;
+    padding: 16px 30px;
+    background: var(--aw-off-white);
+    border-radius: 10px;
+    border-left: 4px solid var(--prop-accent);
+    line-height: 1.6;
+}
+
+/* === NEXT STEPS SLIDE === */
+.steps-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    max-width: 180px;
+}
+
+.step-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--prop-accent) 0%, var(--prop-accent-light) 100%);
+    color: white;
+    font-family: var(--font-headline);
+    font-size: 20pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(204, 159, 83, 0.3);
+}
+
+.step-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.step-info strong {
+    font-size: 11pt;
+    color: var(--aw-navy);
+}
+
+.step-info span {
+    font-size: 8.5pt;
+    color: var(--aw-dark-gray);
+    line-height: 1.4;
+}
+
+.step-arrow {
+    font-size: 22pt;
+    color: var(--prop-accent);
+    font-weight: 700;
+    margin-top: -20px;
+}
+
+.cta-box {
+    padding: 28px 40px;
+    background: linear-gradient(135deg, var(--prop-bg-dark) 0%, var(--prop-bg-medium) 100%);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.cta-headline {
+    font-family: var(--font-headline);
+    font-size: 18pt;
+    color: var(--prop-accent);
+    margin-bottom: 8px;
+}
+
+.cta-contact {
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* === CLOSING SLIDE === */
+.slide-closing {
+    background: linear-gradient(180deg, var(--aw-navy) 0%, #00103d 100%);
+    position: relative;
+}
+
+.slide-closing .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(204, 159, 83, 0.06) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.closing-headline {
+    font-family: var(--font-headline);
+    font-size: 34pt;
+    font-weight: 700;
+    color: var(--aw-white);
+    line-height: 1.15;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.closing-sub {
+    font-size: 12pt;
+    color: var(--prop-accent-light);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.closing-contact-grid {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.closing-contact-grid div {
+    font-size: 11pt;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 4px 0;
+}
+
+.closing-contact-grid .contact-highlight {
+    color: var(--prop-accent);
+    font-weight: 700;
+    font-size: 13pt;
+}
+
+.slide-closing .closing-logo {
+    width: 50px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.6;
+    margin-top: 30px;
+}

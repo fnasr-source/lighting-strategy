@@ -1,0 +1,1016 @@
+{
+  "task": {
+    "data": {
+      "gid": "1212055797762550",
+      "assignee": {
+        "gid": "1208485318748903",
+        "name": "Esraa"
+      },
+      "completed": true,
+      "completed_at": "2025-12-11T10:56:53.996Z",
+      "created_at": "2025-11-23T08:08:24.518Z",
+      "custom_fields": [
+        {
+          "gid": "1206239734824774",
+          "name": "Priority",
+          "display_value": null
+        },
+        {
+          "gid": "1206249331466020",
+          "name": "Category",
+          "display_value": null
+        },
+        {
+          "gid": "1206257826781219",
+          "name": "Task time",
+          "display_value": "1w 5d"
+        },
+        {
+          "gid": "1206259165083068",
+          "name": "Time Adherence",
+          "display_value": "-5d 10h"
+        },
+        {
+          "gid": "1212055845330308",
+          "name": "Ad Copy",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845330314",
+          "name": "Campaign Status",
+          "display_value": null
+        },
+        {
+          "gid": "1212055845334668",
+          "name": "Strategy",
+          "display_value": null
+        }
+      ],
+      "due_at": null,
+      "due_on": "2025-12-06",
+      "followers": [
+        {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        }
+      ],
+      "html_notes": "<body>Kick-Off meeting recording:\n<a href=\"https://fathom.video/share/xZxvEWPLJr2aNga2vQN9Y1zdox4e4eqs\">https://fathom.video/share/xZxvEWPLJr2aNga2vQN9Y1zdox4e4eqs</a>\n\n</body>",
+      "memberships": [
+        {
+          "project": {
+            "gid": "1212055797762548",
+            "name": "DRM - Simulations Labs"
+          },
+          "section": {
+            "gid": "1212055797762549",
+            "name": "Strategy"
+          }
+        }
+      ],
+      "modified_at": "2025-12-29T16:07:07.703Z",
+      "name": "DRM Strategy",
+      "notes": "Kick-Off meeting recording:\nhttps://fathom.video/share/xZxvEWPLJr2aNga2vQN9Y1zdox4e4eqs\n\n",
+      "permalink_url": "https://app.asana.com/1/1201934871168294/project/1212055797762548/task/1212055797762550",
+      "start_on": null,
+      "tags": []
+    }
+  },
+  "comments": {
+    "data": [
+      {
+        "gid": "1212152641628036",
+        "created_at": "2025-11-26T15:18:42.912Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h0b1fb287e9\">https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h0b1fb287e9</a></body>",
+        "resource_type": "story",
+        "text": "https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0b1fb287e9",
+        "type": "comment"
+      },
+      {
+        "gid": "1212152641628038",
+        "created_at": "2025-11-26T15:19:46.120Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>ممكن تقولي رايك في اللي اتضاف للاستيراتجي \nانا لسه مضفتش جزء البيرسونا لكن الاتجاه لحد جزء ال gaps بقى واضح بنسبة كبيرة \n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "ممكن تقولي رايك في اللي اتضاف للاستيراتجي \nانا لسه مضفتش جزء البيرسونا لكن الاتجاه لحد جزء ال gaps بقى واضح بنسبة كبيرة \nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212152641628040",
+        "created_at": "2025-11-26T15:21:42.069Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>بس أنا محتاجة اسيرش اكتر كمان في نقطتين \n\nالمنافسين \nenvironmental scanning\n\nدول هيخلونا نطلع محتوى افضل</body>",
+        "resource_type": "story",
+        "text": "بس أنا محتاجة اسيرش اكتر كمان في نقطتين \n\nالمنافسين \nenvironmental scanning\n\nدول هيخلونا نطلع محتوى افضل",
+        "type": "comment"
+      },
+      {
+        "gid": "1212206361891704",
+        "created_at": "2025-11-27T08:50:26.117Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Thanks Esraa, didn't find on the strategies folder on Canva. Kindly add it.\n\n<a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> if you can have a review as well and let's have an internal review meeting this Sunday sometime starting 1:30 pm Cairo time.\n\n<a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>provide Youssef access to Canva &amp; Google drive folders of the projects he is on please.</body>",
+        "resource_type": "story",
+        "text": "Thanks Esraa, didn't find on the strategies folder on Canva. Kindly add it.\n\nhttps://app.asana.com/0/profile/1211996689189324 if you can have a review as well and let's have an internal review meeting this Sunday sometime starting 1:30 pm Cairo time.\n\nhttps://app.asana.com/0/profile/1208485999028683provide Youssef access to Canva & Google drive folders of the projects he is on please.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212206565356659",
+        "created_at": "2025-11-27T08:56:22.139Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Anytime on Sunday from 1:30 pm Cairo time works for me, except between 3:00 and 4:00 pm.</body>",
+        "resource_type": "story",
+        "text": "Anytime on Sunday from 1:30 pm Cairo time works for me, except between 3:00 and 4:00 pm.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212207960991226",
+        "created_at": "2025-11-28T11:42:14.767Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683",
+        "type": "comment"
+      },
+      {
+        "gid": "1212227684769591",
+        "created_at": "2025-11-30T12:48:02.190Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hey <a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>,\n\nI scraped Reddit posts related to CTFs hosting.\n\nHere is the link to the file: <a href=\"https://docs.google.com/spreadsheets/d/1piY4YObVKMawU9KpW1rVZIWS41YUmxFqaH37CSKdqqo/edit?usp=sharing\">https://docs.google.com/spreadsheets/d/1piY4YObVKMawU9KpW1rVZIWS41YUmxFqaH37CSKdqqo/edit?usp=sharing</a>\n\nI recommend you upload it to ChatGPT along with the strategy you created, with the following prompt:\n\nI am uploading a Google Sheet that contains Reddit posts related to <em>hosting CTFs, building cyber labs, and running cybersecurity competitions</em>.\nPlease analyze all the posts in the sheet and provide a structured market analysis. Specifically, give me:\n<ol><li><strong>Market Pain Points</strong></li><ul><li>Extract the most common frustrations, blockers, and challenges people mention when hosting or preparing CTFs or cyber labs.</li><li>Group them into themes (e.g., technical setup, infrastructure reliability, challenge creation, budget constraints, etc.).</li></ul><li><strong>Strengths of Simulations Labs (Relative to Market Needs)</strong></li><ul><li>Based on the pain points you extract, identify which of them Simulations Labs solves directly.</li><li>Highlight our strongest competitive advantages from the user's perspective (e.g., no DevOps, fast deployment, isolation, scalability, templates, etc.).</li><li>Phrase strengths the way Reddit users would naturally value them.</li></ul><li><strong>Direct Competitors (from the Reddit data)</strong></li><ul><li>Identify any platforms, tools, or services mentioned by name.</li><li>Categorize them as:</li><ul><li><strong>Direct competitors</strong> (CTF hosting / lab platforms)</li><li><strong>Adjacent tools</strong> (used but not in the same category)</li><li><strong>Internal DIY solutions</strong> (self-hosted infra, Docker setups, VMs, cloud services)</li></ul></ul><li><strong>Market Opportunities</strong></li><ul><li>Identify gaps that Reddit users complain about that no tool is solving well.</li><li>Highlight potential product or marketing opportunities.</li></ul><li><strong>Market Language &amp; Messaging Insights</strong></li><ul><li>Extract the exact wording users frequently use to describe their needs or struggles.</li><li>Provide recommended messaging angles that align with how the market talks.</li></ul><li><strong>User Segments Identified in the Posts</strong></li><ul><li>Group users into segments (e.g., CTF organizers, educators, student clubs, security teams, hobbyists).</li><li>Describe each segment’s needs based on the posts.</li></ul><li><strong>Anything Else You Find Important</strong></li><ul><li>Any surprising insights, common misconceptions, wishlist items, or patterns in the conversations.</li></ul></ol><strong>Deliver everything in a clean, structured format.</strong></body>",
+        "resource_type": "story",
+        "text": "Hey https://app.asana.com/0/profile/1208485999028683,\n\nI scraped Reddit posts related to CTFs hosting.\n\nHere is the link to the file: https://docs.google.com/spreadsheets/d/1piY4YObVKMawU9KpW1rVZIWS41YUmxFqaH37CSKdqqo/edit?usp=sharing\n\nI recommend you upload it to ChatGPT along with the strategy you created, with the following prompt:\n\nI am uploading a Google Sheet that contains Reddit posts related to hosting CTFs, building cyber labs, and running cybersecurity competitions.\nPlease analyze all the posts in the sheet and provide a structured market analysis. Specifically, give me:\n    Market Pain Points\n        Extract the most common frustrations, blockers, and challenges people mention when hosting or preparing CTFs or cyber labs.\n        Group them into themes (e.g., technical setup, infrastructure reliability, challenge creation, budget constraints, etc.).\n    Strengths of Simulations Labs (Relative to Market Needs)\n        Based on the pain points you extract, identify which of them Simulations Labs solves directly.\n        Highlight our strongest competitive advantages from the user's perspective (e.g., no DevOps, fast deployment, isolation, scalability, templates, etc.).\n        Phrase strengths the way Reddit users would naturally value them.\n    Direct Competitors (from the Reddit data)\n        Identify any platforms, tools, or services mentioned by name.\n        Categorize them as:\n            Direct competitors (CTF hosting / lab platforms)\n            Adjacent tools (used but not in the same category)\n            Internal DIY solutions (self-hosted infra, Docker setups, VMs, cloud services)\n    Market Opportunities\n        Identify gaps that Reddit users complain about that no tool is solving well.\n        Highlight potential product or marketing opportunities.\n    Market Language & Messaging Insights\n        Extract the exact wording users frequently use to describe their needs or struggles.\n        Provide recommended messaging angles that align with how the market talks.\n    User Segments Identified in the Posts\n        Group users into segments (e.g., CTF organizers, educators, student clubs, security teams, hobbyists).\n        Describe each segment’s needs based on the posts.\n    Anything Else You Find Important\n        Any surprising insights, common misconceptions, wishlist items, or patterns in the conversations.\nDeliver everything in a clean, structured format.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212227657363580",
+        "created_at": "2025-11-30T19:43:44.442Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>I reviewed the data that came from the file you sent and the data generated by ChatGPT with the prompt you provided. But I feel that these parts are just some of the things we can add to the gaps and to the competitors section. I still believe that the platform’s strength and advantages  being no-DevOps with new and diverse scenarios  are not the only things that will highlight the platform’s power. And that the scope for the first three months must include financial companies until we see which of the three segments we identified will perform best with us\n\nwhat do you think ?\n<a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a>\n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "I reviewed the data that came from the file you sent and the data generated by ChatGPT with the prompt you provided. But I feel that these parts are just some of the things we can add to the gaps and to the competitors section. I still believe that the platform’s strength and advantages  being no-DevOps with new and diverse scenarios  are not the only things that will highlight the platform’s power. And that the scope for the first three months must include financial companies until we see which of the three segments we identified will perform best with us\n\nwhat do you think ?\nhttps://app.asana.com/0/profile/1211996689189324\nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212236628948594",
+        "created_at": "2025-12-01T07:36:02.670Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Sure, the goal from the data and prompt is to fill the gaps in the strategy (not to replace it). As for financial companies, I don’t believe they are our target audience. However, let’s schedule a meeting to discuss your point of view and make a final decision.\n\n<a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a></body>",
+        "resource_type": "story",
+        "text": "Sure, the goal from the data and prompt is to fill the gaps in the strategy (not to replace it). As for financial companies, I don’t believe they are our target audience. However, let’s schedule a meeting to discuss your point of view and make a final decision.\n\nhttps://app.asana.com/0/profile/1208485999028683",
+        "type": "comment"
+      },
+      {
+        "gid": "1212231745526851",
+        "created_at": "2025-12-01T08:13:23.183Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>ممكن ندخل ما بعد ما رُبا</body>",
+        "resource_type": "story",
+        "text": "ممكن ندخل ما بعد ما رُبا",
+        "type": "comment"
+      },
+      {
+        "gid": "1212237081680084",
+        "created_at": "2025-12-01T08:15:30.222Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>أتفقنا كويس جداً</body>",
+        "resource_type": "story",
+        "text": "أتفقنا كويس جداً",
+        "type": "comment"
+      },
+      {
+        "gid": "1212278321770725",
+        "created_at": "2025-12-03T08:01:58.007Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>I have added more competitors in CTF field</body>",
+        "resource_type": "story",
+        "text": "I have added more competitors in CTF field",
+        "type": "comment"
+      },
+      {
+        "gid": "1212278363229052",
+        "created_at": "2025-12-03T08:19:00.244Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Thank you, will go over it today.</body>",
+        "resource_type": "story",
+        "text": "Thank you, will go over it today.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212279660369482",
+        "created_at": "2025-12-03T18:18:55.647Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton\">https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton</a></body>",
+        "resource_type": "story",
+        "text": "https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        "type": "comment"
+      },
+      {
+        "gid": "1209619540519675",
+        "created_at": "2025-12-07T09:57:06.378Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>From Moataz the founder\n\nعلي فكرة انا كنت عملت podcast من فترة . معرفش لو ممكن نستفاد منه في حاجة \nhttps://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi</body>",
+        "resource_type": "story",
+        "text": "From Moataz the founder\n\nعلي فكرة انا كنت عملت podcast من فترة . معرفش لو ممكن نستفاد منه في حاجة \nhttps://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi",
+        "type": "comment"
+      },
+      {
+        "gid": "1212334024611598",
+        "created_at": "2025-12-07T20:37:31.846Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> <a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a>\nCheck this version of the strategy and let me know your thoughts.\n<ul><li><a href=\"https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\">Direct Response Marketing GTM Strategy</a></li><li><a href=\"https://manus.im/share/file/257d7c5f-468a-4ecf-b63d-8e45af4afc13\">Social Media Strategy</a></li></ul>\nI'm a bit late on that but took me time this one to review. Not able to download as PDF yet due to the large file size but you can check for now on the link above.\n\nAlso you can check the attached sound file which goes through the strategy.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 https://app.asana.com/0/profile/1211996689189324\nCheck this version of the strategy and let me know your thoughts.\n    https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\n    https://manus.im/share/file/257d7c5f-468a-4ecf-b63d-8e45af4afc13\n\nI'm a bit late on that but took me time this one to review. Not able to download as PDF yet due to the large file size but you can check for now on the link above.\n\nAlso you can check the attached sound file which goes through the strategy.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212343879207821",
+        "created_at": "2025-12-08T13:17:12.505Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212334024611601\" data=\"https://www.loom.com/embed/7cd59ba71a144e7e9578f8cd92795013\" style=\"display:block\"><a href=\"https://www.loom.com/share/7cd59ba71a144e7e9578f8cd92795013\">https://www.loom.com/share/7cd59ba71a144e7e9578f8cd92795013</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212334024611601\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212344981948474",
+        "created_at": "2025-12-08T17:38:53.174Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Perfect, I’ll review it.\nFor our next meeting, could you let me know what you’d like me to prepare? I’m still not aware of the budget or whether the strategy has been fully approved, so any guidance would be helpful.</body>",
+        "resource_type": "story",
+        "text": "Perfect, I’ll review it.\nFor our next meeting, could you let me know what you’d like me to prepare? I’m still not aware of the budget or whether the strategy has been fully approved, so any guidance would be helpful.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212356436067475",
+        "created_at": "2025-12-09T08:36:41.283Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>representatives for simulations labs: \nHannah Adam, Noah John</body>",
+        "resource_type": "story",
+        "text": "representatives for simulations labs: \nHannah Adam, Noah John",
+        "type": "comment"
+      },
+      {
+        "gid": "1212356343500845",
+        "created_at": "2025-12-09T08:59:28.428Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>Any edits will be done for this, or I can send it \n<a href=\"https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\">https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da</a>\n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "Any edits will be done for this, or I can send it \nhttps://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212355604235761",
+        "created_at": "2025-12-09T11:02:21.703Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> check the loom video I shared here above yesterday.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 check the loom video I shared here above yesterday.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212602668829653",
+        "created_at": "2025-12-29T09:49:48.457Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi\">https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi</a>\nI have listen to the episode but all talks directed to cyber talents and his way in the leadership as CEO</body>",
+        "resource_type": "story",
+        "text": "https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi\nI have listen to the episode but all talks directed to cyber talents and his way in the leadership as CEO",
+        "type": "comment"
+      },
+      {
+        "gid": "1212600158365603",
+        "created_at": "2025-12-29T10:25:05.597Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212600158365602\" data=\"https://www.loom.com/embed/0fa6e38dfa914d5f8ad603fdaa2b1b9e\" style=\"display:block\"><a href=\"https://www.loom.com/share/0fa6e38dfa914d5f8ad603fdaa2b1b9e\">https://www.loom.com/share/0fa6e38dfa914d5f8ad603fdaa2b1b9e</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212600158365602\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212580300444423",
+        "created_at": "2025-12-29T15:02:13.578Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>انا سمعت الحلقة تاني بالتفصيل و فعلا مش شايفة مدخل لاي حاجة تنفع ل simulations ;abs \n\nممكن ابقى غلط بس هو حتى كلام نوت بوك مش مقنع و مش موجود من لاساس \n\nانا عارفة انه ممكن يبقى ادق مني بس انا مصدقة اللي سمعته \nفاهمين فصدي \nانا باستخدام كل ال tools اللي في ايدي عشان اطلع بيها فيديوهات تانية و خلوني كل ما اطلع حاجة جديدة على مدار الايام الباقية اعمل ابديت بيها \n\nو هدخل امجد ينفذ معايا لاني حسيت ان كوالتي الفيديو اللي عملته مكنتش افضل حاجة ليكم</body>",
+        "resource_type": "story",
+        "text": "انا سمعت الحلقة تاني بالتفصيل و فعلا مش شايفة مدخل لاي حاجة تنفع ل simulations ;abs \n\nممكن ابقى غلط بس هو حتى كلام نوت بوك مش مقنع و مش موجود من لاساس \n\nانا عارفة انه ممكن يبقى ادق مني بس انا مصدقة اللي سمعته \nفاهمين فصدي \nانا باستخدام كل ال tools اللي في ايدي عشان اطلع بيها فيديوهات تانية و خلوني كل ما اطلع حاجة جديدة على مدار الايام الباقية اعمل ابديت بيها \n\nو هدخل امجد ينفذ معايا لاني حسيت ان كوالتي الفيديو اللي عملته مكنتش افضل حاجة ليكم",
+        "type": "comment"
+      }
+    ]
+  },
+  "stories": {
+    "data": [
+      {
+        "gid": "1212055845314274",
+        "created_at": "2025-11-23T08:08:24.579Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added this task to <a href=\"https://app.asana.com/1/1201934871168294/project/1212055797762548\">DRM - Simulations Labs</a>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added this task to DRM - Simulations Labs",
+        "type": "system"
+      },
+      {
+        "gid": "1212056117616343",
+        "created_at": "2025-11-23T08:09:56.242Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> assigned to <b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b>",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin assigned to Esraa",
+        "type": "system"
+      },
+      {
+        "gid": "1212056117772358",
+        "created_at": "2025-11-23T08:10:04.753Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Nov 26, 2025",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Nov 26, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212152641628036",
+        "created_at": "2025-11-26T15:18:42.912Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h0b1fb287e9\">https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h0b1fb287e9</a></body>",
+        "resource_type": "story",
+        "text": "https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0b1fb287e9",
+        "type": "comment"
+      },
+      {
+        "gid": "1212152641628038",
+        "created_at": "2025-11-26T15:19:46.120Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>ممكن تقولي رايك في اللي اتضاف للاستيراتجي \nانا لسه مضفتش جزء البيرسونا لكن الاتجاه لحد جزء ال gaps بقى واضح بنسبة كبيرة \n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "ممكن تقولي رايك في اللي اتضاف للاستيراتجي \nانا لسه مضفتش جزء البيرسونا لكن الاتجاه لحد جزء ال gaps بقى واضح بنسبة كبيرة \nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212152641628040",
+        "created_at": "2025-11-26T15:21:42.069Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>بس أنا محتاجة اسيرش اكتر كمان في نقطتين \n\nالمنافسين \nenvironmental scanning\n\nدول هيخلونا نطلع محتوى افضل</body>",
+        "resource_type": "story",
+        "text": "بس أنا محتاجة اسيرش اكتر كمان في نقطتين \n\nالمنافسين \nenvironmental scanning\n\nدول هيخلونا نطلع محتوى افضل",
+        "type": "comment"
+      },
+      {
+        "gid": "1212206485513731",
+        "created_at": "2025-11-27T08:41:39.366Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> added Youssef Khafaga as a collaborator",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin added Youssef Khafaga as a collaborator",
+        "type": "system"
+      },
+      {
+        "gid": "1212206361891704",
+        "created_at": "2025-11-27T08:50:26.117Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>Thanks Esraa, didn't find on the strategies folder on Canva. Kindly add it.\n\n<a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a> if you can have a review as well and let's have an internal review meeting this Sunday sometime starting 1:30 pm Cairo time.\n\n<a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>provide Youssef access to Canva &amp; Google drive folders of the projects he is on please.</body>",
+        "resource_type": "story",
+        "text": "Thanks Esraa, didn't find on the strategies folder on Canva. Kindly add it.\n\nhttps://app.asana.com/0/profile/1211996689189324 if you can have a review as well and let's have an internal review meeting this Sunday sometime starting 1:30 pm Cairo time.\n\nhttps://app.asana.com/0/profile/1208485999028683provide Youssef access to Canva & Google drive folders of the projects he is on please.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212164431142854",
+        "created_at": "2025-11-27T08:50:51.537Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Nov 27, 2025",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Nov 27, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212164431142856",
+        "created_at": "2025-11-27T08:50:51.645Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"2d 15h\" to \"3d 15h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"2d 15h\" to \"3d 15h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212164431142858",
+        "created_at": "2025-11-27T08:50:51.682Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"2d 15h\" to \"3d 15h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"2d 15h\" to \"3d 15h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212163048162399",
+        "created_at": "2025-11-27T08:52:31.887Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212206565356659",
+        "created_at": "2025-11-27T08:56:22.139Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Anytime on Sunday from 1:30 pm Cairo time works for me, except between 3:00 and 4:00 pm.</body>",
+        "resource_type": "story",
+        "text": "Anytime on Sunday from 1:30 pm Cairo time works for me, except between 3:00 and 4:00 pm.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212207960991226",
+        "created_at": "2025-11-28T11:42:14.767Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683",
+        "type": "comment"
+      },
+      {
+        "gid": "1212181074303882",
+        "created_at": "2025-11-29T08:59:01.999Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed the due date to Nov 30, 2025",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed the due date to Nov 30, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212181074303884",
+        "created_at": "2025-11-29T08:59:02.107Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"3d 15h\" to \"6d 15h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"3d 15h\" to \"6d 15h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212181074303886",
+        "created_at": "2025-11-29T08:59:02.147Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1202432356210287\">Fouad Nasseredin</a></b> changed Task time from \"3d 15h\" to \"6d 15h\"",
+        "resource_type": "story",
+        "text": "Fouad Nasseredin changed Task time from \"3d 15h\" to \"6d 15h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212227684769591",
+        "created_at": "2025-11-30T12:48:02.190Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Hey <a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>,\n\nI scraped Reddit posts related to CTFs hosting.\n\nHere is the link to the file: <a href=\"https://docs.google.com/spreadsheets/d/1piY4YObVKMawU9KpW1rVZIWS41YUmxFqaH37CSKdqqo/edit?usp=sharing\">https://docs.google.com/spreadsheets/d/1piY4YObVKMawU9KpW1rVZIWS41YUmxFqaH37CSKdqqo/edit?usp=sharing</a>\n\nI recommend you upload it to ChatGPT along with the strategy you created, with the following prompt:\n\nI am uploading a Google Sheet that contains Reddit posts related to <em>hosting CTFs, building cyber labs, and running cybersecurity competitions</em>.\nPlease analyze all the posts in the sheet and provide a structured market analysis. Specifically, give me:\n<ol><li><strong>Market Pain Points</strong></li><ul><li>Extract the most common frustrations, blockers, and challenges people mention when hosting or preparing CTFs or cyber labs.</li><li>Group them into themes (e.g., technical setup, infrastructure reliability, challenge creation, budget constraints, etc.).</li></ul><li><strong>Strengths of Simulations Labs (Relative to Market Needs)</strong></li><ul><li>Based on the pain points you extract, identify which of them Simulations Labs solves directly.</li><li>Highlight our strongest competitive advantages from the user's perspective (e.g., no DevOps, fast deployment, isolation, scalability, templates, etc.).</li><li>Phrase strengths the way Reddit users would naturally value them.</li></ul><li><strong>Direct Competitors (from the Reddit data)</strong></li><ul><li>Identify any platforms, tools, or services mentioned by name.</li><li>Categorize them as:</li><ul><li><strong>Direct competitors</strong> (CTF hosting / lab platforms)</li><li><strong>Adjacent tools</strong> (used but not in the same category)</li><li><strong>Internal DIY solutions</strong> (self-hosted infra, Docker setups, VMs, cloud services)</li></ul></ul><li><strong>Market Opportunities</strong></li><ul><li>Identify gaps that Reddit users complain about that no tool is solving well.</li><li>Highlight potential product or marketing opportunities.</li></ul><li><strong>Market Language &amp; Messaging Insights</strong></li><ul><li>Extract the exact wording users frequently use to describe their needs or struggles.</li><li>Provide recommended messaging angles that align with how the market talks.</li></ul><li><strong>User Segments Identified in the Posts</strong></li><ul><li>Group users into segments (e.g., CTF organizers, educators, student clubs, security teams, hobbyists).</li><li>Describe each segment’s needs based on the posts.</li></ul><li><strong>Anything Else You Find Important</strong></li><ul><li>Any surprising insights, common misconceptions, wishlist items, or patterns in the conversations.</li></ul></ol><strong>Deliver everything in a clean, structured format.</strong></body>",
+        "resource_type": "story",
+        "text": "Hey https://app.asana.com/0/profile/1208485999028683,\n\nI scraped Reddit posts related to CTFs hosting.\n\nHere is the link to the file: https://docs.google.com/spreadsheets/d/1piY4YObVKMawU9KpW1rVZIWS41YUmxFqaH37CSKdqqo/edit?usp=sharing\n\nI recommend you upload it to ChatGPT along with the strategy you created, with the following prompt:\n\nI am uploading a Google Sheet that contains Reddit posts related to hosting CTFs, building cyber labs, and running cybersecurity competitions.\nPlease analyze all the posts in the sheet and provide a structured market analysis. Specifically, give me:\n    Market Pain Points\n        Extract the most common frustrations, blockers, and challenges people mention when hosting or preparing CTFs or cyber labs.\n        Group them into themes (e.g., technical setup, infrastructure reliability, challenge creation, budget constraints, etc.).\n    Strengths of Simulations Labs (Relative to Market Needs)\n        Based on the pain points you extract, identify which of them Simulations Labs solves directly.\n        Highlight our strongest competitive advantages from the user's perspective (e.g., no DevOps, fast deployment, isolation, scalability, templates, etc.).\n        Phrase strengths the way Reddit users would naturally value them.\n    Direct Competitors (from the Reddit data)\n        Identify any platforms, tools, or services mentioned by name.\n        Categorize them as:\n            Direct competitors (CTF hosting / lab platforms)\n            Adjacent tools (used but not in the same category)\n            Internal DIY solutions (self-hosted infra, Docker setups, VMs, cloud services)\n    Market Opportunities\n        Identify gaps that Reddit users complain about that no tool is solving well.\n        Highlight potential product or marketing opportunities.\n    Market Language & Messaging Insights\n        Extract the exact wording users frequently use to describe their needs or struggles.\n        Provide recommended messaging angles that align with how the market talks.\n    User Segments Identified in the Posts\n        Group users into segments (e.g., CTF organizers, educators, student clubs, security teams, hobbyists).\n        Describe each segment’s needs based on the posts.\n    Anything Else You Find Important\n        Any surprising insights, common misconceptions, wishlist items, or patterns in the conversations.\nDeliver everything in a clean, structured format.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212227657363580",
+        "created_at": "2025-11-30T19:43:44.442Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>I reviewed the data that came from the file you sent and the data generated by ChatGPT with the prompt you provided. But I feel that these parts are just some of the things we can add to the gaps and to the competitors section. I still believe that the platform’s strength and advantages  being no-DevOps with new and diverse scenarios  are not the only things that will highlight the platform’s power. And that the scope for the first three months must include financial companies until we see which of the three segments we identified will perform best with us\n\nwhat do you think ?\n<a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a>\n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "I reviewed the data that came from the file you sent and the data generated by ChatGPT with the prompt you provided. But I feel that these parts are just some of the things we can add to the gaps and to the competitors section. I still believe that the platform’s strength and advantages  being no-DevOps with new and diverse scenarios  are not the only things that will highlight the platform’s power. And that the scope for the first three months must include financial companies until we see which of the three segments we identified will perform best with us\n\nwhat do you think ?\nhttps://app.asana.com/0/profile/1211996689189324\nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212236628948594",
+        "created_at": "2025-12-01T07:36:02.670Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Sure, the goal from the data and prompt is to fill the gaps in the strategy (not to replace it). As for financial companies, I don’t believe they are our target audience. However, let’s schedule a meeting to discuss your point of view and make a final decision.\n\n<a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a></body>",
+        "resource_type": "story",
+        "text": "Sure, the goal from the data and prompt is to fill the gaps in the strategy (not to replace it). As for financial companies, I don’t believe they are our target audience. However, let’s schedule a meeting to discuss your point of view and make a final decision.\n\nhttps://app.asana.com/0/profile/1208485999028683",
+        "type": "comment"
+      },
+      {
+        "gid": "1212236958653360",
+        "created_at": "2025-12-01T08:03:42.427Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212231745526851",
+        "created_at": "2025-12-01T08:13:23.183Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>ممكن ندخل ما بعد ما رُبا</body>",
+        "resource_type": "story",
+        "text": "ممكن ندخل ما بعد ما رُبا",
+        "type": "comment"
+      },
+      {
+        "gid": "1212237081680084",
+        "created_at": "2025-12-01T08:15:30.222Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>أتفقنا كويس جداً</body>",
+        "resource_type": "story",
+        "text": "أتفقنا كويس جداً",
+        "type": "comment"
+      },
+      {
+        "gid": "1212239864956863",
+        "created_at": "2025-12-01T13:15:27.287Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Dec 2, 2025",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Dec 2, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212239864956865",
+        "created_at": "2025-12-01T13:15:27.417Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"6d 15h\" to \"1w 1d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"6d 15h\" to \"1w 1d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212239864956867",
+        "created_at": "2025-12-01T13:15:27.465Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"6d 15h\" to \"1w 1d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"6d 15h\" to \"1w 1d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212278321770725",
+        "created_at": "2025-12-03T08:01:58.007Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>I have added more competitors in CTF field</body>",
+        "resource_type": "story",
+        "text": "I have added more competitors in CTF field",
+        "type": "comment"
+      },
+      {
+        "gid": "1212278363229052",
+        "created_at": "2025-12-03T08:19:00.244Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Thank you, will go over it today.</body>",
+        "resource_type": "story",
+        "text": "Thank you, will go over it today.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212279660369482",
+        "created_at": "2025-12-03T18:18:55.647Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton\">https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton</a></body>",
+        "resource_type": "story",
+        "text": "https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        "type": "comment"
+      },
+      {
+        "gid": "1212304861412545",
+        "created_at": "2025-12-04T10:46:57.813Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed the due date to Dec 6, 2025",
+        "resource_type": "story",
+        "text": "Esraa changed the due date to Dec 6, 2025",
+        "type": "system"
+      },
+      {
+        "gid": "1212304861412547",
+        "created_at": "2025-12-04T10:46:57.915Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"1w 1d\" to \"1w 5d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"1w 1d\" to \"1w 5d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212304861412549",
+        "created_at": "2025-12-04T10:46:57.961Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Task time from \"1w 1d\" to \"1w 5d\"",
+        "resource_type": "story",
+        "text": "Esraa changed Task time from \"1w 1d\" to \"1w 5d\"",
+        "type": "system"
+      },
+      {
+        "gid": "1209619540519675",
+        "created_at": "2025-12-07T09:57:06.378Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>From Moataz the founder\n\nعلي فكرة انا كنت عملت podcast من فترة . معرفش لو ممكن نستفاد منه في حاجة \nhttps://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi</body>",
+        "resource_type": "story",
+        "text": "From Moataz the founder\n\nعلي فكرة انا كنت عملت podcast من فترة . معرفش لو ممكن نستفاد منه في حاجة \nhttps://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi",
+        "type": "comment"
+      },
+      {
+        "gid": "1212328662868782",
+        "created_at": "2025-12-07T10:03:39.933Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "resource_type": "story",
+        "type": "system"
+      },
+      {
+        "gid": "1212334024611598",
+        "created_at": "2025-12-07T20:37:31.846Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> <a href=\"https://app.asana.com/0/profile/1211996689189324\" data-asana-gid=\"1211996689189317\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Youssef Khafaga</a>\nCheck this version of the strategy and let me know your thoughts.\n<ul><li><a href=\"https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\">Direct Response Marketing GTM Strategy</a></li><li><a href=\"https://manus.im/share/file/257d7c5f-468a-4ecf-b63d-8e45af4afc13\">Social Media Strategy</a></li></ul>\nI'm a bit late on that but took me time this one to review. Not able to download as PDF yet due to the large file size but you can check for now on the link above.\n\nAlso you can check the attached sound file which goes through the strategy.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 https://app.asana.com/0/profile/1211996689189324\nCheck this version of the strategy and let me know your thoughts.\n    https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\n    https://manus.im/share/file/257d7c5f-468a-4ecf-b63d-8e45af4afc13\n\nI'm a bit late on that but took me time this one to review. Not able to download as PDF yet due to the large file size but you can check for now on the link above.\n\nAlso you can check the attached sound file which goes through the strategy.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212343879207821",
+        "created_at": "2025-12-08T13:17:12.505Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212334024611601\" data=\"https://www.loom.com/embed/7cd59ba71a144e7e9578f8cd92795013\" style=\"display:block\"><a href=\"https://www.loom.com/share/7cd59ba71a144e7e9578f8cd92795013\">https://www.loom.com/share/7cd59ba71a144e7e9578f8cd92795013</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212334024611601\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212344981948474",
+        "created_at": "2025-12-08T17:38:53.174Z",
+        "created_by": {
+          "gid": "1211996689189317",
+          "name": "Youssef Khafaga"
+        },
+        "html_text": "<body>Perfect, I’ll review it.\nFor our next meeting, could you let me know what you’d like me to prepare? I’m still not aware of the budget or whether the strategy has been fully approved, so any guidance would be helpful.</body>",
+        "resource_type": "story",
+        "text": "Perfect, I’ll review it.\nFor our next meeting, could you let me know what you’d like me to prepare? I’m still not aware of the budget or whether the strategy has been fully approved, so any guidance would be helpful.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212356436067475",
+        "created_at": "2025-12-09T08:36:41.283Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body>representatives for simulations labs: \nHannah Adam, Noah John</body>",
+        "resource_type": "story",
+        "text": "representatives for simulations labs: \nHannah Adam, Noah John",
+        "type": "comment"
+      },
+      {
+        "gid": "1212356343500845",
+        "created_at": "2025-12-09T08:59:28.428Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>Any edits will be done for this, or I can send it \n<a href=\"https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\">https://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da</a>\n<a href=\"https://app.asana.com/0/profile/1202432356210287\" data-asana-gid=\"1202432356210277\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Fouad Nasseredin</a></body>",
+        "resource_type": "story",
+        "text": "Any edits will be done for this, or I can send it \nhttps://manus.im/share/file/d170c33b-d261-43ed-be04-5df2bd0910da\nhttps://app.asana.com/0/profile/1202432356210287",
+        "type": "comment"
+      },
+      {
+        "gid": "1212355604235761",
+        "created_at": "2025-12-09T11:02:21.703Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a> check the loom video I shared here above yesterday.</body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683 check the loom video I shared here above yesterday.",
+        "type": "comment"
+      },
+      {
+        "gid": "1212391936043697",
+        "created_at": "2025-12-11T10:56:54.022Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> completed this task",
+        "resource_type": "story",
+        "text": "Esraa completed this task",
+        "type": "system"
+      },
+      {
+        "gid": "1212391936043699",
+        "created_at": "2025-12-11T10:56:54.155Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<b><a href=\"https://app.asana.com/0/profile/1208485999028683\">Esraa</a></b> changed Time Adherence to \"-5d 10h\"",
+        "resource_type": "story",
+        "text": "Esraa changed Time Adherence to \"-5d 10h\"",
+        "type": "system"
+      },
+      {
+        "gid": "1212602668829653",
+        "created_at": "2025-12-29T09:49:48.457Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body><a href=\"https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi\">https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi</a>\nI have listen to the episode but all talks directed to cyber talents and his way in the leadership as CEO</body>",
+        "resource_type": "story",
+        "text": "https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi\nI have listen to the episode but all talks directed to cyber talents and his way in the leadership as CEO",
+        "type": "comment"
+      },
+      {
+        "gid": "1212600158365603",
+        "created_at": "2025-12-29T10:25:05.597Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "html_text": "<body><a href=\"https://app.asana.com/0/profile/1208485999028683\" data-asana-gid=\"1208485318748903\" data-asana-accessible=\"true\" data-asana-type=\"user\" data-asana-dynamic=\"true\">@Esraa</a>\n<object type=\"application/vnd.asana.external_media\" data-asana-type=\"attachment\" data-asana-gid=\"1212600158365602\" data=\"https://www.loom.com/embed/0fa6e38dfa914d5f8ad603fdaa2b1b9e\" style=\"display:block\"><a href=\"https://www.loom.com/share/0fa6e38dfa914d5f8ad603fdaa2b1b9e\">https://www.loom.com/share/0fa6e38dfa914d5f8ad603fdaa2b1b9e</a></object></body>",
+        "resource_type": "story",
+        "text": "https://app.asana.com/0/profile/1208485999028683\n\nhttps://app.asana.com/app/asana/-/get_asset?asset_id=1212600158365602\n",
+        "type": "comment"
+      },
+      {
+        "gid": "1212580300444423",
+        "created_at": "2025-12-29T15:02:13.578Z",
+        "created_by": {
+          "gid": "1208485318748903",
+          "name": "Esraa"
+        },
+        "html_text": "<body>انا سمعت الحلقة تاني بالتفصيل و فعلا مش شايفة مدخل لاي حاجة تنفع ل simulations ;abs \n\nممكن ابقى غلط بس هو حتى كلام نوت بوك مش مقنع و مش موجود من لاساس \n\nانا عارفة انه ممكن يبقى ادق مني بس انا مصدقة اللي سمعته \nفاهمين فصدي \nانا باستخدام كل ال tools اللي في ايدي عشان اطلع بيها فيديوهات تانية و خلوني كل ما اطلع حاجة جديدة على مدار الايام الباقية اعمل ابديت بيها \n\nو هدخل امجد ينفذ معايا لاني حسيت ان كوالتي الفيديو اللي عملته مكنتش افضل حاجة ليكم</body>",
+        "resource_type": "story",
+        "text": "انا سمعت الحلقة تاني بالتفصيل و فعلا مش شايفة مدخل لاي حاجة تنفع ل simulations ;abs \n\nممكن ابقى غلط بس هو حتى كلام نوت بوك مش مقنع و مش موجود من لاساس \n\nانا عارفة انه ممكن يبقى ادق مني بس انا مصدقة اللي سمعته \nفاهمين فصدي \nانا باستخدام كل ال tools اللي في ايدي عشان اطلع بيها فيديوهات تانية و خلوني كل ما اطلع حاجة جديدة على مدار الايام الباقية اعمل ابديت بيها \n\nو هدخل امجد ينفذ معايا لاني حسيت ان كوالتي الفيديو اللي عملته مكنتش افضل حاجة ليكم",
+        "type": "comment"
+      },
+      {
+        "gid": "1212580528535300",
+        "created_at": "2025-12-29T16:07:07.685Z",
+        "created_by": {
+          "gid": "1202432356210277",
+          "name": "Fouad Nasseredin"
+        },
+        "resource_type": "story",
+        "type": "system"
+      }
+    ]
+  },
+  "attachments": {
+    "data": [
+      {
+        "gid": "1212152641628035",
+        "created_at": "2025-11-26T15:18:41.214Z",
+        "download_url": null,
+        "name": "https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0b1fb287e9",
+        "parent": {
+          "gid": "1212055797762550",
+          "name": "DRM Strategy",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212152641628035",
+        "resource_subtype": "external",
+        "view_url": "https://www.canva.com/design/DAG5t494Src/O20euOiYdSxc5o1wFBT-XA/view?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0b1fb287e9"
+      },
+      {
+        "gid": "1212279660369481",
+        "created_at": "2025-12-03T18:18:53.966Z",
+        "download_url": null,
+        "name": "https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        "parent": {
+          "gid": "1212055797762550",
+          "name": "DRM Strategy",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212279660369481",
+        "resource_subtype": "external",
+        "view_url": "https://www.canva.com/design/DAG5t494Src/XCOJdn_GxbtXfKZl_eWG6A/edit?utm_content=DAG5t494Src&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+      },
+      {
+        "gid": "1212334024611597",
+        "created_at": "2025-12-07T20:37:28.259Z",
+        "download_url": "https://asanausercontent.com/us1/assets/1201934871168294/1212334024611596/c9a488102a581be455770c7d6612925f?e=1772375549&v=0&t=_8MqRILFawigRzFevvwrTZ3iN1YgivcTaYUqvW8GCyA",
+        "name": "Simulations_Labs__B2B_SaaS_Strategy.m4a",
+        "parent": {
+          "gid": "1212055797762550",
+          "name": "DRM Strategy",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212334024611597",
+        "resource_subtype": "asana",
+        "view_url": "https://asanausercontent.com/us1/assets/1201934871168294/1212334024611596/c9a488102a581be455770c7d6612925f?e=1772375549&v=0&t=_8MqRILFawigRzFevvwrTZ3iN1YgivcTaYUqvW8GCyA",
+        "size": 25761332
+      },
+      {
+        "gid": "1212334024611601",
+        "created_at": "2025-12-08T13:16:46.307Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/7cd59ba71a144e7e9578f8cd92795013",
+        "parent": {
+          "gid": "1212055797762550",
+          "name": "DRM Strategy",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212334024611601",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/7cd59ba71a144e7e9578f8cd92795013"
+      },
+      {
+        "gid": "1212602668829652",
+        "created_at": "2025-12-29T09:42:50.859Z",
+        "download_url": null,
+        "name": "https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi",
+        "parent": {
+          "gid": "1212055797762550",
+          "name": "DRM Strategy",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212602668829652",
+        "resource_subtype": "external",
+        "view_url": "https://youtu.be/BvnGEPhZqzs?si=Uj8PH1PI-XIL6iDi"
+      },
+      {
+        "gid": "1212600158365602",
+        "created_at": "2025-12-29T10:24:58.867Z",
+        "download_url": null,
+        "name": "https://www.loom.com/share/0fa6e38dfa914d5f8ad603fdaa2b1b9e",
+        "parent": {
+          "gid": "1212055797762550",
+          "name": "DRM Strategy",
+          "resource_type": "task"
+        },
+        "permanent_url": "https://app.asana.com/app/asana/-/get_asset?asset_id=1212600158365602",
+        "resource_subtype": "external",
+        "view_url": "https://www.loom.com/share/0fa6e38dfa914d5f8ad603fdaa2b1b9e"
+      }
+    ]
+  },
+  "_source": "timeline"
+}

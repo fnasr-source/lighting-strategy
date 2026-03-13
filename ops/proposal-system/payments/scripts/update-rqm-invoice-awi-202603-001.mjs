@@ -29,8 +29,9 @@ const db = admin.firestore();
 const invoiceRef = db.collection('invoices').doc('AWI-202603-001');
 
 const monthlyRetainer = 5500;
-const proratedMarchAmount = Number(((monthlyRetainer / 31) * 12).toFixed(2));
-const revisedTotal = Number((proratedMarchAmount + monthlyRetainer).toFixed(2));
+const proratedMarchAmountRaw = (monthlyRetainer / 31) * 12;
+const proratedMarchAmount = Math.round(proratedMarchAmountRaw);
+const revisedTotal = proratedMarchAmount + monthlyRetainer;
 
 const updateData = {
     clientId: 'RQM-001',
@@ -63,11 +64,11 @@ const updateData = {
         schedule: [
             {
                 label: 'March 2026 coverage',
-                value: `${proratedMarchAmount.toFixed(2)} AED for 12 active days`,
+                value: `${proratedMarchAmount} AED for 12 active days`,
             },
             {
                 label: 'April 2026 coverage',
-                value: `${monthlyRetainer.toFixed(2)} AED for the full month`,
+                value: `${monthlyRetainer} AED for the full month`,
             },
             {
                 label: 'Requested payment target',
@@ -102,9 +103,9 @@ async function main() {
     await invoiceRef.update(updateData);
 
     console.log('Invoice updated successfully.');
-    console.log(`Prorated March 1-12 amount: ${proratedMarchAmount.toFixed(2)} AED`);
-    console.log(`April 2026 amount: ${monthlyRetainer.toFixed(2)} AED`);
-    console.log(`Revised total due: ${revisedTotal.toFixed(2)} AED`);
+    console.log(`Prorated March 1-12 amount: ${proratedMarchAmount} AED`);
+    console.log(`April 2026 amount: ${monthlyRetainer} AED`);
+    console.log(`Revised total due: ${revisedTotal} AED`);
     console.log('Due date: 2026-03-31');
     console.log('Portal URL: https://my.admireworks.com/invoice/AWI-202603-001');
 }

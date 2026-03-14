@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLIENT_ID = 'nasseredin';
 const CLIENT_NAME = 'Nasseredin';
 const USER_EMAIL = 'khaled@nasseredin.com';
+const SHOULD_SEED_DEMO = process.argv.includes('--seed-demo');
 
 function initAdmin() {
   if (getApps().length > 0) return;
@@ -359,10 +360,16 @@ async function main() {
 
   await upsertClient(db);
   await upsertInvite(db);
-  await seedMetrics(db);
-  await seedSocial(db);
-  await seedCreative(db);
-  await seedKpis(db);
+
+  if (SHOULD_SEED_DEMO) {
+    await seedMetrics(db);
+    await seedSocial(db);
+    await seedCreative(db);
+    await seedKpis(db);
+    console.log('Seeded demo performance data for Nasseredin.');
+  } else {
+    console.log('Skipped demo performance seeding for Nasseredin.');
+  }
 
   console.log('Provisioned Nasseredin client area.');
   console.log(`Client ID: ${CLIENT_ID}`);
@@ -373,3 +380,5 @@ main().catch((error) => {
   console.error('Failed provisioning Nasseredin client area:', error);
   process.exit(1);
 });
+
+

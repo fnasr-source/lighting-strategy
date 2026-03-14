@@ -110,7 +110,8 @@ User accounts with role-based access. Doc ID = Firebase Auth UID.
 | `role` | enum | owner, admin, team, client |
 | `permissions` | string[] | Granular permission list |
 | `assignedClients` | string[]? | Team: which clients they manage |
-| `linkedClientId` | string? | Client: their company record |
+| `linkedClientId` | string? | Legacy primary client link for backward compatibility |
+| `linkedClientIds` | string[]? | Client: all client records this login can access |
 | `isActive` | boolean | Account status |
 | `lastLoginAt` | string? | Last login timestamp |
 

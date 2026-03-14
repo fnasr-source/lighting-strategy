@@ -25,7 +25,10 @@ service cloud.firestore {
     function canAccessClient(clientId) {
       return isOwnerOrAdmin()
         || (isSignedIn() && role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([clientId]))
-        || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == clientId);
+        || (isSignedIn() && role() == 'client' && (
+          (profileDoc().linkedClientIds is list && profileDoc().linkedClientIds.hasAny([clientId]))
+          || profileDoc().linkedClientId == clientId
+        ));
     }
 
     // ── User Profiles ──
@@ -46,21 +49,13 @@ service cloud.firestore {
 
     // ── Invoices ──
     match /invoices/{invoiceId} {
-      allow read: if isSignedIn() && (
-        isOwnerOrAdmin()
-        || (role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([resource.data.clientId]))
-        || (role() == 'client' && profileDoc().linkedClientId == resource.data.clientId)
-      );
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
     // ── Payments ──
     match /payments/{paymentId} {
-      allow read: if isSignedIn() && (
-        isOwnerOrAdmin()
-        || (role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([resource.data.clientId]))
-        || (role() == 'client' && profileDoc().linkedClientId == resource.data.clientId)
-      );
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
@@ -72,13 +67,13 @@ service cloud.firestore {
 
     // ── Proposals ──
     match /proposals/{proposalId} {
-      allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);
+      allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
       allow write: if isOwnerOrAdmin();
     }
 
     // ── Platform Connections (credentials metadata only) ──
     match /platformConnections/{connId} {
-      allow read: if isInternal() && canAccessClient(resource.data.clientId);
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
@@ -172,11 +167,7 @@ service cloud.firestore {
 
     // ── Recurring Invoices + Reminders ──
     match /recurringInvoices/{docId} {
-      allow read: if isSignedIn() && (
-        isOwnerOrAdmin()
-        || (role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([resource.data.clientId]))
-        || (role() == 'client' && profileDoc().linkedClientId == resource.data.clientId)
-      );
+      allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
     match /invoiceReminders/{docId} {
@@ -214,11 +205,11 @@ service cloud.firestore {
 
     // ── Reports / Strategy ──
     match /reports/{reportId} {
-      allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);
+      allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
       allow write: if isInternal();
     }
     match /strategies/{strategyId} {
-      allow read: if isInternal() || (isSignedIn() && role() == 'client' && profileDoc().linkedClientId == resource.data.clientId);
+      allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
       allow write: if isInternal();
     }
 

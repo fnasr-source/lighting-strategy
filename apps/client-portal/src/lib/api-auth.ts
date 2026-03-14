@@ -6,6 +6,7 @@ export interface VerifiedApiUser {
   email?: string;
   role?: string;
   linkedClientId?: string;
+  linkedClientIds?: string[];
 }
 
 export async function verifyApiUser(authHeader: string | null | undefined): Promise<VerifiedApiUser | null> {
@@ -16,10 +17,11 @@ export async function verifyApiUser(authHeader: string | null | undefined): Prom
   try {
     const decoded = await adminAuth.verifyIdToken(token);
     let role = getStringClaim(decoded, 'role');
+    const profileSnap = await adminDb.collection('userProfiles').doc(decoded.uid).get();
+    const profileData = profileSnap.exists ? profileSnap.data() : null;
 
     if (!role) {
-      const profileSnap = await adminDb.collection('userProfiles').doc(decoded.uid).get();
-      role = profileSnap.exists ? (profileSnap.data()?.role as string | undefined) : undefined;
+      role = profileData?.role as string | undefined;
     }
 
     return {
@@ -27,6 +29,9 @@ export async function verifyApiUser(authHeader: string | null | undefined): Prom
       email: decoded.email,
       role,
       linkedClientId: getStringClaim(decoded, 'clientId'),
+      linkedClientIds: Array.isArray(profileData?.linkedClientIds)
+        ? profileData.linkedClientIds.filter((value): value is string => typeof value === 'string')
+        : undefined,
     };
   } catch {
     return null;

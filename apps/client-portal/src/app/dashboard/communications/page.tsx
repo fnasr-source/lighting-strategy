@@ -9,7 +9,7 @@ import {
 import { MessageSquare, Send, Plus, X, Clock, CheckCircle, AlertTriangle, Search } from 'lucide-react';
 
 export default function CommunicationsPage() {
-    const { user, profile, hasPermission, isClient } = useAuth();
+    const { user, profile, hasPermission, isClient, accessibleClientIds } = useAuth();
     const [clients, setClients] = useState<Client[]>([]);
     const [allThreads, setAllThreads] = useState<Thread[]>([]);
     const [selectedThread, setSelectedThread] = useState<Thread | null>(null);
@@ -20,14 +20,18 @@ export default function CommunicationsPage() {
     const [search, setSearch] = useState('');
     const msgEndRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => { clientsService.subscribe(setClients); }, []);
+    useEffect(() => {
+        return isClient
+            ? clientsService.subscribeByIds(accessibleClientIds, setClients)
+            : clientsService.subscribe(setClients);
+    }, [isClient, accessibleClientIds]);
 
     useEffect(() => {
-        if (isClient && profile?.linkedClientId) {
-            return threadsService.subscribeByClient(profile.linkedClientId, setAllThreads);
+        if (isClient) {
+            return threadsService.subscribeByClientIds(accessibleClientIds, setAllThreads);
         }
         return threadsService.subscribe(setAllThreads);
-    }, [isClient, profile]);
+    }, [isClient, accessibleClientIds]);
 
     useEffect(() => {
         if (!selectedThread?.id) { setMessages([]); return; }
@@ -53,7 +57,8 @@ export default function CommunicationsPage() {
 
     const handleNewThread = async () => {
         if (!newThread.subject.trim() || !newThread.message.trim() || !user || !profile) return;
-        const clientId = isClient ? profile.linkedClientId! : newThread.clientId;
+        const clientId = isClient ? (newThread.clientId || accessibleClientIds[0] || '') : newThread.clientId;
+        if (!clientId) return;
         const client = clients.find(c => c.id === clientId);
         const threadId = await threadsService.create({
             clientId, clientName: client?.name || 'Unknown', subject: newThread.subject,
@@ -113,7 +118,7 @@ export default function CommunicationsPage() {
                             <h3 style={{ fontWeight: 700, fontSize: '1rem' }}>New Thread</h3>
                             <button onClick={() => setShowNew(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted)' }}><X size={18} /></button>
                         </div>
-                        {!isClient && (
+                        {(!isClient || clients.length > 1) && (
                             <div style={{ marginBottom: 14 }}>
                                 <label className="form-label">Client</label>
                                 <select className="form-input" value={newThread.clientId} onChange={e => setNewThread(p => ({ ...p, clientId: e.target.value }))}>

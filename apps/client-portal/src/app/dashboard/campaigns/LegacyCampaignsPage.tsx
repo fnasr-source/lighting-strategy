@@ -45,7 +45,7 @@ const PLATFORM_ICONS: Record<string, string> = {
 type DateRange = '3m' | '6m' | '12m' | 'all';
 
 export default function CampaignsPage() {
-    const { hasPermission, isClient, profile } = useAuth();
+    const { hasPermission, isClient, accessibleClientIds } = useAuth();
     const [clients, setClients] = useState<Client[]>([]);
     const [selectedClient, setSelectedClient] = useState('');
     const [allRollups, setAllRollups] = useState<MonthlyClientRollup[]>([]);
@@ -64,14 +64,14 @@ export default function CampaignsPage() {
 
     useEffect(() => {
         const unsubs = [
-            clientsService.subscribe(c => setClients(c)),
+            isClient ? clientsService.subscribeByIds(accessibleClientIds, c => setClients(c)) : clientsService.subscribe(c => setClients(c)),
             monthlyRollupsService.subscribe(r => { setAllRollups(r); setDataLoaded(true); }),
             monthlyMetricsService.subscribe(setAllMetrics),
-            platformConnectionsService.subscribe(setAllConnections),
+            isClient ? platformConnectionsService.subscribeByClientIds(accessibleClientIds, setAllConnections) : platformConnectionsService.subscribe(setAllConnections),
             dailyMetricsService.subscribe(setAllDailyMetrics),
         ];
         return () => unsubs.forEach(u => u());
-    }, []);
+    }, [isClient, accessibleClientIds]);
 
     // Load campaign lead count
     useEffect(() => {
@@ -85,13 +85,13 @@ export default function CampaignsPage() {
 
     useEffect(() => {
         if (selectedClient) return;
-        if (isClient && profile?.linkedClientId) {
-            setSelectedClient(profile.linkedClientId);
+        if (isClient && accessibleClientIds.length > 0) {
+            setSelectedClient(accessibleClientIds[0]);
         } else if (clients.length > 0) {
             const active = clients.find(c => c.status === 'active');
             setSelectedClient(active?.id || clients[0].id!);
         }
-    }, [isClient, profile, clients, selectedClient]);
+    }, [isClient, accessibleClientIds, clients, selectedClient]);
 
     // Trigger platform data sync
     const triggerSync = async (clientId?: string) => {

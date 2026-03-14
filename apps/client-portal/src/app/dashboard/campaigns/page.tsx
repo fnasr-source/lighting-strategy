@@ -86,7 +86,7 @@ const SERIES_CONFIG: ChartConfig[] = [
 ];
 
 export default function CampaignsPage() {
-  const { hasPermission, isClient, isAdmin, profile } = useAuth();
+  const { hasPermission, isClient, isAdmin, accessibleClientIds } = useAuth();
 
   const [clients, setClients] = useState<ClientExtended[]>([]);
   const [connections, setConnections] = useState<PlatformConnection[]>([]);
@@ -112,36 +112,41 @@ export default function CampaignsPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubs = [
-      clientsService.subscribe((items) => setClients(items as ClientExtended[])),
-      platformConnectionsService.subscribe(setConnections),
-    ];
+    const unsubs = isClient
+      ? [
+          clientsService.subscribeByIds(accessibleClientIds, (items) => setClients(items as ClientExtended[])),
+          platformConnectionsService.subscribeByClientIds(accessibleClientIds, setConnections),
+        ]
+      : [
+          clientsService.subscribe((items) => setClients(items as ClientExtended[])),
+          platformConnectionsService.subscribe(setConnections),
+        ];
 
     return () => {
       unsubs.forEach((unsub) => unsub());
     };
-  }, []);
+  }, [isClient, accessibleClientIds]);
 
   const availableClients = useMemo(() => {
     const filtered = clients.filter((client) => {
-      if (isClient && client.id !== profile?.linkedClientId) return false;
+      if (isClient && !accessibleClientIds.includes(client.id || '')) return false;
       if (isClient && client.isDemo) return false;
       return client.status === 'active' || client.isDemo;
     });
 
     return filtered;
-  }, [clients, isClient, profile?.linkedClientId]);
+  }, [clients, isClient, accessibleClientIds]);
 
   useEffect(() => {
     if (selectedClient) return;
-    if (isClient && profile?.linkedClientId) {
-      setSelectedClient(profile.linkedClientId);
+    if (isClient && accessibleClientIds.length > 0) {
+      setSelectedClient(accessibleClientIds[0]);
       return;
     }
 
     const preferred = availableClients.find((client) => !client.isDemo) || availableClients[0];
     if (preferred?.id) setSelectedClient(preferred.id);
-  }, [selectedClient, isClient, profile?.linkedClientId, availableClients]);
+  }, [selectedClient, isClient, accessibleClientIds, availableClients]);
 
   const selectedClientObj = useMemo(
     () => availableClients.find((client) => client.id === selectedClient),

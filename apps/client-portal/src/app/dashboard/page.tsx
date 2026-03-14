@@ -223,10 +223,21 @@ function AdminDashboard() {
 // ── Client Dashboard ────────────────────────────────────
 
 function ClientDashboard() {
-    const { user, profile } = useAuth();
+    const { user, profile, accessibleClientIds } = useAuth();
+    const [clients, setClients] = useState<Client[]>([]);
+    const [selectedClientId, setSelectedClientId] = useState('');
     const [intelligence, setIntelligence] = useState<DashboardIntelligenceResponse | null>(null);
-    const clientId = profile?.linkedClientId;
-    const loading = Boolean(clientId) && !intelligence;
+    const clientId = (selectedClientId && accessibleClientIds.includes(selectedClientId))
+        ? selectedClientId
+        : (accessibleClientIds[0] || profile?.linkedClientId);
+    const loading = Boolean(clientId) && intelligence?.clientId !== clientId;
+
+    useEffect(() => {
+        if (accessibleClientIds.length === 0) {
+            return () => { };
+        }
+        return clientsService.subscribeByIds(accessibleClientIds, setClients);
+    }, [accessibleClientIds]);
 
     useEffect(() => {
         if (!clientId) {
@@ -247,6 +258,29 @@ function ClientDashboard() {
                 <h1 className="page-title">Welcome{user?.displayName ? `, ${user.displayName.split(' ')[0]}` : ''}</h1>
                 <p className="page-subtitle">Your performance dashboard</p>
             </div>
+
+            {clients.length > 1 && (
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+                    {clients.map((client) => (
+                        <button
+                            key={client.id}
+                            onClick={() => setSelectedClientId(client.id || '')}
+                            style={{
+                                borderRadius: 999,
+                                border: 'none',
+                                padding: '8px 14px',
+                                fontSize: '0.78rem',
+                                fontWeight: 700,
+                                cursor: 'pointer',
+                                background: client.id === clientId ? 'var(--aw-navy)' : 'var(--muted-bg)',
+                                color: client.id === clientId ? '#fff' : 'var(--foreground)',
+                            }}
+                        >
+                            {client.name}
+                        </button>
+                    ))}
+                </div>
+            )}
 
             {loading ? (
                 <div className="card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40, gap: 12 }}>
@@ -285,7 +319,7 @@ function ClientDashboard() {
                             <div className="empty-state-icon">🎯</div>
                             <div className="empty-state-title">Getting Started</div>
                             <p style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>
-                                {profile?.linkedClientId
+                                {accessibleClientIds.length > 0
                                     ? 'Your performance data is being set up. Check back soon.'
                                     : 'Your account is not yet linked to a client profile. Contact your account manager for access.'}
                             </p>

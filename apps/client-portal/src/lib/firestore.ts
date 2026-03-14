@@ -30,6 +30,22 @@ import type {
 } from '@/lib/billing';
 import { db } from '@/lib/firebase';
 
+function splitIntoBatches<T>(items: T[], size: number): T[][] {
+    const batches: T[][] = [];
+    for (let i = 0; i < items.length; i += size) {
+        batches.push(items.slice(i, i + size));
+    }
+    return batches;
+}
+
+function getSortableTime(value: any): number {
+    if (!value) return 0;
+    if (typeof value?.toMillis === 'function') return value.toMillis();
+    if (typeof value?.seconds === 'number') return value.seconds * 1000;
+    const parsed = new Date(value).getTime();
+    return Number.isNaN(parsed) ? 0 : parsed;
+}
+
 // ── Types ────────────────────────────────────────────
 export interface Contact {
     name: string;
@@ -663,6 +679,12 @@ export const clientsService = {
         return snap.exists() ? { id: snap.id, ...snap.data() } as Client : null;
     },
 
+    async getByIds(ids: string[]): Promise<Client[]> {
+        const uniqueIds = [...new Set(ids.filter(Boolean))];
+        const results = await Promise.all(uniqueIds.map((id) => this.getById(id)));
+        return results.filter((client): client is Client => Boolean(client));
+    },
+
     async create(data: Omit<Client, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
         const ref = await addDoc(collection(db, 'clients'), {
             ...data,
@@ -684,6 +706,23 @@ export const clientsService = {
         return onSnapshot(query(collection(db, 'clients'), orderBy('createdAt', 'desc')), snap => {
             callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Client)));
         });
+    },
+
+    subscribeByIds(ids: string[], callback: (clients: Client[]) => void) {
+        const uniqueIds = [...new Set(ids.filter(Boolean))];
+        if (uniqueIds.length === 0) {
+            callback([]);
+            return () => { };
+        }
+
+        const unsubs = uniqueIds.map((id) =>
+            onSnapshot(doc(db, 'clients', id), () => {
+                void this.getByIds(uniqueIds).then((clients) => callback(clients));
+            }),
+        );
+
+        void this.getByIds(uniqueIds).then((clients) => callback(clients));
+        return () => unsubs.forEach((unsub) => unsub());
     },
 };
 
@@ -927,6 +966,36 @@ export const threadsService = {
             callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as Thread)));
         });
     },
+    subscribeByClientIds(clientIds: string[], callback: (threads: Thread[]) => void) {
+        const uniqueIds = [...new Set(clientIds.filter(Boolean))];
+        if (uniqueIds.length === 0) {
+            callback([]);
+            return () => { };
+        }
+
+        const batches = splitIntoBatches(uniqueIds, 10);
+        const latestByBatch: Thread[][] = batches.map(() => []);
+
+        const emit = () => {
+            callback(
+                latestByBatch
+                    .flat()
+                    .sort((a, b) => getSortableTime(b.lastMessageAt) - getSortableTime(a.lastMessageAt)),
+            );
+        };
+
+        const unsubs = batches.map((batch, index) =>
+            onSnapshot(
+                query(collection(db, 'threads'), where('clientId', 'in', batch), orderBy('lastMessageAt', 'desc')),
+                (snap) => {
+                    latestByBatch[index] = snap.docs.map((d) => ({ id: d.id, ...d.data() } as Thread));
+                    emit();
+                },
+            ),
+        );
+
+        return () => unsubs.forEach((unsub) => unsub());
+    },
     async create(data: Omit<Thread, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
         const ref = await addDoc(collection(db, 'threads'), {
             ...data, messageCount: 0,
@@ -975,6 +1044,36 @@ export const platformConnectionsService = {
         return onSnapshot(collection(db, 'platformConnections'), snap => {
             callback(snap.docs.map(d => ({ id: d.id, ...d.data() } as PlatformConnection)));
         });
+    },
+    subscribeByClientIds(clientIds: string[], callback: (items: PlatformConnection[]) => void) {
+        const uniqueIds = [...new Set(clientIds.filter(Boolean))];
+        if (uniqueIds.length === 0) {
+            callback([]);
+            return () => { };
+        }
+
+        const batches = splitIntoBatches(uniqueIds, 10);
+        const latestByBatch: PlatformConnection[][] = batches.map(() => []);
+
+        const emit = () => {
+            callback(
+                latestByBatch
+                    .flat()
+                    .sort((a, b) => getSortableTime(b.createdAt) - getSortableTime(a.createdAt)),
+            );
+        };
+
+        const unsubs = batches.map((batch, index) =>
+            onSnapshot(
+                query(collection(db, 'platformConnections'), where('clientId', 'in', batch)),
+                (snap) => {
+                    latestByBatch[index] = snap.docs.map((d) => ({ id: d.id, ...d.data() } as PlatformConnection));
+                    emit();
+                },
+            ),
+        );
+
+        return () => unsubs.forEach((unsub) => unsub());
     },
 };
 
@@ -1192,6 +1291,7 @@ export interface UserProfile {
     permissions: Permission[];       // Can override role defaults
     assignedClients?: string[];      // For team members: which client IDs they can access
     linkedClientId?: string;         // For client users: the client record they belong to
+    linkedClientIds?: string[];      // For client users: all client IDs they can access
     avatarUrl?: string;
     phone?: string;
     title?: string;                  // e.g. "Growth Strategist", "CEO"
@@ -1199,6 +1299,19 @@ export interface UserProfile {
     lastLoginAt?: any;
     createdAt?: any;
     updatedAt?: any;
+}
+
+export function getAccessibleClientIds(profile: UserProfile | null): string[] {
+    if (!profile) return [];
+    if (profile.role === 'owner' || profile.role === 'admin') return [];
+    if (profile.role === 'team') return [...new Set(profile.assignedClients?.filter(Boolean) || [])];
+    if (profile.role === 'client') {
+        const ids = profile.linkedClientIds?.length
+            ? profile.linkedClientIds
+            : (profile.linkedClientId ? [profile.linkedClientId] : []);
+        return [...new Set(ids.filter(Boolean))];
+    }
+    return [];
 }
 
 export const userProfilesService = {
@@ -1253,9 +1366,11 @@ export const userProfilesService = {
     canAccessClient(profile: UserProfile | null, clientId: string): boolean {
         if (!profile) return false;
         if (profile.role === 'owner' || profile.role === 'admin') return true;
-        if (profile.role === 'team') return profile.assignedClients?.includes(clientId) ?? false;
-        if (profile.role === 'client') return profile.linkedClientId === clientId;
-        return false;
+        return getAccessibleClientIds(profile).includes(clientId);
+    },
+
+    getAccessibleClientIds(profile: UserProfile | null): string[] {
+        return getAccessibleClientIds(profile);
     },
 };
 
@@ -1298,6 +1413,7 @@ export interface PendingInvite {
     email: string;
     role: UserRole;
     linkedClientId?: string;
+    linkedClientIds?: string[];
     invitedBy: string;
     invitedByName: string;
     status: 'pending' | 'accepted' | 'expired';

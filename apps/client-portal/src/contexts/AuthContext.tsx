@@ -15,6 +15,7 @@ import {
     type UserRole,
     type Permission,
     ROLE_PERMISSIONS,
+    getAccessibleClientIds,
     userProfilesService,
 } from '@/lib/firestore';
 
@@ -32,6 +33,7 @@ interface AuthContextType {
     isClient: boolean;    // client role
     isInternal: boolean;  // owner OR admin OR team (not client)
     role: UserRole | null;
+    accessibleClientIds: string[];
     // Permission checks
     hasPermission: (permission: Permission) => boolean;
     canAccessClient: (clientId: string) => boolean;
@@ -52,6 +54,7 @@ const AuthContext = createContext<AuthContextType>({
     isClient: false,
     isInternal: false,
     role: null,
+    accessibleClientIds: [],
     hasPermission: () => false,
     canAccessClient: () => false,
 });
@@ -61,10 +64,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState(true);
 
+    const claimPendingInvite = async (firebaseUser: User): Promise<UserProfile | null> => {
+        try {
+            const token = await firebaseUser.getIdToken();
+            const resp = await fetch('/api/auth/claim-invite', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!resp.ok) return null;
+            const payload = await resp.json();
+            return payload.success ? payload.profile as UserProfile : null;
+        } catch {
+            return null;
+        }
+    };
+
     // Load UserProfile from Firestore after Firebase Auth
     const loadProfile = async (firebaseUser: User) => {
         try {
             let p = await userProfilesService.getByUid(firebaseUser.uid);
+
+            if (!p || (p.role === 'client' && userProfilesService.getAccessibleClientIds(p).length === 0)) {
+                const claimed = await claimPendingInvite(firebaseUser);
+                if (claimed) {
+                    p = claimed;
+                }
+            }
 
             if (!p) {
                 // First-time login: force token refresh for fresh custom claims
@@ -89,6 +118,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                     permissions: ROLE_PERMISSIONS[role],
                     isActive: true,
                     ...(claimClientId ? { linkedClientId: claimClientId } : {}),
+                    ...(claimClientId ? { linkedClientIds: [claimClientId] } : {}),
                 };
 
                 await userProfilesService.create(firebaseUser.uid, newProfile);
@@ -144,6 +174,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const isTeam = role === 'owner' || role === 'admin' || role === 'team';
     const isClient = role === 'client';
     const isInternal = !isClient && role !== null;
+    const accessibleClientIds = getAccessibleClientIds(profile);
 
     return (
         <AuthContext.Provider
@@ -160,6 +191,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 isClient,
                 isInternal,
                 role,
+                accessibleClientIds,
                 hasPermission: (perm) => userProfilesService.hasPermission(profile, perm),
                 canAccessClient: (clientId) => userProfilesService.canAccessClient(profile, clientId),
             }}

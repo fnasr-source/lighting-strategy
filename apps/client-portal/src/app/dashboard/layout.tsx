@@ -66,6 +66,7 @@ const clientNavItems: NavItem[] = [
     { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
     { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
     { label: 'Campaigns', href: '/dashboard/campaigns', icon: Zap },
+    { label: 'Integrations', href: '/dashboard/integrations', icon: Globe },
     { label: 'Reports', href: '/dashboard/reports', icon: FileText },
     { label: 'Invoices', href: '/dashboard/invoices', icon: Receipt },
     { label: 'Payments', href: '/dashboard/payments', icon: CreditCard },

@@ -11,6 +11,10 @@ type UpsertPayload = {
   timezone?: string;
 };
 
+type DeletePayload = {
+  connectionId?: string;
+};
+
 const SUPPORTED: SupportedPlatform[] = [
   'meta_ads',
   'google_ads',
@@ -28,21 +32,10 @@ function maskCredential(value: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const authHeader = request.headers.get('authorization') || '';
-    const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
-    if (!token) {
-      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-    }
+    const authResult = await verifyAuthorizedUser(request);
+    if ('error' in authResult) return authResult.error;
 
-    const adminAuth = getAdminAuth();
-    let decoded: { uid: string };
-    try {
-      const verified = await adminAuth.verifyIdToken(token);
-      decoded = { uid: verified.uid };
-    } catch {
-      return NextResponse.json({ success: false, error: 'Invalid auth token' }, { status: 401 });
-    }
-
+    const { decoded } = authResult;
     const body = (await request.json()) as UpsertPayload;
 
     if (!body.clientId || !body.platform || !SUPPORTED.includes(body.platform)) {
@@ -50,9 +43,9 @@ export async function POST(request: NextRequest) {
     }
 
     const db = getAdminDb();
-    const profileDoc = await db.collection('userProfiles').doc(decoded.uid).get();
-    const role = profileDoc.data()?.role;
-    if (!['owner', 'admin'].includes(role)) {
+    const profileSnap = await db.collection('userProfiles').doc(decoded.uid).get();
+    const profile = profileSnap.data() || {};
+    if (!canManageClient(profile, body.clientId)) {
       return NextResponse.json({ success: false, error: 'Forbidden' }, { status: 403 });
     }
 
@@ -109,4 +102,73 @@ export async function POST(request: NextRequest) {
     const message = error instanceof Error ? error.message : 'Failed to upsert integration';
     return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const authResult = await verifyAuthorizedUser(request);
+    if ('error' in authResult) return authResult.error;
+
+    const { decoded } = authResult;
+    const body = (await request.json()) as DeletePayload;
+    if (!body.connectionId) {
+      return NextResponse.json({ success: false, error: 'connectionId is required' }, { status: 400 });
+    }
+
+    const db = getAdminDb();
+    const profileSnap = await db.collection('userProfiles').doc(decoded.uid).get();
+    const profile = profileSnap.data() || {};
+
+    const connectionSnap = await db.collection('platformConnections').doc(body.connectionId).get();
+    if (!connectionSnap.exists) {
+      return NextResponse.json({ success: false, error: 'Integration not found' }, { status: 404 });
+    }
+
+    const connection = connectionSnap.data() as { clientId?: string; platform?: string; credentialRef?: { key?: string } };
+    const clientId = connection.clientId || '';
+    if (!clientId || !canManageClient(profile, clientId)) {
+      return NextResponse.json({ success: false, error: 'Forbidden' }, { status: 403 });
+    }
+
+    await db.collection('platformConnections').doc(body.connectionId).delete();
+    if (connection.credentialRef?.key) {
+      await db.collection('systemConfig').doc('integrationSecrets').set(
+        { [connection.credentialRef.key]: null },
+        { merge: true },
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to delete integration';
+    return NextResponse.json({ success: false, error: message }, { status: 500 });
+  }
+}
+
+async function verifyAuthorizedUser(request: NextRequest) {
+  const authHeader = request.headers.get('authorization') || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
+  if (!token) {
+    return { error: NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 }) };
+  }
+
+  const adminAuth = getAdminAuth();
+  try {
+    const decoded = await adminAuth.verifyIdToken(token);
+    return { decoded };
+  } catch {
+    return { error: NextResponse.json({ success: false, error: 'Invalid auth token' }, { status: 401 }) };
+  }
+}
+
+function canManageClient(profile: Record<string, unknown>, clientId: string): boolean {
+  const role = String(profile.role || '');
+  if (role === 'owner' || role === 'admin') return true;
+  if (role !== 'client') return false;
+
+  const linkedClientIds = Array.isArray(profile.linkedClientIds)
+    ? profile.linkedClientIds.filter((value): value is string => typeof value === 'string')
+    : [];
+  const linkedClientId = typeof profile.linkedClientId === 'string' ? profile.linkedClientId : '';
+  return linkedClientIds.includes(clientId) || linkedClientId === clientId;
 }

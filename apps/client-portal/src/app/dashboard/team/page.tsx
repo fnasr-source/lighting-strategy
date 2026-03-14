@@ -14,7 +14,7 @@ import {
     pendingInvitesService,
     type Client,
 } from '@/lib/firestore';
-import { Users, Plus, X, Shield, Edit2, Trash2, Check, Search, Mail, Clock, Activity, UserPlus, Filter } from 'lucide-react';
+import { Users, X, Shield, Edit2, Trash2, Check, Search, Mail, Clock, Activity, UserPlus } from 'lucide-react';
 
 const ROLE_OPTIONS: { value: UserRole; label: string; description: string }[] = [
     { value: 'owner', label: 'Owner', description: 'Full access to everything including billing' },
@@ -53,14 +53,14 @@ export default function TeamPage() {
         title: '',
         phone: '',
         assignedClients: [] as string[],
-        linkedClientId: '',
+        linkedClientIds: [] as string[],
     });
 
     // Invite form state
     const [inviteData, setInviteData] = useState({
         email: '',
         role: 'team' as UserRole,
-        linkedClientId: '',
+        linkedClientIds: [] as string[],
     });
 
     useEffect(() => {
@@ -76,7 +76,7 @@ export default function TeamPage() {
             <div className="empty-state">
                 <div className="empty-state-icon">🔒</div>
                 <div className="empty-state-title">Access Denied</div>
-                <p style={{ color: 'var(--muted)' }}>You don't have permission to view this page.</p>
+                <p style={{ color: 'var(--muted)' }}>You do not have permission to view this page.</p>
             </div>
         );
     }
@@ -92,7 +92,7 @@ export default function TeamPage() {
     );
 
     const resetForm = () => {
-        setFormData({ email: '', displayName: '', role: 'team', title: '', phone: '', assignedClients: [], linkedClientId: '' });
+        setFormData({ email: '', displayName: '', role: 'team', title: '', phone: '', assignedClients: [], linkedClientIds: [] });
         setEditing(null);
         setShowForm(false);
     };
@@ -105,7 +105,7 @@ export default function TeamPage() {
             title: p.title || '',
             phone: p.phone || '',
             assignedClients: p.assignedClients || [],
-            linkedClientId: p.linkedClientId || '',
+            linkedClientIds: p.linkedClientIds?.length ? p.linkedClientIds : (p.linkedClientId ? [p.linkedClientId] : []),
         });
         setEditing(p);
         setShowForm(true);
@@ -113,6 +113,7 @@ export default function TeamPage() {
 
     const handleSave = async () => {
         if (!editing?.uid) return;
+        if (formData.role === 'client' && formData.linkedClientIds.length === 0) return;
         const prevRole = editing.role;
         await userProfilesService.update(editing.uid, {
             displayName: formData.displayName,
@@ -121,7 +122,8 @@ export default function TeamPage() {
             title: formData.title || undefined,
             phone: formData.phone || undefined,
             assignedClients: formData.role === 'team' ? formData.assignedClients : undefined,
-            linkedClientId: formData.role === 'client' ? formData.linkedClientId : undefined,
+            linkedClientId: formData.role === 'client' ? formData.linkedClientIds[0] || undefined : undefined,
+            linkedClientIds: formData.role === 'client' ? formData.linkedClientIds : undefined,
         });
 
         // Log the action
@@ -163,12 +165,14 @@ export default function TeamPage() {
 
     const handleSendInvite = async () => {
         if (!inviteData.email || !user || !profile) return;
+        if (inviteData.role === 'client' && inviteData.linkedClientIds.length === 0) return;
         setInviteSending(true);
         try {
             await pendingInvitesService.create({
                 email: inviteData.email.trim().toLowerCase(),
                 role: inviteData.role,
-                linkedClientId: inviteData.role === 'client' ? inviteData.linkedClientId : undefined,
+                linkedClientId: inviteData.role === 'client' ? inviteData.linkedClientIds[0] || undefined : undefined,
+                linkedClientIds: inviteData.role === 'client' ? inviteData.linkedClientIds : undefined,
                 invitedBy: user.uid,
                 invitedByName: profile.displayName || user.email || '',
                 status: 'pending',
@@ -184,7 +188,7 @@ export default function TeamPage() {
                 details: `Invited ${inviteData.email} as ${inviteData.role}`,
             }).catch(() => { });
 
-            setInviteData({ email: '', role: 'team', linkedClientId: '' });
+            setInviteData({ email: '', role: 'team', linkedClientIds: [] });
             setShowInviteForm(false);
         } finally {
             setInviteSending(false);
@@ -197,6 +201,24 @@ export default function TeamPage() {
             assignedClients: prev.assignedClients.includes(clientId)
                 ? prev.assignedClients.filter(id => id !== clientId)
                 : [...prev.assignedClients, clientId],
+        }));
+    };
+
+    const toggleLinkedClient = (clientId: string) => {
+        setFormData(prev => ({
+            ...prev,
+            linkedClientIds: prev.linkedClientIds.includes(clientId)
+                ? prev.linkedClientIds.filter(id => id !== clientId)
+                : [...prev.linkedClientIds, clientId],
+        }));
+    };
+
+    const toggleInviteClient = (clientId: string) => {
+        setInviteData(prev => ({
+            ...prev,
+            linkedClientIds: prev.linkedClientIds.includes(clientId)
+                ? prev.linkedClientIds.filter(id => id !== clientId)
+                : [...prev.linkedClientIds, clientId],
         }));
     };
 
@@ -317,9 +339,11 @@ export default function TeamPage() {
                                             </span>
                                         )}
 
-                                        {p.role === 'client' && p.linkedClientId && (
+                                        {p.role === 'client' && (p.linkedClientIds?.length || p.linkedClientId) && (
                                             <span style={{ fontSize: '0.73rem', color: 'var(--muted)' }}>
-                                                → {clients.find(c => c.id === p.linkedClientId)?.name || 'Unlinked'}
+                                                → {(p.linkedClientIds?.length ? p.linkedClientIds : (p.linkedClientId ? [p.linkedClientId] : []))
+                                                    .map(id => clients.find(c => c.id === id)?.name || 'Unlinked')
+                                                    .join(', ')}
                                             </span>
                                         )}
 
@@ -509,19 +533,32 @@ export default function TeamPage() {
                         {/* Link client for client role */}
                         {formData.role === 'client' && (
                             <div className="form-group">
-                                <label className="form-label">Linked Client Account</label>
-                                <select className="form-input" value={formData.linkedClientId}
-                                    onChange={e => setFormData(prev => ({ ...prev, linkedClientId: e.target.value }))}>
-                                    <option value="">Select client...</option>
+                                <label className="form-label">Linked Client Accounts</label>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                                     {clients.map(c => (
-                                        <option key={c.id} value={c.id}>{c.name}</option>
+                                        <label key={c.id} style={{
+                                            display: 'flex', alignItems: 'center', gap: 8,
+                                            padding: '8px 10px', borderRadius: 6,
+                                            background: formData.linkedClientIds.includes(c.id!) ? 'var(--accent-bg)' : 'transparent',
+                                            cursor: 'pointer',
+                                        }}>
+                                            <input
+                                                type="checkbox"
+                                                checked={formData.linkedClientIds.includes(c.id!)}
+                                                onChange={() => toggleLinkedClient(c.id!)}
+                                            />
+                                            <span style={{ fontSize: '0.85rem' }}>{c.name}</span>
+                                        </label>
                                     ))}
-                                </select>
+                                </div>
+                                <p style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--muted)' }}>
+                                    Select every client this login should be allowed to open.
+                                </p>
                             </div>
                         )}
 
                         <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
-                            <button className="btn btn-primary" onClick={handleSave} style={{ flex: 1 }}>
+                            <button className="btn btn-primary" onClick={handleSave} disabled={formData.role === 'client' && formData.linkedClientIds.length === 0} style={{ flex: 1 }}>
                                 <Check size={16} /> Save Changes
                             </button>
                             <button className="btn btn-outline" onClick={resetForm} style={{ flex: 0 }}>
@@ -575,17 +612,24 @@ export default function TeamPage() {
 
                         {inviteData.role === 'client' && (
                             <div className="form-group">
-                                <label className="form-label">Link to Client</label>
-                                <select
-                                    className="form-input"
-                                    value={inviteData.linkedClientId}
-                                    onChange={e => setInviteData(prev => ({ ...prev, linkedClientId: e.target.value }))}
-                                >
-                                    <option value="">Select client…</option>
+                                <label className="form-label">Link to Client Accounts</label>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                                     {clients.map(c => (
-                                        <option key={c.id} value={c.id}>{c.name}</option>
+                                        <label key={c.id} style={{
+                                            display: 'flex', alignItems: 'center', gap: 8,
+                                            padding: '8px 10px', borderRadius: 6,
+                                            background: inviteData.linkedClientIds.includes(c.id!) ? 'var(--accent-bg)' : 'transparent',
+                                            cursor: 'pointer',
+                                        }}>
+                                            <input
+                                                type="checkbox"
+                                                checked={inviteData.linkedClientIds.includes(c.id!)}
+                                                onChange={() => toggleInviteClient(c.id!)}
+                                            />
+                                            <span style={{ fontSize: '0.85rem' }}>{c.name}</span>
+                                        </label>
                                     ))}
-                                </select>
+                                </div>
                             </div>
                         )}
 
@@ -593,7 +637,7 @@ export default function TeamPage() {
                             <button
                                 className="btn btn-primary"
                                 onClick={handleSendInvite}
-                                disabled={!inviteData.email || inviteSending}
+                                disabled={!inviteData.email || inviteSending || (inviteData.role === 'client' && inviteData.linkedClientIds.length === 0)}
                                 style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
                             >
                                 <Mail size={16} />

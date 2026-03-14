@@ -26,22 +26,43 @@ const PLATFORMS = [
     {
         id: 'meta_ads', name: 'Meta Ads (Facebook/Instagram)', icon: '📘', color: '#1877F2',
         fields: [{ key: 'adAccountId', label: 'Ad Account ID', placeholder: 'e.g. 565810425828068' }, { key: 'accessToken', label: 'Access Token', placeholder: 'EAA...' }],
-        instructions: '1. Open business.facebook.com and sign in to the exact ad account you want on this dashboard.\n2. Go to Business Settings -> Accounts -> Ad Accounts and copy the numeric Ad Account ID.\n3. Open Meta Graph API Explorer and generate an access token with ads_read permission.\n4. If Meta gives you a short-lived token, extend it to a long-lived token.\n5. Paste the Ad Account ID and Access Token below, then click Connect Platform.'
+        instructions: '1. Open Business Settings and sign in to the exact ad account you want on this dashboard.\n2. Open Ad Accounts and copy the numeric Ad Account ID.\n3. Open Graph API Explorer and generate an access token with ads_read permission.\n4. Open Access Token Debugger if you need to inspect or extend the token.\n5. Paste the Ad Account ID and Access Token below, then click Connect Platform.',
+        links: [
+            { label: 'Open Business Settings', href: 'https://business.facebook.com/settings/' },
+            { label: 'Open Ad Accounts', href: 'https://business.facebook.com/settings/ad-accounts' },
+            { label: 'Open Graph API Explorer', href: 'https://developers.facebook.com/tools/explorer/' },
+            { label: 'Open Access Token Debugger', href: 'https://developers.facebook.com/tools/debug/accesstoken/' },
+        ]
     },
     {
         id: 'google_ads', name: 'Google Ads', icon: '🔍', color: '#4285F4',
         fields: [{ key: 'customerId', label: 'Customer ID', placeholder: 'e.g. 123-456-7890' }, { key: 'developerToken', label: 'Developer Token', placeholder: '' }, { key: 'refreshToken', label: 'Refresh Token', placeholder: '' }],
-        instructions: '1. Open ads.google.com and copy the Customer ID from the account you want to report on.\n2. In Google Cloud, enable the Google Ads API for that same business login.\n3. Create OAuth credentials and generate a refresh token.\n4. Make sure you also have the Google Ads developer token.\n5. Paste the Customer ID, Developer Token, and Refresh Token below, then click Connect Platform.'
+        instructions: '1. Open Google Ads and copy the Customer ID from the account you want to report on.\n2. Open API Center to get or confirm the Developer Token.\n3. Open OAuth Playground or your OAuth flow to generate a Refresh Token.\n4. Make sure the same Google user has access to the ad account.\n5. Paste the Customer ID, Developer Token, and Refresh Token below, then click Connect Platform.',
+        links: [
+            { label: 'Open Google Ads', href: 'https://ads.google.com/' },
+            { label: 'Open API Center', href: 'https://ads.google.com/aw/apicenter' },
+            { label: 'Open OAuth Playground Guide', href: 'https://developers.google.com/google-ads/api/docs/oauth/playground' },
+            { label: 'Developer Token Help', href: 'https://developers.google.com/google-ads/api/docs/api-policy/developer-token' },
+        ]
     },
     {
         id: 'tiktok_ads', name: 'TikTok Ads', icon: '🎵', color: '#000000',
         fields: [{ key: 'advertiserId', label: 'Advertiser ID', placeholder: '' }, { key: 'accessToken', label: 'Access Token', placeholder: '' }],
-        instructions: '1. Open ads.tiktok.com and sign in to the advertiser account you want in the dashboard.\n2. Go to Account Settings and copy the Advertiser ID.\n3. Create or use a TikTok Marketing API app with reporting access.\n4. Generate an access token that can read campaign data.\n5. Paste the Advertiser ID and Access Token below, then click Connect Platform.'
+        instructions: '1. Open TikTok Ads Manager and sign in to the advertiser account you want in the dashboard.\n2. Open Business Center advertiser accounts and copy the Advertiser ID.\n3. Open TikTok Business API docs if you need the API app and access token flow.\n4. Generate an access token that can read campaign data.\n5. Paste the Advertiser ID and Access Token below, then click Connect Platform.',
+        links: [
+            { label: 'Open TikTok Ads Manager', href: 'https://ads.tiktok.com/' },
+            { label: 'Open Advertiser Accounts Help', href: 'https://ads.tiktok.com/help/article/request-access-to-ad-accounts-in-business-center' },
+            { label: 'Open TikTok Business API Docs', href: 'https://business-api.tiktok.com/portal/docs' },
+        ]
     },
     {
         id: 'shopify', name: 'Shopify', icon: '🛍️', color: '#96BF48',
         fields: [{ key: 'shopUrl', label: 'Shop URL', placeholder: 'e.g. mystore.myshopify.com' }, { key: 'accessToken', label: 'Access Token', placeholder: 'shpat_...' }],
-        instructions: '1. Open Shopify Admin -> Settings -> Apps and sales channels -> Develop apps.\n2. Create a reporting app.\n3. Enable at minimum read_orders, read_products, and read_analytics scopes.\n4. Install the app and copy the Admin API access token.\n5. Paste the shop URL and token below, then click Connect Platform.'
+        instructions: '1. Open Shopify Admin and go to Develop apps.\n2. Create a reporting app.\n3. Enable at minimum read_orders, read_products, and read_analytics scopes.\n4. Install the app and copy the Admin API access token.\n5. Paste the shop URL and token below, then click Connect Platform.',
+        links: [
+            { label: 'Open Shopify Admin', href: 'https://admin.shopify.com/' },
+            { label: 'Open Develop Apps Guide', href: 'https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/generate-app-access-tokens-admin' },
+        ]
     },
     {
         id: 'woocommerce', name: 'WooCommerce', icon: '🧺', color: '#96588A',
@@ -50,12 +71,22 @@ const PLATFORMS = [
             { key: 'consumerKey', label: 'Consumer Key', placeholder: 'ck_...' },
             { key: 'consumerSecret', label: 'Consumer Secret', placeholder: 'cs_...' },
         ],
-        instructions: '1. In WordPress Admin, go to WooCommerce -> Settings -> Advanced -> REST API.\n2. Create a new read-only API key.\n3. Copy the Consumer Key and Consumer Secret exactly as WooCommerce shows them.\n4. Copy the full store URL including https://.\n5. Paste the Store URL, Consumer Key, and Consumer Secret below, then click Connect Platform.'
+        instructions: '1. Open WooCommerce REST API settings in WordPress Admin.\n2. Create a new read-only API key.\n3. Copy the Consumer Key and Consumer Secret exactly as WooCommerce shows them.\n4. Copy the full store URL including https://.\n5. Paste the Store URL, Consumer Key, and Consumer Secret below, then click Connect Platform.',
+        links: [
+            { label: 'Open WooCommerce REST API Guide', href: 'https://woocommerce.com/document/woocommerce-rest-api/' },
+            { label: 'Open WooCommerce Developer Docs', href: 'https://developer.woocommerce.com/docs/apis/rest-api/' },
+            { label: 'Open Advanced Settings Docs', href: 'https://woocommerce.com/document/configuring-woocommerce-settings/advanced/' },
+        ]
     },
     {
         id: 'ga4', name: 'Google Analytics 4', icon: '📊', color: '#E37400',
         fields: [{ key: 'propertyId', label: 'Property ID', placeholder: 'e.g. 123456789' }, { key: 'serviceAccountKey', label: 'Service Account JSON', placeholder: '{ "type": "service_account", ... }' }],
-        instructions: '1. Open analytics.google.com -> Admin -> Property Settings and copy the Property ID.\n2. Create a Google Cloud service account and download the JSON key file.\n3. In GA4 Access Management, add that service account email as at least Viewer.\n4. Open the JSON file and copy the full contents.\n5. Paste the Property ID and Service Account JSON below, then click Connect Platform.'
+        instructions: '1. Open Google Analytics Admin and copy the Property ID from Property Settings.\n2. Create a Google Cloud service account and download the JSON key file.\n3. In GA4 Access Management, add that service account email as at least Viewer.\n4. Open the JSON file and copy the full contents.\n5. Paste the Property ID and Service Account JSON below, then click Connect Platform.',
+        links: [
+            { label: 'Open Google Analytics', href: 'https://analytics.google.com/' },
+            { label: 'Property ID Help', href: 'https://developers.google.com/analytics/devguides/reporting/data/v1/property-id' },
+            { label: 'Open Google Cloud Console', href: 'https://console.cloud.google.com/' },
+        ]
     },
 ];
 
@@ -325,6 +356,30 @@ export default function IntegrationsPage() {
                                             <li key={step}>{step.replace(/^\d+\.\s*/, '')}</li>
                                         ))}
                                     </ol>
+                                    {'links' in selectedPlatform && Array.isArray(selectedPlatform.links) && selectedPlatform.links.length > 0 && (
+                                        <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                                            {selectedPlatform.links.map((link) => (
+                                                <a
+                                                    key={link.href}
+                                                    href={link.href}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    style={{
+                                                        fontSize: '0.74rem',
+                                                        fontWeight: 700,
+                                                        color: 'var(--aw-navy)',
+                                                        textDecoration: 'none',
+                                                        border: '1px solid var(--card-border)',
+                                                        background: '#fff',
+                                                        borderRadius: 999,
+                                                        padding: '6px 10px',
+                                                    }}
+                                                >
+                                                    {link.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
 
                                 {selectedPlatform.fields.map(f => (

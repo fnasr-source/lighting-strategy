@@ -19,6 +19,7 @@ import {
     Link2,
     RefreshCw,
     BarChart3,
+    ExternalLink,
 } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 
@@ -134,6 +135,18 @@ export default function IntegrationsPage() {
 
     const canWrite = hasPermission('campaigns:write') || isClient;
     const clientName = (id: string) => clients.find(c => c.id === id)?.name || id;
+    const openPlatform = (platformId: string) => {
+        setForm({
+            clientId: selectedClientId || clients[0]?.id || '',
+            platform: platformId,
+            credentials: {},
+            currency: 'USD',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC',
+        });
+        setEditConn(null);
+        setError('');
+        setShowAdd(true);
+    };
 
     const openAdd = () => {
         setForm({
@@ -224,6 +237,10 @@ export default function IntegrationsPage() {
     const selectedPlatform = PLATFORMS.find(p => p.id === form.platform);
     const visibleEntries = Object.entries(grouped).filter(([clientId]) => !selectedClientId || clientId === selectedClientId);
     const selectedClientConnections = selectedClientId ? connections.filter((connection) => connection.clientId === selectedClientId) : [];
+    const availablePlatforms = PLATFORMS.map((platform) => ({
+        ...platform,
+        isConnected: selectedClientId ? selectedClientConnections.some((connection) => connection.platform === platform.id && connection.isConnected) : false,
+    }));
 
     return (
         <div>
@@ -282,6 +299,59 @@ export default function IntegrationsPage() {
                         Active client area: <strong style={{ color: 'var(--foreground)' }}>{clientName(selectedClientId)}</strong>
                     </div>
                 )}
+            </div>
+
+            <div className="card" style={{ marginBottom: 18, padding: 20 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
+                    <div>
+                        <h2 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 800 }}>Choose what to connect</h2>
+                        <p style={{ margin: '6px 0 0', fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+                            Start with the platforms that actually drive reporting for this client. Each card shows what you need before opening the form.
+                        </p>
+                    </div>
+                    {selectedClientId && (
+                        <div style={{ fontSize: '0.76rem', color: 'var(--muted)', alignSelf: 'center' }}>
+                            Connecting for <strong style={{ color: 'var(--foreground)' }}>{clientName(selectedClientId)}</strong>
+                        </div>
+                    )}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: 12 }}>
+                    {availablePlatforms.map((platform) => (
+                        <button
+                            key={platform.id}
+                            onClick={() => openPlatform(platform.id)}
+                            disabled={!canWrite}
+                            style={{
+                                textAlign: 'left',
+                                border: '1px solid var(--card-border)',
+                                borderRadius: 14,
+                                padding: 14,
+                                background: platform.isConnected ? 'rgba(22,163,74,0.06)' : 'var(--card-bg)',
+                                cursor: canWrite ? 'pointer' : 'default',
+                            }}
+                        >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 10 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                    <span style={{ fontSize: '1.35rem' }}>{platform.icon}</span>
+                                    <div>
+                                        <div style={{ fontWeight: 700, fontSize: '0.86rem' }}>{platform.name}</div>
+                                        <div style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>{platform.fields.length} field{platform.fields.length > 1 ? 's' : ''} required</div>
+                                    </div>
+                                </div>
+                                <span style={{ fontSize: '0.68rem', fontWeight: 700, borderRadius: 999, padding: '4px 8px', background: platform.isConnected ? 'rgba(22,163,74,0.12)' : 'rgba(0,26,112,0.08)', color: platform.isConnected ? '#15803d' : 'var(--aw-navy)' }}>
+                                    {platform.isConnected ? 'Connected' : 'Set up'}
+                                </span>
+                            </div>
+                            <div style={{ fontSize: '0.74rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: 10 }}>
+                                {platform.fields.map((field) => field.label).join(' + ')}
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.74rem', fontWeight: 700, color: 'var(--aw-navy)' }}>
+                                <Plus size={13} />
+                                {platform.isConnected ? 'Update connection' : 'Connect now'}
+                            </div>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {error && (
@@ -351,6 +421,14 @@ export default function IntegrationsPage() {
                                     <div style={{ fontSize: '0.76rem', color: 'var(--muted)', marginBottom: 10 }}>
                                         You will enter: {selectedPlatform.fields.map((field) => field.label).join(' + ')}
                                     </div>
+                                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+                                        <span style={{ fontSize: '0.68rem', fontWeight: 700, borderRadius: 999, padding: '4px 8px', background: 'rgba(0,26,112,0.08)', color: 'var(--aw-navy)' }}>
+                                            Step 1: Open the links below
+                                        </span>
+                                        <span style={{ fontSize: '0.68rem', fontWeight: 700, borderRadius: 999, padding: '4px 8px', background: 'rgba(204,159,83,0.14)', color: '#9a6700' }}>
+                                            Step 2: Copy only these fields
+                                        </span>
+                                    </div>
                                     <ol style={{ margin: 0, paddingLeft: 18, fontSize: '0.78rem', color: 'var(--foreground)', lineHeight: 1.8 }}>
                                         {selectedPlatform.instructions.split('\n').map((step) => (
                                             <li key={step}>{step.replace(/^\d+\.\s*/, '')}</li>
@@ -373,9 +451,13 @@ export default function IntegrationsPage() {
                                                         background: '#fff',
                                                         borderRadius: 999,
                                                         padding: '6px 10px',
+                                                        display: 'inline-flex',
+                                                        alignItems: 'center',
+                                                        gap: 6,
                                                     }}
                                                 >
                                                     {link.label}
+                                                    <ExternalLink size={12} />
                                                 </a>
                                             ))}
                                         </div>
@@ -418,11 +500,16 @@ export default function IntegrationsPage() {
                             const creds = conn.credentialsMasked || conn.credentials || {};
                             const detail = creds.adAccountId ? `Account: ${creds.adAccountId}` : creds.shopUrl ? `Shop: ${creds.shopUrl}` : creds.customerId ? `ID: ${creds.customerId}` : 'Connected';
                             return (
-                                <div key={conn.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px', borderRadius: 10, border: '1px solid var(--card-border)', background: 'var(--muted-bg)' }}>
+                                <div key={conn.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px', borderRadius: 12, border: '1px solid var(--card-border)', background: 'var(--muted-bg)', gap: 12, flexWrap: 'wrap' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                                         <span style={{ fontSize: '1.3rem' }}>{info?.icon || '🔗'}</span>
                                         <div>
-                                            <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{info?.name || conn.platform}</div>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                                                <div style={{ fontWeight: 700, fontSize: '0.88rem' }}>{info?.name || conn.platform}</div>
+                                                <span style={{ fontSize: '0.66rem', fontWeight: 700, borderRadius: 999, padding: '3px 8px', background: 'rgba(0,26,112,0.08)', color: 'var(--aw-navy)' }}>
+                                                    {clientName(conn.clientId)}
+                                                </span>
+                                            </div>
                                             <div style={{ fontSize: '0.73rem', color: 'var(--muted)', fontFamily: 'monospace' }}>{detail}</div>
                                             <div style={{ fontSize: '0.68rem', color: 'var(--muted)' }}>
                                                 {(conn.timezone || 'UTC')} · {conn.currency || 'USD'}

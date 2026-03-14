@@ -2,6 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 
 type SupportedRole = 'owner' | 'admin' | 'team' | 'client';
+type PendingInviteRecord = {
+  id: string;
+  role?: string;
+  linkedClientId?: string;
+  linkedClientIds?: unknown[];
+  createdAt?: { toDate?: () => Date } | string;
+  expiresAt?: string;
+};
 
 const ROLE_PERMISSIONS: Record<SupportedRole, string[]> = {
   owner: [
@@ -59,7 +67,7 @@ export async function POST(request: NextRequest) {
       .get();
 
     const inviteDoc = inviteSnap.docs
-      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .map((doc) => ({ id: doc.id, ...doc.data() }) as PendingInviteRecord)
       .filter((invite) => !invite.expiresAt || new Date(invite.expiresAt).getTime() > Date.now())
       .sort((a, b) => String(b.createdAt?.toDate?.() || b.createdAt || '').localeCompare(String(a.createdAt?.toDate?.() || a.createdAt || '')))[0];
 
@@ -119,3 +127,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
 }
+
+

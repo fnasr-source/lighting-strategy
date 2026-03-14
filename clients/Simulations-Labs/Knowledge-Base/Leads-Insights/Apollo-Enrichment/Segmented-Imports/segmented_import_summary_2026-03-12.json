@@ -1,0 +1,22 @@
+[
+  {
+    "segment": "mena_decision_makers",
+    "count": 217,
+    "file": "/Users/user/Documents/IDE Projects/Internal AW SOP/clients/Simulations-Labs/Knowledge-Base/Leads-Insights/Apollo-Enrichment/Segmented-Imports/simlabs_universities_mena_decision_makers_2026-03-12.csv"
+  },
+  {
+    "segment": "mena_faculty_operators",
+    "count": 204,
+    "file": "/Users/user/Documents/IDE Projects/Internal AW SOP/clients/Simulations-Labs/Knowledge-Base/Leads-Insights/Apollo-Enrichment/Segmented-Imports/simlabs_universities_mena_faculty_operators_2026-03-12.csv"
+  },
+  {
+    "segment": "global_decision_makers",
+    "count": 325,
+    "file": "/Users/user/Documents/IDE Projects/Internal AW SOP/clients/Simulations-Labs/Knowledge-Base/Leads-Insights/Apollo-Enrichment/Segmented-Imports/simlabs_universities_global_decision_makers_2026-03-12.csv"
+  },
+  {
+    "segment": "global_faculty_operators",
+    "count": 254,
+    "file": "/Users/user/Documents/IDE Projects/Internal AW SOP/clients/Simulations-Labs/Knowledge-Base/Leads-Insights/Apollo-Enrichment/Segmented-Imports/simlabs_universities_global_faculty_operators_2026-03-12.csv"
+  }
+]

@@ -1,0 +1,602 @@
+{
+  "generated_at": "2026-03-12T12:20:05.365Z",
+  "requested_topup": 119,
+  "created_or_labeled": 119,
+  "contacts": [
+    {
+      "email": "a.turkistani@tu.edu.sa",
+      "contact_id": "69b2af6a728df30011679788",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "gmohamed@qu.edu.qa",
+      "contact_id": "69b2af6a728df30011679789",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "bassil.maya@qu.edu.qa",
+      "contact_id": "69b2af6a728df3001167978a",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "z.abdijabar@ajman.ac.ae",
+      "contact_id": "69b2af6a728df3001167978b",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "mohammed.salem@guc.edu.eg",
+      "contact_id": "69b2af6a728df3001167978c",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "marc.michail@bue.edu.eg",
+      "contact_id": "69b2af6a728df3001167978d",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "shahir.aziz@guc.edu.eg",
+      "contact_id": "69b2af6a728df3001167978e",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "emad.awadallah@qu.edu.qa",
+      "contact_id": "69b2af6a728df3001167978f",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "pooyan@gcet.edu.om",
+      "contact_id": "69b2af6a728df30011679790",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "tahir.mustafa@qu.edu.qa",
+      "contact_id": "69b2af6a728df30011679791",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "aalshahrani@iau.edu.sa",
+      "contact_id": "69b2af6a728df30011679792",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "absalamri@iau.edu.sa",
+      "contact_id": "69b2af6a728df30011679793",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "h.mashaqbeh@yu.edu.jo",
+      "contact_id": "69b2af6a728df30011679794",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "naljadaan@pnu.edu.sa",
+      "contact_id": "69b2af6a728df30011679795",
+      "segment_key": "mena_decision_makers"
+    },
+    {
+      "email": "bojan.lazarevic@aum.edu.kw",
+      "contact_id": "69b2af6a728df30011679796",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "george.louis@majancollege.edu.om",
+      "contact_id": "69b2af6a728df30011679797",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "faisal.aziz@majancollege.edu.om",
+      "contact_id": "69b2af6a728df30011679798",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "shaik.inam-ur-rehman@majancollege.edu.om",
+      "contact_id": "69b2af6a728df30011679799",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "hajer.almajarafi@majancollege.edu.om",
+      "contact_id": "69b2af6a728df3001167979a",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "o.zayed@psut.edu.jo",
+      "contact_id": "69b2af6a728df3001167979b",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "awafa@psu.edu.sa",
+      "contact_id": "69b2af6a728df3001167979c",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "jacintha.menezes@majancollege.edu.om",
+      "contact_id": "69b2af6a728df3001167979d",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "malqahtani@iau.edu.sa",
+      "contact_id": "69b2af6a728df3001167979e",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "rfeda@psu.edu.sa",
+      "contact_id": "69b2af6a728df3001167979f",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "s.zyoud@ajman.ac.ae",
+      "contact_id": "69b2af6a728df300116797a0",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "es-ahmedmohammed2025@alexu.edu.eg",
+      "contact_id": "69b2af6a728df300116797a1",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "talotaibi@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797a2",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "hamed.badawi@sfhd.med.sa",
+      "contact_id": "69b2af6a728df300116797a3",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "welshafai@psu.edu.sa",
+      "contact_id": "69b2af6a728df300116797a4",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "ybalawi@taibahu.edu.sa",
+      "contact_id": "69b2af6a728df300116797a5",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "freegu@jazanu.edu.sa",
+      "contact_id": "69b2af6a728df300116797a6",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "kaeid@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797a7",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "rabdmoulah@uj.edu.sa",
+      "contact_id": "69b2af6a728df300116797a8",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mhaseebuddin@jazanu.edu.sa",
+      "contact_id": "69b2af6a728df300116797a9",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "safaa.eraky@bue.edu.eg",
+      "contact_id": "69b2af6a728df300116797aa",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "elsadigms@qu.edu.qa",
+      "contact_id": "69b2af6a728df300116797ab",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "okitanneh@effatuniversity.edu.sa",
+      "contact_id": "69b2af6a728df300116797ac",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "amman_ali@aast.edu",
+      "contact_id": "69b2af6a728df300116797ad",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mabul@uob.edu.bh",
+      "contact_id": "69b2af6a728df300116797ae",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "rawan.alghatam@asu.edu.bh",
+      "contact_id": "69b2af6a728df300116797af",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "malkadi@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797b0",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "jamel@mec.edu.om",
+      "contact_id": "69b2af6a728df300116797b1",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "tamer.hassan@alexu.edu.eg",
+      "contact_id": "69b2af6a728df300116797b2",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "samer.alkork@aum.edu.kw",
+      "contact_id": "69b2af6a728df300116797b3",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "nelemam@sharjah.ac.ae",
+      "contact_id": "69b2af6a728df300116797b4",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "elsayed.abdelbary@guc.edu.eg",
+      "contact_id": "69b2af6a728df300116797b5",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "anas@tu.edu.sa",
+      "contact_id": "69b2af6a728df300116797b6",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "t.eldanaf@ajman.ac.ae",
+      "contact_id": "69b2af6a728df300116797b7",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "zouheir.badawy@aast.edu",
+      "contact_id": "69b2af6a728df300116797b8",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "hebatullah.gamal@guc.edu.eg",
+      "contact_id": "69b2af6a728df300116797b9",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "delmaghraby@kfu.edu.sa",
+      "contact_id": "69b2af6a728df300116797ba",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "siham@mec.edu.om",
+      "contact_id": "69b2af6a728df300116797bb",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mohamedelbawab@aast.edu",
+      "contact_id": "69b2af6a728df300116797bc",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "riyazif@kfupm.edu.sa",
+      "contact_id": "69b2af6a728df300116797bd",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "obouhali@hbku.edu.qa",
+      "contact_id": "69b2af6a728df300116797be",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "osama.badr@bue.edu.eg",
+      "contact_id": "69b2af6a728df300116797bf",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "george.morcos@bue.edu.eg",
+      "contact_id": "69b2af6a728df300116797c0",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "patrick.murphy@qu.edu.qa",
+      "contact_id": "69b2af6a728df300116797c1",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "gavin.crabbe@emirates.com",
+      "contact_id": "69b2af6a728df300116797c2",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "abuwaris@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797c3",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mhadi@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797c4",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "sarakitat@alexu.edu.eg",
+      "contact_id": "69b2af6a728df300116797c5",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "bassel.adel@eslsca.edu.eg",
+      "contact_id": "69b2af6a728df300116797c6",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "s.aldhobaib@mu.edu.sa",
+      "contact_id": "69b2af6a728df300116797c7",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "yann.rodier@sorbonne.ae",
+      "contact_id": "69b2af6a728df300116797c8",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "celia.ouali@sorbonne.ae",
+      "contact_id": "69b2af6a728df300116797c9",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mohamed.solayman@guc.edu.eg",
+      "contact_id": "69b2af6a728df300116797ca",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "alihasab@alexu.edu.eg",
+      "contact_id": "69b2af6a728df300116797cb",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "sazya.f@gcet.edu.om",
+      "contact_id": "69b2af6a728df300116797cc",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "xixiang.zhang@kaust.edu.sa",
+      "contact_id": "69b2af6a728df300116797cd",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "m.barakat@qu.edu.sa",
+      "contact_id": "69b2af6a728df300116797ce",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "msyed@jazanu.edu.sa",
+      "contact_id": "69b2af6a728df300116797cf",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "modeh@zu.edu.jo",
+      "contact_id": "69b2af6a728df300116797d0",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "sherif.said@aum.edu.kw",
+      "contact_id": "69b2af6a728df300116797d1",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "jleach@aucegypt.edu",
+      "contact_id": "69b2af6a728df300116797d2",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "rajesh.chandrawat@manipaldubai.com",
+      "contact_id": "69b2af6a728df300116797d3",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "halil.turan@aum.edu.kw",
+      "contact_id": "69b2af6a728df300116797d4",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "afarag@effatuniversity.edu.sa",
+      "contact_id": "69b2af6a728df300116797d5",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mssumithra.viswanath@majancollege.edu.om",
+      "contact_id": "69b2af6a728df300116797d6",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "msaziza.ali@majancollege.edu.om",
+      "contact_id": "69b2af6a728df300116797d7",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "halsumikhi@pnu.edu.sa",
+      "contact_id": "69b2af6a728df300116797d8",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "drmohammed.siddique@majancollege.edu.om",
+      "contact_id": "69b2af6a728df300116797d9",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "ihab.abdelwahed@zu.ac.ae",
+      "contact_id": "69b2af6a728df300116797da",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "mfaqeeh@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797db",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "avinash.kamble@manipaldubai.com",
+      "contact_id": "69b2af6a728df300116797dc",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "salarfaj@iau.edu.sa",
+      "contact_id": "69b2af6a728df300116797dd",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "nalmarshad@pnu.edu.sa",
+      "contact_id": "69b2af6a728df300116797de",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "ahmed.siyabi@utas.edu.om",
+      "contact_id": "69b2af6a728df300116797df",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "s.nishath@utas.edu.om",
+      "contact_id": "69b2af6a728df300116797e0",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "drbadriya.mamari@utas.edu.om",
+      "contact_id": "69b2af6a728df300116797e1",
+      "segment_key": "mena_faculty_operators"
+    },
+    {
+      "email": "sarah.baquet@brooklyn.cuny.edu",
+      "contact_id": "69b2af6a728df300116797e2",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "aksoyb3@rpi.edu",
+      "contact_id": "69b2af6a728df300116797e3",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "crawbri3@isu.edu",
+      "contact_id": "69b2af6a728df300116797e4",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "maniaa@rpi.edu",
+      "contact_id": "69b2af6a728df300116797e5",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "sharonb@brooklyn.cuny.edu",
+      "contact_id": "69b2af6a728df300116797e6",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "perryc3@rpi.edu",
+      "contact_id": "69b2af6a728df300116797e7",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "j.inglesfield@barnsley.ac.uk",
+      "contact_id": "69b2af6a728df300116797e8",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "slevy@brooklyn.cuny.edu",
+      "contact_id": "69b2af6a728df300116797e9",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "malfons1@nova.edu",
+      "contact_id": "69b2af6a728df300116797ea",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "jerrym@brooklyn.cuny.edu",
+      "contact_id": "69b2af6a728df300116797eb",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "k.prescott@wigan-leigh.ac.uk",
+      "contact_id": "69b2af74780a23000d3e32d2",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "m.ababneh@psut.edu.jo",
+      "contact_id": "69b2af74780a23000d3e32d3",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "mayst@fau.edu",
+      "contact_id": "69b2af74780a23000d3e32d4",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "ladd.j@ptc.edu",
+      "contact_id": "69b2af74780a23000d3e32d5",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "galyna.galypchak@bdc.ac.uk",
+      "contact_id": "69b2af74780a23000d3e32d6",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "dstrong@wpi.edu",
+      "contact_id": "69b2af74780a23000d3e32d7",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "minasianj@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32d8",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "loretta.bowshall-freeman@flinders.edu.au",
+      "contact_id": "69b2af74780a23000d3e32d9",
+      "segment_key": "global_decision_makers"
+    },
+    {
+      "email": "munast@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32da",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "kuzmik2@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32db",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "schiet@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32dc",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "gordon@alum.rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32dd",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "venerj2@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32de",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "hahnj@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32df",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "samuej2@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32e0",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "stewart@rpi.edu",
+      "contact_id": "69b2af74780a23000d3e32e1",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "stephensc@easternflorida.edu",
+      "contact_id": "69b2af74780a23000d3e32e2",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "sue.downes@sgscol.ac.uk",
+      "contact_id": "69b2af74780a23000d3e32e3",
+      "segment_key": "global_faculty_operators"
+    },
+    {
+      "email": "cwindows@sparsholt.ac.uk",
+      "contact_id": "69b2af74780a23000d3e32e4",
+      "segment_key": "global_faculty_operators"
+    }
+  ]
+}

@@ -11,6 +11,14 @@ type PendingInviteRecord = {
   expiresAt?: string;
 };
 
+function inviteCreatedAtValue(invite: PendingInviteRecord): string {
+  if (typeof invite.createdAt === 'string') return invite.createdAt;
+  if (invite.createdAt && typeof invite.createdAt.toDate === 'function') {
+    return invite.createdAt.toDate().toISOString();
+  }
+  return '';
+}
+
 const ROLE_PERMISSIONS: Record<SupportedRole, string[]> = {
   owner: [
     'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
@@ -69,7 +77,7 @@ export async function POST(request: NextRequest) {
     const inviteDoc = inviteSnap.docs
       .map((doc) => ({ id: doc.id, ...doc.data() }) as PendingInviteRecord)
       .filter((invite) => !invite.expiresAt || new Date(invite.expiresAt).getTime() > Date.now())
-      .sort((a, b) => String(b.createdAt?.toDate?.() || b.createdAt || '').localeCompare(String(a.createdAt?.toDate?.() || a.createdAt || '')))[0];
+      .sort((a, b) => inviteCreatedAtValue(b).localeCompare(inviteCreatedAtValue(a)))[0];
 
     if (!inviteDoc) {
       return NextResponse.json({ success: false, error: 'No pending invite found' }, { status: 404 });
@@ -127,5 +135,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
 }
+
 
 

@@ -9,12 +9,15 @@
 
 ## Project Organization
 
-- **Client folders** live in `clients/{Client-Name}/`. Never create client work outside this directory.
+- **Client workspaces** live in `clients/{Client-Name}/`. This repo is the canonical source of truth for client knowledge, strategy, messaging, and presentations.
+- **Do not duplicate full KBs into delivery repos.** Export only approved implementation-safe materials from `clients/{Client-Name}/handoff/`.
 - **Operational systems** (proposals, strategies, briefing, dashboards) live in `ops/`.
-- **The main web app** is `apps/client-portal/` — the only production app.
-- **Workflow definitions** are in `.agents/workflows/`. Check available workflows before starting any process.
-- **Master AI reference** is `Claude.md` at the project root — read it for full context.
+- **The main authenticated portal** is `apps/client-portal/` and powers `my.admireworks.com`.
+- **Static branded outputs** publish to `ops.admireworks.com`.
+- **Workflow definitions** are in `.agents/workflows/`. Check them before starting any process.
+- **Master AI reference** is `Claude.md` at the project root.
 - **Lifecycle documentation** is in `docs/WORKFLOWS.md`.
+- **Artifact publishing rules** are in `docs/CLIENT-ARTIFACTS.md`.
 
 ## Deployment Notes
 
@@ -22,7 +25,7 @@
 - The shared service account file for this workspace is checked in at `firebase/service-account.json`.
 - For app code that needs the credential path, prefer `FIREBASE_SERVICE_ACCOUNT_PATH` or `GOOGLE_APPLICATION_CREDENTIALS` over hardcoding alternate locations.
 - Client portal deploys automatically via Firebase App Hosting on push to `main`.
-- Static dashboards deploy via GitHub Pages to `ops.admireworks.com`.
+- Static dashboards and presentations deploy via GitHub Pages to `ops.admireworks.com`.
 
 ## Browser Checks
 

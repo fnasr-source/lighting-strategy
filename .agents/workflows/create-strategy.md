@@ -1,55 +1,28 @@
----
-description: Create a Direct Response Marketing Strategy for a client
----
+# Workflow: Create Strategy
 
-# Create Strategy Workflow
+## Goal
+Produce the full strategy system inside the internal workspace, then publish approved client-safe outputs into the portal and ops layer.
 
-## When to Use
-When a client needs a full marketing strategy — a branded, interactive presentation with 36 sections.
+## Canonical Working Paths
+- `clients/{Client-Slug}/research/`
+- `clients/{Client-Slug}/strategy/`
+- `clients/{Client-Slug}/messaging/`
+- `clients/{Client-Slug}/presentations/`
+- `clients/{Client-Slug}/active_state/`
 
-## Prerequisites
-- Client is active or in proposal stage
-- Research completed in `clients/{Client-Name}/research/`
+## Standard Output Split
+- Written strategy -> `strategy/`
+- Ad copy, email flows, WhatsApp logic -> `messaging/`
+- Presentation source -> `presentations/`
+- Build-ready exports -> `handoff/`
 
-## Steps
+## Publish Steps
+1. Approve the written strategy and any client-facing derivatives.
+2. Publish portal snapshots with `firebase/publish-client-artifact.mjs`.
+3. Publish branded static presentations to `ops.admireworks.com` and store the `opsUrl` in the artifact record.
+4. Export only execution-safe specs into `handoff/` if a delivery repo is needed.
 
-1. **Read the Strategy System spec**:
-   - View `ops/strategy-system/STRATEGY-SYSTEM.md` — the full 36-section framework
-
-2. **Gather strategy kit assets**:
-   - Fonts and logos: `ops/strategy-system/strategy-kit/`
-   - Setup instructions: `ops/strategy-system/strategy-kit/INSTRUCTIONS.md`
-
-3. **Generate strategy content** → save as `content.json`:
-   - Follow the 36-section structure (Cover → Closing)
-   - Use StoryBrand framework: Customer = Hero, Business = Guide
-   - Apply Direct Response principles: every element drives measurable action
-
-4. **Build the presentation**:
-   - HTML/CSS/JS interactive presentation
-   - Two-tab sync system (Presenter + Client views)
-   - Per-slide comment system
-   - Keyboard shortcuts (arrows, F, C, N)
-
-5. **Generate visual assets** (Phase 2):
-   - Create image prompts from strategy context
-   - Use `generate_image` tool
-   - Brand-align using AW design tokens
-
-6. **Save deliverables**:
-   - Content: `clients/{Client-Name}/campaign/strategy/content.json`
-   - Presentation: `clients/{Client-Name}/campaign/strategy/index.html`
-   - Assets: `clients/{Client-Name}/campaign/strategy/assets/`
-
-7. **Update strategies hub**:
-// turbo
-   ```bash
-   node ops/proposal-system/scripts/build_strategies_hub.js --root "/Users/user/Documents/IDE Projects/Internal AW SOP"
-   ```
-
-## Framework Reference
-- **StoryBrand**: Character → Problem → Guide → Plan → CTA → Success → Failure
-- **Direct Response**: DR Playbook at `ops/strategy-system/Direct-Response-Framework.md`
-
-## Historical References
-- Past strategy PDFs: `ops/strategy-system/historical-pdfs/`
+## Rules
+- Do not create or maintain the canonical strategy in a delivery repo.
+- Do not expose raw transcripts, notes, or internal frameworks through the portal.
+- Client-visible content should be an approved snapshot, not a live draft folder.

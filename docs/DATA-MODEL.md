@@ -1,162 +1,106 @@
-# Admireworks Platform — Data Model
+# Admireworks Data Model
 
-All data is stored in **Firebase Firestore**. Collections and their schemas are defined in `apps/client-portal/src/lib/firestore.ts`.
+Firestore remains the live system of record for the portal. Internal source documents stay in the repo under `clients/{slug}/`.
 
----
-
-## Collections
+## Core Portal Collections
 
 ### `clients`
-Client company records.
-
-| Field | Type | Description |
-|---|---|---|
-| `name` | string | Company name |
-| `email` | string? | Primary contact email |
-| `phone` | string? | Primary contact phone |
-| `company` | string? | Legal/brand name |
-| `contacts` | Contact[] | Multiple contacts (primary + CC) |
-| `region` | string | Country code (EG, SA, AE, US) |
-| `baseCurrency` | string | AED, SAR, EGP, USD |
-| `status` | enum | lead, prospect, proposal_sent, active, churned |
-| `clientCode` | string? | Legacy billing code in `YYYY-MM-DD-SEQ` format |
-| `legacyServiceCode` | string? | Legacy service shorthand such as `Ad Mgt`, `DRM`, `DRM+SM` |
-| `billingCadence` | string? | Billing cadence such as monthly, 3_months, 6_months |
-| `billingStatusLabel` | string? | Legacy-style status/condition label for billing visibility |
-| `nextInvoiceSendDate` | string? | Next invoice send date in YYYY-MM-DD |
-| `nextInvoiceDueDate` | string? | Next invoice due date in YYYY-MM-DD |
-| `legacyRateModel` | string? | Internal label for grandfathered pricing logic |
-| `marketRegion` | string? | Billing market label (Egypt, Saudi Arabia, UAE, etc.) |
-| `platformCount` | number? | Number of ad platforms covered by the billing scope |
-| `ga4PropertyId` | string? | Google Analytics property |
-| `notes` | string? | Internal notes |
-
-### `invoices`
-One-time and auto-generated invoices.
-
-| Field | Type | Description |
-|---|---|---|
-| `invoiceNumber` | string | e.g. AWI-202603-001 |
-| `clientId` | string | Reference to client |
-| `clientName` | string | Denormalized name |
-| `lineItems` | array | [{description, qty, rate, amount}] |
-| `subtotal` | number | Before discounts/tax |
-| `discount` | number? | Discount amount |
-| `discountLabel` | string? | e.g. "Ramadan Special" |
-| `tax` | number | Tax amount |
-| `totalDue` | number | Final amount |
-| `currency` | string | AED, SAR, EGP, USD |
-| `status` | enum | draft, pending, paid, overdue |
-| `issuedAt` | string | YYYY-MM-DD |
-| `dueDate` | string | YYYY-MM-DD |
-| `paidAt` | string? | When payment was received |
-| `discount` | number? | Invoice-level discount amount |
-| `discountLabel` | string? | Invoice-level discount label |
-| `billingClarity` | object? | Included/excluded scope and billing schedule summary |
-| `exchangeRateSnapshot` | object? | Exchange-rate metadata used for pricing conversion |
-| `pricingRule` | string? | Internal pricing-rule label such as `legacy_eg_3mo_700usd` |
-| `billingPolicy` | object? | Captures legacy service code, cadence, market, rate model, send lead days |
-| `sendLeadDays` | number? | Days between invoice issue date and due date |
-| `reminderState` | object? | Reminder queue/sent state including legacy follow-up flags |
-| `legacyUrl` | string? | Link to old HTML invoice |
-
-### `recurringInvoices`
-Templates for automated billing.
-
-| Field | Type | Description |
-|---|---|---|
-| `templateName` | string | e.g. "Monthly Marketing Retainer" |
-| `clientId` | string | Client reference |
-| `lineItems` | array | Same as invoice |
-| `totalDue` | number | Amount per cycle |
-| `currency` | string | Billing currency |
-| `frequency` | enum | monthly, quarterly, annual |
-| `billingDay` | number | Day of month (1-28) |
-| `nextSendDate` | string? | Next scheduled invoice send date |
-| `nextDueDate` | string | YYYY-MM-DD |
-| `billingCadence` | string? | More expressive cadence label such as `3_months` |
-| `intervalMonths` | number? | Explicit cadence interval in months |
-| `active` | boolean | Can be paused/resumed |
-| `autoSendEmail` | boolean | Auto-send on generation |
-| `paymentMethods` | array | ['stripe', 'instapay', 'bank_transfer'] |
-| `sendLeadDays` | number? | Days between send date and due date |
-| `billingPolicy` | object? | Legacy billing metadata carried into generated invoices |
-| `exchangeRateSnapshot` | object? | Stored exchange-rate context for repeatable invoicing |
-| `invoiceTemplateData` | object? | Discount/payment-terms/billing-clarity defaults copied to generated invoices |
-
-### `payments`
-Payment records (from Stripe or manual).
-
-| Field | Type | Description |
-|---|---|---|
-| `clientId` | string | Client reference |
-| `invoiceId` | string? | Linked invoice |
-| `amount` | number | Payment amount |
-| `currency` | string | Payment currency |
-| `method` | enum | stripe, instapay, bank_transfer |
-| `status` | enum | succeeded, pending, failed |
-| `stripePaymentIntentId` | string? | Stripe reference |
-| `instapayRef` | string? | InstaPay transaction ref |
-| `proofUrl` | string? | Screenshot proof (Storage URL) |
+Client account records used for access control, billing, and reporting.
 
 ### `userProfiles`
-User accounts with role-based access. Doc ID = Firebase Auth UID.
+Portal users and their role/permission model.
 
-| Field | Type | Description |
+### `threads` / `messages`
+Client communication threads and replies.
+
+### `invoices`, `payments`, `recurringInvoices`
+Billing and payment operations.
+
+### `campaigns`, `platformConnections`, `monthlyClientRollups`, `dailyPlatformMetrics`
+Campaign and reporting visibility.
+
+## Client Artifact Publishing Collections
+
+### `clientArtifacts`
+The latest approved snapshot for a client-facing or internal artifact.
+
+| Field | Type | Notes |
 |---|---|---|
-| `uid` | string | Firebase Auth UID |
-| `email` | string | User email |
-| `displayName` | string | Full name |
-| `role` | enum | owner, admin, team, client |
-| `permissions` | string[] | Granular permission list |
-| `assignedClients` | string[]? | Team: which clients they manage |
-| `linkedClientId` | string? | Legacy primary client link for backward compatibility |
-| `linkedClientIds` | string[]? | Client: all client records this login can access |
-| `isActive` | boolean | Account status |
-| `lastLoginAt` | string? | Last login timestamp |
+| `clientId` | string | Firestore client reference |
+| `clientName` | string | Denormalized display name |
+| `artifactType` | enum | `strategy_doc`, `strategy_presentation`, `ad_copy`, `campaign_flow`, `report`, `task_bundle`, `asset` |
+| `title` | string | Portal-facing artifact title |
+| `slug` | string | Stable publishing slug |
+| `status` | enum | `draft`, `in_review`, `published`, `archived` |
+| `visibility` | enum | `internal`, `client` |
+| `sourcePath` | string? | Canonical repo path inside `clients/{slug}/` |
+| `summary` | string? | Short client-safe summary |
+| `locale` | string? | `ar`, `en`, etc. |
+| `version` | string? | Human-readable version marker |
+| `storageUrl` | string? | File URL for portal download |
+| `opsUrl` | string? | Static branded URL on `ops.admireworks.com` |
+| `publishedAt` | timestamp/string? | Publish timestamp |
+| `publishedBy` | string? | User or script attribution |
+| `createdAt` | timestamp | First publish time |
+| `updatedAt` | timestamp | Last update time |
 
-### `leads`
-Sales pipeline tracking.
+### `clientArtifactVersions`
+Version history for published artifacts.
 
-| Field | Type | Description |
+| Field | Type | Notes |
 |---|---|---|
-| `name` | string | Lead name |
-| `company` | string? | Company |
-| `source` | enum | apollo, referral, inbound, event, other |
-| `priority` | enum | A, B, C |
-| `status` | enum | new, contacted, qualified, proposal_sent, converted |
+| `artifactId` | string | Reference to `clientArtifacts` doc |
+| `clientId` | string | Firestore client reference |
+| `clientName` | string | Denormalized name |
+| `artifactType` | enum | Same as artifact |
+| `version` | string | Version label |
+| `summary` | string? | Change summary |
+| `publishedBy` | string? | Attribution |
+| `snapshot` | map | Snapshot of published artifact fields |
+| `createdAt` | timestamp | Version creation time |
 
-### `proposals`
-Proposal tracking.
+### `clientApprovals`
+Approval and revision-request state for client-visible artifacts.
 
-| Field | Type | Description |
+| Field | Type | Notes |
 |---|---|---|
-| `proposalNumber` | string | e.g. AWP-2026-001 |
-| `clientId` | string? | Linked client |
-| `status` | enum | draft, ready, sent, accepted, declined, expired |
-| `documentUrl` | string? | PDF in Firebase Storage |
-| `totalValue` | number? | Proposal value |
+| `artifactId` | string | Linked artifact |
+| `clientId` | string | Client scope |
+| `clientName` | string | Denormalized name |
+| `artifactType` | enum | Linked artifact type |
+| `title` | string | Approval label |
+| `status` | enum | `pending`, `approved`, `changes_requested` |
+| `requestedBy` | string | User ID or email |
+| `requestedByName` | string | Display name |
+| `decisionBy` | string? | Reviewer identifier |
+| `decisionSummary` | string? | Notes or change request |
+| `createdAt` | timestamp | Request time |
+| `updatedAt` | timestamp | Last decision/update time |
 
-### `invoiceReminders`
-Automated reminder tracking.
+## Permission Model
 
-| Field | Type | Description |
-|---|---|---|
-| `invoiceId` | string | Reference to invoice |
-| `type` | enum | upcoming, due_today, overdue_3d, overdue_7d, overdue_14d |
-| `status` | enum | pending, sent, failed |
+Permissions now include both legacy reporting access and the new artifact layer:
 
----
-
-## Permissions
-
-22 granular permissions in format `resource:action`:
-
-```
-clients:read, clients:write, invoices:read, invoices:write,
-payments:read, payments:write, leads:read, leads:write,
-proposals:read, proposals:write, reports:read, reports:write,
-campaigns:read, campaigns:write, communications:read, communications:write,
-settings:read, settings:write, team:read, team:write,
+```text
+clients:read, clients:write
+invoices:read, invoices:write
+payments:read, payments:write
+leads:read, leads:write
+proposals:read, proposals:write
+reports:read, reports:write
+artifacts:read, artifacts:write
+campaigns:read, campaigns:write
+communications:read, communications:write
+settings:read, settings:write
+team:read, team:write
 billing:read, billing:write
+scheduling:read, scheduling:write
+performance:read, performance:write
 ```
+
+## Security Rules
+
+- `clientArtifacts` are writable by internal users only.
+- Client users can read `clientArtifacts` only when the document is scoped to one of their linked client IDs and `visibility == client`.
+- `clientArtifactVersions` follow the same read/write scope.
+- Messages are now scoped through their parent thread's client relationship instead of being readable to any signed-in user.

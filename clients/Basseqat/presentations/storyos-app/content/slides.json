@@ -1,0 +1,757 @@
+{
+  "deck": {
+    "title": "Basseqat | Direct-Response Strategy Presentation",
+    "subtitle": "Trust-led agricultural participation funnel for Egyptian expats in Saudi Arabia",
+    "clientName": "Basseqat",
+    "presenter": "Admireworks",
+    "lastUpdated": "2026-03-15",
+    "structureVersion": "admireworks-direct-response-v2"
+  },
+  "slides": [
+    {
+      "id": 1,
+      "section": "cover",
+      "kicker": "Decision Frame",
+      "title": "Basseqat | Show the project before asking for the decision",
+      "tag": "Cover",
+      "summary": "A trust-led growth system that turns skeptical Egyptian expats into qualified WhatsApp conversations — through documented operations, founder visibility, and calm human guidance.",
+      "bullets": [
+        "Trust-first positioning in a hype-heavy category",
+        "Full-funnel system: Meta → trust page → WhatsApp → qualify → sell"
+      ],
+      "evidence": [
+        {
+          "heading": "Package scope",
+          "detail": "Full Growth Partnership: funnel build, ad management, WhatsApp reply management (2 months free), CRM, 1 UGC video bonus."
+        }
+      ],
+      "sources": [
+        "docs/project/PROJECT_CONTEXT.md",
+        "docs/strategy/direct-response-strategy.md",
+        "2026-03-02 meeting transcript"
+      ],
+      "speakerNotes": "Open with the strategic frame, not the category details. The core argument: Basseqat can win because no competitor leads with trust. Zero presence means zero mistakes to undo — the brand gets defined correctly from day one. The commercial goal is qualified conversations, not vanity metrics. Remind the room this is a growth system, not a brand deck.",
+      "cta": "Align the room on trust-first before discussing execution.",
+      "imagePrompt": "Cinematic aerial view of a calm Egyptian date palm farm at golden hour, rows of mature palm trees stretching toward the horizon, warm earth tones, documentary photography style, premium presentation background, no text or logos",
+      "visualDirection": "Documentary cover with land, horizon, and credibility"
+    },
+    {
+      "id": 2,
+      "section": "situation",
+      "kicker": "Starting Point",
+      "title": "Launching from zero | Trust must come before demand",
+      "tag": "Situation",
+      "summary": "Zero digital presence, zero follower base, and a high-consideration offer in a category where prospects have been trained to distrust everyone.",
+      "bullets": [
+        "No audience, no proof-heavy public footprint, no brand recognition yet",
+        "Commercial objective: qualified WhatsApp conversations, not vanity reach"
+      ],
+      "evidence": [
+        {
+          "heading": "Scope",
+          "detail": "Growth Partnership covers strategy, funnel, ad management, WhatsApp reply management, and CRM. Timeline: 2 weeks strategy + 2 weeks build."
+        },
+        {
+          "heading": "Trust deficit",
+          "detail": "FBC fraud cases, SAMA WhatsApp scam warnings, and competitor over-promising have made this audience assume every offer is a scam until proven otherwise."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md",
+        "docs/project/PROJECT_CONTEXT.md",
+        "docs/research/research-report.md"
+      ],
+      "speakerNotes": "Name the starting point clearly. The client needs to understand why this deck spends time on trust, proof, and sequence instead of jumping to ads. Starting from zero is an advantage: no bad impressions to undo. But it also means every first impression must be exceptionally strong. The trust deficit is structural, not situational — it shapes every funnel decision downstream.",
+      "imagePrompt": "Minimal conceptual image of a single seed planted in rich dark soil with a vast empty field stretching beyond, dawn light, premium documentary photography, no text",
+      "visualDirection": "From blank slate to operating system"
+    },
+    {
+      "id": 3,
+      "section": "situation",
+      "kicker": "Objectives",
+      "title": "Quality over volume | Qualified conversations are the metric",
+      "tag": "KPIs And Budget",
+      "summary": "The system optimizes for serious prospects in documented conversations, not cheap lead counts.",
+      "bullets": [
+        "Primary: conversation start rate, qualified conversation rate, MQL rate, cost per MQL",
+        "Secondary: page conversion, CTR/CPC, WhatsApp response speed"
+      ],
+      "evidence": [
+        {
+          "heading": "Budget frame",
+          "detail": "EGP 100K/month ad spend (months 1-2) + EGP 32,500/month management. Scale to EGP 300K/month only after proven sales movement. Scale decision based on MQL quality, not impressions."
+        },
+        {
+          "heading": "Phase logic",
+          "detail": "Month 1: learn and trust-build on Facebook/Instagram → page → WhatsApp only. Month 2: add retargeting + optimize. Month 3+: scale conditionally."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §11",
+        "Invoice AWI-202603-003"
+      ],
+      "speakerNotes": "This slide prevents the conversation from drifting toward cheap-lead expectations. Cheap leads waste WhatsApp agent time and erode team morale. The right metric is commercial movement quality. The EGP 300K/month scale decision is conditional — this was discussed and agreed in the March 2 meeting. If anyone in the room expects month-1 volume, correct it here.",
+      "imagePrompt": "Abstract premium visualization of a few strong golden threads rising from a field of faded noise, representing qualified conversations emerging from volume, dark editorial style, no text",
+      "visualDirection": "Quality over quantity"
+    },
+    {
+      "id": 4,
+      "section": "competitor-overview",
+      "kicker": "Category Pattern",
+      "title": "The market sells with promises | Basseqat must sell with verification",
+      "tag": "Competitor Overview",
+      "summary": "Four competitors reviewed. Every one leads with ROI promises (48–60%) or vague 'attractive returns.' None leads with documentation, transparency, or verification.",
+      "bullets": [
+        "Nakheel Valley: up to 50% annual, 50-year contracts",
+        "Dora El Nakheel: 48–60% average annual return claims",
+        "GRILAND: 'attractive returns,' corporate tone, limited digital presence",
+        "Palm Hills: integrated supply chain, validates the market"
+      ],
+      "evidence": [
+        {
+          "heading": "Strategic opening",
+          "detail": "No competitor owns the anti-hype lane. Basseqat can be the first brand in this category where the process itself is the marketing asset."
+        },
+        {
+          "heading": "Scam context",
+          "detail": "FBC defrauded thousands (victims sold properties). SAMA actively warns about WhatsApp investment scams. This is the environment every offer enters."
+        }
+      ],
+      "sources": [
+        "docs/research/competitor-scan.md",
+        "docs/research/research-report.md",
+        "nakheelvalley.com",
+        "doraelnakheel.com"
+      ],
+      "speakerNotes": "This is the commercial justification for the entire positioning. Frame the pattern before diving into individual competitors. The key insight: every competitor plays the same game (promise high returns) and every competitor is vulnerable to the same objection (how do I know this is real?). Basseqat wins by answering that objection first, not by out-promising.",
+      "imagePrompt": "Abstract split visual: one side shows loud neon numbers and flashy promises dissolving into dust, the other side shows a calm documented path with warm golden light, premium conceptual art, dark background, no text",
+      "visualDirection": "Noisy category versus calm alternative"
+    },
+    {
+      "id": 5,
+      "section": "competitor-detail",
+      "kicker": "Competitor 1",
+      "title": "Nakheel Valley | High promise, low independent proof",
+      "tag": "Named Competitor",
+      "summary": "The classic high-promise model: up to 50% annual returns, 50-year contracts, self-published testimonials. No independent reviews found.",
+      "bullets": [
+        "Claims 'hassle-free investment,' 'safe and stable,' 'promising returns'",
+        "Relies on self-described operational authority and investor testimonials (Ahmed Adel, Abdullah Hussein, Ruqaya Nabil)",
+        "El Wadi El Gadid governorate, Medjool focus, Nubian Sandstone aquifer emphasis"
+      ],
+      "evidence": [
+        {
+          "heading": "Basseqat implication",
+          "detail": "Position Basseqat as the anti-pattern: documented operations and realistic expectations instead of 'safe high return' narratives. No independent third-party reviews exist for Nakheel Valley."
+        }
+      ],
+      "sources": [
+        "docs/research/competitor-scan.md §Competitor 1",
+        "nakheelvalley.com"
+      ],
+      "speakerNotes": "Keep this factual and client-facing. The data is from their own published website — these are their claims, not our interpretation. The 50% annual return claim and 50-year contract framing are exactly the kind of promises that trigger skepticism in cautious prospects. Basseqat must never sound like this.",
+      "imagePrompt": "Conceptual premium visual of a polished golden tower built on thin stilts over sand, suggesting impressive promise on a fragile foundation, moody editorial lighting, no text",
+      "visualDirection": "High promise with weak foundation"
+    },
+    {
+      "id": 6,
+      "section": "competitor-detail",
+      "kicker": "Competitor 2",
+      "title": "Dora El Nakheel | Strongest ROI framing, weakest verification",
+      "tag": "Named Competitor",
+      "summary": "Most aggressive returns in the category: 48–60% average annual. Cites 8.42 benefit-cost ratio from agricultural research. No visible process-first or proof-first content.",
+      "bullets": [
+        "50-year contracts, partnership with Palm Valley for production oversight",
+        "Uses 'king of dates' language for Medjool, emphasizes global export demand",
+        "10-year operational claim, El Wadi El Gadid location"
+      ],
+      "evidence": [
+        {
+          "heading": "Basseqat implication",
+          "detail": "Dora proves the category is ROI-obsessed. Basseqat reframes the decision: clarity, documentation, and confidence in what is real — not belief in a promised number."
+        }
+      ],
+      "sources": [
+        "docs/research/competitor-scan.md §Competitor 2",
+        "doraelnakheel.com"
+      ],
+      "speakerNotes": "This is the clearest proof that the category trains prospects to expect hype. 48–60% annual return promises are extremely aggressive and potentially unrealistic. The benefit-cost ratio citation adds a veneer of credibility but still lacks process transparency. That exact gap is why a verification-first message can stand out.",
+      "imagePrompt": "Abstract financial chart dissolving into sand particles, warm amber tones showing numbers breaking apart, premium dark editorial style, no text",
+      "visualDirection": "Numeric promise versus verifiable process"
+    },
+    {
+      "id": 7,
+      "section": "competitor-detail",
+      "kicker": "Competitor 3",
+      "title": "GRILAND Egypt | Professional but impersonal",
+      "tag": "Named Competitor",
+      "summary": "Most measured competitor: established 2006, technology-forward, avoids specific return numbers. But lacks the human trust bridge Basseqat can build.",
+      "bullets": [
+        "Longer operational history (since 2006) adds credibility",
+        "Technology emphasis, more measured return promises",
+        "Limited digital presence and content marketing"
+      ],
+      "evidence": [
+        {
+          "heading": "Basseqat implication",
+          "detail": "GRILAND shows that seriousness alone is not enough. Basseqat needs seriousness plus direct human accountability — founder on camera, personal communication, and documented operations."
+        }
+      ],
+      "sources": [
+        "docs/research/competitor-scan.md §Competitor 3",
+        "grilandeg.com"
+      ],
+      "speakerNotes": "GRILAND matters because its professional tone is the closest to Basseqat's intended voice. But professionalism without personal accountability feels institutional. Basseqat's founder-facing approach (Khaled on camera, personal WhatsApp, visit invitation) adds the human layer GRILAND is missing.",
+      "imagePrompt": "Sleek modern corporate building viewed from a distance through glass, clean but cold atmosphere, premium documentary photography, no text",
+      "visualDirection": "Professional but distant"
+    },
+    {
+      "id": 8,
+      "section": "competitor-detail",
+      "kicker": "Competitor 4",
+      "title": "Palm Hills Dates | Market validator, not direct threat",
+      "tag": "Named Competitor",
+      "summary": "Integrated supply chain (propagation, cultivation, packing, export). More B2B/trade-oriented than retail-investor-facing. Validates the market's realness.",
+      "bullets": [
+        "Fully integrated business model by a leading agricultural company",
+        "Quality-first and export-focused messaging",
+        "Less directly competitive for a retail participation funnel"
+      ],
+      "evidence": [
+        {
+          "heading": "Basseqat implication",
+          "detail": "Use Palm Hills as market validation: Egypt's date export industry is real, serious, and operationally viable. Not the main messaging contrast."
+        }
+      ],
+      "sources": [
+        "docs/research/competitor-scan.md §Competitor 4",
+        "palmhillsdates.com"
+      ],
+      "speakerNotes": "This slide exists to show the deck does not flatten all competitors into one type. Palm Hills validates that the date export market is operationally real. Basseqat can reference this when building category credibility without competing directly against their B2B model.",
+      "imagePrompt": "Premium aerial view of a large organized date palm plantation with modern packing facilities visible at the edge, warm afternoon light, documentary style, no text",
+      "visualDirection": "Industry validation"
+    },
+    {
+      "id": 9,
+      "section": "competitor-detail",
+      "kicker": "Indirect Competition",
+      "title": "The real comparison set | Gold, real estate, deposits, and government programs",
+      "tag": "Indirect Alternatives",
+      "summary": "Abu Ahmad is not just comparing palm schemes. He is comparing against every culturally trusted way of protecting savings.",
+      "bullets": [
+        "Gold purchases in Egypt — physical, culturally trusted",
+        "Egyptian real estate — new Cairo, new capital, coastal",
+        "Bank term deposits — safe but low return",
+        "Government bonds and 'Your Farm in Egypt' program for expats"
+      ],
+      "evidence": [
+        {
+          "heading": "Strategic implication",
+          "detail": "The funnel must explain why Basseqat is understandable, verifiable, and serious enough to enter this consideration set. The 'Your Farm in Egypt' government initiative is direct competition for expat agricultural mindshare."
+        }
+      ],
+      "sources": [
+        "docs/research/competitor-scan.md §Indirect",
+        "docs/research/market-environment-scan.md"
+      ],
+      "speakerNotes": "This is where category strategy becomes capital-allocation strategy. The buyer compares Basseqat against gold, real estate, and deposits — not just other palm schemes. The 'Your Farm in Egypt' government program is a direct competitor for expat agricultural investment attention. Basseqat differentiates by offering managed participation with superior transparency, not DIY farming.",
+      "imagePrompt": "Conceptual premium image showing five paths diverging from a central point: gold bar, building, bank vault, government certificate, and a palm tree, each lit differently, dark background, no text",
+      "visualDirection": "Capital allocation crossroads"
+    },
+    {
+      "id": 10,
+      "section": "market-gaps",
+      "kicker": "Strategic Gaps",
+      "title": "Four openings | Basseqat can own all four",
+      "tag": "Market Gaps",
+      "summary": "No competitor turns transparency, documentation, verification, or founder accountability into a primary marketing message.",
+      "bullets": [
+        "Gap 1: No one owns the anti-hype, trust-first positioning lane",
+        "Gap 2: No one makes the process itself into the marketing asset",
+        "Gap 3: No one uses visit/tour invitations as a core trust mechanism",
+        "Gap 4: No one leads with founder-on-camera personal accountability"
+      ],
+      "evidence": [
+        {
+          "heading": "Competitive theme table",
+          "detail": "Return promises: aggressive (48–60%). Proof assets: self-published. Transparency: limited. Tone: sales-heavy. Trust mechanism: return guarantees. Basseqat flips every column."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §7",
+        "docs/research/competitor-scan.md §Key Competitive Themes"
+      ],
+      "speakerNotes": "Each gap gives Basseqat a distinct message asset, not just a nicer tone. Gap 1 = positioning. Gap 2 = content strategy. Gap 3 = risk reversal. Gap 4 = founder content. These are not abstract advantages — they are directly translatable into ads, page sections, and WhatsApp conversation scripts.",
+      "imagePrompt": "Four glowing golden doorways standing open in a dark misty landscape, each revealing a different warm-lit path, premium cinematic composition, no text",
+      "visualDirection": "Four open territories"
+    },
+    {
+      "id": 11,
+      "section": "market-opportunities",
+      "kicker": "Why Now",
+      "title": "The timing is right | Distrust, inflation, and real fundamentals",
+      "tag": "Market Opportunities",
+      "summary": "Scam fatigue, EGP depreciation, and verifiable agricultural fundamentals create a moment where a trust-led brand can enter credibly.",
+      "bullets": [
+        "Egypt #1 date producer globally — 1.9M tons/year from 19M palms",
+        "Medjool: premium variety with growing global demand",
+        "EGP depreciation makes EGP-denominated real assets attractive for SAR earners",
+        "Scam sensitivity has made proof more valuable than persuasion"
+      ],
+      "evidence": [
+        {
+          "heading": "Category validation",
+          "detail": "Egyptian government date export strategy + Vision 2030 agricultural investment promotion + 'Your Farm in Egypt' program all confirm institutional support."
+        },
+        {
+          "heading": "⚠ Compliance note",
+          "detail": "These fundamentals are for credibility framing only — not for implying guaranteed returns. All copy stays within compliance bounds."
+        }
+      ],
+      "sources": [
+        "docs/research/market-environment-scan.md §1",
+        "docs/research/research-report.md §5",
+        "tridge.com",
+        "investinegypt.gov.eg"
+      ],
+      "speakerNotes": "Keep this factual. The 1.9M tons figure is from Tridge market data and is verifiable. The EGP depreciation point resonates with founders since they sell to expats earning in SAR. Do NOT use this slide to imply financial projections — use it to explain why the category matters and why trust is the commercial unlock right now. Ramadan timing and summer visit windows are additional seasonal factors.",
+      "imagePrompt": "Three converging golden arrows meeting at a single point in a dark landscape, representing inflation pressure, market skepticism, and agricultural fundamentals, premium abstract art, no text",
+      "visualDirection": "Converging market forces"
+    },
+    {
+      "id": 12,
+      "section": "personas",
+      "kicker": "Primary Buyer",
+      "title": "Abu Ahmad | Proof before movement",
+      "tag": "Primary Persona",
+      "summary": "Egyptian in KSA, 40+, 10–15 years abroad. Saves carefully, compares against gold and real estate, consults family. The market taught him to distrust everything.",
+      "bullets": [
+        "Trust triggers: founder on camera, documentation, visit invitation, process-first explanation",
+        "Deal-breakers: guaranteed returns, urgency pressure, vague claims, translated-sounding language",
+        "Channel: WhatsApp for serious conversations — not forms, comments, or DMs"
+      ],
+      "evidence": [
+        {
+          "heading": "In his words",
+          "detail": "'عايز أفهم مش عايز حد يبيعلي' — 'عايز أشوف بعينيا' — 'اللي يقول لي الحقيقة أنا معاه' — 'لما هيبقى عندي 60 سنة — هعمل ايه؟'"
+        },
+        {
+          "heading": "Family factor",
+          "detail": "Consults spouse and family in Egypt. Messaging must be repeatable — he needs to explain the opportunity at home, not just feel persuaded."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §5",
+        "docs/research/customer-language-bank.md",
+        "2026-03-02 meeting transcript"
+      ],
+      "speakerNotes": "This persona is built from the client brief, Khaled's meeting description, and market research on Egyptian expat financial behavior. He is not slow because he is unqualified — he is slow because the market trained him to be skeptical. The family consultation point shapes the messaging strategy: copy must be repeatable, not just persuasive. The quotes are from the customer language bank and meeting transcript.",
+      "imagePrompt": "Portrait-style composition of a mature man's silhouette looking out over a golden horizon, thoughtful and serious, warm documentary tones, no face details visible, premium cinematic photography, no text",
+      "visualDirection": "Responsible provider portrait"
+    },
+    {
+      "id": 13,
+      "section": "personas",
+      "kicker": "Secondary Buyer",
+      "title": "Secondary audience exists | But month 1 optimizes for Abu Ahmad",
+      "tag": "Secondary Persona",
+      "summary": "A higher-ticket Egypt-based segment exists, but the current opportunity is clearer and better documented around the cautious KSA expat.",
+      "bullets": [
+        "Secondary persona can be served later with stronger proof and pricing clarity",
+        "Month 1: avoid diluting the message across too many audience types",
+        "Audience expansion after funnel proves qualified-conversation movement"
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §5"
+      ],
+      "speakerNotes": "This slide prevents audience drift. It shows that the strategy is disciplined, not narrow by accident. If the client asks about the Egypt-based audience, the answer is: same positioning, but serve them after proof assets and pricing are locked so the message is already strong.",
+      "imagePrompt": "One sharp spotlight illuminating a single figure in the foreground with softer light on a group in the background, premium dark editorial composition, no text",
+      "visualDirection": "Focused target with optional expansion"
+    },
+    {
+      "id": 14,
+      "section": "environment",
+      "kicker": "Channel Logic",
+      "title": "Facebook opens attention | WhatsApp closes trust",
+      "tag": "Digital Environment",
+      "summary": "Facebook is the primary platform for Egyptian expats in KSA. WhatsApp is where they make serious decisions. The funnel respects both behaviors.",
+      "bullets": [
+        "Facebook/Instagram: awareness, education, retargeting",
+        "WhatsApp: serious consideration, FAQ, qualification, human handoff",
+        "Email: supplementary documentation delivery and nurture",
+        "YouTube: heavy Arabic content consumption — future channel opportunity"
+      ],
+      "evidence": [
+        {
+          "heading": "Behavioral fit",
+          "detail": "This audience researches carefully on Facebook, discusses seriously on WhatsApp, and prefers Egyptian Arabic over MSA. They reject polished marketing in favor of raw/authentic content."
+        },
+        {
+          "heading": "Documentary content preference",
+          "detail": "Founder authority videos and real farm footage outperform polished ads. FAQ-style and myth-busting content beats generic benefits listing."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §6",
+        "docs/research/market-environment-scan.md §3"
+      ],
+      "speakerNotes": "Explain channel choice as buyer behavior logic, not tactical preference. Facebook is confirmed as the primary platform for Egyptian expats in KSA. WhatsApp for serious conversations is confirmed by both client brief and market data. TikTok is growing in KSA but may not align with the serious tone initially. Snapchat is significant in Saudi Arabia generally but less relevant for 40+ Egyptian expats.",
+      "imagePrompt": "Flowing path visual from a wide social media aperture narrowing into an intimate one-to-one conversation space, warm golden light at the end, premium dark background, no text",
+      "visualDirection": "Attention to conversation path"
+    },
+    {
+      "id": 15,
+      "section": "messaging",
+      "kicker": "Positioning",
+      "title": "One-liner | بَسّقات بتورّيك المشروع قبل ما تسألك تاخد قرار",
+      "tag": "One-Liner",
+      "summary": "Basseqat shows the project before asking for the decision. The message system turns skepticism into the strategy's advantage by making transparency the trust mechanism.",
+      "bullets": [
+        "Character: cautious expat provider who needs proof, not promises",
+        "Guide: real people, documented operations, open verification",
+        "Plan: learn → conversation → documentation → visit → decide with full understanding"
+      ],
+      "evidence": [
+        {
+          "heading": "Room test",
+          "detail": "If anyone in the room cannot repeat what makes Basseqat different in one sentence, the positioning is not strong enough."
+        },
+        {
+          "heading": "Competitor-proof",
+          "detail": "Competitors cannot copy this without actually changing their operations. Basseqat is promising a verifiable behavior, not a marketing claim."
+        }
+      ],
+      "sources": [
+        "docs/messaging/messaging-bible.md §Core One-Liner",
+        "docs/strategy/direct-response-strategy.md §7"
+      ],
+      "speakerNotes": "Most important slide in the deck. If Khaled can repeat this one-liner and believe it, all downstream creative will be consistent. The one-liner in Arabic: بَسّقات بتورّيك المشروع قبل ما تسألك تاخد قرار. This is the StoryBrand anchor: character (cautious provider), guide (real people with real proof), plan (5 steps from awareness to decision). If Basseqat does not have documentation, farm access, and founder willingness to appear on camera, this positioning falls apart.",
+      "layout": "story-framework",
+      "imagePrompt": "A clear illuminated path emerging from dense fog, documentary-style landscape with warm golden light at the destination, premium cinematic composition, no text",
+      "visualDirection": "From doubt to clarity"
+    },
+    {
+      "id": 16,
+      "section": "messaging",
+      "kicker": "Message System",
+      "title": "Four pillars | Every asset traces back to one",
+      "tag": "Pillars",
+      "summary": "Every ad, page section, WhatsApp message, and founder video must trace back to one of four pillars. Egyptian Arabic only — never MSA, never translated English.",
+      "bullets": [
+        "Transparency: 'إحنا بنوريك كل حاجة — مش بنخبّي حاجة'",
+        "Real operations: 'ده مشروع حقيقي بناس حقيقيين'",
+        "Guided process: 'إحنا بنفهّمك — مش بنبيعك'",
+        "Long-term mindset: 'ده مشروع طويل المدى — مش عملية سريعة'"
+      ],
+      "evidence": [
+        {
+          "heading": "Forbidden language",
+          "detail": "'ارباح مضمونة' • 'عائد ٥٠٪' • 'فرصة العمر' • 'استثمار بدون مخاطر' • 'اشتري دلوقتي قبل فوات الأوان'. No urgency pressure."
+        },
+        {
+          "heading": "Content cadence",
+          "detail": "Founder on camera, operations footage, education and myth-busting, FAQ and objection handling. 3-4 posts/week in month 1."
+        }
+      ],
+      "sources": [
+        "docs/messaging/messaging-bible.md §Pillars",
+        "docs/research/customer-language-bank.md §Anti-Language"
+      ],
+      "speakerNotes": "This is the creative brief in four lines. If any future ad, email, or WhatsApp message cannot trace back to one of these pillars, it should be questioned. Egyptian dialect, not MSA — the audience will reject copy that sounds translated or institutional. Read the pillar statements aloud in Arabic. They should sound like something a friend would say. The forbidden language list is both a compliance rule and a brand positioning choice.",
+      "imagePrompt": "Four solid architectural pillars supporting a calm roof structure, each pillar glowing with warm amber light, premium minimal dark composition, no text",
+      "visualDirection": "Four-part message architecture"
+    },
+    {
+      "id": 17,
+      "section": "offer",
+      "kicker": "Offer Architecture",
+      "title": "Participation wrapped in guidance | Documentation + verification + WhatsApp support",
+      "tag": "Offer Architecture",
+      "summary": "The offer is not 'invest and wait.' It is: participate in a documented operation, receive reports, get WhatsApp guidance, and verify everything before and after deciding.",
+      "bullets": [
+        "Core: documented participation in date palm cultivation (Medjool focus)",
+        "Documentation: regular operation reports with timestamps and photos",
+        "Verification: farm visit invitation + virtual tour option",
+        "Support: dedicated WhatsApp line — AI + human"
+      ],
+      "evidence": [
+        {
+          "heading": "Risk reversal",
+          "detail": "Transparency guarantee, verification invitation, human guidance, no-pressure policy. Risk is reversed through process visibility — not through financial promises."
+        },
+        {
+          "heading": "⚠ Open commercial gaps",
+          "detail": "Specific tiers, pricing, contract duration, and KSA payment methods still pending client confirmation. Offer logic is approved — commercial details are a production dependency."
+        }
+      ],
+      "sources": [
+        "docs/offers/offer-architecture.md",
+        "docs/client_kb/MISSING_INPUTS.md"
+      ],
+      "speakerNotes": "Be upfront that this slide has structural gaps. The offer logic and risk reversal mechanism are strategically sound. But without confirmed pricing tiers, contract terms, and documentation format, the landing page and ad copy cannot be fully specific. Urgency mechanism: natural agricultural timing (planting season), not artificial scarcity. Ask the founders what information they can provide now.",
+      "imagePrompt": "Layered stack of premium golden cards or panels floating in dark space, each representing a different layer of value (participation, documentation, verification, support), premium presentation art, no text",
+      "visualDirection": "Trust-wrapped offer stack"
+    },
+    {
+      "id": 18,
+      "section": "landing-page",
+      "kicker": "Page Architecture",
+      "title": "11 sections | Trust in sequence, not a squeeze page",
+      "tag": "Page Storyboard",
+      "summary": "The page moves from problem → agitation → guide → plan → offer → proof → objection handling → risk reversal → FAQ → final CTA. Click-to-WhatsApp appears 3+ times.",
+      "bullets": [
+        "Hero: 'مشروع زراعي حقيقي — مش كلام وخلاص'",
+        "Guide: Khaled on camera + 'إحنا مش بنبيعك — إحنا بنوريك'",
+        "Plan: 5-step visual process from conversation to ongoing reports",
+        "Proof, FAQ, and objection sections carry the trust load"
+      ],
+      "evidence": [
+        {
+          "heading": "Section sequence",
+          "detail": "1. Hero 2. Problem 3. Agitation 4. Guide/Authority 5. Plan/Mechanism 6. Offer stack 7. Proof 8. Objection handling 9. Risk reversal 10. FAQ 11. Final CTA"
+        },
+        {
+          "heading": "Technical requirements",
+          "detail": "Mobile-first, RTL Arabic, fast 3G loading, Meta Pixel, UTM capture, click-to-WhatsApp with pre-filled message, FAQ schema markup."
+        }
+      ],
+      "sources": [
+        "docs/pages/primary-landing-page-spec.md"
+      ],
+      "speakerNotes": "This page is 11 sections deep because this audience needs extensive trust-building — it is not a squeeze page. The design direction is clean and documentary, not flashy. Real photography over stock, earth tones, and readable Arabic typography. 6+ placeholder items (hero image, founder photo, farm photos, video, documentation screenshots, testimonials) are waiting for client assets. The page cannot be built at full strength without proof assets.",
+      "imagePrompt": "Vertical editorial wireframe showing 11 stacked page sections as elegant dark cards with warm amber accents, premium presentation layout visualization, no readable text",
+      "visualDirection": "Vertical trust storyboard"
+    },
+    {
+      "id": 19,
+      "section": "funnel",
+      "kicker": "Stage 1: Awareness",
+      "title": "Educate first | De-risk attention before asking for action",
+      "tag": "Stage 1 Awareness",
+      "summary": "Cold traffic from Meta Ads sees founder authority videos, myth-busting content, and educational creative. The first job is to make Basseqat feel real and different.",
+      "bullets": [
+        "5 ad angle families × 3 variants = 15 ad pieces ready",
+        "8 headlines drafted in Egyptian Arabic",
+        "Angles: financial anxiety, trust myth-busting, founder authority, process mechanism, problem-scenario UGC"
+      ],
+      "evidence": [
+        {
+          "heading": "Ad types",
+          "detail": "Founder authority video (Khaled to camera), problem-scenario UGC, educational/myth-busting posts, process/operations teasers. Frequency cap: max 3 impressions/user/week."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §8",
+        "docs/messaging/ad-copy-drafts.md",
+        "docs/messaging/campaign-flow-draft.md §Flow 1"
+      ],
+      "speakerNotes": "Awareness is where the tone gets set. If this stage sounds hype-heavy, the whole strategy breaks. The 15 ad variants are built around 5 strategic angles, each testing a different entry into the buyer's decision. All copy is in Egyptian Arabic, compliance-safe, and anti-hype. The retargeting cap (max 3/week) respects the cautious audience — we do not overwhelm.",
+      "layout": "timeline",
+      "imagePrompt": "Documentary scene of warm sunlight breaking through date palm fronds onto fertile soil, suggesting the first moment of awareness and discovery, premium cinematic photography, no text",
+      "visualDirection": "Trust-building awareness"
+    },
+    {
+      "id": 20,
+      "section": "funnel",
+      "kicker": "Stage 2: Consideration",
+      "title": "Answer the unspoken question | 'How do I know this is real?'",
+      "tag": "Stage 2 Trust",
+      "summary": "The landing page, retargeting, documentation, FAQ logic, and proof cues are all designed to lower perceived risk enough for a WhatsApp conversation start.",
+      "bullets": [
+        "Landing page: 11-section trust architecture",
+        "Retargeting: 3 angles (proof, FAQ, founder) — max 3 impressions/week",
+        "Process explanation + documentation share before asking for commitment"
+      ],
+      "evidence": [
+        {
+          "heading": "Retargeting copy",
+          "detail": "'شوف اللي بيحصل في المزرعة فعلاً' (proof) • 'أكتر سؤال بيتسأل: ازاي أتأكد إن ده حقيقي؟' (FAQ) • 'أنا خالد — لسه بتفكر؟' (founder)"
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §9",
+        "docs/pages/primary-landing-page-spec.md",
+        "docs/messaging/whatsapp-email-copy.md §Retargeting"
+      ],
+      "speakerNotes": "This stage is usually underrepresented in shallow decks. Here it is explicit because the category is so trust-sensitive. The landing page does the heavy lifting. Retargeting reinforces with proof, FAQ answers, and founder personal accountability. The key insight: the prospect will visit the page multiple times before starting a conversation.",
+      "imagePrompt": "Close-up of a hand carefully lifting a document from a warm-lit table, suggesting verification and careful examination, premium documentary photography, golden tones, no text",
+      "visualDirection": "Proof and process in focus"
+    },
+    {
+      "id": 21,
+      "section": "funnel",
+      "kicker": "Stages 3–4: Conversion + Nurture",
+      "title": "Conversion is a conversation | Nurture bridges to sales",
+      "tag": "Conversion And Nurture",
+      "summary": "Click-to-WhatsApp starts the conversion. AI qualifies, then hands off to human team. Nurture sequence: Day 0, 1, 3, 5, 7, 14 — respects the long decision cycle.",
+      "bullets": [
+        "WhatsApp: AI welcome → contextual FAQ → qualification check → human handoff",
+        "If not qualified: continue FAQ mode + add to nurture sequence",
+        "Email supplement: 5 emails over 21 days (welcome, process, market, proof, next step)",
+        "MQL → assigned to sales → documentation package → visit/tour → close"
+      ],
+      "evidence": [
+        {
+          "heading": "Nurture sequence",
+          "detail": "Day 0: welcome. Day 1: educational. Day 3: documentation. Day 5: FAQ. Day 7: gentle reminder. Day 14: visit invitation. Spacing respects the long decision cycle."
+        },
+        {
+          "heading": "Flow architecture",
+          "detail": "Flow 1: cold → WhatsApp start. Flow 2: warm → retarget → re-engage. Flow 3: engaged → nurture → MQL. Flow 4: MQL → sales → visit → close."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §9",
+        "docs/messaging/campaign-flow-draft.md",
+        "docs/messaging/whatsapp-email-copy.md"
+      ],
+      "speakerNotes": "Walk through the four flows linearly. Prospects are not 'closed' by a page — they are moved into a guided decision path. The WhatsApp AI qualification checks for: genuine interest, not a guarantee-seeker, and readiness for deeper conversation. Human handoff message: 'خلّيني أوصلك بـ [اسم] من فريقنا.' The email supplement adds documentation depth that WhatsApp cannot carry.",
+      "imagePrompt": "A warm conversational space with two chairs facing each other, warm ambient light, documents on the table between them, premium editorial photography, no text",
+      "visualDirection": "Conversation as conversion"
+    },
+    {
+      "id": 22,
+      "section": "copy-samples",
+      "kicker": "Ad Copy Proof",
+      "title": "Five angles are drafted | 15 variants + 8 headlines ready for review",
+      "tag": "Ad Samples",
+      "summary": "The strategy already exists in language. Five ad angle families cover financial anxiety, trust myth-busting, founder authority, process mechanism, and problem-scenario UGC.",
+      "bullets": [
+        "Angle 1: 'فلوسك بتأكل نفسها كل يوم' — financial anxiety",
+        "Angle 2: 'كل اللي شفتهم بيوعدوا بأرقام — وبعدين بيختفوا' — trust",
+        "Angle 3: 'أنا خالد نصر الدين — مؤسس بَسّقات' — founder authority",
+        "Angle 4: 'إزاي بتشارك في بَسّقات؟ ١. ابدأ محادثة...' — process",
+        "Angle 5: 'لما هيبقى عندي ٦٠ سنة — هعمل ايه؟' — UGC scenario"
+      ],
+      "evidence": [
+        {
+          "heading": "Headline samples",
+          "detail": "H1: 'مشروع زراعي حقيقي — مش كلام' • H2: 'بَسّقات بتوريك قبل ما تسألك' • H4: 'اللي يقولك مضمون — اسأل نفسك ليه' • H6: 'مش بنوعدك — بنوريك'"
+        }
+      ],
+      "sources": [
+        "docs/messaging/ad-copy-drafts.md"
+      ],
+      "speakerNotes": "This slide proves the strategy already has production-ready language. All 15 ad variants and 8 headlines are in docs/messaging/ad-copy-drafts.md and ready for client review. CTA across all ads: click-to-WhatsApp (primary) or landing page (secondary). All copy is compliance-safe — no guaranteed returns, no urgency pressure. The copy review framework is in docs/strategy/ad-copy-review.md.",
+      "imagePrompt": "Premium creative concept board showing five distinct cards arranged on a dark workspace, each with a different warm-toned abstract motif representing a message angle, no readable text",
+      "visualDirection": "Ad angle board"
+    },
+    {
+      "id": 23,
+      "section": "copy-samples",
+      "kicker": "Post-Click Copy",
+      "title": "After the click | WhatsApp, email, and objection handling are drafted",
+      "tag": "WhatsApp And Email Samples",
+      "summary": "The post-click system sustains trust across the decision cycle. 7 WhatsApp messages, 3 objection templates, 5 emails, and 3 retargeting variants — all in Egyptian Arabic.",
+      "bullets": [
+        "WhatsApp welcome: 'أنا هنا أساعدك وأجاوبك على أي سؤال عن مشروع بَسّقات'",
+        "Objection 'ايه الضمان؟': 'بَسّقات مش بتقدم ضمان مالي — اللي بنقدمه: توثيق، زيارة، تقارير، تواصل'",
+        "Email Day 0: 'مش بنوعدك بأرقام — بنوريك عمليات. مش بنضغط عليك — بنفهّمك'",
+        "Day 14 visit invitation: 'ممكن نرتبلك زيارة أو جولة افتراضية — ده مش عرض مبيعات'"
+      ],
+      "evidence": [
+        {
+          "heading": "Copy inventory",
+          "detail": "7 WhatsApp messages (welcome → D1 → D3 → D5 → D7 → D14 → handoff) + 3 objection templates (guarantee, vs real estate, vs scam fear) + 5 emails (welcome → process → market → proof → next step) + 3 retargeting variants"
+        }
+      ],
+      "sources": [
+        "docs/messaging/whatsapp-email-copy.md",
+        "docs/messaging/campaign-flow-draft.md"
+      ],
+      "speakerNotes": "This slide proves the system does not stop at ad and page. The post-click experience is where trust is either confirmed or lost. The WhatsApp sequence spaces messages at Day 0, 1, 3, 5, 7, 14 — respecting the long decision cycle. The objection templates handle the three most common fears: 'what's the guarantee?', 'why not real estate?', and 'you might take my money and disappear.' All responses redirect to transparency and verification, never to financial promises.",
+      "imagePrompt": "Warm intimate view of a smartphone screen showing friendly conversation bubbles in a dark environment, warm golden light reflecting off the screen, premium editorial photography, no text visible on screen",
+      "visualDirection": "Conversation plus proof"
+    },
+    {
+      "id": 24,
+      "section": "social",
+      "kicker": "Content System",
+      "title": "Social is trust infrastructure | Not random posting",
+      "tag": "Social Strategy",
+      "summary": "Content pillars: founder authority, operations documentation, education/myth-busting, FAQ handling, and market context. Real photography and documentary tone over polished hype.",
+      "bullets": [
+        "3–4 posts/week in month 1, integrated with campaign logic",
+        "Founder authority videos: Khaled to camera",
+        "Documentary content: real farm operations footage",
+        "Educational: myth-busting, process explanation, FAQ"
+      ],
+      "evidence": [
+        {
+          "heading": "What works in this market",
+          "detail": "'I'm Khaled Nasseredin, this is our farm, this is what we do' outperforms polished ads. Problem-scenario UGC outperforms generic benefits. FAQ content outperforms sales copy."
+        },
+        {
+          "heading": "What fails",
+          "detail": "Generic marketing language, translated-sounding Arabic, stock footage, return guarantees, pressure tactics."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §10",
+        "docs/research/market-environment-scan.md §4"
+      ],
+      "speakerNotes": "This keeps the content system connected to the funnel. It is not random content marketing; it is trust infrastructure for paid and organic movement. Social media management is excluded from Admireworks scope per the agreement — the content direction is provided but execution is the client's responsibility or a separate engagement.",
+      "imagePrompt": "Grid of six warm-toned documentary photography frames arranged on a dark background, showing agricultural scenes, human hands, documents, and natural light, premium editorial layout, no text",
+      "visualDirection": "Documentary content grid"
+    },
+    {
+      "id": 25,
+      "section": "measurement",
+      "kicker": "Measurement",
+      "title": "Weekly snapshots | Monthly reviews | Quarterly strategy decisions",
+      "tag": "Measurement System",
+      "summary": "The optimization loop: weekly KPI snapshots, monthly full-funnel reports, quarterly strategy and budget reviews.",
+      "bullets": [
+        "Phase 1 KPIs: conversation start rate, qualified conversation rate, MQL rate, cost per MQL, page conversion, CTR/CPC, response speed",
+        "Phase 2 KPIs: improve efficiency, track visit interest, connect funnel to sales movement",
+        "Reporting: weekly snapshot + optimization, monthly full funnel report, quarterly strategy + budget review"
+      ],
+      "evidence": [
+        {
+          "heading": "Channel cadence",
+          "detail": "Mon-Fri: ads running. Daily: AI WhatsApp replies (immediate). Same day: human handoff for qualified conversations. Day 1,3,5,7: nurture sequence. Weekly: performance review. End of month: full funnel review + month 2 planning."
+        }
+      ],
+      "sources": [
+        "docs/strategy/direct-response-strategy.md §11",
+        "docs/messaging/campaign-flow-draft.md §Channel Cadence"
+      ],
+      "speakerNotes": "This slide gives the team a way to manage reality. Without it, the client is left with opinions instead of a performance framework. The scale decision (EGP 100K → 300K) is conditional on MQL quality, not impressions. Cheap leads that waste WhatsApp agent time are worse than fewer, better leads. Monthly reporting should include a clear recommendation on whether to scale, hold, or adjust.",
+      "imagePrompt": "Three nested circles growing outward (weekly, monthly, quarterly), each with a warm amber glow, premium dark background, clean geometric composition, no text",
+      "visualDirection": "Rhythm of measurement"
+    },
+    {
+      "id": 26,
+      "section": "decisions",
+      "kicker": "Decisions Needed",
+      "title": "Strategy is ready | Four inputs unlock production",
+      "tag": "Blockers And Next Actions",
+      "summary": "Strategy direction is approved. Final production quality — landing page, ad copy specifics, WhatsApp automation — depends on four input categories from the client.",
+      "bullets": [
+        "① Proof assets: farm photos, operations footage, founder video, documentation samples",
+        "② Commercial details: participation tiers, pricing, contract terms, KSA payment methods",
+        "③ Operational readiness: visit availability, virtual tour content, current sales FAQs",
+        "④ Technical setup: domain, Firebase project, WhatsApp Business API access"
+      ],
+      "evidence": [
+        {
+          "heading": "What is ready now",
+          "detail": "15 ad variants × 5 angles, 8 headlines, 11-section page spec, 7 WhatsApp messages + 3 objection templates, 5 emails, 3 retargeting variants, 10 implementation modules, Firestore schema."
+        },
+        {
+          "heading": "QA status",
+          "detail": "Strategy direction: APPROVED. Production readiness: REVISE — operational inputs pending. Proof assets are the biggest gap: the 'come see for yourself' promise cannot be fully delivered without real farm content."
+        }
+      ],
+      "sources": [
+        "docs/strategy/strategy-qa.md",
+        "docs/active_state/README.md",
+        "docs/client_kb/MISSING_INPUTS.md"
+      ],
+      "speakerNotes": "End cleanly by separating what is approved from what blocks production. The four asks are numbered — Khaled and Islam should leave with a concrete checklist. Proof assets are the biggest gap: the entire positioning is about showing real operations, and we cannot do that without real content from the farm. If they push back on timing, negotiate which input comes first so the team can start building in parallel. The strategy is not blocked by thinking — it is blocked by missing inputs.",
+      "cta": "Approve strategy direction and commit delivery dates for the four input categories.",
+      "imagePrompt": "A large golden gate slowly opening to reveal a warm-lit premium workspace beyond, suggesting that production is ready once the gate is unlocked, cinematic composition, no text",
+      "visualDirection": "Decision gate and next-step unlock"
+    }
+  ]
+}

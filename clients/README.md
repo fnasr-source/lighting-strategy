@@ -1,55 +1,62 @@
 # Clients
 
-All client work lives here, from initial lead research through active delivery.
+Each folder inside `clients/` is an internal Admireworks workspace for one client.
 
-## Lifecycle Stages
+## Canonical Rule
 
-Each client folder tracks its stage in `00-Client-Index.md`:
+This repo is the source of truth for:
+- raw client context
+- transcripts and meeting notes
+- research and strategy
+- messaging and copy systems
+- presentation source
+- internal delivery state
 
-| Stage | Portal Status | What Happens |
-|---|---|---|
-| **1. Lead** | `leads` collection | Initial contact; no folder yet (portal only) |
-| **2. Research** | Lead → `qualified` | Folder created from `_templates/`; research & competitor scan |
-| **3. Proposal** | `proposals` collection | Proposal generated (PLAYBOOK.md workflow); one-page + PDF + pricing |
-| **4. Active** | Client → `active` | Onboarding, briefing, campaign setup, invoicing |
-| **5. Ongoing** | `invoices`, `payments` | Recurring billing, reports, meeting recordings, strategy updates |
+Client delivery repos should receive only approved exports from `handoff/`.
 
-## Folder Structure
+## Standard Workspace Shape
 
-```
+```text
 clients/
-├── _templates/          ← Copy this to start a new client folder
-├── {Client-Name}/       ← One folder per client (use PascalCase-Hyphenated)
-│   ├── 00-Client-Index.md
-│   ├── briefing/
-│   ├── research/
-│   ├── proposal/
-│   ├── communications/
-│   ├── meetings/
-│   ├── invoices/
-│   └── campaign/
-└── README.md            ← This file
+|- _templates/
+|- {Client-Slug}/
+|  |- 00-Client-Index.md
+|  |- CLIENT_WORKSPACE.md
+|  |- kb/
+|  |- research/
+|  |- strategy/
+|  |- messaging/
+|  |- presentations/
+|  |- communications/
+|  |- handoff/
+|  |- active_state/
+|  |- briefing/
+|  |- meetings/
+|  |- proposal/
+|  `- invoices/
 ```
 
-## How to Start a New Client Folder
+## Create or Normalize a Workspace
 
 ```bash
-cp -r clients/_templates clients/{Client-Name}
+node scripts/scaffold-client-workspace.mjs _templates {Client-Slug}
 ```
 
-Then update `00-Client-Index.md` with the client's details.
+## Folder Meanings
 
-## Where Does What Go?
-
-| Content Type | Location |
+| Folder | Use |
 |---|---|
-| Meeting transcripts | `meetings/transcripts/` |
-| Meeting recordings | `meetings/recordings/` |
-| Research reports | `research/` |
-| Proposal documents (HTML/PDF) | `proposal/` |
-| Emails, WhatsApp drafts | `communications/` |
-| Static invoices (HTML) | `invoices/` |
-| Campaign assets | `campaign/` |
-| Client brief / questionnaire | `briefing/` |
+| `kb/` | Raw internal context and reference material |
+| `research/` | Validated research outputs |
+| `strategy/` | Written strategy deliverables |
+| `messaging/` | Ad copy, email flows, WhatsApp logic |
+| `presentations/` | Presentation source and ops publishing data |
+| `communications/` | Client-safe communication packs |
+| `handoff/` | Approved exports for delivery repos |
+| `active_state/` | Current blockers, decisions, next actions |
 
-> **Note:** Live operational data (invoices, payments, leads) lives in **Firestore** and is managed through `my.admireworks.com`. This folder holds source documents, research, and file-based deliverables.
+## Publish Model
+
+- Publish approved artifacts into `my.admireworks.com` via `clientArtifacts`.
+- Publish branded static decks to `ops.admireworks.com`.
+- Never move the full internal workspace into a delivery repo.

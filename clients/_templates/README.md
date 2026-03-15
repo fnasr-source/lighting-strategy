@@ -1,26 +1,27 @@
-# Client Folder Template
+# Client Workspace Template
 
-Copy this entire folder to create a new client workspace:
+Use the scaffold script to create or normalize internal client workspaces:
 
 ```bash
-cp -r clients/_templates clients/{Client-Name}
+node scripts/scaffold-client-workspace.mjs _templates {Client-Slug}
 ```
 
-Then:
-1. Update `00-Client-Index.md` with the client's details
-2. Follow the appropriate workflow from `.agents/workflows/`:
-   - `lead-research.md` — for initial research on a new lead
-   - `create-proposal.md` — to generate a Growth Partnership Proposal
-   - `onboard-client.md` — when the client signs on
+## What This Template Represents
 
-## Folder Contents
+This template is for the canonical internal client workspace inside `admireworks-internal-os`.
 
-| Folder | Purpose |
-|---|---|
-| `briefing/` | Client brief responses, gap analysis, questionnaire |
-| `research/` | Market research, competitor scan, SWOT analysis |
-| `proposal/` | Proposal HTML, CSS, PDF, and visual assets |
-| `communications/` | Email drafts, WhatsApp messages, follow-ups |
-| `meetings/` | Transcripts and recordings |
-| `invoices/` | Static HTML invoices (portal invoices are in Firestore) |
-| `campaign/` | Campaign-specific assets and materials |
+It is where Admireworks keeps:
+- briefs and transcripts
+- research and strategy
+- messaging systems
+- presentation source
+- blockers, decisions, and next steps
+- approved handoff exports
+
+## Important Rules
+
+- Keep the full KB and internal reasoning here.
+- Publish only approved, client-safe snapshots into `my.admireworks.com`.
+- Publish branded static decks from this workspace to `ops.admireworks.com`.
+- Export only execution-safe materials from `handoff/` into client build repos.
+- Do not duplicate the full internal workspace into delivery repos.

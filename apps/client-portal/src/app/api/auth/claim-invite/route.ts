@@ -24,6 +24,7 @@ const ROLE_PERMISSIONS: Record<SupportedRole, string[]> = {
     'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
     'payments:read', 'payments:write', 'leads:read', 'leads:write',
     'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
+    'artifacts:read', 'artifacts:write',
     'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
     'settings:read', 'settings:write', 'team:read', 'team:write',
     'billing:read', 'billing:write', 'scheduling:read', 'scheduling:write',
@@ -33,17 +34,19 @@ const ROLE_PERMISSIONS: Record<SupportedRole, string[]> = {
     'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
     'payments:read', 'payments:write', 'leads:read', 'leads:write',
     'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
+    'artifacts:read', 'artifacts:write',
     'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
     'settings:read', 'team:read', 'team:write', 'scheduling:read', 'scheduling:write',
     'performance:read', 'performance:write',
   ],
   team: [
     'clients:read', 'invoices:read', 'reports:read', 'reports:write',
+    'artifacts:read', 'artifacts:write',
     'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
     'scheduling:read', 'scheduling:write', 'performance:read',
   ],
   client: [
-    'invoices:read', 'payments:read', 'reports:read',
+    'invoices:read', 'payments:read', 'reports:read', 'artifacts:read',
     'campaigns:read', 'communications:read', 'performance:read',
   ],
 };
@@ -135,6 +138,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
 }
+
+
 
 
 

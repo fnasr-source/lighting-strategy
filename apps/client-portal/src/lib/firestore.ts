@@ -1240,6 +1240,7 @@ export type Permission =
     | 'leads:read' | 'leads:write'
     | 'proposals:read' | 'proposals:write'
     | 'reports:read' | 'reports:write'
+    | 'artifacts:read' | 'artifacts:write'
     | 'campaigns:read' | 'campaigns:write'
     | 'communications:read' | 'communications:write'
     | 'settings:read' | 'settings:write'
@@ -1254,6 +1255,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
         'payments:read', 'payments:write', 'leads:read', 'leads:write',
         'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
+        'artifacts:read', 'artifacts:write',
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'settings:read', 'settings:write', 'team:read', 'team:write',
         'billing:read', 'billing:write',
@@ -1264,6 +1266,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
         'clients:read', 'clients:write', 'invoices:read', 'invoices:write',
         'payments:read', 'payments:write', 'leads:read', 'leads:write',
         'proposals:read', 'proposals:write', 'reports:read', 'reports:write',
+        'artifacts:read', 'artifacts:write',
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'settings:read', 'team:read', 'team:write',
         'scheduling:read', 'scheduling:write',
@@ -1271,12 +1274,13 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
     ],
     team: [
         'clients:read', 'invoices:read', 'reports:read', 'reports:write',
+        'artifacts:read', 'artifacts:write',
         'campaigns:read', 'campaigns:write', 'communications:read', 'communications:write',
         'scheduling:read', 'scheduling:write',
         'performance:read',
     ],
     client: [
-        'invoices:read', 'payments:read', 'reports:read',
+        'invoices:read', 'payments:read', 'reports:read', 'artifacts:read',
         'campaigns:read', 'communications:read',
         'performance:read',
     ],

@@ -1,0 +1,33 @@
+{
+  "defaults": {
+    "maxResults": 5,
+    "country": "US",
+    "searchDepth": "basic"
+  },
+  "tasks": [
+    {
+      "id": "competitor-overview",
+      "enabled": false,
+      "provider": "firecrawl",
+      "query": "[CLIENT_NAME] alternatives [PRIMARY_MARKET]",
+      "supports": "competitor-scan",
+      "notes": "Use to find the first pass of competitors and alternative solutions."
+    },
+    {
+      "id": "market-language-scan",
+      "enabled": false,
+      "provider": "tavily",
+      "query": "[PRIMARY_OFFER] objections reviews discussions [PRIMARY_MARKET]",
+      "supports": "customer-language-bank",
+      "notes": "Use to pull reviews, objections, and market-language signals."
+    },
+    {
+      "id": "deep-discovery",
+      "enabled": false,
+      "provider": "exa",
+      "query": "[PRIMARY_OFFER] companies in [PRIMARY_MARKET]",
+      "supports": "competitor-scan",
+      "notes": "Use when normal search is missing key players."
+    }
+  ]
+}

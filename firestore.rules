@@ -23,15 +23,32 @@ service cloud.firestore {
     }
 
     function canAccessClient(clientId) {
-      return isOwnerOrAdmin()
+      return clientId is string && (
+        isOwnerOrAdmin()
         || (isSignedIn() && role() == 'team' && profileDoc().assignedClients is list && profileDoc().assignedClients.hasAny([clientId]))
         || (isSignedIn() && role() == 'client' && (
           (profileDoc().linkedClientIds is list && profileDoc().linkedClientIds.hasAny([clientId]))
           || profileDoc().linkedClientId == clientId
-        ));
+        ))
+      );
     }
 
-    // ── User Profiles ──
+    function threadClientId(threadId) {
+      return get(/databases/$(database)/documents/threads/$(threadId)).data.clientId;
+    }
+
+    function artifactReadable(data) {
+      return isInternal() || (
+        isSignedIn()
+        && data.visibility == 'client'
+        && canAccessClient(data.clientId)
+      );
+    }
+
+    function artifactWritable(data) {
+      return isInternal() && canAccessClient(data.clientId);
+    }
+
     match /userProfiles/{uid} {
       allow read: if isSignedIn() && (
         request.auth.uid == uid || isOwnerOrAdmin() || role() == 'team'
@@ -41,43 +58,36 @@ service cloud.firestore {
       );
     }
 
-    // ── Clients ──
     match /clients/{clientId} {
       allow read: if canAccessClient(clientId);
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Invoices ──
     match /invoices/{invoiceId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Payments ──
     match /payments/{paymentId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Leads ──
     match /leads/{leadId} {
       allow read: if isInternal();
       allow write: if isInternal();
     }
 
-    // ── Proposals ──
     match /proposals/{proposalId} {
       allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Platform Connections (credentials metadata only) ──
     match /platformConnections/{connId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Secret storage and platform overrides ──
     match /systemConfig/{docId} {
       allow read: if isOwnerOrAdmin();
       allow write: if isOwnerOrAdmin();
@@ -91,7 +101,6 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Monthly + Daily Metrics (legacy reporting collections) ──
     match /monthlyPlatformMetrics/{docId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
@@ -105,7 +114,6 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Canonical Intelligence Fact Tables ──
     match /fact_marketing_daily/{docId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
@@ -123,7 +131,6 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Intelligence Outputs ──
     match /kpi_snapshots_daily/{docId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
@@ -149,23 +156,22 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Media/creative intelligence ──
     match /creativePerformance/{docId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Threads + Messages (communication) ──
     match /threads/{threadId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
-      allow write: if isSignedIn() && canAccessClient(request.resource.data.clientId);
+      allow create: if isSignedIn() && canAccessClient(request.resource.data.clientId);
+      allow update, delete: if isSignedIn() && canAccessClient(resource.data.clientId);
     }
     match /messages/{messageId} {
-      allow read: if isSignedIn();
-      allow write: if isSignedIn();
+      allow read: if isSignedIn() && canAccessClient(threadClientId(resource.data.threadId));
+      allow create: if isSignedIn() && canAccessClient(threadClientId(request.resource.data.threadId));
+      allow update, delete: if isInternal() && canAccessClient(threadClientId(resource.data.threadId));
     }
 
-    // ── Recurring Invoices + Reminders ──
     match /recurringInvoices/{docId} {
       allow read: if isSignedIn() && canAccessClient(resource.data.clientId);
       allow write: if isOwnerOrAdmin();
@@ -175,13 +181,11 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Expenses ──
     match /expenses/{expenseId} {
       allow read: if isInternal();
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Finance Ops ──
     match /recurringExpenses/{docId} {
       allow read: if isInternal();
       allow write: if isOwnerOrAdmin();
@@ -203,7 +207,6 @@ service cloud.firestore {
       allow write: if isOwnerOrAdmin();
     }
 
-    // ── Reports / Strategy ──
     match /reports/{reportId} {
       allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
       allow write: if isInternal();
@@ -212,8 +215,22 @@ service cloud.firestore {
       allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
       allow write: if isInternal();
     }
+    match /clientArtifacts/{artifactId} {
+      allow read: if artifactReadable(resource.data);
+      allow create: if artifactWritable(request.resource.data);
+      allow update, delete: if artifactWritable(resource.data);
+    }
+    match /clientArtifactVersions/{versionId} {
+      allow read: if artifactReadable(resource.data);
+      allow create: if artifactWritable(request.resource.data);
+      allow update, delete: if artifactWritable(resource.data);
+    }
+    match /clientApprovals/{approvalId} {
+      allow read: if isInternal() || (isSignedIn() && canAccessClient(resource.data.clientId));
+      allow create: if isSignedIn() && canAccessClient(request.resource.data.clientId);
+      allow update, delete: if isSignedIn() && canAccessClient(resource.data.clientId);
+    }
 
-    // ── Campaigns (public lead intake + internal management) ──
     match /campaigns/{campaignId} {
       allow read: if isInternal();
       allow write: if isOwnerOrAdmin();
@@ -230,7 +247,6 @@ service cloud.firestore {
       }
     }
 
-    // ── AI-generated summary cache (legacy) ──
     match /clientInsights/{clientId} {
       allow read: if canAccessClient(clientId);
       allow write: if isOwnerOrAdmin();

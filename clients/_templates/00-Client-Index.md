@@ -15,8 +15,8 @@
 
 ## Key Links
 - **Portal:** `https://my.admireworks.com/dashboard/clients/{clientId}`
-- **Proposal Number:** AWP-{CC}-{TOKEN}-{NONCE}
-- **Invoice(s):** AWI-{YYYYMM}-{SEQ}
+- **Ops Presentation:** `https://ops.admireworks.com/presentations/{client-slug}/`
+- **Execution Repo:** _(only if/when implementation starts)_
 
 ## Assigned Team
 - **Account Owner:** Fouad Nasseredin
@@ -24,6 +24,9 @@
 
 ## Scope of Work
 _Brief description of what Admireworks is doing for this client._
+
+## Internal Workspace Rule
+_Research, strategy, messaging, and presentation work stay inside this repo. Export only approved build-ready materials into `handoff/` for delivery repos._
 
 ## Notes
 _Any additional context, history, or important decisions._

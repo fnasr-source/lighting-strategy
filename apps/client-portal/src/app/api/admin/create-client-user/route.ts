@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
             email,
             displayName: displayName || email,
             role: 'client',
-            permissions: ['invoices:read', 'payments:read', 'reports:read', 'campaigns:read', 'communications:read', 'performance:read'],
+            permissions: ['invoices:read', 'payments:read', 'reports:read', 'artifacts:read', 'campaigns:read', 'communications:read', 'performance:read'],
             linkedClientId: linkedClientIds[0],
             linkedClientIds,
             isActive: true,
@@ -54,3 +54,4 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: message }, { status: 500 });
     }
 }
+

@@ -326,8 +326,15 @@ async function main() {
         process.exit(1);
     }
 
-    const baseUrl = 'https://ops.admireworks.com';
-    const invoiceUrl = `${baseUrl}${data.invoice_url}`;
+    const rawInvoiceUrl = (data.invoice_url || '').trim();
+    let invoiceUrl = '';
+    if (rawInvoiceUrl.startsWith('http://') || rawInvoiceUrl.startsWith('https://')) {
+        invoiceUrl = rawInvoiceUrl;
+    } else if (rawInvoiceUrl.startsWith('/invoice/')) {
+        invoiceUrl = `https://my.admireworks.com${rawInvoiceUrl}`;
+    } else if (rawInvoiceUrl.startsWith('/')) {
+        invoiceUrl = `https://ops.admireworks.com${rawInvoiceUrl}`;
+    }
 
     const emailData = {
         clientName: data.client_name || client.client_name,

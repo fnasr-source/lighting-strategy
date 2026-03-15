@@ -9,21 +9,25 @@
   src: url('../../_Proposal-System/templates/growth-packages-assets/fonts/jaymont/Jaymont Medium.otf') format('opentype');
   font-weight: 500;
 }
+
 @font-face {
   font-family: 'Jaymont';
   src: url('../../_Proposal-System/templates/growth-packages-assets/fonts/jaymont/Jaymont Bold.otf') format('opentype');
   font-weight: 700;
 }
+
 @font-face {
   font-family: 'Akkurat Pro';
   src: url('../../_Proposal-System/templates/growth-packages-assets/fonts/akkurat-pro/Akkurat Pro-Light.otf') format('opentype');
   font-weight: 300;
 }
+
 @font-face {
   font-family: 'Akkurat Pro';
   src: url('../../_Proposal-System/templates/growth-packages-assets/fonts/akkurat-pro/Akkurat Pro-Regular.otf') format('opentype');
   font-weight: 400;
 }
+
 @font-face {
   font-family: 'Akkurat Pro';
   src: url('../../_Proposal-System/templates/growth-packages-assets/fonts/akkurat-pro/Akkurat Pro-Bold.otf') format('opentype');
@@ -60,14 +64,21 @@
   --font-headline: 'Jaymont', 'Georgia', serif;
   --font-body: 'Akkurat Pro', 'Helvetica Neue', 'Arial', sans-serif;
 
-  /* Page Dimensions */
-  --page-width: 210mm;
-  --page-height: 297mm;
+  /* Page Dimensions — Landscape (16:9-ish on A4) */
+  --page-width: 297mm;
+  --page-height: 210mm;
   --page-padding: 0;
 }
 
+@page {
+  size: 297mm 210mm;
+  margin: 0;
+}
+
 /* --- Reset --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -90,7 +101,7 @@ body {
   background: var(--aw-white);
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   page-break-after: always;
   break-after: page;
 }
@@ -121,16 +132,22 @@ body {
 
 .cover .cover-bg {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(27,46,32,0.95) 0%, rgba(15,25,17,0.98) 100%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(27, 46, 32, 0.95) 0%, rgba(15, 25, 17, 0.98) 100%);
   z-index: 0;
 }
 
 .cover .cover-bg::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 50% 30%, rgba(204,159,83,0.08) 0%, transparent 70%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(204, 159, 83, 0.08) 0%, transparent 70%);
 }
 
 .cover .cover-content {
@@ -440,9 +457,17 @@ body {
   font-weight: 700;
 }
 
-.audit-card .audit-score.score-good { color: var(--prop-success); }
-.audit-card .audit-score.score-mid { color: var(--prop-accent); }
-.audit-card .audit-score.score-bad { color: var(--prop-warning); }
+.audit-card .audit-score.score-good {
+  color: var(--prop-success);
+}
+
+.audit-card .audit-score.score-mid {
+  color: var(--prop-accent);
+}
+
+.audit-card .audit-score.score-bad {
+  color: var(--prop-warning);
+}
 
 .audit-card h4 {
   font-size: 12pt;
@@ -474,9 +499,20 @@ body {
   margin-top: 10px;
 }
 
-.audit-tag.tag-good { background: rgba(46,204,113,0.15); color: var(--prop-success); }
-.audit-tag.tag-mid { background: rgba(204,159,83,0.15); color: var(--prop-accent); }
-.audit-tag.tag-bad { background: rgba(231,76,60,0.15); color: var(--prop-warning); }
+.audit-tag.tag-good {
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--prop-success);
+}
+
+.audit-tag.tag-mid {
+  background: rgba(204, 159, 83, 0.15);
+  color: var(--prop-accent);
+}
+
+.audit-tag.tag-bad {
+  background: rgba(231, 76, 60, 0.15);
+  color: var(--prop-warning);
+}
 
 /* ===================================================================
    LAYOUT: Comparison Table
@@ -559,8 +595,8 @@ body {
 }
 
 .insight-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 25px;
 }
@@ -716,7 +752,7 @@ body {
 
 .pricing-card.featured {
   border: 3px solid var(--prop-accent);
-  box-shadow: 0 8px 30px rgba(204,159,83,0.2);
+  box-shadow: 0 8px 30px rgba(204, 159, 83, 0.2);
   transform: scale(1.02);
 }
 
@@ -883,21 +919,65 @@ body {
 /* ===================================================================
    UTILITY CLASSES
    =================================================================== */
-.text-accent { color: var(--prop-accent); }
-.text-success { color: var(--prop-success); }
-.text-warning { color: var(--prop-warning); }
-.text-navy { color: var(--aw-navy); }
-.font-headline { font-family: var(--font-headline); }
-.font-body { font-family: var(--font-body); }
-.text-small { font-size: 8pt; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.mt-auto { margin-top: auto; }
-.mb-0 { margin-bottom: 0; }
-.mb-10 { margin-bottom: 10px; }
-.mb-20 { margin-bottom: 20px; }
-.opacity-70 { opacity: 0.7; }
-.rtl { direction: rtl; }
+.text-accent {
+  color: var(--prop-accent);
+}
+
+.text-success {
+  color: var(--prop-success);
+}
+
+.text-warning {
+  color: var(--prop-warning);
+}
+
+.text-navy {
+  color: var(--aw-navy);
+}
+
+.font-headline {
+  font-family: var(--font-headline);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-small {
+  font-size: 8pt;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.opacity-70 {
+  opacity: 0.7;
+}
+
+.rtl {
+  direction: rtl;
+}
 
 .badge {
   display: inline-block;
@@ -908,9 +988,21 @@ body {
   padding: 4px 10px;
   border-radius: 4px;
 }
-.badge-success { background: rgba(46,204,113,0.15); color: var(--prop-success); }
-.badge-warning { background: rgba(231,76,60,0.15); color: var(--prop-warning); }
-.badge-accent { background: rgba(204,159,83,0.15); color: var(--prop-accent); }
+
+.badge-success {
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--prop-success);
+}
+
+.badge-warning {
+  background: rgba(231, 76, 60, 0.15);
+  color: var(--prop-warning);
+}
+
+.badge-accent {
+  background: rgba(204, 159, 83, 0.15);
+  color: var(--prop-accent);
+}
 
 /* Horizontal rule */
 .prop-hr {
@@ -935,7 +1027,7 @@ body {
    =================================================================== */
 @media print {
   @page {
-    size: A4;
+    size: 297mm 210mm;
     margin: 0;
   }
 

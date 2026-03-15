@@ -18,8 +18,22 @@ const puppeteer = require('puppeteer-core');
 const path = require('path');
 const fs = require('fs');
 
-// System Chrome path (macOS)
-const CHROME_PATH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Cross-platform Chrome detection
+function findChrome() {
+    const candidates = process.platform === 'win32'
+        ? [
+            'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+            'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+            process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+        ].filter(Boolean)
+        : ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'];
+    for (const p of candidates) {
+        if (fs.existsSync(p)) return p;
+    }
+    console.error('❌ Chrome not found. Please set CHROME_PATH environment variable.');
+    process.exit(1);
+}
+const CHROME_PATH = process.env.CHROME_PATH || findChrome();
 
 async function generatePDF(htmlPath, outputPath) {
     const absoluteHtmlPath = path.resolve(htmlPath);
@@ -38,9 +52,9 @@ async function generatePDF(htmlPath, outputPath) {
     console.log(`📁 Output:  ${outputPath}`);
 
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: 'shell',
         executablePath: CHROME_PATH,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
     });
 
     try {
@@ -49,7 +63,8 @@ async function generatePDF(htmlPath, outputPath) {
         // Set viewport to standard desktop for consistent rendering
         await page.setViewport({ width: 1200, height: 800 });
 
-        const fileUrl = `file://${absoluteHtmlPath}`;
+        const { pathToFileURL } = require('url');
+        const fileUrl = pathToFileURL(absoluteHtmlPath).href;
         await page.goto(fileUrl, { waitUntil: 'networkidle0', timeout: 30000 });
 
         // Generate PDF — A4 with print styles and professional margins

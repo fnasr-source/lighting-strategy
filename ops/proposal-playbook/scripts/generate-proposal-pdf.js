@@ -18,12 +18,26 @@
 const path = require('path');
 const fs = require('fs');
 
-// Resolve puppeteer-core from the shared _Proposal-System/payments location
-const puppeteerPath = path.join(__dirname, '..', '..', '_Proposal-System', 'payments', 'node_modules', 'puppeteer-core');
+// Resolve puppeteer-core from the shared payments package in the current repo layout.
+const puppeteerPath = path.join(__dirname, '..', '..', 'proposal-system', 'payments', 'node_modules', 'puppeteer-core');
 const puppeteer = require(puppeteerPath);
 
-// System Chrome path (macOS)
-const CHROME_PATH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Cross-platform Chrome detection
+function findChrome() {
+    const candidates = process.platform === 'win32'
+        ? [
+            'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+            'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+            process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+        ].filter(Boolean)
+        : ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'];
+    for (const p of candidates) {
+        if (fs.existsSync(p)) return p;
+    }
+    console.error('❌ Chrome not found. Please set CHROME_PATH environment variable.');
+    process.exit(1);
+}
+const CHROME_PATH = process.env.CHROME_PATH || findChrome();
 
 async function generateProposalPDF(htmlPath, outputPath) {
     const absoluteHtmlPath = path.resolve(htmlPath);
@@ -48,18 +62,19 @@ async function generateProposalPDF(htmlPath, outputPath) {
     console.log('');
 
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: 'shell',
         executablePath: CHROME_PATH,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
     });
 
     try {
         const page = await browser.newPage();
 
         // Set wider viewport for proposal layouts
-        await page.setViewport({ width: 1200, height: 800 });
+        await page.setViewport({ width: 1400, height: 900 });
 
-        const fileUrl = `file://${absoluteHtmlPath}`;
+        const { pathToFileURL } = require('url');
+        const fileUrl = pathToFileURL(absoluteHtmlPath).href;
         console.log('⏳ Loading HTML...');
         await page.goto(fileUrl, { waitUntil: 'networkidle0', timeout: 60000 });
 
@@ -68,10 +83,9 @@ async function generateProposalPDF(htmlPath, outputPath) {
 
         console.log('⏳ Generating PDF...');
 
-        // Generate PDF — A4 with CSS-controlled page breaks
+        // Generate PDF — orientation controlled by CSS @page { size: 297mm 210mm }
         await page.pdf({
             path: outputPath,
-            format: 'A4',
             printBackground: true,
             preferCSSPageSize: true,
             margin: {

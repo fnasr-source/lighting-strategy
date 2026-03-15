@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 export default defineConfig({
-    base: '/basseqat-strategy/',
+    base: '/presentations/basseqat/',
     plugins: [react()],
     css: {
         postcss: {
